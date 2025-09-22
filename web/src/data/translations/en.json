@@ -1,0 +1,64 @@
+{
+  "common": {
+    "home": "Home",
+    "menu": "Menu",
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "viewAll": "View All",
+    "readMore": "Read More",
+    "backToHome": "Back to Home"
+  },
+  "header": {
+    "airportName": "Bokeo International Airport",
+    "importantNotice": "Important Notice"
+  },
+  "navigation": {
+    "flights": "Flights",
+    "services": "Services",
+    "transportation": "Transportation",
+    "cargo": "Cargo",
+    "about": "About",
+    "contact": "Contact",
+    "news": "News"
+  },
+  "homepage": {
+    "hero": {
+      "title": "Welcome to Bokeo International Airport",
+      "subtitle": "Gateway to Laos - Experience Seamless Travel"
+    },
+    "flightSearch": {
+      "title": "Flight Search",
+      "departures": "Departures",
+      "arrivals": "Arrivals",
+      "placeholder": "Flight number or destination...",
+      "searchButton": "Search Flights",
+      "searching": "Searching...",
+      "realTimeUpdates": "Real-time Updates"
+    },
+    "quickServices": {
+      "title": "Airport Services",
+      "subtitle": "Everything you need for a comfortable journey"
+    },
+    "news": {
+      "title": "Latest News & Updates",
+      "subtitle": "Stay informed about airport announcements and events"
+    }
+  },
+  "services": {
+    "dining": "Dining & Shopping",
+    "entertainment": "Entertainment",
+    "transportation": "Transportation",
+    "cargo": "Air Cargo",
+    "cultural": "Cultural Activities",
+    "joyful": "Joyful Services"
+  },
+  "footer": {
+    "copyright": "© 2024 Bokeo International Airport. All rights reserved.",
+    "contact": "Contact Information",
+    "quickLinks": "Quick Links",
+    "followUs": "Follow Us"
+  }
+}
+
+

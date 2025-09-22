@@ -5,12 +5,37 @@ import Link from "next/link";
 import Image from "next/image";
 import { Bell, Home, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
 import Sidebar from "./sidebar";
 import LanguageSelector from "./language-selector";
+
+const translations = {
+  menu: {
+    en: "Menu",
+    lo: "ເມນູ",
+    zh: "菜单",
+  },
+  importantNotice: {
+    en: "Important Notice",
+    lo: "ປະກາດສຳຄັນ",
+    zh: "重要通知",
+  },
+  airportName: {
+    en: "Bokeo International Airport",
+    lo: "ສະໜາມບິນສາກົນບໍ່ແກ້ວ",
+    zh: "博胶国际机场",
+  },
+  airportNameLao: {
+    en: "Bokeo International Airport",
+    lo: "ສະໜາມບິນສາກົນບໍ່ແກ້ວ",
+    zh: "博胶国际机场",
+  },
+};
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { lang, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,11 +79,13 @@ export default function Header() {
               ) : (
                 <Menu className="h-4 w-4" />
               )}
-              <span className="hidden text-sm font-medium md:inline">menu</span>
+              <span className="hidden text-sm font-medium md:inline">
+                {t(translations.menu)}
+              </span>
             </button>
 
             <Link
-              href="/"
+              href={`/${lang}`}
               className={cn(
                 "rounded-lg p-2 transition-all duration-300",
                 isScrolled ? "hover:bg-gray-100" : "hover:bg-white/10",
@@ -75,19 +102,26 @@ export default function Header() {
 
           {/* Center Section - Airport Logo and Name */}
           <div className="absolute left-1/2 -translate-x-1/2 transform">
-            <Link href="/" className="flex items-center space-x-3">
+            <Link href={`/${lang}`} className="flex items-center space-x-3">
               <div
                 className={cn(
                   "flex flex-col items-center text-center transition-colors duration-300",
                   isScrolled ? "text-gray-900" : "text-white",
                 )}
               >
-                <span className="font-lao text-sm leading-tight tracking-wide md:text-base md:tracking-wider">
+                <span className="font-lao text-sm leading-tight tracking-widest md:text-base md:tracking-wider">
                   ສະໜາມບິນສາກົນບໍ່ແກ້ວ
                 </span>
-                <span className="text-xs font-medium tracking-tight md:text-sm">
-                  Bokeo International Airport
-                </span>
+
+                {lang === "zh" ? (
+                  <span className="font-lao! text-sm leading-tight tracking-wide md:text-base md:tracking-wider">
+                    {t(translations.airportName)}
+                  </span>
+                ) : (
+                  <span className="text-xs leading-tight font-medium tracking-tight md:text-sm">
+                    Bokeo International Airport
+                  </span>
+                )}
               </div>
 
               <div className="relative h-11 w-11 md:h-12 md:w-14">
@@ -111,7 +145,7 @@ export default function Header() {
             <LanguageSelector isScrolled={isScrolled} />
 
             <Link
-              href="/news?urgent=true"
+              href={`/${lang}/news?urgent=true`}
               className={cn(
                 "flex items-center space-x-2 rounded-lg px-3 py-2 transition-all duration-300",
                 isScrolled
@@ -121,7 +155,7 @@ export default function Header() {
             >
               <Bell className="h-4 w-4 text-orange-500" />
               <span className="hidden text-xs font-medium md:inline">
-                Important Notice
+                {t(translations.importantNotice)}
               </span>
             </Link>
           </div>

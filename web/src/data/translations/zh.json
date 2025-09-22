@@ -1,0 +1,62 @@
+{
+  "common": {
+    "home": "首页",
+    "menu": "菜单",
+    "search": "搜索",
+    "loading": "加载中...",
+    "error": "出现错误",
+    "viewAll": "查看全部",
+    "readMore": "阅读更多",
+    "backToHome": "返回首页"
+  },
+  "header": {
+    "airportName": "博胶国际机场",
+    "importantNotice": "重要通知"
+  },
+  "navigation": {
+    "flights": "航班",
+    "services": "服务",
+    "transportation": "交通",
+    "cargo": "货运",
+    "about": "关于",
+    "contact": "联系",
+    "news": "新闻"
+  },
+  "homepage": {
+    "hero": {
+      "title": "欢迎来到博胶国际机场",
+      "subtitle": "老挝之门 - 体验无缝旅行"
+    },
+    "flightSearch": {
+      "title": "航班查询",
+      "departures": "出发",
+      "arrivals": "抵达",
+      "placeholder": "航班号或目的地...",
+      "searchButton": "搜索航班",
+      "searching": "搜索中...",
+      "realTimeUpdates": "实时更新"
+    },
+    "quickServices": {
+      "title": "机场服务",
+      "subtitle": "为您舒适旅程提供所需的一切"
+    },
+    "news": {
+      "title": "最新新闻和更新",
+      "subtitle": "了解机场公告和活动信息"
+    }
+  },
+  "services": {
+    "dining": "餐饮购物",
+    "entertainment": "娱乐",
+    "transportation": "交通",
+    "cargo": "航空货运",
+    "cultural": "文化活动",
+    "joyful": "愉悦服务"
+  },
+  "footer": {
+    "copyright": "© 2024 博胶国际机场。保留所有权利。",
+    "contact": "联系信息",
+    "quickLinks": "快捷链接",
+    "followUs": "关注我们"
+  }
+}

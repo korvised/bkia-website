@@ -1,9 +1,250 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao+Looped:wght@100..900&display=swap');
+
 @import "tailwindcss";
 
 @theme {
-    --font-sans: "Noto Sans Lao Looped", sans-serif;
+    /* Font families with proper fallbacks */
+    --font-lao: "Noto Sans Lao Looped", sans-serif;
+    --font-chinese: "Microsoft Yahei", "微软雅黑", "PingFang SC", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", verdana, sans-serif;
 
-    --color-primary: #5CBEC6;
-    --color-light: #D3EAE9;
-    --color-dark: #00AAAC;
+    /* Bokeo Airport Color Palette */
+    --color-primary: #0d9488;           /* Bokeo Teal */
+    --color-secondary: #3b82f6;         /* Bokeo Blue */
+    --color-accent: #f97316;            /* Orange accent */
+    /* Bokeo Teal Scale */
+    --color-bokeo-teal-50: #f0fdfa;
+    --color-bokeo-teal-100: #ccfbf1;
+    --color-bokeo-teal-200: #99f6e4;
+    --color-bokeo-teal-300: #5eead4;
+    --color-bokeo-teal-400: #2dd4bf;
+    --color-bokeo-teal-500: #14b8a6;
+    --color-bokeo-teal-600: #0d9488;
+    --color-bokeo-teal-700: #0f766e;
+    --color-bokeo-teal-800: #115e59;
+    --color-bokeo-teal-900: #134e4a;
+    --color-bokeo-teal-950: #042f2e;
+
+    /* Bokeo Blue Scale */
+    --color-bokeo-blue-50: #eff6ff;
+    --color-bokeo-blue-100: #dbeafe;
+    --color-bokeo-blue-200: #bfdbfe;
+    --color-bokeo-blue-300: #93c5fd;
+    --color-bokeo-blue-400: #60a5fa;
+    --color-bokeo-blue-500: #3b82f6;
+    --color-bokeo-blue-600: #2563eb;
+    --color-bokeo-blue-700: #1d4ed8;
+    --color-bokeo-blue-800: #1e40af;
+    --color-bokeo-blue-900: #1e3a8a;
+    --color-bokeo-blue-950: #172554;
+
+    /* Background colors */
+    --color-background: #ffffff;
+    --color-foreground: #0f172a;
+    --color-muted: #f8fafc;
+    --color-muted-foreground: #64748b;
+
+    /* Border and input colors */
+    --color-border: #e2e8f0;
+    --color-input: #e2e8f0;
+    --color-ring: #0d9488;
+
+    /* Card colors */
+    --color-card: #ffffff;
+    --color-card-foreground: #0f172a;
+
+    /* Popover colors */
+    --color-popover: #ffffff;
+    --color-popover-foreground: #0f172a;
+
+    /* Destructive colors */
+    --color-destructive: #ef4444;
+    --color-destructive-foreground: #ffffff;
+
+    /* Border radius */
+    --radius: 0.5rem;
+}
+
+/* Base body styles */
+body {
+    font-family: var(--font-lao);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Language-specific font handling */
+[lang="lo"],
+[lang="en"],
+[lang="lo"] *,
+[lang="en"] * {
+    font-family: var(--font-lao) !important;
+}
+
+[lang="zh"],
+[lang="zh"] * {
+    font-family: var(--font-chinese) !important;
+}
+
+/* Font utility classes */
+.font-lao {
+    font-family: var(--font-lao) !important;
+}
+
+.font-chinese {
+    font-family: var(--font-chinese) !important;
+}
+
+
+/* Custom component styles without borders */
+.flight-status-on-time {
+    @apply bg-green-100 text-green-800;
+}
+
+.flight-status-delayed {
+    @apply bg-yellow-100 text-yellow-800;
+}
+
+.flight-status-cancelled {
+    @apply bg-red-100 text-red-800;
+}
+
+.flight-status-boarding {
+    @apply bg-blue-100 text-blue-800;
+}
+
+/* Custom animations */
+@keyframes bounce-gentle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse-slow {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-bounce-gentle {
+    animation: bounce-gentle 2s infinite;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Glassmorphism effects */
+.glass {
+    @apply bg-white/10 backdrop-blur-md;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+    @apply bg-black/10 backdrop-blur-md;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+}
+
+/* Focus styles for accessibility - remove default borders */
+.focus-ring {
+    outline: none !important;
+    border: none !important;
+    box-shadow: 0 0 0 2px var(--color-ring), 0 0 0 4px rgba(13, 148, 136, 0.1);
+}
+
+/* Headless UI specific overrides */
+[data-headlessui-state="open"] {
+    border: none !important;
+}
+
+[data-headlessui-state="selected"] {
+    border: none !important;
+}
+
+[data-headlessui-state="active"] {
+    border: none !important;
+}
+
+/* Remove focus rings completely */
+[data-focus] {
+    outline: none !important;
+    border: none !important;
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .animate-bounce-gentle,
+    .animate-pulse-slow {
+        animation: none;
+    }
+
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Ensure no borders on specific elements */
+.headlessui-menu-button,
+.headlessui-menu-items,
+.headlessui-menu-item,
+.headlessui-dialog-panel,
+.headlessui-tab,
+.headlessui-tab-panel {
+    border: none !important;
+    outline: none !important;
+}
+
+/* Language selector specific fixes */
+[role="menu"] {
+    border: 1px solid rgba(229, 231, 235, 0.5) !important;
+}
+
+[role="menuitem"] {
+    border: none !important;
+    outline: none !important;
+}
+
+/* Tab component fixes */
+[role="tablist"] {
+    border: none !important;
+}
+
+[role="tab"] {
+    border: none !important;
+    outline: none !important;
+}
+
+[role="tabpanel"] {
+    border: none !important;
+    outline: none !important;
 }

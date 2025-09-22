@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { ArrowRight, Car, MapPin, Music, Package, Utensils } from "lucide-react";
+import {
+  ArrowRight,
+  Car,
+  MapPin,
+  Music,
+  Package,
+  Utensils,
+} from "lucide-react";
+import { Lang } from "@/types/language";
 
 const services = [
   {
@@ -12,7 +20,7 @@ const services = [
     href: "/transportation",
     color: "from-blue-500 to-indigo-500",
     bgColor: "bg-blue-50",
-    iconColor: "text-blue-600"
+    iconColor: "text-blue-600",
   },
   {
     id: "dining",
@@ -24,7 +32,7 @@ const services = [
     href: "/services/dining-shopping",
     color: "from-orange-500 to-red-500",
     bgColor: "bg-orange-50",
-    iconColor: "text-orange-600"
+    iconColor: "text-orange-600",
   },
   {
     id: "services",
@@ -36,7 +44,7 @@ const services = [
     href: "/services/joyful-service",
     color: "from-teal-500 to-cyan-500",
     bgColor: "bg-teal-50",
-    iconColor: "text-teal-600"
+    iconColor: "text-teal-600",
   },
   {
     id: "cargo",
@@ -48,7 +56,7 @@ const services = [
     href: "/cargo",
     color: "from-green-500 to-emerald-500",
     bgColor: "bg-green-50",
-    iconColor: "text-green-600"
+    iconColor: "text-green-600",
   },
   {
     id: "lost-found",
@@ -60,7 +68,7 @@ const services = [
     href: "/services/lost-found",
     color: "from-purple-500 to-pink-500",
     bgColor: "bg-purple-50",
-    iconColor: "text-purple-600"
+    iconColor: "text-purple-600",
   },
   {
     id: "cultural",
@@ -72,18 +80,21 @@ const services = [
     href: "/services/cultural-interaction",
     color: "from-indigo-500 to-purple-500",
     bgColor: "bg-indigo-50",
-    iconColor: "text-indigo-600"
-  }
+    iconColor: "text-indigo-600",
+  },
 ];
 
-export default function QuickServices() {
-  return (
-    <div className="flex-1 flex flex-col justify-center py-16">
-      <div className="max-w-7xl mx-auto px-6">
+interface QuickServicesProps {
+  lang: Lang;
+}
 
+export default function QuickServices({ lang }: QuickServicesProps) {
+  return (
+    <div className="flex flex-1 flex-col justify-center py-16">
+      <div className="mx-auto max-w-7xl px-6">
         {/* Navigation Tabs */}
-        <div className="flex items-center justify-center mb-12">
-          <div className="flex space-x-8 bg-white rounded-full p-2 shadow-lg">
+        <div className="mb-12 flex items-center justify-center">
+          <div className="flex space-x-8 rounded-full bg-white p-2 shadow-lg">
             {services.map((service, index) => {
               const IconComponent = service.icon;
 
@@ -91,12 +102,14 @@ export default function QuickServices() {
                 <Link
                   key={service.id}
                   href={service.href}
-                  className={`flex flex-col items-center p-4 rounded-full transition-all duration-300 hover:scale-110 ${
-                    index === 0 ? "bg-bokeo-teal-500 text-white" : "text-gray-600 hover:text-bokeo-teal-600"
+                  className={`flex flex-col items-center rounded-full p-4 transition-all duration-300 hover:scale-110 ${
+                    index === 0
+                      ? "bg-bokeo-teal-500 text-white"
+                      : "hover:text-bokeo-teal-600 text-gray-600"
                   }`}
                 >
-                  <IconComponent className="w-6 h-6 mb-2" />
-                  <span className="text-xs font-medium text-center leading-tight">
+                  <IconComponent className="mb-2 h-6 w-6" />
+                  <span className="text-center text-xs leading-tight font-medium">
                     {service.title}
                   </span>
                 </Link>
@@ -106,20 +119,20 @@ export default function QuickServices() {
         </div>
 
         {/* Featured Service Content */}
-        <div className="text-center mb-12">
-          <div className="inline-block bg-bokeo-teal-500 text-white px-6 py-2 rounded-full text-sm font-medium mb-4">
+        <div className="mb-12 text-center">
+          <div className="bg-bokeo-teal-500 mb-4 inline-block rounded-full px-6 py-2 text-sm font-medium text-white">
             服务承诺
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
             {services[0].title}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-lg text-gray-600">
             {services[0].description}
           </p>
         </div>
 
         {/* Service Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.slice(1).map((service) => {
             const IconComponent = service.icon;
 
@@ -127,33 +140,32 @@ export default function QuickServices() {
               <Link
                 key={service.id}
                 href={service.href}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100"
+                className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
               >
-
                 {/* Icon */}
                 <div
-                  className={`w-16 h-16 rounded-xl ${service.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <IconComponent className={`w-8 h-8 ${service.iconColor}`} />
+                  className={`h-16 w-16 rounded-xl ${service.bgColor} mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}
+                >
+                  <IconComponent className={`h-8 w-8 ${service.iconColor}`} />
                 </div>
 
                 {/* Content */}
                 <div className="mb-4">
-                  <h3
-                    className="text-xl font-bold text-gray-900 mb-2 group-hover:text-bokeo-teal-600 transition-colors">
+                  <h3 className="group-hover:text-bokeo-teal-600 mb-2 text-xl font-bold text-gray-900 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-gray-500 mb-2">
+                  <p className="mb-2 text-sm text-gray-500">
                     {service.titleEn}
                   </p>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-sm leading-relaxed text-gray-600">
                     {service.description}
                   </p>
                 </div>
 
                 {/* Arrow */}
-                <div className="flex items-center text-gray-400 group-hover:text-bokeo-teal-600 transition-colors">
-                  <span className="text-sm font-medium mr-2">了解更多</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <div className="group-hover:text-bokeo-teal-600 flex items-center text-gray-400 transition-colors">
+                  <span className="mr-2 text-sm font-medium">了解更多</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </Link>
             );
