@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Noto Sans Lao Looped", sans-serif;
+
+    --color-primary: #5CBEC6;
+    --color-light: #D3EAE9;
+    --color-dark: #00AAAC;
+}
