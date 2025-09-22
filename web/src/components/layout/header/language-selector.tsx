@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, startTransition } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import {
   Menu,
@@ -10,28 +10,31 @@ import {
   Transition,
 } from "@headlessui/react";
 import { ChevronDown, Globe } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useLanguage } from "@/context/language-context";
-import { languages, type Lang } from "@/types/language";
+import { useLanguage } from "@/context";
+import { cn, languages } from "@/lib";
+import { type Lang } from "@/types/language";
+import { setLangCookie } from "@/actions";
 
 interface LanguageSelectorProps {
   isScrolled: boolean;
 }
 
-export default function LanguageSelector({
+export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   isScrolled,
-}: LanguageSelectorProps) {
+}) => {
   const { lang, languageConfig } = useLanguage();
   const router = useRouter();
   const pathname = usePathname();
 
   const handleLanguageChange = (newLang: Lang) => {
-    // Replace the current language in the pathname with the new one
     const segments = pathname.split("/");
-    segments[1] = newLang; // Replace the language segment
+    segments[1] = newLang;
     const newPath = segments.join("/");
 
-    router.push(newPath);
+    startTransition(async () => {
+      await setLangCookie(newLang);
+      router.push(newPath);
+    });
   };
 
   return (
@@ -113,4 +116,4 @@ export default function LanguageSelector({
       )}
     </Menu>
   );
-}
+};

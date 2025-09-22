@@ -2,9 +2,11 @@ import { Lang } from "@/types/language";
 import AirportHomepage from "@/components/homepage/airport-homepage";
 
 interface HomePageProps {
-  params: { lang: Lang };
+  params: Promise<{ lang: Lang }>;
 }
 
-export default function HomePage({ params }: HomePageProps) {
-  return <AirportHomepage lang={params.lang} />;
+export default async function HomePage({ params }: HomePageProps) {
+  const { lang } = await params;
+
+  return <AirportHomepage lang={lang} />;
 }

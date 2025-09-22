@@ -1,10 +1,7 @@
-// src/components/homepage/airport-homepage.tsx
 import { Lang } from "@/types/language";
 import HeroSection from "./hero-section";
 import DateTimeDisplay from "./date-time-display";
 import FlightSearch from "./flight-search";
-import NewsSection from "./news-section";
-import QuickServices from "./quick-services";
 
 interface AirportHomepageProps {
   lang: Lang;

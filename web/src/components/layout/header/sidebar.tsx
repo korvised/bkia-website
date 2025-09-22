@@ -282,7 +282,7 @@ const aboutUsItems = [
   },
 ];
 
-export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const { lang, t } = useLanguage();
   const [activeTab, setActiveTab] = useState<"passenger" | "about">(
     "passenger",
@@ -454,4 +454,4 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       </Dialog>
     </Transition>
   );
-}
+};

@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
-import { Lang, languages } from "@/types/language";
+import { Lang } from "@/types/language";
+import { languages } from "@/lib/constants";
 
 export function cn(...inputs: ClassValue[]) {
   return clsx(inputs);

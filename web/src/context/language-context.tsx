@@ -1,13 +1,8 @@
-// src/context/language-context.tsx
 "use client";
 
-import { createContext, useContext, ReactNode } from "react";
-import {
-  Lang,
-  getLanguageConfig,
-  getLocalizedText,
-  MultilingualText,
-} from "@/types/language";
+import { createContext, ReactNode, useContext } from "react";
+import { Lang, MultilingualText } from "@/types/language";
+import { getLanguageConfig, getLocalizedText } from "@/lib";
 
 interface LanguageContextType {
   lang: Lang;

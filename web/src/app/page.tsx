@@ -1,7 +1,9 @@
 import { redirect } from "next/navigation";
-import { defaultLanguage } from "@/types/language";
+import { cookies } from "next/headers";
+import { defaultLanguage } from "@/lib";
 
-export default function RootPage() {
-  // Redirect to default language
-  redirect(`/${defaultLanguage}`);
+export default async function RootPage() {
+  const c = await cookies();
+  const lang = c.get("lang")?.value ?? defaultLanguage;
+  redirect(`/${lang}`);
 }

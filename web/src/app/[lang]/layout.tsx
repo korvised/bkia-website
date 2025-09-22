@@ -1,12 +1,7 @@
 import { notFound } from "next/navigation";
-import {
-  isValidLanguage,
-  getLanguageConfig,
-  type Lang,
-} from "@/types/language";
 import { LanguageProvider } from "@/context/language-context";
 import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
+import { getLanguageConfig, isValidLanguage } from "@/lib";
 import { RightSidebar } from "@/components/layout/sidebar";
 
 export async function generateStaticParams() {
@@ -14,20 +9,21 @@ export async function generateStaticParams() {
 }
 
 interface LanguageLayoutProps {
+  params: Promise<{ lang: string }>;
   children: React.ReactNode;
-  params: { lang: string };
 }
 
-export default function LanguageLayout({
-  children,
+export default async function LanguageLayout({
   params,
+  children,
 }: LanguageLayoutProps) {
+  const { lang } = await params;
+
   // Validate language parameter
-  if (!isValidLanguage(params.lang)) {
+  if (!isValidLanguage(lang)) {
     notFound();
   }
 
-  const lang = params.lang as Lang;
   const languageConfig = getLanguageConfig(lang);
 
   return (

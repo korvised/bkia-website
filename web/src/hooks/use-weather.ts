@@ -1,40 +1,63 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-interface WeatherData {
-  temperature: number;
-  condition: string;
-  humidity: number;
-}
+export type WeatherData = {
+  temperature: number; // °C
+  humidity: number; // %
+  weather_code: number; // WMO code
+  updatedAt: number;
+};
 
-export function useWeather(updateInterval: number = 10 * 60 * 1000) {
-  const [weather, setWeather] = useState<WeatherData>({
-    temperature: 28,
-    condition: "Partly Cloudy",
-    humidity: 65
-  });
+type WeatherResult = {
+  data: WeatherData | null;
+  isLoading: boolean;
+  isError: boolean;
+  error?: string;
+  refetch: () => void;
+};
+
+export function useWeather(updateInterval = 10 * 60 * 1000): WeatherResult {
+  const [data, setData] = useState<WeatherData | null>(null);
+  const [isLoading, setLoading] = useState(true);
+  const [isError, setError] = useState<string | undefined>(undefined);
+  const timer = useRef<number | null>(null);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    setError(undefined);
+    try {
+      const res = await fetch("/api/weather", { cache: "no-store" });
+      if (!res.ok) throw new Error(await res.text());
+      const json = (await res.json()) as WeatherData;
+      setData(json);
+    } catch (e: any) {
+      setError(e?.message || "Weather fetch failed");
+      setData(null);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        // Mock weather data - replace with actual weather API
-        const mockWeather: WeatherData = {
-          temperature: Math.floor(Math.random() * 10) + 25, // 25-35°C
-          condition: "Partly Cloudy",
-          humidity: Math.floor(Math.random() * 20) + 60 // 60-80%
-        };
-        setWeather(mockWeather);
-      } catch (error) {
-        console.error("Failed to fetch weather:", error);
-      }
+    let mounted = true;
+    (async () => {
+      if (mounted) await load();
+    })();
+
+    timer.current = window.setInterval(load, updateInterval);
+
+    return () => {
+      mounted = false;
+      if (timer.current) window.clearInterval(timer.current);
     };
+  }, [load, updateInterval]);
 
-    fetchWeather();
-    const weatherTimer = setInterval(fetchWeather, updateInterval);
-
-    return () => clearInterval(weatherTimer);
-  }, [updateInterval]);
-
-  return weather;
+  return {
+    data,
+    isLoading,
+    isError: Boolean(isError),
+    error: isError,
+    refetch: load,
+  };
 }

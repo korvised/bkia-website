@@ -3,15 +3,12 @@
 import { useEffect, useState } from "react";
 
 export function useDateTime(updateInterval: number = 1000) {
-  const [currentTime, setCurrentTime] = useState<Date>(new Date());
+  const [ts, setTs] = useState(() => Date.now());
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, updateInterval);
+    const id = setInterval(() => setTs(Date.now()), updateInterval);
+    return () => clearInterval(id);
+  }, []);
 
-    return () => clearInterval(timer);
-  }, [updateInterval]);
-
-  return currentTime;
+  return ts;
 }

@@ -5,9 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Bell, Home, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useLanguage } from "@/context/language-context";
-import Sidebar from "./sidebar";
-import LanguageSelector from "./language-selector";
+import { useLanguage } from "@/context";
+import { LanguageSelector } from "./language-selector";
+import { Sidebar } from "./sidebar";
 
 const translations = {
   menu: {
