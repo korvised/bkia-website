@@ -13,6 +13,7 @@ interface RightSidebarProps {
 
 export default function RightSidebar({ lang }: RightSidebarProps) {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +25,13 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
   }, []);
 
   const scrollToTop = () => {
+    setIsClicked(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Reset click animation after takeoff
+    setTimeout(() => {
+      setIsClicked(false);
+    }, 800);
   };
 
   return (
@@ -64,29 +71,68 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
             onClick={scrollToTop}
             className={cn(
               "group relative h-12 w-12 cursor-pointer rounded-xl backdrop-blur-md transition-all duration-300",
-              "bg-bokeo-teal-500 text-white",
-              "shadow-bokeo-teal-600/20 shadow-lg",
-              "hover:shadow-bokeo-teal-600/30 hover:scale-105 hover:shadow-xl",
+              "bg-bokeo-teal-600/90 text-white",
+              "shadow-bokeo-teal-600/25 shadow-lg",
+              "hover:shadow-bokeo-teal-600/40 hover:scale-105 hover:shadow-xl",
               "flex flex-col items-center justify-center overflow-hidden",
               "border border-white/10",
             )}
           >
-            {/* Animated background pulse */}
-            <div className="bg-bokeo-teal-500 absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            {/* Contrail/flight path */}
+            <div
+              className={cn(
+                "absolute bottom-0 left-1/2 w-0.5 -translate-x-1/2 transform rounded-full transition-all duration-500",
+                "bg-gradient-to-t from-white/30 to-transparent",
+                "h-0 group-hover:h-6",
+                isClicked &&
+                  "!h-8 !bg-gradient-to-t !from-white/60 !to-white/20",
+              )}
+            />
 
-            {/* Flight path trail */}
-            <div className="absolute bottom-0 left-1/2 h-0 w-0.5 -translate-x-1/2 transform rounded-full bg-white/20 transition-all duration-500 group-hover:h-8 group-hover:bg-white/40" />
+            {/* Plane icon with sophisticated animation */}
+            <div className="relative z-10 flex h-full w-full flex-col items-center justify-center">
+              {/* Initial: Show only TOP text centered */}
+              <span
+                className={cn(
+                  "text-[10px] leading-none font-semibold transition-all duration-300",
+                  "group-hover:-translate-y-1 group-hover:opacity-0",
+                  isClicked ? "opacity-0" : "opacity-90",
+                )}
+              >
+                TOP
+              </span>
 
-            {/* Plane icon - flies up on hover */}
-            <Plane className="relative z-10 mb-0.5 h-5 w-5 -rotate-45 transform transition-all duration-300 group-hover:-translate-y-2 group-hover:scale-110" />
+              {/* Hover: Plane flies in from bottom */}
+              <Plane
+                className={cn(
+                  "absolute h-4.5 w-4.5 -rotate-45 transform transition-all duration-500 ease-out",
+                  // Initial position (hidden below)
+                  "translate-y-6 scale-75 opacity-0",
+                  // Hover: flies in and settles
+                  "group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100",
+                  // Click: takes off dramatically
+                  isClicked &&
+                    "!-translate-y-6 !scale-125 !-rotate-12 !opacity-0 !duration-800",
+                )}
+              />
+            </div>
 
-            {/* TOP text - hides on hover */}
-            <span className="relative z-10 text-[8px] leading-none font-medium opacity-90 transition-all duration-300 group-hover:opacity-0">
-              TOP
-            </span>
+            {/* Click effects */}
+            {/* Takeoff blast effect */}
+            <div
+              className={cn(
+                "absolute inset-0 rounded-xl bg-white/20 transition-all duration-300",
+                isClicked ? "scale-110 opacity-0" : "scale-100 opacity-0",
+              )}
+            />
 
-            {/* Subtle glow effect */}
-            <div className="bg-bokeo-teal-400/20 absolute inset-0 rounded-xl opacity-0 blur-sm transition-opacity duration-300 group-hover:opacity-100" />
+            {/* Sky glow effect on click */}
+            <div
+              className={cn(
+                "absolute inset-0 rounded-xl bg-gradient-to-t from-transparent to-sky-400/20 transition-opacity duration-500",
+                isClicked ? "opacity-100" : "opacity-0",
+              )}
+            />
           </button>
         </div>
       )}
