@@ -22,7 +22,7 @@ export const sidebarItems: SidebarItem[] = [
     title: {
       en: "Airport\nParty\nBuilding",
       lo: "ອາຄານ\nສະໜາມບິນ",
-      zh: "机场党委大楼",
+      zh: "机场党委\n大楼",
     },
     icon: Users,
     href: "/about/management",

@@ -47,7 +47,7 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
                 key={item.id}
                 href={item.href}
                 className={cn(
-                  "h-16 w-[4.5rem] rounded-l-lg backdrop-blur-md transition-all duration-300",
+                  "h-16 w-[4rem] rounded-l-lg backdrop-blur-md transition-all duration-300",
                   "flex flex-col items-center justify-center",
                   "bg-bokeo-teal-600/90 text-white shadow-lg",
                   "hover:bg-bokeo-teal-500 hover:shadow-xl",

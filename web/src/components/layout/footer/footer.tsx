@@ -19,7 +19,7 @@ export default function Footer() {
             <div className="flex items-center space-x-3 mb-6">
               <div className="relative w-12 h-12">
                 <Image
-                  src="/images/logo/bkia-logo-white.png"
+                  src="/images/logo/logo_white.png"
                   alt="Bokeo International Airport"
                   fill
                   className="object-contain"
