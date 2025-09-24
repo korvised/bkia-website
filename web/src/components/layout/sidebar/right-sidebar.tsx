@@ -117,7 +117,6 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
               />
             </div>
 
-            {/* Click effects */}
             {/* Takeoff blast effect */}
             <div
               className={cn(
