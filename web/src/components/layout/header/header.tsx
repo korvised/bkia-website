@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Bell, Home, Menu, X } from "lucide-react";
+import { Bell, Home, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context";
 import { LanguageSelector } from "./language-selector";
@@ -74,11 +74,7 @@ export default function Header() {
                   : "border border-white/30 text-white hover:bg-white/10",
               )}
             >
-              {isSidebarOpen ? (
-                <X className="h-4 w-4" />
-              ) : (
-                <Menu className="h-4 w-4" />
-              )}
+              <Menu className="h-4 w-4" />
               <span className="hidden text-sm font-medium md:inline">
                 {t(translations.menu)}
               </span>

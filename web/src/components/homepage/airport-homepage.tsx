@@ -2,6 +2,7 @@ import { Lang } from "@/types/language";
 import HeroSection from "./hero-section";
 import DateTimeDisplay from "./date-time-display";
 import FlightSearch from "./flight-search";
+import QuickServices from "./quick-services";
 
 interface AirportHomepageProps {
   lang: Lang;
@@ -27,13 +28,13 @@ export default function AirportHomepage({ lang }: AirportHomepageProps) {
         <DateTimeDisplay lang={lang} />
 
         {/* Flight Search - Overlaid on hero section */}
-        <FlightSearch lang={lang} />
+        <FlightSearch />
       </section>
 
       {/* Quick Services Section */}
-      {/* <section className="relative min-h-screen w-full bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="relative min-h-screen w-full bg-gradient-to-br from-gray-50 to-blue-50">
         <QuickServices lang={lang} />
-      </section>*/}
+      </section>
     </div>
   );
 }

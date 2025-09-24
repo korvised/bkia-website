@@ -1,4 +1,3 @@
-// app/api/weather/route.ts
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs"; // keep a process cache (not Edge)
@@ -6,19 +5,15 @@ export const runtime = "nodejs"; // keep a process cache (not Edge)
 // ---------- ENV & Defaults ----------
 const BASE =
   process.env.OPEN_METEO_BASE ?? "https://api.open-meteo.com/v1/forecast";
-const DEFAULT_LAT = 20.2893;
-const DEFAULT_LON = 100.1019;
+const LAT = process.env.WEATHER_LAT ?? 20.2893;
+const LON = process.env.WEATHER_LON ?? 100.1019;
 
 const CACHE_TTL = Number(process.env.WEATHER_CACHE_TTL ?? 600); // seconds
 const STALE_TTL = Number(process.env.WEATHER_STALE_TTL ?? 300); // seconds
 const RESPONSE_CACHE = `public, s-maxage=${CACHE_TTL}, stale-while-revalidate=${STALE_TTL}`;
 
-function toNum(v: string | undefined, fallback: number) {
-  const n = Number(v);
-  return Number.isFinite(n) ? n : fallback;
-}
-const FIXED_LAT = toNum(process.env.WEATHER_LAT, DEFAULT_LAT);
-const FIXED_LON = toNum(process.env.WEATHER_LON, DEFAULT_LON);
+const FIXED_LAT = Number(LAT);
+const FIXED_LON = Number(LON);
 
 // ---------- Types ----------
 type WeatherPayload = {
@@ -57,7 +52,7 @@ async function fetchOpenMeteo(
   if (!r.ok) throw new Error(await r.text());
   const data = await r.json();
   const cur = data.current ?? {};
-  console.log(data)
+
   return {
     latitude: data.latitude,
     longitude: data.longitude,

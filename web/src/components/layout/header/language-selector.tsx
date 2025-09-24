@@ -11,9 +11,9 @@ import {
 } from "@headlessui/react";
 import { ChevronDown, Globe } from "lucide-react";
 import { useLanguage } from "@/context";
+import { setLangCookie } from "@/actions";
 import { cn, languages } from "@/lib";
 import { type Lang } from "@/types/language";
-import { setLangCookie } from "@/actions";
 
 interface LanguageSelectorProps {
   isScrolled: boolean;

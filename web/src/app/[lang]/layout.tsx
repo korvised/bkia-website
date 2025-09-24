@@ -34,7 +34,7 @@ export default async function LanguageLayout({
             <Header />
             <main className="flex-1">{children}</main>
             {/*<Footer />*/}
-            <RightSidebar />
+            <RightSidebar lang={lang} />
           </div>
         </LanguageProvider>
       </body>
