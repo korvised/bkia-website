@@ -22,7 +22,7 @@ export const sidebarItems: SidebarItem[] = [
     title: {
       en: "Airport\nParty\nBuilding",
       lo: "ອາຄານ\nສະໜາມບິນ",
-      zh: "机场\n党委\n大楼",
+      zh: "机场党委大楼",
     },
     icon: Users,
     href: "/about/management",
@@ -32,7 +32,7 @@ export const sidebarItems: SidebarItem[] = [
     title: {
       en: "Airport\nNews",
       lo: "ຂ່າວສານ\nສະໜາມບິນ",
-      zh: "机场\n新闻",
+      zh: "机场新闻",
     },
     icon: Newspaper,
     href: "/news",
@@ -42,7 +42,7 @@ export const sidebarItems: SidebarItem[] = [
     title: {
       en: "Bidding\nInformation",
       lo: "ຂໍ້ມູນ\nການປະມູນ",
-      zh: "招标\n信息",
+      zh: "招标信息",
     },
     icon: FileText,
     href: "/about/procurement",
@@ -52,7 +52,7 @@ export const sidebarItems: SidebarItem[] = [
     title: {
       en: "Flight\nInformation",
       lo: "ຂໍ້ມູນ\nຖ່ຽວບິນ",
-      zh: "航班\n信息",
+      zh: "航班信息",
     },
     icon: Plane,
     href: "/flights",
@@ -62,7 +62,7 @@ export const sidebarItems: SidebarItem[] = [
     title: {
       en: "Business\nInformation",
       lo: "ຂໍ້ມູນ\nທຸລະກິດ",
-      zh: "商业\n信息",
+      zh: "商业信息",
     },
     icon: Building,
     href: "/services/business",
@@ -72,7 +72,7 @@ export const sidebarItems: SidebarItem[] = [
     title: {
       en: "Help &\nSupport",
       lo: "ຊ່ວຍເຫຼືອ",
-      zh: "帮助与\n支持",
+      zh: "帮助与支持",
     },
     icon: HelpCircle,
     href: "/contact",

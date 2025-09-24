@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { Plane } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { sidebarItems } from "@/data/sidebar";
+import { sidebarItems } from "@/data/right-sidebar";
 import { Lang } from "@/types/language";
 
 interface RightSidebarProps {
