@@ -36,9 +36,9 @@ export const ServicesLayout: React.FC<ServicesHeroProps> = ({
         <div className="absolute inset-0 bg-black/45" />
 
         {/* Content Container */}
-        <div className="relative z-10 flex h-full flex-col justify-between">
+        <div className="relative z-10 flex h-full flex-col justify-between px-4 sm:px-6 md:px-8 xl:px-16 2xl:px-32">
           {/* Page Title */}
-          <div className="flex items-center justify-center pt-40 pl-4 md:justify-start md:pt-36 lg:px-8 xl:px-16">
+          <div className="flex items-center justify-center pt-40 md:justify-start">
             <h1 className="text-2xl font-bold text-white md:text-4xl">
               {lang === "zh"
                 ? "旅客服务"
@@ -49,8 +49,8 @@ export const ServicesLayout: React.FC<ServicesHeroProps> = ({
           </div>
 
           {/* Navigation Menu */}
-          <div className="hidden px-4 pb-4 md:block lg:px-8 xl:px-16">
-            <nav className="services-nav-scroll flex items-center gap-x-4 overflow-x-auto">
+          <div className="hidden pb-4 md:block">
+            <nav className="services-nav-scroll horizontal-scroll flex items-center gap-x-4 overflow-x-auto">
               {menuItems.map((item) => {
                 const isActive = pathname.includes(item.href);
 
@@ -74,7 +74,7 @@ export const ServicesLayout: React.FC<ServicesHeroProps> = ({
         </div>
 
         {/* Right side icons */}
-        <div className="absolute top-60 right-0 z-20 w-full md:top-46 md:right-16 md:w-fit">
+        <div className="absolute top-60 right-0 z-20 w-full md:top-46 md:right-8 md:w-fit xl:right-16 2xl:right-32">
           <div className="flex w-full items-center justify-center space-x-4 text-white">
             <div className="flex items-center space-x-2 text-sm">
               <MapPinned className="h-5 w-5" />
@@ -102,7 +102,10 @@ export const ServicesLayout: React.FC<ServicesHeroProps> = ({
           </div>
         </div>
       </div>
-      {children}
+
+      <div className="mx-auto bg-gray-50 px-4 py-8 sm:px-6 md:px-8 xl:px-16 2xl:px-32">
+        {children}
+      </div>
     </div>
   );
 };

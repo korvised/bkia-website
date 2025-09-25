@@ -47,7 +47,7 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
                 key={item.id}
                 href={item.href}
                 className={cn(
-                  "h-16 w-[4rem] rounded-l-lg backdrop-blur-md transition-all duration-300",
+                  "h-16 w-[3.8rem] rounded-l-lg backdrop-blur-md transition-all duration-300",
                   "flex flex-col items-center justify-center",
                   "bg-bokeo-teal-600/90 text-white shadow-lg",
                   "hover:bg-bokeo-teal-500 hover:shadow-xl",
@@ -71,7 +71,7 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
             onClick={scrollToTop}
             className={cn(
               "group relative h-11 w-11 cursor-pointer rounded-full backdrop-blur-md transition-all duration-300",
-              "bg-bokeo-teal-600/90 text-white",
+              "bg-gray-200/50 text-white",
               "shadow-bokeo-teal-600/25 shadow-lg",
               "hover:shadow-bokeo-teal-600/40 hover:scale-105 hover:shadow-xl",
               "flex flex-col items-center justify-center overflow-hidden",
@@ -94,7 +94,7 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
               {/* Initial: Up icon */}
               <ChevronUp
                 className={cn(
-                  "text-[10px] leading-none font-semibold transition-all duration-300",
+                  "text-[10px] leading-none font-semibold text-white transition-all duration-300",
                   "group-hover:-translate-y-1 group-hover:opacity-0",
                   isClicked ? "opacity-0" : "opacity-90",
                 )}
