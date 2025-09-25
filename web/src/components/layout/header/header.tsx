@@ -120,7 +120,7 @@ export default function Header() {
                 )}
               </div>
 
-              <div className="relative h-11 w-11 md:h-12 md:w-14">
+              <div className="relative hidden h-11 w-11 sm:block md:h-12 md:w-14">
                 <Image
                   src={
                     isScrolled

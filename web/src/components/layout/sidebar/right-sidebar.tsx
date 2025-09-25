@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
-import { Plane } from "lucide-react";
+import { ChevronUp, Plane } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { sidebarItems } from "@/data/right-sidebar";
 import { Lang } from "@/types/language";
@@ -70,7 +70,7 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
           <button
             onClick={scrollToTop}
             className={cn(
-              "group relative h-12 w-12 cursor-pointer rounded-xl backdrop-blur-md transition-all duration-300",
+              "group relative h-11 w-11 cursor-pointer rounded-full backdrop-blur-md transition-all duration-300",
               "bg-bokeo-teal-600/90 text-white",
               "shadow-bokeo-teal-600/25 shadow-lg",
               "hover:shadow-bokeo-teal-600/40 hover:scale-105 hover:shadow-xl",
@@ -91,16 +91,14 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
 
             {/* Plane icon with sophisticated animation */}
             <div className="relative z-10 flex h-full w-full flex-col items-center justify-center">
-              {/* Initial: Show only TOP text centered */}
-              <span
+              {/* Initial: Up icon */}
+              <ChevronUp
                 className={cn(
                   "text-[10px] leading-none font-semibold transition-all duration-300",
                   "group-hover:-translate-y-1 group-hover:opacity-0",
                   isClicked ? "opacity-0" : "opacity-90",
                 )}
-              >
-                TOP
-              </span>
+              />
 
               {/* Hover: Plane flies in from bottom */}
               <Plane

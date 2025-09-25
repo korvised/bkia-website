@@ -56,9 +56,9 @@ export default function FlightSearch() {
 
           {/* Tabs & Search */}
           <div className="rounded-xl border border-white/20 bg-white/10 p-4 backdrop-blur-md">
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center">
               {/* Tabs */}
-              <div className="flex overflow-hidden rounded-lg border border-white/20 bg-black/30">
+              <div className="flex w-fit overflow-hidden rounded-lg border border-white/20 bg-black/30">
                 <button
                   onClick={() => setActiveTab("departure")}
                   className={cn(
@@ -85,49 +85,51 @@ export default function FlightSearch() {
                 </button>
               </div>
 
-              {/* Input */}
-              <div className="relative flex-1">
-                <input
-                  type="text"
-                  placeholder={t(translations.input.placeholder)}
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                  className={cn(
-                    "w-full rounded-lg px-4 py-2 pr-12 transition-all duration-300",
-                    "border border-white/30 bg-white/20 backdrop-blur-sm",
-                    "text-white placeholder-white/70",
-                    "focus:border-white/50 focus:bg-white/30 focus:outline-none",
-                  )}
-                  disabled={isSearching}
-                />
-                <Search className="absolute top-1/2 right-4 h-4 w-4 -translate-y-1/2 transform text-white/60" />
-              </div>
+              <div className="flex gap-4 md:flex-1">
+                {/* Input */}
+                <div className="relative flex-1">
+                  <input
+                    type="text"
+                    placeholder={t(translations.input.placeholder)}
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                    className={cn(
+                      "w-full rounded-lg px-4 py-2 pr-12 transition-all duration-300",
+                      "border border-white/30 bg-white/20 backdrop-blur-sm",
+                      "text-white placeholder-white/70",
+                      "focus:border-white/50 focus:bg-white/30 focus:outline-none",
+                    )}
+                    disabled={isSearching}
+                  />
+                  <Search className="absolute top-1/2 right-4 h-4 w-4 -translate-y-1/2 transform text-white/60" />
+                </div>
 
-              {/* Button */}
-              <button
-                onClick={handleSearch}
-                disabled={isSearching || !query.trim()}
-                className={cn(
-                  "bg-primary rounded-lg px-6 py-2 font-medium whitespace-nowrap text-white transition-all duration-300",
-                  "hover:bg-primary/90",
-                  "disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50",
-                  "flex items-center space-x-2",
-                  isSearching && "animate-pulse",
-                )}
-              >
-                {isSearching ? (
-                  <>
-                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-                    <span>{t(translations.button.searching)}</span>
-                  </>
-                ) : (
-                  <>
-                    <Search className="h-4 w-4" />
-                    <span>{t(translations.button.search)}</span>
-                  </>
-                )}
-              </button>
+                {/* Button */}
+                <button
+                  onClick={handleSearch}
+                  disabled={isSearching || !query.trim()}
+                  className={cn(
+                    "bg-primary rounded-lg px-6 py-2 font-medium whitespace-nowrap text-white transition-all duration-300",
+                    "hover:bg-primary/90",
+                    "disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50",
+                    "flex items-center space-x-2",
+                    isSearching && "animate-pulse",
+                  )}
+                >
+                  {isSearching ? (
+                    <>
+                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                      <span>{t(translations.button.searching)}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Search className="h-4 w-4" />
+                      <span>{t(translations.button.search)}</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
 
             {/* Info */}
