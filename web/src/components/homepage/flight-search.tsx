@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Search, Plane, PlaneTakeoff, PlaneLanding } from "lucide-react";
 import { cn } from "@/lib";
 import { useLanguage } from "@/context";
@@ -9,10 +10,10 @@ import { translations } from "@/data/translations/flight-search";
 type TabType = "departure" | "arrival";
 
 export default function FlightSearch() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const [activeTab, setActiveTab] = useState<TabType>("departure");
   const [query, setQuery] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
+  const router = useRouter();
 
   const handleSearch = async () => {
     if (!query.trim()) {
@@ -20,20 +21,12 @@ export default function FlightSearch() {
       return;
     }
 
-    setIsSearching(true);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      const searchParams = new URLSearchParams({
-        q: query,
-        type: activeTab,
-      });
-      window.location.href = `/flights/search?${searchParams.toString()}`;
-    } catch (error) {
-      console.error("Search failed:", error);
-      alert(t(translations.messages.failed));
-    } finally {
-      setIsSearching(false);
-    }
+    const searchParams = new URLSearchParams({
+      q: query,
+      type: activeTab,
+    });
+
+    router.push(`/${lang}/flights?${searchParams.toString()}`);
   };
 
   return (
@@ -100,7 +93,6 @@ export default function FlightSearch() {
                       "text-white placeholder-white/70",
                       "focus:border-white/50 focus:bg-white/30 focus:outline-none",
                     )}
-                    disabled={isSearching}
                   />
                   <Search className="absolute top-1/2 right-4 h-4 w-4 -translate-y-1/2 transform text-white/60" />
                 </div>
@@ -108,32 +100,26 @@ export default function FlightSearch() {
                 {/* Button */}
                 <button
                   onClick={handleSearch}
-                  disabled={isSearching || !query.trim()}
+                  disabled={!query.trim()}
                   className={cn(
                     "bg-primary rounded-lg px-6 py-2 font-medium whitespace-nowrap text-white transition-all duration-300",
                     "hover:bg-primary/90",
                     "disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50",
-                    "flex items-center space-x-2",
-                    isSearching && "animate-pulse",
+                    "flex items-center gap-x-2",
                   )}
                 >
-                  {isSearching ? (
-                    <>
-                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-                      <span>{t(translations.button.searching)}</span>
-                    </>
-                  ) : (
-                    <>
-                      <Search className="h-4 w-4" />
-                      <span>{t(translations.button.search)}</span>
-                    </>
-                  )}
+                  <Fragment>
+                    <Search className="h-4 w-4" />
+                    <span className="hidden sm:inline-block">
+                      {t(translations.button.search)}
+                    </span>
+                  </Fragment>
                 </button>
               </div>
             </div>
 
             {/* Info */}
-            <div className="mt-3 text-center text-xs text-white/80">
+            <div className="mt-3 hidden text-center text-xs text-white/80 sm:block">
               {t(translations.messages.info)}
             </div>
           </div>

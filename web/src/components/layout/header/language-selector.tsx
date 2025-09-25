@@ -40,16 +40,16 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   return (
     <Menu as="div" className="relative">
       {({ open }) => (
-        <>
+        <Fragment>
           <MenuButton
             className={cn(
-              "flex items-center space-x-2 rounded-lg border-0 px-3 py-2 transition-all duration-300 outline-none",
+              "flex items-center space-1.5 rounded-lg border-0 px-3 py-2 transition-all duration-300 outline-none",
               isScrolled
                 ? "text-gray-700 hover:bg-gray-100"
                 : "text-white hover:bg-white/10",
             )}
           >
-            <Globe className="h-4 w-4" />
+            <Globe className="hidden h-4 w-4 sm:block" />
             <span className="min-w-[2rem] text-sm font-medium">
               {languageConfig.code.toUpperCase()}
             </span>
@@ -87,7 +87,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
                           "bg-bokeo-teal-50 text-bokeo-teal-700",
                       )}
                     >
-                      {/*                      <span className="flex-shrink-0 text-lg">
+                      {/* <span className="flex-shrink-0 text-lg">
                         {language.flag}
                       </span>*/}
                       <div className="relative flex-shrink-0 overflow-hidden rounded-full">
@@ -112,7 +112,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
               ))}
             </MenuItems>
           </Transition>
-        </>
+        </Fragment>
       )}
     </Menu>
   );

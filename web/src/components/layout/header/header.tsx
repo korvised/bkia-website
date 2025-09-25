@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Bell, Home, Menu } from "lucide-react";
@@ -53,7 +53,7 @@ export default function Header() {
   };
 
   return (
-    <>
+    <Fragment>
       <header
         className={cn(
           "fixed top-0 right-0 left-0 z-50 transition-all duration-300",
@@ -64,11 +64,11 @@ export default function Header() {
       >
         <div className="flex w-full items-center justify-between p-4 px-6">
           {/* Left Section - Menu Button */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-x-4">
             <button
               onClick={toggleSidebar}
               className={cn(
-                "flex items-center space-x-2 rounded-lg px-4 py-2 transition-all duration-300",
+                "flex items-center gap-x-2 rounded-lg px-2.5 py-2 transition-all duration-300 md:px-4",
                 isScrolled
                   ? "border border-gray-300 text-gray-700 hover:bg-gray-100"
                   : "border border-white/30 text-white hover:bg-white/10",
@@ -83,7 +83,7 @@ export default function Header() {
             <Link
               href={`/${lang}`}
               className={cn(
-                "rounded-lg p-2 transition-all duration-300",
+                "hidden rounded-lg p-2 transition-all duration-300 sm:flex",
                 isScrolled ? "hover:bg-gray-100" : "hover:bg-white/10",
               )}
             >
@@ -105,12 +105,17 @@ export default function Header() {
                   isScrolled ? "text-gray-900" : "text-white",
                 )}
               >
-                <span className="font-lao text-sm leading-tight tracking-widest md:text-base md:tracking-wider">
+                <span
+                  className={cn(
+                    "font-lao text-sm leading-tight md:text-base md:tracking-wider",
+                    lang === "zh" ? "tracking-tight" : "tracking-wider",
+                  )}
+                >
                   ສະໜາມບິນສາກົນບໍ່ແກ້ວ
                 </span>
 
                 {lang === "zh" ? (
-                  <span className="font-lao! text-sm leading-tight tracking-wide md:text-base md:tracking-wider">
+                  <span className="font-lao! text-sm leading-tight tracking-widest md:text-base">
                     {t(translations.airportName)}
                   </span>
                 ) : (
@@ -137,13 +142,13 @@ export default function Header() {
           </div>
 
           {/* Right Section - Language and Notifications */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center gap-x-1">
             <LanguageSelector isScrolled={isScrolled} />
 
             <Link
               href={`/${lang}/news?urgent=true`}
               className={cn(
-                "flex items-center space-x-2 rounded-lg px-3 py-2 transition-all duration-300",
+                "flex items-center gap-x-2 rounded-lg px-2 py-2 transition-all duration-300",
                 isScrolled
                   ? "text-gray-700 hover:bg-gray-100"
                   : "text-white hover:bg-white/10",
@@ -160,6 +165,6 @@ export default function Header() {
 
       {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-    </>
+    </Fragment>
   );
 }
