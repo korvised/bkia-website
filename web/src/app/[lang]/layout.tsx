@@ -30,9 +30,7 @@ export default async function LanguageLayout({
     <LanguageProvider lang={lang as Lang}>
       <div className="flex min-h-screen flex-col">
         <Header />
-        <main className="from-bokeo-teal-50 to-bokeo-blue-50 flex-1 bg-gradient-to-br">
-          {children}
-        </main>
+        <main className="flex-1 bg-gray-50">{children}</main>
         <GoToTop />
         <Footer />
       </div>

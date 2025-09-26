@@ -8,11 +8,52 @@
     --font-lao: "Noto Sans Lao Looped", sans-serif;
     --font-chinese: "Microsoft Yahei", "微软雅黑", "PingFang SC", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", verdana, sans-serif;
 
-    /* Bokeo Airport Color Palette */
-    --color-primary: #0d9488;           /* Bokeo Teal */
-    --color-secondary: #3b82f6;         /* Bokeo Blue */
-    --color-accent: #f97316;            /* Orange accent */
-    /* Bokeo Teal Scale */
+    /* ========================================
+       PRIMARY COLOR PALETTE
+       ======================================== */
+    --color-primary: #5CBEC6;           /* Main brand color */
+    --color-light: #D3EAE9;             /* Light accent */
+    --color-dark: #00AAAC;              /* Dark accent */
+    /* Primary Color Scale (generated from #5CBEC6) */
+    --color-primary-50: #f0fafb;
+    --color-primary-100: #d9f2f4;
+    --color-primary-200: #b8e7ea;
+    --color-primary-300: #87d5dc;
+    --color-primary-400: #5CBEC6;       /* Base primary */
+    --color-primary-500: #3ba3ab;
+    --color-primary-600: #2d8388;
+    --color-primary-700: #246a6f;
+    --color-primary-800: #1e565a;
+    --color-primary-900: #1a474a;
+    --color-primary-950: #0d2d2f;
+
+    /* Light Accent Scale (generated from #D3EAE9) */
+    --color-light-50: #f6fbfb;
+    --color-light-100: #D3EAE9;         /* Base light */
+    --color-light-200: #b8dedd;
+    --color-light-300: #9dd2d0;
+    --color-light-400: #82c6c4;
+    --color-light-500: #67bab8;
+    --color-light-600: #52a5a3;
+    --color-light-700: #3d8886;
+    --color-light-800: #2e6866;
+    --color-light-900: #1f4847;
+    --color-light-950: #102828;
+
+    /* Dark Accent Scale (generated from #00AAAC) */
+    --color-dark-50: #e6f7f8;
+    --color-dark-100: #b3e8e9;
+    --color-dark-200: #80d9db;
+    --color-dark-300: #4dcacc;
+    --color-dark-400: #1abbbd;
+    --color-dark-500: #00AAAC;          /* Base dark */
+    --color-dark-600: #008a8c;
+    --color-dark-700: #006a6b;
+    --color-dark-800: #004a4b;
+    --color-dark-900: #002a2b;
+    --color-dark-950: #001515;
+
+    /* Legacy Bokeo Colors (keeping for backward compatibility) */
     --color-bokeo-teal-50: #f0fdfa;
     --color-bokeo-teal-100: #ccfbf1;
     --color-bokeo-teal-200: #99f6e4;
@@ -25,7 +66,6 @@
     --color-bokeo-teal-900: #134e4a;
     --color-bokeo-teal-950: #042f2e;
 
-    /* Bokeo Blue Scale */
     --color-bokeo-blue-50: #eff6ff;
     --color-bokeo-blue-100: #dbeafe;
     --color-bokeo-blue-200: #bfdbfe;
@@ -38,6 +78,11 @@
     --color-bokeo-blue-900: #1e3a8a;
     --color-bokeo-blue-950: #172554;
 
+    /* ========================================
+       SEMANTIC COLORS
+       ======================================== */
+    --color-secondary: #5CBEC6;         /* Using primary as secondary */
+    --color-accent: #00AAAC;            /* Using dark as accent */
     /* Background colors */
     --color-background: #ffffff;
     --color-foreground: #0f172a;
@@ -47,8 +92,7 @@
     /* Border and input colors */
     --color-border: #e2e8f0;
     --color-input: #e2e8f0;
-    --color-ring: #0d9488;
-
+    --color-ring: #5CBEC6;              /* Using primary */
     /* Card colors */
     --color-card: #ffffff;
     --color-card-foreground: #0f172a;
@@ -94,6 +138,62 @@ body {
     font-family: var(--font-chinese) !important;
 }
 
+/* Custom component styles with new color theme */
+.flight-status-on-time {
+    @apply bg-green-100 text-green-800;
+}
+
+.flight-status-delayed {
+    @apply bg-yellow-100 text-yellow-800;
+}
+
+.flight-status-cancelled {
+    @apply bg-red-100 text-red-800;
+}
+
+.flight-status-boarding {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+}
+
+/* Custom animations */
+@keyframes bounce-gentle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse-slow {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-bounce-gentle {
+    animation: bounce-gentle 2s infinite;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Glassmorphism effects */
+.glass {
+    @apply bg-white/10 backdrop-blur-md;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+    @apply bg-black/10 backdrop-blur-md;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
     width: 6px;
@@ -104,17 +204,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 rounded-full;
+    background-color: var(--color-gray-400);
+    border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-400;
+    background-color: var(--color-dark);
 }
 
 /* Services Navigation Horizontal Scrollbar */
 .horizontal-scroll {
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(0, 0, 0, 0.1);
+    scrollbar-color: var(--color-primary) rgba(0, 0, 0, 0.1);
 }
 
 .horizontal-scroll::-webkit-scrollbar {
@@ -127,17 +228,17 @@ body {
 }
 
 .horizontal-scroll::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--color-primary);
     border-radius: 3px;
     transition: background-color 0.2s ease;
 }
 
 .horizontal-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--color-dark);
 }
 
 .horizontal-scroll::-webkit-scrollbar-thumb:active {
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--color-dark-700);
 }
 
 /* Smooth scrolling behavior */
@@ -172,4 +273,86 @@ body {
     animation: smoke-flow 2s ease-out infinite;
     animation-delay: var(--delay, 0s);
     filter: blur(1px);
+}
+
+/* Focus styles for accessibility */
+.focus-ring {
+    outline: none !important;
+    border: none !important;
+    box-shadow: 0 0 0 2px var(--color-primary), 0 0 0 4px var(--color-light);
+}
+
+/* Headless UI specific overrides */
+[data-headlessui-state="open"] {
+    border: none !important;
+}
+
+[data-headlessui-state="selected"] {
+    border: none !important;
+}
+
+[data-headlessui-state="active"] {
+    border: none !important;
+}
+
+/* Remove focus rings completely */
+[data-focus] {
+    outline: none !important;
+    border: none !important;
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .animate-bounce-gentle,
+    .animate-pulse-slow {
+        animation: none;
+    }
+
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Ensure no borders on specific elements */
+.headlessui-menu-button,
+.headlessui-menu-items,
+.headlessui-menu-item,
+.headlessui-dialog-panel,
+.headlessui-tab,
+.headlessui-tab-panel {
+    border: none !important;
+    outline: none !important;
+}
+
+/* Language selector specific fixes */
+[role="menu"] {
+    border: 1px solid rgba(229, 231, 235, 0.5) !important;
+}
+
+[role="menuitem"] {
+    border: none !important;
+    outline: none !important;
+}
+
+/* Tab component fixes */
+[role="tablist"] {
+    border: none !important;
+}
+
+[role="tab"] {
+    border: none !important;
+    outline: none !important;
+}
+
+[role="tabpanel"] {
+    border: none !important;
+    outline: none !important;
 }

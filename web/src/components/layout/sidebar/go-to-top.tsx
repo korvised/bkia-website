@@ -35,9 +35,8 @@ export default function GoToTop() {
             onClick={scrollToTop}
             className={cn(
               "group relative h-11 w-11 cursor-pointer rounded-full backdrop-blur-md transition-all duration-300",
-              "bg-gray-200/50 text-white",
-              "shadow-bokeo-teal-600/25 shadow-lg",
-              "hover:shadow-bokeo-teal-600/40 hover:scale-105 hover:shadow-xl",
+              "bg-dark-400/90 text-white shadow-lg",
+              "hover:scale-105 hover:shadow-xl",
               "flex flex-col items-center justify-center overflow-hidden",
               "border border-white/10",
             )}
