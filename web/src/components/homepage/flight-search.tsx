@@ -16,10 +16,10 @@ export default function FlightSearch() {
   const router = useRouter();
 
   const handleSearch = async () => {
-    if (!query.trim()) {
+    /*if (!query.trim()) {
       alert(t(translations.input.emptyQuery));
       return;
-    }
+    }*/
 
     const searchParams = new URLSearchParams({
       q: query,
@@ -100,7 +100,7 @@ export default function FlightSearch() {
                 {/* Button */}
                 <button
                   onClick={handleSearch}
-                  disabled={!query.trim()}
+                  // disabled={!query.trim()}
                   className={cn(
                     "bg-primary rounded-lg px-6 py-2 font-medium whitespace-nowrap text-white transition-all duration-300",
                     "hover:bg-primary/90",

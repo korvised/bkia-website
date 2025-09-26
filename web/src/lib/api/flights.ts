@@ -108,7 +108,7 @@ export const flightApi = {
 
   // Get all flights (schedule view)
   getSchedule: async (): Promise<Flight[]> => {
-    await delay(1000);
+    await delay(3000);
     return mockFlights;
     /*    try {
       const response = await fetch(`${API_BASE_URL}/flights/schedule`, {

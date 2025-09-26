@@ -23,6 +23,8 @@ export interface FlightTranslations {
     actual: MultilingualText;
     gate: MultilingualText;
     status: MultilingualText;
+    showing: MultilingualText;
+    flights: MultilingualText;
   };
   status: {
     scheduled: MultilingualText;
@@ -147,6 +149,16 @@ export const flightTranslations: FlightTranslations = {
       en: "Status",
       lo: "ສະຖານະ",
       zh: "状态",
+    },
+    showing: {
+      en: "Showing",
+      lo: "ສະແດງ",
+      zh: "显示",
+    },
+    flights: {
+      en: "flights",
+      lo: "ຖ່ຽວບິນ",
+      zh: "航班",
     },
   },
   status: {

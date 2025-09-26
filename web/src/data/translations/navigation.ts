@@ -14,7 +14,7 @@ export const translations: Translations = {
     zh: "菜单",
   },
   passengerServices: {
-    en: "Passenger Services",
+    en: "Passenger",
     lo: "ບໍລິການຜູ້ໂດຍສານ",
     zh: "旅客服务",
   },

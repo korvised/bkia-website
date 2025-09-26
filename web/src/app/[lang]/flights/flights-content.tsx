@@ -3,22 +3,25 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Lang } from "@/types/language";
-import { FlightTab } from "@/types/flight";
+import { Plane } from "lucide-react";
+import { Airline, Flight, FlightTab } from "@/types/flight";
 import { useLanguage } from "@/context/language-context";
 import { flightTranslations } from "@/data/translations/flights";
-import { useFlights } from "@/hooks/use-flights";
-import { useFlightSearch } from "@/hooks/use-flight-search";
-import { FlightTabs } from "@/components/flights/flight-tabs";
-import { FlightSearch } from "@/components/flights/flight-search";
-import { FlightTable } from "@/components/flights/flight-table";
-import { AirlineCard } from "@/components/flights/airline-card";
-import { AlertTriangle, Plane, RefreshCw } from "lucide-react";
+import { useFlightFilter } from "@/hooks/use-flight-filter";
+import {
+  AirlineCard,
+  FlightSearch,
+  FlightTable,
+  FlightTabs,
+} from "@/components/flights";
 
 interface FlightsPageContentProps {
   lang: Lang;
   initialQuery?: string;
   initialType?: "departure" | "arrival";
   initialAirline?: string;
+  flights: Flight[];
+  airlines: Airline[];
 }
 
 export default function FlightsPageContent({
@@ -26,6 +29,8 @@ export default function FlightsPageContent({
   initialQuery = "",
   initialType = "departure",
   initialAirline = "",
+  flights,
+  airlines,
 }: FlightsPageContentProps) {
   const router = useRouter();
   const sp = useSearchParams();
@@ -60,17 +65,15 @@ export default function FlightsPageContent({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sp]);
 
-  // Flights + airlines (API fetching is debounced inside the hook)
-  const { flights, airlines, loading, error, refetch } = useFlights({
+  // Client-side filtering with debouncing
+  const { filteredFlights } = useFlightFilter({
+    flights,
     tab: activeTab,
     query: searchQuery,
     airline: selectedAirline,
   });
 
-  // Client-side filtering of the fetched list (local, instant)
-  const { filteredFlights } = useFlightSearch(flights);
-
-  // Update URL when local state changes (write tab always; keep legacy type for arrivals/departures)
+  // Update URL when local state changes
   useEffect(() => {
     const params = new URLSearchParams();
     if (searchQuery) params.set("q", searchQuery);
@@ -117,33 +120,8 @@ export default function FlightsPageContent({
       {/* Tabs */}
       <FlightTabs activeTab={activeTab} onTabChange={handleTabChange} />
 
-      {/* Error */}
-      {error && (
-        <div className="rounded-lg border border-red-200 bg-red-50 p-4">
-          <div className="flex items-center space-x-2">
-            <AlertTriangle className="h-5 w-5 text-red-500" />
-            <p className="text-red-700">{error}</p>
-            <button
-              onClick={refetch}
-              className="ml-auto text-red-600 underline hover:text-red-800"
-            >
-              {t(flightTranslations.messages.retry)}
-            </button>
-          </div>
-        </div>
-      )}
-
       {/* Content */}
-      {loading && !flights.length ? (
-        <div className="rounded-lg border border-gray-300 bg-white p-8">
-          <div className="flex items-center justify-center space-x-2">
-            <RefreshCw className="text-bokeo-teal-600 h-6 w-6 animate-spin" />
-            <p className="text-gray-600">
-              {t(flightTranslations.messages.loading)}
-            </p>
-          </div>
-        </div>
-      ) : activeTab === "airlines" ? (
+      {activeTab === "airlines" ? (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {airlines.map((airline) => (
             <AirlineCard key={airline.code} airline={airline} />
@@ -168,7 +146,7 @@ export default function FlightsPageContent({
       {/* Count */}
       {activeTab !== "airlines" && filteredFlights.length > 0 && (
         <div className="text-center text-sm text-gray-600">
-          Showing {filteredFlights.length} flights
+          {`${t(flightTranslations.table.showing)} ${filteredFlights.length} ${t(flightTranslations.table.flights)}`}
           {searchQuery && ` · Search: "${searchQuery}"`}
           {selectedAirline && ` · Airline: ${selectedAirline}`}
         </div>

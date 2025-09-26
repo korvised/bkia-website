@@ -1,9 +1,8 @@
 import { notFound } from "next/navigation";
-import { LanguageProvider } from "@/context/language-context";
-import { Header } from "@/components/layout/header";
+import { LanguageProvider } from "@/context";
 import { getLanguageConfig, isValidLanguage } from "@/lib";
-import { RightSidebar } from "@/components/layout/sidebar";
-import { Footer } from "@/components/layout";
+import { Footer, GoToTop, Header } from "@/components/layout";
+import type { Lang } from "@/types/language";
 
 export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "lo" }, { lang: "zh" }];
@@ -28,17 +27,15 @@ export default async function LanguageLayout({
   const languageConfig = getLanguageConfig(lang);
 
   return (
-    <html lang={lang} dir={languageConfig.dir} suppressHydrationWarning>
-      <body className="antialiased" suppressHydrationWarning>
-        <LanguageProvider lang={lang}>
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <RightSidebar lang={lang} />
-            <Footer />
-          </div>
-        </LanguageProvider>
-      </body>
-    </html>
+    <LanguageProvider lang={lang as Lang}>
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main className="from-bokeo-teal-50 to-bokeo-blue-50 flex-1 bg-gradient-to-br">
+          {children}
+        </main>
+        <GoToTop />
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }

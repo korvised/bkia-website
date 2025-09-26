@@ -57,7 +57,7 @@ export const ServicesLayout: React.FC<ServicesHeroProps> = ({
                 return (
                   <Link
                     key={item.id}
-                    href={item.href}
+                    href={`/${lang}/${item.href}`}
                     className={cn(
                       "group relative flex flex-shrink-0 items-center border-b-2 pb-2 text-sm font-medium whitespace-nowrap transition-all duration-200",
                       isActive
@@ -103,7 +103,7 @@ export const ServicesLayout: React.FC<ServicesHeroProps> = ({
         </div>
       </div>
 
-      <div className="mx-auto bg-gray-50 px-4 py-8 sm:px-6 md:px-8 xl:px-16 2xl:px-32">
+      <div className="mx-auto px-4 py-8 sm:px-6 md:px-8 xl:px-16 2xl:px-32">
         {children}
       </div>
     </div>
