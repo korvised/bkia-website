@@ -1,16 +1,15 @@
 import Image from "next/image";
 import {
-  Car,
-  MapPin,
-  Clock,
-  Phone,
   AlertCircle,
+  Car,
+  Clock,
   DollarSign,
+  MapPin,
+  Phone,
 } from "lucide-react";
-import { Lang } from "@/types/language";
 
 interface CarRentalPageProps {
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
 }
 
 const rentalCompanies = [

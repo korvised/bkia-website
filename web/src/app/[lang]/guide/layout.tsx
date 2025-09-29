@@ -5,7 +5,7 @@ import { GuideTabs } from "@/components/guide";
 
 interface GuideLayoutProps {
   children: ReactNode;
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
 }
 
 export default async function GuideLayout({
@@ -15,7 +15,7 @@ export default async function GuideLayout({
   const { lang } = await params;
 
   return (
-    <ServicesLayout lang={lang}>
+    <ServicesLayout lang={lang as Lang}>
       <GuideTabs />
       {children}
     </ServicesLayout>

@@ -1,15 +1,14 @@
 import Image from "next/image";
 import {
-  MapPin,
   AlertCircle,
-  Phone,
-  DollarSign,
   CarTaxiFront,
+  DollarSign,
+  MapPin,
+  Phone,
 } from "lucide-react";
-import { Lang } from "@/types/language";
 
 interface TaxiPageProps {
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
 }
 
 const passengerNotes = [

@@ -13,7 +13,7 @@ import {
 import { DepartureTab } from "@/types/guide";
 
 interface DeparturePageProps {
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
   searchParams: Promise<{ tab?: DepartureTab }>;
 }
 
@@ -27,7 +27,7 @@ export default async function DeparturePage({
   return (
     <div className="mx-auto max-w-7xl">
       {/* Tab Navigation */}
-      <DepartureTabNavigation lang={lang} activeTab={tab} />
+      <DepartureTabNavigation lang={lang as Lang} activeTab={tab} />
 
       {/* Content */}
       <div className="rounded-lg bg-white p-8 shadow-sm">

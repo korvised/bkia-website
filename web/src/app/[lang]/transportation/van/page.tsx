@@ -1,18 +1,16 @@
-// src/app/[lang]/transportation/van/page.tsx
 import Image from "next/image";
 import {
-  Truck,
-  MapPin,
-  Users,
-  Clock,
-  Phone,
   AlertCircle,
+  Clock,
   Info,
+  MapPin,
+  Phone,
+  Truck,
+  Users,
 } from "lucide-react";
-import { Lang } from "@/types/language";
 
 interface VanPageProps {
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
 }
 
 const vanServices = [

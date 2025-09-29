@@ -1,17 +1,16 @@
 import Image from "next/image";
 import {
-  ParkingCircle,
-  MapPin,
   AlertCircle,
-  Info,
   Clock,
   DollarSign,
+  Info,
+  MapPin,
+  ParkingCircle,
   Phone,
 } from "lucide-react";
-import { Lang } from "@/types/language";
 
 interface ParkingPageProps {
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
 }
 
 const parkingRates = [

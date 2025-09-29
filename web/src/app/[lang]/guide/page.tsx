@@ -1,8 +1,7 @@
 import { redirect } from "next/navigation";
-import { Lang } from "@/types/language";
 
 interface GuidePageProps {
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
 }
 
 export default async function GuidePage({ params }: GuidePageProps) {

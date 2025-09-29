@@ -6,14 +6,14 @@ import { flightApi } from "@/lib/api/flights";
 import { FlightSkeleton } from "@/components/flights";
 
 interface FlightsPageProps {
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
   searchParams: Promise<{ q?: string; type?: string; airline?: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
 
@@ -30,8 +30,8 @@ export async function generateMetadata({
   };
 
   return {
-    title: titles[lang],
-    description: descriptions[lang],
+    title: titles[lang as Lang],
+    description: descriptions[lang as Lang],
   };
 }
 
@@ -48,7 +48,7 @@ export default async function FlightsPage({
   return (
     <Suspense fallback={<FlightSkeleton />}>
       <FlightsPageContent
-        lang={lang}
+        lang={lang as Lang}
         initialQuery={q}
         initialType={type as "departure" | "arrival" | undefined}
         initialAirline={airline}
