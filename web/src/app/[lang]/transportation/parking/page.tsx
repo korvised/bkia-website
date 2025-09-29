@@ -164,7 +164,7 @@ export default async function ParkingPage({ params }: ParkingPageProps) {
             Parking Area Location
           </h3>
         </div>
-        <div className="relative h-96 w-full overflow-hidden rounded-lg bg-gray-100">
+        <div className="relative h-96 w-full overflow-hidden rounded-lg bg-white">
           <Image
             src="/images/transportation/parking-map.jpg"
             alt="Parking Area Map at Bokeo Airport"
