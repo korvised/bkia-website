@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { LanguageProvider } from "@/context";
-import { getLanguageConfig, isValidLanguage } from "@/lib";
+import { isValidLanguage } from "@/lib";
 import { Footer, GoToTop, Header } from "@/components/layout";
 import type { Lang } from "@/types/language";
 
@@ -23,8 +23,6 @@ export default async function LanguageLayout({
   if (!isValidLanguage(lang)) {
     notFound();
   }
-
-  const languageConfig = getLanguageConfig(lang);
 
   return (
     <LanguageProvider lang={lang as Lang}>
