@@ -1,22 +1,22 @@
 import { ReactNode } from "react";
 import { Lang } from "@/types/language";
 import { ServicesLayout } from "@/components/layout/services";
-import { TransportationTabs } from "@/components/transportation";
+import { GuideTabs } from "@/components/guide";
 
-interface TransportationLayoutProps {
+interface GuideLayoutProps {
   children: ReactNode;
   params: Promise<{ lang: Lang }>;
 }
 
-export default async function TransportationLayout({
+export default async function GuideLayout({
   children,
   params,
-}: TransportationLayoutProps) {
+}: GuideLayoutProps) {
   const { lang } = await params;
 
   return (
     <ServicesLayout lang={lang}>
-      <TransportationTabs lang={lang} />
+      <GuideTabs />
       {children}
     </ServicesLayout>
   );

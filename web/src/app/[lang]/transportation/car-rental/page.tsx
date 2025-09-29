@@ -1,4 +1,3 @@
-// src/app/[lang]/transportation/car-rental/page.tsx
 import Image from "next/image";
 import {
   Car,

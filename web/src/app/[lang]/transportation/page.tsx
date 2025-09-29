@@ -10,6 +10,6 @@ export default async function TransportationPage({
 }: TransportationPageProps) {
   const { lang } = await params;
 
-  // Redirect to metro as the default tab
+  // Redirect to van as the default tab
   redirect(`/${lang}/transportation/van`);
 }
