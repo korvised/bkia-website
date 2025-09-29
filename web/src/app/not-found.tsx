@@ -7,7 +7,7 @@ import { notFoundTranslations } from "@/data/translations/not-found";
 
 export default async function RootNotFound() {
   const c = await cookies();
-  const lang = ((await c).get("lang")?.value as Lang) ?? defaultLanguage;
+  const lang = (c.get("lang")?.value as Lang) ?? defaultLanguage;
 
   return (
     <div className="from-bokeo-teal-50 to-bokeo-blue-50 flex h-screen items-center justify-center bg-gradient-to-br p-4">

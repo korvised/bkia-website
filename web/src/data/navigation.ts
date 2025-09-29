@@ -4,7 +4,7 @@ import {
   Calendar,
   Car,
   FileText,
-  HelpCircle,
+  Luggage,
   Plane,
   User,
   Users,
@@ -52,7 +52,7 @@ export const passengerItems: NavigationItem[] = [
       lo: "ຄູ່ມືການເດີນທາງ",
       zh: "乘机指南",
     },
-    icon: HelpCircle,
+    icon: Luggage,
     color: "bg-green-500",
     href: "/guide",
     description: {
@@ -241,4 +241,3 @@ export const aboutUsItems: NavigationItem[] = [
     },
   },
 ];
-

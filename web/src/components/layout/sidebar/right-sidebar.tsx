@@ -45,7 +45,7 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
             return (
               <Link
                 key={item.id}
-                href={item.href}
+                href={`/${lang}/${item.href}`}
                 className={cn(
                   "h-16 w-[3.8rem] rounded-l-lg backdrop-blur-md transition-all duration-300",
                   "flex flex-col items-center justify-center",

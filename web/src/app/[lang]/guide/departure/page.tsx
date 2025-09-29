@@ -17,7 +17,7 @@ interface DeparturePageProps {
   searchParams: Promise<{ tab?: DepartureTab }>;
 }
 
-export default async function DeparturePage({
+export default async function DepartureGuidePage({
   params,
   searchParams,
 }: DeparturePageProps) {
@@ -66,11 +66,17 @@ function ContentSkeleton() {
     <div className="animate-pulse space-y-6">
       <div className="flex items-start gap-4">
         <div className="h-24 w-24 rounded-lg bg-gray-200" />
-        <div className="flex-1 space-y-3">
+        <div className="flex-1 space-y-4">
           <div className="h-8 w-1/4 rounded bg-gray-200" />
-          <div className="h-4 w-full rounded bg-gray-200" />
-          <div className="h-4 w-5/6 rounded bg-gray-200" />
-          <div className="h-4 w-4/6 rounded bg-gray-200" />
+          <div className="space-y-3">
+            <div className="h-4 w-full rounded bg-gray-200" />
+            <div className="h-4 w-11/12 rounded bg-gray-200" />
+            <div className="h-4 w-full rounded bg-gray-200" />
+            <div className="h-4 w-10/12 rounded bg-gray-200" />
+          </div>
+          <div className="border-l-4 border-gray-300 bg-gray-100 p-4">
+            <div className="h-4 w-3/4 rounded bg-gray-200" />
+          </div>
         </div>
       </div>
     </div>

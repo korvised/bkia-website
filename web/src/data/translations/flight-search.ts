@@ -27,7 +27,7 @@ export const translations: Translations = {
   header: {
     title: {
       en: "Flight Search",
-      lo: "ຄົ້ນຫາຖ່ຽວບິນ",
+      lo: "ຄົ້ນຫາຖ້ຽວບິນ",
       zh: "搜索航班",
     },
     realtime: {
@@ -51,12 +51,12 @@ export const translations: Translations = {
   input: {
     placeholder: {
       en: "Flight number or destination...",
-      lo: "ເລກຖ່ຽວບິນ ຫຼື ຈຸດໝາຍທາງ...",
+      lo: "ເລກຖ້ຽວບິນ ຫຼື ຈຸດໝາຍທາງ...",
       zh: "航班号或目的地...",
     },
     emptyQuery: {
       en: "Please enter flight number or destination",
-      lo: "ກະລຸນາໃສ່ເລກຖ່ຽງບິນ ຫຼື ຈຸດໝາຍປາຍທາງ",
+      lo: "ກະລຸນາໃສ່ເລກຖ້ຽວບິນ ຫຼື ຈຸດໝາຍປາຍທາງ",
       zh: "请输入航班号或目的地",
     },
   },
@@ -80,7 +80,7 @@ export const translations: Translations = {
     },
     info: {
       en: "Real-time flight information, Click search to view all schedules",
-      lo: "ຂໍ້ມູນຖ່ຽງບິນແບບ Real-time, ກົດຄົ້ນຫາເພື່ອເບິ່ງຕາຕະລາງທັງໝົດ",
+      lo: "ຂໍ້ມູນຖ້ຽວບິນແບບ Real-time, ກົດຄົ້ນຫາເພື່ອເບິ່ງຕາຕະລາງທັງໝົດ",
       zh: "实时航班信息, 点击搜索查看全部时刻表",
     },
   },

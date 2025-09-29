@@ -43,7 +43,7 @@ export const notFoundTranslations: NotFoundTranslations = {
   },
   helpText: {
     en: "Need help? Contact our information desk.",
-    lo: "ຕ້ອງການຄວາມຊ່ວຍເຫຼືອ? ຕິດຕໍ່ແຜນກຂໍ້ມູນຂອງພວກເຮົາ.",
+    lo: "ຕ້ອງການຄວາມຊ່ວຍເຫຼືອ? ຕິດຕໍ່ພະແນກຂໍ້ມູນສະໜາມບິນພວກເຮົາ.",
     zh: "需要帮助？请联系我们的信息台。",
   },
 };
