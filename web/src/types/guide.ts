@@ -5,3 +5,11 @@ export type DepartureTab =
   | "border"
   | "security"
   | "boarding";
+
+export type ArrivalTab =
+  | "airport"
+  | "customs-inspection"
+  | "border-inspection"
+  | "baggage-claim"
+  | "exit-customs"
+  | "leaving";
