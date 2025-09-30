@@ -62,7 +62,7 @@ export function ArrivalTabNavigation({
             <li key={tab.id} className="relative md:flex md:flex-1">
               {status === "complete" ? (
                 <Link
-                  href={`/${lang}/guide/arrival?tab=${tab.id}`}
+                  href={`/${lang}/guides/arrival?tab=${tab.id}`}
                   className="group flex w-full items-center"
                 >
                   <span className="flex items-center px-4 py-4 text-sm font-medium">
@@ -76,7 +76,7 @@ export function ArrivalTabNavigation({
                 </Link>
               ) : status === "current" ? (
                 <Link
-                  href={`/${lang}/guide/arrival?tab=${tab.id}`}
+                  href={`/${lang}/guides/arrival?tab=${tab.id}`}
                   aria-current="step"
                   className="flex items-center px-4 py-4 text-sm font-medium"
                 >
@@ -92,7 +92,7 @@ export function ArrivalTabNavigation({
                 </Link>
               ) : (
                 <Link
-                  href={`/${lang}/guide/arrival?tab=${tab.id}`}
+                  href={`/${lang}/guides/arrival?tab=${tab.id}`}
                   className="group flex items-center"
                 >
                   <span className="flex items-center px-4 py-4 text-sm font-medium">

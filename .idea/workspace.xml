@@ -4,34 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="change route names">
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/[id]/not-found.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/important-notice-detail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/important-notice-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/notice-search.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/important-notices.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/arrival/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/cares/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/departure/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/hotel/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/services/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/transfer/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notice/important/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notice/layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notice/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/services/flight/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/services/layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/car-rental/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/parking/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/taxi/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/van/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guide/guide-tab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/guide-tab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/arrival/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/arrival/tab-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/departure/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/departure/tab-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/notice/notice-tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/notice-tabs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/transportation/transportation-tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transportation/transportation-tabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/translations/notice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/translations/notice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/lib/api/flights.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/api/flights.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,45 +30,45 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "korvised"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;korvised&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/korvised/bkia-website.git",
-    "accountId": "d7f373e9-9781-4d95-807c-e9381829a270"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/korvised/bkia-website.git&quot;,
+    &quot;accountId&quot;: &quot;d7f373e9-9781-4d95-807c-e9381829a270&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="33PSGmnZNuZAYNndfrYSjJ36pF0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/projects/bkia-website",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "npm.dev.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\nvm4w\\nodejs\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\nvm4w\\nodejs\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/web/package.json" />
@@ -111,11 +100,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1759217121025</updated>
-      <workItem from="1759217122472" duration="350000" />
+      <workItem from="1759217122472" duration="2941000" />
+      <workItem from="1759220106782" duration="4110000" />
     </task>
+    <task id="LOCAL-00001" summary="change route names">
+      <option name="closed" value="true" />
+      <created>1759217547347</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1759217547347</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="change route names" />
+    <option name="LAST_COMMIT_MESSAGE" value="change route names" />
   </component>
 </project>

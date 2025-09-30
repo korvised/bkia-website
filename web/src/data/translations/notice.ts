@@ -19,7 +19,7 @@ export const noticeTranslations: NoticeTranslations = {
   tabs: {
     important: {
       en: "Important Notices",
-      lo: "ສິ່ງສຳຄັນ",
+      lo: "ແຈ້ງການສຳຄັນ",
       zh: "重要通知",
     },
     information: {

@@ -215,11 +215,11 @@ body {
 /* Services Navigation Horizontal Scrollbar */
 .horizontal-scroll {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-primary) rgba(0, 0, 0, 0.1);
+    scrollbar-color: var(--color-gray-300) rgba(0, 0, 0, 0.1);
 }
 
 .horizontal-scroll::-webkit-scrollbar {
-    height: 6px;
+    height: 5px;
 }
 
 .horizontal-scroll::-webkit-scrollbar-track {
