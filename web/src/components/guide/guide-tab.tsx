@@ -3,13 +3,13 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import {
+  Building,
+  HandHeart,
+  Heart,
+  LucideIcon,
   PlaneIcon,
   PlaneLanding,
   RefreshCcw,
-  Building,
-  Heart,
-  Bed,
-  LucideIcon
 } from "lucide-react";
 import { cn } from "@/lib";
 import { useLanguage } from "@/context/language-context";
@@ -19,9 +19,9 @@ export type GuideTab =
   | "departure"
   | "arrival"
   | "transfer"
-  | "airport-facilities"
-  | "special-services"
-  | "hotel-services";
+  | "services"
+  | "cares"
+  | "hotel";
 
 export function GuideTabs() {
   const { lang, t } = useLanguage();
@@ -31,32 +31,32 @@ export function GuideTabs() {
     {
       id: "departure",
       label: t(guideTranslations.tabs.departure),
-      icon: PlaneIcon
+      icon: PlaneIcon,
     },
     {
       id: "arrival",
       label: t(guideTranslations.tabs.arrival),
-      icon: PlaneLanding
+      icon: PlaneLanding,
     },
     {
       id: "transfer",
       label: t(guideTranslations.tabs.transfer),
-      icon: RefreshCcw
+      icon: RefreshCcw,
     },
     {
-      id: "airport-facilities",
+      id: "services",
       label: t(guideTranslations.tabs.airportFacilities),
-      icon: Building
+      icon: HandHeart,
     },
     {
-      id: "special-services",
+      id: "cares",
       label: t(guideTranslations.tabs.specialServices),
-      icon: Heart
+      icon: Heart,
     },
     {
-      id: "hotel-services",
+      id: "hotel",
       label: t(guideTranslations.tabs.hotelServices),
-      icon: Bed
+      icon: Building,
     },
   ];
 

@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Suspense } from "react";
 import { Lang } from "@/types/language";
 import {
@@ -15,6 +16,35 @@ import { DepartureTab } from "@/types/guide";
 interface DeparturePageProps {
   params: Promise<{ lang: string }>;
   searchParams: Promise<{ tab?: DepartureTab }>;
+}
+
+export async function generateMetadata({
+  params,
+}: DeparturePageProps): Promise<Metadata> {
+  const { lang } = await params;
+
+  const metadata = {
+    en: {
+      title: "Departure Guide",
+      description:
+        "Step-by-step guide for departure procedures at Bokeo International Airport. Learn about check-in, security, customs, and boarding processes.",
+    },
+    lo: {
+      title: "ຄູ່ມືການເດີນທາງອອກ",
+      description:
+        "ຄູ່ມືຂັ້ນຕອນການເດີນທາງອອກທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ. ຮຽນຮູ້ກ່ຽວກັບການເຊັກອິນ, ການກວດຄວາມປອດໄພ, ພາສີສຸນລະກາກອນ ແລະ ຂະບວນການຂຶ້ນເຮືອບິນ.",
+    },
+    zh: {
+      title: "出发指南",
+      description:
+        "博胶国际机场出发流程分步指南。了解值机、安检、海关和登机流程。",
+    },
+  };
+
+  return {
+    title: metadata[lang as Lang].title,
+    description: metadata[lang as Lang].description,
+  };
 }
 
 export default async function DepartureGuidePage({

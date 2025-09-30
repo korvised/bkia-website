@@ -11,10 +11,40 @@ import {
   RelatedServices,
 } from "@/components/guide/arrival";
 import { ArrivalTab } from "@/types/guide";
+import { Metadata } from "next";
 
 interface ArrivalPageProps {
   params: Promise<{ lang: string }>;
   searchParams: Promise<{ tab?: ArrivalTab }>;
+}
+
+export async function generateMetadata({
+  params,
+}: ArrivalPageProps): Promise<Metadata> {
+  const { lang } = await params;
+
+  const metadata = {
+    en: {
+      title: "Arrival Guide",
+      description:
+        "Complete arrival guide for Bokeo International Airport. Information about immigration, baggage claim, customs clearance, and airport exit procedures.",
+    },
+    lo: {
+      title: "ຄູ່ມືການມາເຖິງ",
+      description:
+        "ຄູ່ມືການມາເຖິງສົມບູນສຳລັບສະໜາມບິນສາກົນບໍ່ແກ້ວ. ຂໍ້ມູນກ່ຽວກັບການເຂົ້າເມືອງ, ການຮັບກະເປົາ, ການຜ່ານພາສີສຸນລະກາກອນ ແລະ ຂະບວນການອອກຈາກສະໜາມບິນ.",
+    },
+    zh: {
+      title: "到达指南",
+      description:
+        "博胶国际机场完整到达指南。了解入境、行李提取、海关清关和机场出口流程的信息。",
+    },
+  };
+
+  return {
+    title: metadata[lang as Lang].title,
+    description: metadata[lang as Lang].description,
+  };
 }
 
 export default async function ArrivalPage({
