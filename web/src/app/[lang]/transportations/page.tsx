@@ -10,5 +10,5 @@ export default async function TransportationPage({
   const { lang } = await params;
 
   // Redirect to van as the default tab
-  redirect(`/${lang}/transportation/van`);
+  redirect(`/${lang}/transportations/van`);
 }

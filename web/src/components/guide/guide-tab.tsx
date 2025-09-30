@@ -9,7 +9,7 @@ import {
   LucideIcon,
   PlaneIcon,
   PlaneLanding,
-  RefreshCcw,
+  RefreshCcw
 } from "lucide-react";
 import { cn } from "@/lib";
 import { useLanguage } from "@/context/language-context";
@@ -31,37 +31,37 @@ export function GuideTabs() {
     {
       id: "departure",
       label: t(guideTranslations.tabs.departure),
-      icon: PlaneIcon,
+      icon: PlaneIcon
     },
     {
       id: "arrival",
       label: t(guideTranslations.tabs.arrival),
-      icon: PlaneLanding,
+      icon: PlaneLanding
     },
     {
       id: "transfer",
       label: t(guideTranslations.tabs.transfer),
-      icon: RefreshCcw,
+      icon: RefreshCcw
     },
     {
       id: "services",
       label: t(guideTranslations.tabs.airportFacilities),
-      icon: HandHeart,
+      icon: HandHeart
     },
     {
       id: "cares",
       label: t(guideTranslations.tabs.specialServices),
-      icon: Heart,
+      icon: Heart
     },
     {
       id: "hotel",
       label: t(guideTranslations.tabs.hotelServices),
-      icon: Building,
-    },
+      icon: Building
+    }
   ];
 
   const getIsActive = (tabId: string) => {
-    return pathname.includes(`/guide/${tabId}`);
+    return pathname.includes(`/guides/${tabId}`);
   };
 
   return (
@@ -77,12 +77,12 @@ export function GuideTabs() {
           return (
             <Link
               key={tab.id}
-              href={`/${lang}/guide/${tab.id}`}
+              href={`/${lang}/guides/${tab.id}`}
               className={cn(
                 "flex items-center gap-2 border-b-2 px-1 py-4 text-sm font-medium whitespace-nowrap transition-colors",
                 isActive
                   ? "border-bokeo-teal-600 text-bokeo-teal-600"
-                  : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                  : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
               )}
             >
               <Icon className="h-5 w-5" />

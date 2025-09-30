@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/arrival/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/cares/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/departure/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/hotel/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/services/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guide/transfer/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notice/important/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notice/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notice/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/services/flight/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/services/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/car-rental/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/parking/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/taxi/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transportation/van/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/guide-tab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/guide-tab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/notice-tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/notice-tabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/transportation/transportation-tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transportation/transportation-tabs.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "korvised"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/korvised/bkia-website.git",
+    "accountId": "d7f373e9-9781-4d95-807c-e9381829a270"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="33PSGmnZNuZAYNndfrYSjJ36pF0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/projects/bkia-website",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "C:\\nvm4w\\nodejs\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/web/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-WS-252.26199.162" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="" />
+      <created>1759217121025</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1759217121025</updated>
+      <workItem from="1759217122472" duration="350000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

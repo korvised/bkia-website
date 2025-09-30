@@ -27,7 +27,7 @@ export function TransportationTabs({ lang }: TransportationTabsProps) {
   const pathname = usePathname();
 
   const getIsActive = (tabId: string) => {
-    return pathname.includes(`/transportation/${tabId}`);
+    return pathname.includes(`/transportations/${tabId}`);
   };
 
   return (
@@ -43,7 +43,7 @@ export function TransportationTabs({ lang }: TransportationTabsProps) {
           return (
             <Link
               key={tab.id}
-              href={`/${lang}/transportation/${tab.id}`}
+              href={`/${lang}/transportations/${tab.id}`}
               className={cn(
                 "flex items-center gap-2 border-b-2 px-1 py-4 text-sm font-medium whitespace-nowrap transition-colors",
                 isActive

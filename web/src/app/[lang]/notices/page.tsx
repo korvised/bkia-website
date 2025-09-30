@@ -10,5 +10,5 @@ export default async function NoticeAndAnnouncementPage({
   const { lang } = await params;
 
   // Redirect to important notices as the default tab
-  redirect(`/${lang}/notice/important`);
+  redirect(`/${lang}/notices/important`);
 }

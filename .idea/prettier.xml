@@ -2,7 +2,5 @@
 <project version="4">
   <component name="PrettierConfiguration">
     <option name="myConfigurationMode" value="MANUAL" />
-    <option name="myRunOnReformat" value="true" />
-    <option name="formatFilesOutsideDependencyScope" value="false" />
   </component>
 </project>
