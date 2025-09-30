@@ -30,9 +30,9 @@ export async function generateMetadata({
         "Step-by-step guide for departure procedures at Bokeo International Airport. Learn about check-in, security, customs, and boarding processes.",
     },
     lo: {
-      title: "ຄູ່ມືການເດີນທາງອອກ",
+      title: "ຄູ່ມືຜູ້ໂດຍສານຂາອອກ",
       description:
-        "ຄູ່ມືຂັ້ນຕອນການເດີນທາງອອກທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ. ຮຽນຮູ້ກ່ຽວກັບການເຊັກອິນ, ການກວດຄວາມປອດໄພ, ພາສີສຸນລະກາກອນ ແລະ ຂະບວນການຂຶ້ນເຮືອບິນ.",
+        "ຄູ່ມືຂັ້ນຕອນການເດີນທາງອອກທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ. ຮຽນຮູ້ກ່ຽວກັບການເຊັກອິນ, ການກວດຄວາມປອດໄພ, ພາສີ ແລະ ຂະບວນການຂຶ້ນເຮືອບິນ.",
     },
     zh: {
       title: "出发指南",

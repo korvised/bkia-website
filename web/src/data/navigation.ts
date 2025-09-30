@@ -1,12 +1,14 @@
 import {
-  Briefcase,
-  Building,
-  Calendar,
   Car,
   FileText,
+  HandHeart,
+  Handshake,
+  Layers,
   Luggage,
+  MapPinned,
+  Newspaper,
   Plane,
-  User,
+  RefreshCcw,
   Users,
   UtensilsCrossed,
 } from "lucide-react";
@@ -30,7 +32,7 @@ export const passengerItems: NavigationItem[] = [
     },
   },
   {
-    id: "transportation",
+    id: "transportations",
     title: {
       en: "Traffic guidance",
       lo: "ຄຳແນະນຳດ້ານຈະລາຈອນ",
@@ -38,7 +40,7 @@ export const passengerItems: NavigationItem[] = [
     },
     icon: Car,
     color: "bg-cyan-500",
-    href: "/transportation",
+    href: "/transportations",
     description: {
       en: "Buses, taxis, parking, and car rental",
       lo: "ລົດເມ, ແທັກຊີ, ບ່ອນຈອດລົດ, ແລະ ການເຊົ່າລົດ",
@@ -46,7 +48,7 @@ export const passengerItems: NavigationItem[] = [
     },
   },
   {
-    id: "guide",
+    id: "guides",
     title: {
       en: "Flight Guide",
       lo: "ຄູ່ມືການເດີນທາງ",
@@ -54,7 +56,7 @@ export const passengerItems: NavigationItem[] = [
     },
     icon: Luggage,
     color: "bg-green-500",
-    href: "/guide",
+    href: "/guides",
     description: {
       en: "Passenger flight process, Facility service",
       lo: "ຂັ້ນຕອນການເດີນທາງ ແລະ ບໍລິການສິ່ງອຳນວຍຄວາມສະດວກ",
@@ -68,7 +70,7 @@ export const passengerItems: NavigationItem[] = [
       lo: "ປະກາດ-ແຈ້ງການ ",
       zh: "通知公告",
     },
-    icon: Calendar,
+    icon: FileText,
     color: "bg-blue-600",
     href: "/notices",
     description: {
@@ -100,7 +102,7 @@ export const passengerItems: NavigationItem[] = [
       lo: "ກິດຈະກຳວັດທະນະທຳ",
       zh: "文化活动",
     },
-    icon: Calendar,
+    icon: MapPinned,
     color: "bg-cyan-600",
     href: "/services/cultural-interaction",
     description: {
@@ -116,7 +118,7 @@ export const passengerItems: NavigationItem[] = [
       lo: "ບໍລິການເສີມ",
       zh: "禧悦服务",
     },
-    icon: User,
+    icon: HandHeart,
     color: "bg-teal-700",
     href: "/services/joyful-service",
     description: {
@@ -135,7 +137,7 @@ export const aboutUsItems: NavigationItem[] = [
       lo: "ພາບລວມສະໜາມບິນ",
       zh: "机场概况",
     },
-    icon: Building,
+    icon: Plane,
     color: "bg-teal-500",
     href: "/about/overview",
     description: {
@@ -151,7 +153,7 @@ export const aboutUsItems: NavigationItem[] = [
       lo: "ປະຫວັດຫຍໍ້ ",
       zh: "公司简介",
     },
-    icon: Briefcase,
+    icon: Handshake,
     color: "bg-cyan-500",
     href: "/about/company",
     description: {
@@ -199,7 +201,7 @@ export const aboutUsItems: NavigationItem[] = [
       lo: "ຂ່າວສານສະໜາມບິນ",
       zh: "空港新闻",
     },
-    icon: Calendar,
+    icon: Newspaper,
     color: "bg-teal-600",
     href: "/news",
     description: {
@@ -215,7 +217,7 @@ export const aboutUsItems: NavigationItem[] = [
       lo: "ປະຫວັດການພັດທະນາ",
       zh: "发展历史",
     },
-    icon: Building,
+    icon: Layers,
     color: "bg-cyan-600",
     href: "/about/history",
     description: {
@@ -231,7 +233,7 @@ export const aboutUsItems: NavigationItem[] = [
       lo: "ຂົນສົ່ງສິນຄ້າທາງອາກາດ",
       zh: "航空货运",
     },
-    icon: Plane,
+    icon: RefreshCcw,
     color: "bg-teal-700",
     href: "/cargo",
     description: {

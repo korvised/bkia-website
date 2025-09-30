@@ -30,9 +30,9 @@ export async function generateMetadata({
         "Complete arrival guide for Bokeo International Airport. Information about immigration, baggage claim, customs clearance, and airport exit procedures.",
     },
     lo: {
-      title: "ຄູ່ມືການມາເຖິງ",
+      title: "ຄູ່ມືຜູ້ໂດຍສານຂາເຂົ້າ",
       description:
-        "ຄູ່ມືການມາເຖິງສົມບູນສຳລັບສະໜາມບິນສາກົນບໍ່ແກ້ວ. ຂໍ້ມູນກ່ຽວກັບການເຂົ້າເມືອງ, ການຮັບກະເປົາ, ການຜ່ານພາສີສຸນລະກາກອນ ແລະ ຂະບວນການອອກຈາກສະໜາມບິນ.",
+        "ຄູ່ມືການມາເຖິງສົມບູນສຳລັບສະໜາມບິນສາກົນບໍ່ແກ້ວ. ຂໍ້ມູນກ່ຽວກັບການເຂົ້າເມືອງ, ການຮັບກະເປົາ, ການຜ່ານພາສີ ແລະ ຂະບວນການອອກຈາກສະໜາມບິນ.",
     },
     zh: {
       title: "到达指南",
