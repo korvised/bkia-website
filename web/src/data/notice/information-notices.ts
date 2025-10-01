@@ -793,7 +793,7 @@ Weather consideration: Heavy rain affects travel times`,
   },
 ];
 
-export const noticeInforCategories = [
+export const infoNoticeCats = [
   { id: "all", label: "All Information", icon: Megaphone },
   { id: "airport-info", label: "Airport Information", icon: Plane },
   { id: "services", label: "Services", icon: Briefcase },

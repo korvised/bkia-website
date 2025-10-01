@@ -2,8 +2,8 @@ import { Calendar, ChevronRight, Info } from "lucide-react";
 import Link from "next/link";
 import { Lang } from "@/types/language";
 import {
+  infoNoticeCats,
   InformationNotice,
-  noticeInforCategories,
 } from "@/data/notice/information-notices";
 import { cn, fmtDate } from "@/lib";
 import { InformationCategoryFilter } from "./information-category-filter";
@@ -158,14 +158,17 @@ export function InformationNoticeList({
   return (
     <div className="space-y-6">
       {/* Category Filter */}
-      <InformationCategoryFilter lang={lang} selectedCategory={selectedCategory} />
+      <InformationCategoryFilter
+        lang={lang}
+        selectedCategory={selectedCategory}
+      />
 
       {/* Notices by Category */}
       <div className="space-y-8">
         {Object.entries(groupedNotices).map(([category, categoryNotices]) => {
           const config =
             categoryConfig[category as keyof typeof categoryConfig];
-          const IconComponent = noticeInforCategories.find(
+          const IconComponent = infoNoticeCats.find(
             (c) => c.id === category,
           )?.icon;
 

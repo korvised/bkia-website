@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement lost &amp; found pages">
-      <change beforePath="$PROJECT_DIR$/web/src/components/notice/information/category-filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/information/information-category-filter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/notice/information/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/information/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/important/important-category-filter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/types/notice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/important/important-notice-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/important/important-notice-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/important/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/important/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/information/information-category-filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/information/information-category-filter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/notice/information/information-notice-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/information/information-notice-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/notice/important-notices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/notice/important-notices.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/notice/information-notices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/notice/information-notices.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +104,7 @@
       <updated>1759217121025</updated>
       <workItem from="1759217122472" duration="2941000" />
       <workItem from="1759220106782" duration="4365000" />
-      <workItem from="1759280459536" duration="9327000" />
+      <workItem from="1759280459536" duration="16013000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -123,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759290079622</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="implement lost &amp; found pages">
+      <option name="closed" value="true" />
+      <created>1759290297112</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1759290297112</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

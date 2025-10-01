@@ -1,30 +1,51 @@
 import { Lang } from "@/types/language";
-import { ImportantNoticeList, NoticeSearch } from "@/components/notice";
+import {
+  ImportantCategoryFilter,
+  ImportantNoticeList,
+  NoticeSearch,
+} from "@/components/notice";
 import {
   importantNotices,
   type ImportantNotice,
 } from "@/data/notice/important-notices";
+import { ImportantPriority } from "@/types/notice";
 
 interface ImportantNoticesPageProps {
   params: Promise<{ lang: string }>;
-  searchParams: Promise<{ query?: string }>;
+  searchParams: Promise<{
+    query?: string;
+    priority?: ImportantPriority;
+  }>;
 }
 
 // Helper function to filter notices
-function filterNotices(lang: Lang, notices: ImportantNotice[], query: string) {
-  if (!query || query.trim() === "") {
-    return notices;
+function filterNotices(
+  lang: Lang,
+  notices: ImportantNotice[],
+  query: string,
+  priority?: ImportantPriority,
+) {
+  let result = notices;
+
+  // Filter by priority (map UI -> data)
+  if (priority && priority !== "all") {
+    result = result.filter((n) => n.priority === priority);
   }
 
-  const searchQuery = query.toLowerCase();
-  return notices.filter((notice) => {
-    return (
-      notice.title[lang].toLowerCase().includes(searchQuery) ||
-      notice.description[lang].toLowerCase().includes(searchQuery) ||
-      notice.content[lang].toLowerCase().includes(searchQuery) ||
-      notice.tags?.some((tag) => tag[lang].toLowerCase().includes(searchQuery))
-    );
-  });
+  // Search filter
+  if (query && query.trim() !== "") {
+    const search = query.toLowerCase();
+    result = result.filter((notice) => {
+      return (
+        notice.title[lang].toLowerCase().includes(search) ||
+        notice.description[lang].toLowerCase().includes(search) ||
+        notice.content[lang].toLowerCase().includes(search) ||
+        notice.tags?.some((tag) => tag[lang].toLowerCase().includes(search))
+      );
+    });
+  }
+
+  return result;
 }
 
 export default async function ImportantNoticesPage({
@@ -32,24 +53,30 @@ export default async function ImportantNoticesPage({
   searchParams,
 }: ImportantNoticesPageProps) {
   const { lang } = await params;
-  const { query } = await searchParams;
+  const { query, priority } = await searchParams;
 
-  // Filter notices based on search query (server-side)
   const filteredNotices = filterNotices(
     lang as Lang,
     importantNotices,
     query || "",
+    priority,
   );
 
   return (
     <div className="space-y-6">
-      {/* Search Component */}
+      {/* Search */}
       <NoticeSearch
         lang={lang as Lang}
         resultsCount={query ? filteredNotices.length : undefined}
       />
 
-      {/* Notice List */}
+      {/* Category (priority) filter */}
+      <ImportantCategoryFilter
+        lang={lang as Lang}
+        selectedPriority={(priority as any) || "all"}
+      />
+
+      {/* List */}
       <ImportantNoticeList
         lang={lang as Lang}
         notices={filteredNotices}

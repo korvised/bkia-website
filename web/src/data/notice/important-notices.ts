@@ -1,11 +1,19 @@
 import { MultilingualText } from "@/types/language";
+import {
+  AlertCircle,
+  AlertTriangle,
+  Bell,
+  Info,
+  LucideIcon,
+} from "lucide-react";
+import { ImportantPriority } from "@/types/notice";
 
 export interface ImportantNotice {
   id: string;
   title: MultilingualText;
   description: MultilingualText;
   content: MultilingualText;
-  priority: "urgent" | "high" | "normal";
+  priority: ImportantPriority;
   publishDate: string;
   effectiveDate?: string;
   expiryDate?: string;
@@ -115,5 +123,32 @@ export const importantNotices: ImportantNotice[] = [
       { en: "WiFi", lo: "WiFi", zh: "WiFi" },
       { en: "Technology", lo: "ເທັກໂນໂລຊີ", zh: "技术" },
     ],
+  },
+];
+
+export const impNoticeCats: {
+  id: ImportantPriority;
+  label: MultilingualText;
+  icon: LucideIcon;
+}[] = [
+  {
+    id: "all",
+    label: { en: "All Notices", lo: "ແຈ້ງການທັງໝົດ", zh: "全部通知" },
+    icon: Bell,
+  },
+  {
+    id: "urgent",
+    label: { en: "Urgent Notices", lo: "ແຈ້ງການດ່ວນ", zh: "紧急通知" },
+    icon: AlertCircle,
+  },
+  {
+    id: "high",
+    label: { en: "Important Notices", lo: "ແຈ້ງການສຳຄັນ", zh: "重要通知" },
+    icon: AlertTriangle,
+  },
+  {
+    id: "normal",
+    label: { en: "General Notices", lo: "ແຈ້ງການທົ່ວໄປ", zh: "一般通知" },
+    icon: Info,
   },
 ];

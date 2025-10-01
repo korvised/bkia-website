@@ -3,47 +3,48 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { Lang } from "@/types/language";
 import { cn } from "@/lib";
-import { infoNoticeCats } from "@/data/notice";
+import { impNoticeCats } from "@/data/notice/important-notices";
+import { ImportantPriority } from "@/types/notice";
 
-interface CategoryFilterProps {
+interface ImportantCategoryFilterProps {
   lang: Lang;
-  selectedCategory?: string;
+  selectedPriority?: ImportantPriority;
 }
 
-export function InformationCategoryFilter({
+export function ImportantCategoryFilter({
   lang,
-  selectedCategory,
-}: CategoryFilterProps) {
+  selectedPriority,
+}: ImportantCategoryFilterProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const handleCategoryChange = (categoryId: string) => {
+  const handleChange = (id: string) => {
     const params = new URLSearchParams(searchParams.toString());
 
-    if (categoryId === "all") {
-      params.delete("category");
+    if (id === "all") {
+      params.delete("priority");
     } else {
-      params.set("category", categoryId);
+      // map UI ids directly to query param
+      params.set("priority", id);
     }
 
-    router.push(`/${lang}/notices/information?${params.toString()}`, {
+    router.push(`/${lang}/notices/important?${params.toString()}`, {
       scroll: false,
     });
   };
 
-  const activeCategory = selectedCategory || "all";
+  const active = selectedPriority || "all";
 
   return (
     <div className="border-b border-gray-200">
       <nav className="horizontal-scroll flex space-x-4 overflow-x-auto pb-4">
-        {infoNoticeCats.map((category) => {
-          const Icon = category.icon;
-          const isActive = activeCategory === category.id;
-
+        {impNoticeCats.map((c) => {
+          const Icon = c.icon;
+          const isActive = active === c.id;
           return (
             <button
-              key={category.id}
-              onClick={() => handleCategoryChange(category.id)}
+              key={c.id}
+              onClick={() => handleChange(c.id)}
               className={cn(
                 "flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors",
                 isActive
@@ -52,7 +53,7 @@ export function InformationCategoryFilter({
               )}
             >
               <Icon className="h-4 w-4" />
-              {category.label}
+              {c.label[lang]}
             </button>
           );
         })}
