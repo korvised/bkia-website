@@ -1,7 +1,7 @@
 import { Bell, Calendar, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Lang } from "@/types/language";
-import { ImportantNotice } from "@/data/important-notices";
+import { ImportantNotice } from "@/data/notice/important-notices";
 import { cn } from "@/lib";
 
 interface ImportantNoticeListProps {

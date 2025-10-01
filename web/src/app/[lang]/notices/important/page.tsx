@@ -3,7 +3,7 @@ import { ImportantNoticeList, NoticeSearch } from "@/components/notice";
 import {
   importantNotices,
   type ImportantNotice,
-} from "@/data/important-notices";
+} from "@/data/notice/important-notices";
 
 interface ImportantNoticesPageProps {
   params: Promise<{ lang: string }>;

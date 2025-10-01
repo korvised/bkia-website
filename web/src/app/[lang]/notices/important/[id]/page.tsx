@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Lang } from "@/types/language";
-import { ImportantNoticeDetail } from "@/components/notice";
-import { importantNotices } from "@/data/important-notices";
+import { ImportantNoticeDetail } from "@/components/notice/important";
+import { importantNotices } from "@/data/notice/important-notices";
 
 interface NoticeDetailPageProps {
   params: Promise<{ lang: string; id: string }>;

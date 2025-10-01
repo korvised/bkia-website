@@ -4,23 +4,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="change route names">
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/[id]/not-found.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/notice/important-notice-detail.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/notice/important-notice-list.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/notice/notice-search.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/important-notices.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement notice &amp; announcement pages">
+      <change afterPath="$PROJECT_DIR$/web/public/images/lost-found/backpack-blue.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/public/images/lost-found/iphone-17.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/public/images/lost-found/jacket-pink.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/public/images/lost-found/teddy-bear.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/public/images/lost-found/watch-silver.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/information/[id]/not-found.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/information/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/information/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/lost-found/[id]/not-found.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/lost-found/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/lost-found/claim/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/lost-found/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/lost-found/report/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/common/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/important/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/information/category-filter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/information/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/information/information-notice-detail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/information/information-notice-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/claim-found-item-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/lost-found-item-detail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/lost-found-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/lost-found-search.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/report-item-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/report-item-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/notice/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/notice/information-notices.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/notice/lost-found.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guide/arrival/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/arrival/tab-navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guide/departure/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/departure/tab-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/important-notice-detail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/important/important-notice-detail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/important-notice-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/important/important-notice-list.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/notice/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/notice/notice-tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/notice-tabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/notice-search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/common/notice-search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/notice-tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/important/notice-tabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/important-notices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/notice/important-notices.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/data/translations/notice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/translations/notice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/lib/api/flights.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/api/flights.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +93,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\public\images\lost-found" />
+      <recent name="D:\projects\bkia-website\web\src\components\notice\common" />
+      <recent name="D:\projects\bkia-website\web\src\components\notice\important" />
+      <recent name="D:\projects\bkia-website\web\src\data\notice" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/web/package.json" />
@@ -101,7 +133,8 @@
       <option name="presentableId" value="Default" />
       <updated>1759217121025</updated>
       <workItem from="1759217122472" duration="2941000" />
-      <workItem from="1759220106782" duration="4110000" />
+      <workItem from="1759220106782" duration="4365000" />
+      <workItem from="1759280459536" duration="9098000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -111,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759217547347</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="implement notice &amp; announcement pages">
+      <option name="closed" value="true" />
+      <created>1759226272250</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1759226272250</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +160,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change route names" />
-    <option name="LAST_COMMIT_MESSAGE" value="change route names" />
+    <MESSAGE value="implement notice &amp; announcement pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement notice &amp; announcement pages" />
   </component>
 </project>

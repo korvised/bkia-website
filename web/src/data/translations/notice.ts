@@ -29,7 +29,7 @@ export const noticeTranslations: NoticeTranslations = {
     },
     lostFound: {
       en: "Lost & Found",
-      lo: "ສິ່ງຂອງສູນຫາຍ",
+      lo: "ເຄື່ອງເສຍ & ຮັບຄືນ",
       zh: "失物招领",
     },
     complaint: {
