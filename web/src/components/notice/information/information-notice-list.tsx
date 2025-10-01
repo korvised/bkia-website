@@ -6,7 +6,7 @@ import {
   noticeInforCategories,
 } from "@/data/notice/information-notices";
 import { cn, fmtDate } from "@/lib";
-import { CategoryFilter } from "./category-filter";
+import { InformationCategoryFilter } from "./information-category-filter";
 
 interface InformationNoticeListProps {
   lang: Lang;
@@ -158,7 +158,7 @@ export function InformationNoticeList({
   return (
     <div className="space-y-6">
       {/* Category Filter */}
-      <CategoryFilter lang={lang} selectedCategory={selectedCategory} />
+      <InformationCategoryFilter lang={lang} selectedCategory={selectedCategory} />
 
       {/* Notices by Category */}
       <div className="space-y-8">

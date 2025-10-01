@@ -10,7 +10,7 @@ interface CategoryFilterProps {
   selectedCategory?: string;
 }
 
-export function CategoryFilter({
+export function InformationCategoryFilter({
   lang,
   selectedCategory,
 }: CategoryFilterProps) {
