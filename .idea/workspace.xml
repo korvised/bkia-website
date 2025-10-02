@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement lost &amp; found pages">
-      <change afterPath="$PROJECT_DIR$/web/src/components/notice/important/important-category-filter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/types/notice.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor notice &amp; announcement pages">
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/complaint/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/complaint/complaint-faq.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/complaint/complaint-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/complaint/complaint-tracking.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/complaint/complaint-workflow.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/notice/complaint/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/notice/complaints.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/translations/complaint.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/notice/important/important-notice-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/important/important-notice-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/notice/important/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/important/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/notice/information/information-category-filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/information/information-category-filter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/notice/information/information-notice-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/information/information-notice-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/notice/important-notices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/notice/important-notices.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/notice/information-notices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/notice/information-notices.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/important/important-notice-detail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/important/important-notice-detail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/notice/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/notice/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,25 +46,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\nvm4w\\nodejs\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/projects/bkia-website",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "C:\\nvm4w\\nodejs\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\web\public\images\lost-found" />
@@ -104,7 +107,9 @@
       <updated>1759217121025</updated>
       <workItem from="1759217122472" duration="2941000" />
       <workItem from="1759220106782" duration="4365000" />
-      <workItem from="1759280459536" duration="16013000" />
+      <workItem from="1759280459536" duration="21123000" />
+      <workItem from="1759380312163" duration="3125000" />
+      <workItem from="1759392307274" duration="214000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -138,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759290297112</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refactor notice &amp; announcement pages">
+      <option name="closed" value="true" />
+      <created>1759302226341</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1759302226341</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +161,7 @@
     <MESSAGE value="change route names" />
     <MESSAGE value="implement notice &amp; announcement pages" />
     <MESSAGE value="implement lost &amp; found pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement lost &amp; found pages" />
+    <MESSAGE value="refactor notice &amp; announcement pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor notice &amp; announcement pages" />
   </component>
 </project>

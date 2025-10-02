@@ -25,6 +25,14 @@ export function ImportantNoticeDetail({
   notice,
 }: ImportantNoticeDetailProps) {
   const priorityConfig = {
+    all: {
+      bgColor: "bg-red-50",
+      borderColor: "border-red-200",
+      badgeBg: "bg-red-100",
+      badgeText: "text-red-700",
+      icon: AlertCircle,
+      label: "Urgent",
+    },
     urgent: {
       bgColor: "bg-red-50",
       borderColor: "border-red-200",
