@@ -35,7 +35,7 @@ export const sidebarItems: SidebarItem[] = [
       zh: "机场新闻",
     },
     icon: Newspaper,
-    href: "/news",
+    href: "/notices/information",
   },
   {
     id: "bidding",
