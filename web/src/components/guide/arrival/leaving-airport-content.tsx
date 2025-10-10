@@ -1,20 +1,31 @@
-import { DoorOpen, Car, Smartphone, AlertCircle } from "lucide-react";
+import {
+  DoorOpen,
+  Car,
+  Smartphone,
+  AlertCircle,
+  ClipboardCheck,
+} from "lucide-react";
 
 export function LeavingAirportContent() {
   return (
     <div className="space-y-6">
       <div className="flex items-start gap-4">
-        <div className="flex-shrink-0">
+        <div className="hidden flex-shrink-0 sm:block">
           <div className="bg-primary-50 flex h-24 w-24 items-center justify-center rounded-lg">
             <DoorOpen className="text-primary-500 h-12 w-12" />
           </div>
         </div>
         <div className="flex-1">
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">
-            Leaving the Airport
-          </h2>
+          <div className="mb-2 flex items-center gap-x-2 sm:mb-4">
+            <div className="bg-primary-50 flex items-center justify-center rounded-lg p-2 sm:hidden">
+              <ClipboardCheck className="text-primary-500 h-6 w-6" />
+            </div>
+            <h2 className="text-lg font-bold text-gray-900 sm:text-2xl">
+              Leaving the Airport
+            </h2>
+          </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 text-sm sm:text-base">
             <div>
               <p className="mb-4 text-gray-700">
                 Welcome to Laos! After completing all arrival procedures, you'll

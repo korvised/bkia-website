@@ -4,16 +4,21 @@ export function ArrivalAirportContent() {
   return (
     <div className="space-y-6">
       <div className="flex items-start gap-4">
-        <div className="flex-shrink-0">
+        <div className="hidden flex-shrink-0 sm:block">
           <div className="bg-primary-50 flex h-24 w-24 items-center justify-center rounded-lg">
             <PlaneLanding className="text-primary-500 h-12 w-12" />
           </div>
         </div>
         <div className="flex-1">
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">
-            Arriving at Bokeo International Airport
-          </h2>
-          <div className="space-y-4 text-gray-700">
+          <div className="flex items-center gap-x-2">
+            <div className="bg-primary-50 flex items-center justify-center rounded-lg p-2 sm:hidden">
+              <PlaneLanding className="text-primary-500 h-6 w-6" />
+            </div>
+            <h2 className="text-lg font-bold text-gray-900 sm:text-2xl">
+              Arriving at Bokeo International Airport
+            </h2>
+          </div>
+          <div className="mt-2 space-y-4 text-sm text-gray-700 sm:mt-0 sm:text-base">
             <p>
               Welcome to Bokeo International Airport! If you're arriving on a
               flight with a stopover or transfer, please follow the passage

@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor notice &amp; announcement pages">
-      <change afterPath="$PROJECT_DIR$/web/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/Docker.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/Dockerfile" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="deploy demo in ecs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/right-sidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/right-sidebar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/Docker.md" beforeDir="false" afterPath="$PROJECT_DIR$/web/Docker.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/arrival/airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/arrival/airport-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/arrival/baggage-claim-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/arrival/baggage-claim-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/arrival/border-inspection-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/arrival/border-inspection-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/arrival/customs-inspection-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/arrival/customs-inspection-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/arrival/exit-customs-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/arrival/exit-customs-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/arrival/leaving-airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/arrival/leaving-airport-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/departure/boarding-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/departure/boarding-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/departure/border-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/departure/border-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/departure/checkin-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/departure/checkin-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/departure/customs-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/departure/customs-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/departure/purchase-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/departure/purchase-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guide/departure/security-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guide/departure/security-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +97,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-WS-252.26199.162" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.26830.93" />
       </set>
     </attachedChunks>
   </component>
@@ -108,7 +117,9 @@
       <workItem from="1759713355306" duration="2550000" />
       <workItem from="1759726660619" duration="1445000" />
       <workItem from="1759732806891" duration="5513000" />
-      <workItem from="1759799453988" duration="4910000" />
+      <workItem from="1759799453988" duration="8301000" />
+      <workItem from="1759886368744" duration="15000" />
+      <workItem from="1760066176805" duration="7122000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -158,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759392559636</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="deploy demo in ecs">
+      <option name="closed" value="true" />
+      <created>1759823063004</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1759823063004</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +188,7 @@
     <MESSAGE value="implement notice &amp; announcement pages" />
     <MESSAGE value="implement lost &amp; found pages" />
     <MESSAGE value="refactor notice &amp; announcement pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor notice &amp; announcement pages" />
+    <MESSAGE value="deploy demo in ecs" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy demo in ecs" />
   </component>
 </project>

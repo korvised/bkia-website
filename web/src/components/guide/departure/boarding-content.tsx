@@ -1,26 +1,31 @@
 import {
+  AlertCircle,
+  CheckCircle,
   Clock,
   Plane,
   Smartphone,
-  AlertCircle,
-  CheckCircle,
 } from "lucide-react";
 
 export function BoardingContent() {
   return (
     <div className="space-y-6">
       <div className="flex items-start gap-4">
-        <div className="flex-shrink-0">
+        <div className="hidden flex-shrink-0 sm:block">
           <div className="bg-primary-50 flex h-24 w-24 items-center justify-center rounded-lg">
             <Plane className="text-primary-500 h-12 w-12" />
           </div>
         </div>
         <div className="flex-1">
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">
-            Boarding & In-Flight Information
-          </h2>
+          <div className="mb-2 flex items-center gap-x-2 sm:mb-4">
+            <div className="bg-primary-50 rounded-lg p-2 sm:hidden">
+              <Plane className="text-primary-500 h-6 w-6" />
+            </div>
+            <h2 className="text-lg font-bold text-gray-900 sm:text-2xl">
+              Boarding & In-Flight Information
+            </h2>
+          </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 text-sm sm:text-base">
             <div>
               <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-900">
                 <Clock className="text-primary-500 h-5 w-5" />

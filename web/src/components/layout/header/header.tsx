@@ -148,7 +148,7 @@ export default function Header() {
             <Link
               href={`/${lang}/news?urgent=true`}
               className={cn(
-                "flex items-center gap-x-2 rounded-lg px-2 py-2 transition-all duration-300",
+                "hidden items-center gap-x-2 rounded-lg px-2 py-2 transition-all duration-300 md:flex",
                 isScrolled
                   ? "text-gray-700 hover:bg-gray-100"
                   : "text-white hover:bg-white/10",

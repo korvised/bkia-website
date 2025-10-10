@@ -1,20 +1,25 @@
-import { ClipboardCheck, AlertCircle } from "lucide-react";
+import { ClipboardCheck, AlertCircle, UserCheck } from "lucide-react";
 
 export function ExitCustomsContent() {
   return (
     <div className="space-y-6">
       <div className="flex items-start gap-4">
-        <div className="flex-shrink-0">
+        <div className="hidden flex-shrink-0 sm:block">
           <div className="bg-primary-50 flex h-24 w-24 items-center justify-center rounded-lg">
             <ClipboardCheck className="text-primary-500 h-12 w-12" />
           </div>
         </div>
         <div className="flex-1">
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">
-            Final Customs Inspection
-          </h2>
+          <div className="mb-2 flex items-center gap-x-2 sm:mb-4">
+            <div className="bg-primary-50 flex items-center justify-center rounded-lg p-2 sm:hidden">
+              <ClipboardCheck className="text-primary-500 h-6 w-6" />
+            </div>
+            <h2 className="text-lg font-bold text-gray-900 sm:text-2xl">
+              Final Customs Inspection
+            </h2>
+          </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 text-sm sm:text-base">
             <div>
               <p className="mb-4 text-gray-700">
                 Before exiting the arrivals hall, all passengers must pass

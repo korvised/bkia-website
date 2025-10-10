@@ -4,16 +4,21 @@ export function PurchaseContent() {
   return (
     <div className="space-y-6">
       <div className="flex items-start gap-4">
-        <div className="flex-shrink-0">
+        <div className="hidden flex-shrink-0 sm:block">
           <div className="bg-primary-50 flex h-24 w-24 items-center justify-center rounded-lg">
             <Plane className="text-primary-500 h-12 w-12" />
           </div>
         </div>
         <div className="flex-1">
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">
-            Ticket Purchase
-          </h2>
-          <div className="space-y-4 text-gray-700">
+          <div className="mb-2 flex items-center gap-x-2 sm:mb-4">
+            <div className="bg-primary-50 rounded-lg p-2 sm:hidden">
+              <Plane className="text-primary-500 h-6 w-6" />
+            </div>
+            <h2 className="text-lg font-bold text-gray-900 sm:text-2xl">
+              Ticket Purchase
+            </h2>
+          </div>
+          <div className="space-y-6 text-sm text-gray-700 sm:text-base">
             <p>
               <strong>1. Online Booking:</strong> Purchase tickets through
               official airline websites, authorized travel agents, or online
