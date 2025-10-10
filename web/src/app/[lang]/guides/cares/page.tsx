@@ -228,19 +228,19 @@ export default async function SpecialServicesPage() {
   };
 
   return (
-    <div className="mx-auto max-w-7xl space-y-8">
+    <div className="mx-auto max-w-7xl space-y-6 sm:space-y-8">
       {/* Page Header */}
-      <div className="flex items-start gap-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
         <div className="flex-shrink-0">
-          <div className="bg-bokeo-teal-100 flex h-20 w-20 items-center justify-center rounded-xl">
-            <Heart className="text-bokeo-teal-600 h-10 w-10" />
+          <div className="bg-bokeo-teal-100 flex h-16 w-16 items-center justify-center rounded-xl sm:h-20 sm:w-20">
+            <Heart className="text-bokeo-teal-600 h-8 w-8 sm:h-10 sm:w-10" />
           </div>
         </div>
         <div className="flex-grow">
-          <h1 className="mb-3 text-3xl font-bold text-gray-900">
+          <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:mb-3 sm:text-3xl">
             Special Services
           </h1>
-          <p className="leading-relaxed text-gray-700">
+          <p className="text-sm leading-relaxed text-gray-700 sm:text-base">
             Exceptional care and assistance to all passengers. Our special
             services ensure comfort, safety, and convenience for those requiring
             additional support.
@@ -249,14 +249,14 @@ export default async function SpecialServicesPage() {
       </div>
 
       {/* Important Notice */}
-      <div className="rounded-r-lg border-l-4 border-orange-500 bg-orange-50 p-5">
+      <div className="rounded-r-lg border-l-4 border-orange-500 bg-orange-50 p-4 sm:p-5">
         <div className="flex items-start gap-3">
-          <Phone className="mt-0.5 h-6 w-6 flex-shrink-0 text-orange-600" />
+          <Phone className="mt-0.5 h-5 w-5 flex-shrink-0 text-orange-600 sm:h-6 sm:w-6" />
           <div>
-            <p className="mb-1 font-semibold text-gray-900">
+            <p className="mb-1 text-sm font-semibold text-gray-900 sm:text-base">
               Advance Booking Required
             </p>
-            <p className="leading-relaxed text-gray-700">
+            <p className="text-sm leading-relaxed text-gray-700 sm:text-base">
               Most special services require advance notification. Please contact
               your airline at the time of booking or at least 48 hours before
               your flight to ensure availability and proper arrangements.
@@ -266,7 +266,7 @@ export default async function SpecialServicesPage() {
       </div>
 
       {/* Services Icons Grid */}
-      <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5">
         {specialServices.map((service) => {
           const Icon = service.icon;
           const colors = getColorClasses(service.color);
@@ -279,13 +279,15 @@ export default async function SpecialServicesPage() {
               <div className="flex flex-col items-center text-center">
                 {/* Icon Circle */}
                 <div
-                  className={`h-32 w-32 rounded-full ${colors.bg} mb-4 flex items-center justify-center border-2 ${colors.border} ${colors.hover} transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}
+                  className={`h-24 w-24 rounded-full ${colors.bg} mb-3 flex items-center justify-center border-2 ${colors.border} ${colors.hover} transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg sm:mb-4 sm:h-32 sm:w-32`}
                 >
-                  <Icon className={`h-14 w-14 ${colors.icon}`} />
+                  <Icon
+                    className={`h-10 w-10 ${colors.icon} sm:h-14 sm:w-14`}
+                  />
                 </div>
 
                 {/* Service Name */}
-                <h3 className="mb-1 text-sm leading-tight font-semibold text-gray-900">
+                <h3 className="mb-1 text-xs leading-tight font-semibold text-gray-900 sm:text-sm">
                   {service.name}
                 </h3>
                 {service.subtitle && (
@@ -300,8 +302,8 @@ export default async function SpecialServicesPage() {
       </div>
 
       {/* Detailed Service Information */}
-      <div className="mt-12 space-y-8">
-        <h2 className="text-2xl font-bold text-gray-900">
+      <div className="mt-8 space-y-6 sm:mt-12 sm:space-y-8">
+        <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
           Service Details & How to Request
         </h2>
 
@@ -315,23 +317,25 @@ export default async function SpecialServicesPage() {
               className="overflow-hidden rounded-xl border border-gray-200 bg-white transition-shadow hover:shadow-lg"
             >
               {/* Service Header */}
-              <div className={`${colors.bg} border-b ${colors.border} p-6`}>
-                <div className="flex items-start gap-4">
+              <div
+                className={`${colors.bg} border-b ${colors.border} p-4 sm:p-6`}
+              >
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div
-                    className={`flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl border-2 bg-white ${colors.border}`}
+                    className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border-2 bg-white ${colors.border} sm:h-16 sm:w-16`}
                   >
-                    <Icon className={`h-8 w-8 ${colors.icon}`} />
+                    <Icon className={`h-6 w-6 ${colors.icon} sm:h-8 sm:w-8`} />
                   </div>
                   <div className="flex-grow">
-                    <h3 className="mb-1 text-2xl font-bold text-gray-900">
+                    <h3 className="mb-1 text-lg font-bold text-gray-900 sm:text-2xl">
                       {service.name}
                     </h3>
                     {service.subtitle && (
-                      <p className="mb-2 text-sm text-gray-600">
+                      <p className="mb-1.5 text-xs text-gray-600 sm:mb-2 sm:text-sm">
                         {service.subtitle}
                       </p>
                     )}
-                    <p className="leading-relaxed text-gray-700">
+                    <p className="text-sm leading-relaxed text-gray-700 sm:text-base">
                       {service.description}
                     </p>
                   </div>
@@ -339,24 +343,24 @@ export default async function SpecialServicesPage() {
               </div>
 
               {/* Service Content */}
-              <div className="p-6">
-                <div className="grid gap-6 md:grid-cols-2">
+              <div className="p-4 sm:p-6">
+                <div className="grid gap-5 sm:gap-6 lg:grid-cols-2">
                   {/* Services Provided */}
                   <div>
-                    <h4 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-900">
-                      <UserCheck className="text-bokeo-teal-600 h-5 w-5" />
+                    <h4 className="mb-3 flex items-center gap-2 text-base font-semibold text-gray-900 sm:text-lg">
+                      <UserCheck className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
                       Services Provided
                     </h4>
-                    <ul className="space-y-2">
+                    <ul className="space-y-1.5 sm:space-y-2">
                       {service.services.map((item, index) => (
                         <li
                           key={index}
                           className="flex items-start gap-2 text-gray-700"
                         >
-                          <span className="text-bokeo-teal-600 mt-1 font-bold">
+                          <span className="text-bokeo-teal-600 mt-0.5 font-bold sm:mt-1">
                             ✓
                           </span>
-                          <span className="text-sm leading-relaxed">
+                          <span className="text-xs leading-relaxed sm:text-sm">
                             {item}
                           </span>
                         </li>
@@ -366,20 +370,20 @@ export default async function SpecialServicesPage() {
 
                   {/* How to Request */}
                   <div>
-                    <h4 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-900">
-                      <Phone className="text-bokeo-teal-600 h-5 w-5" />
+                    <h4 className="mb-3 flex items-center gap-2 text-base font-semibold text-gray-900 sm:text-lg">
+                      <Phone className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
                       How to Request
                     </h4>
-                    <ul className="space-y-2">
+                    <ul className="space-y-1.5 sm:space-y-2">
                       {service.howToRequest.map((step, index) => (
                         <li
                           key={index}
                           className="flex items-start gap-2 text-gray-700"
                         >
-                          <span className="text-bokeo-teal-600 mt-1 font-semibold">
+                          <span className="text-bokeo-teal-600 mt-0.5 font-semibold sm:mt-1">
                             {index + 1}.
                           </span>
-                          <span className="text-sm leading-relaxed">
+                          <span className="text-xs leading-relaxed sm:text-sm">
                             {step}
                           </span>
                         </li>
@@ -390,8 +394,8 @@ export default async function SpecialServicesPage() {
 
                 {/* Note */}
                 {service.note && (
-                  <div className="border-bokeo-teal-500 mt-6 rounded-r-lg border-l-4 bg-blue-50 p-4">
-                    <p className="flex items-start gap-2 text-sm text-gray-700">
+                  <div className="border-bokeo-teal-500 mt-5 rounded-r-lg border-l-4 bg-blue-50 p-3 sm:mt-6 sm:p-4">
+                    <p className="flex items-start gap-2 text-xs text-gray-700 sm:text-sm">
                       <span className="font-semibold text-gray-900">Note:</span>
                       <span>{service.note}</span>
                     </p>
@@ -404,17 +408,17 @@ export default async function SpecialServicesPage() {
       </div>
 
       {/* General Information */}
-      <div className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 rounded-xl border bg-gradient-to-br p-6">
-        <h3 className="mb-4 text-xl font-bold text-gray-900">
+      <div className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 rounded-xl border bg-gradient-to-br p-4 sm:p-6">
+        <h3 className="mb-3 text-lg font-bold text-gray-900 sm:mb-4 sm:text-xl">
           General Information
         </h3>
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-5">
-            <h4 className="mb-3 flex items-center gap-2 font-semibold text-gray-900">
-              <Accessibility className="text-bokeo-teal-600 h-5 w-5" />
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
+          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-5">
+            <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-900 sm:mb-3 sm:text-base">
+              <Accessibility className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
               At the Airport
             </h4>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className="space-y-1.5 text-xs text-gray-700 sm:space-y-2 sm:text-sm">
               <li>• Special assistance counters clearly marked</li>
               <li>• Staff available 24/7 during flight operations</li>
               <li>• Accessible facilities throughout terminal</li>
@@ -423,12 +427,12 @@ export default async function SpecialServicesPage() {
             </ul>
           </div>
 
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-5">
-            <h4 className="mb-3 flex items-center gap-2 font-semibold text-gray-900">
-              <Stethoscope className="text-bokeo-teal-600 h-5 w-5" />
+          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-5">
+            <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-900 sm:mb-3 sm:text-base">
+              <Stethoscope className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
               Medical Facilities
             </h4>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className="space-y-1.5 text-xs text-gray-700 sm:space-y-2 sm:text-sm">
               <li>• 24-hour medical clinic on premises</li>
               <li>• Trained medical staff on duty</li>
               <li>• First aid stations in key locations</li>
@@ -440,36 +444,36 @@ export default async function SpecialServicesPage() {
       </div>
 
       {/* Contact Section */}
-      <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
-        <h3 className="mb-4 flex items-center gap-2 text-xl font-bold text-gray-900">
-          <Phone className="text-bokeo-teal-600 h-6 w-6" />
+      <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 sm:p-6">
+        <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-gray-900 sm:mb-4 sm:text-xl">
+          <Phone className="text-bokeo-teal-600 h-5 w-5 sm:h-6 sm:w-6" />
           Need Special Assistance?
         </h3>
-        <p className="mb-4 leading-relaxed text-gray-700">
+        <p className="mb-3 text-sm leading-relaxed text-gray-700 sm:mb-4 sm:text-base">
           Our dedicated special services team is here to help make your journey
           comfortable and stress-free. Contact us in advance to arrange any
           special assistance you may need.
         </p>
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4">
-            <p className="mb-1 font-semibold text-gray-900">
+        <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
+          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-3 sm:p-4">
+            <p className="mb-1 text-sm font-semibold text-gray-900 sm:text-base">
               Book with Your Airline
             </p>
-            <p className="text-sm text-gray-700">
+            <p className="text-xs text-gray-700 sm:text-sm">
               Contact your airline directly at time of booking
             </p>
-            <p className="text-bokeo-teal-600 mt-2 text-sm font-medium">
+            <p className="text-bokeo-teal-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
               Recommended: 48-72 hours advance notice
             </p>
           </div>
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4">
-            <p className="mb-1 font-semibold text-gray-900">
+          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-3 sm:p-4">
+            <p className="mb-1 text-sm font-semibold text-gray-900 sm:text-base">
               Airport Assistance Desk
             </p>
-            <p className="text-sm text-gray-700">
+            <p className="text-xs text-gray-700 sm:text-sm">
               Located in arrivals and departures halls
             </p>
-            <p className="text-bokeo-teal-600 mt-2 text-sm font-medium">
+            <p className="text-bokeo-teal-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
               Available 24/7 during operations
             </p>
           </div>

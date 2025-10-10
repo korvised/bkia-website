@@ -281,27 +281,27 @@ export default async function AirportFacilitiesPage() {
   };
 
   return (
-    <div className="mx-auto max-w-7xl space-y-8">
+    <div className="mx-auto max-w-7xl space-y-6 sm:space-y-8">
       {/* Page Header */}
-      <div className="flex items-start gap-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
         <div className="flex-shrink-0">
-          <div className="bg-bokeo-teal-100 flex h-20 w-20 items-center justify-center rounded-xl">
-            <HandHeart className="text-bokeo-teal-600 h-10 w-10" />
+          <div className="bg-bokeo-teal-100 flex h-16 w-16 items-center justify-center rounded-xl sm:h-20 sm:w-20">
+            <HandHeart className="text-bokeo-teal-600 h-8 w-8 sm:h-10 sm:w-10" />
           </div>
         </div>
         <div className="flex-grow">
-          <h1 className="mb-3 text-3xl font-bold text-gray-900">
+          <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:mb-3 sm:text-3xl">
             Airport Facilities & Services
           </h1>
-          <p className="leading-relaxed text-gray-700">
+          <p className="text-sm leading-relaxed text-gray-700 sm:text-base">
             Comprehensive range of facilities and services to ensure your
             comfort and convenience throughout your journey.
           </p>
         </div>
       </div>
 
-      {/* Facilities Grid */}
-      <div className="grid grid-cols-2 gap-6 pt-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+      {/* Facilities Grid - Icon View */}
+      <div className="grid grid-cols-2 gap-4 pt-2 sm:grid-cols-3 sm:gap-6 sm:pt-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {facilities.map((facility) => {
           const Icon = facility.icon;
           const colors = getColorClasses(facility.color);
@@ -309,18 +309,18 @@ export default async function AirportFacilitiesPage() {
           return (
             <div
               key={facility.id}
-              className={`group cursor-pointer transition-all duration-300`}
+              className="group cursor-pointer transition-all duration-300"
             >
               <div className="flex flex-col items-center text-center">
                 {/* Icon Circle */}
                 <div
-                  className={`h-28 w-28 rounded-full ${colors.bg} mb-4 flex items-center justify-center border-2 ${colors.border} ${colors.hover} transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}
+                  className={`h-20 w-20 rounded-full ${colors.bg} mb-3 flex items-center justify-center border-2 ${colors.border} ${colors.hover} transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg sm:mb-4 sm:h-28 sm:w-28`}
                 >
-                  <Icon className={`h-12 w-12 ${colors.icon}`} />
+                  <Icon className={`h-9 w-9 ${colors.icon} sm:h-12 sm:w-12`} />
                 </div>
 
                 {/* Facility Name */}
-                <h3 className="text-sm leading-tight font-semibold text-gray-900">
+                <h3 className="text-xs leading-tight font-semibold text-gray-900 sm:text-sm">
                   {facility.name}
                 </h3>
               </div>
@@ -330,8 +330,8 @@ export default async function AirportFacilitiesPage() {
       </div>
 
       {/* Detailed Information Sections */}
-      <div className="mt-12 space-y-6">
-        <div className="grid gap-6 md:grid-cols-2">
+      <div className="mt-8 space-y-4 sm:mt-12 sm:space-y-6">
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
           {facilities.map((facility) => {
             const Icon = facility.icon;
             const colors = getColorClasses(facility.color);
@@ -339,28 +339,30 @@ export default async function AirportFacilitiesPage() {
             return (
               <div
                 key={facility.id}
-                className="rounded-lg border border-gray-200 bg-white p-6 transition-shadow hover:shadow-md"
+                className="rounded-lg border border-gray-200 bg-white p-4 transition-shadow hover:shadow-md sm:p-6"
               >
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div
-                    className={`h-12 w-12 flex-shrink-0 rounded-lg ${colors.bg} flex items-center justify-center`}
+                    className={`h-10 w-10 flex-shrink-0 rounded-lg ${colors.bg} flex items-center justify-center sm:h-12 sm:w-12`}
                   >
-                    <Icon className={`h-6 w-6 ${colors.icon}`} />
+                    <Icon className={`h-5 w-5 ${colors.icon} sm:h-6 sm:w-6`} />
                   </div>
                   <div className="flex-grow">
-                    <h3 className="mb-2 text-lg font-bold text-gray-900">
+                    <h3 className="mb-1.5 text-base font-bold text-gray-900 sm:mb-2 sm:text-lg">
                       {facility.name}
                     </h3>
-                    <p className="mb-3 text-sm leading-relaxed text-gray-700">
+                    <p className="mb-2 text-xs leading-relaxed text-gray-700 sm:mb-3 sm:text-sm">
                       {facility.description}
                     </p>
-                    <ul className="space-y-1.5">
+                    <ul className="space-y-1 sm:space-y-1.5">
                       {facility.details.map((detail, index) => (
                         <li
                           key={index}
-                          className="flex items-start gap-2 text-sm text-gray-600"
+                          className="flex items-start gap-2 text-xs text-gray-600 sm:text-sm"
                         >
-                          <span className="text-bokeo-teal-600 mt-1">•</span>
+                          <span className="text-bokeo-teal-600 mt-0.5 sm:mt-1">
+                            •
+                          </span>
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -374,34 +376,36 @@ export default async function AirportFacilitiesPage() {
       </div>
 
       {/* Contact Information */}
-      <div className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 mt-8 rounded-xl border bg-gradient-to-br p-6">
-        <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-gray-900">
-          <HelpCircle className="text-bokeo-teal-600 h-5 w-5" />
+      <div className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 mt-6 rounded-xl border bg-gradient-to-br p-4 sm:mt-8 sm:p-6">
+        <h3 className="mb-3 flex items-center gap-2 text-base font-bold text-gray-900 sm:mb-4 sm:text-lg">
+          <HelpCircle className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
           Need More Information?
         </h3>
-        <p className="mb-4 text-gray-700">
+        <p className="mb-3 text-sm text-gray-700 sm:mb-4 sm:text-base">
           Our friendly staff at the Information Desk are available to assist you
           with any questions or concerns. We're here to make your airport
           experience as smooth and pleasant as possible.
         </p>
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4">
-            <p className="mb-1 font-semibold text-gray-900">Information Desk</p>
-            <p className="text-sm text-gray-700">
+        <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-3 sm:p-4">
+            <p className="mb-1 text-sm font-semibold text-gray-900 sm:text-base">
+              Information Desk
+            </p>
+            <p className="text-xs text-gray-700 sm:text-sm">
               Located in arrivals and departures halls
             </p>
-            <p className="text-bokeo-teal-600 mt-2 text-sm font-medium">
+            <p className="text-bokeo-teal-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
               Available 24/7
             </p>
           </div>
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4">
-            <p className="mb-1 font-semibold text-gray-900">
+          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-3 sm:p-4">
+            <p className="mb-1 text-sm font-semibold text-gray-900 sm:text-base">
               Emergency Assistance
             </p>
-            <p className="text-sm text-gray-700">
+            <p className="text-xs text-gray-700 sm:text-sm">
               Immediate help for urgent situations
             </p>
-            <p className="text-bokeo-teal-600 mt-2 text-sm font-medium">
+            <p className="text-bokeo-teal-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
               Contact airport staff
             </p>
           </div>

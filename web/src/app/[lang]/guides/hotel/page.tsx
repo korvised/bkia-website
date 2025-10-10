@@ -302,19 +302,19 @@ export default async function HotelServicesPage() {
   const budgetHotels = hotels.filter((h) => h.category === "budget");
 
   return (
-    <div className="mx-auto max-w-7xl space-y-8">
+    <div className="mx-auto max-w-7xl space-y-6 sm:space-y-8">
       {/* Page Header */}
-      <div className="flex items-start gap-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
         <div className="flex-shrink-0">
-          <div className="bg-bokeo-teal-100 flex h-20 w-20 items-center justify-center rounded-xl">
-            <Building className="text-bokeo-teal-600 h-10 w-10" />
+          <div className="bg-bokeo-teal-100 flex h-16 w-16 items-center justify-center rounded-xl sm:h-20 sm:w-20">
+            <Building className="text-bokeo-teal-600 h-8 w-8 sm:h-10 sm:w-10" />
           </div>
         </div>
         <div className="flex-grow">
-          <h1 className="mb-3 text-3xl font-bold text-gray-900">
+          <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:mb-3 sm:text-3xl">
             Hotel Services
           </h1>
-          <p className="leading-relaxed text-gray-700">
+          <p className="text-sm leading-relaxed text-gray-700 sm:text-base">
             Discover comfortable accommodations near Bokeo International
             Airport. From luxury hotels in the Golden Triangle Special Economic
             Zone to budget-friendly guesthouses in Houayxay town.
@@ -323,14 +323,14 @@ export default async function HotelServicesPage() {
       </div>
 
       {/* Important Information */}
-      <div className="border-bokeo-teal-500 rounded-r-lg border-l-4 bg-blue-50 p-5">
+      <div className="border-bokeo-teal-500 rounded-r-lg border-l-4 bg-blue-50 p-4 sm:p-5">
         <div className="flex items-start gap-3">
-          <Hotel className="text-bokeo-teal-600 mt-0.5 h-6 w-6 flex-shrink-0" />
+          <Hotel className="text-bokeo-teal-600 mt-0.5 h-5 w-5 flex-shrink-0 sm:h-6 sm:w-6" />
           <div>
-            <p className="mb-1 font-semibold text-gray-900">
+            <p className="mb-1 text-sm font-semibold text-gray-900 sm:text-base">
               Airport Hotel Services
             </p>
-            <p className="leading-relaxed text-gray-700">
+            <p className="text-sm leading-relaxed text-gray-700 sm:text-base">
               Bokeo International Airport is located in Tonpheung District, in
               the Golden Triangle Special Economic Zone. Hotels in the Golden
               Triangle SEZ are just 5 minutes away, while Houayxay town is
@@ -343,13 +343,13 @@ export default async function HotelServicesPage() {
 
       {/* Featured Hotels */}
       {featuredHotels.length > 0 && (
-        <div className="space-y-6">
-          <h2 className="flex items-center gap-2 text-2xl font-bold text-gray-900">
-            <Star className="h-6 w-6 fill-yellow-500 text-yellow-500" />
+        <div className="space-y-4 sm:space-y-6">
+          <h2 className="flex items-center gap-2 text-xl font-bold text-gray-900 sm:text-2xl">
+            <Star className="h-5 w-5 fill-yellow-500 text-yellow-500 sm:h-6 sm:w-6" />
             Featured Hotels
           </h2>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
             {featuredHotels.map((hotel) => {
               const badge = getCategoryBadge(hotel.category);
 
@@ -358,8 +358,8 @@ export default async function HotelServicesPage() {
                   key={hotel.id}
                   className="border-bokeo-teal-200 overflow-hidden rounded-xl border-2 bg-white transition-shadow hover:shadow-xl"
                 >
-                  {/* Hotel Image Placeholder */}
-                  <div className="from-bokeo-teal-100 to-bokeo-teal-200 relative flex h-48 items-center justify-center overflow-hidden bg-gradient-to-br">
+                  {/* Hotel Image */}
+                  <div className="from-bokeo-teal-100 to-bokeo-teal-200 relative flex h-40 items-center justify-center overflow-hidden bg-gradient-to-br sm:h-48">
                     {hotel.image ? (
                       <Image
                         src={hotel.image}
@@ -369,35 +369,35 @@ export default async function HotelServicesPage() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     ) : (
-                      <Hotel className="text-bokeo-teal-400 h-20 w-20" />
+                      <Hotel className="text-bokeo-teal-400 h-16 w-16 sm:h-20 sm:w-20" />
                     )}
                   </div>
 
                   {/* Hotel Content */}
-                  <div className="p-6">
-                    <div className="mb-3 flex items-start justify-between">
+                  <div className="p-4 sm:p-6">
+                    <div className="mb-2 flex items-start justify-between gap-2 sm:mb-3">
                       <div className="flex-grow">
-                        <h3 className="mb-1 text-xl font-bold text-gray-900">
+                        <h3 className="mb-1 text-lg font-bold text-gray-900 sm:text-xl">
                           {hotel.name}
                         </h3>
-                        <div className="mb-2 flex items-center gap-2 text-sm text-gray-600">
-                          <MapPin className="h-4 w-4" />
+                        <div className="mb-1.5 flex items-center gap-1.5 text-xs text-gray-600 sm:mb-2 sm:gap-2 sm:text-sm">
+                          <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
                           <span>{hotel.location}</span>
                         </div>
                       </div>
                       <span
-                        className={`rounded-full border px-3 py-1 text-xs font-semibold ${badge.color}`}
+                        className={`flex-shrink-0 rounded-full border px-2 py-0.5 text-xs font-semibold sm:px-3 sm:py-1 ${badge.color}`}
                       >
                         {badge.label}
                       </span>
                     </div>
 
-                    <div className="mb-3 flex items-center gap-2">
+                    <div className="mb-2 flex flex-wrap items-center gap-2 sm:mb-3">
                       <div className="flex items-center">
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className={`h-4 w-4 ${
+                            className={`h-3 w-3 sm:h-4 sm:w-4 ${
                               i < Math.floor(hotel.rating)
                                 ? "fill-yellow-400 text-yellow-400"
                                 : "text-gray-300"
@@ -405,24 +405,26 @@ export default async function HotelServicesPage() {
                           />
                         ))}
                       </div>
-                      <span className="text-sm font-semibold text-gray-700">
+                      <span className="text-xs font-semibold text-gray-700 sm:text-sm">
                         {hotel.rating.toFixed(1)}
                       </span>
-                      <span className="text-sm text-gray-500">•</span>
-                      <span className="text-bokeo-teal-600 text-sm font-medium">
+                      <span className="text-xs text-gray-500 sm:text-sm">
+                        •
+                      </span>
+                      <span className="text-bokeo-teal-600 text-xs font-medium sm:text-sm">
                         {hotel.distance}
                       </span>
                     </div>
 
-                    <p className="mb-4 text-sm leading-relaxed text-gray-700">
+                    <p className="mb-3 text-xs leading-relaxed text-gray-700 sm:mb-4 sm:text-sm">
                       {hotel.description}
                     </p>
 
-                    <div className="mb-4 flex flex-wrap gap-2">
+                    <div className="mb-3 flex flex-wrap gap-1.5 sm:mb-4 sm:gap-2">
                       {hotel.amenities.slice(0, 6).map((amenity, index) => (
                         <span
                           key={index}
-                          className="bg-bokeo-teal-50 text-bokeo-teal-700 rounded-full px-2 py-1 text-xs"
+                          className="bg-bokeo-teal-50 text-bokeo-teal-700 rounded-full px-2 py-0.5 text-xs"
                         >
                           {amenity}
                         </span>
@@ -430,7 +432,7 @@ export default async function HotelServicesPage() {
                     </div>
 
                     {hotel.address && (
-                      <p className="text-sm text-gray-600">
+                      <p className="text-xs text-gray-600 sm:text-sm">
                         <strong>Address:</strong> {hotel.address}
                       </p>
                     )}
@@ -444,38 +446,38 @@ export default async function HotelServicesPage() {
 
       {/* Premium Hotels */}
       {premiumHotels.length > 0 && (
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-gray-900">
+        <div className="space-y-4 sm:space-y-6">
+          <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
             Premium Accommodations
           </h2>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
             {premiumHotels.map((hotel) => (
               <div
                 key={hotel.id}
                 className="overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-md"
               >
-                {/* Hotel Image Placeholder */}
-                <div className="flex h-40 items-center justify-center bg-gradient-to-br from-yellow-100 to-yellow-200">
-                  <Hotel className="h-16 w-16 text-yellow-400" />
+                {/* Hotel Image */}
+                <div className="flex h-32 items-center justify-center bg-gradient-to-br from-yellow-100 to-yellow-200 sm:h-40">
+                  <Hotel className="h-12 w-12 text-yellow-400 sm:h-16 sm:w-16" />
                 </div>
 
-                <div className="p-5">
-                  <h3 className="mb-2 text-lg font-bold text-gray-900">
+                <div className="p-4 sm:p-5">
+                  <h3 className="mb-1.5 text-base font-bold text-gray-900 sm:mb-2 sm:text-lg">
                     {hotel.name}
                   </h3>
-                  <div className="mb-2 flex items-center gap-1 text-sm text-gray-600">
-                    <MapPin className="h-4 w-4" />
+                  <div className="mb-1.5 flex items-center gap-1 text-xs text-gray-600 sm:mb-2 sm:text-sm">
+                    <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
                     <span>{hotel.location}</span>
                   </div>
-                  <p className="mb-3 line-clamp-3 text-sm text-gray-700">
+                  <p className="mb-2 line-clamp-3 text-xs text-gray-700 sm:mb-3 sm:text-sm">
                     {hotel.description}
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1 sm:gap-1.5">
                     {hotel.amenities.slice(0, 4).map((amenity, index) => (
                       <span
                         key={index}
-                        className="rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-700"
+                        className="rounded bg-gray-100 px-1.5 py-0.5 text-xs text-gray-700 sm:px-2"
                       >
                         {amenity}
                       </span>
@@ -490,35 +492,37 @@ export default async function HotelServicesPage() {
 
       {/* Mid-Range Hotels */}
       {midrangeHotels.length > 0 && (
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-gray-900">Mid-Range Hotels</h2>
+        <div className="space-y-4 sm:space-y-6">
+          <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
+            Mid-Range Hotels
+          </h2>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
             {midrangeHotels.map((hotel) => (
               <div
                 key={hotel.id}
                 className="overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-md"
               >
-                <div className="flex h-40 items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200">
-                  <Building2 className="h-16 w-16 text-blue-400" />
+                <div className="flex h-32 items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 sm:h-40">
+                  <Building2 className="h-12 w-12 text-blue-400 sm:h-16 sm:w-16" />
                 </div>
 
-                <div className="p-5">
-                  <h3 className="mb-2 text-lg font-bold text-gray-900">
+                <div className="p-4 sm:p-5">
+                  <h3 className="mb-1.5 text-base font-bold text-gray-900 sm:mb-2 sm:text-lg">
                     {hotel.name}
                   </h3>
-                  <div className="mb-2 flex items-center gap-1 text-sm text-gray-600">
-                    <MapPin className="h-4 w-4" />
+                  <div className="mb-1.5 flex items-center gap-1 text-xs text-gray-600 sm:mb-2 sm:text-sm">
+                    <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
                     <span>{hotel.location}</span>
                   </div>
-                  <p className="mb-3 line-clamp-3 text-sm text-gray-700">
+                  <p className="mb-2 line-clamp-3 text-xs text-gray-700 sm:mb-3 sm:text-sm">
                     {hotel.description}
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1 sm:gap-1.5">
                     {hotel.amenities.slice(0, 4).map((amenity, index) => (
                       <span
                         key={index}
-                        className="rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-700"
+                        className="rounded bg-gray-100 px-1.5 py-0.5 text-xs text-gray-700 sm:px-2"
                       >
                         {amenity}
                       </span>
@@ -532,23 +536,25 @@ export default async function HotelServicesPage() {
       )}
 
       {/* Budget Hotels */}
-      <div className="space-y-6">
-        <h2 className="text-2xl font-bold text-gray-900">
+      <div className="space-y-4 sm:space-y-6">
+        <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
           Budget-Friendly Options
         </h2>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {budgetHotels.map((hotel) => (
             <div
               key={hotel.id}
-              className="rounded-lg border border-gray-200 bg-white p-5 transition-shadow hover:shadow-md"
+              className="rounded-lg border border-gray-200 bg-white p-4 transition-shadow hover:shadow-md sm:p-5"
             >
-              <div className="mb-3 flex items-start gap-3">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-green-100">
-                  <Hotel className="h-6 w-6 text-green-600" />
+              <div className="mb-2 flex items-start gap-2 sm:mb-3 sm:gap-3">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-green-100 sm:h-12 sm:w-12">
+                  <Hotel className="h-5 w-5 text-green-600 sm:h-6 sm:w-6" />
                 </div>
                 <div className="flex-grow">
-                  <h3 className="mb-1 font-bold text-gray-900">{hotel.name}</h3>
+                  <h3 className="mb-0.5 text-sm font-bold text-gray-900 sm:mb-1 sm:text-base">
+                    {hotel.name}
+                  </h3>
                   <div className="flex items-center gap-1 text-xs text-gray-600">
                     <MapPin className="h-3 w-3" />
                     <span>{hotel.location}</span>
@@ -556,15 +562,15 @@ export default async function HotelServicesPage() {
                 </div>
               </div>
 
-              <p className="mb-3 line-clamp-2 text-sm text-gray-700">
+              <p className="mb-2 line-clamp-2 text-xs text-gray-700 sm:mb-3 sm:text-sm">
                 {hotel.description}
               </p>
 
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1 sm:gap-1.5">
                 {hotel.amenities.slice(0, 3).map((amenity, index) => (
                   <span
                     key={index}
-                    className="rounded bg-green-50 px-2 py-0.5 text-xs text-green-700"
+                    className="rounded bg-green-50 px-1.5 py-0.5 text-xs text-green-700 sm:px-2"
                   >
                     {amenity}
                   </span>
@@ -576,17 +582,17 @@ export default async function HotelServicesPage() {
       </div>
 
       {/* Booking Information */}
-      <div className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 rounded-xl border bg-gradient-to-br p-6">
-        <h3 className="mb-4 text-xl font-bold text-gray-900">
+      <div className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 rounded-xl border bg-gradient-to-br p-4 sm:p-6">
+        <h3 className="mb-3 text-lg font-bold text-gray-900 sm:mb-4 sm:text-xl">
           Booking Information
         </h3>
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-5">
-            <h4 className="mb-3 flex items-center gap-2 font-semibold text-gray-900">
-              <Phone className="text-bokeo-teal-600 h-5 w-5" />
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
+          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-5">
+            <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-900 sm:mb-3 sm:text-base">
+              <Phone className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
               How to Book
             </h4>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className="space-y-1.5 text-xs text-gray-700 sm:space-y-2 sm:text-sm">
               <li>
                 • Book directly through hotel websites or booking platforms
               </li>
@@ -596,12 +602,12 @@ export default async function HotelServicesPage() {
             </ul>
           </div>
 
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-5">
-            <h4 className="mb-3 flex items-center gap-2 font-semibold text-gray-900">
-              <BadgeCheck className="text-bokeo-teal-600 h-5 w-5" />
+          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-5">
+            <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-900 sm:mb-3 sm:text-base">
+              <BadgeCheck className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
               Tips for Travelers
             </h4>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className="space-y-1.5 text-xs text-gray-700 sm:space-y-2 sm:text-sm">
               <li>• Book in advance during peak tourist season</li>
               <li>• Confirm airport shuttle availability when booking</li>
               <li>• Check if breakfast is included in room rate</li>
@@ -614,19 +620,21 @@ export default async function HotelServicesPage() {
       </div>
 
       {/* Area Information */}
-      <div className="rounded-xl border border-gray-200 bg-white p-6">
-        <h3 className="mb-4 flex items-center gap-2 text-xl font-bold text-gray-900">
-          <MapPin className="text-bokeo-teal-600 h-6 w-6" />
+      <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-6">
+        <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-gray-900 sm:mb-4 sm:text-xl">
+          <MapPin className="text-bokeo-teal-600 h-5 w-5 sm:h-6 sm:w-6" />
           Hotel Locations
         </h3>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
           <div>
-            <h4 className="mb-3 font-semibold text-gray-900">Houayxay Town</h4>
-            <p className="mb-2 text-sm text-gray-700">
+            <h4 className="mb-2 text-sm font-semibold text-gray-900 sm:mb-3 sm:text-base">
+              Houayxay Town
+            </h4>
+            <p className="mb-1.5 text-xs text-gray-700 sm:mb-2 sm:text-sm">
               <strong>Distance from Airport:</strong> 55 km (45-60 minutes by
               car)
             </p>
-            <p className="text-sm leading-relaxed text-gray-700">
+            <p className="text-xs leading-relaxed text-gray-700 sm:text-sm">
               The provincial capital offers a wide range of accommodations from
               budget guesthouses to mid-range hotels. Located along the Mekong
               River with views of Thailand. Close to temples, markets, and the
@@ -636,14 +644,14 @@ export default async function HotelServicesPage() {
           </div>
 
           <div>
-            <h4 className="mb-3 font-semibold text-gray-900">
+            <h4 className="mb-2 text-sm font-semibold text-gray-900 sm:mb-3 sm:text-base">
               Golden Triangle SEZ, Tonpheung
             </h4>
-            <p className="mb-2 text-sm text-gray-700">
+            <p className="mb-1.5 text-xs text-gray-700 sm:mb-2 sm:text-sm">
               <strong>Distance from Airport:</strong> 5 minutes by car (nearest
               hotels)
             </p>
-            <p className="text-sm leading-relaxed text-gray-700">
+            <p className="text-xs leading-relaxed text-gray-700 sm:text-sm">
               The airport is located within Tonpheung District in the Special
               Economic Zone. This area features premium hotels with casino
               access, international restaurants, shopping, and entertainment
