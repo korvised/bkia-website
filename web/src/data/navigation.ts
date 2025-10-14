@@ -1,12 +1,12 @@
 import {
   Car,
   FileText,
-  HandHeart,
   Handshake,
   Layers,
   Luggage,
-  MapPinned,
+  MapPin,
   Newspaper,
+  PackageSearch,
   Plane,
   RefreshCcw,
   Users,
@@ -88,7 +88,7 @@ export const passengerItems: NavigationItem[] = [
     },
     icon: UtensilsCrossed,
     color: "bg-teal-600",
-    href: "/services/dining-shopping",
+    href: "/dining-shopping",
     description: {
       en: "Restaurants, cafes, and shopping",
       lo: "ຮ້ານອາຫານ, ຮ້ານກາເຟ, ແລະ ການຊື້ເຄື່ອງ",
@@ -96,6 +96,22 @@ export const passengerItems: NavigationItem[] = [
     },
   },
   {
+    id: "cargo",
+    title: {
+      en: "Air Cargo",
+      lo: "ຂົນສົ່ງສິນຄ້າ",
+      zh: "航空货运",
+    },
+    icon: PackageSearch,
+    color: "bg-teal-700",
+    href: "/cargo",
+    description: {
+      en: "Air freight and logistics services",
+      lo: "ບໍລິການຂົນສົ່ງສິນຄ້າ ແລະ ການຈັດການຂົນສົ່ງ",
+      zh: "航空货运与物流服务",
+    },
+  },
+  /*  {
     id: "cultural",
     title: {
       en: "Cultural Activities",
@@ -110,21 +126,21 @@ export const passengerItems: NavigationItem[] = [
       lo: "ການວາງສະແດງວັດທະນະທຳ ແລະ ກິດຈະກຳ",
       zh: "丰富的候机楼文化活动",
     },
-  },
+  },*/
   {
-    id: "joyful",
+    id: "bokeo-visit",
     title: {
-      en: "Joyful Services",
-      lo: "ບໍລິການເສີມ",
-      zh: "禧悦服务",
+      en: "Bokeo Visit",
+      lo: "ທ່ອງທ່ຽວບໍ່ແກ້ວ",
+      zh: "博胶旅游",
     },
-    icon: HandHeart,
-    color: "bg-teal-700",
-    href: "/services/joyful-service",
+    icon: MapPin,
+    color: "bg-orange-600",
+    href: "/bokeo-visit",
     description: {
-      en: "VIP and premium passenger services",
-      lo: "ບໍລິການຮັບຮອງແຂກພິເສດ VIP",
-      zh: "提供嘉宾贵宾国宾服务",
+      en: "Discover top attractions and travel experiences in Bokeo",
+      lo: "ຄົ້ນພົບສະຖານທີ່ທ່ອງທ່ຽວ ແລະ ປະສົບການທ່ອງທ່ຽວໃນແຂວງບໍ່ແກ້ວ",
+      zh: "探索博胶省的热门景点与旅游体验",
     },
   },
 ];
@@ -224,22 +240,6 @@ export const aboutUsItems: NavigationItem[] = [
       en: "Our development journey",
       lo: "ປະຫວັດການພັດທະນາຂອງສະໜາມບິນສາກົນບໍ່ແກ້ວ",
       zh: "回顾博胶国际机场的发展历史",
-    },
-  },
-  {
-    id: "cargo",
-    title: {
-      en: "Air Cargo",
-      lo: "ຂົນສົ່ງສິນຄ້າທາງອາກາດ",
-      zh: "航空货运",
-    },
-    icon: RefreshCcw,
-    color: "bg-teal-700",
-    href: "/cargo",
-    description: {
-      en: "Air cargo and freight services",
-      lo: "ບໍລິການຂົນສົ່ງທາງອາກາດ",
-      zh: "提供航空货运代理服务",
     },
   },
 ];

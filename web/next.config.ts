@@ -1,19 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "localhost",
-      },
-      {
-        protocol: "https",
-        hostname: "*.supabase.co",
-      },
-    ],
-    formats: ["image/webp", "image/avif"],
-  },
   // Enable path mapping (optional, but good for clarity)
   webpack: (config) => {
     config.resolve.alias = {
