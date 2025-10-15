@@ -45,7 +45,7 @@ export const sidebarItems: SidebarItem[] = [
       zh: "招标信息",
     },
     icon: FileText,
-    href: "/about/procurement",
+    href: "/bidding",
   },
   {
     id: "flights",
@@ -65,7 +65,7 @@ export const sidebarItems: SidebarItem[] = [
       zh: "商业信息",
     },
     icon: Building,
-    href: "/services/business",
+    href: "/news",
   },
   {
     id: "help",

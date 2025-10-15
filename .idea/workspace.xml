@@ -4,43 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="adjust responsive">
-      <change afterPath="$PROJECT_DIR$/web/public/images/attractions/bokeo-nature-reserve.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/attractions/gibbon-experience.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/attractions/golden-triangle.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/attractions/mekong-river-cruise.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/attractions/wat-jom-khao-manilat.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/dining/bokeo-noodle-house.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/dining/dim-sum-delight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/dining/golden-triangle-restaurant.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/dining/international-bistro.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/dining/mekong-coffee-lounge.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/dining/quick-bite-express.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/dining/royal-thai-cuisine.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/dining/sky-view-restaurant.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/dining/vip-lounge-dining.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/shops/airport-bookshop.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/shops/airport-pharmacy.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/shops/bokeo-duty-free.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/shops/kids-corner.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/shops/lao-heritage-souvenirs.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/shops/luggage-bags.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/shops/style-fashion-boutique.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/shops/tech-zone.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/public/images/shops/travel-essentials.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/bokeo-visit/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/bokeo-visit/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/cargo/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/cargo/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/dining-shopping/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/dining-shopping/page.tsx" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement dining &amp; shopping, air cargo, bokeo visit demo pages">
+      <change afterPath="$PROJECT_DIR$/web/public/images/news/placeholder.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/about/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/about/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/bidding/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/bidding/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/careers/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/careers/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/history/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/history/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/history/scroll-animations.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/news/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/news/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/survey/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/survey/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/layout/about/about-layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/layout/about/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/hooks/useScrollAnimation.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AWS.md" beforeDir="false" afterPath="$PROJECT_DIR$/AWS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deploy.md" beforeDir="false" afterPath="$PROJECT_DIR$/Deploy.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/web/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/services/services-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/services/services-layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/data/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/navigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/right-sidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/right-sidebar.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +63,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/projects/bkia-website/web/public/images/shops",
+    "last_opened_file_path": "D:/projects/bkia-website/web/public/images/news",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,11 +78,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\projects\bkia-website\web\public\images\shops" />
-      <recent name="D:\projects\bkia-website\web\public\images\dining" />
-      <recent name="D:\projects\bkia-website\web\public\images\attractions" />
-      <recent name="D:\projects\bkia-website\web\src\app\[lang]\bokeo-visit" />
-      <recent name="D:\projects\bkia-website\web\src\app\[lang]\cargo" />
+      <recent name="D:\projects\bkia-website\web\public\images\news" />
+      <recent name="D:\projects\bkia-website\web\src\app\[lang]\history" />
+      <recent name="D:\projects\bkia-website\web\src\app\[lang]\news" />
+      <recent name="D:\projects\bkia-website\web\src\app\[lang]\careers" />
+      <recent name="D:\projects\bkia-website\web\src\app\[lang]\bidding" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\web\public\images\attractions" />
@@ -152,7 +137,8 @@
       <workItem from="1760066176805" duration="12059000" />
       <workItem from="1760272768032" duration="66000" />
       <workItem from="1760317157659" duration="15089000" />
-      <workItem from="1760408427702" duration="9998000" />
+      <workItem from="1760408427702" duration="17388000" />
+      <workItem from="1760489966003" duration="9861000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -234,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760330535194</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="implement dining &amp; shopping, air cargo, bokeo visit demo pages">
+      <option name="closed" value="true" />
+      <created>1760422651597</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1760422651597</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,6 +241,7 @@
     <MESSAGE value="refactor notice &amp; announcement pages" />
     <MESSAGE value="deploy demo in ecs" />
     <MESSAGE value="adjust responsive" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjust responsive" />
+    <MESSAGE value="implement dining &amp; shopping, air cargo, bokeo visit demo pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement dining &amp; shopping, air cargo, bokeo visit demo pages" />
   </component>
 </project>

@@ -4,11 +4,10 @@ import {
   Handshake,
   Layers,
   Luggage,
-  MapPin,
+  MapPinned,
   Newspaper,
   PackageSearch,
   Plane,
-  RefreshCcw,
   Users,
   UtensilsCrossed,
 } from "lucide-react";
@@ -134,7 +133,7 @@ export const passengerItems: NavigationItem[] = [
       lo: "ທ່ອງທ່ຽວບໍ່ແກ້ວ",
       zh: "博胶旅游",
     },
-    icon: MapPin,
+    icon: MapPinned,
     color: "bg-orange-600",
     href: "/bokeo-visit",
     description: {
@@ -155,7 +154,7 @@ export const aboutUsItems: NavigationItem[] = [
     },
     icon: Plane,
     color: "bg-teal-500",
-    href: "/about/overview",
+    href: "/survey",
     description: {
       en: "Explore airport operations",
       lo: "ສຳຫຼວດການດຳເນີນງານສະໜາມບິນ",
@@ -171,7 +170,7 @@ export const aboutUsItems: NavigationItem[] = [
     },
     icon: Handshake,
     color: "bg-cyan-500",
-    href: "/about/company",
+    href: "/about",
     description: {
       en: "Learn about Bokeo International Airport",
       lo: "ທຳຄວາມຮູ້ຈັກກັບບໍລິສັດສະໜາມບິນສາກົນບໍ່ແກ້ວຈຳກັດ",
@@ -187,7 +186,7 @@ export const aboutUsItems: NavigationItem[] = [
     },
     icon: FileText,
     color: "bg-green-500",
-    href: "/about/procurement",
+    href: "/bidding",
     description: {
       en: "Airport Bidding Information ",
       lo: "ຂ່າວສານການປະມູນຂອງສະໜາມບິນ",
@@ -203,7 +202,7 @@ export const aboutUsItems: NavigationItem[] = [
     },
     icon: Users,
     color: "bg-blue-600",
-    href: "/about/careers",
+    href: "/careers",
     description: {
       en: "Job opportunities and recruitment",
       lo: "ໂອກາດເຮັດວຽກ ແລະ ການສະໝັກງານ",
@@ -235,7 +234,7 @@ export const aboutUsItems: NavigationItem[] = [
     },
     icon: Layers,
     color: "bg-cyan-600",
-    href: "/about/history",
+    href: "/history",
     description: {
       en: "Our development journey",
       lo: "ປະຫວັດການພັດທະນາຂອງສະໜາມບິນສາກົນບໍ່ແກ້ວ",

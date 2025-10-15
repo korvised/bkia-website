@@ -2,24 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { passengerItems } from "@/data/navigation";
+import { aboutUsItems } from "@/data/navigation";
 import { Lang } from "@/types/language";
 import { cn } from "@/lib/utils";
 import { Map, MapPinned } from "lucide-react";
 
-interface ServicesHeroProps {
+interface AboutLayoutProps {
   lang: Lang;
   children: React.ReactNode;
 }
 
-export const ServicesLayout: React.FC<ServicesHeroProps> = ({
-  lang,
-  children,
-}) => {
+export const AboutLayout: React.FC<AboutLayoutProps> = ({ lang, children }) => {
   const pathname = usePathname();
 
   // Get the first 7 services for the horizontal menu
-  const menuItems = passengerItems.slice(0, 7);
+  const menuItems = aboutUsItems.slice(0, 7);
 
   return (
     <div>
@@ -41,10 +38,10 @@ export const ServicesLayout: React.FC<ServicesHeroProps> = ({
           <div className="flex items-center justify-center pt-40 md:justify-start">
             <h1 className="text-2xl font-bold text-white md:text-4xl">
               {lang === "zh"
-                ? "旅客服务"
+                ? "关于我们"
                 : lang === "lo"
-                  ? "ບໍລິການຜູ້ໂດຍສານ"
-                  : "Passenger Services"}
+                  ? "ກ່ຽວກັບພວກເຮົາ"
+                  : "About Us"}
             </h1>
           </div>
 
