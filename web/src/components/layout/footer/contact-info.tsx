@@ -4,85 +4,75 @@ import { Phone, Mail, MapPin, Clock, Globe } from "lucide-react";
 export default function ContactInfo() {
   return (
     <div>
-      <h4 className="font-bold text-lg mb-4">Contact Information</h4>
+      <h4 className="mb-4 text-lg font-bold">Contact Information</h4>
 
       <div className="space-y-4 text-sm">
         {/* Address */}
         <div className="flex items-start space-x-3">
-          <MapPin className="w-4 h-4 mt-1 text-bokeo-teal-300 flex-shrink-0" />
+          <MapPin className="text-primary-300 mt-1 h-4 w-4 flex-shrink-0" />
           <div>
-            <div className="font-medium mb-1">Airport Address</div>
-            <div className="opacity-80 leading-relaxed">
-              Bokeo International Airport<br />
-              Houayxay District, Bokeo Province<br />
+            <div className="mb-1 font-medium">Airport Address</div>
+            <div className="leading-relaxed opacity-80">
+              Tonphueng District, Bokeo Province
+              <br />
               Lao PDR
-            </div>
-            <div className="text-xs opacity-70 font-lao mt-1">
-              ສະໜາມບິນສາກົນບໍ່ແກ້ວ, ເມືອງຫ້ວຍຊາຍ, ແຂວງບໍ່ແກ້ວ
             </div>
           </div>
         </div>
 
         {/* Phone */}
         <div className="flex items-center space-x-3">
-          <Phone className="w-4 h-4 text-bokeo-teal-300 flex-shrink-0" />
+          <Phone className="text-primary-300 h-4 w-4 flex-shrink-0" />
           <div>
             <div className="font-medium">Phone</div>
             <Link
-              href="tel:+856-84-123-456"
-              className="opacity-80 hover:opacity-100 hover:underline transition-colors"
+              href="tel:084 260 179"
+              className="opacity-80 transition-colors hover:underline hover:opacity-100"
             >
-              +856 84 123 456
+              084 260 179
             </Link>
           </div>
         </div>
 
         {/* Email */}
         <div className="flex items-center space-x-3">
-          <Mail className="w-4 h-4 text-bokeo-teal-300 flex-shrink-0" />
+          <Mail className="text-primary-300 h-4 w-4 flex-shrink-0" />
           <div>
             <div className="font-medium">Email</div>
             <Link
-              href="mailto:info@bokeoairport.la"
-              className="opacity-80 hover:opacity-100 hover:underline transition-colors"
+              href="mailto:info@bokeointernationalairport.com"
+              className="opacity-80 transition-colors hover:underline hover:opacity-100"
             >
-              info@bokeoairport.la
+              info@bokeointernationalairport.com
             </Link>
           </div>
         </div>
 
         {/* Website */}
         <div className="flex items-center space-x-3">
-          <Globe className="w-4 h-4 text-bokeo-teal-300 flex-shrink-0" />
+          <Globe className="text-primary-300 h-4 w-4 flex-shrink-0" />
           <div>
             <div className="font-medium">Website</div>
-            <Link
-              href="https://bokeoairport.la"
-              className="opacity-80 hover:opacity-100 hover:underline transition-colors"
+            <a
+              href="https://bokeointernationalairport.com/"
+              target="_blank"
+              className="opacity-80 transition-colors hover:underline hover:opacity-100"
             >
-              bokeoairport.la
-            </Link>
+              bokeointernationalairport.com
+            </a>
           </div>
         </div>
 
         {/* Operating Hours */}
         <div className="flex items-start space-x-3">
-          <Clock className="w-4 h-4 mt-1 text-bokeo-teal-300 flex-shrink-0" />
+          <Clock className="text-primary-300 mt-1 h-4 w-4 flex-shrink-0" />
           <div>
-            <div className="font-medium mb-1">Operating Hours</div>
-            <div className="opacity-80 space-y-1">
-              <div>Airport: 24/7</div>
-              <div>Information Desk: 06:00 - 22:00</div>
-              <div>Check-in: 2 hours before departure</div>
+            <div className="mb-1 font-medium">Operating Hours</div>
+            <div className="space-y-1 opacity-80">
+              <div>Airport: 16/7</div>
+              <div>Information Desk: 08:00 - 22:00</div>
             </div>
           </div>
-        </div>
-
-        {/* Airport Code */}
-        <div className="bg-bokeo-teal-700/30 rounded-lg p-3 mt-4">
-          <div className="font-medium mb-1">Airport Code</div>
-          <div className="text-lg font-bold text-bokeo-teal-200">BKX</div>
-          <div className="text-xs opacity-70">IATA Code</div>
         </div>
       </div>
     </div>

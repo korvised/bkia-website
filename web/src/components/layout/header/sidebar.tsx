@@ -47,20 +47,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         onClick={onClose}
         className={cn(
           "group relative flex items-center border-b border-gray-100 p-4 transition-all duration-200",
-          isActive
-            ? "bg-bokeo-teal-50 hover:bg-bokeo-teal-100"
-            : "hover:bg-gray-50",
+          isActive ? "bg-primary-50 hover:bg-primary-100" : "hover:bg-gray-50",
         )}
       >
         {/* Active indicator - Left vertical line */}
         {isActive && (
-          <div className="bg-bokeo-teal-600 absolute top-0 left-0 h-full w-1" />
+          <div className="bg-primary-600 absolute top-0 left-0 h-full w-1" />
         )}
 
         <div
           className={cn(
             "mr-4 flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-200",
-            isActive ? "bg-bokeo-teal-600 shadow-md" : item.color,
+            isActive ? "bg-primary-600 shadow-md" : item.color,
           )}
         >
           <IconComponent className="h-5 w-5 text-white" />
@@ -71,8 +69,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             className={cn(
               "font-semibold transition-colors duration-200",
               isActive
-                ? "text-bokeo-teal-700"
-                : "group-hover:text-bokeo-teal-700 text-gray-900",
+                ? "text-primary-700"
+                : "group-hover:text-primary-700 text-gray-900",
               lang === "lo" && "font-lao",
             )}
           >
@@ -81,7 +79,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <div
             className={cn(
               "mt-1 text-xs transition-colors duration-200",
-              isActive ? "text-bokeo-teal-600" : "text-gray-400",
+              isActive ? "text-primary-600" : "text-gray-400",
               lang === "lo" && "font-lao",
             )}
           >
@@ -146,7 +144,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                       className={cn(
                         "flex flex-1 flex-col items-center px-6 py-4 text-sm font-medium transition-all duration-300",
                         activeTab === "passenger"
-                          ? "bg-bokeo-teal-600 text-white shadow-md"
+                          ? "bg-primary-600 text-white shadow-md"
                           : "bg-gray-100 text-gray-600 hover:bg-gray-200",
                       )}
                     >
@@ -165,7 +163,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                       className={cn(
                         "flex flex-1 flex-col items-center px-6 py-4 text-sm font-medium transition-all duration-300",
                         activeTab === "about"
-                          ? "bg-bokeo-teal-600 text-white shadow-md"
+                          ? "bg-primary-600 text-white shadow-md"
                           : "bg-gray-100 text-gray-600 hover:bg-gray-200",
                       )}
                     >

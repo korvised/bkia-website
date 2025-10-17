@@ -1,8 +1,9 @@
 import { Lang } from "@/types/language";
+// import { RightSidebar } from "@/components/layout";
 import HeroSection from "./hero-section";
 import DateTimeDisplay from "./date-time-display";
 import FlightSearch from "./flight-search";
-import { RightSidebar } from "@/components/layout";
+import UsefulServicesSection from "./useful-services-section";
 
 interface AirportHomepageProps {
   lang: Lang;
@@ -31,8 +32,10 @@ export default function AirportHomepage({ lang }: AirportHomepageProps) {
         <FlightSearch />
       </section>
 
+      <UsefulServicesSection lang={lang} />
+
       {/* Fixed Right Sidebar */}
-      <RightSidebar lang={lang} />
+      {/*<RightSidebar lang={lang} />*/}
 
       {/* Quick Services Section */}
       {/* <section className="relative min-h-screen w-full bg-gradient-to-br from-gray-50 to-blue-50">

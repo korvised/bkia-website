@@ -35,7 +35,7 @@ export default function GoToTop() {
             onClick={scrollToTop}
             className={cn(
               "group relative h-11 w-11 cursor-pointer rounded-full backdrop-blur-md transition-all duration-300",
-              "bg-dark-400/90 text-white shadow-lg",
+              "bg-white shadow-lg",
               "hover:scale-105 hover:shadow-xl",
               "flex flex-col items-center justify-center overflow-hidden",
               "border border-white/10",
@@ -48,7 +48,7 @@ export default function GoToTop() {
                 "bg-gradient-to-t from-white/30 to-transparent",
                 "h-0 group-hover:h-6",
                 isClicked &&
-                  "!h-8 !bg-gradient-to-t !from-white/60 !to-white/20",
+                  "!from-primary-400 !to-primary-10 !h-8 !bg-gradient-to-t",
               )}
             />
 
@@ -57,7 +57,7 @@ export default function GoToTop() {
               {/* Initial: Up icon */}
               <ChevronUp
                 className={cn(
-                  "text-[10px] leading-none font-semibold text-white transition-all duration-300",
+                  "text-primary text-[10px] leading-none font-semibold transition-all duration-300",
                   "group-hover:-translate-y-1 group-hover:opacity-0",
                   isClicked ? "opacity-0" : "opacity-90",
                 )}
@@ -66,7 +66,7 @@ export default function GoToTop() {
               {/* Hover: Plane flies in from bottom */}
               <Plane
                 className={cn(
-                  "absolute h-4.5 w-4.5 -rotate-45 transform transition-all duration-500 ease-out",
+                  "text-primary absolute h-4.5 w-4.5 -rotate-45 transform transition-all duration-500 ease-out",
                   // Initial position (hidden below)
                   "translate-y-6 scale-75 opacity-0",
                   // Hover: flies in and settles
@@ -81,7 +81,7 @@ export default function GoToTop() {
             {/* Takeoff blast effect */}
             <div
               className={cn(
-                "absolute inset-0 rounded-xl bg-white/20 transition-all duration-300",
+                "bg-primary-100 absolute inset-0 rounded-xl transition-all duration-300",
                 isClicked ? "scale-110 opacity-0" : "scale-100 opacity-0",
               )}
             />

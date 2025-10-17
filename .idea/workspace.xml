@@ -4,27 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement dining &amp; shopping, air cargo, bokeo visit demo pages">
-      <change afterPath="$PROJECT_DIR$/web/public/images/news/placeholder.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/about/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/about/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/bidding/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/bidding/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/careers/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/careers/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/history/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/history/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/history/scroll-animations.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/news/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/news/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/survey/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/survey/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/layout/about/about-layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/layout/about/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/hooks/useScrollAnimation.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="about pages">
+      <change afterPath="$PROJECT_DIR$/web/src/components/homepage/useful-services-section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/layout/services/services-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/services/services-layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/navigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/airport-homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/airport-homepage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/date-time-display.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/date-time-display.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/footer/contact-info.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/footer/contact-info.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/footer/quick-links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/footer/quick-links.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/sidebar/go-to-top.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/sidebar/go-to-top.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/data/right-sidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/right-sidebar.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,27 +50,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/projects/bkia-website/web/public/images/news",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "npm.dev.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\nvm4w\\nodejs\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "terminal",
-    "ts.external.directory.path": "D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website/web/public/images/news&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\nvm4w\\nodejs\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\web\public\images\news" />
@@ -138,7 +133,9 @@
       <workItem from="1760272768032" duration="66000" />
       <workItem from="1760317157659" duration="15089000" />
       <workItem from="1760408427702" duration="17388000" />
-      <workItem from="1760489966003" duration="9861000" />
+      <workItem from="1760489966003" duration="12426000" />
+      <workItem from="1760577625721" duration="9860000" />
+      <workItem from="1760664226139" duration="20147000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -228,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760422651597</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="about pages">
+      <option name="closed" value="true" />
+      <created>1760508847461</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1760508847461</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +247,7 @@
     <MESSAGE value="deploy demo in ecs" />
     <MESSAGE value="adjust responsive" />
     <MESSAGE value="implement dining &amp; shopping, air cargo, bokeo visit demo pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement dining &amp; shopping, air cargo, bokeo visit demo pages" />
+    <MESSAGE value="about pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="about pages" />
   </component>
 </project>

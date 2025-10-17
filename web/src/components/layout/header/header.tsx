@@ -3,7 +3,7 @@
 import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Bell, Home, Menu } from "lucide-react";
+import { Home, Menu, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context";
 import { LanguageSelector } from "./language-selector";
@@ -142,23 +142,15 @@ export default function Header() {
           </div>
 
           {/* Right Section - Language and Notifications */}
-          <div className="flex items-center gap-x-1">
+          <div className="flex items-center gap-x-2">
             <LanguageSelector isScrolled={isScrolled} />
 
-            <Link
-              href={`/${lang}/news?urgent=true`}
+            <Search
               className={cn(
-                "hidden items-center gap-x-2 rounded-lg px-2 py-2 transition-all duration-300 md:flex",
-                isScrolled
-                  ? "text-gray-700 hover:bg-gray-100"
-                  : "text-white hover:bg-white/10",
+                "h-5 w-5",
+                isScrolled ? "text-primary-500" : "text-white",
               )}
-            >
-              <Bell className="h-4 w-4 text-orange-500" />
-              <span className="hidden text-xs font-medium md:inline">
-                {t(translations.importantNotice)}
-              </span>
-            </Link>
+            />
           </div>
         </div>
       </header>

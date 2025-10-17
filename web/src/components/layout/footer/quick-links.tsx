@@ -1,86 +1,83 @@
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
+import { Lang } from "@/types/language";
 
-export default function QuickLinks() {
+interface QuickLinkProps {
+  lang: Lang;
+}
+
+export default function QuickLinks({ lang }: QuickLinkProps) {
   return (
     <div>
-      <h4 className="font-bold text-lg mb-4">Quick Links</h4>
+      <h4 className="mb-4 text-lg font-bold">Quick Links</h4>
       <ul className="space-y-2 text-sm">
         <li>
           <Link
-            href="/flights"
-            className="opacity-80 hover:opacity-100 hover:text-bokeo-teal-200 transition-colors"
+            href={`/${lang}/flights`}
+            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
           >
             Flight Information
           </Link>
         </li>
         <li>
           <Link
-            href="/flights/departures"
-            className="opacity-80 hover:opacity-100 hover:text-bokeo-teal-200 transition-colors"
+            href={`/${lang}/flights?tab=departures`}
+            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
           >
             Departures
           </Link>
         </li>
         <li>
           <Link
-            href="/flights/arrivals"
-            className="opacity-80 hover:opacity-100 hover:text-bokeo-teal-200 transition-colors"
+            href={`/${lang}/flights?tab=arrivals`}
+            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
           >
             Arrivals
           </Link>
         </li>
         <li>
           <Link
-            href="/transportation/parking"
-            className="opacity-80 hover:opacity-100 hover:text-bokeo-teal-200 transition-colors"
+            href={`/${lang}/transportations/parking`}
+            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
           >
             Parking Information
           </Link>
         </li>
         <li>
           <Link
-            href="/transportation/directions"
-            className="opacity-80 hover:opacity-100 hover:text-bokeo-teal-200 transition-colors"
-          >
-            Directions
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/about"
-            className="opacity-80 hover:opacity-100 hover:text-bokeo-teal-200 transition-colors"
+            href={`/${lang}/survey`}
+            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
           >
             About Airport
           </Link>
         </li>
         <li>
           <Link
-            href="/news"
-            className="opacity-80 hover:opacity-100 hover:text-bokeo-teal-200 transition-colors"
+            href={`/${lang}/news`}
+            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
           >
             News & Updates
           </Link>
         </li>
         <li>
           <Link
-            href="/contact"
-            className="opacity-80 hover:opacity-100 hover:text-bokeo-teal-200 transition-colors"
+            href={`/${lang}/contact`}
+            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
           >
             Contact Us
           </Link>
         </li>
 
         {/* External Links */}
-        <li className="pt-2 border-t border-bokeo-teal-700/30">
+        <li className="border-bokeo-teal-700/30 border-t pt-2">
           <a
             href="https://www.iata.org"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center opacity-80 hover:opacity-100 hover:text-bokeo-teal-200 transition-colors"
+            className="hover:text-bokeo-teal-200 flex items-center opacity-80 transition-colors hover:opacity-100"
           >
             IATA
-            <ExternalLink className="w-3 h-3 ml-1" />
+            <ExternalLink className="ml-1 h-3 w-3" />
           </a>
         </li>
         <li>
@@ -88,10 +85,10 @@ export default function QuickLinks() {
             href="https://www.icao.int"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center opacity-80 hover:opacity-100 hover:text-bokeo-teal-200 transition-colors"
+            className="hover:text-bokeo-teal-200 flex items-center opacity-80 transition-colors hover:opacity-100"
           >
             ICAO
-            <ExternalLink className="w-3 h-3 ml-1" />
+            <ExternalLink className="ml-1 h-3 w-3" />
           </a>
         </li>
       </ul>

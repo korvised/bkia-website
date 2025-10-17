@@ -9,104 +9,49 @@
     --font-chinese: "Microsoft Yahei", "微软雅黑", "PingFang SC", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", verdana, sans-serif;
 
     /* ========================================
-       PRIMARY COLOR PALETTE
-       ======================================== */
-    --color-primary: #5CBEC6;           /* Main brand color */
-    --color-light: #D3EAE9;             /* Light accent */
-    --color-dark: #00AAAC;              /* Dark accent */
-    /* Primary Color Scale (generated from #5CBEC6) */
-    --color-primary-50: #f0fafb;
-    --color-primary-100: #d9f2f4;
-    --color-primary-200: #b8e7ea;
-    --color-primary-300: #87d5dc;
-    --color-primary-400: #5CBEC6;       /* Base primary */
-    --color-primary-500: #3ba3ab;
-    --color-primary-600: #2d8388;
-    --color-primary-700: #246a6f;
-    --color-primary-800: #1e565a;
-    --color-primary-900: #1a474a;
-    --color-primary-950: #0d2d2f;
+           PRIMARY COLOR PALETTE
+           ======================================== */
+    /* Primary - Teal (#00AAAC) */
+    --color-primary: #00AAAC;
+    --color-primary-50: #e6f9f9;
+    --color-primary-100: #ccf3f3;
+    --color-primary-200: #99e7e7;
+    --color-primary-300: #66dbdb;
+    --color-primary-400: #33cfcf;
+    --color-primary-500: #00AAAC;        /* Base primary */
+    --color-primary-600: #00888a;
+    --color-primary-700: #006667;
+    --color-primary-800: #004445;
+    --color-primary-900: #002222;
+    --color-primary-950: #001111;
 
-    /* Light Accent Scale (generated from #D3EAE9) */
-    --color-light-50: #f6fbfb;
-    --color-light-100: #D3EAE9;         /* Base light */
-    --color-light-200: #b8dedd;
-    --color-light-300: #9dd2d0;
-    --color-light-400: #82c6c4;
-    --color-light-500: #67bab8;
-    --color-light-600: #52a5a3;
-    --color-light-700: #3d8886;
-    --color-light-800: #2e6866;
-    --color-light-900: #1f4847;
-    --color-light-950: #102828;
+    /* Secondary - Warm Sand (#F4A460) */
+    --color-secondary: #F4A460;
+    --color-secondary-50: #fef8f3;
+    --color-secondary-100: #fdf0e6;
+    --color-secondary-200: #fbe1cd;
+    --color-secondary-300: #f8d2b4;
+    --color-secondary-400: #f6c39b;
+    --color-secondary-500: #F4A460;      /* Base secondary */
+    --color-secondary-600: #f08f3d;
+    --color-secondary-700: #e67920;
+    --color-secondary-800: #b85f19;
+    --color-secondary-900: #8a4713;
+    --color-secondary-950: #5c2f0c;
 
-    /* Dark Accent Scale (generated from #00AAAC) */
-    --color-dark-50: #e6f7f8;
-    --color-dark-100: #b3e8e9;
-    --color-dark-200: #80d9db;
-    --color-dark-300: #4dcacc;
-    --color-dark-400: #1abbbd;
-    --color-dark-500: #00AAAC;          /* Base dark */
-    --color-dark-600: #008a8c;
-    --color-dark-700: #006a6b;
-    --color-dark-800: #004a4b;
-    --color-dark-900: #002a2b;
-    --color-dark-950: #001515;
-
-    /* Legacy Bokeo Colors (keeping for backward compatibility) */
-    --color-bokeo-teal-50: #f0fdfa;
-    --color-bokeo-teal-100: #ccfbf1;
-    --color-bokeo-teal-200: #99f6e4;
-    --color-bokeo-teal-300: #5eead4;
-    --color-bokeo-teal-400: #2dd4bf;
-    --color-bokeo-teal-500: #14b8a6;
-    --color-bokeo-teal-600: #0d9488;
-    --color-bokeo-teal-700: #0f766e;
-    --color-bokeo-teal-800: #115e59;
-    --color-bokeo-teal-900: #134e4a;
-    --color-bokeo-teal-950: #042f2e;
-
-    --color-bokeo-blue-50: #eff6ff;
-    --color-bokeo-blue-100: #dbeafe;
-    --color-bokeo-blue-200: #bfdbfe;
-    --color-bokeo-blue-300: #93c5fd;
-    --color-bokeo-blue-400: #60a5fa;
-    --color-bokeo-blue-500: #3b82f6;
-    --color-bokeo-blue-600: #2563eb;
-    --color-bokeo-blue-700: #1d4ed8;
-    --color-bokeo-blue-800: #1e40af;
-    --color-bokeo-blue-900: #1e3a8a;
-    --color-bokeo-blue-950: #172554;
-
-    /* ========================================
-       SEMANTIC COLORS
-       ======================================== */
-    --color-secondary: #5CBEC6;         /* Using primary as secondary */
-    --color-accent: #00AAAC;            /* Using dark as accent */
-    /* Background colors */
-    --color-background: #ffffff;
-    --color-foreground: #0f172a;
-    --color-muted: #f8fafc;
-    --color-muted-foreground: #64748b;
-
-    /* Border and input colors */
-    --color-border: #e2e8f0;
-    --color-input: #e2e8f0;
-    --color-ring: #5CBEC6;              /* Using primary */
-    /* Card colors */
-    --color-card: #ffffff;
-    --color-card-foreground: #0f172a;
-
-    /* Popover colors */
-    --color-popover: #ffffff;
-    --color-popover-foreground: #0f172a;
-
-    /* Destructive colors */
-    --color-destructive: #ef4444;
-    --color-destructive-foreground: #ffffff;
-
-    /* Border radius */
-    --radius: 0.5rem;
+    /* Danger - Sunset Red (#E74C3C) */
+    --color-danger: #E74C3C;
+    --color-danger-50: #fef5f4;
+    --color-danger-100: #fde8e6;
+    --color-danger-200: #fbd1cc;
+    --color-danger-300: #f9bab3;
+    --color-danger-400: #f79389;
+    --color-danger-500: #E74C3C;          /* Base danger */
+    --color-danger-600: #d63426;
+    --color-danger-700: #b82a1f;
+    --color-danger-800: #8a1f17;
+    --color-danger-900: #5c150f;
+    --color-danger-950: #2e0a08;
 }
 
 /* Base body styles */
@@ -152,8 +97,8 @@ body {
 }
 
 .flight-status-boarding {
-    background-color: var(--color-light);
-    color: var(--color-dark);
+    background-color: var(--color-primary-500);
+    color: var(--color-primary);
 }
 
 /* Custom animations */
@@ -209,7 +154,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-dark);
+    background-color: var(--color-primary);
 }
 
 /* Services Navigation Horizontal Scrollbar */
@@ -234,11 +179,11 @@ body {
 }
 
 .horizontal-scroll::-webkit-scrollbar-thumb:hover {
-    background: var(--color-dark);
+    background: var(--color-primary);
 }
 
 .horizontal-scroll::-webkit-scrollbar-thumb:active {
-    background: var(--color-dark-700);
+    background: var(--color-primary-700);
 }
 
 /* Smooth scrolling behavior */
@@ -279,7 +224,7 @@ body {
 .focus-ring {
     outline: none !important;
     border: none !important;
-    box-shadow: 0 0 0 2px var(--color-primary), 0 0 0 4px var(--color-light);
+    box-shadow: 0 0 0 2px var(--color-primary), 0 0 0 4px var(--color-primary-500);
 }
 
 /* Headless UI specific overrides */
