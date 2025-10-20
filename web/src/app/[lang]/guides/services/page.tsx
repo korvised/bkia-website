@@ -251,10 +251,10 @@ export default async function AirportFacilitiesPage() {
     switch (color) {
       case "teal":
         return {
-          bg: "bg-bokeo-teal-100",
-          icon: "text-bokeo-teal-600",
-          border: "border-bokeo-teal-200",
-          hover: "hover:border-bokeo-teal-400",
+          bg: "bg-primary-100",
+          icon: "text-primary-600",
+          border: "border-primary-200",
+          hover: "hover:border-primary-400",
         };
       case "orange":
         return {
@@ -272,10 +272,10 @@ export default async function AirportFacilitiesPage() {
         };
       default:
         return {
-          bg: "bg-bokeo-teal-100",
-          icon: "text-bokeo-teal-600",
-          border: "border-bokeo-teal-200",
-          hover: "hover:border-bokeo-teal-400",
+          bg: "bg-primary-100",
+          icon: "text-primary-600",
+          border: "border-primary-200",
+          hover: "hover:border-primary-400",
         };
     }
   };
@@ -285,8 +285,8 @@ export default async function AirportFacilitiesPage() {
       {/* Page Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
         <div className="flex-shrink-0">
-          <div className="bg-bokeo-teal-100 flex h-16 w-16 items-center justify-center rounded-xl sm:h-20 sm:w-20">
-            <HandHeart className="text-bokeo-teal-600 h-8 w-8 sm:h-10 sm:w-10" />
+          <div className="bg-primary-100 flex h-16 w-16 items-center justify-center rounded-xl sm:h-20 sm:w-20">
+            <HandHeart className="text-primary-600 h-8 w-8 sm:h-10 sm:w-10" />
           </div>
         </div>
         <div className="flex-grow">
@@ -360,7 +360,7 @@ export default async function AirportFacilitiesPage() {
                           key={index}
                           className="flex items-start gap-2 text-xs text-gray-600 sm:text-sm"
                         >
-                          <span className="text-bokeo-teal-600 mt-0.5 sm:mt-1">
+                          <span className="text-primary-600 mt-0.5 sm:mt-1">
                             •
                           </span>
                           <span>{detail}</span>
@@ -376,9 +376,9 @@ export default async function AirportFacilitiesPage() {
       </div>
 
       {/* Contact Information */}
-      <div className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 mt-6 rounded-xl border bg-gradient-to-br p-4 sm:mt-8 sm:p-6">
+      <div className="from-primary-50 to-primary-100 border-primary-200 mt-6 rounded-xl border bg-gradient-to-br p-4 sm:mt-8 sm:p-6">
         <h3 className="mb-3 flex items-center gap-2 text-base font-bold text-gray-900 sm:mb-4 sm:text-lg">
-          <HelpCircle className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+          <HelpCircle className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
           Need More Information?
         </h3>
         <p className="mb-3 text-sm text-gray-700 sm:mb-4 sm:text-base">
@@ -387,25 +387,25 @@ export default async function AirportFacilitiesPage() {
           experience as smooth and pleasant as possible.
         </p>
         <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-3 sm:p-4">
+          <div className="border-primary-200 rounded-lg border bg-white p-3 sm:p-4">
             <p className="mb-1 text-sm font-semibold text-gray-900 sm:text-base">
               Information Desk
             </p>
             <p className="text-xs text-gray-700 sm:text-sm">
               Located in arrivals and departures halls
             </p>
-            <p className="text-bokeo-teal-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
+            <p className="text-primary-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
               Available 24/7
             </p>
           </div>
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-3 sm:p-4">
+          <div className="border-primary-200 rounded-lg border bg-white p-3 sm:p-4">
             <p className="mb-1 text-sm font-semibold text-gray-900 sm:text-base">
               Emergency Assistance
             </p>
             <p className="text-xs text-gray-700 sm:text-sm">
               Immediate help for urgent situations
             </p>
-            <p className="text-bokeo-teal-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
+            <p className="text-primary-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
               Contact airport staff
             </p>
           </div>

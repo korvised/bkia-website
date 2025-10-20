@@ -49,8 +49,8 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
                 className={cn(
                   "h-16 w-[3.8rem] rounded-l-lg backdrop-blur-md transition-all duration-300",
                   "flex flex-col items-center justify-center",
-                  "bg-bokeo-teal-600/90 text-white shadow-lg",
-                  "hover:bg-bokeo-teal-500 hover:shadow-xl",
+                  "bg-primary-600/90 text-white shadow-lg",
+                  "hover:bg-primary-500 hover:shadow-xl",
                   "border-l-4 border-transparent hover:border-white/50",
                 )}
               >
@@ -72,8 +72,8 @@ export default function RightSidebar({ lang }: RightSidebarProps) {
             className={cn(
               "group relative h-11 w-11 cursor-pointer rounded-full backdrop-blur-md transition-all duration-300",
               "bg-gray-200/50 text-white",
-              "shadow-bokeo-teal-600/25 shadow-lg",
-              "hover:shadow-bokeo-teal-600/40 hover:scale-105 hover:shadow-xl",
+              "shadow-primary-600/25 shadow-lg",
+              "hover:shadow-primary-600/40 hover:scale-105 hover:shadow-xl",
               "flex flex-col items-center justify-center overflow-hidden",
               "border border-white/10",
             )}

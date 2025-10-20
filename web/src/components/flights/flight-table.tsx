@@ -1,7 +1,7 @@
 "use client";
 
 import { Flight } from "@/types/flight";
-import { useLanguage } from "@/context/language-context";
+import { useLanguage } from "@/context";
 import { flightTranslations } from "@/data/translations/flights";
 import { FlightStatusBadge } from "./flight-status-badge";
 

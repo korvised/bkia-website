@@ -198,10 +198,10 @@ export default async function SpecialServicesPage() {
     switch (color) {
       case "teal":
         return {
-          bg: "bg-bokeo-teal-100",
-          icon: "text-bokeo-teal-600",
-          border: "border-bokeo-teal-200",
-          hover: "hover:border-bokeo-teal-400",
+          bg: "bg-primary-100",
+          icon: "text-primary-600",
+          border: "border-primary-200",
+          hover: "hover:border-primary-400",
         };
       case "orange":
         return {
@@ -219,10 +219,10 @@ export default async function SpecialServicesPage() {
         };
       default:
         return {
-          bg: "bg-bokeo-teal-100",
-          icon: "text-bokeo-teal-600",
-          border: "border-bokeo-teal-200",
-          hover: "hover:border-bokeo-teal-400",
+          bg: "bg-primary-100",
+          icon: "text-primary-600",
+          border: "border-primary-200",
+          hover: "hover:border-primary-400",
         };
     }
   };
@@ -232,8 +232,8 @@ export default async function SpecialServicesPage() {
       {/* Page Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
         <div className="flex-shrink-0">
-          <div className="bg-bokeo-teal-100 flex h-16 w-16 items-center justify-center rounded-xl sm:h-20 sm:w-20">
-            <Heart className="text-bokeo-teal-600 h-8 w-8 sm:h-10 sm:w-10" />
+          <div className="bg-primary-100 flex h-16 w-16 items-center justify-center rounded-xl sm:h-20 sm:w-20">
+            <Heart className="text-primary-600 h-8 w-8 sm:h-10 sm:w-10" />
           </div>
         </div>
         <div className="flex-grow">
@@ -348,7 +348,7 @@ export default async function SpecialServicesPage() {
                   {/* Services Provided */}
                   <div>
                     <h4 className="mb-3 flex items-center gap-2 text-base font-semibold text-gray-900 sm:text-lg">
-                      <UserCheck className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+                      <UserCheck className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
                       Services Provided
                     </h4>
                     <ul className="space-y-1.5 sm:space-y-2">
@@ -357,7 +357,7 @@ export default async function SpecialServicesPage() {
                           key={index}
                           className="flex items-start gap-2 text-gray-700"
                         >
-                          <span className="text-bokeo-teal-600 mt-0.5 font-bold sm:mt-1">
+                          <span className="text-primary-600 mt-0.5 font-bold sm:mt-1">
                             ✓
                           </span>
                           <span className="text-xs leading-relaxed sm:text-sm">
@@ -371,7 +371,7 @@ export default async function SpecialServicesPage() {
                   {/* How to Request */}
                   <div>
                     <h4 className="mb-3 flex items-center gap-2 text-base font-semibold text-gray-900 sm:text-lg">
-                      <Phone className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+                      <Phone className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
                       How to Request
                     </h4>
                     <ul className="space-y-1.5 sm:space-y-2">
@@ -380,7 +380,7 @@ export default async function SpecialServicesPage() {
                           key={index}
                           className="flex items-start gap-2 text-gray-700"
                         >
-                          <span className="text-bokeo-teal-600 mt-0.5 font-semibold sm:mt-1">
+                          <span className="text-primary-600 mt-0.5 font-semibold sm:mt-1">
                             {index + 1}.
                           </span>
                           <span className="text-xs leading-relaxed sm:text-sm">
@@ -394,7 +394,7 @@ export default async function SpecialServicesPage() {
 
                 {/* Note */}
                 {service.note && (
-                  <div className="border-bokeo-teal-500 mt-5 rounded-r-lg border-l-4 bg-blue-50 p-3 sm:mt-6 sm:p-4">
+                  <div className="border-primary-500 mt-5 rounded-r-lg border-l-4 bg-blue-50 p-3 sm:mt-6 sm:p-4">
                     <p className="flex items-start gap-2 text-xs text-gray-700 sm:text-sm">
                       <span className="font-semibold text-gray-900">Note:</span>
                       <span>{service.note}</span>
@@ -408,14 +408,14 @@ export default async function SpecialServicesPage() {
       </div>
 
       {/* General Information */}
-      <div className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 rounded-xl border bg-gradient-to-br p-4 sm:p-6">
+      <div className="from-primary-50 to-primary-100 border-primary-200 rounded-xl border bg-gradient-to-br p-4 sm:p-6">
         <h3 className="mb-3 text-lg font-bold text-gray-900 sm:mb-4 sm:text-xl">
           General Information
         </h3>
         <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-5">
+          <div className="border-primary-200 rounded-lg border bg-white p-4 sm:p-5">
             <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-900 sm:mb-3 sm:text-base">
-              <Accessibility className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+              <Accessibility className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
               At the Airport
             </h4>
             <ul className="space-y-1.5 text-xs text-gray-700 sm:space-y-2 sm:text-sm">
@@ -427,9 +427,9 @@ export default async function SpecialServicesPage() {
             </ul>
           </div>
 
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-5">
+          <div className="border-primary-200 rounded-lg border bg-white p-4 sm:p-5">
             <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-900 sm:mb-3 sm:text-base">
-              <Stethoscope className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+              <Stethoscope className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
               Medical Facilities
             </h4>
             <ul className="space-y-1.5 text-xs text-gray-700 sm:space-y-2 sm:text-sm">
@@ -446,7 +446,7 @@ export default async function SpecialServicesPage() {
       {/* Contact Section */}
       <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 sm:p-6">
         <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-gray-900 sm:mb-4 sm:text-xl">
-          <Phone className="text-bokeo-teal-600 h-5 w-5 sm:h-6 sm:w-6" />
+          <Phone className="text-primary-600 h-5 w-5 sm:h-6 sm:w-6" />
           Need Special Assistance?
         </h3>
         <p className="mb-3 text-sm leading-relaxed text-gray-700 sm:mb-4 sm:text-base">
@@ -455,25 +455,25 @@ export default async function SpecialServicesPage() {
           special assistance you may need.
         </p>
         <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-3 sm:p-4">
+          <div className="border-primary-200 rounded-lg border bg-white p-3 sm:p-4">
             <p className="mb-1 text-sm font-semibold text-gray-900 sm:text-base">
               Book with Your Airline
             </p>
             <p className="text-xs text-gray-700 sm:text-sm">
               Contact your airline directly at time of booking
             </p>
-            <p className="text-bokeo-teal-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
+            <p className="text-primary-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
               Recommended: 48-72 hours advance notice
             </p>
           </div>
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-3 sm:p-4">
+          <div className="border-primary-200 rounded-lg border bg-white p-3 sm:p-4">
             <p className="mb-1 text-sm font-semibold text-gray-900 sm:text-base">
               Airport Assistance Desk
             </p>
             <p className="text-xs text-gray-700 sm:text-sm">
               Located in arrivals and departures halls
             </p>
-            <p className="text-bokeo-teal-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
+            <p className="text-primary-600 mt-1.5 text-xs font-medium sm:mt-2 sm:text-sm">
               Available 24/7 during operations
             </p>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { FlightTab } from "@/types/flight";
-import { useLanguage } from "@/context/language-context";
+import { useLanguage } from "@/context";
 import { flightTranslations } from "@/data/translations/flights";
 
 interface FlightTabsProps {
@@ -28,7 +28,7 @@ export function FlightTabs({ activeTab, onTabChange }: FlightTabsProps) {
             onClick={() => onTabChange(tab.key)}
             className={`border-b-2 px-1 py-2 text-sm font-medium transition-colors ${
               activeTab === tab.key
-                ? "border-bokeo-teal-500 text-bokeo-teal-600"
+                ? "border-primary-500 text-primary-600"
                 : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
             }`}
           >

@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Search, Clock, CheckCircle, XCircle, AlertCircle } from "lucide-react";
 import { Lang } from "@/types/language";
 import { cn } from "@/lib";
+import { useLanguage } from "@/context";
 import { complaintStatuses } from "@/data/notice/complaints";
 import { complaintTranslations } from "@/data/translations/complaint";
-import { useLanguage } from "@/context/language-context";
 
 interface ComplaintTrackingProps {
   lang: Lang;
@@ -111,7 +111,7 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
                 placeholder={t(
                   translations.tracking.referenceNumberPlaceholder,
                 )}
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 flex-1 rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-200 flex-1 rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
                 required
               />
               <button
@@ -121,7 +121,7 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
                   "flex items-center gap-2 rounded-lg px-6 py-2 font-medium text-white transition-colors",
                   isSearching
                     ? "cursor-not-allowed bg-gray-400"
-                    : "bg-bokeo-teal-600 hover:bg-bokeo-teal-700",
+                    : "bg-primary-600 hover:bg-primary-700",
                 )}
               >
                 {isSearching ? (
@@ -213,7 +213,7 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
               {complaint.timeline.map((item: any, index: number) => (
                 <div key={index} className="flex gap-4">
                   <div className="flex flex-col items-center">
-                    <div className="bg-bokeo-teal-100 rounded-full p-2">
+                    <div className="bg-primary-100 rounded-full p-2">
                       {getStatusIcon(item.status)}
                     </div>
                     {index < complaint.timeline.length - 1 && (

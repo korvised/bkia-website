@@ -165,8 +165,8 @@ export default async function AirCargoPage() {
       {/* Page Header */}
       <div className="flex flex-col items-start gap-4 sm:flex-row sm:gap-6">
         <div className="flex-shrink-0">
-          <div className="bg-bokeo-teal-100 flex h-16 w-16 items-center justify-center rounded-xl sm:h-20 sm:w-20">
-            <Package className="text-bokeo-teal-600 h-8 w-8 sm:h-10 sm:w-10" />
+          <div className="bg-primary-100 flex h-16 w-16 items-center justify-center rounded-xl sm:h-20 sm:w-20">
+            <Package className="text-primary-600 h-8 w-8 sm:h-10 sm:w-10" />
           </div>
         </div>
         <div className="flex-grow">
@@ -214,8 +214,8 @@ export default async function AirCargoPage() {
                 className="rounded-xl border border-gray-200 bg-white p-4 transition-shadow hover:shadow-lg sm:p-6"
               >
                 <div className="mb-3 flex items-start gap-3 sm:mb-4 sm:gap-4">
-                  <div className="bg-bokeo-teal-100 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg sm:h-12 sm:w-12">
-                    <Icon className="text-bokeo-teal-600 h-5 w-5 sm:h-6 sm:w-6" />
+                  <div className="bg-primary-100 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg sm:h-12 sm:w-12">
+                    <Icon className="text-primary-600 h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <div>
                     <h3 className="mb-1 text-base font-bold text-gray-900 sm:text-lg">
@@ -230,7 +230,7 @@ export default async function AirCargoPage() {
                 <div className="space-y-1.5 sm:space-y-2">
                   {service.features.map((feature, index) => (
                     <div key={index} className="flex items-start gap-2">
-                      <CheckCircle className="text-bokeo-teal-600 mt-0.5 h-3.5 w-3.5 flex-shrink-0 sm:h-4 sm:w-4" />
+                      <CheckCircle className="text-primary-600 mt-0.5 h-3.5 w-3.5 flex-shrink-0 sm:h-4 sm:w-4" />
                       <span className="text-xs text-gray-700 sm:text-sm">
                         {feature}
                       </span>
@@ -253,7 +253,7 @@ export default async function AirCargoPage() {
           {/* Step 1 */}
           <div className="flex gap-3 sm:gap-4">
             <div className="flex-shrink-0">
-              <div className="bg-bokeo-teal-600 flex h-8 w-8 items-center justify-center rounded-full text-base font-bold text-white sm:h-10 sm:w-10 sm:text-lg">
+              <div className="bg-primary-600 flex h-8 w-8 items-center justify-center rounded-full text-base font-bold text-white sm:h-10 sm:w-10 sm:text-lg">
                 1
               </div>
             </div>
@@ -266,7 +266,7 @@ export default async function AirCargoPage() {
                 dimensions, destination, and desired delivery time. We'll
                 provide a competitive quote and booking confirmation.
               </p>
-              <div className="bg-bokeo-teal-50 border-bokeo-teal-200 rounded-lg border p-3 sm:p-4">
+              <div className="bg-primary-50 border-primary-200 rounded-lg border p-3 sm:p-4">
                 <p className="text-xs text-gray-700 sm:text-sm">
                   <strong>Required Information:</strong> Shipper details,
                   consignee details, cargo description, weight, dimensions,
@@ -279,7 +279,7 @@ export default async function AirCargoPage() {
           {/* Step 2 */}
           <div className="flex gap-3 sm:gap-4">
             <div className="flex-shrink-0">
-              <div className="bg-bokeo-teal-600 flex h-8 w-8 items-center justify-center rounded-full text-base font-bold text-white sm:h-10 sm:w-10 sm:text-lg">
+              <div className="bg-primary-600 flex h-8 w-8 items-center justify-center rounded-full text-base font-bold text-white sm:h-10 sm:w-10 sm:text-lg">
                 2
               </div>
             </div>
@@ -322,7 +322,7 @@ export default async function AirCargoPage() {
           {/* Step 3 */}
           <div className="flex gap-3 sm:gap-4">
             <div className="flex-shrink-0">
-              <div className="bg-bokeo-teal-600 flex h-8 w-8 items-center justify-center rounded-full text-base font-bold text-white sm:h-10 sm:w-10 sm:text-lg">
+              <div className="bg-primary-600 flex h-8 w-8 items-center justify-center rounded-full text-base font-bold text-white sm:h-10 sm:w-10 sm:text-lg">
                 3
               </div>
             </div>
@@ -335,7 +335,7 @@ export default async function AirCargoPage() {
                 flight departure. Our team will inspect, weigh, and process your
                 shipment.
               </p>
-              <div className="border-bokeo-teal-500 rounded-lg border-l-4 bg-blue-50 p-3 sm:p-4">
+              <div className="border-primary-500 rounded-lg border-l-4 bg-blue-50 p-3 sm:p-4">
                 <p className="text-xs text-gray-700 sm:text-sm">
                   <strong>Cargo Terminal Hours:</strong> Monday - Sunday, 08:00
                   - 18:00. For after-hours shipments, please contact us in
@@ -348,7 +348,7 @@ export default async function AirCargoPage() {
           {/* Step 4 */}
           <div className="flex gap-3 sm:gap-4">
             <div className="flex-shrink-0">
-              <div className="bg-bokeo-teal-600 flex h-8 w-8 items-center justify-center rounded-full text-base font-bold text-white sm:h-10 sm:w-10 sm:text-lg">
+              <div className="bg-primary-600 flex h-8 w-8 items-center justify-center rounded-full text-base font-bold text-white sm:h-10 sm:w-10 sm:text-lg">
                 4
               </div>
             </div>
@@ -370,7 +370,7 @@ export default async function AirCargoPage() {
       {/* Sample Rates */}
       <section className="space-y-4 sm:space-y-6">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
-          <DollarSign className="text-bokeo-teal-600 h-5 w-5 sm:h-6 sm:w-6" />
+          <DollarSign className="text-primary-600 h-5 w-5 sm:h-6 sm:w-6" />
           <div>
             <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
               Sample Cargo Rates
@@ -384,7 +384,7 @@ export default async function AirCargoPage() {
         <div className="horizontal-scroll overflow-x-auto">
           <table className="w-full min-w-[640px] border-collapse overflow-hidden rounded-lg bg-white">
             <thead>
-              <tr className="bg-bokeo-teal-600 text-white">
+              <tr className="bg-primary-600 text-white">
                 <th className="px-3 py-3 text-left text-xs font-semibold sm:px-6 sm:py-4 sm:text-sm">
                   Destination
                 </th>
@@ -403,7 +403,7 @@ export default async function AirCargoPage() {
               {sampleRates.map((rate, index) => (
                 <tr
                   key={index}
-                  className={index % 2 === 0 ? "bg-bokeo-teal-50" : "bg-white"}
+                  className={index % 2 === 0 ? "bg-primary-50" : "bg-white"}
                 >
                   <td className="px-3 py-3 text-xs font-medium text-gray-900 sm:px-6 sm:py-4 sm:text-sm">
                     {rate.destination}
@@ -507,16 +507,16 @@ export default async function AirCargoPage() {
       </section>
 
       {/* Contact Information */}
-      <section className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 rounded-xl border bg-gradient-to-br p-5 sm:p-8">
+      <section className="from-primary-50 to-primary-100 border-primary-200 rounded-xl border bg-gradient-to-br p-5 sm:p-8">
         <h2 className="mb-4 text-xl font-bold text-gray-900 sm:mb-6 sm:text-2xl">
           Cargo Contact Information
         </h2>
 
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-6">
+          <div className="border-primary-200 rounded-lg border bg-white p-4 sm:p-6">
             <div className="mb-3 flex items-center gap-3 sm:mb-4">
-              <div className="bg-bokeo-teal-100 flex h-10 w-10 items-center justify-center rounded-lg sm:h-12 sm:w-12">
-                <Phone className="text-bokeo-teal-600 h-5 w-5 sm:h-6 sm:w-6" />
+              <div className="bg-primary-100 flex h-10 w-10 items-center justify-center rounded-lg sm:h-12 sm:w-12">
+                <Phone className="text-primary-600 h-5 w-5 sm:h-6 sm:w-6" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-gray-900 sm:text-base">
@@ -527,7 +527,7 @@ export default async function AirCargoPage() {
                 </p>
               </div>
             </div>
-            <p className="text-bokeo-teal-600 mb-1.5 text-base font-semibold sm:mb-2 sm:text-lg">
+            <p className="text-primary-600 mb-1.5 text-base font-semibold sm:mb-2 sm:text-lg">
               +856 XX XXX XXXX
             </p>
             <p className="text-xs text-gray-700 sm:text-sm">
@@ -535,10 +535,10 @@ export default async function AirCargoPage() {
             </p>
           </div>
 
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-6">
+          <div className="border-primary-200 rounded-lg border bg-white p-4 sm:p-6">
             <div className="mb-3 flex items-center gap-3 sm:mb-4">
-              <div className="bg-bokeo-teal-100 flex h-10 w-10 items-center justify-center rounded-lg sm:h-12 sm:w-12">
-                <Mail className="text-bokeo-teal-600 h-5 w-5 sm:h-6 sm:w-6" />
+              <div className="bg-primary-100 flex h-10 w-10 items-center justify-center rounded-lg sm:h-12 sm:w-12">
+                <Mail className="text-primary-600 h-5 w-5 sm:h-6 sm:w-6" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-gray-900 sm:text-base">
@@ -549,7 +549,7 @@ export default async function AirCargoPage() {
                 </p>
               </div>
             </div>
-            <p className="text-bokeo-teal-600 mb-1.5 text-base font-semibold sm:mb-2 sm:text-lg">
+            <p className="text-primary-600 mb-1.5 text-base font-semibold sm:mb-2 sm:text-lg">
               cargo@bokeoairport.la
             </p>
             <p className="text-xs text-gray-700 sm:text-sm">
@@ -557,10 +557,10 @@ export default async function AirCargoPage() {
             </p>
           </div>
 
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:col-span-2 sm:p-6">
+          <div className="border-primary-200 rounded-lg border bg-white p-4 sm:col-span-2 sm:p-6">
             <div className="mb-3 flex items-center gap-3 sm:mb-4">
-              <div className="bg-bokeo-teal-100 flex h-10 w-10 items-center justify-center rounded-lg sm:h-12 sm:w-12">
-                <MapPin className="text-bokeo-teal-600 h-5 w-5 sm:h-6 sm:w-6" />
+              <div className="bg-primary-100 flex h-10 w-10 items-center justify-center rounded-lg sm:h-12 sm:w-12">
+                <MapPin className="text-primary-600 h-5 w-5 sm:h-6 sm:w-6" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-gray-900 sm:text-base">
@@ -592,7 +592,7 @@ export default async function AirCargoPage() {
         </h3>
         <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
           <div className="flex items-start gap-2 sm:gap-3">
-            <FileText className="text-bokeo-teal-600 mt-1 h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
+            <FileText className="text-primary-600 mt-1 h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
             <div>
               <h4 className="mb-0.5 text-sm font-semibold text-gray-900 sm:mb-1 sm:text-base">
                 Customs Clearance
@@ -603,7 +603,7 @@ export default async function AirCargoPage() {
             </div>
           </div>
           <div className="flex items-start gap-2 sm:gap-3">
-            <Scale className="text-bokeo-teal-600 mt-1 h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
+            <Scale className="text-primary-600 mt-1 h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
             <div>
               <h4 className="mb-0.5 text-sm font-semibold text-gray-900 sm:mb-1 sm:text-base">
                 Weighing & Inspection
@@ -614,7 +614,7 @@ export default async function AirCargoPage() {
             </div>
           </div>
           <div className="flex items-start gap-2 sm:gap-3">
-            <Package className="text-bokeo-teal-600 mt-1 h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
+            <Package className="text-primary-600 mt-1 h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
             <div>
               <h4 className="mb-0.5 text-sm font-semibold text-gray-900 sm:mb-1 sm:text-base">
                 Packaging & Crating

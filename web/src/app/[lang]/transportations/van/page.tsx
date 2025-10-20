@@ -69,7 +69,7 @@ export default async function VanPage({ params }: VanPageProps) {
       {/* Page Title */}
       <div>
         <div className="mb-2 flex items-center gap-3">
-          <Truck className="text-bokeo-teal-600 h-8 w-8" />
+          <Truck className="text-primary-600 h-8 w-8" />
           <h1 className="text-3xl font-bold text-gray-900">Van Services</h1>
         </div>
         <p className="ml-11 text-sm text-gray-600">
@@ -103,7 +103,7 @@ export default async function VanPage({ params }: VanPageProps) {
 
           <div className="space-y-3">
             <div className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
-              <MapPin className="text-bokeo-teal-600 mt-0.5 h-5 w-5 flex-shrink-0" />
+              <MapPin className="text-primary-600 mt-0.5 h-5 w-5 flex-shrink-0" />
               <div>
                 <p className="mb-1 font-semibold text-gray-900">
                   Pick-up Location
@@ -116,7 +116,7 @@ export default async function VanPage({ params }: VanPageProps) {
             </div>
 
             <div className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
-              <Clock className="text-bokeo-teal-600 mt-0.5 h-5 w-5 flex-shrink-0" />
+              <Clock className="text-primary-600 mt-0.5 h-5 w-5 flex-shrink-0" />
               <div>
                 <p className="mb-1 font-semibold text-gray-900">Availability</p>
                 <p className="text-gray-600">
@@ -126,7 +126,7 @@ export default async function VanPage({ params }: VanPageProps) {
             </div>
 
             <div className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
-              <Phone className="text-bokeo-teal-600 mt-0.5 h-5 w-5 flex-shrink-0" />
+              <Phone className="text-primary-600 mt-0.5 h-5 w-5 flex-shrink-0" />
               <div>
                 <p className="mb-1 font-semibold text-gray-900">
                   Booking & Inquiries
@@ -149,10 +149,10 @@ export default async function VanPage({ params }: VanPageProps) {
           {vanServices.map((service, idx) => (
             <div
               key={idx}
-              className="hover:border-bokeo-teal-300 rounded-lg border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
+              className="hover:border-primary-300 rounded-lg border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
             >
               <div className="mb-4 flex items-center gap-3">
-                <div className="bg-bokeo-teal-100 text-bokeo-teal-600 flex h-12 w-12 items-center justify-center rounded-lg">
+                <div className="bg-primary-100 text-primary-600 flex h-12 w-12 items-center justify-center rounded-lg">
                   <Users className="h-6 w-6" />
                 </div>
                 <div>
@@ -164,7 +164,7 @@ export default async function VanPage({ params }: VanPageProps) {
               </div>
 
               <div className="mb-4">
-                <p className="text-bokeo-teal-600 text-lg font-bold">
+                <p className="text-primary-600 text-lg font-bold">
                   {service.price}
                 </p>
                 <p className="text-xs text-gray-500">Per trip</p>
@@ -176,7 +176,7 @@ export default async function VanPage({ params }: VanPageProps) {
                     key={fIdx}
                     className="flex items-start gap-2 text-sm text-gray-600"
                   >
-                    <span className="text-bokeo-teal-600 mt-1">✓</span>
+                    <span className="text-primary-600 mt-1">✓</span>
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -204,7 +204,7 @@ export default async function VanPage({ params }: VanPageProps) {
                 <p className="text-sm text-gray-500">{dest.duration}</p>
               </div>
               <div className="text-right">
-                <p className="text-bokeo-teal-600 font-bold">{dest.price}</p>
+                <p className="text-primary-600 font-bold">{dest.price}</p>
                 <p className="text-xs text-gray-500">Starting from</p>
               </div>
             </div>
@@ -222,7 +222,7 @@ export default async function VanPage({ params }: VanPageProps) {
         </h2>
         <div className="grid gap-4 md:grid-cols-4">
           <div className="text-center">
-            <div className="bg-bokeo-teal-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
+            <div className="bg-primary-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
               1
             </div>
             <h4 className="mb-1 font-semibold text-gray-900">Contact</h4>
@@ -231,7 +231,7 @@ export default async function VanPage({ params }: VanPageProps) {
             </p>
           </div>
           <div className="text-center">
-            <div className="bg-bokeo-teal-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
+            <div className="bg-primary-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
               2
             </div>
             <h4 className="mb-1 font-semibold text-gray-900">Confirm</h4>
@@ -240,7 +240,7 @@ export default async function VanPage({ params }: VanPageProps) {
             </p>
           </div>
           <div className="text-center">
-            <div className="bg-bokeo-teal-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
+            <div className="bg-primary-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
               3
             </div>
             <h4 className="mb-1 font-semibold text-gray-900">Meet</h4>
@@ -249,7 +249,7 @@ export default async function VanPage({ params }: VanPageProps) {
             </p>
           </div>
           <div className="text-center">
-            <div className="bg-bokeo-teal-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
+            <div className="bg-primary-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
               4
             </div>
             <h4 className="mb-1 font-semibold text-gray-900">Travel</h4>
@@ -295,43 +295,43 @@ export default async function VanPage({ params }: VanPageProps) {
       </div>
 
       {/* Important Information */}
-      <div className="bg-bokeo-blue-50 border-bokeo-blue-200 rounded-lg border p-6">
+      <div className="bg-primary-50 border-primary-200 rounded-lg border p-6">
         <div className="flex gap-3">
-          <Info className="text-bokeo-blue-600 mt-0.5 h-5 w-5 flex-shrink-0" />
+          <Info className="text-primary-600 mt-0.5 h-5 w-5 flex-shrink-0" />
           <div className="space-y-2">
-            <p className="text-bokeo-blue-900 font-semibold">
+            <p className="text-primary-900 font-semibold">
               Important Information
             </p>
-            <ul className="text-bokeo-blue-800 space-y-1 text-sm">
+            <ul className="text-primary-800 space-y-1 text-sm">
               <li className="flex items-start gap-2">
-                <span className="text-bokeo-blue-600 mt-1">•</span>
+                <span className="text-primary-600 mt-1">•</span>
                 <span>
                   Advance booking is recommended, especially during peak travel
                   seasons and holidays
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-bokeo-blue-600 mt-1">•</span>
+                <span className="text-primary-600 mt-1">•</span>
                 <span>
                   Payment accepted: Cash (LAK, THB, USD), mobile payment (BCEL
                   One, M-money)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-bokeo-blue-600 mt-1">•</span>
+                <span className="text-primary-600 mt-1">•</span>
                 <span>
                   Free cancellation up to 4 hours before scheduled pick-up time
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-bokeo-blue-600 mt-1">•</span>
+                <span className="text-primary-600 mt-1">•</span>
                 <span>
                   For international destinations, ensure you have valid travel
                   documents
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-bokeo-blue-600 mt-1">•</span>
+                <span className="text-primary-600 mt-1">•</span>
                 <span>
                   Additional charges may apply for destinations outside Bokeo
                   Province
@@ -385,15 +385,15 @@ export default async function VanPage({ params }: VanPageProps) {
         <h3 className="mb-4 font-semibold text-gray-900">Need Assistance?</h3>
         <div className="grid gap-4 md:grid-cols-2">
           <div className="flex items-start gap-3">
-            <Phone className="text-bokeo-teal-600 mt-0.5 h-5 w-5 flex-shrink-0" />
+            <Phone className="text-primary-600 mt-0.5 h-5 w-5 flex-shrink-0" />
             <div>
               <p className="font-semibold text-gray-900">Van Service Hotline</p>
-              <p className="text-bokeo-teal-600 font-medium">+856 84 211 777</p>
+              <p className="text-primary-600 font-medium">+856 84 211 777</p>
               <p className="text-sm text-gray-600">Available 24/7</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <MapPin className="text-bokeo-teal-600 mt-0.5 h-5 w-5 flex-shrink-0" />
+            <MapPin className="text-primary-600 mt-0.5 h-5 w-5 flex-shrink-0" />
             <div>
               <p className="font-semibold text-gray-900">Service Counter</p>
               <p className="text-gray-600">Ground Transportation Center</p>

@@ -6,7 +6,7 @@ export function FlightSkeleton() {
       {/* Header Skeleton */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <Plane className="text-bokeo-teal-600 h-8 w-8" />
+          <Plane className="text-primary-600 h-8 w-8" />
           <div className="h-8 w-48 animate-pulse rounded bg-gray-200" />
         </div>
       </div>

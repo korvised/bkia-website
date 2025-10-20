@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { AlertTriangle, RefreshCw, Home } from "lucide-react";
 import Link from "next/link";
-import { useLanguage } from "@/context/language-context";
+import { useLanguage } from "@/context";
 
 interface FlightsErrorProps {
   error: Error & { digest?: string };
@@ -57,7 +57,7 @@ export default function FlightsError({ error, reset }: FlightsErrorProps) {
         <div className="flex flex-col gap-3 sm:flex-row">
           <button
             onClick={reset}
-            className="bg-bokeo-teal-600 hover:bg-bokeo-teal-700 flex flex-1 items-center justify-center space-x-2 rounded-lg px-4 py-2 text-white transition-colors"
+            className="bg-primary-600 hover:bg-primary-700 flex flex-1 items-center justify-center space-x-2 rounded-lg px-4 py-2 text-white transition-colors"
           >
             <RefreshCw className="h-4 w-4" />
             <span>{messages.retry}</span>

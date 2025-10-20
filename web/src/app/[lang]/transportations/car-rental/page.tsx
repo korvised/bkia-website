@@ -80,7 +80,7 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
       {/* Page Title */}
       <div>
         <div className="mb-2 flex items-center gap-3">
-          <Car className="text-bokeo-teal-600 h-8 w-8" />
+          <Car className="text-primary-600 h-8 w-8" />
           <h1 className="text-3xl font-bold text-gray-900">Car Rental</h1>
         </div>
         <p className="ml-11 text-sm text-gray-600">
@@ -114,34 +114,34 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
             </p>
           </div>
 
-          <div className="bg-bokeo-blue-50 border-bokeo-blue-200 rounded-lg border p-4">
-            <h3 className="text-bokeo-blue-900 mb-2 font-semibold">
+          <div className="bg-primary-50 border-primary-200 rounded-lg border p-4">
+            <h3 className="text-primary-900 mb-2 font-semibold">
               Rental Requirements
             </h3>
-            <ul className="text-bokeo-blue-800 space-y-1 text-sm">
+            <ul className="text-primary-800 space-y-1 text-sm">
               <li className="flex items-start gap-2">
-                <span className="text-bokeo-blue-600 mt-1">•</span>
+                <span className="text-primary-600 mt-1">•</span>
                 <span>
                   Valid driver's license (International Driving Permit
                   recommended for foreigners)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-bokeo-blue-600 mt-1">•</span>
+                <span className="text-primary-600 mt-1">•</span>
                 <span>Valid passport or Lao ID card</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-bokeo-blue-600 mt-1">•</span>
+                <span className="text-primary-600 mt-1">•</span>
                 <span>
                   Security deposit (cash or credit card pre-authorization)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-bokeo-blue-600 mt-1">•</span>
+                <span className="text-primary-600 mt-1">•</span>
                 <span>Minimum age: 21 years old (25 for luxury vehicles)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-bokeo-blue-600 mt-1">•</span>
+                <span className="text-primary-600 mt-1">•</span>
                 <span>Driver's license held for at least 1 year</span>
               </li>
             </ul>
@@ -172,7 +172,7 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
           {rentalCompanies.map((company, idx) => (
             <div
               key={idx}
-              className="hover:border-bokeo-teal-300 rounded-lg border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
+              className="hover:border-primary-300 rounded-lg border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
             >
               <div className="grid gap-4 md:grid-cols-3">
                 <div>
@@ -181,11 +181,11 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
                   </h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex items-start gap-2">
-                      <MapPin className="text-bokeo-teal-600 mt-0.5 h-4 w-4 flex-shrink-0" />
+                      <MapPin className="text-primary-600 mt-0.5 h-4 w-4 flex-shrink-0" />
                       <span className="text-gray-600">{company.location}</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Phone className="text-bokeo-teal-600 mt-0.5 h-4 w-4 flex-shrink-0" />
+                      <Phone className="text-primary-600 mt-0.5 h-4 w-4 flex-shrink-0" />
                       <span className="text-gray-600">{company.phone}</span>
                     </div>
                   </div>
@@ -193,7 +193,7 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
 
                 <div>
                   <div className="mb-2 flex items-start gap-2">
-                    <Clock className="text-bokeo-teal-600 mt-0.5 h-4 w-4 flex-shrink-0" />
+                    <Clock className="text-primary-600 mt-0.5 h-4 w-4 flex-shrink-0" />
                     <div>
                       <p className="text-sm font-semibold text-gray-900">
                         Operating Hours
@@ -212,11 +212,11 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
                 </div>
 
                 <div className="flex items-center">
-                  <div className="bg-bokeo-teal-50 w-full rounded-lg p-3">
-                    <p className="text-bokeo-teal-900 mb-1 text-sm font-semibold">
+                  <div className="bg-primary-50 w-full rounded-lg p-3">
+                    <p className="text-primary-900 mb-1 text-sm font-semibold">
                       Airport Service
                     </p>
-                    <p className="text-bokeo-teal-700 text-sm">
+                    <p className="text-primary-700 text-sm">
                       {company.delivery}
                     </p>
                   </div>
@@ -230,7 +230,7 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
       {/* Vehicle Rates */}
       <div className="rounded-lg border border-gray-200 bg-white p-6">
         <div className="mb-4 flex items-center gap-2">
-          <DollarSign className="text-bokeo-teal-600 h-5 w-5" />
+          <DollarSign className="text-primary-600 h-5 w-5" />
           <h2 className="text-xl font-semibold text-gray-900">
             Estimated Daily Rates
           </h2>
@@ -257,7 +257,7 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
                   className="border-b border-gray-100 hover:bg-gray-50"
                 >
                   <td className="px-4 py-3 text-gray-700">{rate.type}</td>
-                  <td className="text-bokeo-teal-600 px-4 py-3 text-right font-semibold">
+                  <td className="text-primary-600 px-4 py-3 text-right font-semibold">
                     {rate.dailyRate}
                   </td>
                   <td className="px-4 py-3 text-right text-gray-600">
@@ -268,8 +268,8 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
             </tbody>
           </table>
         </div>
-        <div className="bg-bokeo-blue-50 mt-4 rounded-lg p-3">
-          <p className="text-bokeo-blue-800 text-sm">
+        <div className="bg-primary-50 mt-4 rounded-lg p-3">
+          <p className="text-primary-800 text-sm">
             <strong>Note:</strong> Rates are approximate and vary by company,
             season, and rental duration. Weekly and monthly rates available with
             significant discounts. Fuel is not included in the rental price.
@@ -284,7 +284,7 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
         </h2>
         <div className="grid gap-4 md:grid-cols-4">
           <div className="text-center">
-            <div className="bg-bokeo-teal-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
+            <div className="bg-primary-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
               1
             </div>
             <h4 className="mb-1 font-semibold text-gray-900">Book</h4>
@@ -293,7 +293,7 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
             </p>
           </div>
           <div className="text-center">
-            <div className="bg-bokeo-teal-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
+            <div className="bg-primary-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
               2
             </div>
             <h4 className="mb-1 font-semibold text-gray-900">Documents</h4>
@@ -302,7 +302,7 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
             </p>
           </div>
           <div className="text-center">
-            <div className="bg-bokeo-teal-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
+            <div className="bg-primary-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
               3
             </div>
             <h4 className="mb-1 font-semibold text-gray-900">Inspect</h4>
@@ -311,7 +311,7 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
             </p>
           </div>
           <div className="text-center">
-            <div className="bg-bokeo-teal-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
+            <div className="bg-primary-600 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white">
               4
             </div>
             <h4 className="mb-1 font-semibold text-gray-900">Drive</h4>
@@ -330,21 +330,21 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
           </h3>
           <ul className="space-y-2 text-sm text-gray-600">
             <li className="flex items-start gap-2">
-              <span className="text-bokeo-teal-600 mt-1">•</span>
+              <span className="text-primary-600 mt-1">•</span>
               <span>
                 <strong>Basic Insurance:</strong> Included in rental price
                 (liability coverage)
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-bokeo-teal-600 mt-1">•</span>
+              <span className="text-primary-600 mt-1">•</span>
               <span>
                 <strong>Collision Damage Waiver (CDW):</strong> 50,000-100,000
                 LAK/day
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-bokeo-teal-600 mt-1">•</span>
+              <span className="text-primary-600 mt-1">•</span>
               <span>
                 <strong>Full Coverage:</strong> 100,000-150,000 LAK/day
               </span>
@@ -358,19 +358,19 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
           </h3>
           <ul className="space-y-2 text-sm text-gray-600">
             <li className="flex items-start gap-2">
-              <span className="text-bokeo-teal-600 mt-1">•</span>
+              <span className="text-primary-600 mt-1">•</span>
               <span>GPS Navigation: 30,000 LAK/day</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-bokeo-teal-600 mt-1">•</span>
+              <span className="text-primary-600 mt-1">•</span>
               <span>Child Car Seat: 20,000 LAK/day</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-bokeo-teal-600 mt-1">•</span>
+              <span className="text-primary-600 mt-1">•</span>
               <span>Additional Driver: 50,000 LAK/day</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-bokeo-teal-600 mt-1">•</span>
+              <span className="text-primary-600 mt-1">•</span>
               <span>Cross-border permit (to Thailand): 200,000 LAK</span>
             </li>
           </ul>
@@ -423,19 +423,19 @@ export default async function CarRentalPage({ params }: CarRentalPageProps) {
         <h3 className="mb-4 font-semibold text-gray-900">Need Assistance?</h3>
         <div className="grid gap-4 md:grid-cols-2">
           <div className="flex items-start gap-3">
-            <Phone className="text-bokeo-teal-600 mt-0.5 h-5 w-5 flex-shrink-0" />
+            <Phone className="text-primary-600 mt-0.5 h-5 w-5 flex-shrink-0" />
             <div>
               <p className="font-semibold text-gray-900">
                 Airport Information Desk
               </p>
-              <p className="text-bokeo-teal-600 font-medium">+856 84 211 555</p>
+              <p className="text-primary-600 font-medium">+856 84 211 555</p>
               <p className="text-sm text-gray-600">
                 Can help arrange car rental services
               </p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <MapPin className="text-bokeo-teal-600 mt-0.5 h-5 w-5 flex-shrink-0" />
+            <MapPin className="text-primary-600 mt-0.5 h-5 w-5 flex-shrink-0" />
             <div>
               <p className="font-semibold text-gray-900">
                 Rental Companies Location

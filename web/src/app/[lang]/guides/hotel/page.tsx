@@ -306,8 +306,8 @@ export default async function HotelServicesPage() {
       {/* Page Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
         <div className="flex-shrink-0">
-          <div className="bg-bokeo-teal-100 flex h-16 w-16 items-center justify-center rounded-xl sm:h-20 sm:w-20">
-            <Building className="text-bokeo-teal-600 h-8 w-8 sm:h-10 sm:w-10" />
+          <div className="bg-primary-100 flex h-16 w-16 items-center justify-center rounded-xl sm:h-20 sm:w-20">
+            <Building className="text-primary-600 h-8 w-8 sm:h-10 sm:w-10" />
           </div>
         </div>
         <div className="flex-grow">
@@ -323,9 +323,9 @@ export default async function HotelServicesPage() {
       </div>
 
       {/* Important Information */}
-      <div className="border-bokeo-teal-500 rounded-r-lg border-l-4 bg-blue-50 p-4 sm:p-5">
+      <div className="border-primary-500 rounded-r-lg border-l-4 bg-blue-50 p-4 sm:p-5">
         <div className="flex items-start gap-3">
-          <Hotel className="text-bokeo-teal-600 mt-0.5 h-5 w-5 flex-shrink-0 sm:h-6 sm:w-6" />
+          <Hotel className="text-primary-600 mt-0.5 h-5 w-5 flex-shrink-0 sm:h-6 sm:w-6" />
           <div>
             <p className="mb-1 text-sm font-semibold text-gray-900 sm:text-base">
               Airport Hotel Services
@@ -356,10 +356,10 @@ export default async function HotelServicesPage() {
               return (
                 <div
                   key={hotel.id}
-                  className="border-bokeo-teal-200 overflow-hidden rounded-xl border-2 bg-white transition-shadow hover:shadow-xl"
+                  className="border-primary-200 overflow-hidden rounded-xl border-2 bg-white transition-shadow hover:shadow-xl"
                 >
                   {/* Hotel Image */}
-                  <div className="from-bokeo-teal-100 to-bokeo-teal-200 relative flex h-40 items-center justify-center overflow-hidden bg-gradient-to-br sm:h-48">
+                  <div className="from-primary-100 to-primary-200 relative flex h-40 items-center justify-center overflow-hidden bg-gradient-to-br sm:h-48">
                     {hotel.image ? (
                       <Image
                         src={hotel.image}
@@ -369,7 +369,7 @@ export default async function HotelServicesPage() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     ) : (
-                      <Hotel className="text-bokeo-teal-400 h-16 w-16 sm:h-20 sm:w-20" />
+                      <Hotel className="text-primary-400 h-16 w-16 sm:h-20 sm:w-20" />
                     )}
                   </div>
 
@@ -411,7 +411,7 @@ export default async function HotelServicesPage() {
                       <span className="text-xs text-gray-500 sm:text-sm">
                         •
                       </span>
-                      <span className="text-bokeo-teal-600 text-xs font-medium sm:text-sm">
+                      <span className="text-primary-600 text-xs font-medium sm:text-sm">
                         {hotel.distance}
                       </span>
                     </div>
@@ -424,7 +424,7 @@ export default async function HotelServicesPage() {
                       {hotel.amenities.slice(0, 6).map((amenity, index) => (
                         <span
                           key={index}
-                          className="bg-bokeo-teal-50 text-bokeo-teal-700 rounded-full px-2 py-0.5 text-xs"
+                          className="bg-primary-50 text-primary-700 rounded-full px-2 py-0.5 text-xs"
                         >
                           {amenity}
                         </span>
@@ -582,14 +582,14 @@ export default async function HotelServicesPage() {
       </div>
 
       {/* Booking Information */}
-      <div className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 rounded-xl border bg-gradient-to-br p-4 sm:p-6">
+      <div className="from-primary-50 to-primary-100 border-primary-200 rounded-xl border bg-gradient-to-br p-4 sm:p-6">
         <h3 className="mb-3 text-lg font-bold text-gray-900 sm:mb-4 sm:text-xl">
           Booking Information
         </h3>
         <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-5">
+          <div className="border-primary-200 rounded-lg border bg-white p-4 sm:p-5">
             <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-900 sm:mb-3 sm:text-base">
-              <Phone className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+              <Phone className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
               How to Book
             </h4>
             <ul className="space-y-1.5 text-xs text-gray-700 sm:space-y-2 sm:text-sm">
@@ -602,9 +602,9 @@ export default async function HotelServicesPage() {
             </ul>
           </div>
 
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-5">
+          <div className="border-primary-200 rounded-lg border bg-white p-4 sm:p-5">
             <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-900 sm:mb-3 sm:text-base">
-              <BadgeCheck className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+              <BadgeCheck className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
               Tips for Travelers
             </h4>
             <ul className="space-y-1.5 text-xs text-gray-700 sm:space-y-2 sm:text-sm">
@@ -622,7 +622,7 @@ export default async function HotelServicesPage() {
       {/* Area Information */}
       <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-6">
         <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-gray-900 sm:mb-4 sm:text-xl">
-          <MapPin className="text-bokeo-teal-600 h-5 w-5 sm:h-6 sm:w-6" />
+          <MapPin className="text-primary-600 h-5 w-5 sm:h-6 sm:w-6" />
           Hotel Locations
         </h3>
         <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">

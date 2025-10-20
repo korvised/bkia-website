@@ -2,14 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Bus,
-  Car,
-  CarTaxiFront,
-  ParkingCircle,
-  Smartphone,
-  Truck,
-} from "lucide-react";
+import { Bus, Car, CarTaxiFront, ParkingCircle } from "lucide-react";
 import { cn } from "@/lib";
 
 interface TransportationTabsProps {
@@ -47,7 +40,7 @@ export function TransportationTabs({ lang }: TransportationTabsProps) {
               className={cn(
                 "flex items-center gap-2 border-b-2 px-1 py-4 text-sm font-medium whitespace-nowrap transition-colors",
                 isActive
-                  ? "border-bokeo-teal-600 text-bokeo-teal-600"
+                  ? "border-primary-600 text-primary-600"
                   : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
               )}
             >

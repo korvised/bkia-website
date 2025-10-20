@@ -14,7 +14,7 @@ export default function QuickLinks({ lang }: QuickLinkProps) {
         <li>
           <Link
             href={`/${lang}/flights`}
-            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+            className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
           >
             Flight Information
           </Link>
@@ -22,7 +22,7 @@ export default function QuickLinks({ lang }: QuickLinkProps) {
         <li>
           <Link
             href={`/${lang}/flights?tab=departures`}
-            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+            className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
           >
             Departures
           </Link>
@@ -30,7 +30,7 @@ export default function QuickLinks({ lang }: QuickLinkProps) {
         <li>
           <Link
             href={`/${lang}/flights?tab=arrivals`}
-            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+            className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
           >
             Arrivals
           </Link>
@@ -38,7 +38,7 @@ export default function QuickLinks({ lang }: QuickLinkProps) {
         <li>
           <Link
             href={`/${lang}/transportations/parking`}
-            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+            className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
           >
             Parking Information
           </Link>
@@ -46,7 +46,7 @@ export default function QuickLinks({ lang }: QuickLinkProps) {
         <li>
           <Link
             href={`/${lang}/survey`}
-            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+            className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
           >
             About Airport
           </Link>
@@ -54,7 +54,7 @@ export default function QuickLinks({ lang }: QuickLinkProps) {
         <li>
           <Link
             href={`/${lang}/news`}
-            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+            className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
           >
             News & Updates
           </Link>
@@ -62,19 +62,19 @@ export default function QuickLinks({ lang }: QuickLinkProps) {
         <li>
           <Link
             href={`/${lang}/contact`}
-            className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+            className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
           >
             Contact Us
           </Link>
         </li>
 
         {/* External Links */}
-        <li className="border-bokeo-teal-700/30 border-t pt-2">
+        <li className="border-primary-700/30 border-t pt-2">
           <a
             href="https://www.iata.org"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-bokeo-teal-200 flex items-center opacity-80 transition-colors hover:opacity-100"
+            className="hover:text-primary-200 flex items-center opacity-80 transition-colors hover:opacity-100"
           >
             IATA
             <ExternalLink className="ml-1 h-3 w-3" />
@@ -85,7 +85,7 @@ export default function QuickLinks({ lang }: QuickLinkProps) {
             href="https://www.icao.int"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-bokeo-teal-200 flex items-center opacity-80 transition-colors hover:opacity-100"
+            className="hover:text-primary-200 flex items-center opacity-80 transition-colors hover:opacity-100"
           >
             ICAO
             <ExternalLink className="ml-1 h-3 w-3" />

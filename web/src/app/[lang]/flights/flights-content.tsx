@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Lang } from "@/types/language";
 import { Plane } from "lucide-react";
 import { Airline, Flight, FlightTab } from "@/types/flight";
-import { useLanguage } from "@/context/language-context";
+import { useLanguage } from "@/context";
 import { flightTranslations } from "@/data/translations/flights";
 import { useFlightFilter } from "@/hooks/use-flight-filter";
 import {
@@ -99,7 +99,7 @@ export default function FlightsPageContent({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <Plane className="text-bokeo-teal-600 h-8 w-8" />
+          <Plane className="text-primary-600 h-8 w-8" />
           <h1 className="text-3xl font-bold text-gray-900">
             {t(flightTranslations.title)}
           </h1>

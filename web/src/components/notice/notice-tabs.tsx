@@ -10,7 +10,7 @@ import {
   SearchCheck,
 } from "lucide-react";
 import { cn } from "@/lib";
-import { useLanguage } from "@/context/language-context";
+import { useLanguage } from "@/context";
 import { noticeTranslations } from "@/data/translations/notice";
 
 export type NoticeTab =
@@ -67,7 +67,7 @@ export function NoticeTabs() {
               className={cn(
                 "flex items-center gap-2 border-b-2 px-1 py-4 text-sm font-medium whitespace-nowrap transition-colors",
                 isActive
-                  ? "border-bokeo-teal-600 text-bokeo-teal-600"
+                  ? "border-primary-600 text-primary-600"
                   : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
               )}
             >

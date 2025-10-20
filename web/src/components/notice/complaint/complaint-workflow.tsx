@@ -2,7 +2,7 @@
 
 import { CheckCircle } from "lucide-react";
 import { Lang } from "@/types/language";
-import { useLanguage } from "@/context/language-context";
+import { useLanguage } from "@/context";
 import { complaintWorkflow } from "@/data/notice/complaints";
 import { complaintTranslations } from "@/data/translations/complaint";
 
@@ -25,7 +25,7 @@ export function ComplaintWorkflow({ lang }: ComplaintWorkflowProps) {
           <div key={step.id} className="relative flex gap-4">
             {/* Step Number Circle */}
             <div className="flex flex-col items-center">
-              <div className="bg-bokeo-teal-600 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-white">
+              <div className="bg-primary-600 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-white">
                 <span className="text-lg font-bold">{step.id}</span>
               </div>
               {index < complaintWorkflow.steps.length - 1 && (
@@ -45,14 +45,14 @@ export function ComplaintWorkflow({ lang }: ComplaintWorkflowProps) {
       </div>
 
       {/* Additional Information */}
-      <div className="bg-bokeo-teal-50 mt-6 rounded-lg p-4">
+      <div className="bg-primary-50 mt-6 rounded-lg p-4">
         <div className="flex gap-3">
-          <CheckCircle className="text-bokeo-teal-600 h-5 w-5 flex-shrink-0" />
+          <CheckCircle className="text-primary-600 h-5 w-5 flex-shrink-0" />
           <div>
-            <p className="text-bokeo-teal-900 text-sm font-medium">
+            <p className="text-primary-900 text-sm font-medium">
               {t(translations.workflow.commitment)}
             </p>
-            <p className="text-bokeo-teal-700 mt-1 text-sm">
+            <p className="text-primary-700 mt-1 text-sm">
               {t(translations.workflow.commitmentText)}
             </p>
           </div>

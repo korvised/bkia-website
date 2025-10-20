@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
 import { Lang } from "@/types/language";
-import { useLanguage } from "@/context/language-context";
+import { useLanguage } from "@/context";
 import { complaintFAQs } from "@/data/notice/complaints";
 import { cn } from "@/lib";
 import { complaintTranslations } from "@/data/translations/complaint";
@@ -23,8 +23,8 @@ export function ComplaintFAQ({ lang }: ComplaintFAQProps) {
   return (
     <div className="rounded-lg border border-gray-200 bg-white p-6">
       <div className="mb-6 flex items-center gap-3">
-        <div className="bg-bokeo-teal-100 rounded-full p-2">
-          <HelpCircle className="text-bokeo-teal-600 h-6 w-6" />
+        <div className="bg-primary-100 rounded-full p-2">
+          <HelpCircle className="text-primary-600 h-6 w-6" />
         </div>
         <h3 className="text-lg font-semibold text-gray-900">
           {t(complaintTranslations.sections.faq)}
@@ -35,7 +35,7 @@ export function ComplaintFAQ({ lang }: ComplaintFAQProps) {
         {complaintFAQs.map((faq, index) => (
           <div
             key={faq.id}
-            className="hover:border-bokeo-teal-300 rounded-lg border border-gray-200 transition-colors"
+            className="hover:border-primary-300 rounded-lg border border-gray-200 transition-colors"
           >
             <button
               onClick={() => toggleFAQ(index)}
@@ -45,7 +45,7 @@ export function ComplaintFAQ({ lang }: ComplaintFAQProps) {
                 {t(faq.question)}
               </span>
               {openIndex === index ? (
-                <ChevronUp className="text-bokeo-teal-600 h-5 w-5 flex-shrink-0" />
+                <ChevronUp className="text-primary-600 h-5 w-5 flex-shrink-0" />
               ) : (
                 <ChevronDown className="h-5 w-5 flex-shrink-0 text-gray-400" />
               )}

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Send, Upload, X } from "lucide-react";
 import { Lang } from "@/types/language";
-import { useLanguage } from "@/context/language-context";
+import { useLanguage } from "@/context";
 import { complaintCategories } from "@/data/notice/complaints";
 import { complaintTranslations } from "@/data/translations/complaint";
 import { cn } from "@/lib";
@@ -87,7 +87,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
           <p className="mb-2 text-sm text-gray-600">
             {t(translations.form.referenceNumber)}
           </p>
-          <p className="text-bokeo-teal-600 text-2xl font-bold">
+          <p className="text-primary-600 text-2xl font-bold">
             {referenceNumber}
           </p>
         </div>
@@ -113,7 +113,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
             });
             setAttachments([]);
           }}
-          className="bg-bokeo-teal-600 hover:bg-bokeo-teal-700 mt-6 rounded-lg px-6 py-2 text-white transition-colors"
+          className="bg-primary-600 hover:bg-primary-700 mt-6 rounded-lg px-6 py-2 text-white transition-colors"
         >
           {t(translations.form.submitAnother)}
         </button>
@@ -141,7 +141,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
               value={formData.category}
               onChange={handleInputChange}
               required
-              className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+              className="focus:border-primary-500 focus:ring-primary-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
             >
               <option value="">{t(translations.form.selectCategory)}</option>
               {complaintCategories.map((category) => (
@@ -166,7 +166,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
               required
               maxLength={200}
               placeholder={t(translations.form.subjectPlaceholder)}
-              className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+              className="focus:border-primary-500 focus:ring-primary-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
             />
           </div>
 
@@ -181,7 +181,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
               value={formData.from}
               onChange={handleInputChange}
               placeholder={t(translations.form.fromPlaceholder)}
-              className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+              className="focus:border-primary-500 focus:ring-primary-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
             />
           </div>
 
@@ -199,7 +199,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
               rows={6}
               maxLength={2000}
               placeholder={t(translations.form.descriptionPlaceholder)}
-              className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+              className="focus:border-primary-500 focus:ring-primary-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
             />
             <p className="mt-1 text-sm text-gray-500">
               {formData.description.length}/2000
@@ -220,7 +220,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
                 onChange={handleInputChange}
                 required
                 max={new Date().toISOString().split("T")[0]}
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -233,7 +233,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
                 name="time"
                 value={formData.time}
                 onChange={handleInputChange}
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
               />
             </div>
           </div>
@@ -249,7 +249,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
               value={formData.location}
               onChange={handleInputChange}
               placeholder={t(translations.form.locationPlaceholder)}
-              className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+              className="focus:border-primary-500 focus:ring-primary-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
             />
           </div>
 
@@ -264,7 +264,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
               value={formData.flightNumber}
               onChange={handleInputChange}
               placeholder={t(translations.form.flightNumberPlaceholder)}
-              className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+              className="focus:border-primary-500 focus:ring-primary-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
             />
           </div>
 
@@ -339,7 +339,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
               value={formData.name}
               onChange={handleInputChange}
               required
-              className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+              className="focus:border-primary-500 focus:ring-primary-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
             />
           </div>
 
@@ -356,7 +356,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -369,7 +369,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-200 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:outline-none"
               />
             </div>
           </div>
@@ -431,7 +431,7 @@ export function ComplaintForm({ lang }: ComplaintFormProps) {
             "flex items-center gap-2 rounded-lg px-6 py-3 font-medium text-white transition-colors",
             isSubmitting
               ? "cursor-not-allowed bg-gray-400"
-              : "bg-bokeo-teal-600 hover:bg-bokeo-teal-700",
+              : "bg-primary-600 hover:bg-primary-700",
           )}
         >
           {isSubmitting ? (

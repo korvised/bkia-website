@@ -1,7 +1,7 @@
 "use client";
 
 import { Search } from "lucide-react";
-import { useLanguage } from "@/context/language-context";
+import { useLanguage } from "@/context";
 import { flightTranslations } from "@/data/translations/flights";
 
 interface FlightSearchProps {
@@ -28,7 +28,7 @@ export function FlightSearch({ onSearch, searchQuery }: FlightSearchProps) {
           placeholder={t(flightTranslations.searchPlaceholder)}
           value={searchQuery}
           onChange={(e) => onSearch(e.target.value)}
-          className="focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-200 bg-white py-3 pr-6 pl-10 focus:border-transparent focus:ring-2 focus:outline-none"
+          className="focus:ring-primary-500 w-full rounded-lg border border-gray-200 bg-white py-3 pr-6 pl-10 focus:border-transparent focus:ring-2 focus:outline-none"
         />
       </div>
     </div>

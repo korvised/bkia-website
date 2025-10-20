@@ -5,9 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Home, Menu, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useLanguage } from "@/context";
+import { useApp } from "@/context/app-context";
 import { LanguageSelector } from "./language-selector";
 import { Sidebar } from "./sidebar";
+import SearchDialog from "./search-dialog";
 
 const translations = {
   menu: {
@@ -15,27 +16,22 @@ const translations = {
     lo: "ເມນູ",
     zh: "菜单",
   },
-  importantNotice: {
-    en: "Important Notice",
-    lo: "ປະກາດສຳຄັນ",
-    zh: "重要通知",
-  },
   airportName: {
     en: "Bokeo International Airport",
     lo: "ສະໜາມບິນສາກົນບໍ່ແກ້ວ",
     zh: "博胶国际机场",
   },
-  airportNameLao: {
-    en: "Bokeo International Airport",
-    lo: "ສະໜາມບິນສາກົນບໍ່ແກ້ວ",
-    zh: "博胶国际机场",
+  search: {
+    en: "Search",
+    lo: "ຄົ້ນຫາ",
+    zh: "搜索",
   },
 };
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { lang, t } = useLanguage();
+  const { lang, t, openSearch } = useApp();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,10 +39,23 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check the initial scroll position
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Keyboard shortcut for search (Cmd/Ctrl + K)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        openSearch();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [openSearch]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -141,22 +150,40 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Right Section - Language and Notifications */}
+          {/* Right Section - Language and Search */}
           <div className="flex items-center gap-x-2">
             <LanguageSelector isScrolled={isScrolled} />
 
-            <Search
+            <span
               className={cn(
-                "h-5 w-5",
-                isScrolled ? "text-primary-500" : "text-white",
+                "h-5 w-[1px]",
+                isScrolled ? "bg-gray-300" : "bg-white/30",
               )}
             />
+
+            <button
+              onClick={openSearch}
+              className={cn(
+                "flex items-center gap-x-2 rounded-lg px-2.5 py-2 transition-all duration-300 outline-none",
+                isScrolled
+                  ? "text-gray-700 hover:bg-gray-100"
+                  : "text-white hover:bg-white/10",
+              )}
+            >
+              <Search className="h-4 w-4" />
+              <label className="hidden text-sm sm:block">
+                {t(translations.search)}
+              </label>
+            </button>
           </div>
         </div>
       </header>
 
       {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+
+      {/* Search Dialog */}
+      <SearchDialog />
     </Fragment>
   );
 }

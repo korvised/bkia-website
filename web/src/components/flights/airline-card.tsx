@@ -1,5 +1,5 @@
 import { Airline } from "@/types/flight";
-import { useLanguage } from "@/context/language-context";
+import { useLanguage } from "@/context";
 import { flightTranslations } from "@/data/translations/flights";
 import { ExternalLink, Phone } from "lucide-react";
 
@@ -48,7 +48,7 @@ export function AirlineCard({ airline }: AirlineCardProps) {
               href={airline.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-bokeo-teal-600 hover:text-bokeo-teal-800 ml-2 hover:underline"
+              className="text-primary-600 hover:text-primary-800 ml-2 hover:underline"
             >
               {airline.website}
             </a>

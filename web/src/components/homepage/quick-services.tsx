@@ -166,8 +166,8 @@ export default function QuickServices({ lang }: QuickServicesProps) {
                   href={service.href}
                   className={`flex flex-col items-center rounded-full p-4 transition-all duration-300 hover:scale-110 ${
                     index === 0
-                      ? "bg-bokeo-teal-500 text-white"
-                      : "hover:text-bokeo-teal-600 text-gray-600"
+                      ? "bg-primary-500 text-white"
+                      : "hover:text-primary-600 text-gray-600"
                   }`}
                 >
                   <IconComponent className="mb-2 h-6 w-6" />
@@ -182,7 +182,7 @@ export default function QuickServices({ lang }: QuickServicesProps) {
 
         {/* Featured Service Content */}
         <div className="mb-12 text-center">
-          <div className="bg-bokeo-teal-500 mb-4 inline-block rounded-full px-6 py-2 text-sm font-medium text-white">
+          <div className="bg-primary-500 mb-4 inline-block rounded-full px-6 py-2 text-sm font-medium text-white">
             {uiText.servicePromise[lang]}
           </div>
           <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
@@ -213,7 +213,7 @@ export default function QuickServices({ lang }: QuickServicesProps) {
 
                 {/* Content */}
                 <div className="mb-4">
-                  <h3 className="group-hover:text-bokeo-teal-600 mb-2 text-xl font-bold text-gray-900 transition-colors">
+                  <h3 className="group-hover:text-primary-600 mb-2 text-xl font-bold text-gray-900 transition-colors">
                     {service.title[lang]}
                   </h3>
                   <p className="text-sm leading-relaxed text-gray-600">
@@ -222,7 +222,7 @@ export default function QuickServices({ lang }: QuickServicesProps) {
                 </div>
 
                 {/* Arrow */}
-                <div className="group-hover:text-bokeo-teal-600 flex items-center text-gray-400 transition-colors">
+                <div className="group-hover:text-primary-600 flex items-center text-gray-400 transition-colors">
                   <span className="mr-2 text-sm font-medium">
                     {uiText.learnMore[lang]}
                   </span>

@@ -199,7 +199,7 @@ export function LostFoundItemDetail({ lang, item }: LostFoundItemDetailProps) {
               <div className="pt-2">
                 <Link
                   href={`/${lang}/notices/lost-found/claim`}
-                  className="bg-bokeo-teal-600 hover:bg-bokeo-teal-700 inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium text-white transition-colors"
+                  className="bg-primary-600 hover:bg-primary-700 inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium text-white transition-colors"
                 >
                   <FileCheck className="h-5 w-5" />
                   Claim This Item
@@ -292,13 +292,13 @@ export function LostFoundItemDetail({ lang, item }: LostFoundItemDetailProps) {
           )}
 
           {showClaimButton && (
-            <div className="border-bokeo-teal-200 bg-bokeo-teal-50 rounded-lg border-2 p-6">
+            <div className="border-primary-200 bg-primary-50 rounded-lg border-2 p-6">
               <h2 className="mb-4 text-lg font-semibold text-gray-900">
                 How to Claim This Item
               </h2>
               <div className="space-y-4 text-sm text-gray-700">
                 <div className="flex gap-3">
-                  <div className="bg-bokeo-teal-600 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
+                  <div className="bg-primary-600 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
                     1
                   </div>
                   <div>
@@ -310,7 +310,7 @@ export function LostFoundItemDetail({ lang, item }: LostFoundItemDetailProps) {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="bg-bokeo-teal-600 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
+                  <div className="bg-primary-600 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
                     2
                   </div>
                   <div>
@@ -322,7 +322,7 @@ export function LostFoundItemDetail({ lang, item }: LostFoundItemDetailProps) {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="bg-bokeo-teal-600 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
+                  <div className="bg-primary-600 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
                     3
                   </div>
                   <div>
@@ -337,21 +337,21 @@ export function LostFoundItemDetail({ lang, item }: LostFoundItemDetailProps) {
                 </div>
               </div>
 
-              <div className="border-bokeo-teal-200 mt-6 border-t pt-6">
+              <div className="border-primary-200 mt-6 border-t pt-6">
                 <h3 className="mb-3 font-medium text-gray-900">
                   Contact Information
                 </h3>
                 <div className="space-y-2">
                   <a
                     href="tel:+85684211-2000"
-                    className="text-bokeo-teal-600 hover:text-bokeo-teal-700 flex items-center gap-2"
+                    className="text-primary-600 hover:text-primary-700 flex items-center gap-2"
                   >
                     <Phone className="h-4 w-4" />
                     <span>+856-84-211-2000</span>
                   </a>
                   <a
                     href="mailto:lostandfound@bokeoairport.la"
-                    className="text-bokeo-teal-600 hover:text-bokeo-teal-700 flex items-center gap-2"
+                    className="text-primary-600 hover:text-primary-700 flex items-center gap-2"
                   >
                     <Mail className="h-4 w-4" />
                     <span>lostandfound@bokeoairport.la</span>

@@ -38,24 +38,25 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   };
 
   return (
-    <Menu as="div" className="relative">
+    <Menu as="div" className="group relative">
       {({ open }) => (
         <Fragment>
           <MenuButton
             className={cn(
-              "flex items-center space-1.5 rounded-lg border-0 px-3 py-2 transition-all duration-300 outline-none",
-              isScrolled
-                ? "text-gray-700 hover:bg-gray-100"
-                : "text-white hover:bg-white/10",
+              "flex items-center gap-x-1 rounded-lg border-0 transition-all duration-300 outline-none",
+              isScrolled ? "text-gray-700" : "text-white",
             )}
           >
-            <Globe className="hidden h-4 w-4 sm:block" />
-            <span className="min-w-[2rem] text-sm font-medium">
+            <Globe className="mr-0.5 hidden h-4 w-4 sm:block" />
+            <span className="text-sm font-medium">
               {languageConfig.code.toUpperCase()}
             </span>
             <ChevronDown
               className={cn(
-                "h-3 w-3 transition-transform duration-200",
+                "mt-0.5 h-4 w-4 transition-transform duration-200",
+                isScrolled
+                  ? "group-hover:text-gray-900"
+                  : "group-hover:text-gray-50",
                 open && "rotate-180",
               )}
             />
@@ -84,7 +85,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
                         "flex w-full items-center space-x-3 border-0 px-4 py-3 text-left transition-colors outline-none",
                         focus && "bg-gray-50",
                         lang === language.code &&
-                          "bg-bokeo-teal-50 text-bokeo-teal-700",
+                          "bg-primary-50 text-primary-700",
                       )}
                     >
                       {/* <span className="flex-shrink-0 text-lg">

@@ -382,8 +382,8 @@ export default async function DiningShoppingPage() {
       {/* Dining Section */}
       <section className="space-y-6 sm:space-y-8">
         <div className="flex items-center gap-2 sm:gap-3">
-          <div className="bg-bokeo-teal-100 flex h-10 w-10 items-center justify-center rounded-xl sm:h-12 sm:w-12">
-            <Utensils className="text-bokeo-teal-600 h-5 w-5 sm:h-6 sm:w-6" />
+          <div className="bg-primary-100 flex h-10 w-10 items-center justify-center rounded-xl sm:h-12 sm:w-12">
+            <Utensils className="text-primary-600 h-5 w-5 sm:h-6 sm:w-6" />
           </div>
           <div>
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -402,7 +402,7 @@ export default async function DiningShoppingPage() {
               className="overflow-hidden rounded-xl border border-gray-200 bg-white transition-shadow hover:shadow-lg"
             >
               {/* Restaurant Image */}
-              <div className="from-bokeo-teal-100 to-bokeo-teal-200 relative flex h-40 items-center justify-center overflow-hidden bg-gradient-to-br sm:h-48">
+              <div className="from-primary-100 to-primary-200 relative flex h-40 items-center justify-center overflow-hidden bg-gradient-to-br sm:h-48">
                 {restaurant.image ? (
                   <Image
                     src={restaurant.image}
@@ -412,7 +412,7 @@ export default async function DiningShoppingPage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 ) : (
-                  <ChefHat className="text-bokeo-teal-400 h-16 w-16 sm:h-20 sm:w-20" />
+                  <ChefHat className="text-primary-400 h-16 w-16 sm:h-20 sm:w-20" />
                 )}
               </div>
 
@@ -423,7 +423,7 @@ export default async function DiningShoppingPage() {
                     <h3 className="mb-1 text-base font-bold text-gray-900 sm:text-lg">
                       {restaurant.name}
                     </h3>
-                    <p className="text-bokeo-teal-600 mb-1 text-xs font-medium sm:text-sm">
+                    <p className="text-primary-600 mb-1 text-xs font-medium sm:text-sm">
                       {restaurant.cuisine}
                     </p>
                   </div>
@@ -457,7 +457,7 @@ export default async function DiningShoppingPage() {
                       .map((specialty, index) => (
                         <span
                           key={index}
-                          className="bg-bokeo-teal-50 text-bokeo-teal-700 rounded-full px-2 py-0.5 text-xs"
+                          className="bg-primary-50 text-primary-700 rounded-full px-2 py-0.5 text-xs"
                         >
                           {specialty}
                         </span>
@@ -559,15 +559,15 @@ export default async function DiningShoppingPage() {
       </section>
 
       {/* Additional Information */}
-      <div className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 rounded-xl border bg-gradient-to-br p-4 sm:p-6 md:p-8">
+      <div className="from-primary-50 to-primary-100 border-primary-200 rounded-xl border bg-gradient-to-br p-4 sm:p-6 md:p-8">
         <h3 className="mb-4 text-xl font-bold text-gray-900 sm:mb-6 sm:text-2xl">
           Shopping & Dining Information
         </h3>
 
         <div className="grid gap-4 sm:grid-cols-3 sm:gap-6">
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-5">
+          <div className="border-primary-200 rounded-lg border bg-white p-4 sm:p-5">
             <div className="mb-3 flex items-center gap-2">
-              <DollarSign className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+              <DollarSign className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
               <h4 className="text-sm font-semibold text-gray-900 sm:text-base">
                 Payment Methods
               </h4>
@@ -580,9 +580,9 @@ export default async function DiningShoppingPage() {
             </ul>
           </div>
 
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-5">
+          <div className="border-primary-200 rounded-lg border bg-white p-4 sm:p-5">
             <div className="mb-3 flex items-center gap-2">
-              <Clock className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+              <Clock className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
               <h4 className="text-sm font-semibold text-gray-900 sm:text-base">
                 Operating Hours
               </h4>
@@ -595,9 +595,9 @@ export default async function DiningShoppingPage() {
             </ul>
           </div>
 
-          <div className="border-bokeo-teal-200 rounded-lg border bg-white p-4 sm:p-5">
+          <div className="border-primary-200 rounded-lg border bg-white p-4 sm:p-5">
             <div className="mb-3 flex items-center gap-2">
-              <Gift className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+              <Gift className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
               <h4 className="text-sm font-semibold text-gray-900 sm:text-base">
                 Special Offers
               </h4>

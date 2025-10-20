@@ -47,7 +47,7 @@ export function InformationCategoryFilter({
               className={cn(
                 "flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors",
                 isActive
-                  ? "bg-bokeo-teal-600 text-white"
+                  ? "bg-primary-600 text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200",
               )}
             >

@@ -70,14 +70,14 @@ export function LostFoundList({
       <Link
         key={item.id}
         href={`/${lang}/notices/lost-found/${item.id}`}
-        className="hover:border-bokeo-teal-300 block rounded-lg border-2 border-gray-200 bg-white p-6 transition-all duration-200 hover:shadow-md"
+        className="hover:border-primary-300 block rounded-lg border-2 border-gray-200 bg-white p-6 transition-all duration-200 hover:shadow-md"
       >
         <div className="space-y-4">
           {/* Header */}
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-start gap-3">
-              <div className="bg-bokeo-teal-100 flex-shrink-0 rounded-lg p-2">
-                <CategoryIcon className="text-bokeo-teal-600 h-6 w-6" />
+              <div className="bg-primary-100 flex-shrink-0 rounded-lg p-2">
+                <CategoryIcon className="text-primary-600 h-6 w-6" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">

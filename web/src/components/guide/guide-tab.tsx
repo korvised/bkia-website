@@ -12,7 +12,7 @@ import {
   RefreshCcw,
 } from "lucide-react";
 import { cn } from "@/lib";
-import { useLanguage } from "@/context/language-context";
+import { useLanguage } from "@/context";
 import { guideTranslations } from "@/data/translations/guide";
 
 export type GuideTab =
@@ -81,7 +81,7 @@ export function GuideTabs() {
               className={cn(
                 "flex shrink-0 items-center gap-1.5 border-b-2 px-1 py-3 text-xs font-medium transition-colors sm:gap-2 sm:py-4 sm:text-sm",
                 isActive
-                  ? "border-bokeo-teal-600 text-bokeo-teal-600"
+                  ? "border-primary-600 text-primary-600"
                   : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
               )}
             >

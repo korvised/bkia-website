@@ -25,7 +25,7 @@ export default function NoticeNotFound() {
 
       <Link
         href={`/${lang}/notices/important`}
-        className="bg-bokeo-teal-600 hover:bg-bokeo-teal-700 inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium text-white transition-colors"
+        className="bg-primary-600 hover:bg-primary-700 inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium text-white transition-colors"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to Important Notices

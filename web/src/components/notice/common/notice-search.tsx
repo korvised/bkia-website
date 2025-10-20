@@ -49,7 +49,7 @@ export function NoticeSearch({ lang, resultsCount }: NoticeSearchProps) {
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
           placeholder="Search notices..."
-          className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 py-3 pr-10 pl-10 text-sm focus:ring-2 focus:outline-none"
+          className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 py-3 pr-10 pl-10 text-sm focus:ring-2 focus:outline-none"
         />
         {searchQuery && (
           <button
@@ -71,7 +71,7 @@ export function NoticeSearch({ lang, resultsCount }: NoticeSearchProps) {
           </p>
           <button
             onClick={handleClear}
-            className="text-bokeo-teal-600 hover:text-bokeo-teal-700 text-sm font-medium"
+            className="text-primary-600 hover:text-primary-700 text-sm font-medium"
           >
             Clear search
           </button>

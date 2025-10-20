@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { LanguageProvider } from "@/context";
+import { AppProvider } from "@/context/app-context";
 import { isValidLanguage } from "@/lib";
 import { Footer, GoToTop, Header } from "@/components/layout";
 import type { Lang } from "@/types/language";
@@ -25,13 +25,13 @@ export default async function LanguageLayout({
   }
 
   return (
-    <LanguageProvider lang={lang as Lang}>
+    <AppProvider lang={lang as Lang}>
       <div className="flex min-h-screen flex-col">
         <Header />
         <main className="flex-1 bg-gray-50">{children}</main>
         <GoToTop />
         <Footer lang={lang} />
       </div>
-    </LanguageProvider>
+    </AppProvider>
   );
 }

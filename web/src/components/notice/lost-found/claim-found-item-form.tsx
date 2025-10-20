@@ -95,7 +95,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 onChange={handleChange}
                 required
                 placeholder="e.g., LF2025-001"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 font-mono text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 font-mono text-sm focus:ring-2 focus:outline-none"
               />
               <p className="mt-1 text-xs text-gray-500">
                 Find this on the item listing page
@@ -121,7 +121,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 required
                 rows={3}
                 placeholder="Provide detailed description of the item you're claiming"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -136,7 +136,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 required
                 rows={3}
                 placeholder="Describe any unique features, marks, scratches, serial numbers, or contents that prove ownership"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
               <p className="mt-1 text-xs text-gray-500">
                 This information will be verified against our records
@@ -153,7 +153,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 onChange={handleChange}
                 rows={2}
                 placeholder="e.g., Receipt, photos, serial number, purchase details"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
           </div>
@@ -176,7 +176,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 onChange={handleChange}
                 required
                 placeholder="Your full name"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -191,7 +191,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 onChange={handleChange}
                 required
                 placeholder="your.email@example.com"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -206,7 +206,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 onChange={handleChange}
                 required
                 placeholder="+856 20 xxxx xxxx"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
           </div>
@@ -227,7 +227,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 value={formData.idType}
                 onChange={handleChange}
                 required
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               >
                 <option value="">Select ID type</option>
                 <option value="passport">Passport</option>
@@ -248,7 +248,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 onChange={handleChange}
                 required
                 placeholder="Your ID number"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
           </div>
@@ -273,7 +273,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 value={formData.claimMethod}
                 onChange={handleChange}
                 required
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               >
                 <option value="">Select method</option>
                 <option value="in-person">
@@ -295,7 +295,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 value={formData.preferredDate}
                 onChange={handleChange}
                 min={new Date().toISOString().split("T")[0]}
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -307,7 +307,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 name="preferredTime"
                 value={formData.preferredTime}
                 onChange={handleChange}
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               >
                 <option value="">Select time</option>
                 <option value="morning">Morning (6:00 AM - 12:00 PM)</option>
@@ -331,7 +331,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
             onChange={handleChange}
             rows={3}
             placeholder="Any additional details that might help verify your claim"
-            className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+            className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
           />
         </div>
 
@@ -344,7 +344,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
               checked={formData.agreeToTerms}
               onChange={handleChange}
               required
-              className="text-bokeo-teal-600 focus:ring-bokeo-teal-500 mt-1 h-4 w-4 rounded border-gray-300"
+              className="text-primary-600 focus:ring-primary-500 mt-1 h-4 w-4 rounded border-gray-300"
             />
             <span className="text-sm text-gray-700">
               I confirm that the information provided is accurate and I am the
@@ -359,7 +359,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-bokeo-teal-600 hover:bg-bokeo-teal-700 inline-flex flex-1 items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-medium text-white transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+            className="bg-primary-600 hover:bg-primary-700 inline-flex flex-1 items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-medium text-white transition-colors disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isSubmitting ? (
               <>

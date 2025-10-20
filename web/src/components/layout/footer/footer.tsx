@@ -102,7 +102,7 @@ export default async function Footer({ lang }: FooterProps) {
               <li>
                 <Link
                   href={`/${lang}/dining-shopping`}
-                  className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
                 >
                   Dining & Shopping
                 </Link>
@@ -110,7 +110,7 @@ export default async function Footer({ lang }: FooterProps) {
               <li>
                 <Link
                   href={`/${lang}/guides`}
-                  className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
                 >
                   Flight Guide
                 </Link>
@@ -118,7 +118,7 @@ export default async function Footer({ lang }: FooterProps) {
               <li>
                 <Link
                   href={`/${lang}/transportations`}
-                  className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
                 >
                   Transportation
                 </Link>
@@ -126,7 +126,7 @@ export default async function Footer({ lang }: FooterProps) {
               <li>
                 <Link
                   href={`/${lang}/cargo`}
-                  className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
                 >
                   Air Cargo
                 </Link>
@@ -134,7 +134,7 @@ export default async function Footer({ lang }: FooterProps) {
               <li>
                 <Link
                   href={`/${lang}/notices/lost-found`}
-                  className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
                 >
                   Lost & Found
                 </Link>
@@ -142,7 +142,7 @@ export default async function Footer({ lang }: FooterProps) {
               <li>
                 <Link
                   href="/bokeo-visit"
-                  className="hover:text-bokeo-teal-200 opacity-80 transition-colors hover:opacity-100"
+                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
                 >
                   Bokeo Visit
                 </Link>
@@ -177,7 +177,7 @@ export default async function Footer({ lang }: FooterProps) {
       </div>
 
       {/* Bottom Bar */}
-      <div className="bg-bokeo-teal-900/50 border-bokeo-teal-700/30 border-t">
+      <div className="bg-primary-900/50 border-primary-700/30 border-t">
         <div className="mx-auto max-w-7xl px-6 py-4">
           <div className="flex flex-col items-center justify-between text-sm md:flex-row">
             <div className="mb-2 md:mb-0">

@@ -83,7 +83,7 @@ export function ImportantNoticeDetail({
           <ul key={index} className="mb-4 space-y-2">
             {items.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-gray-700">
-                <span className="text-bokeo-teal-600 mt-1.5">•</span>
+                <span className="text-primary-600 mt-1.5">•</span>
                 <span>{item.substring(2)}</span>
               </li>
             ))}
@@ -204,7 +204,7 @@ export function ImportantNoticeDetail({
         {/* Content Section */}
         <div className="bg-white p-6">
           {/* Description */}
-          <div className="border-bokeo-teal-600 mb-6 rounded-lg border-l-4 bg-gray-50 p-4">
+          <div className="border-primary-600 mb-6 rounded-lg border-l-4 bg-gray-50 p-4">
             <p className="text-base font-medium text-gray-900">
               {notice.description[lang]}
             </p>
@@ -252,11 +252,11 @@ export function ImportantNoticeDetail({
                     download
                     className="group flex items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4 transition-colors hover:bg-gray-100"
                   >
-                    <div className="bg-bokeo-teal-100 flex-shrink-0 rounded-lg p-2">
-                      <FileDown className="text-bokeo-teal-600 h-5 w-5" />
+                    <div className="bg-primary-100 flex-shrink-0 rounded-lg p-2">
+                      <FileDown className="text-primary-600 h-5 w-5" />
                     </div>
                     <div className="flex-1">
-                      <p className="group-hover:text-bokeo-teal-600 text-sm font-medium text-gray-900">
+                      <p className="group-hover:text-primary-600 text-sm font-medium text-gray-900">
                         {attachment.name[lang]}
                       </p>
                       <p className="text-xs text-gray-500">
@@ -265,7 +265,7 @@ export function ImportantNoticeDetail({
                           : "Document"}
                       </p>
                     </div>
-                    <FileDown className="group-hover:text-bokeo-teal-600 h-5 w-5 text-gray-400" />
+                    <FileDown className="group-hover:text-primary-600 h-5 w-5 text-gray-400" />
                   </a>
                 ))}
               </div>
@@ -280,14 +280,14 @@ export function ImportantNoticeDetail({
             customer service at{" "}
             <a
               href="tel:+85684211xxxx"
-              className="text-bokeo-teal-600 hover:text-bokeo-teal-700 font-medium"
+              className="text-primary-600 hover:text-primary-700 font-medium"
             >
               +856-84-211-xxxx
             </a>{" "}
             or email{" "}
             <a
               href="mailto:info@bokeoairport.la"
-              className="text-bokeo-teal-600 hover:text-bokeo-teal-700 font-medium"
+              className="text-primary-600 hover:text-primary-700 font-medium"
             >
               info@bokeoairport.la
             </a>

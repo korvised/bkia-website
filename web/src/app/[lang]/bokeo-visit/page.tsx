@@ -201,8 +201,8 @@ export default async function BokeoVisitPage() {
       {/* Page Header */}
       <div className="mx-auto max-w-4xl px-4 text-center">
         <div className="mb-6 flex items-center justify-center gap-3">
-          <div className="bg-bokeo-teal-100 flex h-12 w-12 items-center justify-center rounded-2xl sm:h-16 sm:w-16">
-            <Compass className="text-bokeo-teal-600 h-6 w-6 sm:h-8 sm:w-8" />
+          <div className="bg-primary-100 flex h-12 w-12 items-center justify-center rounded-2xl sm:h-16 sm:w-16">
+            <Compass className="text-primary-600 h-6 w-6 sm:h-8 sm:w-8" />
           </div>
         </div>
         <h1 className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
@@ -217,9 +217,9 @@ export default async function BokeoVisitPage() {
       </div>
 
       {/* Introduction */}
-      <div className="from-bokeo-teal-50 to-bokeo-teal-100 border-bokeo-teal-200 rounded-xl border bg-gradient-to-br p-4 sm:p-6 md:p-8">
+      <div className="from-primary-50 to-primary-100 border-primary-200 rounded-xl border bg-gradient-to-br p-4 sm:p-6 md:p-8">
         <div className="flex flex-col items-start gap-4 sm:flex-row">
-          <Info className="text-bokeo-teal-600 mt-1 h-6 w-6 flex-shrink-0" />
+          <Info className="text-primary-600 mt-1 h-6 w-6 flex-shrink-0" />
           <div>
             <h2 className="mb-3 text-lg font-bold text-gray-900 sm:text-xl">
               About Bokeo Province
@@ -256,7 +256,7 @@ export default async function BokeoVisitPage() {
             >
               <div className="grid gap-0 sm:grid-cols-5">
                 {/* Image */}
-                <div className="from-bokeo-teal-100 to-bokeo-teal-200 relative flex h-48 items-center justify-center overflow-hidden bg-gradient-to-br sm:col-span-2 sm:h-64 md:h-auto">
+                <div className="from-primary-100 to-primary-200 relative flex h-48 items-center justify-center overflow-hidden bg-gradient-to-br sm:col-span-2 sm:h-64 md:h-auto">
                   {attraction.image ? (
                     <Image
                       src={attraction.image}
@@ -266,10 +266,10 @@ export default async function BokeoVisitPage() {
                       sizes="(max-width: 640px) 100vw, 40vw"
                     />
                   ) : (
-                    <Mountain className="text-bokeo-teal-400 h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24" />
+                    <Mountain className="text-primary-400 h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24" />
                   )}
                   {/* Number Badge */}
-                  <div className="bg-bokeo-teal-600 absolute top-4 left-4 flex h-10 w-10 items-center justify-center rounded-full shadow-lg sm:h-12 sm:w-12">
+                  <div className="bg-primary-600 absolute top-4 left-4 flex h-10 w-10 items-center justify-center rounded-full shadow-lg sm:h-12 sm:w-12">
                     <span className="text-lg font-bold text-white sm:text-xl">
                       {index + 1}
                     </span>
@@ -300,7 +300,7 @@ export default async function BokeoVisitPage() {
                     <div className="grid gap-2 sm:grid-cols-2">
                       {attraction.highlights.map((highlight, idx) => (
                         <div key={idx} className="flex items-start gap-2">
-                          <Star className="text-bokeo-teal-600 mt-0.5 h-3 w-3 flex-shrink-0 sm:h-4 sm:w-4" />
+                          <Star className="text-primary-600 mt-0.5 h-3 w-3 flex-shrink-0 sm:h-4 sm:w-4" />
                           <span className="text-xs text-gray-700 sm:text-sm">
                             {highlight}
                           </span>
@@ -310,9 +310,9 @@ export default async function BokeoVisitPage() {
                   </div>
 
                   {/* Quick Info */}
-                  <div className="bg-bokeo-teal-50 mb-4 grid grid-cols-2 gap-3 rounded-lg p-3 sm:grid-cols-2 sm:gap-4 sm:p-4">
+                  <div className="bg-primary-50 mb-4 grid grid-cols-2 gap-3 rounded-lg p-3 sm:grid-cols-2 sm:gap-4 sm:p-4">
                     <div className="flex items-start gap-2">
-                      <Clock className="text-bokeo-teal-600 mt-0.5 h-3 w-3 flex-shrink-0 sm:h-4 sm:w-4" />
+                      <Clock className="text-primary-600 mt-0.5 h-3 w-3 flex-shrink-0 sm:h-4 sm:w-4" />
                       <div>
                         <p className="text-xs font-semibold text-gray-900">
                           Duration
@@ -323,7 +323,7 @@ export default async function BokeoVisitPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-2">
-                      <MapPin className="text-bokeo-teal-600 mt-0.5 h-3 w-3 flex-shrink-0 sm:h-4 sm:w-4" />
+                      <MapPin className="text-primary-600 mt-0.5 h-3 w-3 flex-shrink-0 sm:h-4 sm:w-4" />
                       <div>
                         <p className="text-xs font-semibold text-gray-900">
                           Location
@@ -335,7 +335,7 @@ export default async function BokeoVisitPage() {
                     </div>
                     {attraction.difficulty && (
                       <div className="flex items-start gap-2">
-                        <Mountain className="text-bokeo-teal-600 mt-0.5 h-3 w-3 flex-shrink-0 sm:h-4 sm:w-4" />
+                        <Mountain className="text-primary-600 mt-0.5 h-3 w-3 flex-shrink-0 sm:h-4 sm:w-4" />
                         <div>
                           <p className="text-xs font-semibold text-gray-900">
                             Difficulty
@@ -347,7 +347,7 @@ export default async function BokeoVisitPage() {
                       </div>
                     )}
                     <div className="flex items-start gap-2">
-                      <Camera className="text-bokeo-teal-600 mt-0.5 h-3 w-3 flex-shrink-0 sm:h-4 sm:w-4" />
+                      <Camera className="text-primary-600 mt-0.5 h-3 w-3 flex-shrink-0 sm:h-4 sm:w-4" />
                       <div>
                         <p className="text-xs font-semibold text-gray-900">
                           Best Time
@@ -361,7 +361,7 @@ export default async function BokeoVisitPage() {
 
                   {/* Tips Collapsible */}
                   <details className="group">
-                    <summary className="text-bokeo-teal-600 hover:text-bokeo-teal-700 flex cursor-pointer list-none items-center gap-2 text-xs font-semibold sm:text-sm">
+                    <summary className="text-primary-600 hover:text-primary-700 flex cursor-pointer list-none items-center gap-2 text-xs font-semibold sm:text-sm">
                       <Info className="h-3 w-3 sm:h-4 sm:w-4" />
                       <span>Travel Tips & Important Information</span>
                       <span className="ml-auto transform transition-transform group-open:rotate-180">
@@ -395,7 +395,7 @@ export default async function BokeoVisitPage() {
         <div className="grid gap-4 sm:grid-cols-3 sm:gap-6">
           <div className="space-y-3">
             <div className="mb-2 flex items-center gap-2">
-              <Clock className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+              <Clock className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
               <h3 className="text-sm font-semibold text-gray-900 sm:text-base">
                 Best Time to Visit
               </h3>
@@ -412,7 +412,7 @@ export default async function BokeoVisitPage() {
 
           <div className="space-y-3">
             <div className="mb-2 flex items-center gap-2">
-              <MapPin className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+              <MapPin className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
               <h3 className="text-sm font-semibold text-gray-900 sm:text-base">
                 Getting Around
               </h3>
@@ -430,7 +430,7 @@ export default async function BokeoVisitPage() {
 
           <div className="space-y-3">
             <div className="mb-2 flex items-center gap-2">
-              <Info className="text-bokeo-teal-600 h-4 w-4 sm:h-5 sm:w-5" />
+              <Info className="text-primary-600 h-4 w-4 sm:h-5 sm:w-5" />
               <h3 className="text-sm font-semibold text-gray-900 sm:text-base">
                 Important Notes
               </h3>
@@ -449,7 +449,7 @@ export default async function BokeoVisitPage() {
       </section>
 
       {/* Call to Action */}
-      <div className="from-bokeo-teal-600 to-bokeo-teal-700 rounded-xl bg-gradient-to-r p-6 text-center text-white sm:p-8">
+      <div className="from-primary-600 to-primary-700 rounded-xl bg-gradient-to-r p-6 text-center text-white sm:p-8">
         <h2 className="mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl">
           Ready to Explore Bokeo?
         </h2>
@@ -458,10 +458,10 @@ export default async function BokeoVisitPage() {
           jungle canopies to ancient temples, unforgettable experiences await.
         </p>
         <div className="flex flex-col flex-wrap justify-center gap-3 sm:flex-row sm:gap-4">
-          <div className="text-bokeo-teal-600 rounded-lg bg-white px-4 py-2 text-sm font-semibold sm:px-6 sm:py-3 sm:text-base">
+          <div className="text-primary-600 rounded-lg bg-white px-4 py-2 text-sm font-semibold sm:px-6 sm:py-3 sm:text-base">
             Tourist Information: Houayxay
           </div>
-          <div className="text-bokeo-teal-600 rounded-lg bg-white px-4 py-2 text-sm font-semibold sm:px-6 sm:py-3 sm:text-base">
+          <div className="text-primary-600 rounded-lg bg-white px-4 py-2 text-sm font-semibold sm:px-6 sm:py-3 sm:text-base">
             Book Activities in Advance
           </div>
         </div>

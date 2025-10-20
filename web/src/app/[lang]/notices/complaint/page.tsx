@@ -28,21 +28,19 @@ export default async function ComplaintPage({ params }: ComplaintPageProps) {
       {/* Quick Stats */}
       <div className="grid gap-6 md:grid-cols-3">
         <div className="rounded-lg border border-gray-200 bg-white p-6">
-          <div className="text-bokeo-teal-600 mb-2 text-3xl font-bold">24h</div>
+          <div className="text-primary-600 mb-2 text-3xl font-bold">24h</div>
           <p className="text-sm text-gray-600">
             {t.stats.responseTime[lang as Lang]}
           </p>
         </div>
         <div className="rounded-lg border border-gray-200 bg-white p-6">
-          <div className="text-bokeo-teal-600 mb-2 text-3xl font-bold">
-            7-10
-          </div>
+          <div className="text-primary-600 mb-2 text-3xl font-bold">7-10</div>
           <p className="text-sm text-gray-600">
             {t.stats.resolutionDays[lang as Lang]}
           </p>
         </div>
         <div className="rounded-lg border border-gray-200 bg-white p-6">
-          <div className="text-bokeo-teal-600 mb-2 text-3xl font-bold">95%</div>
+          <div className="text-primary-600 mb-2 text-3xl font-bold">95%</div>
           <p className="text-sm text-gray-600">
             {t.stats.satisfaction[lang as Lang]}
           </p>
@@ -95,7 +93,7 @@ export default async function ComplaintPage({ params }: ComplaintPageProps) {
                 </p>
                 <a
                   href="tel:+8568421120 00"
-                  className="text-bokeo-teal-600 hover:text-bokeo-teal-700"
+                  className="text-primary-600 hover:text-primary-700"
                 >
                   +856-84-211-2000
                 </a>
@@ -106,7 +104,7 @@ export default async function ComplaintPage({ params }: ComplaintPageProps) {
                 </p>
                 <a
                   href="mailto:complaints@bokeoairport.la"
-                  className="text-bokeo-teal-600 hover:text-bokeo-teal-700"
+                  className="text-primary-600 hover:text-primary-700"
                 >
                   complaints@bokeoairport.la
                 </a>
@@ -129,15 +127,15 @@ export default async function ComplaintPage({ params }: ComplaintPageProps) {
             </h3>
             <ul className="space-y-3 text-sm text-gray-600">
               <li className="flex items-start gap-2">
-                <span className="bg-bokeo-teal-600 mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full"></span>
+                <span className="bg-primary-600 mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full"></span>
                 <span>{t.contact.visitDesk[lang as Lang]}</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="bg-bokeo-teal-600 mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full"></span>
+                <span className="bg-primary-600 mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full"></span>
                 <span>{t.contact.writeToUs[lang as Lang]}</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="bg-bokeo-teal-600 mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full"></span>
+                <span className="bg-primary-600 mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full"></span>
                 <span>{t.contact.useApp[lang as Lang]}</span>
               </li>
             </ul>

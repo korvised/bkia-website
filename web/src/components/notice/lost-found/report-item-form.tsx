@@ -86,7 +86,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
             <label
               className={`relative flex cursor-pointer rounded-lg border-2 p-4 transition-all ${
                 formData.reportType === "lost"
-                  ? "border-bokeo-teal-600 bg-bokeo-teal-50"
+                  ? "border-primary-600 bg-primary-50"
                   : "border-gray-200 hover:border-gray-300"
               }`}
             >
@@ -103,7 +103,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                   <div
                     className={`flex h-5 w-5 items-center justify-center rounded-full border-2 ${
                       formData.reportType === "lost"
-                        ? "border-bokeo-teal-600 bg-bokeo-teal-600"
+                        ? "border-primary-600 bg-primary-600"
                         : "border-gray-300"
                     }`}
                   >
@@ -126,7 +126,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
             <label
               className={`relative flex cursor-pointer rounded-lg border-2 p-4 transition-all ${
                 formData.reportType === "found"
-                  ? "border-bokeo-teal-600 bg-bokeo-teal-50"
+                  ? "border-primary-600 bg-primary-50"
                   : "border-gray-200 hover:border-gray-300"
               }`}
             >
@@ -143,7 +143,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                   <div
                     className={`flex h-5 w-5 items-center justify-center rounded-full border-2 ${
                       formData.reportType === "found"
-                        ? "border-bokeo-teal-600 bg-bokeo-teal-600"
+                        ? "border-primary-600 bg-primary-600"
                         : "border-gray-300"
                     }`}
                   >
@@ -182,7 +182,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                 onChange={handleChange}
                 required
                 placeholder="e.g., Black iPhone 14 Pro"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -195,7 +195,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                 value={formData.category}
                 onChange={handleChange}
                 required
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               >
                 <option value="">Select category</option>
                 <option value="electronics">Electronics</option>
@@ -219,7 +219,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                 onChange={handleChange}
                 required
                 max={new Date().toISOString().split("T")[0]}
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -234,7 +234,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                 required
                 rows={4}
                 placeholder="Provide detailed description including color, brand, size, distinctive features, etc."
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
           </div>
@@ -258,7 +258,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                 onChange={handleChange}
                 required
                 placeholder="e.g., Security Checkpoint, Gate 5, Baggage Claim"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -272,7 +272,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                 value={formData.flightNumber}
                 onChange={handleChange}
                 placeholder="e.g., QV123"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
           </div>
@@ -295,7 +295,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                 onChange={handleChange}
                 required
                 placeholder="Your full name"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -310,7 +310,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                 onChange={handleChange}
                 required
                 placeholder="your.email@example.com"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -325,7 +325,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                 onChange={handleChange}
                 required
                 placeholder="+856 20 xxxx xxxx"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -339,7 +339,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
                 onChange={handleChange}
                 rows={2}
                 placeholder="Your current address"
-                className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+                className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
               />
             </div>
           </div>
@@ -356,7 +356,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
             onChange={handleChange}
             rows={3}
             placeholder="Any additional details that might help"
-            className="focus:border-bokeo-teal-500 focus:ring-bokeo-teal-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
+            className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:outline-none"
           />
         </div>
 
@@ -365,7 +365,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-bokeo-teal-600 hover:bg-bokeo-teal-700 inline-flex flex-1 items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-medium text-white transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+            className="bg-primary-600 hover:bg-primary-700 inline-flex flex-1 items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-medium text-white transition-colors disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isSubmitting ? (
               <>
