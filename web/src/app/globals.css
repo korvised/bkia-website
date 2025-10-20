@@ -220,31 +220,6 @@ body {
     filter: blur(1px);
 }
 
-/* Focus styles for accessibility */
-.focus-ring {
-    outline: none !important;
-    border: none !important;
-    box-shadow: 0 0 0 2px var(--color-primary), 0 0 0 4px var(--color-primary-500);
-}
-
-/* Headless UI specific overrides */
-[data-headlessui-state="open"] {
-    border: none !important;
-}
-
-[data-headlessui-state="selected"] {
-    border: none !important;
-}
-
-[data-headlessui-state="active"] {
-    border: none !important;
-}
-
-/* Remove focus rings completely */
-[data-focus] {
-    outline: none !important;
-    border: none !important;
-}
 
 /* Print styles */
 @media print {
@@ -266,38 +241,14 @@ body {
     }
 }
 
-/* Ensure no borders on specific elements */
-.headlessui-menu-button,
-.headlessui-menu-items,
-.headlessui-menu-item,
-.headlessui-dialog-panel,
-.headlessui-tab,
-.headlessui-tab-panel {
-    border: none !important;
-    outline: none !important;
-}
 
-/* Language selector specific fixes */
-[role="menu"] {
-    border: 1px solid rgba(229, 231, 235, 0.5) !important;
-}
-
-[role="menuitem"] {
-    border: none !important;
-    outline: none !important;
-}
-
-/* Tab component fixes */
-[role="tablist"] {
-    border: none !important;
-}
-
-[role="tab"] {
-    border: none !important;
-    outline: none !important;
-}
-
-[role="tabpanel"] {
-    border: none !important;
-    outline: none !important;
+/* Welcome Popup Styles - Add to globals.css */
+/* Animation keyframes */
+@keyframes welcome-popup-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
