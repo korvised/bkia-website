@@ -6,9 +6,9 @@ import Image from "next/image";
 import { Home, Menu, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useApp } from "@/context/app-context";
+import { SearchDialog } from "@/components/common";
 import { LanguageSelector } from "./language-selector";
 import { Sidebar } from "./sidebar";
-import SearchDialog from "./search-dialog";
 
 const translations = {
   menu: {

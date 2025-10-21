@@ -18,7 +18,7 @@ export default async function ComplaintPage({ params }: ComplaintPageProps) {
   return (
     <div className="space-y-8">
       {/* Page Header */}
-      <div className="from-primary-500 to-dark-600 rounded-lg bg-gradient-to-r p-8 text-white">
+      <div className="from-primary-400 to-primary-500 rounded-lg bg-gradient-to-r p-8 text-white">
         <h1 className="mb-3 text-3xl font-bold">{t.pageTitle[lang as Lang]}</h1>
         <p className="max-w-3xl text-lg opacity-95">
           {t.pageDescription[lang as Lang]}

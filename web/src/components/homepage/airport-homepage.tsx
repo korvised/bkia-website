@@ -1,9 +1,8 @@
 import { Lang } from "@/types/language";
-// import { RightSidebar } from "@/components/layout";
 import HeroSection from "./hero-section";
-import DateTimeDisplay from "./date-time-display";
 import FlightSearch from "./flight-search";
 import UsefulServicesSection from "./useful-services-section";
+import DateTimeClient from "./date-time-client";
 
 interface AirportHomepageProps {
   lang: Lang;
@@ -26,7 +25,7 @@ export default function AirportHomepage({ lang }: AirportHomepageProps) {
         </div>
 
         {/* Date Time Display */}
-        <DateTimeDisplay lang={lang} />
+        <DateTimeClient lang={lang} />
 
         {/* Flight Search - Overlaid on hero section */}
         <FlightSearch />

@@ -385,6 +385,7 @@ export default function SearchDialog() {
                           key={index}
                           onClick={() => {
                             setSearchQuery(query);
+                            saveToRecentSearches(query);
                           }}
                           className="bg-primary-50 text-primary-700 hover:bg-primary-100 rounded-full px-4 py-2 text-sm transition-colors"
                         >

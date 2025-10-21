@@ -36,14 +36,17 @@ export default function DateTimeDisplay({ lang }: { lang: Lang }) {
   return (
     <Fragment>
       {/* Mobile - Ultra minimal top bar */}
-      <div className="absolute top-20 letf-6 left-0 z-20 md:hidden">
+      <div className="letf-6 absolute top-20 left-0 z-20 md:hidden">
         <div className="flex items-center justify-end gap-4 px-4 py-2 text-white sm:backdrop-blur-sm">
           {/* Time */}
           <div className="flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5 text-white/70" />
-            <span className="font-mono text-sm font-semibold">
+            <time
+              className="font-mono text-sm font-semibold"
+              suppressHydrationWarning
+            >
               {fmtTime(now, lang)}
-            </span>
+            </time>
           </div>
 
           {/* Weather */}
