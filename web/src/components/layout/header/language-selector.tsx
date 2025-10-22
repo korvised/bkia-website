@@ -43,8 +43,10 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         <Fragment>
           <MenuButton
             className={cn(
-              "flex items-center gap-x-1 rounded-lg border-0 transition-all duration-300 outline-none",
-              isScrolled ? "text-gray-700" : "text-white",
+              "flex items-center gap-x-1 rounded-lg border-0 py-2 transition-all duration-300 outline-none sm:px-2.5",
+              isScrolled
+                ? "text-gray-700 sm:hover:bg-gray-100"
+                : "text-white sm:hover:bg-white/10",
             )}
           >
             <Globe className="mr-0.5 hidden h-4 w-4 sm:block" />

@@ -143,6 +143,7 @@ export default function Header() {
                   }
                   alt="Bokeo Airport Logo"
                   fill
+                  sizes="(max-width: 640px) 44px, (max-width: 768px) 48px, 56px"
                   className="object-contain"
                   priority
                 />
@@ -164,10 +165,10 @@ export default function Header() {
             <button
               onClick={openSearch}
               className={cn(
-                "flex items-center gap-x-2 rounded-lg px-2.5 py-2 transition-all duration-300 outline-none",
+                "flex items-center gap-x-2 rounded-lg py-2 transition-all duration-300 outline-none sm:px-2.5",
                 isScrolled
-                  ? "text-gray-700 hover:bg-gray-100"
-                  : "text-white hover:bg-white/10",
+                  ? "text-gray-700 sm:hover:bg-gray-100"
+                  : "text-white sm:hover:bg-white/10",
               )}
             >
               <Search className="h-4 w-4" />

@@ -25,7 +25,9 @@ export default async function Footer({ lang }: FooterProps) {
                   src="/images/logo/logo_white.png"
                   alt="Bokeo International Airport"
                   fill
+                  sizes="48px"
                   className="object-contain"
+                  priority
                 />
               </div>
               <div>

@@ -399,7 +399,7 @@ export default function SearchDialog() {
             </div>
 
             {/* Footer Hint */}
-            <div className="border-t border-gray-200 bg-gray-50 px-6 py-3">
+            <div className="hidden border-t border-gray-200 bg-gray-50 px-6 py-3 sm:block">
               <div className="flex items-center justify-between text-xs text-gray-500">
                 <div className="flex items-center gap-x-4">
                   <div className="flex items-center gap-x-2">
