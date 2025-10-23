@@ -174,15 +174,3 @@ body {
         animation: none !important;
     }
 }
-
-
-/* Welcome Popup Styles - Add to globals.css */
-/* Animation keyframes */
-@keyframes welcome-popup-fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
