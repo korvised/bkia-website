@@ -9,11 +9,13 @@ import { cn, languages } from "@/lib";
 import { type Lang } from "@/types/language";
 
 interface LanguageSelectorProps {
-  isScrolled: boolean;
+  isScrolled?: boolean;
+  isResponsive?: boolean;
 }
 
 export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   isScrolled,
+  isResponsive = false,
 }) => {
   const { lang, languageConfig } = useLanguage();
   const router = useRouter();
@@ -114,7 +116,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   return (
     <div
       ref={containerRef}
-      className="group relative"
+      className={cn("group relative", isResponsive && "hidden sm:block")}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

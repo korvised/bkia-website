@@ -2,19 +2,19 @@
 
 import { Fragment, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   Dialog,
   DialogPanel,
   Transition,
   TransitionChild,
 } from "@headlessui/react";
-import { Building, Menu, User, X } from "lucide-react";
-import { cn } from "@/lib";
-import { useLanguage } from "@/context";
-import { NavigationItem } from "@/types/navigation";
-import { aboutUsItems, passengerItems } from "@/data/navigation";
-import { translations } from "@/data/translations/navigation";
+import { ChevronDown, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useApp } from "@/context/app-context";
+import { mainNavigation } from "@/data/main-navigation";
+import { LanguageSelector } from "@/components/layout/header/language-selector";
+import { LiaMapMarkedAltSolid } from "react-icons/lia";
+import { PiWheelchairDuotone } from "react-icons/pi";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -22,77 +22,22 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
-  const { lang, t } = useLanguage();
-  const pathname = usePathname();
-  const [activeTab, setActiveTab] = useState<"passenger" | "about">(
-    "passenger",
-  );
+  const { lang } = useApp();
+  const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
 
-  // Check if a route is active
-  const isRouteActive = (href: string) => {
-    const normalizedPathname = pathname.replace(`/${lang}`, "");
-    return (
-      normalizedPathname === href || normalizedPathname.startsWith(`${href}/`)
+  const toggleGroup = (groupId: string) => {
+    setExpandedGroups((prev) =>
+      prev.includes(groupId)
+        ? prev.filter((id) => id !== groupId)
+        : [...prev, groupId],
     );
   };
 
-  const renderMenuItem = (item: NavigationItem) => {
-    const IconComponent = item.icon;
-    const isActive = isRouteActive(item.href);
-
-    return (
-      <Link
-        key={item.id}
-        href={`/${lang}${item.href}`}
-        onClick={onClose}
-        className={cn(
-          "group relative flex items-center border-b border-gray-100 p-4 transition-all duration-200",
-          isActive ? "bg-primary-50 hover:bg-primary-100" : "hover:bg-gray-50",
-        )}
-      >
-        {/* Active indicator - Left vertical line */}
-        {isActive && (
-          <div className="bg-primary-600 absolute top-0 left-0 h-full w-1" />
-        )}
-
-        <div
-          className={cn(
-            "mr-4 flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-200",
-            isActive ? "bg-primary-600 shadow-md" : item.color,
-          )}
-        >
-          <IconComponent className="h-5 w-5 text-white" />
-        </div>
-
-        <div className="flex-1">
-          <div
-            className={cn(
-              "font-semibold transition-colors duration-200",
-              isActive
-                ? "text-primary-700"
-                : "group-hover:text-primary-700 text-gray-900",
-              lang === "lo" && "font-lao",
-            )}
-          >
-            {t(item.title)}
-          </div>
-          <div
-            className={cn(
-              "mt-1 text-xs transition-colors duration-200",
-              isActive ? "text-primary-600" : "text-gray-400",
-              lang === "lo" && "font-lao",
-            )}
-          >
-            {t(item.description)}
-          </div>
-        </div>
-      </Link>
-    );
-  };
+  const isGroupExpanded = (groupId: string) => expandedGroups.includes(groupId);
 
   return (
     <Transition show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={onClose}>
+      <Dialog as="div" className="relative z-50 lg:hidden" onClose={onClose}>
         {/* Backdrop */}
         <TransitionChild
           as={Fragment}
@@ -106,102 +51,146 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <div className="fixed inset-0 bg-black/50" />
         </TransitionChild>
 
-        {/* Sidebar Panel */}
+        {/* Sidebar Panel - Right Side */}
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-full">
+            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
               <TransitionChild
                 as={Fragment}
                 enter="transform transition ease-in-out duration-300"
-                enterFrom="-translate-x-full"
+                enterFrom="translate-x-full"
                 enterTo="translate-x-0"
                 leave="transform transition ease-in-out duration-300"
                 leaveFrom="translate-x-0"
-                leaveTo="-translate-x-full"
+                leaveTo="translate-x-full"
               >
-                <DialogPanel className="pointer-events-auto relative flex h-full w-80 flex-col bg-white shadow-2xl">
-                  {/* Header */}
-                  <div className="flex flex-shrink-0 items-center justify-between border-b border-gray-200 p-6">
-                    <div className="flex items-center space-x-3">
-                      <Menu className="h-5 w-5" />
-                      <span className="text-lg font-semibold text-gray-900">
-                        {t(translations.menu)}
-                      </span>
+                <DialogPanel className="pointer-events-auto relative w-screen max-w-xs sm:max-w-sm">
+                  <div className="flex h-full flex-col bg-white shadow-xl">
+                    {/* Header */}
+                    <div className="bg-primary-600 flex items-center justify-between px-6 py-5">
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <LanguageSelector />
+                        <button
+                          className="rounded-lg p-2 text-white transition-all duration-200 hover:bg-white/10"
+                          title="Airport Location"
+                          aria-label="Airport Location"
+                        >
+                          <LiaMapMarkedAltSolid className="h-5 w-5 sm:h-6 sm:w-6" />
+                        </button>
+
+                        <button
+                          className="rounded-lg p-2 text-white transition-all duration-200 hover:bg-white/10"
+                          title="Accessibility"
+                          aria-label="Accessibility"
+                        >
+                          <PiWheelchairDuotone className="h-5 w-5 sm:h-6 sm:w-6" />
+                        </button>
+                      </div>
+                      <button
+                        onClick={onClose}
+                        className="rounded-lg p-2 text-white transition-colors duration-200 hover:bg-white/10"
+                        aria-label="Close menu"
+                      >
+                        <X className="h-6 w-6" />
+                      </button>
                     </div>
 
-                    <button
-                      onClick={onClose}
-                      className="rounded-lg p-2 transition-colors hover:bg-gray-100"
-                    >
-                      <X className="h-5 w-5 text-gray-600" />
-                    </button>
-                  </div>
+                    {/* Scrollable Content */}
+                    <div className="flex-1 overflow-y-auto">
+                      <nav className="py-2">
+                        {mainNavigation.map((item) => (
+                          <div
+                            key={item.id}
+                            className="border-b border-gray-100"
+                          >
+                            {/* Main Menu Item */}
+                            <button
+                              onClick={() => toggleGroup(item.id)}
+                              className="flex w-full items-center justify-between px-6 py-4 text-left transition-colors hover:bg-gray-50"
+                            >
+                              <div className="flex-1">
+                                <div className="text-sm font-semibold text-gray-900">
+                                  {item.label[lang]}
+                                </div>
+                                {item.subtitle && (
+                                  <div className="mt-0.5 text-sm text-gray-500">
+                                    {item.subtitle[lang]}
+                                  </div>
+                                )}
+                              </div>
 
-                  {/* Tab Navigation */}
-                  <div className="flex flex-shrink-0">
-                    <button
-                      onClick={() => setActiveTab("passenger")}
-                      className={cn(
-                        "flex flex-1 flex-col items-center px-6 py-4 text-sm font-medium transition-all duration-300",
-                        activeTab === "passenger"
-                          ? "bg-primary-600 text-white shadow-md"
-                          : "bg-gray-100 text-gray-600 hover:bg-gray-200",
-                      )}
-                    >
-                      <User
-                        className={cn(
-                          "mb-1 h-4 w-4 transition-transform duration-300",
-                          activeTab === "passenger" && "scale-110",
-                        )}
-                      />
-                      <span className={cn(lang === "lo" && "font-lao")}>
-                        {t(translations.passengerServices)}
-                      </span>
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("about")}
-                      className={cn(
-                        "flex flex-1 flex-col items-center px-6 py-4 text-sm font-medium transition-all duration-300",
-                        activeTab === "about"
-                          ? "bg-primary-600 text-white shadow-md"
-                          : "bg-gray-100 text-gray-600 hover:bg-gray-200",
-                      )}
-                    >
-                      <Building
-                        className={cn(
-                          "mb-1 h-4 w-4 transition-transform duration-300",
-                          activeTab === "about" && "scale-110",
-                        )}
-                      />
-                      <span className={cn(lang === "lo" && "font-lao")}>
-                        {t(translations.aboutUs)}
-                      </span>
-                    </button>
-                  </div>
+                              {/* Chevron Icon */}
+                              <ChevronDown
+                                className={cn(
+                                  "h-5 w-5 flex-shrink-0 text-gray-400 transition-transform duration-200",
+                                  isGroupExpanded(item.id) && "rotate-180",
+                                )}
+                              />
+                            </button>
 
-                  {/* Tab Content - Scrollable */}
-                  <div className="flex-1 overflow-y-auto">
-                    {activeTab === "passenger" && (
-                      <div className="space-y-0">
-                        {passengerItems.map(renderMenuItem)}
-                      </div>
-                    )}
+                            {/* Expanded Groups */}
+                            {isGroupExpanded(item.id) && item.menuGroups && (
+                              <div className="bg-gray-50 px-4 py-2">
+                                {item.menuGroups.map((group, groupIdx) => (
+                                  <div
+                                    key={groupIdx}
+                                    className="mb-4 last:mb-2"
+                                  >
+                                    {/* Group Title */}
+                                    <div className="mb-2 px-2">
+                                      {group.children ? (
+                                        <div className="inline-block text-sm font-semibold text-gray-900">
+                                          {group.label[lang]}
+                                        </div>
+                                      ) : (
+                                        <Link
+                                          href={`/${lang}${group.href}`}
+                                          onClick={onClose}
+                                          className="hover:text-primary-600 inline-block text-sm font-semibold text-gray-900 transition-colors hover:underline"
+                                        >
+                                          {group.label[lang]}
+                                        </Link>
+                                      )}
+                                    </div>
 
-                    {activeTab === "about" && (
-                      <div className="space-y-0">
-                        {aboutUsItems.map(renderMenuItem)}
-                      </div>
-                    )}
-                  </div>
+                                    {/* Group Children */}
+                                    {group.children && (
+                                      <ul className="space-y-1">
+                                        {group.children.map(
+                                          (child, childIdx) => (
+                                            <li key={childIdx}>
+                                              <Link
+                                                href={`/${lang}${child.href}`}
+                                                onClick={onClose}
+                                                className="group hover:text-primary-600 ml-2 flex items-center gap-2 rounded-md px-2 py-2 text-sm text-gray-600 transition-colors hover:bg-white"
+                                              >
+                                                {/*<ChevronRight className="group-hover:text-primary-600 h-3.5 w-3.5 flex-shrink-0 text-gray-400 transition-colors" />*/}
+                                                <span className="group-hover:bg-primary-600 h-1.5 w-1.5 bg-gray-400 transition-colors" />
+                                                <span>{child.label[lang]}</span>
+                                              </Link>
+                                            </li>
+                                          ),
+                                        )}
+                                      </ul>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </nav>
+                    </div>
 
-                  {/* Footer - Stuck to bottom */}
-                  <div className="flex-shrink-0 border-t border-gray-200 bg-gray-50 p-4">
-                    <div className="text-center">
-                      <div className={cn("text-sm font-medium text-gray-900")}>
-                        {t(translations.airportName)}
-                      </div>
-                      <div className="font-lao mt-1 text-xs text-gray-500">
-                        ສະໜາມບິນສາກົນບໍ່ແກ້ວ
+                    {/* Footer */}
+                    <div className="border-t border-gray-200 bg-gray-50 px-6 py-4">
+                      <div className="text-center">
+                        <div className="text-sm font-semibold text-gray-900">
+                          Bokeo International Airport
+                        </div>
+                        <div className="font-lo mt-1 text-xs text-gray-500">
+                          ສະໜາມບິນສາກົນບໍ່ແກ້ວ
+                        </div>
                       </div>
                     </div>
                   </div>

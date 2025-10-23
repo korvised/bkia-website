@@ -9,8 +9,10 @@ import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import { PiWheelchairDuotone } from "react-icons/pi";
 import { cn } from "@/lib/utils";
 import { useApp } from "@/context/app-context";
-import { LanguageSelector } from "./language-selector";
 import { mainNavigation } from "@/data/main-navigation";
+import { LanguageSelector } from "./language-selector";
+import { Sidebar } from "./sidebar";
+import { SearchDialog } from "@/components/common";
 
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -55,6 +57,19 @@ export function Header() {
       >
         <div className="mx-auto max-w-[1920px]">
           <div className="flex items-center justify-between px-4 sm:px-6 xl:px-12">
+            <button
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              className={cn(
+                "rounded-lg p-2 transition-all duration-200 sm:hidden",
+                isHeaderWhite
+                  ? "text-gray-700 hover:bg-gray-100"
+                  : "text-white hover:bg-white/10",
+              )}
+              aria-label="Toggle menu"
+            >
+              <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
+            </button>
+
             {/* Logo */}
             <Link
               href={`/${lang}`}
@@ -101,7 +116,7 @@ export function Header() {
                         isHeaderWhite
                           ? "hover:text-primary-600 text-gray-800"
                           : "hover:text-primary-200 text-white",
-                        isScrolled ? "py-6" : "py-9",
+                        isScrolled ? "py-5" : "py-9",
                       )}
                     >
                       <span className="text-sm font-semibold whitespace-nowrap xl:text-base">
@@ -111,7 +126,7 @@ export function Header() {
                       {/* Underline Animation - Left to Right */}
                       <span
                         className={cn(
-                          "absolute bottom-0 left-0 h-[1px] w-full origin-left transition-transform duration-300 ease-out",
+                          "absolute bottom-0 left-0 h-0.5 w-full origin-left transition-transform duration-300 ease-out",
                           activeMenu === item.id
                             ? "scale-x-100"
                             : "scale-x-0 group-hover:scale-x-100",
@@ -126,54 +141,52 @@ export function Header() {
 
             {/* Right Section */}
             <div className="flex items-center gap-2 sm:gap-3">
-              <LanguageSelector isScrolled={isHeaderWhite} />
+              <LanguageSelector isScrolled={isHeaderWhite} isResponsive />
 
-              <div className="hidden items-center gap-1.5 md:flex">
-                <button
-                  className={cn(
-                    "rounded-lg p-2 transition-all duration-200",
-                    isHeaderWhite
-                      ? "text-gray-700 hover:bg-gray-100"
-                      : "text-white hover:bg-white/10",
-                  )}
-                  title="Airport Location"
-                  aria-label="Airport Location"
-                >
-                  <LiaMapMarkedAltSolid className="h-5 w-5 sm:h-6 sm:w-6" />
-                </button>
+              <button
+                className={cn(
+                  "hidden rounded-lg p-2 transition-all duration-200 sm:block",
+                  isHeaderWhite
+                    ? "text-gray-700 hover:bg-gray-100"
+                    : "text-white hover:bg-white/10",
+                )}
+                title="Airport Location"
+                aria-label="Airport Location"
+              >
+                <LiaMapMarkedAltSolid className="h-5 w-5 sm:h-6 sm:w-6" />
+              </button>
 
-                <button
-                  className={cn(
-                    "rounded-lg p-2 transition-all duration-200",
-                    isHeaderWhite
-                      ? "text-gray-700 hover:bg-gray-100"
-                      : "text-white hover:bg-white/10",
-                  )}
-                  title="Accessibility"
-                  aria-label="Accessibility"
-                >
-                  <PiWheelchairDuotone className="h-5 w-5 sm:h-6 sm:w-6" />
-                </button>
+              <button
+                className={cn(
+                  "hidden rounded-lg p-2 transition-all duration-200 sm:block",
+                  isHeaderWhite
+                    ? "text-gray-700 hover:bg-gray-100"
+                    : "text-white hover:bg-white/10",
+                )}
+                title="Accessibility"
+                aria-label="Accessibility"
+              >
+                <PiWheelchairDuotone className="h-5 w-5 sm:h-6 sm:w-6" />
+              </button>
 
-                <button
-                  onClick={openSearch}
-                  className={cn(
-                    "rounded-lg p-2 transition-all duration-200",
-                    isHeaderWhite
-                      ? "text-gray-700 hover:bg-gray-100"
-                      : "text-white hover:bg-white/10",
-                  )}
-                  title="Search"
-                  aria-label="Search"
-                >
-                  <GoSearch className="h-5 w-5 sm:h-6 sm:w-6" />
-                </button>
-              </div>
+              <button
+                onClick={openSearch}
+                className={cn(
+                  "rounded-lg p-2 transition-all duration-200",
+                  isHeaderWhite
+                    ? "text-gray-700 hover:bg-gray-100"
+                    : "text-white hover:bg-white/10",
+                )}
+                title="Search"
+                aria-label="Search"
+              >
+                <GoSearch className="h-5 w-5 sm:h-6 sm:w-6" />
+              </button>
 
               <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 className={cn(
-                  "rounded-lg p-2 transition-all duration-200 lg:hidden",
+                  "hidden rounded-lg p-2 transition-all duration-200 sm:block lg:hidden",
                   isHeaderWhite
                     ? "text-gray-700 hover:bg-gray-100"
                     : "text-white hover:bg-white/10",
@@ -238,17 +251,17 @@ export function Header() {
                             href={`/${lang}${group.href}`}
                             className="group/title mb-4 block"
                           >
-                            <div className="flex items-center justify-between gap-3">
+                            <div className="relative flex w-fit items-center justify-between gap-3">
                               <h3 className="group-hover/title:text-primary-600 text-base font-semibold text-gray-700 transition-colors duration-200">
                                 {group.label[lang]}
                               </h3>
 
                               {/* Icon slides in from right */}
                               <ChevronRight className="text-primary-600 h-4 w-4 flex-shrink-0 -translate-x-2 opacity-0 transition-all duration-200 group-hover/title:translate-x-0 group-hover/title:opacity-100" />
-                            </div>
 
-                            {/* Underline Animation - Left to Right */}
-                            <span className="bg-primary-500 mt-1.5 block h-0.5 w-full origin-left scale-x-0 transition-transform duration-300 ease-out group-hover/title:scale-x-100" />
+                              {/* Underline Animation - Left to Right */}
+                              <span className="bg-primary-600 absolute right-0 bottom-0 left-0 h-[1px] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover/title:scale-x-100" />
+                            </div>
                           </Link>
                         )}
 
@@ -263,7 +276,7 @@ export function Header() {
                                 >
                                   {/* Square Bullet */}
                                   <span className="flex h-1.5 w-1.5 flex-shrink-0 items-center justify-center">
-                                    <span className="group-hover/child:bg-primary-600 h-full w-full bg-gray-400 transition-all duration-200 group-hover/child:h-2 group-hover/child:w-2" />
+                                    <span className="group-hover/child:bg-primary-600 h-full w-full bg-gray-400 transition-all duration-200" />
                                   </span>
 
                                   {/* Text with underline matching text width */}
@@ -289,13 +302,11 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Sidebar Backdrop */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
-          onClick={() => setIsSidebarOpen(false)}
-        />
-      )}
+      {/* Mobile Sidebar */}
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+
+      {/* Search Modal */}
+      <SearchDialog />
     </Fragment>
   );
 }

@@ -36,8 +36,8 @@ export default function DateTimeDisplay({ lang }: { lang: Lang }) {
   return (
     <Fragment>
       {/* Mobile - Ultra minimal top bar */}
-      <div className="letf-6 absolute top-20 left-0 z-20 md:hidden">
-        <div className="flex items-center justify-end gap-4 px-6 py-2 text-white sm:backdrop-blur-sm">
+      <div className="letf-6 absolute top-[6rem] left-0 z-20 md:hidden">
+        <div className="flex items-center justify-end gap-4 px-6 py-2 text-white">
           {/* Time */}
           <div className="-m-0.5 flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5 text-white/70" />
@@ -62,7 +62,7 @@ export default function DateTimeDisplay({ lang }: { lang: Lang }) {
       </div>
 
       {/* Desktop - Elegant minimal card */}
-      <div className="absolute top-32 left-8 z-20 hidden md:block">
+      <div className="absolute top-32 left-8 z-20 hidden md:block xl:left-12">
         <div className="space-y-3 text-white">
           {/* Date */}
           <div className="text-xs font-medium tracking-wider text-white/70 uppercase">

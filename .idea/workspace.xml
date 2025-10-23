@@ -7,8 +7,11 @@
     <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor layout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/date-time-display.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/date-time-display.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/language-selector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/language-selector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/sidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/data/main-navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/main-navigation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,7 +136,7 @@
       <workItem from="1760923085693" duration="21555000" />
       <workItem from="1761008639757" duration="16401000" />
       <workItem from="1761095109639" duration="21952000" />
-      <workItem from="1761181459442" duration="10755000" />
+      <workItem from="1761181459442" duration="22073000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -279,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761182105557</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="refactor layout">
+      <option name="closed" value="true" />
+      <created>1761192410879</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1761192410879</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

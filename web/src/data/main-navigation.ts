@@ -59,28 +59,26 @@ export const mainNavigation: NavItem[] = [
             href: "/flights/departures",
           },
           {
-            label: { en: "Arrival Flight", lo: "ຖ້ຽວບິນມາຮອດ", zh: "到达航班" },
+            label: { en: "Arrival Flight", lo: "ຖ້ຽວບິນຂາເຂົ້າ", zh: "到达航班" },
             href: "/flights/arrivals",
+          },
+          {
+            label: {
+              en: "Airline Information",
+              lo: "ຂໍ້ມູນສາຍການບິນ",
+              zh: "航空公司资料",
+            },
+            href: "/flights/airlines",
           },
         ],
       },
       {
         label: {
-          en: "Cargo Flight Information",
-          lo: "ຂໍ້ມູນຖ້ຽວບິນສິນຄ້າ",
+          en: "Cargo Information",
+          lo: "ຂໍ້ມູນການຂົນສົ່ງສິນຄ້າ",
           zh: "货运航班信息",
         },
         href: "/flights/cargo",
-        children: [
-          {
-            label: { en: "Departure Flight", lo: "ຖ້ຽວບິນອອກ", zh: "出发航班" },
-            href: "/flights/cargo/departures",
-          },
-          {
-            label: { en: "Arrival Flight", lo: "ຖ້ຽວບິນມາຮອດ", zh: "到达航班" },
-            href: "/flights/cargo/arrivals",
-          },
-        ],
       },
       {
         label: {
@@ -116,7 +114,7 @@ export const mainNavigation: NavItem[] = [
       {
         label: {
           en: "Departure Procedures",
-          lo: "ຂັ້ນຕອນການອອກ",
+          lo: "ຂັ້ນຕອນຂາເຂົ້າ",
           zh: "出发流程",
         },
         href: "/guide/departure",
@@ -178,7 +176,7 @@ export const mainNavigation: NavItem[] = [
       {
         label: {
           en: "Arrival Procedures",
-          lo: "ຂັ້ນຕອນການມາຮອດ",
+          lo: "ຂັ້ນຕອນຂາອອກ",
           zh: "到达流程",
         },
         href: "/guide/arrival",
@@ -206,64 +204,6 @@ export const mainNavigation: NavItem[] = [
               zh: "欢迎信息",
             },
             href: "/guide/arrival/welcome",
-          },
-        ],
-      },
-      {
-        label: { en: "Transfer Guide", lo: "ຄູ່ມືການຖ່າຍໂອນ", zh: "中转指南" },
-        href: "/guide/transfer",
-        children: [
-          {
-            label: {
-              en: "Transfer Guide",
-              lo: "ຄູ່ມືການຖ່າຍໂອນ",
-              zh: "中转指南",
-            },
-            href: "/guide/transfer/guide",
-          },
-          {
-            label: {
-              en: "Transferring at Terminal 1",
-              lo: "ຖ່າຍໂອນທີ່ຫໍຂາຍ 1",
-              zh: "1号航站楼中转",
-            },
-            href: "/guide/transfer/terminal-1",
-          },
-          {
-            label: {
-              en: "Transferring at the Concourse",
-              lo: "ຖ່າຍໂອນທີ່ລະບຽງ",
-              zh: "候机厅中转",
-            },
-            href: "/guide/transfer/concourse",
-          },
-          {
-            label: {
-              en: "Transferring at Terminal 2",
-              lo: "ຖ່າຍໂອນທີ່ຫໍຂາຍ 2",
-              zh: "2号航站楼中转",
-            },
-            href: "/guide/transfer/terminal-2",
-          },
-          {
-            label: {
-              en: "Transferring to Domestic",
-              lo: "ຖ່າຍໂອນໄປພາຍໃນ",
-              zh: "中转至国内",
-            },
-            href: "/guide/transfer/domestic",
-          },
-          {
-            label: { en: "Transfer Security", lo: "ຄວາມປອດໄພ", zh: "中转安检" },
-            href: "/guide/transfer/security",
-          },
-          {
-            label: { en: "Transit Tour", lo: "ທ່ອງທ່ຽວຊົ່ວຄາວ", zh: "过境游" },
-            href: "/guide/transfer/tour",
-          },
-          {
-            label: { en: "K-Stopover", lo: "ຈອດຊົ່ວຄາວ K", zh: "K中转" },
-            href: "/guide/transfer/k-stopover",
           },
         ],
       },
@@ -301,7 +241,7 @@ export const mainNavigation: NavItem[] = [
   },
   {
     id: "transport",
-    label: { en: "Transport", lo: "ການຂົນສົ່ງ", zh: "交通" },
+    label: { en: "Transport", lo: "ການຈາລະຈອນ", zh: "交通" },
     subtitle: {
       en: "Transportation · Parking",
       lo: "ການຂົນສົ່ງ · ບ່ອນຈອດລົດ",
@@ -346,14 +286,6 @@ export const mainNavigation: NavItem[] = [
             label: { en: "Parking Fees", lo: "ຄ່າບໍລິການ", zh: "停车费" },
             href: "/transportation/parking/fees",
           },
-          {
-            label: {
-              en: "Electric Vehicle Charging Station Guide",
-              lo: "ສະຖານີສາກໄຟລົດໄຟຟ້າ",
-              zh: "电动汽车充电站",
-            },
-            href: "/transportation/parking/ev-charging",
-          },
         ],
       },
       {
@@ -365,20 +297,12 @@ export const mainNavigation: NavItem[] = [
         href: "/transportation/public",
         children: [
           {
-            label: { en: "Bus", lo: "ລົດເມ", zh: "巴士" },
-            href: "/transportation/public/bus",
-          },
-          {
-            label: { en: "Train", lo: "ລົດໄຟ", zh: "火车" },
-            href: "/transportation/public/train",
-          },
-          {
-            label: {
-              en: "Taxi/Call Van",
-              lo: "ແທັກຊີ/ລົດຕູ້",
-              zh: "出租车/叫车",
-            },
+            label: { en: "Taxi", lo: "ແທັກຊີ", zh: "出租车" },
             href: "/transportation/public/taxi",
+          },
+          {
+            label: { en: "Van", lo: "ລົດຕູ້", zh: "叫车" },
+            href: "/transportation/public/van",
           },
         ],
       },
@@ -412,7 +336,11 @@ export const mainNavigation: NavItem[] = [
         href: "/facilities/shopping",
       },
       {
-        label: { en: "Food & Beverage", lo: "ອາຫານແລະເຄື່ອງດື່ມ", zh: "餐饮" },
+        label: {
+          en: "Food & Beverage",
+          lo: "ອາຫານ ແລະ ເຄື່ອງດື່ມ",
+          zh: "餐饮",
+        },
         href: "/facilities/dining",
       },
       {
@@ -459,7 +387,7 @@ export const mainNavigation: NavItem[] = [
           {
             label: {
               en: "Frequently Asked Questions",
-              lo: "ຄຳຖາມທີ່ຖາມເລື້ອຍໆ",
+              lo: "ຄຳຖາມທີ່ພົບເລື້ອຍໆ",
               zh: "常见问题",
             },
             href: "/support/customer/faq",
@@ -469,7 +397,11 @@ export const mainNavigation: NavItem[] = [
             href: "/support/customer/phone",
           },
           {
-            label: { en: "Lost and Found", lo: "ເສຍແລະພົບ", zh: "失物招领" },
+            label: {
+              en: "Lost and Found",
+              lo: "ເສຍຫາຍ ແລະ ພົບເຫັນ",
+              zh: "失物招领",
+            },
             href: "/support/customer/lost-found",
           },
           {

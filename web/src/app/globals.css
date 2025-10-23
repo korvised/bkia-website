@@ -54,12 +54,6 @@
     --color-danger-950: #2e0a08;
 }
 
-/* Base body styles */
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 /* Font utility classes */
 .font-en {
     font-family: var(--font-en) !important;
