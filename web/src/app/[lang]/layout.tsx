@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import { AppProvider } from "@/context/app-context";
-import { isValidLanguage } from "@/lib";
+import { cn, isValidLanguage } from "@/lib";
 import { Footer, GoToTop, Header } from "@/components/layout";
-import WelcomePopup from "@/components/common/welcome-popup";
+// import WelcomePopup from "@/components/common/welcome-popup";
 import type { Lang } from "@/types/language";
 
 export async function generateStaticParams() {
@@ -27,14 +27,20 @@ export default async function LanguageLayout({
 
   return (
     <AppProvider lang={lang as Lang}>
-      <div className="flex min-h-screen flex-col">
+      <div
+        className={cn("flex min-h-screen flex-col", {
+          "font-en": lang === "en",
+          "font-lo": lang === "lo",
+          "font-zh": lang === "zh",
+        })}
+      >
         <Header />
         <main className="flex-1 bg-gray-50">{children}</main>
         <GoToTop />
         <Footer lang={lang} />
 
         {/* Welcome Popup - Shows on first visit */}
-        <WelcomePopup />
+        {/*<WelcomePopup />*/}
       </div>
     </AppProvider>
   );

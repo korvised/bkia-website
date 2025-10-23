@@ -1,18 +1,5 @@
 import { CN, GB, LA } from "country-flag-icons/react/1x1";
-import { LanguageConfig } from "@/types/language";
-
-export const SITE_CONFIG = {
-  name: "Bokeo International Airport",
-  nameLao: "ສະໜາມບິນສາກົນບໍ່ແກ້ວ",
-  description: "Gateway to Laos - Bokeo International Airport",
-  url: "https://bokeoairport.la",
-  ogImage: "/images/logo/bkia-logo.png",
-  links: {
-    twitter: "https://twitter.com/bokeoairport",
-    facebook: "https://facebook.com/bokeoairport",
-    instagram: "https://instagram.com/bokeoairport",
-  },
-} as const;
+import { Lang, LanguageConfig } from "@/types/language";
 
 export const languages: LanguageConfig[] = [
   {

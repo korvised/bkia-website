@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Lang, MultilingualText } from "@/types/language";
 import { getLanguageConfig, getLocalizedText } from "@/lib";
 
@@ -15,6 +21,10 @@ interface AppContextType {
   openSearch: () => void;
   closeSearch: () => void;
   toggleSearch: () => void;
+
+  // Scroll state
+  scrollY: number;
+  isScrolled: boolean;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -22,10 +32,17 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 interface AppProviderProps {
   children: ReactNode;
   lang: Lang;
+  scrollThreshold?: number;
 }
 
-export function AppProvider({ children, lang }: AppProviderProps) {
+export function AppProvider({
+  children,
+  lang,
+  scrollThreshold = 50,
+}: AppProviderProps) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const languageConfig = getLanguageConfig(lang);
 
@@ -37,6 +54,35 @@ export function AppProvider({ children, lang }: AppProviderProps) {
   const closeSearch = () => setIsSearchOpen(false);
   const toggleSearch = () => setIsSearchOpen((prev) => !prev);
 
+  // Handle scroll events
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrollY(currentScrollY);
+      setIsScrolled(currentScrollY > scrollThreshold);
+    };
+
+    // Set initial scroll position
+    handleScroll();
+
+    // Add scroll listener
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Cleanup
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrollThreshold]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        openSearch();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [openSearch]);
+
   const value: AppContextType = {
     lang,
     languageConfig,
@@ -45,6 +91,8 @@ export function AppProvider({ children, lang }: AppProviderProps) {
     openSearch,
     closeSearch,
     toggleSearch,
+    scrollY,
+    isScrolled,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

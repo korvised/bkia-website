@@ -1,16 +1,16 @@
 /* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao+Looped:wght@100..900&display=swap');
 
+/* Import Tailwind CSS */
 @import "tailwindcss";
 
 @theme {
     /* Font families with proper fallbacks */
+    --font-en: "Roboto", sans-serif;
     --font-lao: "Noto Sans Lao Looped", sans-serif;
     --font-chinese: "Microsoft Yahei", "微软雅黑", "PingFang SC", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", verdana, sans-serif;
 
-    /* ========================================
-           PRIMARY COLOR PALETTE
-           ======================================== */
     /* Primary - Teal (#00AAAC) */
     --color-primary: #00AAAC;
     --color-primary-50: #e6f9f9;
@@ -25,19 +25,19 @@
     --color-primary-900: #002222;
     --color-primary-950: #001111;
 
-    /* Secondary - Warm Sand (#F4A460) */
-    --color-secondary: #F4A460;
-    --color-secondary-50: #fef8f3;
-    --color-secondary-100: #fdf0e6;
-    --color-secondary-200: #fbe1cd;
-    --color-secondary-300: #f8d2b4;
-    --color-secondary-400: #f6c39b;
-    --color-secondary-500: #F4A460;      /* Base secondary */
-    --color-secondary-600: #f08f3d;
-    --color-secondary-700: #e67920;
-    --color-secondary-800: #b85f19;
-    --color-secondary-900: #8a4713;
-    --color-secondary-950: #5c2f0c;
+    /* Secondary - Warm Sand (#335998) */
+    --color-secondary: #335998;
+    --color-secondary-50: #eef3f9;
+    --color-secondary-100: #d9e4f2;
+    --color-secondary-200: #b3c9e5;
+    --color-secondary-300: #8daed8;
+    --color-secondary-400: #6093cb;
+    --color-secondary-500: #335998;        /* Base secondary */
+    --color-secondary-600: #2a4a7a;
+    --color-secondary-700: #203a5c;
+    --color-secondary-800: #162b3e;
+    --color-secondary-900: #0d1b20;
+    --color-secondary-950: #060d10;
 
     /* Danger - Sunset Red (#E74C3C) */
     --color-danger: #E74C3C;
@@ -56,87 +56,21 @@
 
 /* Base body styles */
 body {
-    font-family: var(--font-lao);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Language-specific font handling */
-[lang="lo"],
-[lang="en"],
-[lang="lo"] *,
-[lang="en"] * {
-    font-family: var(--font-lao) !important;
-}
-
-[lang="zh"],
-[lang="zh"] * {
-    font-family: var(--font-chinese) !important;
-}
-
 /* Font utility classes */
-.font-lao {
+.font-en {
+    font-family: var(--font-en) !important;
+}
+
+.font-lo {
     font-family: var(--font-lao) !important;
 }
 
-.font-chinese {
+.font-zh {
     font-family: var(--font-chinese) !important;
-}
-
-/* Custom component styles with new color theme */
-.flight-status-on-time {
-    @apply bg-green-100 text-green-800;
-}
-
-.flight-status-delayed {
-    @apply bg-yellow-100 text-yellow-800;
-}
-
-.flight-status-cancelled {
-    @apply bg-red-100 text-red-800;
-}
-
-.flight-status-boarding {
-    background-color: var(--color-primary-500);
-    color: var(--color-primary);
-}
-
-/* Custom animations */
-@keyframes bounce-gentle {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes pulse-slow {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-}
-
-.animate-bounce-gentle {
-    animation: bounce-gentle 2s infinite;
-}
-
-.animate-pulse-slow {
-    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Glassmorphism effects */
-.glass {
-    @apply bg-white/10 backdrop-blur-md;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.glass-dark {
-    @apply bg-black/10 backdrop-blur-md;
-    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 /* Scrollbar styling */
