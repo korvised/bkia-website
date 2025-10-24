@@ -1,9 +1,9 @@
 "use client";
 
-import { Fragment, useEffect, useState, useRef } from "react";
+import { Fragment, useEffect, useState, useRef, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, ChevronRight } from "lucide-react";
+import { Menu, ArrowRight, ChevronRight } from "lucide-react";
 import { GoSearch } from "react-icons/go";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import { PiWheelchairDuotone } from "react-icons/pi";
@@ -45,7 +45,10 @@ export function Header() {
     menuTimeoutRef.current = setTimeout(() => setActiveMenu(null), 150);
   };
 
-  const isHeaderWhite = isScrolled || activeMenu !== null;
+  const isHeaderWhite = useMemo(
+    () => isScrolled || activeMenu !== null,
+    [isScrolled, activeMenu],
+  );
 
   return (
     <Fragment>
@@ -57,6 +60,7 @@ export function Header() {
       >
         <div className="mx-auto max-w-[1920px]">
           <div className="flex items-center justify-between px-4 sm:px-6 xl:px-12">
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
               className={cn(
@@ -97,7 +101,7 @@ export function Header() {
               </div>
             </Link>
 
-            {/* Navigation */}
+            {/* Desktop Navigation */}
             <nav className="hidden lg:ml-8 lg:block xl:absolute xl:top-1/2 xl:left-1/2 xl:ml-0 xl:-translate-x-1/2 xl:-translate-y-1/2">
               <ul className="flex items-center">
                 {mainNavigation.map((item) => (
@@ -123,14 +127,14 @@ export function Header() {
                         {item.label[lang]}
                       </span>
 
-                      {/* Underline Animation - Left to Right */}
+                      {/* Active/Hover Underline */}
                       <span
                         className={cn(
                           "absolute bottom-0 left-0 h-0.5 w-full origin-left transition-transform duration-300 ease-out",
                           activeMenu === item.id
                             ? "scale-x-100"
                             : "scale-x-0 group-hover:scale-x-100",
-                          isHeaderWhite ? "bg-primary-600" : "bg-white",
+                          isHeaderWhite ? "bg-primary-600" : "bg-transparent",
                         )}
                       />
                     </Link>
@@ -139,7 +143,7 @@ export function Header() {
               </ul>
             </nav>
 
-            {/* Right Section */}
+            {/* Right Actions */}
             <div className="flex items-center gap-2 sm:gap-3">
               <LanguageSelector isScrolled={isHeaderWhite} isResponsive />
 
@@ -202,7 +206,7 @@ export function Header() {
         {/* Mega Menu Dropdown */}
         <div
           className={cn(
-            "absolute right-0 left-0 w-full border-t border-gray-100 bg-white shadow-lg transition-all duration-300 ease-in-out",
+            "absolute right-0 left-0 w-full border-t border-gray-100 bg-white shadow-2xl transition-all duration-300 ease-in",
             activeMenu
               ? "pointer-events-auto translate-y-0 opacity-100"
               : "pointer-events-none -translate-y-4 opacity-0",
@@ -220,82 +224,87 @@ export function Header() {
                   "mx-auto max-w-[1920px]",
                 )}
               >
-                <div className="grid px-4 py-8 sm:px-6 xl:grid-cols-5 xl:px-12">
-                  {/* Menu Title */}
-                  <div className="hidden xl:block">
-                    <h2 className="text-xl font-bold text-gray-700 sm:text-2xl">
-                      {item.label[lang]}
-                    </h2>
-                    {item.subtitle && (
-                      <p className="mt-1 text-sm text-gray-500">
-                        {item.subtitle[lang]}
-                      </p>
-                    )}
+                {/* Grid Layout */}
+                <div className="grid grid-cols-[1fr_auto_1fr] gap-8 px-6 py-10 lg:px-12">
+                  {/* Page Title & Description */}
+                  <div className="flex justify-end">
+                    <div>
+                      <h2 className="text-2xl font-bold text-gray-900">
+                        {item.label[lang]}
+                      </h2>
+                      {item.description && (
+                        <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                          {item.description[lang]}
+                        </p>
+                      )}
+                    </div>
                   </div>
 
-                  {/* Menu Groups Grid */}
-                  <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:col-span-4 xl:grid-cols-4">
-                    {item.menuGroups?.map((group, idx) => (
-                      <div key={idx}>
-                        {/* Group Title - Conditional rendering */}
-                        {group.children ? (
-                          /* Title WITH children - Not clickable, just a label */
-                          <div className="mb-4">
-                            <h3 className="text-base font-semibold text-gray-700">
-                              {group.label[lang]}
-                            </h3>
-                          </div>
-                        ) : (
-                          /* Title WITHOUT children - Clickable with hover effects */
-                          <Link
-                            href={`/${lang}${group.href}`}
-                            className="group/title mb-4 block"
-                          >
-                            <div className="relative flex w-fit items-center justify-between gap-3">
-                              <h3 className="group-hover/title:text-primary-600 text-base font-semibold text-gray-700 transition-colors duration-200">
-                                {group.label[lang]}
-                              </h3>
+                  {/* Menu Items List */}
+                  <div className="flex w-80 flex-col gap-y-1 border-l border-gray-200 px-6">
+                    {item.menuItems?.map((menuItem, idx) => (
+                      <Link
+                        key={idx}
+                        href={`/${lang}${menuItem.href}`}
+                        className="group/link flex items-center justify-between gap-x-4 rounded-lg py-3 pr-2 pl-4 transition-colors duration-200 hover:bg-gray-50 sm:pr-4 sm:pl-6"
+                      >
+                        <div className="grid">
+                          <span className="group-hover/link:text-primary-600 text-base font-semibold text-gray-700 transition-colors duration-200">
+                            {menuItem.label[lang]}
+                          </span>
 
-                              {/* Icon slides in from right */}
-                              <ChevronRight className="text-primary-600 h-4 w-4 flex-shrink-0 -translate-x-2 opacity-0 transition-all duration-200 group-hover/title:translate-x-0 group-hover/title:opacity-100" />
-
-                              {/* Underline Animation - Left to Right */}
-                              <span className="bg-primary-600 absolute right-0 bottom-0 left-0 h-[1px] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover/title:scale-x-100" />
-                            </div>
-                          </Link>
-                        )}
-
-                        {/* Children List */}
-                        {group.children && (
-                          <ul className="space-y-2.5">
-                            {group.children.map((child, childIdx) => (
-                              <li key={childIdx}>
-                                <Link
-                                  href={`/${lang}${child.href}`}
-                                  className="group/child inline-flex items-center gap-2.5 py-1"
-                                >
-                                  {/* Square Bullet */}
-                                  <span className="flex h-1.5 w-1.5 flex-shrink-0 items-center justify-center">
-                                    <span className="group-hover/child:bg-primary-600 h-full w-full bg-gray-400 transition-all duration-200" />
-                                  </span>
-
-                                  {/* Text with underline matching text width */}
-                                  <span className="relative inline-block">
-                                    <span className="group-hover/child:text-primary-600 text-sm leading-relaxed text-gray-600 transition-colors duration-200">
-                                      {child.label[lang]}
-                                    </span>
-
-                                    {/* Underline - matches text width only */}
-                                    <span className="bg-primary-600 absolute right-0 bottom-0 left-0 h-[1px] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover/child:scale-x-100" />
-                                  </span>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
+                          {menuItem.description && (
+                            <span className="mt-1 text-xs text-gray-500">
+                              {menuItem.description[lang]}
+                            </span>
+                          )}
+                        </div>
+                        <ChevronRight className="text-primary-600 h-4 w-4 flex-shrink-0 -translate-x-1 opacity-0 transition-all duration-200 group-hover/link:translate-x-0 group-hover/link:opacity-100" />
+                      </Link>
                     ))}
                   </div>
+
+                  {/* Featured Content Card */}
+                  {item.featuredContent && (
+                    <div className="w-80">
+                      <div className="group/card hover:border-primary-200 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md">
+                        {/* Featured Image */}
+                        <div className="relative aspect-video w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
+                          <Image
+                            src={item.featuredContent.image}
+                            alt={item.featuredContent.title[lang]}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover/card:scale-105"
+                            sizes="320px"
+                          />
+                        </div>
+
+                        {/* Content */}
+                        <div className="p-5">
+                          <h3 className="text-lg font-bold text-gray-900">
+                            {item.featuredContent.title[lang]}
+                          </h3>
+
+                          <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                            {item.featuredContent.description[lang]}
+                          </p>
+
+                          {/* CTA Link */}
+                          {item.featuredContent.link && (
+                            <Link
+                              href={`/${lang}${item.featuredContent.link.href}`}
+                              className="group/cta text-primary-600 hover:text-primary-700 mt-4 inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200"
+                            >
+                              <span>
+                                {item.featuredContent.link.label[lang]}
+                              </span>
+                              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
+                            </Link>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -305,7 +314,7 @@ export function Header() {
       {/* Mobile Sidebar */}
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-      {/* Search Modal */}
+      {/* Search Dialog */}
       <SearchDialog />
     </Fragment>
   );

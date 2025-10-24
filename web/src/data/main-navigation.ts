@@ -1,12 +1,25 @@
-// Navigation structure
+// Navigation structure with enhanced UX
 
-interface SubMenuItem {
-  label: {
+interface FeaturedContent {
+  image: string;
+  title: {
     en: string;
     lo: string;
     zh: string;
   };
-  href: string;
+  description: {
+    en: string;
+    lo: string;
+    zh: string;
+  };
+  link?: {
+    label: {
+      en: string;
+      lo: string;
+      zh: string;
+    };
+    href: string;
+  };
 }
 
 interface MenuItem {
@@ -15,13 +28,12 @@ interface MenuItem {
     lo: string;
     zh: string;
   };
-  subtitle?: {
+  description?: {
     en: string;
     lo: string;
     zh: string;
   };
   href: string;
-  children?: SubMenuItem[];
 }
 
 interface NavItem {
@@ -31,14 +43,15 @@ interface NavItem {
     lo: string;
     zh: string;
   };
-  subtitle?: {
+  description?: {
     en: string;
     lo: string;
     zh: string;
   };
   href: string;
   hasDropdown: boolean;
-  menuGroups?: MenuItem[];
+  menuItems?: MenuItem[];
+  featuredContent?: FeaturedContent;
 }
 
 // Main Navigation Items
@@ -46,382 +59,427 @@ export const mainNavigation: NavItem[] = [
   {
     id: "flights",
     label: { en: "Flights", lo: "ຖ້ຽວບິນ", zh: "航班" },
-    subtitle: { en: "Flight information", lo: "ຂໍ້ມູນຖ້ຽວບິນ", zh: "航班信息" },
+    description: {
+      en: "Flight schedules and real-time updates",
+      lo: "ຕາລາງຖ້ຽວບິນ ແລະ ຂໍ້ມູນປັດຈຸບັນ",
+      zh: "航班时刻表和实时更新",
+    },
     href: "/flights",
     hasDropdown: true,
-    menuGroups: [
+    menuItems: [
       {
-        label: { en: "Search Flight", lo: "ຄົ້ນຫາຖ້ຽວບິນ", zh: "搜索航班" },
-        href: "/flights/search",
-        children: [
-          {
-            label: { en: "Departure Flight", lo: "ຖ້ຽວບິນອອກ", zh: "出发航班" },
-            href: "/flights/departures",
-          },
-          {
-            label: { en: "Arrival Flight", lo: "ຖ້ຽວບິນຂາເຂົ້າ", zh: "到达航班" },
-            href: "/flights/arrivals",
-          },
-          {
-            label: {
-              en: "Airline Information",
-              lo: "ຂໍ້ມູນສາຍການບິນ",
-              zh: "航空公司资料",
-            },
-            href: "/flights/airlines",
-          },
-        ],
+        label: {
+          en: "Arrivals",
+          lo: "ຖ້ຽວບິນຂາເຂົ້າ",
+          zh: "到达航班",
+        },
+        description: {
+          en: "Check arriving flights status",
+          lo: "ກວດສອບສະຖານະຖ້ຽວບິນຂາເຂົ້າ",
+          zh: "查看到达航班状态",
+        },
+        href: "/flights/arrivals",
       },
       {
         label: {
-          en: "Cargo Information",
-          lo: "ຂໍ້ມູນການຂົນສົ່ງສິນຄ້າ",
-          zh: "货运航班信息",
+          en: "Departures",
+          lo: "ຖ້ຽວບິນອອກ",
+          zh: "出发航班",
         },
-        href: "/flights/cargo",
+        description: {
+          en: "Check departing flights status",
+          lo: "ກວດສອບສະຖານະຖ້ຽວບິນອອກ",
+          zh: "查看出发航班状态",
+        },
+        href: "/flights/departures",
       },
       {
         label: {
-          en: "Airport Congestion Forecast",
-          lo: "ພະຍາກອນຄວາມແອອັດ",
-          zh: "机场拥堵预测",
+          en: "Airlines",
+          lo: "ສາຍການບິນ",
+          zh: "航空公司",
         },
-        href: "/flights/congestion",
-        children: [
-          {
-            label: {
-              en: "By Entry/Exit",
-              lo: "ຕາມທາງເຂົ້າ/ອອກ",
-              zh: "按出入口",
-            },
-            href: "/flights/congestion/entry",
-          },
-          {
-            label: { en: "By Route", lo: "ຕາມເສັ້ນທາງ", zh: "按路线" },
-            href: "/flights/congestion/route",
-          },
-        ],
+        description: {
+          en: "View airline information",
+          lo: "ເບິ່ງຂໍ້ມູນສາຍການບິນ",
+          zh: "查看航空公司信息",
+        },
+        href: "/flights/airlines",
       },
     ],
+    featuredContent: {
+      image: "/images/featured/my-hkg-app.png",
+      title: {
+        en: '"My Airport" Mobile App',
+        lo: 'ແອັບມືຖື "ສະໜາມບິນຂອງຂ້ອຍ"',
+        zh: '"我的机场" 移动应用',
+      },
+      description: {
+        en: "Search all airport information at your fingertips",
+        lo: "ຄົ້ນຫາຂໍ້ມູນສະໜາມບິນທັງໝົດ",
+        zh: "随时搜索机场信息",
+      },
+    },
   },
   {
     id: "guide",
-    label: { en: "Airport Guide", lo: "ຄູ່ມືສະໜາມບິນ", zh: "机场指南" },
-    subtitle: { en: "Airport Guide", lo: "ຄູ່ມືສະໜາມບິນ", zh: "机场指南" },
+    label: { en: "Passenger Guide", lo: "ຄູ່ມືຜູ້ໂດຍສານ", zh: "乘客指南" },
+    description: {
+      en: "Everything you need for your journey",
+      lo: "ທຸກສິ່ງທີ່ທ່ານຕ້ອງການສຳລັບການເດີນທາງ",
+      zh: "您旅程所需的一切信息",
+    },
     href: "/guide",
     hasDropdown: true,
-    menuGroups: [
+    menuItems: [
       {
         label: {
-          en: "Departure Procedures",
-          lo: "ຂັ້ນຕອນຂາເຂົ້າ",
-          zh: "出发流程",
+          en: "Arrivals",
+          lo: "ການມາຮອດ",
+          zh: "到达指南",
         },
-        href: "/guide/departure",
-        children: [
-          {
-            label: {
-              en: "Departure Checklist",
-              lo: "ລາຍການກວດສອບ",
-              zh: "出发清单",
-            },
-            href: "/guide/departure/checklist",
-          },
-          {
-            label: {
-              en: "Departure Amenities",
-              lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
-              zh: "出发便利设施",
-            },
-            href: "/guide/departure/amenities",
-          },
-          {
-            label: {
-              en: "City Airport Terminal Services",
-              lo: "ບໍລິການທາງລົດໄຟ",
-              zh: "城市航站楼服务",
-            },
-            href: "/guide/departure/terminal",
-          },
-          {
-            label: {
-              en: "Check-in Counter",
-              lo: "ເຄົາເຕີເຊັກອິນ",
-              zh: "值机柜台",
-            },
-            href: "/guide/departure/checkin",
-          },
-          {
-            label: {
-              en: "Guide for Various Declarations",
-              lo: "ຄູ່ມືການປະກາດ",
-              zh: "各类申报指南",
-            },
-            href: "/guide/departure/declarations",
-          },
-          {
-            label: { en: "Security Screening", lo: "ກວດຄວາມປອດໄພ", zh: "安检" },
-            href: "/guide/departure/security",
-          },
-          {
-            label: {
-              en: "Departure Immigration",
-              lo: "ຕົວະການອອກ",
-              zh: "出境",
-            },
-            href: "/guide/departure/immigration",
-          },
-        ],
+        description: {
+          en: "Arrival procedures and customs",
+          lo: "ຂັ້ນຕອນການມາຮອດ ແລະ ພາສີສຸນລະກອນ",
+          zh: "到达流程和海关",
+        },
+        href: "/guide/arrivals",
       },
       {
         label: {
-          en: "Arrival Procedures",
-          lo: "ຂັ້ນຕອນຂາອອກ",
-          zh: "到达流程",
+          en: "Departures",
+          lo: "ການອອກເດີນທາງ",
+          zh: "出发指南",
         },
-        href: "/guide/arrival",
-        children: [
-          {
-            label: {
-              en: "Information/Declaration",
-              lo: "ຂໍ້ມູນ/ການປະກາດ",
-              zh: "信息/申报",
-            },
-            href: "/guide/arrival/information",
-          },
-          {
-            label: { en: "Immigration", lo: "ຕົວະການເຂົ້າ", zh: "入境" },
-            href: "/guide/arrival/immigration",
-          },
-          {
-            label: { en: "Baggage", lo: "ກະເປົາ", zh: "行李" },
-            href: "/guide/arrival/baggage",
-          },
-          {
-            label: {
-              en: "Welcome Information",
-              lo: "ຂໍ້ມູນຕ້ອນຮັບ",
-              zh: "欢迎信息",
-            },
-            href: "/guide/arrival/welcome",
-          },
-        ],
+        description: {
+          en: "Check-in and boarding process",
+          lo: "ຂັ້ນຕອນການເຊັກອິນ ແລະ ຂຶ້ນເຄື່ອງ",
+          zh: "值机和登机流程",
+        },
+        href: "/guide/departures",
       },
       {
-        label: { en: "Custom Services", lo: "ບໍລິການພິເສດ", zh: "定制服务" },
-        href: "/guide/custom",
-        children: [
-          {
-            label: {
-              en: "Pregnant Women, Infants, and Children",
-              lo: "ແມ່ຖືພາ, ເດັກນ້ອຍ ແລະ ເດັກ",
-              zh: "孕妇、婴幼儿",
-            },
-            href: "/guide/custom/family",
-          },
-          {
-            label: {
-              en: "Travelers Accompanied by the Mobility Impaired",
-              lo: "ຜູ້ເດີນທາງທີ່ມີຄວາມພິການດ້ານການເຄື່ອນໄຫວ",
-              zh: "行动不便旅客",
-            },
-            href: "/guide/custom/mobility",
-          },
-          {
-            label: {
-              en: "Traveling with Pets",
-              lo: "ເດີນທາງກັບສັດລ້ຽງ",
-              zh: "携带宠物",
-            },
-            href: "/guide/custom/pets",
-          },
-        ],
+        label: {
+          en: "Transfer / Transit",
+          lo: "ການຖ່າຍໂອນ / ຜ່ານແດນ",
+          zh: "中转/过境",
+        },
+        description: {
+          en: "Connection flight information",
+          lo: "ຂໍ້ມູນການຕໍ່ຖ້ຽວບິນ",
+          zh: "转机航班信息",
+        },
+        href: "/guide/transfer",
+      },
+      {
+        label: {
+          en: "Airport Security",
+          lo: "ຄວາມປອດໄພ",
+          zh: "安检须知",
+        },
+        description: {
+          en: "Security guidelines and tips",
+          lo: "ຄຳແນະນຳດ້ານຄວາມປອດໄພ",
+          zh: "安全检查指南",
+        },
+        href: "/guide/security",
+      },
+      {
+        label: {
+          en: "Facilities & Services",
+          lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
+          zh: "设施与服务",
+        },
+        description: {
+          en: "Airport amenities for passengers",
+          lo: "ສິ່ງອຳນວຍຄວາມສະດວກສຳລັບຜູ້ໂດຍສານ",
+          zh: "机场旅客设施",
+        },
+        href: "/guide/facilities",
       },
     ],
+    featuredContent: {
+      image: "/images/featured/one-stop-booking.png",
+      title: {
+        en: "One-stop Services",
+        lo: "ບໍລິການຄັ້ງດຽວ",
+        zh: "一站式服务",
+      },
+      description: {
+        en: "Book all airport essentials in one place",
+        lo: "ຈອງບໍລິການທັງໝົດໃນບ່ອນດຽວ",
+        zh: "一处预订所有服务",
+      },
+      link: {
+        label: {
+          en: "Explore More",
+          lo: "ສຳຫຼວດເພີ່ມ",
+          zh: "了解更多",
+        },
+        href: "/services/booking",
+      },
+    },
   },
   {
     id: "transport",
-    label: { en: "Transport", lo: "ການຈາລະຈອນ", zh: "交通" },
-    subtitle: {
-      en: "Transportation · Parking",
-      lo: "ການຂົນສົ່ງ · ບ່ອນຈອດລົດ",
-      zh: "交通 · 停车",
+    label: { en: "Transport", lo: "ການຂົນສົ່ງ", zh: "交通" },
+    description: {
+      en: "Ground transportation and parking",
+      lo: "ການຂົນສົ່ງພື້ນດິນ ແລະ ບ່ອນຈອດລົດ",
+      zh: "地面交通和停车",
     },
     href: "/transportation",
     hasDropdown: true,
-    menuGroups: [
+    menuItems: [
       {
-        label: { en: "Home to Airport", lo: "ບ້ານໄປສະໜາມບິນ", zh: "前往机场" },
+        label: {
+          en: "To & From Airport",
+          lo: "ໄປ-ມາສະໜາມບິນ",
+          zh: "往返机场",
+        },
+        description: {
+          en: "Bus, taxi and shuttle services",
+          lo: "ລົດເມ, ແທັກຊີ ແລະ ລົດຮັບສົ່ງ",
+          zh: "巴士、出租车和班车",
+        },
         href: "/transportation/to-airport",
       },
       {
         label: {
-          en: "Parking Information",
-          lo: "ຂໍ້ມູນບ່ອນຈອດລົດ",
-          zh: "停车信息",
+          en: "Parking",
+          lo: "ບ່ອນຈອດລົດ",
+          zh: "停车场",
+        },
+        description: {
+          en: "Parking rates and reservations",
+          lo: "ອັດຕາຄ່າຈອດລົດ ແລະ ການຈອງ",
+          zh: "停车费和预订",
         },
         href: "/transportation/parking",
-        children: [
-          {
-            label: {
-              en: "Parking Lot Guide",
-              lo: "ຄູ່ມືບ່ອນຈອດລົດ",
-              zh: "停车场指南",
-            },
-            href: "/transportation/parking/guide",
-          },
-          {
-            label: { en: "Valet Parking", lo: "ບໍລິການຈອດລົດ", zh: "代客泊车" },
-            href: "/transportation/parking/valet",
-          },
-          {
-            label: {
-              en: "Parking Lot Congestion",
-              lo: "ຄວາມແອອັດບ່ອນຈອດ",
-              zh: "停车场拥堵",
-            },
-            href: "/transportation/parking/congestion",
-          },
-          {
-            label: { en: "Parking Fees", lo: "ຄ່າບໍລິການ", zh: "停车费" },
-            href: "/transportation/parking/fees",
-          },
-        ],
       },
       {
         label: {
-          en: "Public Transportation",
-          lo: "ການຂົນສົ່ງສາທາລະນະ",
-          zh: "公共交通",
+          en: "Regional Connection",
+          lo: "ການເຊື່ອມຕໍ່ພາກພື້ນ",
+          zh: "区域连接",
         },
-        href: "/transportation/public",
-        children: [
-          {
-            label: { en: "Taxi", lo: "ແທັກຊີ", zh: "出租车" },
-            href: "/transportation/public/taxi",
-          },
-          {
-            label: { en: "Van", lo: "ລົດຕູ້", zh: "叫车" },
-            href: "/transportation/public/van",
-          },
-        ],
+        description: {
+          en: "Cross-border transport services",
+          lo: "ບໍລິການຂົນສົ່ງຂ້າມແດນ",
+          zh: "跨境交通服务",
+        },
+        href: "/transportation/regional",
+      },
+      {
+        label: {
+          en: "Useful Contacts",
+          lo: "ຕິດຕໍ່ທີ່ເປັນປະໂຫຍດ",
+          zh: "实用联系",
+        },
+        description: {
+          en: "Transport service contacts",
+          lo: "ຕິດຕໍ່ບໍລິການຂົນສົ່ງ",
+          zh: "交通服务联系",
+        },
+        href: "/transportation/contacts",
       },
     ],
-  },
-  {
-    id: "at-airport",
-    label: { en: "At the Airport", lo: "ທີ່ສະໜາມບິນ", zh: "在机场" },
-    subtitle: {
-      en: "Airport Facilities",
-      lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
-      zh: "机场设施",
+    featuredContent: {
+      image: "/images/featured/valet-parking.jpg",
+      title: {
+        en: "Valet Parking",
+        lo: "ຈອດລົດພິເສດ",
+        zh: "代客泊车",
+      },
+      description: {
+        en: "Hassle-free parking experience",
+        lo: "ປະສົບການຈອດລົດທີ່ສະດວກ",
+        zh: "轻松停车体验",
+      },
     },
-    href: "/facilities",
-    hasDropdown: true,
-    menuGroups: [
-      {
-        label: { en: "Airport Map", lo: "ແຜນທີ່ສະໜາມບິນ", zh: "机场地图" },
-        href: "/facilities/map",
-      },
-      {
-        label: {
-          en: "Duty-Free Shopping",
-          lo: "ຮ້ານປອດພາສີ",
-          zh: "免税购物",
-        },
-        href: "/facilities/duty-free",
-      },
-      {
-        label: { en: "General Shopping", lo: "ຮ້ານຊື້ເຄື່ອງ", zh: "购物" },
-        href: "/facilities/shopping",
-      },
-      {
-        label: {
-          en: "Food & Beverage",
-          lo: "ອາຫານ ແລະ ເຄື່ອງດື່ມ",
-          zh: "餐饮",
-        },
-        href: "/facilities/dining",
-      },
-      {
-        label: {
-          en: "Convenience & Public Facilities",
-          lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
-          zh: "便利与公共设施",
-        },
-        href: "/facilities/convenience",
-      },
-      {
-        label: {
-          en: "Exhibitions, Performances, and Experiences",
-          lo: "ການວາງສະແດງ, ການສະແດງ ແລະ ປະສົບການ",
-          zh: "展览、表演与体验",
-        },
-        href: "/facilities/exhibitions",
-      },
-    ],
   },
   {
     id: "support",
-    label: { en: "Support", lo: "ສະໜັບສະໜູນ", zh: "支持" },
-    subtitle: { en: "Customer Center", lo: "ສູນລູກຄ້າ", zh: "客服中心" },
+    label: { en: "Support", lo: "ສະໜັບສະໜູນ", zh: "客户支持" },
+    description: {
+      en: "Help center and customer service",
+      lo: "ສູນຊ່ວຍເຫຼືອ ແລະ ບໍລິການລູກຄ້າ",
+      zh: "帮助中心和客服",
+    },
     href: "/support",
     hasDropdown: true,
-    menuGroups: [
+    menuItems: [
       {
-        label: { en: "Notices", lo: "ປະກາດ", zh: "通知" },
+        label: {
+          en: "Notices",
+          lo: "ແຈ້ງການ",
+          zh: "机场公告",
+        },
+        description: {
+          en: "changes, advisories and alerts",
+          lo: "ການປ່ຽນແປງການດຳເນີນງານ ແລະ ຄຳແນະນຳ/ເຕືອນ",
+          zh: "运营变更、提示与警报",
+        },
         href: "/support/notices",
       },
       {
-        label: { en: "News", lo: "ຂ່າວ", zh: "新闻" },
-        href: "/support/news",
+        label: {
+          en: "News",
+          lo: "ຂ່າວສານ",
+          zh: "新闻中心",
+        },
+        description: {
+          en: "Press releases and media updates",
+          lo: "ແຖງຂ່າວ ແລະ ອັບເດດສື່ມວນຊົນ",
+          zh: "新闻稿与媒体更新",
+        },
+        href: "/support/newsroom",
       },
       {
         label: {
-          en: "Customer Support",
-          lo: "ຊ່ວຍເຫຼືອລູກຄ້າ",
-          zh: "客户支持",
+          en: "FAQs",
+          lo: "ຄຳຖາມທີ່ພົບເລື້ອຍ",
+          zh: "常见问题",
         },
-        href: "/support/customer",
-        children: [
-          {
-            label: {
-              en: "Frequently Asked Questions",
-              lo: "ຄຳຖາມທີ່ພົບເລື້ອຍໆ",
-              zh: "常见问题",
-            },
-            href: "/support/customer/faq",
-          },
-          {
-            label: { en: "Phone Numbers", lo: "ເບີໂທລະສັບ", zh: "电话号码" },
-            href: "/support/customer/phone",
-          },
-          {
-            label: {
-              en: "Lost and Found",
-              lo: "ເສຍຫາຍ ແລະ ພົບເຫັນ",
-              zh: "失物招领",
-            },
-            href: "/support/customer/lost-found",
-          },
-          {
-            label: {
-              en: "Voice of Customer",
-              lo: "ສຽງຂອງລູກຄ້າ",
-              zh: "客户之声",
-            },
-            href: "/support/customer/feedback",
-          },
-          {
-            label: {
-              en: "Notice for Passengers and Visitors",
-              lo: "ແຈ້ງການສຳລັບຜູ້ໂດຍສານ",
-              zh: "乘客须知",
-            },
-            href: "/support/customer/notice",
-          },
-        ],
+        description: {
+          en: "Frequently asked questions",
+          lo: "ຄຳຖາມທີ່ຖືກຖາມເລື້ອຍໆ",
+          zh: "常见问题解答",
+        },
+        href: "/support/faq",
+      },
+      {
+        label: {
+          en: "Lost & Found",
+          lo: "ເສຍຫາຍ & ພົບເຫັນ",
+          zh: "失物招领",
+        },
+        description: {
+          en: "Report or claim lost items",
+          lo: "ລາຍງານຫຼືຮັບເຄື່ອງເສຍຫາຍ",
+          zh: "报告或认领失物",
+        },
+        href: "/support/lost-found",
+      },
+      {
+        label: {
+          en: "Feedback",
+          lo: "ຄຳຄິດເຫັນ",
+          zh: "意见反馈",
+        },
+        description: {
+          en: "Share your experience",
+          lo: "ແບ່ງປັນປະສົບການຂອງທ່ານ",
+          zh: "分享您的体验",
+        },
+        href: "/support/feedback",
       },
     ],
+    featuredContent: {
+      image: "/images/featured/customer-support.jpeg",
+      title: {
+        en: "24/7 Support",
+        lo: "ສະໜັບສະໜູນ 24/7",
+        zh: "24/7客服",
+      },
+      description: {
+        en: "We're here to help anytime",
+        lo: "ພວກເຮົາພ້ອມຊ່ວຍເຫຼືອທຸກເວລາ",
+        zh: "随时为您提供帮助",
+      },
+    },
+  },
+  {
+    id: "about-us",
+    label: { en: "About Us", lo: "ກ່ຽວກັບພວກເຮົາ", zh: "关于我们" },
+    description: {
+      en: "Learn about our airport",
+      lo: "ຮຽນຮູ້ກ່ຽວກັບສະໜາມບິນຂອງພວກເຮົາ",
+      zh: "了解我们的机场",
+    },
+    href: "/about",
+    hasDropdown: true,
+    menuItems: [
+      {
+        label: {
+          en: "Overview",
+          lo: "ພາບລວມ",
+          zh: "机场概览",
+        },
+        description: {
+          en: "Airport introduction",
+          lo: "ແນະນຳສະໜາມບິນ",
+          zh: "机场简介",
+        },
+        href: "/about/overview",
+      },
+      {
+        label: {
+          en: "Vision & Mission",
+          lo: "ວິໄສທັດ ແລະ ພາລະກິດ",
+          zh: "愿景使命",
+        },
+        description: {
+          en: "Our goals and values",
+          lo: "ເປົ້າໝາຍ ແລະ ຄຸນຄ່າຂອງພວກເຮົາ",
+          zh: "我们的目标和价值",
+        },
+        href: "/about/vision-mission",
+      },
+      {
+        label: {
+          en: "Our History",
+          lo: "ປະຫວັດຂອງພວກເຮົາ",
+          zh: "发展历史",
+        },
+        description: {
+          en: "Airport development timeline",
+          lo: "ໄລຍະເວລາພັດທະນາສະໜາມບິນ",
+          zh: "机场发展历程",
+        },
+        href: "/about/history",
+      },
+      {
+        label: {
+          en: "Bidding & Procurement",
+          lo: "ການປະມູນ & ຈັດຊື້",
+          zh: "招标与采购",
+        },
+        description: {
+          en: "Open tenders, procurement notices",
+          lo: "ການປະມູນເປີດ, ແຈ້ງການຈັດຊື້ ແລະ ຜົນປະມູນ",
+          zh: "公开招标、采购公告与结果",
+        },
+        href: "/about/bidding",
+      },
+      {
+        label: {
+          en: "Careers",
+          lo: "ຮ່ວມງານກັບພວກເຮົາ",
+          zh: "招聘信息",
+        },
+        description: {
+          en: "Job opportunities",
+          lo: "ໂອກາດການຈ້າງງານ",
+          zh: "工作机会",
+        },
+        href: "/about/careers",
+      },
+    ],
+    featuredContent: {
+      image: "/images/wallpaper/001.jpg",
+      title: {
+        en: "Modern Airport",
+        lo: "ສະໜາມບິນທັນສະໄໝ",
+        zh: "现代化机场",
+      },
+      description: {
+        en: "Connecting Laos to the world",
+        lo: "ເຊື່ອມຕໍ່ລາວກັບໂລກ",
+        zh: "连接老挝与世界",
+      },
+    },
   },
 ];
+
+export type { NavItem, MenuItem, FeaturedContent };
