@@ -13,7 +13,7 @@ export default function AirportHomepage({ lang }: AirportHomepageProps) {
       {/* Above-the-fold: exactly 100vh, split by flex */}
       <section className="flex h-[100svh] min-h-0 flex-col md:h-screen">
         {/* hero ~70% desktop, ~65% tablet, ~60% mobile */}
-        <div className="min-h-0 basis-[60%] sm:basis-[65%] lg:basis-[73%]">
+        <div className="min-h-0 basis-[58%] sm:basis-[60%] md:basis-[65%] lg:basis-[73%]">
           <HeroSection className="h-full min-h-0" />
         </div>
 

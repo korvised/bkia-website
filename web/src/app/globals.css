@@ -134,29 +134,6 @@
     }
 }
 
-@keyframes smoke-flow {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(128px);
-        opacity: 0;
-    }
-}
-
-.smoke-dot {
-    position: absolute;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 9999px;
-    background: white;
-    animation: smoke-flow 2s ease-out infinite;
-    animation-delay: var(--delay, 0s);
-    filter: blur(1px);
-}
-
-
 /* Print styles */
 @media print {
     .no-print {

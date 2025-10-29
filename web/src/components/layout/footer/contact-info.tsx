@@ -41,7 +41,7 @@ export default function ContactInfo() {
             <div className="font-medium">Email</div>
             <Link
               href="mailto:info@bokeointernationalairport.com"
-              className="opacity-80 transition-colors hover:underline hover:opacity-100"
+              className="max-w-fit truncate opacity-80 transition-colors hover:underline hover:opacity-100"
             >
               info@bokeointernationalairport.com
             </Link>

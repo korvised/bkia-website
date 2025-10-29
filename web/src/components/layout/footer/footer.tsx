@@ -16,7 +16,7 @@ export default async function Footer({ lang }: FooterProps) {
     <footer className="from-primary-500 to-primary-600 relative bg-gradient-to-r text-white">
       {/* Main Footer Content */}
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 xl:gap-8">
           {/* Airport Information */}
           <div className="lg:col-span-1">
             <div className="mb-6 flex items-center space-x-3">

@@ -1,40 +1,30 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import {
-  CalendarDays,
-  CloudSun,
-  PlaneLanding,
-  PlaneTakeoff,
-  Search,
-  Thermometer,
-  Wind,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { Cloud, PlaneLanding, PlaneTakeoff, Search } from "lucide-react";
+import { cn } from "@/lib";
 import { useLanguage } from "@/context";
+import DatePicker from "./date-picker";
+import { PiAirplaneInFlightBold } from "react-icons/pi";
 
 type Tab = "departure" | "arrival";
 
-interface WeatherData {
-  temp: number;
-  condition: string;
-  windSpeed: number;
+interface FlightSearchProps {
+  className?: string;
 }
 
-export default function FlightSearch({ className }: { className?: string }) {
+export default function FlightSearch({ className }: FlightSearchProps) {
   const { lang } = useLanguage();
   const [tab, setTab] = useState<Tab>("departure");
-  const [date, setDate] = useState<string>("");
+  const [date, setDate] = useState<Date>(new Date());
   const [query, setQuery] = useState<string>("");
+  const [focusSearchInput, setFocusSearchInput] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  // Mock weather data - replace with actual API call
-  const [weather, setWeather] = useState<WeatherData>({
-    temp: 20,
-    condition: "Partly Cloudy",
-    windSpeed: 12,
-  });
+  const weather = { temp: 17 };
 
   const currentTime = useMemo(() => {
     const d = new Date();
@@ -48,28 +38,29 @@ export default function FlightSearch({ className }: { className?: string }) {
   const handleSearch = () => {
     const params = new URLSearchParams();
     params.set("type", tab);
-    if (date) params.set("date", date);
+    params.set("date", format(date, "yyyyMMdd"));
     if (query.trim()) params.set("q", query.trim());
     router.push(`/${lang}/flights?${params.toString()}`);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
+    if (e.key === "Enter") handleSearch();
   };
 
-  // Translations
+  const handleSearchBoxClick = () => {
+    inputRef.current?.focus();
+  };
+
   const translations = {
     en: {
       title: "Search for",
       subtitle: "Departures and Arrivals",
-      departure: "Departures",
-      arrival: "Arrivals",
-      pickDate: "Pick a date",
-      searchPlaceholder: "Enter flight number / airline / city",
-      searchButton: "Flight Search",
-      weather: weather.condition,
+      departure: "Departure",
+      arrival: "Arrival",
+      pickDate: "Select Date",
+      searchInputTitle: "Flight Search",
+      searchPlaceholder: "Flight number, airline, or city",
+      searchButton: "Search",
     },
     lo: {
       title: "ຄົ້ນຫາ",
@@ -77,9 +68,9 @@ export default function FlightSearch({ className }: { className?: string }) {
       departure: "ຂາອອກ",
       arrival: "ຂາເຂົ້າ",
       pickDate: "ເລືອກວັນທີ",
-      searchPlaceholder: "ປ້ອນເລກຖ້ຽວບິນ / ສາຍການບິນ / ເມືອງ",
-      searchButton: "ຄົ້ນຫາຖ້ຽວບິນ",
-      weather: "ເມກບາງສ່ວນ",
+      searchInputTitle: "ຄົ້ນຫາຖ້ຽວບິນ",
+      searchPlaceholder: "ເລກຖ້ຽວບິນ, ສາຍການບິນ, ຫຼື ເມືອງ",
+      searchButton: "ຄົ້ນຫາ",
     },
     zh: {
       title: "搜索",
@@ -87,133 +78,146 @@ export default function FlightSearch({ className }: { className?: string }) {
       departure: "出发",
       arrival: "到达",
       pickDate: "选择日期",
-      searchPlaceholder: "输入航班号 / 航空公司 / 城市",
-      searchButton: "航班搜索",
-      weather: "局部多云",
+      searchInputTitle: "航班搜索",
+      searchPlaceholder: "航班号、航空公司或城市",
+      searchButton: "搜索",
     },
   };
 
   const t = translations[lang];
 
   return (
-    <section className={cn("relative h-full bg-white", className)}>
-      <div className="mx-auto flex h-full max-w-[1536px] items-center px-4 py-6 sm:px-6 sm:py-8">
-        <div className="grid w-full gap-6 lg:grid-cols-[300px_1fr]">
-          {/* Left Column: Title + Weather */}
-          <div className="flex flex-col justify-center">
+    <section className={cn("relative bg-white shadow-sm", className)}>
+      <div className="mx-auto flex h-full max-w-[1536px] items-center px-4 py-6 sm:py-8 lg:px-6">
+        <div className="grid w-full gap-8 lg:grid-cols-[280px_1fr]">
+          {/* Left: Title + Weather */}
+          <div className="flex items-center justify-between gap-4 lg:flex-col lg:items-start lg:justify-start lg:gap-5">
             {/* Title */}
-            <div className="mb-6">
+            <div className="flex-1 lg:flex-none">
               <h2 className="text-2xl leading-tight font-bold text-gray-900 sm:text-3xl">
                 {t.title}
-                <br />
-                <span className="text-primary-600">{t.subtitle}</span>
               </h2>
+              <p className="text-primary-600 mt-1 text-xl font-bold sm:text-2xl">
+                {t.subtitle}
+              </p>
             </div>
 
-            {/* Weather Widget */}
-            <div className="rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 p-4 shadow-sm">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white/70 shadow-sm backdrop-blur-sm">
-                  <CloudSun className="h-7 w-7 text-blue-600" />
-                </div>
-                <div className="flex-1">
-                  <div className="mb-2 flex items-baseline gap-2">
-                    <span className="text-3xl font-bold text-gray-900">
-                      {weather.temp}°C
-                    </span>
-                    <span className="text-sm text-gray-600">{t.weather}</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-gray-600">
-                    <div className="flex items-center gap-1">
-                      <Thermometer className="h-3.5 w-3.5" />
-                      <span>{currentTime}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Wind className="h-3.5 w-3.5" />
-                      <span>{weather.windSpeed} km/h</span>
-                    </div>
-                  </div>
-                </div>
+            {/* Weather & Time */}
+            <div className="flex items-center gap-3 rounded-xl bg-blue-50 px-4 py-3">
+              <Cloud className="h-8 w-8 text-blue-600" />
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold text-gray-900">
+                  {weather.temp}°C
+                </span>
+                <span className="text-xs font-medium text-gray-600">
+                  {currentTime}
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Search Controls */}
-          <div className="flex flex-col justify-center gap-5">
-            {/* Tab Navigation */}
-            <div className="flex items-center gap-8 border-b-2 border-gray-200">
+          {/* Right: Search Form */}
+          <div className="flex flex-col gap-6">
+            {/* Tabs with Bottom Line - All Primary Color */}
+            <div className="flex gap-8 border-b border-gray-200">
               <button
                 onClick={() => setTab("departure")}
                 className={cn(
-                  "relative flex items-center gap-2 pb-3 text-base font-semibold transition-colors",
+                  "group relative flex items-center gap-2.5 pb-4 text-base font-semibold transition-colors sm:text-lg",
                   tab === "departure"
                     ? "text-primary-600"
                     : "text-gray-500 hover:text-gray-700",
                 )}
               >
-                <PlaneTakeoff className="h-5 w-5" />
-                <span>{t.departure}</span>
+                <PlaneTakeoff className="h-5 w-5 sm:h-6 sm:w-6" />
+                {t.departure}
+                {/* Bottom indicator */}
                 {tab === "departure" && (
-                  <div className="bg-primary-600 absolute right-0 -bottom-0.5 left-0 h-0.5" />
+                  <span className="bg-primary-600 absolute right-0 bottom-0 left-0 h-0.5" />
                 )}
               </button>
 
               <button
                 onClick={() => setTab("arrival")}
                 className={cn(
-                  "relative flex items-center gap-2 pb-3 text-base font-semibold transition-colors",
+                  "group relative flex items-center gap-2.5 pb-4 text-base font-semibold transition-colors sm:text-lg",
                   tab === "arrival"
                     ? "text-primary-600"
                     : "text-gray-500 hover:text-gray-700",
                 )}
               >
-                <PlaneLanding className="h-5 w-5" />
-                <span>{t.arrival}</span>
+                <PlaneLanding className="h-5 w-5 sm:h-6 sm:w-6" />
+                {t.arrival}
+                {/* Bottom indicator */}
                 {tab === "arrival" && (
-                  <div className="bg-primary-600 absolute right-0 -bottom-0.5 left-0 h-0.5" />
+                  <span className="bg-primary-600 absolute right-0 bottom-0 left-0 h-0.5" />
                 )}
               </button>
             </div>
 
-            {/* Search Form */}
-            <div className="flex flex-wrap items-center gap-3">
-              {/* Date Picker */}
-              <div className="relative">
-                <div className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2">
-                  <CalendarDays className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  className="focus:border-primary-500 focus:ring-primary-500/20 h-12 w-48 rounded-lg border-2 border-gray-300 bg-white pr-3 pl-10 text-sm text-gray-900 transition-all placeholder:text-gray-400 hover:border-gray-400 focus:ring-2 focus:outline-none"
-                  placeholder={t.pickDate}
-                />
-              </div>
+            {/* Form Fields - All Same Height */}
+            <div className="flex flex-col items-center gap-4 md:flex-row md:items-start">
+              {/* Date Picker Component */}
+              <DatePicker
+                date={date}
+                onDateChange={setDate}
+                lang={lang}
+                label={t.pickDate}
+              />
 
               {/* Search Input */}
-              <div className="relative min-w-[280px] flex-1">
-                <div className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2">
-                  <Search className="h-5 w-5 text-gray-400" />
+              <div
+                onClick={handleSearchBoxClick}
+                className={cn(
+                  "group relative flex h-14 w-full cursor-text items-center gap-4 rounded-lg border-2 bg-white px-3 shadow-sm transition-all md:h-16 lg:flex-1 xl:px-5",
+                  focusSearchInput
+                    ? "border-primary-500 ring-primary-100 shadow-md ring-2"
+                    : "border-gray-300 hover:border-gray-400 hover:shadow-md",
+                )}
+              >
+                <div
+                  className={cn(
+                    "flex flex-shrink-0 items-center justify-center rounded-lg transition-colors md:h-10 md:w-10",
+                    focusSearchInput ? "bg-primary-100" : "bg-gray-100",
+                  )}
+                >
+                  <PiAirplaneInFlightBold
+                    className={cn(
+                      "h-5 w-5 transition-colors",
+                      focusSearchInput ? "text-primary-600" : "text-gray-700",
+                    )}
+                  />
                 </div>
-                <input
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onKeyDown={handleKeyPress}
-                  placeholder={t.searchPlaceholder}
-                  className="focus:border-primary-500 focus:ring-primary-500/20 h-12 w-full rounded-lg border-2 border-gray-300 bg-white pr-3 pl-10 text-sm text-gray-900 transition-all placeholder:text-gray-400 hover:border-gray-400 focus:ring-2 focus:outline-none"
-                />
+                <div className="flex flex-1 flex-col justify-center gap-0.5">
+                  <div
+                    className={cn(
+                      "text-xs font-semibold tracking-wide uppercase transition-colors",
+                      focusSearchInput ? "text-primary-600" : "text-gray-500",
+                    )}
+                  >
+                    {t.searchInputTitle}
+                  </div>
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    onKeyDown={handleKeyPress}
+                    onFocus={() => setFocusSearchInput(true)}
+                    onBlur={() => setFocusSearchInput(false)}
+                    placeholder={t.searchPlaceholder}
+                    className="w-full bg-transparent text-base font-medium text-gray-900 outline-none placeholder:text-sm placeholder:font-normal placeholder:text-gray-400"
+                  />
+                </div>
               </div>
 
               {/* Search Button */}
               <button
                 onClick={handleSearch}
-                disabled={!query.trim() && !date}
-                className="bg-secondary-500 hover:bg-secondary-600 disabled:hover:bg-secondary-500 inline-flex h-12 items-center gap-2 rounded-lg px-6 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:shadow-md"
+                className="bg-primary-600/80 hover:bg-primary-600/90 group relative flex h-12 w-fit cursor-pointer items-center justify-center gap-2.5 rounded-lg px-8 text-base font-bold text-white shadow-lg transition-all hover:shadow-xl active:scale-[0.98] md:h-16 xl:px-10"
               >
-                <Search className="h-4 w-4" />
-                <span>{t.searchButton}</span>
+                <Search className="h-5 w-5" />
+                <span className="whitespace-nowrap">{t.searchButton}</span>
               </button>
             </div>
           </div>

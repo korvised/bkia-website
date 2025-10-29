@@ -22,14 +22,14 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/actions/*": ["./src/actions/*"],
+      "@/app/*": ["./src/app/*"],
       "@/components/*": ["./src/components/*"],
-      "@/lib/*": ["./src/lib/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-      "@/types/*": ["./src/types/*"],
-      "@/styles/*": ["./src/styles/*"],
-      "@/data/*": ["./src/data/*"],
       "@/context/*": ["./src/context/*"],
-      "@/app/*": ["./src/app/*"]
+      "@/data/*": ["./src/data/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/types/*": ["./src/types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
