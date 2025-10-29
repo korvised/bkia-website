@@ -2,7 +2,6 @@ import { Lang } from "@/types/language";
 import HeroSection from "./hero-section";
 import FlightSearch from "./flight-search";
 import UsefulServicesSection from "./useful-services-section";
-import DateTimeClient from "./date-time-client";
 
 interface AirportHomepageProps {
   lang: Lang;
@@ -11,35 +10,21 @@ interface AirportHomepageProps {
 export default function AirportHomepage({ lang }: AirportHomepageProps) {
   return (
     <div className="w-full">
-      {/* Main Hero Section with Background Image */}
-      <section className="relative min-h-screen w-full overflow-hidden">
-        {/* Background Image - Full Screen */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url(/images/homepage/banner.jpg)" }}
-        />
-
-        {/* Hero Content */}
-        <div className="relative z-10 flex min-h-screen flex-col">
-          <HeroSection />
+      {/* Above-the-fold: exactly 100vh, split by flex */}
+      <section className="flex h-[100svh] min-h-0 flex-col md:h-screen">
+        {/* hero ~70% desktop, ~65% tablet, ~60% mobile */}
+        <div className="min-h-0 basis-[60%] sm:basis-[65%] lg:basis-[73%]">
+          <HeroSection className="h-full min-h-0" />
         </div>
 
-        {/* Date Time Display */}
-        <DateTimeClient lang={lang} />
-
-        {/* Flight Search - Overlaid on hero section */}
-        <FlightSearch />
+        {/* search fills the rest */}
+        <div className="min-h-0 flex-1">
+          <FlightSearch className="h-full" />
+        </div>
       </section>
 
+      {/* Useful Services Section */}
       <UsefulServicesSection lang={lang} />
-
-      {/* Fixed Right Sidebar */}
-      {/*<RightSidebar lang={lang} />*/}
-
-      {/* Quick Services Section */}
-      {/* <section className="relative min-h-screen w-full bg-gradient-to-br from-gray-50 to-blue-50">
-        <QuickServices lang={lang} />
-      </section>*/}
     </div>
   );
 }

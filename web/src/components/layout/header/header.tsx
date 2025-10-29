@@ -7,12 +7,13 @@ import { Menu, ArrowRight, ChevronRight } from "lucide-react";
 import { GoSearch } from "react-icons/go";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import { PiWheelchairDuotone } from "react-icons/pi";
+import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { useApp } from "@/context/app-context";
 import { mainNavigation } from "@/data/main-navigation";
+import { SearchDialog } from "@/components/common";
 import { LanguageSelector } from "./language-selector";
 import { Sidebar } from "./sidebar";
-import { SearchDialog } from "@/components/common";
 
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -52,11 +53,16 @@ export function Header() {
 
   return (
     <Fragment>
-      <header
+      <motion.header
         className={cn(
-          "fixed top-0 right-0 left-0 z-50 transition-all duration-100 ease-in-out",
-          isHeaderWhite ? "bg-white shadow-md" : "bg-transparent",
+          "fixed top-0 right-0 left-0 z-50",
+          isHeaderWhite ? "shadow-md" : "",
         )}
+        initial={{ backgroundColor: "transparent" }}
+        animate={{
+          backgroundColor: isHeaderWhite ? "#ffffff" : "transparent",
+        }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
       >
         <div className="mx-auto max-w-[1920px]">
           <div className="flex items-center justify-between px-4 sm:px-6 xl:px-12">
@@ -134,7 +140,7 @@ export function Header() {
                           activeMenu === item.id
                             ? "scale-x-100"
                             : "scale-x-0 group-hover:scale-x-100",
-                          isHeaderWhite ? "bg-primary-600" : "bg-transparent",
+                          isHeaderWhite ? "bg-primary-600" : "bg-white",
                         )}
                       />
                     </Link>
@@ -203,113 +209,154 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mega Menu Dropdown */}
-        <div
-          className={cn(
-            "absolute right-0 left-0 w-full border-t border-gray-100 bg-white shadow-2xl transition-all duration-300 ease-in",
-            activeMenu
-              ? "pointer-events-auto translate-y-0 opacity-100"
-              : "pointer-events-none -translate-y-4 opacity-0",
-          )}
-          onMouseEnter={handleDropdownEnter}
-          onMouseLeave={handleDropdownLeave}
-        >
-          {mainNavigation
-            .filter((item) => item.hasDropdown)
-            .map((item) => (
-              <div
-                key={item.id}
-                className={cn(
-                  activeMenu === item.id ? "block" : "hidden",
-                  "mx-auto max-w-[1920px]",
-                )}
+        {/* Mega Menu Dropdown - Quick Exit Animation */}
+        <AnimatePresence mode="wait">
+          {activeMenu && (
+            <motion.div
+              className="absolute right-0 left-0 w-full bg-white shadow-xl"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{
+                height: "auto",
+                opacity: 1,
+                transition: {
+                  height: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+                  opacity: { duration: 0.25, ease: "easeOut" },
+                },
+              }}
+              exit={{
+                height: 0,
+                opacity: 0,
+                transition: {
+                  height: { duration: 0.15, ease: "easeIn" },
+                  opacity: { duration: 0.1, ease: "easeIn" },
+                },
+              }}
+              onMouseEnter={handleDropdownEnter}
+              onMouseLeave={handleDropdownLeave}
+            >
+              <motion.div
+                className="overflow-hidden"
+                initial={{ opacity: 0, y: -8 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.2, delay: 0.1 },
+                }}
+                exit={{
+                  opacity: 0,
+                  y: -8,
+                  transition: { duration: 0.1 },
+                }}
               >
-                {/* Grid Layout */}
-                <div className="grid grid-cols-[1fr_auto_1fr] gap-8 px-6 py-10 lg:px-12">
-                  {/* Page Title & Description */}
-                  <div className="flex justify-end">
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-900">
-                        {item.label[lang]}
-                      </h2>
-                      {item.description && (
-                        <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                          {item.description[lang]}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Menu Items List */}
-                  <div className="flex w-80 flex-col gap-y-1 border-l border-gray-200 px-6">
-                    {item.menuItems?.map((menuItem, idx) => (
-                      <Link
-                        key={idx}
-                        href={`/${lang}${menuItem.href}`}
-                        className="group/link flex items-center justify-between gap-x-4 rounded-lg py-3 pr-2 pl-4 transition-colors duration-200 hover:bg-gray-50 sm:pr-4 sm:pl-6"
+                <div className="mx-auto max-w-[1920px]">
+                  {mainNavigation
+                    .filter((item) => item.hasDropdown)
+                    .map((item) => (
+                      <div
+                        key={item.id}
+                        className={cn(
+                          activeMenu === item.id ? "block" : "hidden",
+                        )}
                       >
-                        <div className="grid">
-                          <span className="group-hover/link:text-primary-600 text-base font-semibold text-gray-700 transition-colors duration-200">
-                            {menuItem.label[lang]}
-                          </span>
+                        {/* Separator Line */}
+                        <div className="h-px bg-gray-200" />
 
-                          {menuItem.description && (
-                            <span className="mt-1 text-xs text-gray-500">
-                              {menuItem.description[lang]}
-                            </span>
-                          )}
-                        </div>
-                        <ChevronRight className="text-primary-600 h-4 w-4 flex-shrink-0 -translate-x-1 opacity-0 transition-all duration-200 group-hover/link:translate-x-0 group-hover/link:opacity-100" />
-                      </Link>
-                    ))}
-                  </div>
+                        {/* Grid Layout */}
+                        <div className="grid grid-cols-[1fr_auto_1fr] gap-8 px-6 py-10 lg:px-12">
+                          {/* Column 1: Page Title & Description */}
+                          <div className="flex justify-end">
+                            <div className="max-w-xs">
+                              <h2 className="text-2xl font-bold text-gray-900">
+                                {item.label[lang]}
+                              </h2>
+                              {item.description && (
+                                <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                                  {item.description[lang]}
+                                </p>
+                              )}
+                            </div>
+                          </div>
 
-                  {/* Featured Content Card */}
-                  {item.featuredContent && (
-                    <div className="w-80">
-                      <div className="group/card hover:border-primary-200 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md">
-                        {/* Featured Image */}
-                        <div className="relative aspect-video w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
-                          <Image
-                            src={item.featuredContent.image}
-                            alt={item.featuredContent.title[lang]}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover/card:scale-105"
-                            sizes="320px"
-                          />
-                        </div>
+                          {/* Column 2: Menu Items List */}
+                          <div className="flex w-80 flex-col gap-y-1 border-l border-gray-200 px-6">
+                            {item.menuItems?.map((menuItem, idx) => (
+                              <Link
+                                key={idx}
+                                href={`/${lang}${menuItem.href}`}
+                                className="group/link flex items-center justify-between gap-x-4 rounded-lg py-3 pr-2 pl-4 transition-all duration-200 hover:bg-gray-50 sm:pr-4 sm:pl-6"
+                              >
+                                <div className="grid flex-1">
+                                  <span className="group-hover/link:text-primary-600 text-base font-semibold text-gray-700 transition-colors duration-200">
+                                    {menuItem.label[lang]}
+                                  </span>
 
-                        {/* Content */}
-                        <div className="p-5">
-                          <h3 className="text-lg font-bold text-gray-900">
-                            {item.featuredContent.title[lang]}
-                          </h3>
+                                  {menuItem.description && (
+                                    <span className="mt-1 text-xs leading-relaxed text-gray-500">
+                                      {menuItem.description[lang]}
+                                    </span>
+                                  )}
+                                </div>
+                                <ChevronRight className="text-primary-600 h-4 w-4 flex-shrink-0 -translate-x-1 opacity-0 transition-all duration-200 group-hover/link:translate-x-0 group-hover/link:opacity-100" />
+                              </Link>
+                            ))}
+                          </div>
 
-                          <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                            {item.featuredContent.description[lang]}
-                          </p>
+                          {/* Column 3: Featured Content Card */}
+                          {item.featuredContent && (
+                            <div className="flex items-start">
+                              <div className="w-80">
+                                <div className="group/card hover:border-primary-200 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md">
+                                  {/* Featured Image */}
+                                  <div className="relative aspect-video w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
+                                    <Image
+                                      src={item.featuredContent.image}
+                                      alt={item.featuredContent.title[lang]}
+                                      fill
+                                      className="object-cover transition-transform duration-500 group-hover/card:scale-105"
+                                      sizes="320px"
+                                    />
+                                  </div>
 
-                          {/* CTA Link */}
-                          {item.featuredContent.link && (
-                            <Link
-                              href={`/${lang}${item.featuredContent.link.href}`}
-                              className="group/cta text-primary-600 hover:text-primary-700 mt-4 inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200"
-                            >
-                              <span>
-                                {item.featuredContent.link.label[lang]}
-                              </span>
-                              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
-                            </Link>
+                                  {/* Content */}
+                                  <div className="p-5">
+                                    <h3 className="text-lg font-bold text-gray-900">
+                                      {item.featuredContent.title[lang]}
+                                    </h3>
+
+                                    <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                                      {item.featuredContent.description[lang]}
+                                    </p>
+
+                                    {/* CTA Link */}
+                                    {item.featuredContent.link && (
+                                      <Link
+                                        href={`/${lang}${item.featuredContent.link.href}`}
+                                        className="group/cta text-primary-600 hover:text-primary-700 mt-4 inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200"
+                                      >
+                                        <span>
+                                          {
+                                            item.featuredContent.link.label[
+                                              lang
+                                            ]
+                                          }
+                                        </span>
+                                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
+                                      </Link>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           )}
                         </div>
                       </div>
-                    </div>
-                  )}
+                    ))}
                 </div>
-              </div>
-            ))}
-        </div>
-      </header>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
 
       {/* Mobile Sidebar */}
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
