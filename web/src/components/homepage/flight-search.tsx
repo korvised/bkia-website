@@ -59,7 +59,7 @@ export default function FlightSearch({ className }: FlightSearchProps) {
       arrival: "Arrival",
       pickDate: "Select Date",
       searchInputTitle: "Flight Search",
-      searchPlaceholder: "Flight number, airline, or city",
+      searchPlaceholder: "Flight number, airline or destination",
       searchButton: "Search",
     },
     lo: {
@@ -69,7 +69,7 @@ export default function FlightSearch({ className }: FlightSearchProps) {
       arrival: "ຂາເຂົ້າ",
       pickDate: "ເລືອກວັນທີ",
       searchInputTitle: "ຄົ້ນຫາຖ້ຽວບິນ",
-      searchPlaceholder: "ເລກຖ້ຽວບິນ, ສາຍການບິນ, ຫຼື ເມືອງ",
+      searchPlaceholder: "ເລກຖ້ຽວບິນ, ສາຍການບິນ ຫຼື ປາຍທາງ",
       searchButton: "ຄົ້ນຫາ",
     },
     zh: {
@@ -88,7 +88,7 @@ export default function FlightSearch({ className }: FlightSearchProps) {
 
   return (
     <section className={cn("relative bg-white shadow-sm", className)}>
-      <div className="mx-auto flex h-full max-w-[1536px] items-center px-4 py-6 sm:py-8 lg:px-6">
+      <div className="container flex h-full items-center px-4 py-6 sm:py-8 lg:px-6">
         <div className="grid w-full gap-8 lg:grid-cols-[280px_1fr]">
           {/* Left: Title + Weather */}
           <div className="flex items-center justify-between gap-4 lg:flex-col lg:items-start lg:justify-start lg:gap-5">

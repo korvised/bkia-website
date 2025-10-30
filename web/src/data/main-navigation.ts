@@ -135,12 +135,12 @@ export const mainNavigation: NavItem[] = [
       {
         label: {
           en: "Arrivals",
-          lo: "ການມາຮອດ",
+          lo: "ຂາເຂົ້າ",
           zh: "到达指南",
         },
         description: {
           en: "Arrival procedures and customs",
-          lo: "ຂັ້ນຕອນການມາຮອດ ແລະ ພາສີສຸນລະກອນ",
+          lo: "ຄຳແນະນຳຜູ້ໂດຍສານຂາເຂົ້າ ແລະ ພາສີສຸນລະກອນ",
           zh: "到达流程和海关",
         },
         href: "/guide/arrivals",
@@ -148,12 +148,12 @@ export const mainNavigation: NavItem[] = [
       {
         label: {
           en: "Departures",
-          lo: "ການອອກເດີນທາງ",
+          lo: "ຂາອອກ",
           zh: "出发指南",
         },
         description: {
           en: "Check-in and boarding process",
-          lo: "ຂັ້ນຕອນການເຊັກອິນ ແລະ ຂຶ້ນເຄື່ອງ",
+          lo: "ຂັ້ນຕອນການແຈ້ງ ແລະ ການຂຶ້ນເຄື່ອງ",
           zh: "值机和登机流程",
         },
         href: "/guide/departures",

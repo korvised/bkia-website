@@ -1,115 +1,130 @@
-"use client";
-
-import { Flight } from "@/types/flight";
-import { useLanguage } from "@/context";
-import { flightTranslations } from "@/data/translations/flights";
-import { FlightStatusBadge } from "./flight-status-badge";
+import Link from "next/link";
+import { cn } from "@/lib";
+import { Lang } from "@/types/language";
+import { Flight, translations } from "@/data/flight-board";
 
 interface FlightTableProps {
   flights: Flight[];
   type: "departure" | "arrival";
+  lang: Lang;
 }
 
-export function FlightTable({ flights, type }: FlightTableProps) {
-  const { t } = useLanguage();
-
-  const isDeparture = type === "departure";
+export function FlightTable({ flights, type, lang }: FlightTableProps) {
+  const t = (text: Record<Lang, string>) => text[lang];
 
   return (
-    <div className="horizontal-scroll overflow-x-auto">
-      <table className="min-w-full bg-white">
-        <thead className="bg-gray-50">
+    <div className="overflow-x-auto rounded-lg border border-gray-200">
+      <table className="w-full">
+        <thead className="bg-yellow-50">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-              {t(flightTranslations.table.flightNumber)}
+            <th className="px-4 py-3 text-left text-sm font-medium whitespace-nowrap text-gray-900">
+              {type === "departure"
+                ? t(translations.departureTime)
+                : t(translations.arrivalTime)}
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-              {t(flightTranslations.table.aircraft)}
+            <th className="px-4 py-3 text-left text-sm font-medium whitespace-nowrap text-gray-900">
+              {type === "departure" ? t(translations.to) : t(translations.from)}
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-              {t(flightTranslations.table.airline)}
+            <th className="px-4 py-3 text-left text-sm font-medium whitespace-nowrap text-gray-900">
+              {t(translations.airlineFlightNo)}
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-              {isDeparture
-                ? t(flightTranslations.table.destination)
-                : t(flightTranslations.table.origin)}
+            <th className="px-4 py-3 text-center text-sm font-medium whitespace-nowrap text-gray-900">
+              {t(translations.terminal)}
             </th>
-            {flights.some((f) => f.stopover1) && (
-              <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                {t(flightTranslations.table.stopover1)}
-              </th>
-            )}
-            {flights.some((f) => f.stopover2) && (
-              <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                {t(flightTranslations.table.stopover2)}
-              </th>
-            )}
-            <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-              {t(flightTranslations.table.scheduled)}
+            <th className="px-4 py-3 text-center text-sm font-medium whitespace-nowrap text-gray-900">
+              {t(translations.checkInCounter)}
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-              {t(flightTranslations.table.estimated)}
+            <th className="px-4 py-3 text-center text-sm font-medium whitespace-nowrap text-gray-900">
+              {t(translations.gate)}
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-              {t(flightTranslations.table.actual)}
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-              {t(flightTranslations.table.gate)}
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-              {t(flightTranslations.table.status)}
+            <th className="px-4 py-3 text-center text-sm font-medium whitespace-nowrap text-gray-900">
+              {type === "departure"
+                ? t(translations.departureConditions)
+                : t(translations.arrivalConditions)}
             </th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200 bg-white">
-          {flights.map((flight) => (
-            <tr key={flight.id} className="hover:bg-gray-50">
-              <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm font-medium text-gray-900">
-                  {flight.flightNumber}
-                </div>
-                {flight.airlineCode && (
-                  <div className="text-sm text-gray-500">
-                    {flight.airlineCode}
+          {flights.length > 0 ? (
+            flights.map((flight) => (
+              <tr
+                key={flight.id}
+                className="border-l-primary-500 border-l-4 transition-colors hover:bg-gray-50"
+              >
+                <td className="px-4 py-4 whitespace-nowrap">
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg font-bold text-gray-900">
+                      {flight.time}
+                    </span>
+                    {flight.originalTime && (
+                      <span className="text-sm text-blue-500 line-through">
+                        {flight.originalTime}
+                      </span>
+                    )}
                   </div>
-                )}
-              </td>
-              <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-                {flight.aircraft}
-              </td>
-              <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-                {flight.airline}
-              </td>
-              <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-                {isDeparture ? flight.destination : flight.origin}
-              </td>
-              {flights.some((f) => f.stopover1) && (
-                <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-                  {flight.stopover1 || ""}
                 </td>
-              )}
-              {flights.some((f) => f.stopover2) && (
-                <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-                  {flight.stopover2 || ""}
+                <td className="px-4 py-4">
+                  <div className="text-sm font-medium text-gray-900">
+                    {flight.destination}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    ({flight.destinationCode})
+                  </div>
                 </td>
-              )}
-              <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-                {flight.scheduledTime}
-              </td>
-              <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-                {flight.estimatedTime || "-"}
-              </td>
-              <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-                {flight.actualTime || "-"}
-              </td>
-              <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-                {flight.gate || "-"}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <FlightStatusBadge status={flight.status} />
+                <td className="px-4 py-4">
+                  <Link
+                    href={`/${lang}/flights/detail/${flight.flightNumber}`}
+                    className="group flex items-center gap-3"
+                  >
+                    <span className="text-2xl">{flight.airlineLogo}</span>
+                    <div>
+                      <div className="group-hover:text-primary-600 text-sm font-medium text-gray-900 transition-colors">
+                        {flight.flightNumber}
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        {flight.airline}
+                      </div>
+                    </div>
+                  </Link>
+                </td>
+                <td className="px-4 py-4 text-center">
+                  <span className="text-sm font-medium text-gray-900">
+                    {flight.terminal}
+                  </span>
+                </td>
+                <td className="px-4 py-4 text-center">
+                  <span className="text-sm font-medium text-gray-900">
+                    {flight.checkInCounter}
+                  </span>
+                </td>
+                <td className="px-4 py-4 text-center">
+                  <span className="text-primary-600 text-lg font-bold">
+                    {flight.gate}
+                  </span>
+                </td>
+                <td className="px-4 py-4 text-center">
+                  <span
+                    className={cn(
+                      "inline-block rounded px-3 py-1 text-sm font-medium text-white",
+                      flight.statusColor === "blue" && "bg-primary-500",
+                      flight.statusColor === "green" && "bg-green-500",
+                      flight.statusColor === "yellow" && "bg-yellow-500",
+                      flight.statusColor === "red" && "bg-red-500",
+                      flight.statusColor === "gray" && "bg-gray-500",
+                    )}
+                  >
+                    {flight.status}
+                  </span>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
+                {t(translations.noFlights)}
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

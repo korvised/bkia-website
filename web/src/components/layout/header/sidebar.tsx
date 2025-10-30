@@ -23,17 +23,17 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const { lang } = useApp();
-  const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
+  const [expanded, setExpanded] = useState<string[]>([]);
 
-  const toggleGroup = (groupId: string) => {
-    setExpandedGroups((prev) =>
-      prev.includes(groupId)
-        ? prev.filter((id) => id !== groupId)
-        : [...prev, groupId],
+  const toggle = (id: string) => {
+    setExpanded((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   };
 
-  const isGroupExpanded = (groupId: string) => expandedGroups.includes(groupId);
+  const isExpanded = (id: string) => expanded.includes(id);
+
+  const withLang = (href: string) => `/${lang}${href}`;
 
   return (
     <Transition show={isOpen} as={Fragment}>
@@ -51,7 +51,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <div className="fixed inset-0 bg-black/50" />
         </TransitionChild>
 
-        {/* Sidebar Panel - Right Side */}
+        {/* Drawer */}
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
@@ -95,90 +95,94 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                       </button>
                     </div>
 
-                    {/* Scrollable Content */}
+                    {/* Content */}
                     <div className="flex-1 overflow-y-auto">
                       <nav className="py-2">
-                        {mainNavigation.map((item) => (
-                          <div
-                            key={item.id}
-                            className="border-b border-gray-100"
-                          >
-                            {/* Main Menu Item */}
-                            <button
-                              onClick={() => toggleGroup(item.id)}
-                              className="flex w-full items-center justify-between px-6 py-4 text-left transition-colors hover:bg-gray-50"
+                        {mainNavigation.map((item) => {
+                          const expandedNow = isExpanded(item.id);
+
+                          return (
+                            <div
+                              key={item.id}
+                              className="border-b border-gray-100"
                             >
-                              <div className="flex-1">
-                                <div className="text-sm font-semibold text-gray-900">
-                                  {item.label[lang]}
-                                </div>
-                                {item.subtitle && (
-                                  <div className="mt-0.5 text-sm text-gray-500">
-                                    {item.subtitle[lang]}
-                                  </div>
-                                )}
-                              </div>
-
-                              {/* Chevron Icon */}
-                              <ChevronDown
-                                className={cn(
-                                  "h-5 w-5 flex-shrink-0 text-gray-400 transition-transform duration-200",
-                                  isGroupExpanded(item.id) && "rotate-180",
-                                )}
-                              />
-                            </button>
-
-                            {/* Expanded Groups */}
-                            {isGroupExpanded(item.id) && item.menuGroups && (
-                              <div className="bg-gray-50 px-4 py-2">
-                                {item.menuGroups.map((group, groupIdx) => (
-                                  <div
-                                    key={groupIdx}
-                                    className="mb-4 last:mb-2"
-                                  >
-                                    {/* Group Title */}
-                                    <div className="mb-2 px-2">
-                                      {group.children ? (
-                                        <div className="inline-block text-sm font-semibold text-gray-900">
-                                          {group.label[lang]}
-                                        </div>
-                                      ) : (
-                                        <Link
-                                          href={`/${lang}${group.href}`}
-                                          onClick={onClose}
-                                          className="hover:text-primary-600 inline-block text-sm font-semibold text-gray-900 transition-colors hover:underline"
-                                        >
-                                          {group.label[lang]}
-                                        </Link>
-                                      )}
+                              {/* Root row */}
+                              {item.hasDropdown ? (
+                                <button
+                                  onClick={() => toggle(item.id)}
+                                  className="flex w-full items-center justify-between px-6 py-4 text-left transition-colors hover:bg-gray-50"
+                                  aria-expanded={expandedNow}
+                                  aria-controls={`section-${item.id}`}
+                                >
+                                  <div className="flex-1">
+                                    <div className="text-sm font-semibold text-gray-900">
+                                      {item.label[lang]}
                                     </div>
-
-                                    {/* Group Children */}
-                                    {group.children && (
-                                      <ul className="space-y-1">
-                                        {group.children.map(
-                                          (child, childIdx) => (
-                                            <li key={childIdx}>
-                                              <Link
-                                                href={`/${lang}${child.href}`}
-                                                onClick={onClose}
-                                                className="group hover:text-primary-600 ml-2 flex items-center gap-2 rounded-md px-2 py-2 text-sm text-gray-600 transition-colors hover:bg-white"
-                                              >
-                                                {/*<ChevronRight className="group-hover:text-primary-600 h-3.5 w-3.5 flex-shrink-0 text-gray-400 transition-colors" />*/}
-                                                <span className="group-hover:bg-primary-600 h-1.5 w-1.5 bg-gray-400 transition-colors" />
-                                                <span>{child.label[lang]}</span>
-                                              </Link>
-                                            </li>
-                                          ),
-                                        )}
-                                      </ul>
+                                    {item.description && (
+                                      <div className="mt-0.5 text-xs text-gray-500">
+                                        {item.description[lang]}
+                                      </div>
                                     )}
                                   </div>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        ))}
+                                  <ChevronDown
+                                    className={cn(
+                                      "h-5 w-5 flex-shrink-0 text-gray-400 transition-transform duration-200",
+                                      expandedNow && "rotate-180",
+                                    )}
+                                  />
+                                </button>
+                              ) : (
+                                <Link
+                                  href={withLang(item.href)}
+                                  onClick={onClose}
+                                  className="flex w-full items-center justify-between px-6 py-4 transition-colors hover:bg-gray-50"
+                                >
+                                  <div className="flex-1">
+                                    <div className="text-sm font-semibold text-gray-900">
+                                      {item.label[lang]}
+                                    </div>
+                                    {item.description && (
+                                      <div className="mt-0.5 text-xs text-gray-500">
+                                        {item.description[lang]}
+                                      </div>
+                                    )}
+                                  </div>
+                                </Link>
+                              )}
+
+                              {/* Dropdown body */}
+                              {item.hasDropdown && expandedNow && (
+                                <div
+                                  id={`section-${item.id}`}
+                                  className="bg-gray-50 px-4 py-3"
+                                >
+                                  {/* Menu items */}
+                                  {item.menuItems &&
+                                    item.menuItems.length > 0 && (
+                                      <ul className="space-y-1">
+                                        {item.menuItems.map((mi) => (
+                                          <li key={`${item.id}-${mi.href}`}>
+                                            <Link
+                                              href={withLang(mi.href)}
+                                              onClick={onClose}
+                                              className="group ml-1 flex items-center gap-3 rounded-md px-2 py-2 hover:bg-white"
+                                            >
+                                              <span className="group-hover:bg-primary-600 h-1.5 w-1.5 flex-shrink-0 bg-gray-400 transition-colors" />
+                                              <span className="inline-flex flex-col">
+                                                <span className="group-hover:text-primary-700 text-sm font-medium text-gray-800">
+                                                  {mi.label[lang]}
+                                                </span>
+                                              </span>
+                                            </Link>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    )}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
                       </nav>
                     </div>
 

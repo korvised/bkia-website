@@ -1,5 +1,5 @@
 import { Lang } from "@/types/language";
-import { ServicesLayout } from "@/components/layout/services";
+import { FlightLayout } from "@/components/flights";
 
 interface FlightsLayoutProps {
   params: Promise<{ lang: string }>;
@@ -12,5 +12,5 @@ export default async function FlightsLayout({
 }: FlightsLayoutProps) {
   const { lang } = await params;
 
-  return <ServicesLayout lang={lang as Lang}>{children}</ServicesLayout>;
+  return <FlightLayout lang={lang as Lang}>{children}</FlightLayout>;
 }

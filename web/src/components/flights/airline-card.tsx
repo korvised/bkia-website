@@ -1,14 +1,15 @@
 import { Airline } from "@/types/flight";
-import { useLanguage } from "@/context";
 import { flightTranslations } from "@/data/translations/flights";
 import { ExternalLink, Phone } from "lucide-react";
+import { Lang } from "@/types/language";
 
 interface AirlineCardProps {
+  lang: Lang;
   airline: Airline;
 }
 
-export function AirlineCard({ airline }: AirlineCardProps) {
-  const { t, lang } = useLanguage();
+export function AirlineCard({ lang, airline }: AirlineCardProps) {
+  const t = (text: Record<Lang, string>) => text[lang];
 
   return (
     <div className="rounded-lg border border-gray-200 bg-white p-6 transition-shadow hover:shadow-lg">

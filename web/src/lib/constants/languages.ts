@@ -1,5 +1,5 @@
 import { CN, GB, LA } from "country-flag-icons/react/1x1";
-import { Lang, LanguageConfig } from "@/types/language";
+import { LanguageConfig } from "@/types/language";
 
 export const languages: LanguageConfig[] = [
   {

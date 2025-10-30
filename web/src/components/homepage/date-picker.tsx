@@ -2,69 +2,22 @@
 
 import { useCallback, useState } from "react";
 import { Calendar as CalendarIcon } from "lucide-react";
+import { addDays, subDays } from "date-fns";
 import { DayPicker } from "react-day-picker";
-import { cn, fmtDate } from "@/lib";
 import { enUS, zhCN } from "react-day-picker/locale";
-import type { Locale as DateFnsLocale } from "date-fns";
+import { cn, fmtDate } from "@/lib";
+import { Lang } from "@/types/language";
+import { loLocale } from "@/lib/constants";
 
-import "react-day-picker/dist/style.css";
+import "react-day-picker/style.css";
 import "@/styles/custom-react-day-picker.css";
 
-// Custom Lao locale for date-fns
-const loLocale: DateFnsLocale = {
-  code: "lo",
-  formatDistance: () => "",
-  formatRelative: () => "",
-  localize: {
-    ordinalNumber: (n: number) => String(n),
-    era: () => "",
-    quarter: () => "",
-    month: (n: number) => {
-      const months = [
-        "ມັງກອນ",
-        "ກຸມພາ",
-        "ມີນາ",
-        "ເມສາ",
-        "ພຶດສະພາ",
-        "ມິຖຸນາ",
-        "ກໍລະກົດ",
-        "ສິງຫາ",
-        "ກັນຍາ",
-        "ຕຸລາ",
-        "ພະຈິກ",
-        "ທັນວາ",
-      ];
-      return months[n];
-    },
-    day: (n: number) => {
-      const days = ["ອທ", "ຈ", "ອຄ", "ພ", "ພຫ", "ສກ", "ສ"];
-      return days[n];
-    },
-    dayPeriod: () => "",
-  },
-  formatLong: {
-    date: () => "dd/MM/yyyy",
-    time: () => "HH:mm",
-    dateTime: () => "dd/MM/yyyy HH:mm",
-  },
-  match: {
-    ordinalNumber: () => ({ value: 0, rest: "" }),
-    era: () => ({ value: 0, rest: "" }),
-    quarter: () => ({ value: 1, rest: "" }),
-    month: () => ({ value: 0, rest: "" }),
-    day: () => ({ value: 0, rest: "" }),
-    dayPeriod: () => ({ value: "am", rest: "" }),
-  },
-  options: {
-    weekStartsOn: 0,
-    firstWeekContainsDate: 1,
-  },
-};
+const today = new Date();
 
 interface DatePickerProps {
   date: Date;
   onDateChange: (date: Date) => void;
-  lang: "en" | "lo" | "zh";
+  lang: Lang;
   label: string;
 }
 
@@ -75,6 +28,7 @@ export default function DatePicker({
   label,
 }: DatePickerProps) {
   const [showCalendar, setShowCalendar] = useState(false);
+  const [month, setMonth] = useState<Date>(date);
 
   const getLocale = useCallback(() => {
     switch (lang) {
@@ -87,10 +41,18 @@ export default function DatePicker({
     }
   }, [lang]);
 
+  const handleToggleCalendar = () => {
+    if (!showCalendar) {
+      // When opening, set month to the selected date's month
+      setMonth(date);
+    }
+    setShowCalendar(!showCalendar);
+  };
+
   return (
     <div className="relative w-full min-w-fit md:w-56 xl:w-80">
       <button
-        onClick={() => setShowCalendar(!showCalendar)}
+        onClick={handleToggleCalendar}
         className={cn(
           "group relative flex h-14 w-full items-center gap-4 rounded-lg border-2 bg-white px-3 text-left shadow-sm transition-all md:h-16 xl:px-5",
           showCalendar
@@ -138,14 +100,15 @@ export default function DatePicker({
               mode="single"
               locale={getLocale()}
               selected={date}
+              month={month}
+              onMonthChange={setMonth}
               onSelect={(newDate) => {
                 if (newDate) {
                   onDateChange(newDate);
                   setShowCalendar(false);
                 }
               }}
-              disabled={{ before: new Date() }}
-              classNames={{ root: "rdp-root" }}
+              disabled={{ before: subDays(today, 6), after: addDays(today, 14) }}
             />
           </div>
         </>
