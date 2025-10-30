@@ -118,7 +118,7 @@ export function FlightLayout({ lang, children }: FlightLayoutProps) {
 
         {/* Content Container */}
         <div className="relative z-10 flex h-full flex-col">
-          <div className="container flex flex-1 flex-col justify-center gap-y-4 px-4 pt-20 sm:gap-y-6 sm:px-6 lg:px-8">
+          <div className="container flex flex-1 flex-col justify-center gap-y-4 pt-20 sm:gap-y-6">
             {/* Small label */}
             <div>
               <span className="text-xs font-medium tracking-wider text-white/90 uppercase sm:text-sm">
@@ -227,7 +227,7 @@ export function FlightLayout({ lang, children }: FlightLayoutProps) {
 
       {/* Main Content */}
       <div className="bg-gray-50">
-        <div className="container px-4 py-8 sm:px-6">{children}</div>
+        <div className="container py-8">{children}</div>
       </div>
     </div>
   );

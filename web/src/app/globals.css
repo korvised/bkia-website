@@ -81,8 +81,7 @@
 
 /* App maxcdn width */
 .container {
-    max-width: var(--w-dt);
-    margin-inline: auto;
+    @apply max-w-[var(--w-dt)] mx-auto px-4 sm:px-6 lg:px-8;
 }
 
 /* Scrollbar styling */

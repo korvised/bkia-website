@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useState, useRef, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, ArrowRight, ChevronRight } from "lucide-react";
 import { GoSearch } from "react-icons/go";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
@@ -19,6 +20,7 @@ export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { lang, isScrolled, openSearch } = useApp();
+  const pathname = usePathname();
   const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -44,6 +46,24 @@ export function Header() {
   const handleDropdownLeave = () => {
     if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
     menuTimeoutRef.current = setTimeout(() => setActiveMenu(null), 150);
+  };
+
+  const handleMenuItemClick = () => {
+    setActiveMenu(null);
+  };
+
+  // Check if menu item is active based on current pathname
+  const isMenuActive = (href: string) => {
+    // Remove language prefix from pathname for comparison
+    const pathWithoutLang = pathname.replace(`/${lang}`, "") || "/";
+
+    // Exact match for home
+    if (href === "/" && pathWithoutLang === "/") return true;
+
+    // Check if current path starts with menu href (for sub-pages)
+    if (href !== "/" && pathWithoutLang.startsWith(href)) return true;
+
+    return false;
   };
 
   const isHeaderWhite = useMemo(
@@ -110,42 +130,44 @@ export function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:ml-8 lg:block xl:absolute xl:top-1/2 xl:left-1/2 xl:ml-0 xl:-translate-x-1/2 xl:-translate-y-1/2">
               <ul className="flex items-center">
-                {mainNavigation.map((item) => (
-                  <li
-                    key={item.id}
-                    className="relative"
-                    onMouseEnter={() =>
-                      handleMenuEnter(item.id, item.hasDropdown)
-                    }
-                    onMouseLeave={handleMenuLeave}
-                  >
-                    <Link
-                      href={`/${lang}${item.href}`}
-                      className={cn(
-                        "group relative flex h-full flex-col items-center justify-center px-3 transition-all duration-300 ease-in-out lg:px-4 xl:px-5",
-                        isHeaderWhite
-                          ? "hover:text-primary-600 text-gray-800"
-                          : "hover:text-primary-200 text-white",
-                        isScrolled ? "py-5" : "py-9",
-                      )}
+                {mainNavigation.map((item) => {
+                  return (
+                    <li
+                      key={item.id}
+                      className="relative"
+                      onMouseEnter={() =>
+                        handleMenuEnter(item.id, item.hasDropdown)
+                      }
+                      onMouseLeave={handleMenuLeave}
                     >
-                      <span className="text-sm font-semibold whitespace-nowrap xl:text-base">
-                        {item.label[lang]}
-                      </span>
-
-                      {/* Active/Hover Underline */}
-                      <span
+                      <Link
+                        href={`/${lang}${item.href}`}
                         className={cn(
-                          "absolute bottom-0 left-0 h-0.5 w-full origin-left transition-transform duration-300 ease-out",
-                          activeMenu === item.id
-                            ? "scale-x-100"
-                            : "scale-x-0 group-hover:scale-x-100",
-                          isHeaderWhite ? "bg-primary-600" : "bg-white",
+                          "group relative flex h-full flex-col items-center justify-center px-3 transition-all duration-300 ease-in-out lg:px-4 xl:px-5",
+                          isHeaderWhite
+                            ? "hover:text-primary-600 text-gray-800"
+                            : "hover:text-primary-200 text-white",
+                          isScrolled ? "py-5" : "py-9",
                         )}
-                      />
-                    </Link>
-                  </li>
-                ))}
+                      >
+                        <span className="text-sm font-semibold whitespace-nowrap xl:text-base">
+                          {item.label[lang]}
+                        </span>
+
+                        {/* Active/Hover Underline */}
+                        <span
+                          className={cn(
+                            "absolute bottom-0 left-0 h-0.5 w-full origin-left transition-transform duration-300 ease-out",
+                            activeMenu === item.id
+                              ? "scale-x-100"
+                              : "scale-x-0 group-hover:scale-x-100",
+                            isHeaderWhite ? "bg-primary-600" : "bg-white",
+                          )}
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
 
@@ -279,26 +301,50 @@ export function Header() {
 
                           {/* Column 2: Menu Items List */}
                           <div className="flex w-80 flex-col gap-y-1 border-l border-gray-200 px-6">
-                            {item.menuItems?.map((menuItem, idx) => (
-                              <Link
-                                key={idx}
-                                href={`/${lang}${menuItem.href}`}
-                                className="group/link flex items-center justify-between gap-x-4 rounded-lg py-3 pr-2 pl-4 transition-all duration-200 hover:bg-gray-50 sm:pr-4 sm:pl-6"
-                              >
-                                <div className="grid flex-1">
-                                  <span className="group-hover/link:text-primary-600 text-base font-semibold text-gray-700 transition-colors duration-200">
-                                    {menuItem.label[lang]}
-                                  </span>
+                            {item.menuItems?.map((menuItem, idx) => {
+                              const isActive = isMenuActive(menuItem.href);
 
-                                  {menuItem.description && (
-                                    <span className="mt-1 text-xs leading-relaxed text-gray-500">
-                                      {menuItem.description[lang]}
-                                    </span>
+                              return (
+                                <Link
+                                  key={idx}
+                                  href={`/${lang}${menuItem.href}`}
+                                  onClick={handleMenuItemClick}
+                                  className={cn(
+                                    "group/link flex items-center justify-between gap-x-4 rounded-lg py-3 pr-2 pl-4 transition-all duration-200 sm:pr-4 sm:pl-6",
+                                    isActive
+                                      ? "bg-primary-50 hover:bg-primary-100"
+                                      : "hover:bg-gray-50",
                                   )}
-                                </div>
-                                <ChevronRight className="text-primary-600 h-4 w-4 flex-shrink-0 -translate-x-1 opacity-0 transition-all duration-200 group-hover/link:translate-x-0 group-hover/link:opacity-100" />
-                              </Link>
-                            ))}
+                                >
+                                  <div className="grid flex-1">
+                                    <span
+                                      className={cn(
+                                        "text-base font-semibold transition-colors duration-200",
+                                        isActive
+                                          ? "text-primary-600"
+                                          : "group-hover/link:text-primary-600 text-gray-700",
+                                      )}
+                                    >
+                                      {menuItem.label[lang]}
+                                    </span>
+
+                                    {menuItem.description && (
+                                      <span className="mt-1 text-xs leading-relaxed text-gray-500">
+                                        {menuItem.description[lang]}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <ChevronRight
+                                    className={cn(
+                                      "text-primary-600 h-4 w-4 flex-shrink-0 transition-all duration-200",
+                                      isActive
+                                        ? "translate-x-0 opacity-100"
+                                        : "-translate-x-1 opacity-0 group-hover/link:translate-x-0 group-hover/link:opacity-100",
+                                    )}
+                                  />
+                                </Link>
+                              );
+                            })}
                           </div>
 
                           {/* Column 3: Featured Content Card */}
@@ -331,6 +377,7 @@ export function Header() {
                                     {item.featuredContent.link && (
                                       <Link
                                         href={`/${lang}${item.featuredContent.link.href}`}
+                                        onClick={handleMenuItemClick}
                                         className="group/cta text-primary-600 hover:text-primary-700 mt-4 inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200"
                                       >
                                         <span>

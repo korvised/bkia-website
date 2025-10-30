@@ -15,7 +15,7 @@ export default async function Footer({ lang }: FooterProps) {
   return (
     <footer className="from-primary-500 to-primary-600 relative bg-gradient-to-r text-white">
       {/* Main Footer Content */}
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+      <div className="container py-12 px-4 md:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 xl:gap-8">
           {/* Airport Information */}
           <div className="lg:col-span-1">
@@ -161,7 +161,7 @@ export default async function Footer({ lang }: FooterProps) {
 
       {/* Emergency Information Bar */}
       <div className="border-t border-red-400/30 bg-red-600/20">
-        <div className="mx-auto max-w-7xl px-6 py-4">
+        <div className="container py-4">
           <div className="flex flex-col items-center justify-between md:flex-row">
             <div className="mb-2 flex items-center text-sm md:mb-0">
               <Phone className="mr-2 h-4 w-4 text-red-300" />

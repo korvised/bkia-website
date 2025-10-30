@@ -23,10 +23,8 @@ export default async function ArrivalsPage({
   const filters = await searchParams;
 
   return (
-    <div className="container mx-auto px-4 py-8 sm:px-6">
-      <Suspense fallback={<FlightBoardSkeleton />}>
-        <FlightBoard type="arrival" lang={lang as Lang} filters={filters} />
-      </Suspense>
-    </div>
+    <Suspense fallback={<FlightBoardSkeleton />}>
+      <FlightBoard type="arrival" lang={lang as Lang} filters={filters} />
+    </Suspense>
   );
 }

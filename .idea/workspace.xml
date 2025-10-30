@@ -4,42 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor homepage hero session &amp; flight search">
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/airlines/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/arrivals/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/departures/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/flights/date-picker.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/flights/filter-form-client.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/flights/filter-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/flights/flight-board-skeleton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/flights/flight-board.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/flights/flight-layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/flights/icon-selector.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/flights/last-updated.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/flights/terminal-selector.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/flight-board.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/lib/constants/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/lib/constants/locale.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor flight page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/error.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/flights-content.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/loading.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/airlines/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/airlines/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/arrivals/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/arrivals/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/departures/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/departures/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/airline-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/airline-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-search.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-skeleton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-status-badge.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-tabs.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/date-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/date-picker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/flight-search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/flight-search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-board.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-board.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/homepage/hero-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/hero-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/main-navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/main-navigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/lib/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/constants/languages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +142,7 @@
       <workItem from="1761267688807" duration="25729000" />
       <workItem from="1761620014462" duration="37000" />
       <workItem from="1761710653651" duration="20104000" />
-      <workItem from="1761785895921" duration="23711000" />
+      <workItem from="1761785895921" duration="25268000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -345,7 +320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761733620545</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="refactor flight page">
+      <option name="closed" value="true" />
+      <created>1761817083010</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1761817083010</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,6 +350,7 @@
     <MESSAGE value="refactor layout" />
     <MESSAGE value="refactor homepage" />
     <MESSAGE value="refactor homepage hero session &amp; flight search" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor homepage hero session &amp; flight search" />
+    <MESSAGE value="refactor flight page" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor flight page" />
   </component>
 </project>

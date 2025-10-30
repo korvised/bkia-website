@@ -188,7 +188,7 @@ export default function HeroSection({ className }: HeroSectionProps) {
 
           {/* Announcement Container */}
           <div className="absolute -bottom-5 left-0 w-full sm:-bottom-7">
-            <div className="mx-auto flex h-full w-full container items-center gap-3 px-4 pb-4 sm:gap-4 sm:px-6 sm:pb-6">
+            <div className="container mx-auto flex h-full w-full items-center gap-3 pb-4 sm:gap-4 sm:pb-6">
               {/* LEFT: Icon & Label */}
               <div className="from-primary-500/90 to-primary-500 flex flex-shrink-0 items-center gap-2.5 rounded-full bg-gradient-to-br p-1 text-transparent xl:rounded-l-full xl:rounded-r-none xl:px-2 xl:py-1">
                 <Volume2 className="h-4.5 w-4.5 text-white sm:h-5 sm:w-5" />
