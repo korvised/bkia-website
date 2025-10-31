@@ -1,2 +1,1 @@
-export * from "./transportation-tabs";
-export { TransportsLayout } from "./transports-layout";
+export * from "./to-from-airport";

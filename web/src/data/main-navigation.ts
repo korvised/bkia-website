@@ -242,7 +242,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ລົດເມ, ແທັກຊີ ແລະ ລົດຮັບສົ່ງ",
           zh: "巴士、出租车和班车",
         },
-        href: "/transports/to-airport",
+        href: "/transports/to-from-airport",
       },
       {
         label: {

@@ -1,11 +1,20 @@
-import { ReactNode } from "react";
+import { FeatureLayout } from "@/components/common";
+import { mainNavigation, MenuItem } from "@/data/main-navigation";
 import { Lang } from "@/types/language";
-import { TransportsLayout } from "@/components/transports";
 
 interface TransportationLayoutProps {
-  children: ReactNode;
+  children: React.ReactNode;
   params: Promise<{ lang: string }>;
 }
+
+const menuItems: MenuItem[] = (mainNavigation.find((m) => m.id === "transports")
+  ?.menuItems || []) as MenuItem[];
+
+const title = {
+  en: "Transport",
+  lo: "ການຂົນສົ່ງ",
+  zh: "交通",
+};
 
 export default async function TransportationLayout({
   children,
@@ -14,8 +23,12 @@ export default async function TransportationLayout({
   const { lang } = await params;
 
   return (
-    <TransportsLayout lang={lang as Lang}>
+    <FeatureLayout
+      lang={lang as Lang}
+      title={title[lang as Lang]}
+      menuItems={menuItems}
+    >
       {children}
-    </TransportsLayout>
+    </FeatureLayout>
   );
 }

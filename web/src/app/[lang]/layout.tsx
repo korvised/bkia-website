@@ -35,7 +35,7 @@ export default async function LanguageLayout({
         })}
       >
         <Header />
-        <main className="flex-1 bg-gray-50">{children}</main>
+        <main className="flex-1 bg-white">{children}</main>
         <GoToTop />
         <Footer lang={lang} />
 
