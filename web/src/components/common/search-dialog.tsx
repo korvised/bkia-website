@@ -61,7 +61,7 @@ const translations = {
   },
 } as const;
 
-export default function SearchDialog() {
+export function SearchDialog() {
   const { isSearchOpen, closeSearch, lang, t } = useApp();
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchableItem[]>([]);

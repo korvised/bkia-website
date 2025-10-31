@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
-export default function WelcomePopup() {
+export function WelcomePopup() {
   const { isOpen, images, canClose, isLoading, handleClose, trackClick } =
     useWelcomePopup("always");
 

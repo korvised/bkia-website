@@ -122,14 +122,14 @@ export const mainNavigation: NavItem[] = [
     },
   },
   {
-    id: "guide",
+    id: "guides",
     label: { en: "Passenger Guide", lo: "ຄູ່ມືຜູ້ໂດຍສານ", zh: "乘客指南" },
     description: {
       en: "Everything you need for your journey",
       lo: "ທຸກສິ່ງທີ່ທ່ານຕ້ອງການສຳລັບການເດີນທາງ",
       zh: "您旅程所需的一切信息",
     },
-    href: "/guide",
+    href: "/guides",
     hasDropdown: true,
     menuItems: [
       {
@@ -143,7 +143,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ຄຳແນະນຳຜູ້ໂດຍສານຂາເຂົ້າ ແລະ ພາສີສຸນລະກອນ",
           zh: "到达流程和海关",
         },
-        href: "/guide/arrivals",
+        href: "/guides/arrivals",
       },
       {
         label: {
@@ -156,7 +156,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ຂັ້ນຕອນການແຈ້ງ ແລະ ການຂຶ້ນເຄື່ອງ",
           zh: "值机和登机流程",
         },
-        href: "/guide/departures",
+        href: "/guides/departures",
       },
       {
         label: {
@@ -169,7 +169,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ຂໍ້ມູນການຕໍ່ຖ້ຽວບິນ",
           zh: "转机航班信息",
         },
-        href: "/guide/transfer",
+        href: "/guides/transfer",
       },
       {
         label: {
@@ -182,7 +182,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ຄຳແນະນຳດ້ານຄວາມປອດໄພ",
           zh: "安全检查指南",
         },
-        href: "/guide/security",
+        href: "/guides/security",
       },
       {
         label: {
@@ -195,7 +195,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ສິ່ງອຳນວຍຄວາມສະດວກສຳລັບຜູ້ໂດຍສານ",
           zh: "机场旅客设施",
         },
-        href: "/guide/facilities",
+        href: "/guides/facilities",
       },
     ],
     featuredContent: {
@@ -221,14 +221,14 @@ export const mainNavigation: NavItem[] = [
     },
   },
   {
-    id: "transport",
+    id: "transports",
     label: { en: "Transport", lo: "ການຂົນສົ່ງ", zh: "交通" },
     description: {
       en: "Ground transportation and parking",
       lo: "ການຂົນສົ່ງພື້ນດິນ ແລະ ບ່ອນຈອດລົດ",
       zh: "地面交通和停车",
     },
-    href: "/transportation",
+    href: "/transports",
     hasDropdown: true,
     menuItems: [
       {
@@ -242,7 +242,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ລົດເມ, ແທັກຊີ ແລະ ລົດຮັບສົ່ງ",
           zh: "巴士、出租车和班车",
         },
-        href: "/transportation/to-airport",
+        href: "/transports/to-airport",
       },
       {
         label: {
@@ -255,7 +255,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ອັດຕາຄ່າຈອດລົດ ແລະ ການຈອງ",
           zh: "停车费和预订",
         },
-        href: "/transportation/parking",
+        href: "/transports/parking",
       },
       {
         label: {
@@ -268,7 +268,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ບໍລິການຂົນສົ່ງຂ້າມແດນ",
           zh: "跨境交通服务",
         },
-        href: "/transportation/regional",
+        href: "/transports/regional",
       },
       {
         label: {
@@ -281,7 +281,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ຕິດຕໍ່ບໍລິການຂົນສົ່ງ",
           zh: "交通服务联系",
         },
-        href: "/transportation/contacts",
+        href: "/transports/contacts",
       },
     ],
     featuredContent: {

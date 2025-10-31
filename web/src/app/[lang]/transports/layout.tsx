@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { Lang } from "@/types/language";
-import { ServicesLayout } from "@/components/layout/services";
-import { TransportationTabs } from "@/components/transportation";
+import { TransportsLayout } from "@/components/transports";
 
 interface TransportationLayoutProps {
   children: ReactNode;
@@ -15,9 +14,8 @@ export default async function TransportationLayout({
   const { lang } = await params;
 
   return (
-    <ServicesLayout lang={lang as Lang}>
-      <TransportationTabs lang={lang} />
+    <TransportsLayout lang={lang as Lang}>
       {children}
-    </ServicesLayout>
+    </TransportsLayout>
   );
 }

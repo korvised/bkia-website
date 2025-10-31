@@ -58,7 +58,10 @@ export function IconSelector({
               )}
             />
           </ListboxButton>
-          <ListboxOptions className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg border border-gray-200 bg-white py-1 shadow-lg focus:outline-none">
+          <ListboxOptions
+            modal={false}
+            className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg border border-gray-200 bg-white py-1 shadow-lg focus:outline-none"
+          >
             {options.map((option) => (
               <ListboxOption
                 key={option.value}

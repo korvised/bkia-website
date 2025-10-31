@@ -12,37 +12,37 @@ import { useApp } from "@/context/app-context";
 import { BreadcrumDropdown } from "@/components/common";
 import { mainNavigation, MenuItem as IMenuItem } from "@/data/main-navigation";
 
-interface FlightLayoutProps {
+interface GuidesLayoutProps {
   lang: Lang;
   children: React.ReactNode;
 }
 
-// Flight menu items
-const flightMenuItems: IMenuItem[] = (mainNavigation.find(
-  (m) => m.id === "flights",
+// Guides menu items
+const guildeMenuItems: IMenuItem[] = (mainNavigation.find(
+  (m) => m.id === "guides"
 )?.menuItems || []) as IMenuItem[];
 
 // Translations
 const translations = {
   title: {
-    en: "Flights",
-    lo: "ຖ້ຽວບິນ",
-    zh: "航班",
+    en: "Passenger Guide",
+    lo: "ຄູ່ມືຜູ້ໂດຍສານ",
+    zh: "乘客指南"
   },
   label: {
-    en: "FLIGHTS INFORMATION",
-    lo: "ຂໍ້ມູນຖ້ຽວບິນ",
-    zh: "航班信息",
-  },
+    en: "Passenger Guide",
+    lo: "ຄູ່ມືຜູ້ໂດຍສານ",
+    zh: "乘客指南"
+  }
 };
 
-export function FlightLayout({ lang, children }: FlightLayoutProps) {
+export function GuidesLayout({ lang, children }: GuidesLayoutProps) {
   const pathname = usePathname();
   const { t } = useApp();
 
   // Determine the current flight section
-  const currentSection = flightMenuItems.find((item) =>
-    pathname.includes(item.href),
+  const currentSection = guildeMenuItems.find((item) =>
+    pathname.includes(item.href)
   );
 
   return (
@@ -53,7 +53,7 @@ export function FlightLayout({ lang, children }: FlightLayoutProps) {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url(/images/wallpaper/001.jpg)",
+            backgroundImage: "url(/images/wallpaper/001.jpg)"
           }}
         />
 
@@ -93,7 +93,7 @@ export function FlightLayout({ lang, children }: FlightLayoutProps) {
 
               <HiOutlineChevronRight className="h-4 w-4 text-white/60 sm:h-4.5 sm:w-4.5" />
 
-              {/* Flights Dropdown */}
+              {/* Guidess Dropdown */}
               <BreadcrumDropdown
                 trigger={(open: boolean) => (
                   <Fragment>
@@ -103,7 +103,7 @@ export function FlightLayout({ lang, children }: FlightLayoutProps) {
                     <ChevronDown
                       className={cn(
                         "h-4 w-4 transition-transform duration-200 sm:h-5 sm:w-5",
-                        open && "rotate-180",
+                        open && "rotate-180"
                       )}
                     />
                   </Fragment>
@@ -118,7 +118,7 @@ export function FlightLayout({ lang, children }: FlightLayoutProps) {
                         "focus:bg-primary-50 focus:text-primary-700 active:bg-primary-100",
                         pathname.includes(item.href)
                           ? "bg-primary-50 text-primary-700 font-medium"
-                          : "text-gray-900",
+                          : "text-gray-900"
                       )}
                     >
                       {t(item.label)}
@@ -129,24 +129,24 @@ export function FlightLayout({ lang, children }: FlightLayoutProps) {
 
               <HiOutlineChevronRight className="h-4 w-4 text-white/60 sm:h-4.5 sm:w-4.5" />
 
-              {/* Flight Section Dropdown */}
+              {/* Guides Section Dropdown */}
               <BreadcrumDropdown
                 trigger={(open: boolean) => (
                   <>
                     <span className="font-medium">
                       {currentSection
                         ? t(currentSection.label)
-                        : t(flightMenuItems[0].label)}
+                        : t(guildeMenuItems[0].label)}
                     </span>
                     <ChevronDown
                       className={cn(
                         "h-4 w-4 transition-transform duration-200 sm:h-5 sm:w-5",
-                        open && "rotate-180",
+                        open && "rotate-180"
                       )}
                     />
                   </>
                 )}
-                items={flightMenuItems.map((item) => (
+                items={guildeMenuItems.map((item) => (
                   <MenuItem key={item.href}>
                     <Link
                       href={`/${lang}${item.href}`}
@@ -156,7 +156,7 @@ export function FlightLayout({ lang, children }: FlightLayoutProps) {
                         "focus:bg-primary-50 focus:text-primary-700 active:bg-primary-100",
                         pathname.includes(item.href)
                           ? "bg-primary-50 text-primary-700 font-medium"
-                          : "text-gray-900",
+                          : "text-gray-900"
                       )}
                     >
                       {t(item.label)}

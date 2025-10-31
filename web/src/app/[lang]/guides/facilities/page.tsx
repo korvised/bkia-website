@@ -281,7 +281,7 @@ export default async function AirportFacilitiesPage() {
   };
 
   return (
-    <div className="mx-auto max-w-7xl space-y-6 sm:space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* Page Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
         <div className="flex-shrink-0">

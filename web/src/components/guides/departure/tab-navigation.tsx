@@ -65,7 +65,7 @@ export function DepartureTabNavigation({
             <li key={tab.id} className="relative md:flex md:flex-1">
               {status === "complete" ? (
                 <Link
-                  href={`/${lang}/guides/departure?tab=${tab.id}`}
+                  href={`/${lang}/guides/departures?tab=${tab.id}`}
                   className="group flex w-full items-center"
                 >
                   <span className="flex items-center px-3 py-3 text-sm font-medium sm:px-4 sm:py-4">
@@ -82,7 +82,7 @@ export function DepartureTabNavigation({
                 </Link>
               ) : status === "current" ? (
                 <Link
-                  href={`/${lang}/guides/departure?tab=${tab.id}`}
+                  href={`/${lang}/guides/departures?tab=${tab.id}`}
                   aria-current="step"
                   className="flex items-center px-3 py-3 text-sm font-medium sm:px-4 sm:py-4"
                 >
@@ -98,7 +98,7 @@ export function DepartureTabNavigation({
                 </Link>
               ) : (
                 <Link
-                  href={`/${lang}/guides/departure?tab=${tab.id}`}
+                  href={`/${lang}/guides/departures?tab=${tab.id}`}
                   className="group flex items-center"
                 >
                   <span className="flex items-center px-3 py-3 text-sm font-medium sm:px-4 sm:py-4">

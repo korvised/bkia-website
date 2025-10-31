@@ -10,7 +10,7 @@ import {
   PurchaseContent,
   RelatedServices,
   SecurityContent,
-} from "@/components/guide/departure";
+} from "@/components/guides/departure";
 import { DepartureTab } from "@/types/guide";
 
 interface DeparturePageProps {
@@ -55,7 +55,7 @@ export default async function DepartureGuidePage({
   const { tab = "purchase" } = await searchParams;
 
   return (
-    <div className="mx-auto max-w-7xl">
+    <div>
       {/* Tab Navigation */}
       <DepartureTabNavigation lang={lang as Lang} activeTab={tab} />
 

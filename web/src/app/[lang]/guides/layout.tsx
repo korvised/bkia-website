@@ -1,8 +1,7 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
 import { Lang } from "@/types/language";
-import { ServicesLayout } from "@/components/layout/services";
-import { GuideTabs } from "@/components/guide";
+import { GuidesLayout } from "@/components/guides";
 
 interface GuideLayoutProps {
   children: ReactNode;
@@ -16,7 +15,7 @@ export async function generateMetadata({
 
   const metadata = {
     en: {
-      title: "Passenger Guide",
+      title: "Airport Guide",
       description:
         "Complete guide for passengers at Bokeo International Airport. Find information about departure, arrival, transfer, facilities, and special services.",
     },
@@ -44,10 +43,5 @@ export default async function GuideLayout({
 }: GuideLayoutProps) {
   const { lang } = await params;
 
-  return (
-    <ServicesLayout lang={lang as Lang}>
-      <GuideTabs />
-      {children}
-    </ServicesLayout>
-  );
+  return <GuidesLayout lang={lang as Lang}>{children}</GuidesLayout>;
 }

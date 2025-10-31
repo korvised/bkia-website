@@ -9,7 +9,7 @@ import {
   ExitCustomsContent,
   LeavingAirportContent,
   RelatedServices,
-} from "@/components/guide/arrival";
+} from "@/components/guides/arrival";
 import { ArrivalTab } from "@/types/guide";
 import { Metadata } from "next";
 
@@ -55,7 +55,7 @@ export default async function ArrivalPage({
   const { tab = "airport" } = await searchParams;
 
   return (
-    <div className="mx-auto max-w-7xl">
+    <div>
       {/* Tab Navigation */}
       <ArrivalTabNavigation lang={lang as Lang} activeTab={tab} />
 
