@@ -151,7 +151,7 @@ export default function UsefulServicesSection({
 
   return (
     <section className="relative w-full bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="container">
         {/* Section Title */}
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">

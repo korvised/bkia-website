@@ -1,217 +1,467 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, Phone } from "lucide-react";
-import QuickLinks from "./quick-links";
-import ContactInfo from "./contact-info";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Lang } from "@/types/language";
+import { FaFacebook, FaLinkedin, FaTiktok, FaYoutube } from "react-icons/fa6";
 
 interface FooterProps {
   lang: Lang;
 }
 
+const socialLinks = [
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/share/1DHuz5dNoP/",
+    icon: <FaFacebook className="h-5 w-5" />,
+  },
+  {
+    name: "TikTok",
+    href: "https://www.tiktok.com/@bkia_official",
+    icon: <FaTiktok className="h-5 w-5" />,
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/@BokeoInternationalAirport",
+    icon: <FaYoutube className="h-5 w-5" />,
+  },
+  {
+    name: "Linkedin",
+    href: "#",
+    icon: <FaLinkedin className="h-5 w-5" />,
+  },
+];
+
+const translations = {
+  flightInfo: {
+    en: "Flight Information",
+    lo: "ຂໍ້ມູນຖ້ຽວບິນ",
+    zh: "航班信息",
+  },
+  arrivals: {
+    en: "Arrivals",
+    lo: "ຖ້ຽວບິນຂາເຂົ້າ",
+    zh: "到达航班",
+  },
+  departures: {
+    en: "Departures",
+    lo: "ຖ້ຽວບິນອອກ",
+    zh: "出发航班",
+  },
+  airlines: {
+    en: "Airlines",
+    lo: "ສາຍການບິນ",
+    zh: "航空公司",
+  },
+  passengerGuide: {
+    en: "Passenger Guide",
+    lo: "ຄູ່ມືຜູ້ໂດຍສານ",
+    zh: "旅客指南",
+  },
+  arrivalGuide: {
+    en: "Arrival Guide",
+    lo: "ຄູ່ມືຂາເຂົ້າ",
+    zh: "到达指南",
+  },
+  departureGuide: {
+    en: "Departure Guide",
+    lo: "ຄູ່ມືຂາອອກ",
+    zh: "出发指南",
+  },
+  security: {
+    en: "Security Check",
+    lo: "ການກວດຄວາມປອດໄພ",
+    zh: "安检须知",
+  },
+  facilities: {
+    en: "Airport Facilities",
+    lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
+    zh: "机场设施",
+  },
+  services: {
+    en: "Airport Services",
+    lo: "ບໍລິການສະໜາມບິນ",
+    zh: "机场服务",
+  },
+  dining: {
+    en: "Dining & Shopping",
+    lo: "ຮ້ານອາຫານ ແລະ ຮ້ານຄ້າ",
+    zh: "餐饮购物",
+  },
+  lounges: {
+    en: "Lounges",
+    lo: "ຫ້ອງຮັບຮອງ",
+    zh: "贵宾室",
+  },
+  transportation: {
+    en: "Transportation",
+    lo: "ການຂົນສົ່ງ",
+    zh: "交通",
+  },
+  parking: {
+    en: "Parking",
+    lo: "ບ່ອນຈອດລົດ",
+    zh: "停车场",
+  },
+  aboutUs: {
+    en: "About Airport",
+    lo: "ກ່ຽວກັບສະໜາມບິນ",
+    zh: "关于机场",
+  },
+  overview: {
+    en: "Overview",
+    lo: "ພາບລວມ",
+    zh: "概况",
+  },
+  visionMission: {
+    en: "Vision & Mission",
+    lo: "ວິໄສທັດ ແລະ ພາລະກິດ",
+    zh: "愿景使命",
+  },
+  careers: {
+    en: "Careers",
+    lo: "ຮ່ວມງານກັບພວກເຮົາ",
+    zh: "招聘",
+  },
+  newsroom: {
+    en: "Newsroom",
+    lo: "ຂ່າວສານ",
+    zh: "新闻中心",
+  },
+  contactUs: {
+    en: "Contact Us",
+    lo: "ຕິດຕໍ່ພວກເຮົາ",
+    zh: "联系我们",
+  },
+  address: {
+    en: "Tônpheung District, Bokeo Province, Lao PDR",
+    lo: "ບ້ານໃຫຍ່ສີເມືອງງາມ, ເມື່ອງຕົ້ນເຜີ້ງ, ແຂວງບໍ່ແກ້ວ, ສປປ ລາວ",
+    zh: "老挝博乔省会晒村",
+  },
+  email: {
+    en: "info@bokeointernationalairport.com",
+    lo: "info@bokeointernationalairport.com",
+    zh: "info@bokeointernationalairport.com",
+  },
+  operatingHours: {
+    en: "24/7 Operations",
+    lo: "ເປີດບໍລິການ 24/7",
+    zh: "24小时运营",
+  },
+  followUs: {
+    en: "Follow Us",
+    lo: "ຕິດຕາມພວກເຮົາ",
+    zh: "关注我们",
+  },
+  quickLinks: {
+    en: "Quick Links",
+    lo: "ລິ້ງດ່ວນ",
+    zh: "快速链接",
+  },
+  legal: {
+    en: "Legal",
+    lo: "ກົດໝາຍ",
+    zh: "法律",
+  },
+  privacyPolicy: {
+    en: "Privacy Policy",
+    lo: "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
+    zh: "隐私政策",
+  },
+  termsOfUse: {
+    en: "Terms of Use",
+    lo: "ເງື່ອນໄຂການໃຊ້ງານ",
+    zh: "使用条款",
+  },
+  accessibility: {
+    en: "Accessibility",
+    lo: "ການເຂົ້າເຖິງ",
+    zh: "无障碍",
+  },
+  allRightsReserved: {
+    en: "All Rights Reserved",
+    lo: "ສະຫງວນລິຂະສິດ",
+    zh: "版权所有",
+  },
+};
+
 export default async function Footer({ lang }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="from-primary-500 to-primary-600 relative bg-gradient-to-r text-white">
-      {/* Main Footer Content */}
-      <div className="container py-12 px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 xl:gap-8">
-          {/* Airport Information */}
-          <div className="lg:col-span-1">
-            <div className="mb-6 flex items-center space-x-3">
-              <div className="relative h-12 w-12">
-                <Image
-                  src="/images/logo/logo_white.png"
-                  alt="Bokeo International Airport"
-                  fill
-                  sizes="48px"
-                  className="object-contain"
-                  priority
-                />
+    <footer className="bg-primary-600 text-white">
+      {/* Main Footer */}
+      <div className="container py-12">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-12">
+          {/* Brand & Contact - Takes more space */}
+          <div className="lg:col-span-4">
+            {/* Logo */}
+            <Link href={`/${lang}`} className="mb-6 inline-block">
+              <div className="flex items-center gap-3">
+                <div className="relative h-14 w-14">
+                  <Image
+                    src="/images/logo/logo_white.png"
+                    alt="Bokeo International Airport"
+                    fill
+                    sizes="56px"
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold">BOKEO INTERNATIONAL</h2>
+                  <p className="text-sm opacity-90">AIRPORT</p>
+                </div>
               </div>
-              <div>
-                <div className="text-lg font-bold">BKIA</div>
-                <div className="text-sm opacity-90">Gateway to Laos</div>
+            </Link>
+
+            {/* Contact Info */}
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 opacity-80" />
+                <p className="text-sm leading-relaxed opacity-90">
+                  {translations.address[lang]}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Phone className="h-5 w-5 flex-shrink-0 opacity-80" />
+                <a
+                  href="tel:+85684260179"
+                  className="text-sm font-medium transition-opacity hover:opacity-80"
+                >
+                  +85620 84 260 179
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5 flex-shrink-0 opacity-80" />
+                <a
+                  href="mailto:info@bokeointernationalairport.com"
+                  className="text-sm transition-opacity hover:opacity-80"
+                >
+                  {translations.email[lang]}
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Clock className="h-5 w-5 flex-shrink-0 opacity-80" />
+                <p className="text-sm opacity-90">
+                  {translations.operatingHours[lang]}
+                </p>
               </div>
             </div>
-
-            <h3 className="mb-4 text-xl font-bold">
-              Bokeo International Airport
-            </h3>
-            <p className="font-lao mb-2 text-sm opacity-90">
-              ສະໜາມບິນສາກົນບໍ່ແກ້ວ
-            </p>
-            <p className="mb-4 text-sm leading-relaxed opacity-80">
-              Your gateway to discovering the beauty and culture of Laos.
-              Experience seamless travel with world-class facilities and
-              services.
-            </p>
 
             {/* Social Media */}
-            <div className="flex space-x-4">
-              <a
-                href="https://www.facebook.com/share/1DHuz5dNoP/"
-                target="_blank"
-                className="rounded-lg bg-white/10 p-2 transition-colors hover:bg-white/20"
-              >
-                <svg
-                  className="h-4 w-4"
-                  fill="currentColor"
-                  viewBox="0 0 320 512"
-                >
-                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
-                </svg>{" "}
-              </a>
-              <Link
-                href="https://www.tiktok.com/@bkia_official"
-                target="_blank"
-                className="rounded-lg bg-white/10 p-2 transition-colors hover:bg-white/20"
-              >
-                <svg
-                  className="h-4 w-4"
-                  fill="currentColor"
-                  viewBox="0 0 448 512"
-                >
-                  <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a74.62 74.62 0 1 0 52.23 71.18V0h88a121.18 121.18 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z" />
-                </svg>
-              </Link>
-              <a
-                href="https://www.youtube.com/@BokeoInternationalAirport"
-                target="_blank"
-                className="rounded-lg bg-white/10 p-2 transition-colors hover:bg-white/20"
-              >
-                <svg
-                  className="h-4 w-4"
-                  fill="currentColor"
-                  viewBox="0 0 576 512"
-                >
-                  <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" />
-                </svg>
-              </a>
+            <div className="mt-6">
+              <p className="mb-3 text-sm font-semibold opacity-90">
+                {translations.followUs[lang]}
+              </p>
+              <div className="flex gap-3">
+                {socialLinks.map((social) => (
+                  <Link
+                    key={social.name}
+                    href={social.href}
+                    target={social.href !== "#" ? "_blank" : undefined}
+                    rel={
+                      social.href !== "#" ? "noopener noreferrer" : undefined
+                    }
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 transition-all hover:scale-105 hover:bg-white/20"
+                    aria-label={social.name}
+                  >
+                    {social.icon}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="lg:col-span-1">
-            <QuickLinks lang={lang} />
-          </div>
-
-          {/* Services */}
-          <div className="lg:col-span-1">
-            <h4 className="mb-4 text-lg font-bold">Services</h4>
-            <ul className="space-y-2 text-sm">
+          {/* Flight Information */}
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 flex items-center gap-2 text-sm font-bold tracking-wide uppercase">
+              {translations.flightInfo[lang]}
+            </h3>
+            <ul className="space-y-2.5">
               <li>
                 <Link
-                  href={`/${lang}/dining-shopping`}
-                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
+                  href={`/${lang}/flights/arrivals`}
+                  className="text-sm transition-colors hover:text-white/80"
                 >
-                  Dining & Shopping
+                  {translations.arrivals[lang]}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/${lang}/guides`}
-                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
+                  href={`/${lang}/flights/departures`}
+                  className="text-sm transition-colors hover:text-white/80"
                 >
-                  Flight Guide
+                  {translations.departures[lang]}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/${lang}/transportations`}
-                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
+                  href={`/${lang}/flights/airlines`}
+                  className="text-sm transition-colors hover:text-white/80"
                 >
-                  Transportation
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${lang}/cargo`}
-                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
-                >
-                  Air Cargo
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${lang}/notices/lost-found`}
-                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
-                >
-                  Lost & Found
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/bokeo-visit"
-                  className="hover:text-primary-200 opacity-80 transition-colors hover:opacity-100"
-                >
-                  Bokeo Visit
+                  {translations.airlines[lang]}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Information */}
-          <div className="lg:col-span-1">
-            <ContactInfo />
+          {/* Passenger Guide */}
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 text-sm font-bold tracking-wide uppercase">
+              {translations.passengerGuide[lang]}
+            </h3>
+            <ul className="space-y-2.5">
+              <li>
+                <Link
+                  href={`/${lang}/guides/arrivals`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.arrivalGuide[lang]}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/guides/departures`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.departureGuide[lang]}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/guides/security`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.security[lang]}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/guides/facilities`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.facilities[lang]}
+                </Link>
+              </li>
+            </ul>
           </div>
-        </div>
-      </div>
 
-      {/* Emergency Information Bar */}
-      <div className="border-t border-red-400/30 bg-red-600/20">
-        <div className="container py-4">
-          <div className="flex flex-col items-center justify-between md:flex-row">
-            <div className="mb-2 flex items-center text-sm md:mb-0">
-              <Phone className="mr-2 h-4 w-4 text-red-300" />
-              <span className="font-medium">Emergency: </span>
-              <Link href="tel:+856-84-123-456" className="ml-1 hover:underline">
-                084 260 179
-              </Link>
-            </div>
-            <div className="flex items-center text-sm">
-              <Clock className="mr-2 h-4 w-4 text-yellow-300" />
-              <span>16/7 Airport Operations</span>
-            </div>
+          {/* Services */}
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 text-sm font-bold tracking-wide uppercase">
+              {translations.services[lang]}
+            </h3>
+            <ul className="space-y-2.5">
+              <li>
+                <Link
+                  href={`/${lang}/services/dining-shopping`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.dining[lang]}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/services/lounges`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.lounges[lang]}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/transports`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.transportation[lang]}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/transports/parking`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.parking[lang]}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* About */}
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 text-sm font-bold tracking-wide uppercase">
+              {translations.aboutUs[lang]}
+            </h3>
+            <ul className="space-y-2.5">
+              <li>
+                <Link
+                  href={`/${lang}/about/overview`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.overview[lang]}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/about/vision-mission`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.visionMission[lang]}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/about/careers`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.careers[lang]}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/support/newsroom`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {translations.newsroom[lang]}
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="bg-primary-900/50 border-primary-700/30 border-t">
-        <div className="mx-auto max-w-7xl px-6 py-4">
-          <div className="flex flex-col items-center justify-between text-sm md:flex-row">
-            <div className="mb-2 md:mb-0">
-              <span className="opacity-80">
-                © {currentYear} Bokeo International Airport. All rights
-                reserved.
-              </span>
-            </div>
-            <div className="flex items-center space-x-6 opacity-80">
+      <div className="bg-primary-700 border-t border-white/10">
+        <div className="container py-4">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            {/* Copyright */}
+            <p className="text-center text-sm opacity-80">
+              © {currentYear} Bokeo International Airport.{" "}
+              {translations.allRightsReserved[lang]}.
+            </p>
+
+            {/* Legal Links */}
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
               <Link
-                href="/legal/privacy"
-                className="transition-opacity hover:opacity-100"
+                href={`/${lang}/legal/privacy`}
+                className="opacity-80 transition-opacity hover:opacity-100"
               >
-                Privacy Policy
+                {translations.privacyPolicy[lang]}
               </Link>
               <Link
-                href="/legal/terms"
-                className="transition-opacity hover:opacity-100"
+                href={`/${lang}/legal/terms`}
+                className="opacity-80 transition-opacity hover:opacity-100"
               >
-                Terms of Service
+                {translations.termsOfUse[lang]}
               </Link>
               <Link
-                href="/about/accessibility"
-                className="transition-opacity hover:opacity-100"
+                href={`/${lang}/legal/accessibility`}
+                className="opacity-80 transition-opacity hover:opacity-100"
               >
-                Accessibility
-              </Link>
-              <Link
-                href="/contact/feedback"
-                className="transition-opacity hover:opacity-100"
-              >
-                Feedback
+                {translations.accessibility[lang]}
               </Link>
             </div>
           </div>
