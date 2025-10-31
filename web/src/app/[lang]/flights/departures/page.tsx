@@ -11,7 +11,7 @@ interface DeparturesPageProps {
     endTime?: string;
     destination?: string;
     airline?: string;
-    flightNumber?: string;
+    q?: string;
   }>;
 }
 

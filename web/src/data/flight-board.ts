@@ -21,7 +21,7 @@ export interface FlightFilters {
   endTime?: string;
   destination?: string;
   airline?: string;
-  flightNumber?: string;
+  q?: string;
 }
 
 export interface SelectOption {
@@ -48,7 +48,7 @@ export const terminals: SelectOption[] = [
 export const destinations: SelectOption[] = [
   {
     value: "",
-    label: { en: "Select Destination", lo: "ເລືອກປາຍທາງ", zh: "选择目的地" },
+    label: { en: "All Destinations", lo: "ປາຍທາງທັງໝົດ", zh: "选择目的地" },
   },
   {
     value: "ADD",
@@ -85,7 +85,7 @@ export const destinations: SelectOption[] = [
 export const airlines: SelectOption[] = [
   {
     value: "",
-    label: { en: "Select Airline", lo: "ເລືອກສາຍການບິນ", zh: "选择航空公司" },
+    label: { en: "All Airlines", lo: "ສາຍການບິນທັງໝົດ", zh: "选择航空公司" },
   },
   {
     value: "ET",

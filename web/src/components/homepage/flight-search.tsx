@@ -9,7 +9,7 @@ import { useLanguage } from "@/context";
 import DatePicker from "./date-picker";
 import { PiAirplaneInFlightBold } from "react-icons/pi";
 
-type Tab = "departure" | "arrival";
+type Tab = "departures" | "arrivals";
 
 interface FlightSearchProps {
   className?: string;
@@ -17,7 +17,7 @@ interface FlightSearchProps {
 
 export default function FlightSearch({ className }: FlightSearchProps) {
   const { lang } = useLanguage();
-  const [tab, setTab] = useState<Tab>("departure");
+  const [tab, setTab] = useState<Tab>("departures");
   const [date, setDate] = useState<Date>(new Date());
   const [query, setQuery] = useState<string>("");
   const [focusSearchInput, setFocusSearchInput] = useState(false);
@@ -37,10 +37,9 @@ export default function FlightSearch({ className }: FlightSearchProps) {
 
   const handleSearch = () => {
     const params = new URLSearchParams();
-    params.set("type", tab);
-    params.set("date", format(date, "yyyyMMdd"));
+    params.set("date", format(date, "yyyy-MM-dd"));
     if (query.trim()) params.set("q", query.trim());
-    router.push(`/${lang}/flights?${params.toString()}`);
+    router.push(`/${lang}/flights/${tab}?${params.toString()}`);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -121,10 +120,10 @@ export default function FlightSearch({ className }: FlightSearchProps) {
             {/* Tabs with Bottom Line - All Primary Color */}
             <div className="flex gap-8 border-b border-gray-200">
               <button
-                onClick={() => setTab("departure")}
+                onClick={() => setTab("departures")}
                 className={cn(
                   "group relative flex items-center gap-2.5 pb-4 text-base font-semibold transition-colors sm:text-lg",
-                  tab === "departure"
+                  tab === "departures"
                     ? "text-primary-600"
                     : "text-gray-500 hover:text-gray-700",
                 )}
@@ -132,16 +131,16 @@ export default function FlightSearch({ className }: FlightSearchProps) {
                 <PlaneTakeoff className="h-5 w-5 sm:h-6 sm:w-6" />
                 {t.departure}
                 {/* Bottom indicator */}
-                {tab === "departure" && (
+                {tab === "departures" && (
                   <span className="bg-primary-600 absolute right-0 bottom-0 left-0 h-0.5" />
                 )}
               </button>
 
               <button
-                onClick={() => setTab("arrival")}
+                onClick={() => setTab("arrivals")}
                 className={cn(
                   "group relative flex items-center gap-2.5 pb-4 text-base font-semibold transition-colors sm:text-lg",
-                  tab === "arrival"
+                  tab === "arrivals"
                     ? "text-primary-600"
                     : "text-gray-500 hover:text-gray-700",
                 )}
@@ -149,7 +148,7 @@ export default function FlightSearch({ className }: FlightSearchProps) {
                 <PlaneLanding className="h-5 w-5 sm:h-6 sm:w-6" />
                 {t.arrival}
                 {/* Bottom indicator */}
-                {tab === "arrival" && (
+                {tab === "arrivals" && (
                   <span className="bg-primary-600 absolute right-0 bottom-0 left-0 h-0.5" />
                 )}
               </button>

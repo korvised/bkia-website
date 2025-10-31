@@ -74,11 +74,11 @@ function filterFlights(flights: Flight[], filters: FlightFilters): Flight[] {
     result = result.filter((f) => f.flightNumber.startsWith(filters.airline!));
   }
 
-  if (filters.flightNumber) {
+  if (filters.q) {
     result = result.filter((f) =>
       f.flightNumber
         .toLowerCase()
-        .includes(filters.flightNumber!.toLowerCase()),
+        .includes(filters.q!.toLowerCase()),
     );
   }
 

@@ -31,11 +31,9 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
   const [date, setDate] = useState(
     filters.date || new Date().toISOString().split("T")[0],
   );
-  const [startTime, setStartTime] = useState(filters.startTime || "00:00");
-  const [endTime, setEndTime] = useState(filters.endTime || "23:59");
   const [destination, setDestination] = useState(filters.destination || "");
   const [airline, setAirline] = useState(filters.airline || "");
-  const [flightNumber, setFlightNumber] = useState(filters.flightNumber || "");
+  const [query, setQuery] = useState(filters.q || "");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,11 +43,9 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
     // Only add non-default values
     if (terminal !== "all") params.set("terminal", terminal);
     if (date) params.set("date", date);
-    if (startTime !== "00:00") params.set("startTime", startTime);
-    if (endTime !== "23:59") params.set("endTime", endTime);
     if (destination) params.set("destination", destination);
     if (airline) params.set("airline", airline);
-    if (flightNumber) params.set("flightNumber", flightNumber);
+    if (query) params.set("q", query);
 
     const queryString = params.toString();
     startTransition(() => {
@@ -94,8 +90,8 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
         {/* Flight Number Input */}
         <input
           type="text"
-          value={flightNumber}
-          onChange={(e) => setFlightNumber(e.target.value)}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
           placeholder={t(translations.enterFlightNo)}
           className="focus:border-primary-500 focus:ring-primary-500/20 h-11 min-w-[200px] flex-1 rounded-sm border border-gray-300 bg-white px-4 text-sm focus:ring-2 focus:outline-none"
         />

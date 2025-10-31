@@ -10,12 +10,10 @@ export default async function AirlinesPage({ params }: AirlinesPageProps) {
   const { lang } = await params;
 
   return (
-    <div className="container">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {mockAirlines.map((airline) => (
-          <AirlineCard lang={lang as Lang} airline={airline} />
-        ))}
-      </div>
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      {mockAirlines.map((airline) => (
+        <AirlineCard lang={lang as Lang} airline={airline} />
+      ))}
     </div>
   );
 }

@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor flight page">
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="adjust with container class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/airlines/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/airlines/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/arrivals/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/arrivals/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/departures/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/departures/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/filter-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/filter-form.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-board.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-board.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/hero-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/hero-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/flight-search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/flight-search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/flight-board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/flight-board.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +141,9 @@
       <workItem from="1761267688807" duration="25729000" />
       <workItem from="1761620014462" duration="37000" />
       <workItem from="1761710653651" duration="20104000" />
-      <workItem from="1761785895921" duration="25268000" />
+      <workItem from="1761785895921" duration="25378000" />
+      <workItem from="1761873992238" duration="46000" />
+      <workItem from="1761878102876" duration="918000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -328,7 +329,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761817083010</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="adjust with container class">
+      <option name="closed" value="true" />
+      <created>1761818725409</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1761818725409</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,6 +360,7 @@
     <MESSAGE value="refactor homepage" />
     <MESSAGE value="refactor homepage hero session &amp; flight search" />
     <MESSAGE value="refactor flight page" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor flight page" />
+    <MESSAGE value="adjust with container class" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjust with container class" />
   </component>
 </project>
