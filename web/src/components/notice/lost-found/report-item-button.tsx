@@ -12,7 +12,7 @@ export function ReportItemButton({ lang }: ReportItemButtonProps) {
   return (
     <div className="flex flex-wrap gap-3">
       <Link
-        href={`/${lang}/notices/lost-found/report`}
+        href={`/${lang}/support/lost-found/report`}
         className="bg-primary-600 hover:bg-primary-700 inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium text-white transition-colors"
       >
         <PlusCircle className="h-5 w-5" />
@@ -20,7 +20,7 @@ export function ReportItemButton({ lang }: ReportItemButtonProps) {
       </Link>
 
       <Link
-        href={`/${lang}/notices/lost-found/claim`}
+        href={`/${lang}/support/lost-found/claim`}
         className="border-primary-600 text-primary-600 hover:bg-primary-50 inline-flex items-center gap-2 rounded-lg border-2 bg-white px-6 py-3 text-sm font-medium transition-colors"
       >
         <FileText className="h-5 w-5" />

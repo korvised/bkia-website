@@ -2,24 +2,24 @@ import { FeatureLayout } from "@/components/common";
 import { mainNavigation, MenuItem } from "@/data/main-navigation";
 import { Lang } from "@/types/language";
 
-interface AboutLayoutProps {
+interface SupportLayoutProps {
   children: React.ReactNode;
   params: Promise<{ lang: string }>;
 }
 
-const menuItems: MenuItem[] = (mainNavigation.find((m) => m.id === "about")
+const menuItems: MenuItem[] = (mainNavigation.find((m) => m.id === "support")
   ?.menuItems || []) as MenuItem[];
 
 const title = {
-  en: "About Us",
-  lo: "ກ່ຽວກັບພວກເຮົາ",
-  zh: "关于我们",
+  en: "Support",
+  lo: "ສະໜັບສະໜູນ",
+  zh: "客户支持",
 };
 
-export default async function AboutLayout({
+export default async function SupportLayout({
   children,
   params,
-}: AboutLayoutProps) {
+}: SupportLayoutProps) {
   const { lang } = await params;
 
   return (

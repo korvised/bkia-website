@@ -207,7 +207,7 @@ export default function NewsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen">
       {/* Hero */}
       <div className="relative overflow-hidden bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-8">
         <div className="absolute inset-0 opacity-10">
@@ -224,256 +224,177 @@ export default function NewsPage() {
       </div>
 
       {/* Search & Filters */}
-      <div className="border-b border-gray-200 bg-white px-4 py-3 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <div className="relative flex-1 sm:max-w-md">
-              <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search news..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 py-2 pr-3 pl-9 text-sm focus:border-[#5CBEC6] focus:ring-1 focus:ring-[#5CBEC6] focus:outline-none"
-              />
-            </div>
-            <button className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] px-4 py-2 text-sm font-semibold text-white transition-all hover:shadow-md">
-              <Download className="h-4 w-4" />
-              Media Kit
-            </button>
+      <div className="border-b border-gray-200 bg-white py-3">
+        <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div className="relative flex-1 sm:max-w-md">
+            <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search news..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full rounded-lg border border-gray-300 py-2 pr-3 pl-9 text-sm focus:border-[#5CBEC6] focus:ring-1 focus:ring-[#5CBEC6] focus:outline-none"
+            />
           </div>
-          <div className="flex gap-2 overflow-x-auto pb-2">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-all ${
-                  selectedCategory === cat.id
-                    ? "bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] text-white shadow-sm"
-                    : "border border-gray-300 bg-white text-gray-700 hover:border-[#5CBEC6]"
-                }`}
+          <button className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] px-4 py-2 text-sm font-semibold text-white transition-all hover:shadow-md">
+            <Download className="h-4 w-4" />
+            Media Kit
+          </button>
+        </div>
+        <div className="flex gap-2 overflow-x-auto pb-2">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-all ${
+                selectedCategory === cat.id
+                  ? "bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] text-white shadow-sm"
+                  : "border border-gray-300 bg-white text-gray-700 hover:border-[#5CBEC6]"
+              }`}
+            >
+              {cat.name}
+              <span
+                className={`rounded-full px-1.5 py-0.5 text-xs ${selectedCategory === cat.id ? "bg-white/20" : "bg-gray-100"}`}
               >
-                {cat.name}
-                <span
-                  className={`rounded-full px-1.5 py-0.5 text-xs ${selectedCategory === cat.id ? "bg-white/20" : "bg-gray-100"}`}
-                >
                   {cat.count}
                 </span>
-              </button>
-            ))}
-          </div>
+            </button>
+          ))}
         </div>
       </div>
 
       {/* Featured */}
       {featuredNews.length > 0 && (
-        <div className="bg-white px-4 py-6 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-4 flex items-center gap-2">
-              <Award className="h-5 w-5 text-[#00AAAC]" />
-              <h2 className="text-lg font-bold text-gray-900">Featured News</h2>
-            </div>
-            <div className="grid gap-4 lg:grid-cols-3">
-              {featuredNews.map((item, idx) => (
+        <div className="bg-white py-6">
+          <div className="mb-4 flex items-center gap-2">
+            <Award className="h-5 w-5 text-[#00AAAC]" />
+            <h2 className="text-lg font-bold text-gray-900">Featured News</h2>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-3">
+            {featuredNews.map((item, idx) => (
+              <div
+                key={item.id}
+                className={`group overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:border-[#5CBEC6] hover:shadow-md ${
+                  idx === 0 ? "lg:col-span-2" : ""
+                }`}
+              >
                 <div
-                  key={item.id}
-                  className={`group overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:border-[#5CBEC6] hover:shadow-md ${
-                    idx === 0 ? "lg:col-span-2" : ""
-                  }`}
+                  className={`relative overflow-hidden bg-gray-200 ${idx === 0 ? "h-52" : "h-36"}`}
                 >
-                  <div
-                    className={`relative overflow-hidden bg-gray-200 ${idx === 0 ? "h-52" : "h-36"}`}
-                  >
-                    <Image
-                      src="/images/news/placeholder.jpg"
-                      alt={item.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <div className="absolute bottom-2 left-2 z-10">
+                  <Image
+                    src="/images/news/placeholder.jpg"
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  <div className="absolute bottom-2 left-2 z-10">
                       <span
                         className={`inline-block rounded px-2 py-0.5 text-xs font-semibold ${getCategoryColor(item.category)}`}
                       >
                         {categories.find((c) => c.id === item.category)?.name}
                       </span>
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <div className="mb-2 flex items-center gap-2 text-xs text-gray-500">
-                      <Calendar className="h-3 w-3" />
-                      {new Date(item.date).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
-                    </div>
-                    <h3 className="mb-2 line-clamp-2 text-base font-bold text-gray-900 group-hover:text-[#00AAAC]">
-                      {item.title}
-                    </h3>
-                    <p className="mb-3 line-clamp-2 text-sm text-gray-600">
-                      {item.excerpt}
-                    </p>
-                    <div className="mb-3 flex flex-wrap gap-1">
-                      {item.tags.map((tag, i) => (
-                        <span
-                          key={i}
-                          className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <button className="inline-flex items-center gap-1 text-sm font-semibold text-[#00AAAC] transition-all hover:gap-2">
-                      Read More <ChevronRight className="h-4 w-4" />
-                    </button>
                   </div>
                 </div>
-              ))}
-            </div>
+                <div className="p-4">
+                  <div className="mb-2 flex items-center gap-2 text-xs text-gray-500">
+                    <Calendar className="h-3 w-3" />
+                    {new Date(item.date).toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </div>
+                  <h3 className="mb-2 line-clamp-2 text-base font-bold text-gray-900 group-hover:text-[#00AAAC]">
+                    {item.title}
+                  </h3>
+                  <p className="mb-3 line-clamp-2 text-sm text-gray-600">
+                    {item.excerpt}
+                  </p>
+                  <div className="mb-3 flex flex-wrap gap-1">
+                    {item.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600"
+                      >
+                          {tag}
+                        </span>
+                    ))}
+                  </div>
+                  <button className="inline-flex items-center gap-1 text-sm font-semibold text-[#00AAAC] transition-all hover:gap-2">
+                    Read More <ChevronRight className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
 
       {/* All News */}
-      <div className="bg-gray-50 px-4 py-6 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-4">
-            <h2 className="text-lg font-bold text-gray-900">All News</h2>
-            <p className="text-sm text-gray-600">
-              Showing {filteredNews.length} articles
-            </p>
-          </div>
-          {regularNews.length > 0 ? (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {regularNews.map((item) => (
-                <div
-                  key={item.id}
-                  className="group overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:border-[#5CBEC6] hover:shadow-md"
-                >
-                  <div className="relative h-36 overflow-hidden bg-gray-200">
-                    <Image
-                      src="/images/news/placeholder.jpg"
-                      alt={item.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                    {item.externalLink && (
-                      <div className="absolute top-2 right-2 z-10">
-                        <ExternalLink className="h-4 w-4 text-white" />
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-4">
+      <div className="py-6">
+        <div className="mb-4">
+          <h2 className="text-lg font-bold text-gray-900">All News</h2>
+          <p className="text-sm text-gray-600">
+            Showing {filteredNews.length} articles
+          </p>
+        </div>
+        {regularNews.length > 0 ? (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {regularNews.map((item) => (
+              <div
+                key={item.id}
+                className="group overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:border-[#5CBEC6] hover:shadow-md"
+              >
+                <div className="relative h-36 overflow-hidden bg-gray-200">
+                  <Image
+                    src="/images/news/placeholder.jpg"
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  {item.externalLink && (
+                    <div className="absolute top-2 right-2 z-10">
+                      <ExternalLink className="h-4 w-4 text-white" />
+                    </div>
+                  )}
+                </div>
+                <div className="p-4">
                     <span
                       className={`mb-1.5 inline-block rounded px-2 py-0.5 text-xs font-semibold ${getCategoryColor(item.category)}`}
                     >
                       {categories.find((c) => c.id === item.category)?.name}
                     </span>
-                    <div className="mb-2 flex items-center gap-1.5 text-xs text-gray-500">
-                      <Calendar className="h-3 w-3" />
-                      {new Date(item.date).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                      })}
-                    </div>
-                    <h3 className="mb-2 line-clamp-2 text-sm font-bold text-gray-900 group-hover:text-[#00AAAC]">
-                      {item.title}
-                    </h3>
-                    <p className="mb-3 line-clamp-2 text-sm text-gray-600">
-                      {item.excerpt}
-                    </p>
-                    <button className="inline-flex items-center gap-1 text-sm font-semibold text-[#00AAAC] transition-all hover:gap-2">
-                      Read More <ChevronRight className="h-3.5 w-3.5" />
-                    </button>
+                  <div className="mb-2 flex items-center gap-1.5 text-xs text-gray-500">
+                    <Calendar className="h-3 w-3" />
+                    {new Date(item.date).toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                    })}
                   </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="rounded-lg border border-dashed border-gray-300 bg-white p-8 text-center">
-              <FileText className="mx-auto mb-2 h-10 w-10 text-gray-400" />
-              <h3 className="mb-1 text-base font-semibold text-gray-900">
-                No articles found
-              </h3>
-              <p className="text-sm text-gray-600">Try adjusting your search</p>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Media Resources */}
-      <div className="bg-white px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-6 text-center">
-            <h2 className="mb-2 text-lg font-bold text-gray-900 sm:text-xl">
-              Media Resources
-            </h2>
-            <p className="text-sm text-gray-600">
-              Logos, photos, and videos for media professionals
-            </p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {mediaKit.map((resource, i) => {
-              const Icon = resource.icon;
-              return (
-                <div
-                  key={i}
-                  className="group rounded-lg border border-gray-200 bg-gray-50 p-4 transition-all hover:border-[#5CBEC6] hover:bg-white hover:shadow-md"
-                >
-                  <div className="mb-3 inline-flex rounded-lg bg-gradient-to-br from-[#5CBEC6] to-[#00AAAC] p-2">
-                    <Icon className="h-5 w-5 text-white" />
-                  </div>
-                  <h3 className="mb-1.5 text-sm font-bold text-gray-900">
-                    {resource.title}
+                  <h3 className="mb-2 line-clamp-2 text-sm font-bold text-gray-900 group-hover:text-[#00AAAC]">
+                    {item.title}
                   </h3>
-                  <p className="mb-2 text-xs text-gray-600">
-                    {resource.description}
+                  <p className="mb-3 line-clamp-2 text-sm text-gray-600">
+                    {item.excerpt}
                   </p>
-                  <div className="mb-3 flex items-center gap-1.5 text-xs text-gray-500">
-                    <span className="rounded bg-gray-200 px-1.5 py-0.5 font-medium">
-                      {resource.type}
-                    </span>
-                    <span>{resource.size}</span>
-                  </div>
                   <button className="inline-flex items-center gap-1 text-sm font-semibold text-[#00AAAC] transition-all hover:gap-2">
-                    <Download className="h-3.5 w-3.5" />
-                    Download
+                    Read More <ChevronRight className="h-3.5 w-3.5" />
                   </button>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
-        </div>
-      </div>
-
-      {/* Contact */}
-      <div className="bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center text-white">
-          <h2 className="mb-2 text-lg font-bold sm:text-xl">Media Inquiries</h2>
-          <p className="mb-6 text-sm opacity-90">
-            For press inquiries or additional information
-          </p>
-          <div className="mx-auto max-w-md rounded-lg bg-white/10 p-4 backdrop-blur-sm">
-            <h3 className="mb-3 text-sm font-bold">Media Relations Team</h3>
-            <div className="space-y-1 text-sm">
-              <p>
-                Email:{" "}
-                <a href="mailto:media@bokeoairport.la" className="underline">
-                  media@bokeoairport.la
-                </a>
-              </p>
-              <p>Phone: +856 20 5555 1234</p>
-              <p className="text-xs opacity-90">
-                Mon-Fri, 8:00 AM - 5:00 PM ICT
-              </p>
-            </div>
+        ) : (
+          <div className="rounded-lg border border-dashed border-gray-300 bg-white p-8 text-center">
+            <FileText className="mx-auto mb-2 h-10 w-10 text-gray-400" />
+            <h3 className="mb-1 text-base font-semibold text-gray-900">
+              No articles found
+            </h3>
+            <p className="text-sm text-gray-600">Try adjusting your search</p>
           </div>
-          <p className="mt-4 text-xs opacity-75">
-            Emergency: +856 20 9999 5678
-          </p>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -1,16 +1,34 @@
+import { FeatureLayout } from "@/components/common";
+import { mainNavigation, MenuItem } from "@/data/main-navigation";
 import { Lang } from "@/types/language";
-import { AboutLayout } from "@/components/layout/about";
 
-interface FlightsLayoutProps {
-  params: Promise<{ lang: string }>;
+interface NewsLayoutProps {
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }
 
-export default async function FlightsLayout({
-  params,
+const menuItems: MenuItem[] = (mainNavigation.find((m) => m.id === "support")
+  ?.menuItems || []) as MenuItem[];
+
+const title = {
+  en: "News",
+  lo: "ສະໜັບສະໜູນ",
+  zh: "客户支持",
+};
+
+export default async function NewsLayout({
   children,
-}: FlightsLayoutProps) {
+  params,
+}: NewsLayoutProps) {
   const { lang } = await params;
 
-  return <AboutLayout lang={lang as Lang}>{children}</AboutLayout>;
+  return (
+    <FeatureLayout
+      lang={lang as Lang}
+      title={title[lang as Lang]}
+      menuItems={menuItems}
+    >
+      {children}
+    </FeatureLayout>
+  );
 }

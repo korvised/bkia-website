@@ -28,7 +28,7 @@ export function ImportantCategoryFilter({
       params.set("priority", id);
     }
 
-    router.push(`/${lang}/notices/important?${params.toString()}`, {
+    router.push(`/${lang}/support/notices/important?${params.toString()}`, {
       scroll: false,
     });
   };

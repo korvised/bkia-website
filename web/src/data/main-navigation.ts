@@ -333,7 +333,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ແຖງຂ່າວ ແລະ ອັບເດດສື່ມວນຊົນ",
           zh: "新闻稿与媒体更新",
         },
-        href: "/support/newsroom",
+        href: "/news",
       },
       {
         label: {
@@ -390,7 +390,7 @@ export const mainNavigation: NavItem[] = [
     },
   },
   {
-    id: "about-us",
+    id: "about",
     label: { en: "About Us", lo: "ກ່ຽວກັບພວກເຮົາ", zh: "关于我们" },
     description: {
       en: "Learn about our airport",
@@ -450,7 +450,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ການປະມູນເປີດ, ແຈ້ງການຈັດຊື້ ແລະ ຜົນປະມູນ",
           zh: "公开招标、采购公告与结果",
         },
-        href: "/about/bidding",
+        href: "/bidding",
       },
       {
         label: {
@@ -463,7 +463,7 @@ export const mainNavigation: NavItem[] = [
           lo: "ໂອກາດການຈ້າງງານ",
           zh: "工作机会",
         },
-        href: "/about/careers",
+        href: "/careers",
       },
     ],
     featuredContent: {

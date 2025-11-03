@@ -422,7 +422,7 @@ export default async function Footer({ lang }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/support/newsroom`}
+                  href={`/${lang}/news`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
                   {translations.newsroom[lang]}

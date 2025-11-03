@@ -60,7 +60,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
         : `Found item report submitted successfully! Reference Number: ${refNumber}\n\nThank you for your honesty. We will process this item and contact the owner if they come forward.`;
 
     alert(message);
-    router.push(`/${lang}/notices/lost-found`);
+    router.push(`/${lang}/support/lost-found`);
   };
 
   const isLost = formData.reportType === "lost";
@@ -69,7 +69,7 @@ export function ReportItemForm({ lang }: ReportItemFormProps) {
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Back Button */}
       <Link
-        href={`/${lang}/notices/lost-found`}
+        href={`/${lang}/support/lost-found`}
         className="inline-flex items-center gap-2 text-sm text-gray-600 transition-colors hover:text-gray-900"
       >
         <ArrowLeft className="h-4 w-4" />

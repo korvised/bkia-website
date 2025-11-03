@@ -4,29 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor project layouts">
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/security/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/transports/to-from-airport/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/common/feature-layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/overview-tab.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/taxi-tab.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/to-from-airport-content.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/van-tab.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor guides, transport pages">
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/important/[id]/not-found.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/important/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/important/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/information/[id]/not-found.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/information/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/information/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transports/car-rental/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transports/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/transports/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transports/taxi/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transports/van/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/common/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/guides-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/guides-layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/transports/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/transports/transportation-tabs.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/transports/transports-layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/about/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/about/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/bidding/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/bidding/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/bidding/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/bidding/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/careers/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/careers/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/careers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/careers/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/news/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/news/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/news/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/news/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/complaint/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/complaint/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/[id]/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/important/[id]/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/important/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/important/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/important/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/information/[id]/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/information/[id]/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/information/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/information/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/information/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/information/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/lost-found/[id]/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/lost-found/[id]/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/lost-found/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/lost-found/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/lost-found/claim/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/lost-found/claim/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/lost-found/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/lost-found/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/lost-found/report/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/lost-found/report/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/notices/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/survey/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/survey/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/about/overview/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/useful-services-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/useful-services-section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/important/important-category-filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/important/important-category-filter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/lost-found/claim-found-item-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/claim-found-item-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/lost-found/report-item-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/report-item-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/lost-found/report-item-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/report-item-form.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/data/main-navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/main-navigation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +86,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "v2",
-    "last_opened_file_path": "D:/projects/bkia-website/web/public/images/wallpaper",
+    "last_opened_file_path": "D:/projects/bkia-website/web/src/app/[lang]/careers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -84,18 +101,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\src\app\[lang]\careers" />
+      <recent name="D:\projects\bkia-website\web\src\app\[lang]\support" />
+      <recent name="D:\projects\bkia-website\web\src\app\[lang]\support\notices" />
       <recent name="D:\projects\bkia-website\web\public\images\wallpaper" />
       <recent name="D:\projects\bkia-website\web\public\images\featured" />
-      <recent name="D:\projects\bkia-website\web\public\images\logo" />
-      <recent name="D:\projects\bkia-website\web\public\images\news" />
-      <recent name="D:\projects\bkia-website\web\src\app\[lang]\history" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\src\app\[lang]" />
+      <recent name="D:\projects\bkia-website\web\src\app\[lang]\about" />
+      <recent name="D:\projects\bkia-website\web\src\app\[lang]\support" />
+      <recent name="D:\projects\bkia-website\web\src\app\[lang]\support\notices" />
       <recent name="D:\projects\bkia-website\web\src" />
-      <recent name="D:\projects\bkia-website\web\public\images\wallpaper" />
-      <recent name="D:\projects\bkia-website\web\public\images\featured" />
-      <recent name="D:\projects\bkia-website\web\src\components\common" />
-      <recent name="D:\projects\bkia-website\web\src\components\notice" />
     </key>
   </component>
   <component name="RunManager">
@@ -158,7 +175,10 @@
       <workItem from="1761873992238" duration="46000" />
       <workItem from="1761878102876" duration="4311000" />
       <workItem from="1761882476328" duration="47000" />
-      <workItem from="1761882532671" duration="14541000" />
+      <workItem from="1761882532671" duration="14802000" />
+      <workItem from="1761904714658" duration="305000" />
+      <workItem from="1761961174733" duration="10000" />
+      <workItem from="1762141014584" duration="3758000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -376,7 +396,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761886901228</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="refactor guides, transport pages">
+      <option name="closed" value="true" />
+      <created>1761901325915</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1761901325915</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,6 +430,7 @@
     <MESSAGE value="adjust with container class" />
     <MESSAGE value="adjust flight search query" />
     <MESSAGE value="refactor project layouts" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor project layouts" />
+    <MESSAGE value="refactor guides, transport pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor guides, transport pages" />
   </component>
 </project>

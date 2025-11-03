@@ -63,14 +63,14 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
     alert(
       `Claim submitted successfully! Claim Number: ${claimNumber}\n\nWe will contact you within 24-48 hours to verify your claim.`,
     );
-    router.push(`/${lang}/notices/lost-found`);
+    router.push(`/${lang}/support/lost-found`);
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Back Button */}
       <Link
-        href={`/${lang}/notices/lost-found`}
+        href={`/${lang}/support/lost-found`}
         className="inline-flex items-center gap-2 text-sm text-gray-600 transition-colors hover:text-gray-900"
       >
         <ArrowLeft className="h-4 w-4" />

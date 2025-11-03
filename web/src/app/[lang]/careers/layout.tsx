@@ -1,16 +1,34 @@
+import { FeatureLayout } from "@/components/common";
+import { mainNavigation, MenuItem } from "@/data/main-navigation";
 import { Lang } from "@/types/language";
-import { AboutLayout } from "@/components/layout/about";
 
-interface FlightsLayoutProps {
-  params: Promise<{ lang: string }>;
+interface AboutLayoutProps {
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }
 
-export default async function FlightsLayout({
-  params,
+const menuItems: MenuItem[] = (mainNavigation.find((m) => m.id === "about")
+  ?.menuItems || []) as MenuItem[];
+
+const title = {
+  en: "About Us",
+  lo: "ກ່ຽວກັບພວກເຮົາ",
+  zh: "关于我们",
+};
+
+export default async function AboutLayout({
   children,
-}: FlightsLayoutProps) {
+  params,
+}: AboutLayoutProps) {
   const { lang } = await params;
 
-  return <AboutLayout lang={lang as Lang}>{children}</AboutLayout>;
+  return (
+    <FeatureLayout
+      lang={lang as Lang}
+      title={title[lang as Lang]}
+      menuItems={menuItems}
+    >
+      {children}
+    </FeatureLayout>
+  );
 }

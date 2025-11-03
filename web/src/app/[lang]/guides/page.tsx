@@ -8,5 +8,5 @@ export default async function GuidePage({ params }: GuidePageProps) {
   const { lang } = await params;
 
   // Redirect to departure as the default tab
-  redirect(`/${lang}/guides/departure`);
+  redirect(`/${lang}/guides/departures`);
 }
