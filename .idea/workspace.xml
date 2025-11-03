@@ -4,27 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor support &amp; about pages">
-      <change afterPath="$PROJECT_DIR$/server/server/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/eslint.config.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/nest-cli.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/pnpm-lock.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/src/app.controller.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/src/app.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/src/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/src/app.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/test/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/test/jest-e2e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/tsconfig.build.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="initial server">
+      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/config/config-validation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/config/configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/config/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/common/config/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/common/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/weather/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/types/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +32,7 @@
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/server" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -59,42 +54,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;v2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website/web/src/app/[lang]/careers&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start:dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\nvm4w\\nodejs\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "v2",
+    "last_opened_file_path": "D:/projects/bkia-website/server/src/config",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
+    "npm.server.executor": "Run",
+    "npm.start:dev.executor": "Run",
+    "npm.web.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "D:\\projects\\bkia-website\\server\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\server\src\config" />
+      <recent name="D:\projects\bkia-website" />
+      <recent name="D:\projects\bkia-website\server\src\types" />
       <recent name="D:\projects\bkia-website\web\src\app\[lang]\careers" />
       <recent name="D:\projects\bkia-website\web\src\app\[lang]\support" />
-      <recent name="D:\projects\bkia-website\web\src\app\[lang]\support\notices" />
-      <recent name="D:\projects\bkia-website\web\public\images\wallpaper" />
-      <recent name="D:\projects\bkia-website\web\public\images\featured" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\server\src\modules" />
       <recent name="D:\projects\bkia-website\web\src\app\[lang]" />
       <recent name="D:\projects\bkia-website\web\src\app\[lang]\about" />
       <recent name="D:\projects\bkia-website\web\src\app\[lang]\support" />
       <recent name="D:\projects\bkia-website\web\src\app\[lang]\support\notices" />
-      <recent name="D:\projects\bkia-website\web\src" />
     </key>
   </component>
   <component name="RunManager" selected="npm.server">
@@ -176,6 +172,7 @@
       <workItem from="1761904714658" duration="305000" />
       <workItem from="1761961174733" duration="10000" />
       <workItem from="1762141014584" duration="5887000" />
+      <workItem from="1762151887316" duration="1747000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -409,7 +406,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762144946743</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="initial server">
+      <option name="closed" value="true" />
+      <created>1762151919840</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1762151919840</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,6 +442,7 @@
     <MESSAGE value="refactor project layouts" />
     <MESSAGE value="refactor guides, transport pages" />
     <MESSAGE value="refactor support &amp; about pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor support &amp; about pages" />
+    <MESSAGE value="initial server" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial server" />
   </component>
 </project>
