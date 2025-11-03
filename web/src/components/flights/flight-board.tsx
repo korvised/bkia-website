@@ -134,7 +134,7 @@ export function FlightBoard({ type, lang, filters }: FlightBoardProps) {
       <FilterForm lang={lang} filters={filters} />
 
       {/* Action Bar */}
-      <div className="mb-4 flex items-center justify-end gap-3 border-b border-gray-200 pb-4">
+      <div className="mb-4 flex items-center justify-start gap-3 border-b border-gray-200 pb-4">
         <LastUpdated lang={lang} label={t(translations.lastUpdated)} />
         <Link
           href={`/${lang}/flights/${type === "departure" ? "departures" : "arrivals"}`}

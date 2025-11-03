@@ -1,17 +1,15 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
-import { useTransition, FormEvent, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { FormEvent, useState, useTransition } from "react";
 import { Search } from "lucide-react";
 import { Lang } from "@/types/language";
 import {
-  FlightFilters,
-  terminals,
-  destinations,
   airlines,
+  destinations,
+  FlightFilters,
   translations,
 } from "@/data/flight-board";
-import { TerminalSelector } from "./terminal-selector";
 import { IconSelector } from "./icon-selector";
 import { DatePicker } from "./date-picker";
 
@@ -27,7 +25,6 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
 
   const t = (text: Record<Lang, string>) => text[lang];
 
-  const [terminal, setTerminal] = useState(filters.terminal || "all");
   const [date, setDate] = useState(
     filters.date || new Date().toISOString().split("T")[0],
   );
@@ -41,7 +38,6 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
     const params = new URLSearchParams();
 
     // Only add non-default values
-    if (terminal !== "all") params.set("terminal", terminal);
     if (date) params.set("date", date);
     if (destination) params.set("destination", destination);
     if (airline) params.set("airline", airline);
@@ -55,15 +51,7 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="mb-6">
-      <div className="flex flex-wrap items-end gap-3">
-        {/* Terminal Selector */}
-        <TerminalSelector
-          options={terminals}
-          value={terminal}
-          onChange={setTerminal}
-          label={(opt) => t(opt.label)}
-        />
-
+      <div className="flex flex-wrap items-end justify-end gap-3">
         {/* Date Picker */}
         <DatePicker value={date} onChange={setDate} lang={lang} />
 
@@ -93,7 +81,7 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t(translations.enterFlightNo)}
-          className="focus:border-primary-500 focus:ring-primary-500/20 h-11 min-w-[200px] flex-1 rounded-sm border border-gray-300 bg-white px-4 text-sm focus:ring-2 focus:outline-none"
+          className="focus:border-primary-500 focus:ring-primary-500/20 h-11 min-w-[200px] rounded-sm border border-gray-300 bg-white px-4 text-sm focus:ring-2 focus:outline-none"
         />
 
         {/* Search Button */}

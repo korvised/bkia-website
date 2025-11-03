@@ -4,22 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="initial server">
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/config/config-validation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/config/configuration.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/config/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/common/config/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/common/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/weather/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/types/config.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement config">
+      <change afterPath="$PROJECT_DIR$/server/src/modules/common/redis/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/types/language.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/types/weather.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/homepage/weather-widget.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/lib/get-weather-icon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/types/weather.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/common/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/common/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/weather/weather.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/weather/weather.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/weather/weather.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/weather/weather.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/airlines/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/airlines/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/date-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/date-picker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/filter-form-client.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/filter-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/filter-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-board.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-board.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/terminal-selector.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/date-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/date-picker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/flight-search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/flight-search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/weather-section.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/hooks/use-weather.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/hooks/use-weather.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +75,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "v2",
-    "last_opened_file_path": "D:/projects/bkia-website/server/src/config",
+    "last_opened_file_path": "D:/projects/bkia-website/web/src/types",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -79,11 +93,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\src\types" />
       <recent name="D:\projects\bkia-website\server\src\config" />
       <recent name="D:\projects\bkia-website" />
       <recent name="D:\projects\bkia-website\server\src\types" />
       <recent name="D:\projects\bkia-website\web\src\app\[lang]\careers" />
-      <recent name="D:\projects\bkia-website\web\src\app\[lang]\support" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\server\src\modules" />
@@ -172,7 +186,7 @@
       <workItem from="1761904714658" duration="305000" />
       <workItem from="1761961174733" duration="10000" />
       <workItem from="1762141014584" duration="5887000" />
-      <workItem from="1762151887316" duration="1747000" />
+      <workItem from="1762151887316" duration="11380000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -414,7 +428,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762151919840</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="implement config">
+      <option name="closed" value="true" />
+      <created>1762153686893</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1762153686893</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,6 +465,7 @@
     <MESSAGE value="refactor guides, transport pages" />
     <MESSAGE value="refactor support &amp; about pages" />
     <MESSAGE value="initial server" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial server" />
+    <MESSAGE value="implement config" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement config" />
   </component>
 </project>

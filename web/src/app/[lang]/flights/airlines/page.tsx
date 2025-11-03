@@ -12,7 +12,7 @@ export default async function AirlinesPage({ params }: AirlinesPageProps) {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
       {mockAirlines.map((airline) => (
-        <AirlineCard lang={lang as Lang} airline={airline} />
+        <AirlineCard key={airline.code} lang={lang as Lang} airline={airline} />
       ))}
     </div>
   );

@@ -1,13 +1,14 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
-import { Cloud, PlaneLanding, PlaneTakeoff, Search } from "lucide-react";
+import { PlaneLanding, PlaneTakeoff, Search } from "lucide-react";
 import { cn } from "@/lib";
 import { useLanguage } from "@/context";
 import DatePicker from "./date-picker";
 import { PiAirplaneInFlightBold } from "react-icons/pi";
+import WeatherWidget from "@/components/homepage/weather-widget";
 
 type Tab = "departures" | "arrivals";
 
@@ -23,17 +24,6 @@ export default function FlightSearch({ className }: FlightSearchProps) {
   const [focusSearchInput, setFocusSearchInput] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
-
-  const weather = { temp: 17 };
-
-  const currentTime = useMemo(() => {
-    const d = new Date();
-    return d.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    });
-  }, []);
 
   const handleSearch = () => {
     const params = new URLSearchParams();
@@ -102,17 +92,7 @@ export default function FlightSearch({ className }: FlightSearchProps) {
             </div>
 
             {/* Weather & Time */}
-            <div className="flex items-center gap-3 rounded-xl bg-blue-50 px-4 py-3">
-              <Cloud className="h-8 w-8 text-blue-600" />
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold text-gray-900">
-                  {weather.temp}°C
-                </span>
-                <span className="text-xs font-medium text-gray-600">
-                  {currentTime}
-                </span>
-              </div>
-            </div>
+            <WeatherWidget lang={lang} />
           </div>
 
           {/* Right: Search Form */}

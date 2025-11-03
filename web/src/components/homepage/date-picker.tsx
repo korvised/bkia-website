@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { addDays, subDays } from "date-fns";
 import { DayPicker } from "react-day-picker";
@@ -13,6 +13,7 @@ import "react-day-picker/style.css";
 import "@/styles/custom-react-day-picker.css";
 
 const today = new Date();
+const ESTIMATED_POPUP_HEIGHT = 380;
 
 interface DatePickerProps {
   date: Date;
@@ -29,6 +30,9 @@ export default function DatePicker({
 }: DatePickerProps) {
   const [showCalendar, setShowCalendar] = useState(false);
   const [month, setMonth] = useState<Date>(date);
+  const [positionAbove, setPositionAbove] = useState(false);
+
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const getLocale = useCallback(() => {
     switch (lang) {
@@ -43,15 +47,38 @@ export default function DatePicker({
 
   const handleToggleCalendar = () => {
     if (!showCalendar) {
-      // When opening, set month to the selected date's month
+      // Set month to the selected date's month
       setMonth(date);
+
+      // Calculate position before showing
+      if (buttonRef.current) {
+        const buttonRect = buttonRef.current.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        const spaceBelow = viewportHeight - buttonRect.bottom;
+        const spaceAbove = buttonRect.top;
+
+        // Position above if not enough space below but enough above
+        setPositionAbove(
+          spaceBelow < ESTIMATED_POPUP_HEIGHT &&
+            spaceAbove > ESTIMATED_POPUP_HEIGHT,
+        );
+      }
     }
     setShowCalendar(!showCalendar);
+  };
+
+  const handleSelect = (newDate: Date | undefined) => {
+    if (newDate) {
+      onDateChange(newDate);
+      setShowCalendar(false);
+    }
   };
 
   return (
     <div className="relative w-full min-w-fit md:w-56 xl:w-80">
       <button
+        ref={buttonRef}
         onClick={handleToggleCalendar}
         className={cn(
           "group relative flex h-14 w-full items-center gap-4 rounded-lg border-2 bg-white px-3 text-left shadow-sm transition-all md:h-16 xl:px-5",
@@ -92,23 +119,26 @@ export default function DatePicker({
       {showCalendar && (
         <>
           <div
-            className="fixed inset-0 z-40"
+            className="fixed inset-0 z-20"
             onClick={() => setShowCalendar(false)}
           />
-          <div className="absolute bottom-full left-0 z-50 mb-2 rounded-xl border border-gray-200 bg-white p-4 shadow-2xl">
+          <div
+            className={cn(
+              "absolute left-0 z-30 rounded-xl border border-gray-200 bg-white p-4 shadow-2xl",
+              positionAbove ? "bottom-full mb-2" : "top-full mt-2",
+            )}
+          >
             <DayPicker
               mode="single"
               locale={getLocale()}
               selected={date}
               month={month}
               onMonthChange={setMonth}
-              onSelect={(newDate) => {
-                if (newDate) {
-                  onDateChange(newDate);
-                  setShowCalendar(false);
-                }
+              onSelect={handleSelect}
+              disabled={{
+                before: subDays(today, 6),
+                after: addDays(today, 14),
               }}
-              disabled={{ before: subDays(today, 6), after: addDays(today, 14) }}
             />
           </div>
         </>

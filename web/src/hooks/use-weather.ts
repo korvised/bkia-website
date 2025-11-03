@@ -1,63 +1,52 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import type { OpenWeatherResponse } from "@/types/weather";
+import type { Lang } from "@/types/language";
 
-export type WeatherData = {
-  temperature: number; // °C
-  humidity: number; // %
-  weather_code: number; // WMO code
-  updatedAt: number;
-};
+interface UseWeatherResult {
+  weather: OpenWeatherResponse | null;
+  loading: boolean;
+  error: string | null;
+  refetch: () => Promise<void>;
+}
 
-type WeatherResult = {
-  data: WeatherData | null;
-  isLoading: boolean;
-  isError: boolean;
-  error?: string;
-  refetch: () => void;
-};
+export function useWeather(lang: Lang): UseWeatherResult {
+  const [weather, setWeather] = useState<OpenWeatherResponse | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-export function useWeather(updateInterval = 10 * 60 * 1000): WeatherResult {
-  const [data, setData] = useState<WeatherData | null>(null);
-  const [isLoading, setLoading] = useState(true);
-  const [isError, setError] = useState<string | undefined>(undefined);
-  const timer = useRef<number | null>(null);
-
-  const load = useCallback(async () => {
-    setLoading(true);
-    setError(undefined);
+  const fetchWeather = useCallback(async () => {
     try {
-      const res = await fetch("/api/weather", { cache: "no-store" });
-      if (!res.ok) throw new Error(await res.text());
-      const json = (await res.json()) as WeatherData;
-      setData(json);
-    } catch (e: any) {
-      setError(e?.message || "Weather fetch failed");
-      setData(null);
+      setLoading(true);
+      setError(null);
+
+      const response = await fetch(
+        `http://localhost:8080/weather?lang=${lang}`,
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data: OpenWeatherResponse = await response.json();
+      setWeather(data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to fetch weather");
+      console.error("Weather fetch error:", err);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
-    let mounted = true;
-    (async () => {
-      if (mounted) await load();
-    })();
+    fetchWeather();
 
-    timer.current = window.setInterval(load, updateInterval);
+    // Refresh weather data every 10 minutes
+    const interval = setInterval(fetchWeather, 10 * 60 * 1000);
 
-    return () => {
-      mounted = false;
-      if (timer.current) window.clearInterval(timer.current);
-    };
-  }, [load, updateInterval]);
+    return () => clearInterval(interval);
+  }, [fetchWeather]);
 
-  return {
-    data,
-    isLoading,
-    isError: Boolean(isError),
-    error: isError,
-    refetch: load,
-  };
+  return { weather, loading, error, refetch: fetchWeather };
 }
