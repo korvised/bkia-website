@@ -33,5 +33,8 @@ function resolveLocale(lang: Lang) {
 export const fmtDate = (ts: number | Date, lang: Lang) =>
   dayjs(ts).tz(TZ).locale(resolveLocale(lang)).format("LL");
 
-export const fmtTime = (ts: number | Date, lang: Lang) =>
-  dayjs(ts).tz(TZ).locale(resolveLocale(lang)).format("HH:mm:ss");
+export const fmtTime = (
+  ts: number | Date,
+  lang: Lang,
+  format: string = "HH:mm:ss",
+) => dayjs(ts).tz(TZ).locale(resolveLocale(lang)).format(format);

@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { WiCloudy } from "react-icons/wi";
+import { Clock } from "lucide-react";
 import { cn, fmtTime } from "@/lib";
 import { useWeather } from "@/hooks/use-weather";
 import { getWeatherIcon, getWeatherIconColor } from "@/lib/get-weather-icon";
 import type { Lang } from "@/types/language";
 import type { MultilingualText } from "@/types/language";
+import { getWeatherDescription } from "@/data/weather-description";
 
 interface WeatherWidgetProps {
   lang: Lang;
@@ -17,7 +19,7 @@ interface WeatherWidgetProps {
 const translations: Record<string, MultilingualText> = {
   feelsLike: {
     en: "Feels like",
-    lo: "ຮູ້ສຶກເໝືອນ",
+    lo: "ຮູ້ສຶກຄື",
     zh: "体感温度",
   },
   loading: {
@@ -25,118 +27,6 @@ const translations: Record<string, MultilingualText> = {
     lo: "ກຳລັງໂຫຼດ...",
     zh: "加载中...",
   },
-};
-
-// Weather description translations
-const weatherDescriptions: Record<string, MultilingualText> = {
-  // Clear sky
-  "01d": {
-    en: "Clear sky",
-    lo: "ທ້ອງຟ້າແຈ້ງ",
-    zh: "晴空",
-  },
-  "01n": {
-    en: "Clear night",
-    lo: "ກາງຄືນແຈ້ງ",
-    zh: "晴夜",
-  },
-  // Few clouds
-  "02d": {
-    en: "Partly cloudy",
-    lo: "ມີເມກບາງສ່ວນ",
-    zh: "少云",
-  },
-  "02n": {
-    en: "Partly cloudy",
-    lo: "ມີເມກບາງສ່ວນ",
-    zh: "少云",
-  },
-  // Scattered clouds
-  "03d": {
-    en: "Scattered clouds",
-    lo: "ເມກກະຈັດກະຈາຍ",
-    zh: "多云",
-  },
-  "03n": {
-    en: "Scattered clouds",
-    lo: "ເມກກະຈັດກະຈາຍ",
-    zh: "多云",
-  },
-  // Broken clouds
-  "04d": {
-    en: "Cloudy",
-    lo: "ມີເມກຫຼາຍ",
-    zh: "阴天",
-  },
-  "04n": {
-    en: "Cloudy",
-    lo: "ມີເມກຫຼາຍ",
-    zh: "阴天",
-  },
-  // Shower rain
-  "09d": {
-    en: "Light rain",
-    lo: "ຝົນປອຍໆ",
-    zh: "阵雨",
-  },
-  "09n": {
-    en: "Light rain",
-    lo: "ຝົນປອຍໆ",
-    zh: "阵雨",
-  },
-  // Rain
-  "10d": {
-    en: "Rainy",
-    lo: "ຝົນຕົກ",
-    zh: "雨天",
-  },
-  "10n": {
-    en: "Rainy",
-    lo: "ຝົນຕົກ",
-    zh: "雨天",
-  },
-  // Thunderstorm
-  "11d": {
-    en: "Thunderstorm",
-    lo: "ຝົນຟ້າຮ້ອງ",
-    zh: "雷阵雨",
-  },
-  "11n": {
-    en: "Thunderstorm",
-    lo: "ຝົນຟ້າຮ້ອງ",
-    zh: "雷阵雨",
-  },
-  // Snow
-  "13d": {
-    en: "Snowy",
-    lo: "ຫິມະຕົກ",
-    zh: "下雪",
-  },
-  "13n": {
-    en: "Snowy",
-    lo: "ຫິມະຕົກ",
-    zh: "下雪",
-  },
-  // Mist/Fog
-  "50d": {
-    en: "Foggy",
-    lo: "ມີໝອກ",
-    zh: "有雾",
-  },
-  "50n": {
-    en: "Foggy",
-    lo: "ມີໝອກ",
-    zh: "有雾",
-  },
-};
-
-/**
- * Get localized weather description
- */
-const getWeatherDescription = (iconCode: string, lang: Lang): string => {
-  return (
-    weatherDescriptions[iconCode]?.[lang] || weatherDescriptions["01d"][lang]
-  );
 };
 
 export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
@@ -147,7 +37,7 @@ export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      const timeString = fmtTime(now, lang);
+      const timeString = fmtTime(now, lang, "HH:mm");
       setCurrentTime(timeString);
     };
 
@@ -237,16 +127,19 @@ export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
           <span className="text-primary-900 text-xl font-bold">
             {temperature}°C
           </span>
-          <span className="text-primary-700 text-xs">{currentTime}</span>
+          <div className="flex items-center gap-1">
+            <Clock className="text-primary-600 -mt-0.5 h-3.5 w-3.5" />
+            <span className="text-primary-700 text-xs">{currentTime}</span>
+          </div>
         </div>
       </div>
 
       {/* Right side: Description + Feels Like (hidden on mobile) */}
       <div className="hidden text-right sm:block">
-        <p className="text-primary-900 text-sm font-semibold">
+        <p className="text-primary-900 mt-1 text-sm font-semibold">
           {localizedDescription}
         </p>
-        <p className="text-primary-700 text-xs">
+        <p className="text-primary-700 mt-1 text-xs">
           {translations.feelsLike[lang]} {feelsLike}°C
         </p>
       </div>
