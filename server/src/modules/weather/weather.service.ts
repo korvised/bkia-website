@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
-import { ConfigService, RedisService } from '@/modules/common';
+import { ConfigService } from '@/common/config';
+import { RedisService } from '@/common/redis';
 import { normalizeLang } from '@/types/language';
 import { OpenWeatherResponse } from '@/types/weather';
 

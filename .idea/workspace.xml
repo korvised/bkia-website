@@ -4,16 +4,69 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement weather feature (api&amp;ui)">
-      <change afterPath="$PROJECT_DIR$/web/src/data/weather-description.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor time ui">
+      <change afterPath="$PROJECT_DIR$/server/Migration.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/db/data-source.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/dtos/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/dtos/pagination.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/dtos/reset-password.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/file/file.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/file/file.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/file/file.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/file/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/filters/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/filters/multer-filters.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/mail/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/mail/mail.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/mail/mail.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/mail/mail.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/s3/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/s3/s3.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/s3/s3.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/common/s3/s3.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/constants/file.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/constants/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/database/entities/Airline.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/database/entities/Counter.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/database/entities/File.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/database/entities/Flight.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/database/entities/ForgotPassword.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/database/entities/Role.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/database/entities/User.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/database/entities/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/database/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/airline/dtos/create-airline.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/airline/dtos/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/airline/dtos/query-airline.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/airline/dtos/update-airline.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/airline/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/types/enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/types/file.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/types/mail.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/types/user.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/utils/file.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/utils/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/date-time-client.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/date-time-display.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/weather-widget.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/weather-widget.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/lib/time-lo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/time-lo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/config-validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/config/config-validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/configuration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/constants/configuration.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/common/config/config.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/config/config.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/common/config/config.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/config/config.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/common/config/config.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/config/config.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/common/config/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/config/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/common/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/common/redis/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/redis/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/common/redis/redis.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/redis/redis.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/common/redis/redis.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/redis/redis.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/common/redis/redis.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/redis/redis.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/weather/weather.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/weather/weather.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/weather/weather.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/weather/weather.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,46 +101,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;v2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website/web/src/types&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start:dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.web.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\projects\\bkia-website\\server\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "v2",
+    "last_opened_file_path": "D:/projects/bkia-website/server/src/constants",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
+    "npm.server.executor": "Run",
+    "npm.start:dev.executor": "Run",
+    "npm.web.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "D:\\projects\\bkia-website\\server\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\projects\bkia-website\web\src\types" />
-      <recent name="D:\projects\bkia-website\server\src\config" />
-      <recent name="D:\projects\bkia-website" />
+      <recent name="D:\projects\bkia-website\server\src\constants" />
+      <recent name="D:\projects\bkia-website\server\src\common\dtos" />
       <recent name="D:\projects\bkia-website\server\src\types" />
-      <recent name="D:\projects\bkia-website\web\src\app\[lang]\careers" />
+      <recent name="D:\projects\bkia-website\server\src\common" />
+      <recent name="D:\projects\bkia-website\server\src\common\config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\server\src" />
       <recent name="D:\projects\bkia-website\server\src\modules" />
       <recent name="D:\projects\bkia-website\web\src\app\[lang]" />
       <recent name="D:\projects\bkia-website\web\src\app\[lang]\about" />
       <recent name="D:\projects\bkia-website\web\src\app\[lang]\support" />
-      <recent name="D:\projects\bkia-website\web\src\app\[lang]\support\notices" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web">
+  <component name="RunManager" selected="npm.server">
     <configuration name="server" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/server/package.json" />
       <command value="run" />
@@ -114,8 +172,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.web" />
         <item itemvalue="npm.server" />
+        <item itemvalue="npm.web" />
       </list>
     </recent_temporary>
   </component>
@@ -167,7 +225,7 @@
       <workItem from="1761961174733" duration="10000" />
       <workItem from="1762141014584" duration="5887000" />
       <workItem from="1762151887316" duration="11444000" />
-      <workItem from="1762218107581" duration="2148000" />
+      <workItem from="1762218107581" duration="15709000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -425,7 +483,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762164039937</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="refactor time ui">
+      <option name="closed" value="true" />
+      <created>1762220648846</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1762220648846</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -456,6 +522,7 @@
     <MESSAGE value="initial server" />
     <MESSAGE value="implement config" />
     <MESSAGE value="implement weather feature (api&amp;ui)" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement weather feature (api&amp;ui)" />
+    <MESSAGE value="refactor time ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor time ui" />
   </component>
 </project>
