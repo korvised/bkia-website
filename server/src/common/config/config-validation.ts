@@ -33,7 +33,13 @@ class EnvironmentVariables {
   @MinLength(1)
   APP_VERSION: string;
 
-  /* DATA CONFIG */
+  // CLIENT CONFIG
+  @IsDefined()
+  @IsString()
+  @MinLength(1)
+  CLIENT_URL: string;
+
+  /* DATABASE CONFIG */
   @IsDefined()
   @IsString()
   @MinLength(1)

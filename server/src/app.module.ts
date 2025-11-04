@@ -1,13 +1,28 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '@/database';
 import { ConfigModule } from '@/common/config';
-import { WeatherModule } from '@/modules/weather';
 import { AirlineModule } from '@/modules/airline';
+import { AuthModule } from '@/modules/auth';
+import { RoleModule } from '@/modules/role';
+import { UserModule } from '@/modules/user';
+import { WeatherModule } from '@/modules/weather';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [DatabaseModule, ConfigModule, WeatherModule, AirlineModule],
+  imports: [
+    // Utility Module,
+    DatabaseModule,
+    ConfigModule,
+
+    // Main Module,
+    AuthModule,
+    AirlineModule,
+    AirlineModule,
+    RoleModule,
+    UserModule,
+    WeatherModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

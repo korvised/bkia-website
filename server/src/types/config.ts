@@ -1,3 +1,5 @@
+import type { StringValue } from 'ms';
+
 export enum ConfigKey {
   app = 'app',
   client = 'client',
@@ -20,6 +22,10 @@ export interface IAppConfig {
   version: string;
 }
 
+export interface IClientConfig {
+  url: string;
+}
+
 export interface IDbConfig {
   host: string;
   port: number;
@@ -30,7 +36,7 @@ export interface IDbConfig {
 
 export interface IJwtConfig {
   secret: string;
-  expiresIn: string;
+  expiresIn: StringValue;
 }
 
 export interface ISmtpConfig {
@@ -50,6 +56,7 @@ export interface IAwsConfig {
 
 export interface IConfig {
   app: IAppConfig;
+  client: IClientConfig;
   db: IDbConfig;
   jwt: IJwtConfig;
   smtp: ISmtpConfig;

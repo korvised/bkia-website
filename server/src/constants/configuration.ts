@@ -1,10 +1,11 @@
 import { registerAs } from '@nestjs/config';
-
+import { StringValue } from 'ms';
 import {
   ConfigKey,
   Environment,
   IAppConfig,
   IAwsConfig,
+  IClientConfig,
   IDbConfig,
   IJwtConfig,
   ISmtpConfig,
@@ -17,6 +18,10 @@ const appConfig = registerAs<IAppConfig>(ConfigKey.app, () => ({
   version: process.env.APP_VERSION!,
 }));
 
+const clientConfig = registerAs<IClientConfig>(ConfigKey.client, () => ({
+  url: process.env.CLIENT_URL!,
+}));
+
 const databaseConfig = registerAs<IDbConfig>(ConfigKey.db, () => ({
   host: process.env.DB_HOST!,
   port: Number(process.env.DB_PORT),
@@ -27,7 +32,7 @@ const databaseConfig = registerAs<IDbConfig>(ConfigKey.db, () => ({
 
 const jwtConfig = registerAs<IJwtConfig>(ConfigKey.jwt, () => ({
   secret: process.env.JWT_SECRET!,
-  expiresIn: process.env.JWT_EXPIRESIN!,
+  expiresIn: process.env.JWT_EXPIRESIN! as StringValue,
 }));
 
 const smtpConfig = registerAs<ISmtpConfig>(ConfigKey.smtp, () => ({
@@ -47,6 +52,7 @@ const awsConfig = registerAs<IAwsConfig>(ConfigKey.aws, () => ({
 
 export const configurations = [
   appConfig,
+  clientConfig,
   databaseConfig,
   jwtConfig,
   smtpConfig,
