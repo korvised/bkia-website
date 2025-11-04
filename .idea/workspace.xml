@@ -4,69 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement flight entity &amp; airline module">
-      <change afterPath="$PROJECT_DIR$/server/src/common/decorators/cureent.user.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/common/decorators/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/common/decorators/roles.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/common/filters/global-exception.filter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/common/guards/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/common/guards/jwt-auth.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/common/guards/local-auth.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/common/guards/roles.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/constants/auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/auth.controller.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/auth.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/auth.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/auth.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/auth.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/dtos/change-password.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/dtos/forgot-password.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/dtos/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/mail-template/forgot-password.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/mail-template/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/strategies/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/strategies/jwt.strategy.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/auth/strategies/local.strategy.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/role/dtos/create-role.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/role/dtos/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/role/dtos/query-role.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/role/dtos/update-role.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/role/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/role/role.controller.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/role/role.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/role/role.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/role/role.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/role/role.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/user/dtos/create-user.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/user/dtos/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/user/dtos/query-user.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/user/dtos/update-user.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/user/dtos/user-roles.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/user/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/user/user.controller.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/user/user.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/user/user.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/user/user.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/user/user.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/types/auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/utils/validation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement auth module">
+      <change afterPath="$PROJECT_DIR$/server/src/modules/counter/dtos/create-counter.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/counter/dtos/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/counter/dtos/query-counter.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/counter/dtos/update-counter.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/counter/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/common/config/config-validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/config/config-validation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/common/dtos/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/dtos/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/common/filters/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/filters/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/common/filters/multer-filters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/filters/multer.filter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/constants/configuration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/constants/configuration.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/airline/airline.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/airline/airline.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/types/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/types/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/types/user.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/utils/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +53,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "v2",
-    "last_opened_file_path": "D:/projects/bkia-website/server/src/common/filters",
+    "last_opened_file_path": "D:/projects/bkia-website/server/src/modules/counter",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -131,11 +76,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\server\src\modules\counter" />
       <recent name="D:\projects\bkia-website\server\src\common\filters" />
       <recent name="D:\projects\bkia-website\server\src\modules" />
       <recent name="D:\projects\bkia-website\server\src\utils" />
       <recent name="D:\projects\bkia-website\server\src\common" />
-      <recent name="D:\projects\bkia-website\server\src\constants" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\server\src\common" />
@@ -225,7 +170,7 @@
       <workItem from="1761961174733" duration="10000" />
       <workItem from="1762141014584" duration="5887000" />
       <workItem from="1762151887316" duration="11444000" />
-      <workItem from="1762218107581" duration="22803000" />
+      <workItem from="1762218107581" duration="24712000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -499,14 +444,21 @@
       <option name="project" value="LOCAL" />
       <updated>1762239368368</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="implement auth module">
+      <option name="closed" value="true" />
+      <created>1762246469850</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1762246469850</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="implement notice &amp; announcement pages" />
     <MESSAGE value="implement lost &amp; found pages" />
     <MESSAGE value="refactor notice &amp; announcement pages" />
     <MESSAGE value="deploy demo in ecs" />
@@ -531,6 +483,7 @@
     <MESSAGE value="implement weather feature (api&amp;ui)" />
     <MESSAGE value="refactor time ui" />
     <MESSAGE value="implement flight entity &amp; airline module" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement flight entity &amp; airline module" />
+    <MESSAGE value="implement auth module" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement auth module" />
   </component>
 </project>

@@ -3,6 +3,7 @@ import { DatabaseModule } from '@/database';
 import { ConfigModule } from '@/common/config';
 import { AirlineModule } from '@/modules/airline';
 import { AuthModule } from '@/modules/auth';
+import { CounterModule } from '@/modules/counter';
 import { RoleModule } from '@/modules/role';
 import { UserModule } from '@/modules/user';
 import { WeatherModule } from '@/modules/weather';
@@ -16,9 +17,9 @@ import { AppService } from './app.service';
     ConfigModule,
 
     // Main Module,
+    AirlineModule,
     AuthModule,
-    AirlineModule,
-    AirlineModule,
+    CounterModule,
     RoleModule,
     UserModule,
     WeatherModule,
