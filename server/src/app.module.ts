@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { DatabaseModule } from '@/database';
 import { ConfigModule } from '@/common/config';
 import { AirlineModule } from '@/modules/airline';
+import { AirportModule } from '@/modules/airport';
 import { AuthModule } from '@/modules/auth';
 import { CounterModule } from '@/modules/counter';
 import { RoleModule } from '@/modules/role';
@@ -18,6 +19,7 @@ import { AppService } from './app.service';
 
     // Main Module,
     AirlineModule,
+    AirportModule,
     AuthModule,
     CounterModule,
     RoleModule,

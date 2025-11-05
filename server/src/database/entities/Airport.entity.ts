@@ -2,19 +2,27 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  Index,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Route } from '@/database';
 
 @Entity('airport')
+@Index(['code'])
 export class Airport {
-  @PrimaryColumn({ type: 'varchar', length: 10 })
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column({ type: 'varchar', length: 10, unique: true })
   code: string;
 
   @Column({ type: 'varchar', length: 255 })
   name: string;
+
+  @Column({ type: 'boolean', default: true })
+  isActive: boolean;
 
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;

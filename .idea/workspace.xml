@@ -4,29 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement counter module">
-      <change afterPath="$PROJECT_DIR$/server/src/database/entities/Airport.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/database/entities/Route.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251/storage_v2/_src_/database/db_bkia_website.nhtrdg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251/storage_v2/_src_/database/db_bkia_website.nhtrdg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor flight feature entities">
+      <change afterPath="$PROJECT_DIR$/server/src/modules/airport/dtos/create-airport.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/airport/dtos/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/airport/dtos/query-airport.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/airport/dtos/update-airport.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/modules/airport/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/database/entities/Airline.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/database/entities/Airline.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/database/entities/Counter.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/database/entities/Counter.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/database/entities/File.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/database/entities/File.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/database/entities/Flight.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/database/entities/Flight.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/database/entities/ForgotPassword.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/database/entities/ForgotPassword.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/database/entities/Role.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/database/entities/Role.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/database/entities/User.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/database/entities/User.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/database/entities/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/database/entities/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/airline/airline.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/airline/airline.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/airline/dtos/create-airline.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/airline/dtos/create-airline.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/counter/counter.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/counter/counter.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/counter/dtos/create-counter.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/counter/dtos/create-counter.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/counter/dtos/query-counter.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/counter/dtos/query-counter.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/role/role.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/role/role.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/types/enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/types/enum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/database/entities/Airport.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/database/entities/Airport.entity.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +55,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
     "git-widget-placeholder": "v2",
-    "last_opened_file_path": "D:/projects/bkia-website/server/src/modules/counter",
+    "last_opened_file_path": "D:/projects/bkia-website/server/src/modules/airport",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -92,11 +78,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\server\src\modules\airport" />
       <recent name="D:\projects\bkia-website\server\src\modules\counter" />
       <recent name="D:\projects\bkia-website\server\src\common\filters" />
       <recent name="D:\projects\bkia-website\server\src\modules" />
       <recent name="D:\projects\bkia-website\server\src\utils" />
-      <recent name="D:\projects\bkia-website\server\src\common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\server\src\common" />
@@ -187,7 +173,7 @@
       <workItem from="1762141014584" duration="5887000" />
       <workItem from="1762151887316" duration="11444000" />
       <workItem from="1762218107581" duration="26404000" />
-      <workItem from="1762304473683" duration="5181000" />
+      <workItem from="1762304473683" duration="7440000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -477,14 +463,21 @@
       <option name="project" value="LOCAL" />
       <updated>1762248401027</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="refactor flight feature entities">
+      <option name="closed" value="true" />
+      <created>1762309913829</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1762309913829</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor notice &amp; announcement pages" />
     <MESSAGE value="deploy demo in ecs" />
     <MESSAGE value="adjust responsive" />
     <MESSAGE value="implement dining &amp; shopping, air cargo, bokeo visit demo pages" />
@@ -509,6 +502,7 @@
     <MESSAGE value="implement flight entity &amp; airline module" />
     <MESSAGE value="implement auth module" />
     <MESSAGE value="implement counter module" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement counter module" />
+    <MESSAGE value="refactor flight feature entities" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor flight feature entities" />
   </component>
 </project>
