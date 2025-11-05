@@ -6,6 +6,7 @@ import { AirportModule } from '@/modules/airport';
 import { AuthModule } from '@/modules/auth';
 import { CounterModule } from '@/modules/counter';
 import { RoleModule } from '@/modules/role';
+import { RouteModule } from '@/modules/route';
 import { UserModule } from '@/modules/user';
 import { WeatherModule } from '@/modules/weather';
 import { AppController } from './app.controller';
@@ -23,6 +24,7 @@ import { AppService } from './app.service';
     AuthModule,
     CounterModule,
     RoleModule,
+    RouteModule,
     UserModule,
     WeatherModule,
   ],

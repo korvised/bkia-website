@@ -8,11 +8,11 @@ import { CreateAirportDto, QueryAirportDto, UpdateAirportDto } from './dtos';
 export class AirportService {
   constructor(
     @InjectRepository(Airport)
-    private readonly airlineRepo: Repository<Airport>,
+    private readonly airportRepo: Repository<Airport>,
   ) {}
 
   async findOne(id: string) {
-    const airport = await this.airlineRepo.findOneBy({ id });
+    const airport = await this.airportRepo.findOneBy({ id });
     if (!airport) {
       throw new Error('Airport not found');
     }
@@ -22,7 +22,7 @@ export class AirportService {
   async findAll(query: QueryAirportDto) {
     const { search, isActive } = query;
 
-    const qb = this.airlineRepo.createQueryBuilder('a');
+    const qb = this.airportRepo.createQueryBuilder('a');
 
     if (search) {
       qb.andWhere('(a.code ILIKE :s OR a.name ILIKE :s)', {
@@ -39,18 +39,19 @@ export class AirportService {
   }
 
   async create(dto: CreateAirportDto) {
-    const airport = this.airlineRepo.create(dto);
-    return this.airlineRepo.save(airport);
+    const airport = this.airportRepo.create(dto);
+    return this.airportRepo.save(airport);
   }
 
   async update(id: string, dto: UpdateAirportDto) {
     const airport = await this.findOne(id);
     Object.assign(airport, dto);
-    return this.airlineRepo.save(airport);
+    return this.airportRepo.save(airport);
   }
 
   async delete(id: string) {
     const airport = await this.findOne(id);
-    return this.airlineRepo.remove(airport);
+    airport.isActive = false;
+    return this.airportRepo.save(airport);
   }
 }

@@ -30,9 +30,9 @@ export class Airport {
   @UpdateDateColumn({ type: 'timestamptz' })
   updatedAt: Date;
 
-  @OneToMany(() => Route, (r) => r.departure)
-  departures: Route[];
+  @OneToMany(() => Route, (r) => r.origin)
+  originRoutes: Route[];
 
-  @OneToMany(() => Route, (r) => r.arrival)
-  arrivals: Route[];
+  @OneToMany(() => Route, (r) => r.destination)
+  destinationRoutes: Route[];
 }

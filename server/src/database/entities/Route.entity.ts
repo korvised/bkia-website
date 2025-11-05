@@ -11,14 +11,18 @@ import { RouteType } from '@/types/enum';
 import { Airport } from '@/database';
 
 @Entity('route')
-@Index(['departure'])
-@Index(['arrival'])
+@Index(['origin'])
+@Index(['destination'])
+@Index(['origin', 'destination', 'routeType'], { unique: true })
 export class Route {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'enum', enum: RouteType, name: 'route_type_enum' })
+  @Column({ type: 'enum', enum: RouteType, enumName: 'route_type_enum' })
   routeType: RouteType;
+
+  @Column({ type: 'boolean', default: true })
+  isActive: boolean;
 
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;
@@ -26,13 +30,13 @@ export class Route {
   @UpdateDateColumn({ type: 'timestamptz' })
   updatedAt: Date;
 
-  @ManyToOne(() => Airport, (airport) => airport.departures, {
+  @ManyToOne(() => Airport, (airport) => airport.originRoutes, {
     nullable: false,
   })
-  departure: Airport;
+  origin: Airport;
 
-  @ManyToOne(() => Airport, (airport) => airport.arrivals, {
+  @ManyToOne(() => Airport, (airport) => airport.destinationRoutes, {
     nullable: false,
   })
-  arrival: Airport;
+  destination: Airport;
 }

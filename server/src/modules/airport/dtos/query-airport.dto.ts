@@ -1,7 +1,6 @@
 import { IsBooleanString, IsOptional, IsString } from 'class-validator';
-import { PaginationDto } from '@/common/dtos';
 
-export class QueryAirportDto extends PaginationDto {
+export class QueryAirportDto {
   @IsOptional()
   @IsString()
   search?: string;
