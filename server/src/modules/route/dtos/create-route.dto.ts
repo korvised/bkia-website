@@ -1,4 +1,4 @@
-import { IsDefined, IsEnum, IsUUID } from 'class-validator';
+import { IsDefined, IsEnum, IsNumber, IsUUID } from 'class-validator';
 import { RouteType } from '@/types/enum';
 
 export class CreateRouteDto {
@@ -7,10 +7,14 @@ export class CreateRouteDto {
   routeType: RouteType;
 
   @IsDefined()
-  @IsUUID()
-  origin: string;
+  @IsNumber()
+  durationMin: number;
 
   @IsDefined()
   @IsUUID()
-  destination: string;
+  originId: string;
+
+  @IsDefined()
+  @IsUUID()
+  destinationId: string;
 }

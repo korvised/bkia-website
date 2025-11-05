@@ -9,7 +9,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { FlightStatus } from '@/types/enum';
+import { FlightStatus, FlightType } from '@/types/enum';
 import { Airline, Counter, Route } from '@/database';
 
 @Entity('flight')
@@ -25,14 +25,28 @@ export class Flight {
   @Index()
   flightNo: string;
 
+  @Column({
+    type: 'enum',
+    enum: FlightType,
+    enumName: 'flight_type_enum',
+    default: FlightType.SCHEDULED,
+  })
+  type: FlightType;
+
   @Column({ type: 'date' })
   operationDate: string;
 
   @Column({ type: 'time' })
-  scheduledTime: string;
+  scheduledDepTime: string;
+
+  @Column({ type: 'time' })
+  scheduledArrTime: string;
 
   @Column({ type: 'time', nullable: true })
-  actualTime?: string | null;
+  actualDepTime?: string | null;
+
+  @Column({ type: 'time', nullable: true })
+  actualArrTime?: string | null;
 
   // Check-in info (for departures)
   @Column({ type: 'time', nullable: true })

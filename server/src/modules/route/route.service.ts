@@ -40,14 +40,14 @@ export class RouteService {
     if (isActive === 'true') qb.andWhere('r.isActive = true');
     if (isActive === 'false') qb.andWhere('r.isActive = false');
 
-    qb.orderBy('r.createdAt', 'ASC');
+    qb.orderBy('o.code', 'ASC');
 
     return qb.getMany();
   }
 
   async create(dto: CreateRouteDto) {
-    const origin = await this.getAirport(dto.origin);
-    const destination = await this.getAirport(dto.destination);
+    const origin = await this.getAirport(dto.originId);
+    const destination = await this.getAirport(dto.destinationId);
     const route = this.routeRepo.create({ ...dto, origin, destination });
     return this.routeRepo.save(route);
   }
@@ -55,12 +55,12 @@ export class RouteService {
   async update(id: string, dto: UpdateRouteDto) {
     const route = await this.findOne(id);
     if (dto.routeType) route.routeType = dto.routeType;
-    if (dto.origin) {
-      const origin = await this.getAirport(dto.origin);
+    if (dto.originId) {
+      const origin = await this.getAirport(dto.originId);
       route.origin = origin;
     }
-    if (dto.destination) {
-      const destination = await this.getAirport(dto.destination);
+    if (dto.destinationId) {
+      const destination = await this.getAirport(dto.destinationId);
       route.destination = destination;
     }
     return this.routeRepo.save(route);

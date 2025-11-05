@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Counter } from '@/database';
 import {
   CreateCounterDto,
@@ -35,6 +35,12 @@ export class CounterService {
       throw new Error('Counter not found');
     }
     return counter;
+  }
+
+  async findByCounterIds(ids: string[]) {
+    return this.counterRepo.find({
+      where: { id: In(ids) },
+    });
   }
 
   async create(dto: CreateCounterDto) {

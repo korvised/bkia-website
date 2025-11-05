@@ -21,6 +21,9 @@ export class Route {
   @Column({ type: 'enum', enum: RouteType, enumName: 'route_type_enum' })
   routeType: RouteType;
 
+  @Column({ type: 'int', unsigned: true })
+  durationMin: number;
+
   @Column({ type: 'boolean', default: true })
   isActive: boolean;
 

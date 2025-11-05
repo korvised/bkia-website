@@ -33,9 +33,17 @@ export enum TerminalZone {
   DOM = 'DOM',
 }
 
+export enum FlightType {
+  SCHEDULED = 'SCHEDULED',
+  CHARTER = 'CHARTER',
+  CARGO = 'CARGO',
+  PRIVATE = 'PRIVATE',
+  VIP = 'VIP',
+}
+
 export enum FlightDirection {
-  DEPARTURE = 'DEP',
-  ARRIVAL = 'ARR',
+  ARRIVAL = 'arrival',
+  DEPARTURE = 'departure',
 }
 
 export enum FlightStatus {
@@ -46,5 +54,4 @@ export enum FlightStatus {
   ARRIVED = 'ARRIVED',
   CANCELED = 'CANCELED',
   DIVERTED = 'DIVERTED',
-  UNKNOWN = 'UNKNOWN',
 }
