@@ -27,7 +27,7 @@ export class RoleService {
       options.where = { ...options.where, isActive: false };
 
     options.order = {
-      createdAt: 'ASC',
+      role: 'ASC',
     };
 
     return this.repository.find(options);

@@ -10,8 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { UserStatus } from '@/types/enum';
-import { Role } from './Role.entity';
-import { ForgotPassword } from './ForgotPassword.entity';
+import { Role, ForgotPassword } from '@/database';
 
 @Entity('user')
 @Index(['email'], { unique: true })
@@ -21,7 +20,6 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  // Optional internal employee code
   @Column({ type: 'varchar', length: 20, nullable: true })
   empId: string | null;
 
@@ -34,7 +32,6 @@ export class User {
   @Column({ type: 'varchar', length: 30 })
   phoneNumber: string;
 
-  // Hash, not raw password
   @Column({ type: 'varchar', length: 255 })
   password: string;
 

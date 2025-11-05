@@ -17,12 +17,18 @@ export class AirlineService {
     private readonly fileService: FileService,
   ) {}
 
-  // ---------- helpers ----------
   private async ensureCodeUnique(code: string, excludeId?: string) {
     const exists = await this.airlineRepo.findOne({ where: { code } });
     if (exists && exists.id !== excludeId) {
       throw new BadRequestException('Airline code already exists');
     }
+  }
+
+  private async attachLogoFromId(airline: Airline, logoFileId: string) {
+    const file = await this.fileService.findById(logoFileId);
+    if (!file) throw new BadRequestException('logoFileId not found');
+    airline.logoFile = file;
+    return airline;
   }
 
   async create(dto: CreateAirlineDto, logo?: Express.Multer.File) {
@@ -40,6 +46,13 @@ export class AirlineService {
     });
 
     airline = await this.airlineRepo.save(airline);
+
+    // if provided an existing file id, prefer that (no upload)
+    if (dto.logoFileId && !logo) {
+      await this.attachLogoFromId(airline, dto.logoFileId);
+      airline = await this.airlineRepo.save(airline);
+      return this.findOne(airline.id);
+    }
 
     // if logo uploaded, send to FileService and attach
     if (logo) {
@@ -63,7 +76,6 @@ export class AirlineService {
       page = 1,
       limit = 10,
     } = query;
-
 
     const qb = this.airlineRepo
       .createQueryBuilder('a')
@@ -120,11 +132,13 @@ export class AirlineService {
       airline.logoFile = null;
     }
 
-    // If file uploaded, replace existing
+    // If a file uploaded, replace the existing
     if (logo) {
+      // If a file was previously uploaded, delete it
       if (airline.logoFile?.id) {
-        await this.fileService.deleteFile(airline.logoFile.id);
+        await this.fileService.deleteFile(airline.logoFile?.id);
       }
+      // Upload the new file to the server
       const uploaded = await this.fileService.uploadFile(
         logo,
         `airlines/${airline.id}`,

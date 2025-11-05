@@ -4,6 +4,7 @@ import {
   IsOptional,
   IsString,
   IsUrl,
+  IsUUID,
   Length,
 } from 'class-validator';
 
@@ -15,6 +16,11 @@ export class CreateAirlineDto {
   @IsString()
   @Length(2, 255)
   name: string;
+
+  // picking an existing File (without uploading)
+  @IsOptional()
+  @IsUUID()
+  logoFileId?: string;
 
   @IsOptional()
   @IsString()

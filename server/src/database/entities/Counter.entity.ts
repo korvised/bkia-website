@@ -1,18 +1,18 @@
 import { Entity, PrimaryGeneratedColumn, Column, Index } from 'typeorm';
-import { CounterArea } from '@/types/enum';
+import { TerminalZone } from '@/types/enum';
 
 @Entity('counter')
-@Index(['name', 'area'], { unique: true })
+@Index(['name', 'zone'], { unique: true })
 export class Counter {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({
     type: 'enum',
-    enum: CounterArea,
-    enumName: 'counter_area_enum',
+    enum: TerminalZone,
+    enumName: 'terminal_zone_enum',
   })
-  area: CounterArea;
+  zone: TerminalZone;
 
   @Column({ type: 'varchar', length: 100 })
   name: string;

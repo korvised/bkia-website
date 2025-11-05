@@ -9,8 +9,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { File } from './File.entity';
-import { Flight } from './Flight.entity';
+import { File, Flight } from '@/database';
 
 @Entity('airline')
 @Index(['code'], { unique: true })
@@ -18,11 +17,9 @@ export class Airline {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  // IATA/ICAO (up to 3/4)
-  @Column({ type: 'varchar', length: 8 })
+  @Column({ type: 'varchar', length: 20 })
   code: string;
 
-  // One logo file per airline (nullable; keep image decoupled via File entity)
   @OneToOne(() => File, { nullable: true, onDelete: 'SET NULL' })
   @JoinColumn({ name: 'logoFileId' })
   logoFile?: File | null;

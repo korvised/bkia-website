@@ -23,9 +23,19 @@ export enum UserStatus {
   CLOSED = 'Closed',
 }
 
-export enum CounterArea {
-  DOMESTIC = 'DOMESTIC',
-  INTERNATIONAL = 'INTERNATIONAL',
+export enum RouteType {
+  INT = 'INT',
+  DOM = 'DOM',
+}
+
+export enum TerminalZone {
+  INT = 'INT',
+  DOM = 'DOM',
+}
+
+export enum FlightDirection {
+  DEPARTURE = 'DEP',
+  ARRIVAL = 'ARR',
 }
 
 export enum FlightStatus {

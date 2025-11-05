@@ -2,6 +2,7 @@
   <dictionary name="project">
     <words>
       <w>dtos</w>
+      <w>timestamptz</w>
       <w>tonpheung</w>
     </words>
   </dictionary>

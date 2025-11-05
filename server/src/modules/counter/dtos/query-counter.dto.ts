@@ -1,10 +1,10 @@
 import { IsBooleanString, IsEnum, IsOptional } from 'class-validator';
-import { CounterArea } from '@/types/enum';
+import { TerminalZone } from '@/types/enum';
 
 export class QueryCounterDto {
   @IsOptional()
-  @IsEnum(CounterArea)
-  area?: CounterArea;
+  @IsEnum(TerminalZone)
+  zone?: TerminalZone;
 
   @IsOptional()
   @IsBooleanString()
