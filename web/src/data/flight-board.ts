@@ -1,19 +1,3 @@
-export interface Flight {
-  id: string;
-  time: string;
-  originalTime?: string;
-  destination: string;
-  destinationCode: string;
-  airline: string;
-  airlineLogo?: string;
-  flightNumber: string;
-  terminal: string;
-  checkInCounter: string;
-  gate: string;
-  status: "Departure" | "Boarding" | "Delayed" | "Cancelled" | "Departed";
-  statusColor: "blue" | "green" | "yellow" | "red" | "gray";
-}
-
 export interface FlightFilters {
   terminal?: string;
   date?: string;
@@ -128,7 +112,7 @@ export const airlines: SelectOption[] = [
 ];
 
 export const translations = {
-  title: {
+  departureTitle: {
     en: "Passenger Departure Timetable",
     lo: "ຕາຕະລາງເວລາຖ້ຽວບິນອອກ",
     zh: "旅客出发时刻表",
@@ -173,46 +157,7 @@ export const translations = {
     lo: "ໂຫຼດຂໍ້ມູນໃໝ່",
     zh: "刷新",
   },
-  lastUpdated: {
-    en: "Last Updated",
-    lo: "ອັບເດດລ່າສຸດ",
-    zh: "最后更新",
-  },
-  departureTime: {
-    en: "Departure Time",
-    lo: "ເວລາອອກ",
-    zh: "出发时间",
-  },
-  arrivalTime: {
-    en: "Arrival Time",
-    lo: "ເວລາຮອດ",
-    zh: "到达时间",
-  },
-  to: {
-    en: "To",
-    lo: "ໄປ",
-    zh: "目的地",
-  },
-  from: {
-    en: "From",
-    lo: "ຈາກ",
-    zh: "出发地",
-  },
-  airlineFlightNo: {
-    en: "Airline/Flight No.",
-    lo: "ສາຍການບິນ/ເລກຖ້ຽວບິນ",
-    zh: "航空公司/航班号",
-  },
-  terminal: {
-    en: "Terminal",
-    lo: "ອາຄານຜູ້ໂດຍສານ",
-    zh: "航站楼",
-  },
-  checkInCounter: {
-    en: "Check-in Counter",
-    lo: "ເຄົາເຕີເຊັກອິນ",
-    zh: "值机柜台",
-  },
+
   gate: {
     en: "Gate",
     lo: "ປະຕູຂຶ້ນເຮືອ",
@@ -227,10 +172,5 @@ export const translations = {
     en: "Arrival Conditions",
     lo: "ສະຖານະການຮອດ",
     zh: "到达状态",
-  },
-  noFlights: {
-    en: "No flights found",
-    lo: "ບໍ່ພົບຖ້ຽວບິນ",
-    zh: "未找到航班",
   },
 };

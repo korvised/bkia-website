@@ -5,6 +5,7 @@ export const MIME_TYPES = {
   JPEG: 'image/jpeg',
   JPG: 'image/jpg',
   PNG: 'image/png',
+  SVG: 'image/svg+xml',
   GIF: 'image/gif',
   WEBP: 'image/webp',
 
@@ -17,6 +18,7 @@ export const FILE_TYPE_GROUPS = {
     MIME_TYPES.JPEG,
     MIME_TYPES.JPG,
     MIME_TYPES.PNG,
+    MIME_TYPES.SVG,
     MIME_TYPES.GIF,
     MIME_TYPES.WEBP,
   ],

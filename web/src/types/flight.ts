@@ -1,44 +1,88 @@
-export interface Flight {
+import {
+  FlightDirection,
+  FlightStatus,
+  FlightType,
+  RouteType,
+} from "@/types/enum";
+import { IFile } from "@/types/file";
+import { Order } from "@/types/pagination";
+
+export type OrderBy = "flightNo" | "operationDate" | "createdAt" | "status";
+
+export interface QueryFlight {
+  // pagination
+  page?: number;
+  limit?: number;
+
+  // filters
+  search?: string;
+  direction: FlightDirection;
+  date?: string;
+  destination?: string;
+  airline?: string;
+
+  // optional extras if you support them
+  status?: FlightStatus;
+  orderBy?: OrderBy;
+  order?: Order;
+}
+
+export interface IFlight {
   id: string;
-  flightNumber: string;
-  airline: string;
-  airlineCode: string;
-  aircraft: string;
-  origin: string;
-  destination: string;
-  gate?: string;
-  terminal?: string;
-  scheduledTime: string;
-  estimatedTime?: string;
-  actualTime?: string;
+  flightNo: string;
+  type: FlightType;
+  operationDate: string;
+  scheduledDepTime: string;
+  scheduledArrTime: string;
+  actualDepTime?: string | null;
+  actualArrTime?: string | null;
+  checkInStartTime?: string | null;
+  checkInEndTime?: string | null;
   status: FlightStatus;
-  stops?: number;
-  stopover1?: string;
-  stopover2?: string;
+  remarks?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  route: IRoute;
+  airline: IAirline;
+  checkInCounters: ICounter[];
 }
 
-export interface Airline {
+export interface IAirport {
+  id: string;
   code: string;
-  name: {
-    en: string;
-    lo: string;
-    zh: string;
-  };
-  logo?: string;
-  website: string;
-  phone: string;
-  servicePhone?: string;
+  name: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export type FlightStatus =
-  | "scheduled"
-  | "boarding"
-  | "delayed"
-  | "departed"
-  | "arrived"
-  | "on-time"
-  | "on-final"
-  | "landing"
-  | "cancelled";
-export type FlightType = "departure" | "arrival";
-export type FlightTab = "departures" | "arrivals" | "schedule" | "airlines";
+export interface IRoute {
+  id: string;
+  routeType: RouteType;
+  durationMin: number;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+  origin: IAirport;
+  destination: IAirport;
+}
+
+export interface IAirline {
+  id: string;
+  code: string;
+  logoFile?: IFile | null;
+  name: string;
+  hotline?: string | null;
+  phone?: string | null;
+  website?: string | null;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ICounter {
+  id: string;
+  zone: string;
+  name: string;
+  isActive: boolean;
+}

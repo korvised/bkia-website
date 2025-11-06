@@ -69,19 +69,6 @@ export const mainNavigation: NavItem[] = [
     menuItems: [
       {
         label: {
-          en: "Arrivals",
-          lo: "ຖ້ຽວບິນຂາເຂົ້າ",
-          zh: "到达航班",
-        },
-        description: {
-          en: "Check arriving flights status",
-          lo: "ກວດສອບສະຖານະຖ້ຽວບິນຂາເຂົ້າ",
-          zh: "查看到达航班状态",
-        },
-        href: "/flights/arrivals",
-      },
-      {
-        label: {
           en: "Departures",
           lo: "ຖ້ຽວບິນອອກ",
           zh: "出发航班",
@@ -92,6 +79,19 @@ export const mainNavigation: NavItem[] = [
           zh: "查看出发航班状态",
         },
         href: "/flights/departures",
+      },
+      {
+        label: {
+          en: "Arrivals",
+          lo: "ຖ້ຽວບິນຂາເຂົ້າ",
+          zh: "到达航班",
+        },
+        description: {
+          en: "Check arriving flights status",
+          lo: "ກວດສອບສະຖານະຖ້ຽວບິນຂາເຂົ້າ",
+          zh: "查看到达航班状态",
+        },
+        href: "/flights/arrivals",
       },
       {
         label: {
@@ -134,19 +134,6 @@ export const mainNavigation: NavItem[] = [
     menuItems: [
       {
         label: {
-          en: "Arrivals",
-          lo: "ຂາເຂົ້າ",
-          zh: "到达指南",
-        },
-        description: {
-          en: "Arrival procedures and customs",
-          lo: "ຄຳແນະນຳຜູ້ໂດຍສານຂາເຂົ້າ ແລະ ພາສີສຸນລະກອນ",
-          zh: "到达流程和海关",
-        },
-        href: "/guides/arrivals",
-      },
-      {
-        label: {
           en: "Departures",
           lo: "ຂາອອກ",
           zh: "出发指南",
@@ -157,6 +144,19 @@ export const mainNavigation: NavItem[] = [
           zh: "值机和登机流程",
         },
         href: "/guides/departures",
+      },
+      {
+        label: {
+          en: "Arrivals",
+          lo: "ຂາເຂົ້າ",
+          zh: "到达指南",
+        },
+        description: {
+          en: "Arrival procedures and customs",
+          lo: "ຄຳແນະນຳຜູ້ໂດຍສານຂາເຂົ້າ ແລະ ພາສີສຸນລະກອນ",
+          zh: "到达流程和海关",
+        },
+        href: "/guides/arrivals",
       },
       {
         label: {

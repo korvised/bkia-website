@@ -4,22 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement route module">
-      <change afterPath="$PROJECT_DIR$/server/src/modules/flight/dtos/create-flight.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/flight/dtos/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/flight/dtos/query-flight.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/flight/dtos/update-flight.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/modules/flight/index.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement Flight module">
+      <change afterPath="$PROJECT_DIR$/web/src/config/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/board.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/common.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/filter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/table.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/services/flights.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/services/http.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/types/enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/types/file.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/types/pagination.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/utils/asset.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/utils/date.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/utils/flight.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/utils/i18n.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/utils/url.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251/storage_v2/_src_/database/db_bkia_website.nhtrdg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251/storage_v2/_src_/database/db_bkia_website.nhtrdg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/database/entities/Flight.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/database/entities/Flight.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/database/entities/Route.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/database/entities/Route.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/airline/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/airline/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/counter/counter.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/counter/counter.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/route/dtos/create-route.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/route/dtos/create-route.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/route/route.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/route/route.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/types/enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/types/enum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/constants/file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/constants/file.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/flight/flight.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/flight/flight.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/Project.md" beforeDir="false" afterPath="$PROJECT_DIR$/web/Project.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/config/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/config/env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/arrivals/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/arrivals/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/departures/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/departures/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/filter-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/filter-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-board.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-board.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/flight-board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/flight-board.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/main-navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/main-navigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/lib/api-client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/api-client.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/lib/time-lo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/time-lo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/types/flight.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/types/flight.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +83,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
     "git-widget-placeholder": "v2",
-    "last_opened_file_path": "D:/projects/bkia-website/server/src/modules/flight",
+    "last_opened_file_path": "D:/projects/bkia-website/web/src/types",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -85,21 +106,21 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\src\types" />
       <recent name="D:\projects\bkia-website\server\src\modules\flight" />
       <recent name="D:\projects\bkia-website\server\src\modules\route" />
       <recent name="D:\projects\bkia-website\server\src\modules\airport" />
       <recent name="D:\projects\bkia-website\server\src\modules\counter" />
-      <recent name="D:\projects\bkia-website\server\src\common\filters" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\src\utils" />
+      <recent name="D:\projects\bkia-website\web\src" />
       <recent name="D:\projects\bkia-website\server\src\common" />
       <recent name="D:\projects\bkia-website\server\src" />
       <recent name="D:\projects\bkia-website\server\src\modules" />
-      <recent name="D:\projects\bkia-website\web\src\app\[lang]" />
-      <recent name="D:\projects\bkia-website\web\src\app\[lang]\about" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server">
+  <component name="RunManager" selected="npm.web">
     <configuration name="server" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/server/package.json" />
       <command value="run" />
@@ -126,8 +147,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.server" />
         <item itemvalue="npm.web" />
+        <item itemvalue="npm.server" />
       </list>
     </recent_temporary>
   </component>
@@ -180,7 +201,8 @@
       <workItem from="1762141014584" duration="5887000" />
       <workItem from="1762151887316" duration="11444000" />
       <workItem from="1762218107581" duration="26404000" />
-      <workItem from="1762304473683" duration="21984000" />
+      <workItem from="1762304473683" duration="22891000" />
+      <workItem from="1762392804456" duration="21994000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -494,14 +516,21 @@
       <option name="project" value="LOCAL" />
       <updated>1762315406585</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="implement Flight module">
+      <option name="closed" value="true" />
+      <created>1762330798612</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1762330798612</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="implement dining &amp; shopping, air cargo, bokeo visit demo pages" />
     <MESSAGE value="about pages" />
     <MESSAGE value="refactor layout &amp; home page" />
     <MESSAGE value="refactor color theme and implement search feature" />
@@ -526,6 +555,7 @@
     <MESSAGE value="refactor flight feature entities" />
     <MESSAGE value="implement airport module" />
     <MESSAGE value="implement route module" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement route module" />
+    <MESSAGE value="implement Flight module" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement Flight module" />
   </component>
 </project>

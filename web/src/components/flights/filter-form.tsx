@@ -1,21 +1,18 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
 import { FormEvent, useState, useTransition } from "react";
-import { Search } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { RefreshCw, Search } from "lucide-react";
+import { createFlightI18n } from "@/data/i18n/flights";
+import type { QueryFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
-import {
-  airlines,
-  destinations,
-  FlightFilters,
-  translations,
-} from "@/data/flight-board";
-import { IconSelector } from "./icon-selector";
 import { DatePicker } from "./date-picker";
+import { LastUpdated } from "./last-updated";
+import { cn } from "@/lib";
 
 interface FilterFormProps {
   lang: Lang;
-  filters: FlightFilters;
+  filters: QueryFlight;
 }
 
 export function FilterForm({ lang, filters }: FilterFormProps) {
@@ -23,14 +20,12 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
-  const t = (text: Record<Lang, string>) => text[lang];
+  const { filter: t } = createFlightI18n(lang);
 
   const [date, setDate] = useState(
     filters.date || new Date().toISOString().split("T")[0],
   );
-  const [destination, setDestination] = useState(filters.destination || "");
-  const [airline, setAirline] = useState(filters.airline || "");
-  const [query, setQuery] = useState(filters.q || "");
+  const [query, setQuery] = useState(filters.search || "");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,8 +34,6 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
 
     // Only add non-default values
     if (date) params.set("date", date);
-    if (destination) params.set("destination", destination);
-    if (airline) params.set("airline", airline);
     if (query) params.set("q", query);
 
     const queryString = params.toString();
@@ -50,37 +43,30 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6">
-      <div className="flex flex-wrap items-end justify-end gap-3">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col-reverse items-end justify-between pb-4 md:flex-row md:items-center"
+    >
+      <div className="mt-4 mr-4 flex items-center justify-center gap-3 md:mt-0 md:mr-0">
+        <LastUpdated lang={lang} label={t.lastUpdated} />
+        <button
+          className="text-gray-700 transition-colors hover:text-gray-900"
+          aria-label={t.refresh}
+        >
+          <RefreshCw className="h-4 w-4" />
+        </button>
+      </div>
+
+      <div className="flex items-center justify-end gap-3">
         {/* Date Picker */}
         <DatePicker value={date} onChange={setDate} lang={lang} />
-
-        {/* Destination Selector */}
-        <IconSelector
-          options={destinations}
-          value={destination}
-          onChange={setDestination}
-          label={(opt) => t(opt.label)}
-          placeholder
-          className="min-w-[15rem]"
-        />
-
-        {/* Airline Selector */}
-        <IconSelector
-          options={airlines}
-          value={airline}
-          onChange={setAirline}
-          label={(opt) => t(opt.label)}
-          placeholder
-          className="min-w-[15rem]"
-        />
 
         {/* Flight Number Input */}
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder={t(translations.enterFlightNo)}
+          placeholder={t.enterFlightNo}
           className="focus:border-primary-500 focus:ring-primary-500/20 h-11 min-w-[200px] rounded-sm border border-gray-300 bg-white px-4 text-sm focus:ring-2 focus:outline-none"
         />
 
@@ -88,10 +74,14 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
         <button
           type="submit"
           disabled={isPending}
-          className="bg-primary-500 hover:bg-primary-600 focus:ring-primary-500 flex h-11 items-center gap-2 rounded-sm px-6 text-sm font-medium text-white transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:opacity-50"
+          className={cn(
+            "group sm:bg-primary-500 flex items-center gap-2 rounded-sm px-2 text-sm font-medium text-gray-600 transition-colors sm:h-11 sm:px-6 sm:text-white",
+            "sm:hover:bg-primary-600",
+            "focus:ring-primary-500 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:opacity-50",
+          )}
         >
-          <Search className="h-4 w-4" />
-          {t(translations.search)}
+          <Search className="h-6 w-6 group-hover:text-gray-700 md:h-4 md:w-4" />
+          <span className="hidden lg:inline">{t.search}</span>
         </button>
       </div>
     </form>

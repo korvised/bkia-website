@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import { isValid } from "date-fns";
 
 // locale imports
 import "dayjs/locale/lo";
@@ -30,8 +31,11 @@ function resolveLocale(lang: Lang) {
 }
 
 // Accept number or Date for convenience
-export const fmtDate = (ts: number | Date, lang: Lang) =>
-  dayjs(ts).tz(TZ).locale(resolveLocale(lang)).format("LL");
+export const fmtDate = (ts: number | string | Date, lang: Lang) => {
+  if (!isValid(ts)) return "";
+
+  return dayjs(new Date(ts)).tz(TZ).locale(resolveLocale(lang)).format("LL");
+};
 
 export const fmtTime = (
   ts: number | Date,

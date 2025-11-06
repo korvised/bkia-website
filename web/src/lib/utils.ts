@@ -33,14 +33,7 @@ export function formatCurrency(
   }).format(amount);
 }
 
-export function formatDate(date: Date, lang: Lang): string {
-  const locale = lang === "zh" ? "zh-CN" : lang === "lo" ? "lo-LA" : "en-US";
-  return new Intl.DateTimeFormat(locale, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(date);
-}
+
 
 export function formatTime(date: Date, lang: Lang): string {
   const locale = lang === "zh" ? "zh-CN" : lang === "lo" ? "lo-LA" : "en-US";

@@ -30,7 +30,7 @@ export class FlightService {
       where: { id },
       relations: {
         route: { origin: true, destination: true },
-        airline: true,
+        airline: { logoFile: true },
         checkInCounters: true,
       },
     });
@@ -68,6 +68,7 @@ export class FlightService {
       .leftJoinAndSelect('route.origin', 'origin')
       .leftJoinAndSelect('route.destination', 'destination')
       .leftJoinAndSelect('f.airline', 'airline')
+      .leftJoinAndSelect('airline.logoFile', 'airlineLogoFile')
       .leftJoinAndSelect('f.checkInCounters', 'counter');
 
     // Search
