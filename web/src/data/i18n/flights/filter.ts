@@ -1,6 +1,11 @@
 import type { Lang } from "@/types/language";
 
 export const filter = {
+  searchPlaceholder: {
+    en: "Flight number, airline or city",
+    lo: "ເລກຖ້ຽວບິນ, ສາຍການບິນ ຫຼື ເມືອງ",
+    zh: "航班号、航空公司或城市",
+  },
   lastUpdated: {
     en: "Last Updated",
     lo: "ອັບເດດລ່າສຸດ",
@@ -10,16 +15,6 @@ export const filter = {
     en: "Refresh",
     lo: "ໂຫຼດຂໍ້ມູນໃໝ່",
     zh: "刷新",
-  },
-  enterFlightNo: {
-    en: "Enter flight No.",
-    lo: "ປ້ອນເລກຖ້ຽວບິນ",
-    zh: "输入航班号",
-  },
-  search: {
-    en: "Search",
-    lo: "ຄົ້ນຫາ",
-    zh: "搜索",
   },
 } as const;
 

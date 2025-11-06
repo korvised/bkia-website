@@ -4,42 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement Flight module">
-      <change afterPath="$PROJECT_DIR$/web/src/config/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/board.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/common.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/filter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/table.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/services/flights.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/services/http.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/types/enum.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/types/file.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/types/pagination.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/utils/asset.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/utils/date.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/utils/flight.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/utils/i18n.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/utils/url.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251/storage_v2/_src_/database/db_bkia_website.nhtrdg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251/storage_v2/_src_/database/db_bkia_website.nhtrdg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor flight pages for connect api">
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/schedules/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/search.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/constants/file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/constants/file.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/flight/flight.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/flight/flight.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/Project.md" beforeDir="false" afterPath="$PROJECT_DIR$/web/Project.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/config/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/config/env.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/arrivals/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/arrivals/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/departures/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/departures/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/flights/filter-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/filter-form.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-board.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-board.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/flight-board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/flight-board.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/flight-search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/flight-search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/flights/board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/board.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/flights/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/common.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/flights/filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/filter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/flights/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/data/main-navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/main-navigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/lib/api-client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/api-client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/lib/time-lo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/time-lo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/types/flight.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/types/flight.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -202,7 +179,7 @@
       <workItem from="1762151887316" duration="11444000" />
       <workItem from="1762218107581" duration="26404000" />
       <workItem from="1762304473683" duration="22891000" />
-      <workItem from="1762392804456" duration="21994000" />
+      <workItem from="1762392804456" duration="25980000" />
     </task>
     <task id="LOCAL-00001" summary="change route names">
       <option name="closed" value="true" />
@@ -524,14 +501,29 @@
       <option name="project" value="LOCAL" />
       <updated>1762330798612</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="refactor flight pages for connect api">
+      <option name="closed" value="true" />
+      <created>1762419523302</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1762419523302</updated>
+    </task>
+    <task id="LOCAL-00042" summary="refactor flight pages for connect api">
+      <option name="closed" value="true" />
+      <created>1762419530312</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1762419530312</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="about pages" />
     <MESSAGE value="refactor layout &amp; home page" />
     <MESSAGE value="refactor color theme and implement search feature" />
     <MESSAGE value="add welcome popup" />
@@ -556,6 +548,7 @@
     <MESSAGE value="implement airport module" />
     <MESSAGE value="implement route module" />
     <MESSAGE value="implement Flight module" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement Flight module" />
+    <MESSAGE value="refactor flight pages for connect api" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor flight pages for connect api" />
   </component>
 </project>

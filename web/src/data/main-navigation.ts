@@ -69,6 +69,19 @@ export const mainNavigation: NavItem[] = [
     menuItems: [
       {
         label: {
+          en: "Flight Schedules",
+          lo: "ຕາຕະລາງຖ້ຽວບິນ",
+          zh: "航班时刻表",
+        },
+        description: {
+          en: "View all flight schedules",
+          lo: "ເບິ່ງຕາຕະລາງຖ້ຽວບິນທັງໝົດ",
+          zh: "查看所有航班时刻表",
+        },
+        href: "/flights/schedules",
+      },
+      {
+        label: {
           en: "Departures",
           lo: "ຖ້ຽວບິນອອກ",
           zh: "出发航班",

@@ -11,25 +11,22 @@ export const board = {
     lo: "ຕາຕະລາງເວລາຖ້ຽວບິນຂາເຂົ້າ",
     zh: "旅客到达时刻表",
   },
-  clickForDetails: {
-    en: "Please click flight no. for details.",
-    lo: "ກະລຸນາຄລິກເລກຖ້ຽວບິນເພື່ອເບິ່ງລາຍລະອຽດ",
-    zh: "请点击航班号查看详情",
-  },
   confirmDetails: {
-    en: "Please confirm flight details with your airline, as the following information may be altered depending on airport operations.",
-    lo: "ກະລຸນາຢືນຢັນລາຍລະອຽດຖ້ຽວບິນກັບສາຍການບິນຂອງທ່ານ ເນື່ອງຈາກຂໍ້ມູນອາດມີການປ່ຽນແປງຕາມການດຳເນີນງານສະໜາມບິນ",
-    zh: "请与您的航空公司确认航班详情，因为以下信息可能会根据机场运营而改变",
+    en: "Please confirm your flight details with the airline. Information shown here is for reference and may not reflect real-time changes.",
+    lo: "ກະລຸນາຢືນຢັນຂໍ້ມູນຖ້ຽວບິນກັບສາຍການບິນ. ຂໍ້ມູນນີ້ເປັນການອ້າງອີງ ແລະ ອາດບໍ່ອັບເດດຕາມເວລາຈິງ.",
+    zh: "请向航空公司确认航班信息。此处数据仅供参考，可能无法反映实时变化。",
   },
-  statusInfo: {
-    en: "Flight status information",
-    lo: "ຂໍ້ມູນສະຖານະຖ້ຽວບິນ",
-    zh: "航班状态信息",
+
+  scheduleMayChange: {
+    en: "Flight times and gates may change without notice due to weather or airport operations. Please check updates before travel.",
+    lo: "ເວລາ ແລະ ປະຕູຂຶ້ນເຄື່ອງອາດຈະປ່ຽນໂດຍບໍ່ແຈ້ງລ່ວງໜ້າ ເນື່ອງຈາກສະພາບອາກາດ ຫຼື ການດໍາເນີນງານຂອງສະໜາມບິນ. ກະລຸນາກວດສອບຂໍ້ມູນກ່ອນເດີນທາງ.",
+    zh: "航班时间和登机口可能因天气或机场运行而调整。出行前请查看最新信息。",
   },
-  departureNote: {
-    en: "[Departure] means that the airplane has left the gate for departure.",
-    lo: "[ອອກເດີນທາງ] ໝາຍຄວາມວ່າເຮືອບິນໄດ້ອອກຈາກປະຕູຂຶ້ນເຮືອແລ້ວ",
-    zh: "[出发] 表示飞机已离开登机口准备起飞",
+
+  lastUpdatedInfo: {
+    en: "Flight data is updated regularly for accuracy, but actual times may vary.",
+    lo: "ຂໍ້ມູນຖ້ຽວບິນຖືກປັບປຸງເປັນປະຈໍາເພື່ອຄວາມຖືກຕ້ອງ, ອາດຈະບໍ່ຖືກຕ້ອງຕາມເວລາຕົວຈິງ.",
+    zh: "航班信息会定期更新以确保准确，但实际时间可能有所不同。",
   },
 } as const;
 

@@ -3,6 +3,11 @@ import type { Lang } from "@/types/language";
 export const common = {
   departure: { en: "Departure", lo: "ຂາອອກ", zh: "出发" },
   arrival: { en: "Arrival", lo: "ຂາເຂົ້າ", zh: "到达" },
+  searchButton: {
+    en: "Search",
+    lo: "ຄົ້ນຫາ",
+    zh: "搜索",
+  },
 } as const;
 
 export type CommonKey = keyof typeof common;

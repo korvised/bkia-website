@@ -16,7 +16,7 @@ export interface QueryFlight {
 
   // filters
   search?: string;
-  direction: FlightDirection;
+  direction?: FlightDirection;
   date?: string;
   destination?: string;
   airline?: string;

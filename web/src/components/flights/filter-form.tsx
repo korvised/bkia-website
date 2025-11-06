@@ -3,7 +3,7 @@
 import { FormEvent, useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { RefreshCw, Search } from "lucide-react";
-import { createFlightI18n } from "@/data/i18n/flights";
+import { createFlightI18n, tSearch } from "@/data/i18n/flights";
 import type { QueryFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
 import { DatePicker } from "./date-picker";
@@ -20,7 +20,7 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
-  const { filter: t } = createFlightI18n(lang);
+  const { common: tCommon, filter: tFilter } = createFlightI18n(lang);
 
   const [date, setDate] = useState(
     filters.date || new Date().toISOString().split("T")[0],
@@ -48,10 +48,10 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
       className="flex flex-col-reverse items-end justify-between pb-4 md:flex-row md:items-center"
     >
       <div className="mt-4 mr-4 flex items-center justify-center gap-3 md:mt-0 md:mr-0">
-        <LastUpdated lang={lang} label={t.lastUpdated} />
+        <LastUpdated lang={lang} label={tFilter.lastUpdated} />
         <button
           className="text-gray-700 transition-colors hover:text-gray-900"
-          aria-label={t.refresh}
+          aria-label={tFilter.refresh}
         >
           <RefreshCw className="h-4 w-4" />
         </button>
@@ -66,7 +66,7 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder={t.enterFlightNo}
+          placeholder={tFilter.searchPlaceholder}
           className="focus:border-primary-500 focus:ring-primary-500/20 h-11 min-w-[200px] rounded-sm border border-gray-300 bg-white px-4 text-sm focus:ring-2 focus:outline-none"
         />
 
@@ -81,7 +81,7 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
           )}
         >
           <Search className="h-6 w-6 group-hover:text-gray-700 md:h-4 md:w-4" />
-          <span className="hidden lg:inline">{t.search}</span>
+          <span className="hidden lg:inline">{tCommon.searchButton}</span>
         </button>
       </div>
     </form>

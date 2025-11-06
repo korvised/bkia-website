@@ -16,6 +16,8 @@ export function FlightBoard({ lang, filters, data }: FlightBoardProps) {
   const { board: t } = createFlightI18n(lang);
   const { data: flights } = data;
 
+  const tips = [t.confirmDetails, t.scheduleMayChange, t.lastUpdatedInfo];
+
   return (
     <div className="w-full">
       <div className="mb-6 text-center">
@@ -26,24 +28,15 @@ export function FlightBoard({ lang, filters, data }: FlightBoardProps) {
         </h1>
       </div>
 
-      {/* Information Box */}
+      {/* Information Tip Box */}
       <div className="mb-6 rounded-lg bg-blue-50 p-4">
         <ul className="space-y-2 text-sm text-gray-700">
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-700" />
-            <span>{t.clickForDetails}</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-700" />
-            <span>{t.confirmDetails}</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-700" />
-            <div>
-              <div className="font-medium">{t.statusInfo}</div>
-              <div className="text-gray-600">{t.departureNote}</div>
-            </div>
-          </li>
+          {tips.map((tip, index) => (
+            <li key={index} className="flex items-center gap-2">
+              <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-700" />
+              <span>{tip}</span>
+            </li>
+          ))}
         </ul>
       </div>
 

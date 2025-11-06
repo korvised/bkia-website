@@ -9,6 +9,7 @@ import { useLanguage } from "@/context";
 import DatePicker from "./date-picker";
 import { PiAirplaneInFlightBold } from "react-icons/pi";
 import WeatherWidget from "@/components/homepage/weather-widget";
+import { createFlightI18n } from "@/data/i18n/flights";
 
 type Tab = "departures" | "arrivals";
 
@@ -25,6 +26,8 @@ export default function FlightSearch({ className }: FlightSearchProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
+  const { common: tCommon, search: tSearch } = createFlightI18n(lang);
+
   const handleSearch = () => {
     const params = new URLSearchParams();
     params.set("date", format(date, "yyyy-MM-dd"));
@@ -40,41 +43,6 @@ export default function FlightSearch({ className }: FlightSearchProps) {
     inputRef.current?.focus();
   };
 
-  const translations = {
-    en: {
-      title: "Search for",
-      subtitle: "Departures and Arrivals",
-      departure: "Departure",
-      arrival: "Arrival",
-      pickDate: "Select Date",
-      searchInputTitle: "Flight Search",
-      searchPlaceholder: "Flight number, airline or destination",
-      searchButton: "Search",
-    },
-    lo: {
-      title: "ຄົ້ນຫາ",
-      subtitle: "ຂໍ້ມູນຖ້ຽວບິນ",
-      departure: "ຂາອອກ",
-      arrival: "ຂາເຂົ້າ",
-      pickDate: "ເລືອກວັນທີ",
-      searchInputTitle: "ຄົ້ນຫາຖ້ຽວບິນ",
-      searchPlaceholder: "ເລກຖ້ຽວບິນ, ສາຍການບິນ ຫຼື ປາຍທາງ",
-      searchButton: "ຄົ້ນຫາ",
-    },
-    zh: {
-      title: "搜索",
-      subtitle: "出发和到达航班",
-      departure: "出发",
-      arrival: "到达",
-      pickDate: "选择日期",
-      searchInputTitle: "航班搜索",
-      searchPlaceholder: "航班号、航空公司或城市",
-      searchButton: "搜索",
-    },
-  };
-
-  const t = translations[lang];
-
   return (
     <section className={cn("relative bg-white shadow-sm", className)}>
       <div className="container flex h-full items-center px-4 py-6 sm:py-8 lg:px-6">
@@ -84,10 +52,10 @@ export default function FlightSearch({ className }: FlightSearchProps) {
             {/* Title */}
             <div className="flex-1 lg:flex-none">
               <h2 className="text-2xl leading-tight font-bold text-gray-900 sm:text-3xl">
-                {t.title}
+                {tSearch.title}
               </h2>
               <p className="text-primary-600 mt-1 text-xl font-bold sm:text-2xl">
-                {t.subtitle}
+                {tSearch.subtitle}
               </p>
             </div>
 
@@ -109,7 +77,7 @@ export default function FlightSearch({ className }: FlightSearchProps) {
                 )}
               >
                 <PlaneTakeoff className="h-5 w-5 sm:h-6 sm:w-6" />
-                {t.departure}
+                {tCommon.departure}
                 {/* Bottom indicator */}
                 {tab === "departures" && (
                   <span className="bg-primary-600 absolute right-0 bottom-0 left-0 h-0.5" />
@@ -126,7 +94,7 @@ export default function FlightSearch({ className }: FlightSearchProps) {
                 )}
               >
                 <PlaneLanding className="h-5 w-5 sm:h-6 sm:w-6" />
-                {t.arrival}
+                {tCommon.arrival}
                 {/* Bottom indicator */}
                 {tab === "arrivals" && (
                   <span className="bg-primary-600 absolute right-0 bottom-0 left-0 h-0.5" />
@@ -141,7 +109,7 @@ export default function FlightSearch({ className }: FlightSearchProps) {
                 date={date}
                 onDateChange={setDate}
                 lang={lang}
-                label={t.pickDate}
+                label={tSearch.pickDate}
               />
 
               {/* Search Input */}
@@ -174,7 +142,7 @@ export default function FlightSearch({ className }: FlightSearchProps) {
                       focusSearchInput ? "text-primary-600" : "text-gray-500",
                     )}
                   >
-                    {t.searchInputTitle}
+                    {tSearch.searchInputTitle}
                   </div>
                   <input
                     ref={inputRef}
@@ -184,7 +152,7 @@ export default function FlightSearch({ className }: FlightSearchProps) {
                     onKeyDown={handleKeyPress}
                     onFocus={() => setFocusSearchInput(true)}
                     onBlur={() => setFocusSearchInput(false)}
-                    placeholder={t.searchPlaceholder}
+                    placeholder={tSearch.searchPlaceholder}
                     className="w-full bg-transparent text-base font-medium text-gray-900 outline-none placeholder:text-sm placeholder:font-normal placeholder:text-gray-400"
                   />
                 </div>
@@ -196,7 +164,9 @@ export default function FlightSearch({ className }: FlightSearchProps) {
                 className="bg-primary-600/80 hover:bg-primary-600/90 group relative flex h-12 w-fit cursor-pointer items-center justify-center gap-2.5 rounded-lg px-8 text-base font-bold text-white shadow-lg transition-all hover:shadow-xl active:scale-[0.98] md:h-16 xl:px-10"
               >
                 <Search className="h-5 w-5" />
-                <span className="whitespace-nowrap">{t.searchButton}</span>
+                <span className="whitespace-nowrap">
+                  {tCommon.searchButton}
+                </span>
               </button>
             </div>
           </div>

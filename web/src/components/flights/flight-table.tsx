@@ -13,7 +13,7 @@ import type { IFlight } from "@/types/flight";
 
 interface FlightTableProps {
   lang: Lang;
-  direction: FlightDirection;
+  direction?: FlightDirection;
   flights: IFlight[];
 }
 
@@ -331,7 +331,7 @@ export function FlightTable({ lang, direction, flights }: FlightTableProps) {
                       </div>
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <span className="text-sm font-medium text-gray-800">
+                      <span className="text-sm font-semibold text-gray-600">
                         {formatDate(flight.operationDate)}
                       </span>
                     </td>
