@@ -1,6 +1,11 @@
 import type { Lang } from "@/types/language";
 
 export const table = {
+  time: {
+    en: "Time",
+    lo: "ເວລາ",
+    zh: "时间",
+  },
   departureTime: {
     en: "Departure Time",
     lo: "ເວລາອອກ",
@@ -13,12 +18,12 @@ export const table = {
   },
   origin: {
     en: "Origin",
-    lo: "ຈາກ",
+    lo: "ຕົ້ນທາງ",
     zh: "出发地",
   },
   destination: {
     en: "Destination",
-    lo: "ໄປ",
+    lo: "ປາຍທາງ",
     zh: "目的地",
   },
   route: {
@@ -36,10 +41,25 @@ export const table = {
     lo: "ເຄົາເຕີເຊັກອິນ",
     zh: "值机柜台",
   },
+  checkInTime: {
+    en: "Check-in Time",
+    lo: "ເວລາເຊັກອິນ",
+    zh: "值机时间",
+  },
   operationDate: {
     en: "Operating Date",
     lo: "ວັນທີດໍາເນີນການ",
     zh: "运营日期",
+  },
+  terminal: {
+    en: "Terminal",
+    lo: "ອາຄານ",
+    zh: "航站楼",
+  },
+  gate: {
+    en: "Gate",
+    lo: "ປະຕູ",
+    zh: "登机口",
   },
   status: {
     en: "Status",

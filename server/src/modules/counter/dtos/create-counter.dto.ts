@@ -5,12 +5,12 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { TerminalZone } from '@/types/enum';
+import { Terminal } from '@/types/enum';
 
 export class CreateCounterDto {
   @IsDefined()
-  @IsEnum(TerminalZone)
-  zone: TerminalZone;
+  @IsEnum(Terminal)
+  terminal: Terminal;
 
   @IsDefined()
   @IsString()

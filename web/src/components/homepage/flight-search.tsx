@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
 import { PlaneLanding, PlaneTakeoff, Search } from "lucide-react";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 import { useLanguage } from "@/context";
 import DatePicker from "./date-picker";
 import { PiAirplaneInFlightBold } from "react-icons/pi";

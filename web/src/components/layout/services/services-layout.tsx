@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { passengerItems } from "@/data/navigation";
 import { Lang } from "@/types/language";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import { Map, MapPinned } from "lucide-react";
 
 interface ServicesHeroProps {

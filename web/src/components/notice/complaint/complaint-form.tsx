@@ -6,7 +6,7 @@ import { Lang } from "@/types/language";
 import { useLanguage } from "@/context";
 import { complaintCategories } from "@/data/notice/complaints";
 import { complaintTranslations } from "@/data/translations/complaint";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 
 interface ComplaintFormProps {
   lang: Lang;

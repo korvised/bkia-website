@@ -9,7 +9,7 @@ import {
   MessageSquareWarning,
   SearchCheck,
 } from "lucide-react";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 import { useLanguage } from "@/context";
 import { noticeTranslations } from "@/data/translations/notice";
 

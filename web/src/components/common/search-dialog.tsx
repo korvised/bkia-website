@@ -5,7 +5,7 @@ import { Dialog, DialogPanel, DialogBackdrop } from "@headlessui/react";
 import { Search, X, ArrowRight, Clock, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { useApp } from "@/context/app-context";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import {
   allSearchItems,
   popularSearches,

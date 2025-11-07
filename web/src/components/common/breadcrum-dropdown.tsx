@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 
 export function BreadcrumDropdown({
   trigger,

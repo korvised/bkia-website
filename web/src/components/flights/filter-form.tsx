@@ -8,7 +8,7 @@ import type { QueryFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
 import { DatePicker } from "./date-picker";
 import { LastUpdated } from "./last-updated";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 
 interface FilterFormProps {
   lang: Lang;

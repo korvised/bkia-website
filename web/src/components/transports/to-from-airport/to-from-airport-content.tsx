@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useApp } from "@/context";
 import { OverviewTab, TaxiTab, VanTab } from "@/components/transports";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 
 // Tab configuration
 const tabs = [

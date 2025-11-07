@@ -10,7 +10,8 @@ import {
 } from "react";
 import { DayPicker } from "react-day-picker";
 import { Calendar } from "lucide-react";
-import { fmtDate, loLocale } from "@/lib";
+import { loLocale } from "@/constants";
+import { fmtDate } from "@/lib";
 import { enUS, zhCN } from "react-day-picker/locale";
 import { addDays, format, subDays } from "date-fns";
 import { Lang } from "@/types/language";

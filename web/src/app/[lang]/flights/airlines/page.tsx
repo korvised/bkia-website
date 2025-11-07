@@ -1,19 +1,24 @@
-import { AirlineCard } from "@/components/flights";
-import { mockAirlines } from "@/data/mock-flights";
+import { Suspense } from "react";
 import { Lang } from "@/types/language";
+import { listAirlines } from "@/services/flights.service";
+import { AirlineBoard, AirlineBoardSkeleton } from "@/components/flights";
 
 interface AirlinesPageProps {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: Lang }>;
+}
+
+async function AirlinesContent({ lang }: { lang: Lang }) {
+  const { data: airlines } = await listAirlines();
+
+  return <AirlineBoard lang={lang} airlines={airlines} />;
 }
 
 export default async function AirlinesPage({ params }: AirlinesPageProps) {
   const { lang } = await params;
 
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-      {mockAirlines.map((airline) => (
-        <AirlineCard key={airline.code} lang={lang as Lang} airline={airline} />
-      ))}
-    </div>
+    <Suspense fallback={<AirlineBoardSkeleton />}>
+      <AirlinesContent lang={lang} />
+    </Suspense>
   );
 }

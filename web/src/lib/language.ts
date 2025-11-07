@@ -1,5 +1,5 @@
 import { Lang, LanguageConfig, MultilingualText } from "@/types/language";
-import { languages } from "@/lib/constants";
+import { languages } from "@/constants";
 
 export function isValidLanguage(lang: string): lang is Lang {
   return ["en", "lo", "zh"].includes(lang);

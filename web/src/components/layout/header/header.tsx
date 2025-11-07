@@ -9,7 +9,7 @@ import { GoSearch } from "react-icons/go";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import { PiWheelchairDuotone } from "react-icons/pi";
 import { motion, AnimatePresence } from "motion/react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import { useApp } from "@/context/app-context";
 import { mainNavigation } from "@/data/main-navigation";
 import { SearchDialog } from "@/components/common";

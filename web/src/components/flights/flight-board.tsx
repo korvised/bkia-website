@@ -1,30 +1,41 @@
 import { createFlightI18n } from "@/data/i18n/flights";
 import { FlightDirection } from "@/types/enum";
-import type { IFlight, QueryFlight } from "@/types/flight";
+import type { QueryFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
-import type { IPagination } from "@/types/pagination";
 import { FilterForm } from "./filter-form";
-import { FlightTable } from "./flight-table";
 
 interface FlightBoardProps {
   lang: Lang;
   filters: QueryFlight;
-  data: IPagination<IFlight>;
+  table?: React.ReactNode;
+  variant?: "departure" | "arrival" | "schedule";
 }
 
-export function FlightBoard({ lang, filters, data }: FlightBoardProps) {
+export function FlightBoard({
+  lang,
+  filters,
+  table,
+  variant = "departure",
+}: FlightBoardProps) {
   const { board: t } = createFlightI18n(lang);
-  const { data: flights } = data;
 
   const tips = [t.confirmDetails, t.scheduleMayChange, t.lastUpdatedInfo];
+
+  // Determine title based on variant
+  const getTitle = () => {
+    if (variant === "schedule") {
+      return t.scheduleTitle;
+    }
+    return filters.direction === FlightDirection.DEPARTURE
+      ? t.departureTitle
+      : t.arrivalTitle;
+  };
 
   return (
     <div className="w-full">
       <div className="mb-6 text-center">
         <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-          {filters.direction === FlightDirection.DEPARTURE
-            ? t.departureTitle
-            : t.arrivalTitle}
+          {getTitle()}
         </h1>
       </div>
 
@@ -42,11 +53,7 @@ export function FlightBoard({ lang, filters, data }: FlightBoardProps) {
 
       <FilterForm lang={lang} filters={filters} />
 
-      <FlightTable
-        lang={lang}
-        direction={filters.direction}
-        flights={flights}
-      />
+      {table}
     </div>
   );
 }

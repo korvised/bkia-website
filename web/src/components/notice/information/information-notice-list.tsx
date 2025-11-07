@@ -5,7 +5,8 @@ import {
   infoNoticeCats,
   InformationNotice,
 } from "@/data/notice/information-notices";
-import { cn, fmtDate } from "@/lib";
+import { fmtDate } from "@/lib";
+import { cn } from "@/utils/cn";
 import { InformationCategoryFilter } from "./information-category-filter";
 
 interface InformationNoticeListProps {

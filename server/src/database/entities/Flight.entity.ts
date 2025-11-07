@@ -9,10 +9,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { FlightStatus, FlightType } from '@/types/enum';
+import { FlightStatus, FlightType, Terminal } from '@/types/enum';
 import { Airline, Counter, Route } from '@/database';
 
 @Entity('flight')
+@Index(['flightNo'])
 @Index(['operationDate'])
 @Index(['status'])
 @Index(['airline'])
@@ -29,9 +30,14 @@ export class Flight {
     type: 'enum',
     enum: FlightType,
     enumName: 'flight_type_enum',
-    default: FlightType.SCHEDULED,
   })
   type: FlightType;
+
+  @Column({ type: 'enum', enum: Terminal, enumName: 'flight_terminal_enum' })
+  terminal: Terminal;
+
+  @Column({ type: 'varchar', length: 5, nullable: true })
+  gate?: string | null;
 
   @Column({ type: 'date' })
   operationDate: string;

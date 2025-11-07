@@ -50,6 +50,8 @@ export class FlightService {
       search,
       operationDate,
       type,
+      terminal,
+      gate,
       direction,
       status,
       airlineId,
@@ -73,9 +75,42 @@ export class FlightService {
 
     // Search
     if (search?.trim()) {
+      const s = `%${search.trim()}%`;
+
       qb.andWhere(
-        `(UPPER(f.flightNo) LIKE :q OR UPPER(airline.name) LIKE :q OR UPPER(origin.code) LIKE :q OR UPPER(destination.code) LIKE :q)`,
-        { q: `%${search.trim().toUpperCase()}%` },
+        `
+        (
+          -- Flight No
+          f.flightNo ILIKE :s
+    
+          -- Airline: code, name, names (all langs)
+          OR airline.code ILIKE :s
+          OR airline.name ILIKE :s
+          OR EXISTS (
+            SELECT 1
+            FROM jsonb_each_text(COALESCE(airline.names, '{}'::jsonb)) AS aj(k, v)
+            WHERE v ILIKE :s
+          )
+    
+          -- Origin: code, name, names (all langs)
+          OR origin.code ILIKE :s
+          OR origin.name ILIKE :s
+          OR EXISTS (
+            SELECT 1
+            FROM jsonb_each_text(COALESCE(origin.names, '{}'::jsonb)) AS oj(k, v)
+            WHERE v ILIKE :s
+          )
+    
+          -- Destination: code, name, names (all langs)
+          OR destination.code ILIKE :s
+          OR destination.name ILIKE :s
+          OR EXISTS (
+            SELECT 1
+            FROM jsonb_each_text(COALESCE(destination.names, '{}'::jsonb)) AS dj(k, v)
+            WHERE v ILIKE :s
+          )
+        )`,
+        { s },
       );
     }
 
@@ -87,6 +122,16 @@ export class FlightService {
     // Filter by flight type (Scheduled, Charter, Cargo, etc.)
     if (type) {
       qb.andWhere('f.type = :type', { type });
+    }
+
+    // Filter by terminal (A, B)
+    if (terminal) {
+      qb.andWhere('f.terminal = :terminal', { terminal });
+    }
+
+    // Filter by gate (1, 2, 3, etc.)
+    if (gate) {
+      qb.andWhere('f.gate = :gate', { gate });
     }
 
     // Filter by flight status
@@ -166,6 +211,8 @@ export class FlightService {
     const flight = this.flightRepo.create({
       flightNo: dto.flightNo,
       type: dto.type,
+      terminal: dto.terminal,
+      gate: dto.gate?.trim() ?? null,
       operationDate: dto.operationDate,
       scheduledDepTime: dto.scheduledDepTime,
       scheduledArrTime: dto.scheduledArrTime,
@@ -192,6 +239,8 @@ export class FlightService {
 
     if (dto.flightNo !== undefined) flight.flightNo = dto.flightNo;
     if (dto.type !== undefined) flight.type = dto.type;
+    if (dto.terminal !== undefined) flight.terminal = dto.terminal;
+    if (dto.gate !== undefined) flight.gate = dto.gate?.trim() ?? null;
     if (dto.operationDate !== undefined)
       flight.operationDate = dto.operationDate;
     if (dto.scheduledDepTime !== undefined)

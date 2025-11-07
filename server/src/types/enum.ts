@@ -28,13 +28,13 @@ export enum RouteType {
   DOM = 'DOM',
 }
 
-export enum TerminalZone {
-  INT = 'INT',
-  DOM = 'DOM',
+export enum Terminal {
+  INT = 'A',
+  DOM = 'B',
 }
 
 export enum FlightType {
-  SCHEDULED = 'SCHEDULED',
+  COMMERCIAL = 'COMMERCIAL',
   CHARTER = 'CHARTER',
   CARGO = 'CARGO',
   PRIVATE = 'PRIVATE',

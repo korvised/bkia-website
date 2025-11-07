@@ -7,7 +7,7 @@ import {
   ListboxOption,
 } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 import { SelectOption } from "@/data/flight-board";
 
 interface IconSelectorProps {

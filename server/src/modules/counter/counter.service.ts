@@ -16,10 +16,10 @@ export class CounterService {
   ) {}
 
   async findAll(query: QueryCounterDto) {
-    const { zone, isActive = '' } = query;
+    const { terminal, isActive = '' } = query;
     const qb = this.counterRepo.createQueryBuilder('c');
 
-    if (zone) qb.andWhere('c.zone = :zone', { zone });
+    if (terminal) qb.andWhere('c.terminal = :terminal', { terminal });
 
     if (isActive === 'true') qb.andWhere('c.isActive = true');
     if (isActive === 'false') qb.andWhere('c.isActive = false');

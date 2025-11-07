@@ -1,7 +1,3 @@
-import { withQuery } from "../utils/url";
-import type { IPagination } from "@/types/api";
-import type { IFlight } from "@/types/flight";
-import type { QueryFlight } from "@/types/query-flight";
 import { WelcomePopupConfig } from "@/types/welcome-popup";
 
 const API_BASE_URL =
@@ -28,29 +24,11 @@ async function fetchJSON<T>(
 }
 
 export const apiClient = {
-  flights: {
-    list(query: QueryFlight) {
-      const url = withQuery(`${API_BASE_URL}/flights`, {
-        // map frontend filters to backend DTO fields
-        page: query.page,
-        limit: query.limit,
-        search: query.search, // QueryFlightDto.search
-        direction: query.direction, // 'departure'
-        date: query.date, // operationDate on server
-        destination: query.destination, // IATA code (server supports this)
-        airline: query.airline, // airline code/prefix
-        status: query.status,
-        orderBy: query.orderBy,
-        order: query.order,
-      });
-      return fetchJSON<IPagination<IFlight>>(url);
-    },
-  },
   welcome: {
     // Get welcome popups configuration
     getWelcomePopup(): Promise<WelcomePopupConfig> {
       return fetchJSON<WelcomePopupConfig>(`${API_BASE_URL}/welcome-popup`, {
-        cache: 'no-store',
+        cache: "no-store",
       });
     },
 
@@ -59,18 +37,18 @@ export const apiClient = {
       try {
         // keepalive lets this succeed even if the page is unloading
         await fetch(`${API_BASE_URL}/welcome-popup/track`, {
-          method: 'POST',
+          method: "POST",
           keepalive: true,
-          headers: { 'Content-Type': 'application/json' },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             popupId,
             timestamp: new Date().toISOString(),
-            event: 'impression',
+            event: "impression",
           }),
         });
       } catch (err) {
         // Non-fatal: log and continue
-        console.error('Error tracking popup impression:', err);
+        console.error("Error tracking popup impression:", err);
       }
     },
 
@@ -78,19 +56,19 @@ export const apiClient = {
     async trackClick(popupId: string, link: string): Promise<void> {
       try {
         await fetch(`${API_BASE_URL}/welcome-popup/click`, {
-          method: 'POST',
+          method: "POST",
           keepalive: true,
-          headers: { 'Content-Type': 'application/json' },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             popupId,
             link,
             timestamp: new Date().toISOString(),
-            event: 'click',
+            event: "click",
           }),
         });
       } catch (err) {
         // Non-fatal: log and continue
-        console.error('Error tracking popup click:', err);
+        console.error("Error tracking popup click:", err);
       }
     },
   },

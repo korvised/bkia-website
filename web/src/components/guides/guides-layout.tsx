@@ -7,7 +7,7 @@ import { MenuItem } from "@headlessui/react";
 import { ChevronDown, Home } from "lucide-react";
 import { HiOutlineChevronRight } from "react-icons/hi2";
 import { Lang } from "@/types/language";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import { useApp } from "@/context/app-context";
 import { BreadcrumDropdown } from "@/components/common";
 import { mainNavigation, MenuItem as IMenuItem } from "@/data/main-navigation";

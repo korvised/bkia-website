@@ -7,7 +7,12 @@ import {
   IsUUID,
 } from 'class-validator';
 import { PaginationDto } from '@/common/dtos';
-import { FlightDirection, FlightStatus, FlightType } from '@/types/enum';
+import {
+  FlightDirection,
+  FlightStatus,
+  FlightType,
+  Terminal,
+} from '@/types/enum';
 
 export class QueryFlightDto extends PaginationDto {
   /** Free text search — e.g. flight number, airline name, or route code */
@@ -32,6 +37,16 @@ export class QueryFlightDto extends PaginationDto {
   @IsOptional()
   @IsEnum(FlightType, { message: 'Invalid flight type value' })
   type?: FlightType;
+
+  /** Filter by terminal (A=INT, B=DOM) */
+  @IsOptional()
+  @IsEnum(Terminal, { message: 'Invalid terminal value' })
+  terminal?: Terminal;
+
+  /** Filter by gate (1, 2, 3, etc.) */
+  @IsOptional()
+  @IsString()
+  gate?: string;
 
   /** Filter by flight status (scheduled, departed, delayed, etc.) */
   @IsOptional()

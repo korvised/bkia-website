@@ -23,7 +23,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Lang } from "@/types/language";
 import { LostFoundItem } from "@/data/notice/lost-found";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 
 interface LostFoundItemDetailProps {
   lang: Lang;

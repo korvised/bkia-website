@@ -16,7 +16,7 @@ import {
 import Link from "next/link";
 import { Lang } from "@/types/language";
 import { InformationNotice } from "@/data/notice/information-notices";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 
 interface InformationNoticeDetailProps {
   lang: Lang;

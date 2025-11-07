@@ -5,7 +5,7 @@ import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
 import { Lang } from "@/types/language";
 import { useLanguage } from "@/context";
 import { complaintFAQs } from "@/data/notice/complaints";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 import { complaintTranslations } from "@/data/translations/complaint";
 
 interface ComplaintFAQProps {

@@ -109,20 +109,3 @@ export const getWeatherIcon = (iconCode: string): IconType => {
 export const getWeatherIconColor = (iconCode: string): string => {
   return weatherIconColors[iconCode] || "text-gray-400";
 };
-
-/**
- * Get weather icon with default size and colorful styling
- */
-export const WeatherIcon = ({
-  code,
-  className = "",
-  size = 32,
-}: {
-  code: string;
-  className?: string;
-  size?: number;
-}) => {
-  const Icon = getWeatherIcon(code);
-  const colorClass = getWeatherIconColor(code);
-  return <Icon className={`${colorClass} ${className}`} size={size} />;
-};

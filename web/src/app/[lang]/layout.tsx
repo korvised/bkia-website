@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { AppProvider } from "@/context/app-context";
-import { cn, isValidLanguage } from "@/lib";
+import { isValidLanguage } from "@/lib";
+import { cn } from "@/utils/cn";
 import { Footer, GoToTop, Header } from "@/components/layout";
 // import WelcomePopup from "@/components/common/welcome-popup";
 import type { Lang } from "@/types/language";

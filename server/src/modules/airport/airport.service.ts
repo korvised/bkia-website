@@ -24,10 +24,22 @@ export class AirportService {
 
     const qb = this.airportRepo.createQueryBuilder('a');
 
-    if (search) {
-      qb.andWhere('(a.code ILIKE :s OR a.name ILIKE :s)', {
-        s: `%${search.trim()}%`,
-      });
+    if (search?.trim()) {
+      const s = `%${search.trim()}%`;
+
+      qb.andWhere(
+        `
+        (
+          a.code ILIKE :s
+          OR a.name ILIKE :s
+          OR EXISTS (
+            SELECT 1
+            FROM jsonb_each_text(COALESCE(a.names, '{}'::jsonb)) AS j(k, v)
+            WHERE v ILIKE :s
+          )
+        )`,
+        { s },
+      );
     }
 
     if (isActive === 'true') qb.andWhere('a.isActive = true');

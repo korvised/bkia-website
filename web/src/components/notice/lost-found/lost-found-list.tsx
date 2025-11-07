@@ -16,7 +16,8 @@ import {
 import Link from "next/link";
 import { Lang } from "@/types/language";
 import { LostFoundItem } from "@/data/notice/lost-found";
-import { cn, fmtDate } from "@/lib";
+import { fmtDate } from "@/lib";
+import { cn } from "@/utils/cn";
 
 interface LostFoundListProps {
   lang: Lang;

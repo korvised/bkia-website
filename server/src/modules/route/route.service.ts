@@ -63,6 +63,7 @@ export class RouteService {
       const destination = await this.getAirport(dto.destinationId);
       route.destination = destination;
     }
+    if (dto.durationMin) route.durationMin = dto.durationMin;
     return this.routeRepo.save(route);
   }
 

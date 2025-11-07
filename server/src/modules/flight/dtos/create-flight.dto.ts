@@ -10,7 +10,8 @@ import {
   Length,
   Matches,
 } from 'class-validator';
-import { FlightStatus, FlightType } from '@/types/enum';
+import { FlightStatus, FlightType, Terminal } from '@/types/enum';
+import { Optional } from '@nestjs/common';
 
 const TIME_HH_MM = /^(?:[01]\d|2[0-3]):[0-5]\d$/; // 24h "HH:mm"
 
@@ -21,9 +22,16 @@ export class CreateFlightDto {
   @Transform(({ value }) => String(value).trim().toUpperCase())
   flightNo!: string;
 
-  @IsOptional()
   @IsEnum(FlightType)
-  type: FlightType = FlightType.SCHEDULED;
+  type!: FlightType;
+
+  @IsEnum(Terminal)
+  terminal!: Terminal;
+
+  @Optional()
+  @IsString()
+  @Length(1, 5)
+  gate?: string | null;
 
   @IsDateString() // ISO date "YYYY-MM-DD"
   operationDate!: string;

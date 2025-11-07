@@ -10,7 +10,7 @@ import {
 import { Route } from '@/database';
 
 @Entity('airport')
-@Index(['code'])
+@Index(['code'], { unique: true })
 export class Airport {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -18,8 +18,13 @@ export class Airport {
   @Column({ type: 'varchar', length: 10, unique: true })
   code: string;
 
+  // Default display name (fallback if no translation available)
   @Column({ type: 'varchar', length: 255 })
   name: string;
+
+  // Multilingual names (e.g. { en: "Vientiane", lo: "ວຽງຈັນ", zh: "万象" })
+  @Column({ type: 'jsonb', default: {} })
+  names: Record<string, string>;
 
   @Column({ type: 'boolean', default: true })
   isActive: boolean;

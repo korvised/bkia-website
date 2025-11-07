@@ -1,12 +1,17 @@
 import { Suspense } from "react";
 import { Lang } from "@/types/language";
-import { FlightBoard, FlightBoardSkeleton } from "@/components/flights";
+import { currentDateISO } from "@/constants";
+import {
+  FlightBoard,
+  FlightBoardSkeleton,
+  FlightTable,
+} from "@/components/flights";
 import type { QueryFlight } from "@/types/flight";
 import { FlightDirection } from "@/types/enum";
 import { listFlights } from "@/services/flights.service";
 
 interface ArrivalsPageProps {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: Lang }>;
   searchParams: Promise<{
     date?: string;
     destination?: string;
@@ -22,7 +27,7 @@ function toQuery(
 ): QueryFlight {
   return {
     direction: FlightDirection.ARRIVAL,
-    date: filters.date,
+    date: filters.date ?? currentDateISO,
     destination: filters.destination,
     airline: filters.airline,
     search: filters.q,
@@ -41,11 +46,22 @@ export default async function ArrivalsPage({
   const filters = await searchParams;
 
   const query = toQuery(filters);
-  const data = await listFlights(query);
+  const { data } = await listFlights(query);
 
   return (
     <Suspense fallback={<FlightBoardSkeleton />}>
-      <FlightBoard lang={lang as Lang} filters={query} data={data} />
+      <FlightBoard
+        lang={lang}
+        filters={query}
+        table={
+          <FlightTable
+            lang={lang}
+            direction={query.direction!}
+            flights={data}
+          />
+        }
+        variant="arrival"
+      />
     </Suspense>
   );
 }

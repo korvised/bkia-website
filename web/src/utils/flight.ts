@@ -81,19 +81,19 @@ export const getBorderColor = (status: string) => {
 // Flight type badge
 export const getTypeStyle = (type: FlightType) => {
   switch (type) {
-    case FlightType.SCHEDULED:
+    case FlightType.COMMERCIAL:
       return {
         icon: Plane,
-        bg: "bg-primary-50",
-        text: "text-primary-700",
-        label: "SCH",
+        bg: "bg-secondary-50",
+        text: "text-secondary-700",
+        label: "Comercial",
       };
     case FlightType.CHARTER:
       return {
         icon: Plane,
         bg: "bg-purple-50",
         text: "text-purple-700",
-        label: "CHR",
+        label: "Charter",
       };
     case FlightType.CARGO:
       return {
@@ -107,7 +107,7 @@ export const getTypeStyle = (type: FlightType) => {
         icon: Plane,
         bg: "bg-emerald-50",
         text: "text-emerald-700",
-        label: "PVT",
+        label: "Private",
       };
     case FlightType.VIP:
       return {

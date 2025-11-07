@@ -14,7 +14,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { useWelcomePopup } from "@/hooks/use-welcome-popup";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 
 // Import Swiper styles
 import "swiper/css";

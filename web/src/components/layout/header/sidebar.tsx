@@ -9,7 +9,7 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import { ChevronDown, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import { useApp } from "@/context/app-context";
 import { mainNavigation } from "@/data/main-navigation";
 import { LanguageSelector } from "@/components/layout/header/language-selector";

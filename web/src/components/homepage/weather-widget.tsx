@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { WiCloudy } from "react-icons/wi";
 import { Clock } from "lucide-react";
-import { cn, fmtTime } from "@/lib";
+import { cn } from "@/utils/cn";
+import { fmtTime } from "@/lib";
 import { useWeather } from "@/hooks/use-weather";
 import { getWeatherIcon, getWeatherIconColor } from "@/lib/get-weather-icon";
 import type { Lang } from "@/types/language";

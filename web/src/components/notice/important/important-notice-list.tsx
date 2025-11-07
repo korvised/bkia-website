@@ -5,7 +5,8 @@ import {
   impNoticeCats,
   ImportantNotice,
 } from "@/data/notice/important-notices";
-import { cn, fmtDate } from "@/lib";
+import { fmtDate } from "@/lib";
+import { cn } from "@/utils/cn";
 import { ImportantPriority } from "@/types/notice";
 
 interface ImportantNoticeListProps {

@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { ArrowRight, Bus, CarTaxiFront, Truck } from "lucide-react";
 import { Lang } from "@/types/language";
 import { useApp } from "@/context/app-context";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 
 interface OverviewTabProps {
   lang: Lang;

@@ -17,6 +17,7 @@ export class Airline {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  // IATA/ICAO or internal code
   @Column({ type: 'varchar', length: 20 })
   code: string;
 
@@ -24,8 +25,13 @@ export class Airline {
   @JoinColumn({ name: 'logoFileId' })
   logoFile?: File | null;
 
+  // Default display name (fallback if translation missing)
   @Column({ type: 'varchar', length: 255 })
   name: string;
+
+  // Multilingual names, e.g. { en: "Lao Airlines", lo: "ການບິນລາວ", zh: "老挝航空" }
+  @Column({ type: 'jsonb', default: {} })
+  names: Record<string, string>;
 
   @Column({ type: 'varchar', length: 30, nullable: true })
   hotline?: string | null;

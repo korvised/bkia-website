@@ -3,9 +3,11 @@ import {
   FlightStatus,
   FlightType,
   RouteType,
+  Terminal,
 } from "@/types/enum";
 import { IFile } from "@/types/file";
 import { Order } from "@/types/pagination";
+import { Lang } from "@/types/language";
 
 export type OrderBy = "flightNo" | "operationDate" | "createdAt" | "status";
 
@@ -31,6 +33,8 @@ export interface IFlight {
   id: string;
   flightNo: string;
   type: FlightType;
+  terminal: Terminal;
+  gate?: string | null;
   operationDate: string;
   scheduledDepTime: string;
   scheduledArrTime: string;
@@ -51,6 +55,7 @@ export interface IAirport {
   id: string;
   code: string;
   name: string;
+  names: Record<Lang, string>;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
@@ -72,6 +77,7 @@ export interface IAirline {
   code: string;
   logoFile?: IFile | null;
   name: string;
+  names: Record<Lang, string>;
   hotline?: string | null;
   phone?: string | null;
   website?: string | null;
@@ -82,7 +88,7 @@ export interface IAirline {
 
 export interface ICounter {
   id: string;
-  zone: string;
+  terminal: Terminal;
   name: string;
   isActive: boolean;
 }

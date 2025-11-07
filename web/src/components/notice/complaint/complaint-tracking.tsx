@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Search, Clock, CheckCircle, XCircle, AlertCircle } from "lucide-react";
 import { Lang } from "@/types/language";
-import { cn } from "@/lib";
+import { cn } from "@/utils/cn";
 import { useLanguage } from "@/context";
 import { complaintStatuses } from "@/data/notice/complaints";
 import { complaintTranslations } from "@/data/translations/complaint";

@@ -39,6 +39,7 @@ export class AirlineService {
     let airline = this.airlineRepo.create({
       code,
       name: dto.name.trim(),
+      names: dto.names,
       hotline: dto.hotline?.trim() ?? null,
       phone: dto.phone?.trim() ?? null,
       website: dto.website?.trim() ?? null,
@@ -85,10 +86,23 @@ export class AirlineService {
       .take(limit);
 
     if (search?.trim()) {
-      qb.andWhere('(a.code ILIKE :s OR a.name ILIKE :s)', {
-        s: `%${search.trim()}%`,
-      });
+      const s = `%${search.trim()}%`;
+
+      qb.andWhere(
+        `
+        (
+          a.code ILIKE :s
+          OR a.name ILIKE :s
+          OR EXISTS (
+            SELECT 1
+            FROM jsonb_each_text(COALESCE(a.names, '{}'::jsonb)) AS j(k, v)
+            WHERE v ILIKE :s
+          )
+        )`,
+        { s },
+      );
     }
+
     if (isActive === 'true') qb.andWhere('a.isActive = true');
     if (isActive === 'false') qb.andWhere('a.isActive = false');
 
@@ -117,6 +131,7 @@ export class AirlineService {
       airline.code = newCode;
     }
     if (dto.name !== undefined) airline.name = dto.name.trim();
+    if (dto.names) airline.names = dto.names;
     if (dto.hotline !== undefined)
       airline.hotline = dto.hotline?.trim() ?? null;
     if (dto.phone !== undefined) airline.phone = dto.phone?.trim() ?? null;

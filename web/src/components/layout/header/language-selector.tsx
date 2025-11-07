@@ -5,7 +5,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown, Check } from "lucide-react";
 import { useLanguage } from "@/context";
 import { setLangCookie } from "@/actions";
-import { cn, languages } from "@/lib";
+import { languages } from "@/constants";
+import { cn } from "@/utils/cn";
 import { type Lang } from "@/types/language";
 
 interface LanguageSelectorProps {
