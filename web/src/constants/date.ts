@@ -1,3 +1,3 @@
-import { formatISO } from "date-fns";
+import { formatDate } from "date-fns";
 
-export const currentDateISO = formatISO(new Date())
+export const currentDateISO = formatDate(new Date(), "yyyy-MM-dd");

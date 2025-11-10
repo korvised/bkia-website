@@ -27,9 +27,9 @@ export const board = {
     zh: "航班时间和登机口可能因天气或机场运行而调整。出行前请查看最新信息。",
   },
   lastUpdatedInfo: {
-    en: "Flight data is updated regularly for accuracy, but actual times may vary.",
-    lo: "ຂໍ້ມູນຖ້ຽວບິນຖືກປັບປຸງເປັນປະຈໍາເພື່ອຄວາມຖືກຕ້ອງ, ອາດຈະບໍ່ຖືກຕ້ອງຕາມເວລາຕົວຈິງ.",
-    zh: "航班信息会定期更新以确保准确，但实际时间可能有所不同。",
+    en: "Flight information is updated frequently to ensure accuracy. However, actual schedules and times may change without prior notice.",
+    lo: "ຂໍ້ມູນຖ້ຽວບິນຖືກປັບປຸງເປັນປະຈໍາເພື່ອຄວາມຖືກຕ້ອງ ແຕ່ເວລາຈິງອາດຈະມີການປ່ຽນແປງໂດຍບໍ່ແຈ້ງລ່ວງໜ້າ.",
+    zh: "航班信息会定期更新以确保准确，但实际时间和安排可能会在未通知的情况下更改。",
   },
 } as const;
 

@@ -17,7 +17,7 @@ export function FlightBoard({
   filters,
   lastUpdated,
   table,
-  variant = "departure",
+  variant,
 }: FlightBoardProps) {
   const { board: t } = createFlightI18n(lang);
 
@@ -25,12 +25,14 @@ export function FlightBoard({
 
   // Determine title based on variant
   const getTitle = () => {
-    if (variant === "schedule") {
-      return t.scheduleTitle;
+    switch (variant) {
+      case "departure":
+        return t.departureTitle;
+      case "arrival":
+        return t.arrivalTitle;
+      case "schedule":
+        return t.scheduleTitle;
     }
-    return filters.direction === FlightDirection.DEPARTURE
-      ? t.departureTitle
-      : t.arrivalTitle;
   };
 
   return (

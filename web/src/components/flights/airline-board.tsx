@@ -1,7 +1,7 @@
 import { Lang } from "@/types/language";
 import { IAirline } from "@/types/flight";
 import { AirlineCard } from "./airline-card";
-import { Search } from "lucide-react";
+import { Plane } from "lucide-react";
 import { createFlightI18n } from "@/data/i18n/flights";
 
 interface AirlineBoardProps {
@@ -15,29 +15,29 @@ export function AirlineBoard({ lang, airlines }: AirlineBoardProps) {
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="mb-6 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+      <div className="mb-8 text-center">
+        <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
           {t.pageTitle}
         </h1>
+        <p className="mt-2 text-sm text-gray-600">{t.contactInfo}</p>
       </div>
 
-      {/* Information Box */}
-      <div className="mb-6 rounded-lg bg-blue-50 p-4">
-        <p className="text-sm text-gray-700">{t.contactInfo}</p>
-      </div>
-
-      {/* Airlines Grid */}
+      {/* Airlines Grid or Empty State */}
       {airlines.length > 0 ? (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {airlines.map((airline) => (
             <AirlineCard key={airline.id} lang={lang} airline={airline} />
           ))}
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white py-12">
-          <Search className="mb-3 h-12 w-12 text-gray-300" />
-          <p className="text-sm font-medium text-gray-500">{t.noAirlines}</p>
-          <p className="mt-1 text-xs text-gray-400">
+        <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/50 py-16">
+          <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+            <Plane className="h-8 w-8 text-gray-400" />
+          </div>
+          <h3 className="text-lg font-semibold text-gray-900">
+            {t.noAirlines}
+          </h3>
+          <p className="mt-2 max-w-sm text-center text-sm text-gray-500">
             {t.noAirlinesDescription}
           </p>
         </div>

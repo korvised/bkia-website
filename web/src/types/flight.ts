@@ -9,6 +9,18 @@ import { IFile } from "@/types/file";
 import { type IPagination, Order } from "@/types/pagination";
 import { Lang } from "@/types/language";
 
+export interface FlightPageProps {
+  params: Promise<{ lang: Lang }>;
+  searchParams: Promise<{
+    date?: string;
+    destination?: FlightDirection;
+    airline?: string;
+    q?: string;
+    page?: string;
+    limit?: string;
+  }>;
+}
+
 export type OrderBy = "flightNo" | "operationDate" | "createdAt" | "status";
 
 export interface QueryFlight {

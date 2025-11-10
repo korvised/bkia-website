@@ -26,7 +26,7 @@ const socialLinks = [
   },
   {
     name: "Linkedin",
-    href: "#",
+    href: "https://www.linkedin.com/in/bokeo-international-airport-415798359",
     icon: <FaLinkedin className="h-5 w-5" />,
   },
 ];

@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { Lang } from "@/types/language";
-import { listAirlines } from "@/services/flights.service";
+import { listAirlines } from "@/services/flights";
 import { AirlineBoard, AirlineBoardSkeleton } from "@/components/flights";
 
 interface AirlinesPageProps {
