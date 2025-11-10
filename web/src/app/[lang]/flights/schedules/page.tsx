@@ -44,13 +44,14 @@ export default async function SchedulesPage({
   const filters = await searchParams;
 
   const query = toQuery(filters);
-  const { data } = await listFlights(query);
+  const { data, lastUpdated } = await listFlights(query);
 
   return (
     <Suspense fallback={<FlightBoardSkeleton />}>
       <FlightBoard
         lang={lang}
         filters={query}
+        lastUpdated={lastUpdated}
         table={<FlightScheduleTable lang={lang} flights={data} />}
         variant="schedule"
       />

@@ -6,7 +6,7 @@ import {
   Terminal,
 } from "@/types/enum";
 import { IFile } from "@/types/file";
-import { Order } from "@/types/pagination";
+import { type IPagination, Order } from "@/types/pagination";
 import { Lang } from "@/types/language";
 
 export type OrderBy = "flightNo" | "operationDate" | "createdAt" | "status";
@@ -91,4 +91,8 @@ export interface ICounter {
   terminal: Terminal;
   name: string;
   isActive: boolean;
+}
+
+export interface IFlightResponse extends IPagination<IFlight> {
+  lastUpdated: string;
 }

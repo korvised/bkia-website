@@ -1,4 +1,3 @@
-// flight-table.tsx
 import { Fragment } from "react";
 import Image from "next/image";
 import { Plane, PlaneLanding, PlaneTakeoff } from "lucide-react";

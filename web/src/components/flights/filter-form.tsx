@@ -3,19 +3,20 @@
 import { FormEvent, useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { RefreshCw, Search } from "lucide-react";
-import { createFlightI18n, tSearch } from "@/data/i18n/flights";
+import { createFlightI18n } from "@/data/i18n/flights";
 import type { QueryFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
 import { DatePicker } from "./date-picker";
-import { LastUpdated } from "./last-updated";
 import { cn } from "@/utils/cn";
+import { formatDate } from "@/utils/date";
 
 interface FilterFormProps {
   lang: Lang;
   filters: QueryFlight;
+  lastUpdated: string;
 }
 
-export function FilterForm({ lang, filters }: FilterFormProps) {
+export function FilterForm({ lang, filters, lastUpdated }: FilterFormProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
@@ -48,12 +49,14 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
       className="flex flex-col-reverse items-end justify-between pb-4 md:flex-row md:items-center"
     >
       <div className="mt-4 mr-4 flex items-center justify-center gap-3 md:mt-0 md:mr-0">
-        <LastUpdated lang={lang} label={tFilter.lastUpdated} />
+        <div className="text-sm text-gray-600">
+          {tFilter.lastUpdated}: {formatDate(lastUpdated, "dd/MM/yyyy, HH:mm")}
+        </div>
         <button
           className="text-gray-700 transition-colors hover:text-gray-900"
           aria-label={tFilter.refresh}
         >
-          <RefreshCw className="h-4 w-4" />
+          <RefreshCw className={cn("h-4 w-4", { "animate-spin": isPending })} />
         </button>
       </div>
 
@@ -76,11 +79,11 @@ export function FilterForm({ lang, filters }: FilterFormProps) {
           disabled={isPending}
           className={cn(
             "group sm:bg-primary-500 flex items-center gap-2 rounded-sm px-2 text-sm font-medium text-gray-600 transition-colors sm:h-11 sm:px-6 sm:text-white",
-            "sm:hover:bg-primary-600",
+            "sm:hover:bg-primary-600 sm:hover:text-gray-50",
             "focus:ring-primary-500 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:opacity-50",
           )}
         >
-          <Search className="h-6 w-6 group-hover:text-gray-700 md:h-4 md:w-4" />
+          <Search className="h-6 w-6 sm:group-hover:text-gray-50 md:h-4 md:w-4" />
           <span className="hidden lg:inline">{tCommon.searchButton}</span>
         </button>
       </div>

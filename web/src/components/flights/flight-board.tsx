@@ -7,6 +7,7 @@ import { FilterForm } from "./filter-form";
 interface FlightBoardProps {
   lang: Lang;
   filters: QueryFlight;
+  lastUpdated: string;
   table?: React.ReactNode;
   variant?: "departure" | "arrival" | "schedule";
 }
@@ -14,6 +15,7 @@ interface FlightBoardProps {
 export function FlightBoard({
   lang,
   filters,
+  lastUpdated,
   table,
   variant = "departure",
 }: FlightBoardProps) {
@@ -51,7 +53,7 @@ export function FlightBoard({
         </ul>
       </div>
 
-      <FilterForm lang={lang} filters={filters} />
+      <FilterForm lang={lang} filters={filters} lastUpdated={lastUpdated} />
 
       {table}
     </div>

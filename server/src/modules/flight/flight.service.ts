@@ -177,6 +177,7 @@ export class FlightService {
 
     return {
       data,
+      lastUpdated: new Date().toISOString(),
       meta: {
         total,
         page,

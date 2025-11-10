@@ -3,23 +3,28 @@
 import {
   Listbox,
   ListboxButton,
-  ListboxOptions,
   ListboxOption,
+  ListboxOptions,
 } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/utils/cn";
-import { SelectOption } from "@/data/flight-board";
+
+export interface ISelectOption {
+  value: string;
+  label: { en: string; lo: string; zh: string };
+  icon?: string;
+}
 
 interface IconSelectorProps {
-  options: SelectOption[];
+  options: ISelectOption[];
   value: string;
   onChange: (value: string) => void;
-  label: (option: SelectOption) => string;
+  label: (option: ISelectOption) => string;
   placeholder?: boolean;
   className?: string;
 }
 
-export function IconSelector({
+export function SelectOption({
   options,
   value,
   onChange,
