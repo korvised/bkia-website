@@ -1,5 +1,5 @@
 import { FeatureLayout } from "@/components/common";
-import { mainNavigation, MenuItem } from "@/data/main-navigation";
+import { navigation, MenuItem } from "@/data/navigation";
 import { Lang } from "@/types/language";
 
 interface FlightsLayoutProps {
@@ -7,7 +7,7 @@ interface FlightsLayoutProps {
   children: React.ReactNode;
 }
 
-const menuItems: MenuItem[] = (mainNavigation.find((m) => m.id === "flights")
+const menuItems: MenuItem[] = (navigation.find((m) => m.id === "flights")
   ?.menuItems || []) as MenuItem[];
 
 const title = {

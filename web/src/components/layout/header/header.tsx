@@ -11,7 +11,7 @@ import { PiWheelchairDuotone } from "react-icons/pi";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/utils/cn";
 import { useApp } from "@/context/app-context";
-import { mainNavigation } from "@/data/main-navigation";
+import { navigation } from "@/data/navigation";
 import { SearchDialog } from "@/components/common";
 import { LanguageSelector } from "./language-selector";
 import { Sidebar } from "./sidebar";
@@ -130,7 +130,7 @@ export function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:ml-8 lg:block xl:absolute xl:top-1/2 xl:left-1/2 xl:ml-0 xl:-translate-x-1/2 xl:-translate-y-1/2">
               <ul className="flex items-center">
-                {mainNavigation.map((item) => {
+                {navigation.map((item) => {
                   return (
                     <li
                       key={item.id}
@@ -204,7 +204,7 @@ export function Header() {
               <button
                 onClick={openSearch}
                 className={cn(
-                  "rounded-lg p-2 transition-all duration-200",
+                  "rounded-lg p-2 transition-all duration-200 outline-none",
                   isHeaderWhite
                     ? "text-gray-700 hover:bg-gray-100"
                     : "text-white hover:bg-white/10",
@@ -271,7 +271,7 @@ export function Header() {
                 }}
               >
                 <div className="mx-auto max-w-[1920px]">
-                  {mainNavigation
+                  {navigation
                     .filter((item) => item.hasDropdown)
                     .map((item) => (
                       <div

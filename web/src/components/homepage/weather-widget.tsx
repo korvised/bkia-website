@@ -8,7 +8,7 @@ import { fmtTime } from "@/lib";
 import { useWeather } from "@/hooks/use-weather";
 import { getWeatherIcon, getWeatherIconColor } from "@/lib/get-weather-icon";
 import type { Lang } from "@/types/language";
-import type { MultilingualText } from "@/types/language";
+import { createHomepageI18n } from "@/data/i18n/homepage";
 import { getWeatherDescription } from "@/data/weather-description";
 
 interface WeatherWidgetProps {
@@ -16,23 +16,10 @@ interface WeatherWidgetProps {
   className?: string;
 }
 
-// Translations
-const translations: Record<string, MultilingualText> = {
-  feelsLike: {
-    en: "Feels like",
-    lo: "ຮູ້ສຶກຄື",
-    zh: "体感温度",
-  },
-  loading: {
-    en: "Loading...",
-    lo: "ກຳລັງໂຫຼດ...",
-    zh: "加载中...",
-  },
-};
-
 export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
   const { weather, loading, error } = useWeather(lang);
   const [currentTime, setCurrentTime] = useState<string>("");
+  const { weather: t } = createHomepageI18n(lang);
 
   // Update current time
   useEffect(() => {
@@ -92,7 +79,7 @@ export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
         </div>
         <div className="hidden text-right sm:block">
           <span className="text-primary-800 text-sm font-medium">
-            {translations.loading[lang]}
+            {t.loading}
           </span>
         </div>
       </div>
@@ -141,7 +128,7 @@ export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
           {localizedDescription}
         </p>
         <p className="text-primary-700 mt-1 text-xs">
-          {translations.feelsLike[lang]} {feelsLike}°C
+          {t.feelsLike} {feelsLike}°C
         </p>
       </div>
     </div>

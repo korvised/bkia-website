@@ -2,8 +2,8 @@ import { WelcomePopupConfig } from "@/types/welcome-popup";
 
 export const mockWelcomePopupData: WelcomePopupConfig = {
   enabled: true,
-  showOnce: true, // Show only once per day
-  closeDelay: 2000, // User can close after 2 seconds
+  showOnce: true,
+  closeDelay: 2000,
   images: [
     {
       id: "welcome-2025",

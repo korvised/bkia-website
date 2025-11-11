@@ -5,7 +5,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="add test docker-compose.yml">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f3e82b3e-489f-4dcb-bc0f-e6aa5193db85.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f3e82b3e-489f-4dcb-bc0f-e6aa5193db85/storage_v2/_src_/database/db_bkia_website.nhtrdg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f3e82b3e-489f-4dcb-bc0f-e6aa5193db85/storage_v2/_src_/database/db_bkia_website.nhtrdg/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f3e82b3e-489f-4dcb-bc0f-e6aa5193db85/storage_v2/_src_/database/db_bkia_website.nhtrdg/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f3e82b3e-489f-4dcb-bc0f-e6aa5193db85/storage_v2/_src_/database/db_bkia_website.nhtrdg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/homepage/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/homepage/weather.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/layout/footer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/layout/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/layout/not-found.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/hooks/use-serach-dialog.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/services/weather.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/about/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/about/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/bidding/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/bidding/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/bokeo-visit/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/careers/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/careers/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/cargo/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/cargo/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/dining-shopping/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/history/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/news/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/news/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/support/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transports/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/transports/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/feature-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/feature-layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/search-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/search-dialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/guides-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/guides-layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/hero-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/hero-section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/news-section.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/weather-widget.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/weather-widget.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/about/about-layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/about/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/footer/contact-info.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/footer/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/footer/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/footer/quick-links.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/featured-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/featured-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/services/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/services/services-layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/layout/sidebar/go-to-top.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/sidebar/go-to-top.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/flights/airline.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/flights/airline.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/main-navigation.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/mock-flights.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/navigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/search-data.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/services-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/homepage/hero.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/translations/flight-search.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/translations/flights.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/translations/navigation.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/translations/not-found.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/welcome-popup-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/welcome-popup-data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/hooks/use-date-time.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/hooks/use-flight-filter.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/hooks/use-weather.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/hooks/use-weather.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,13 +103,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
     "git-widget-placeholder": "v2",
-    "last_opened_file_path": "D:/projects/bkia-website",
+    "last_opened_file_path": "D:/projects/bkia-website/web/src/data/i18n/home",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -71,11 +133,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\src\data\i18n\home" />
+      <recent name="D:\projects\bkia-website\web\src\data\i18n\layout" />
       <recent name="D:\projects\bkia-website" />
       <recent name="D:\projects\bkia-website\server\db" />
       <recent name="D:\projects\bkia-website\web\src\components\common" />
-      <recent name="D:\projects\bkia-website\web\src" />
-      <recent name="D:\projects\bkia-website\web\src\components\flights" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\server\mock" />
@@ -85,7 +147,7 @@
       <recent name="D:\projects\bkia-website\server\src\common" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web">
+  <component name="RunManager" selected="npm.server">
     <configuration name="server" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/server/package.json" />
       <command value="run" />
@@ -112,8 +174,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.web" />
         <item itemvalue="npm.server" />
+        <item itemvalue="npm.web" />
       </list>
     </recent_temporary>
   </component>
@@ -171,15 +233,7 @@
       <workItem from="1762477797870" duration="23789000" />
       <workItem from="1762738752311" duration="7670000" />
       <workItem from="1762758493441" duration="7746000" />
-      <workItem from="1762826193394" duration="11990000" />
-    </task>
-    <task id="LOCAL-00004" summary="implement lost &amp; found pages">
-      <option name="closed" value="true" />
-      <created>1759290297112</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1759290297112</updated>
+      <workItem from="1762826193394" duration="22454000" />
     </task>
     <task id="LOCAL-00005" summary="refactor notice &amp; announcement pages">
       <option name="closed" value="true" />
@@ -565,7 +619,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762843657636</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="add test docker-compose.yml">
+      <option name="closed" value="true" />
+      <created>1762844007138</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1762844007139</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,212 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Dialog, DialogPanel, DialogBackdrop } from "@headlessui/react";
-import { Search, X, ArrowRight, Clock, TrendingUp } from "lucide-react";
+import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
+import { ArrowRight, Clock, Search, TrendingUp, X } from "lucide-react";
 import Link from "next/link";
-import { useApp } from "@/context/app-context";
 import { cn } from "@/utils/cn";
-import {
-  allSearchItems,
-  popularSearches,
-  SearchableItem,
-} from "@/data/search-data";
-import { Lang } from "@/types/language";
-
-const translations = {
-  searchPlaceholder: {
-    en: "Search for flights, services, information...",
-    lo: "ຄົ້ນຫາຖ້ຽວບິນ, ບໍລິການ, ຂໍ້ມູນ...",
-    zh: "搜索航班、服务、信息...",
-  },
-  recentSearches: {
-    en: "Recent Searches",
-    lo: "ການຄົ້ນຫາລ່າສຸດ",
-    zh: "最近搜索",
-  },
-  popularSearches: {
-    en: "Popular Searches",
-    lo: "ການຄົ້ນຫາຍອດນິຍົມ",
-    zh: "热门搜索",
-  },
-  noResults: {
-    en: "No results found",
-    lo: "ບໍ່ພົບຜົນການຄົ້ນຫາ",
-    zh: "未找到结果",
-  },
-  searchResults: {
-    en: "Search Results",
-    lo: "ຜົນການຄົ້ນຫາ",
-    zh: "搜索结果",
-  },
-  clear: {
-    en: "Clear",
-    lo: "ລຶບ",
-    zh: "清除",
-  },
-  toNavigate: {
-    en: "to navigate",
-    lo: "ເພື່ອເລື່ອນ",
-    zh: "导航",
-  },
-  toSelect: {
-    en: "to select",
-    lo: "ເພື່ອເລືອກ",
-    zh: "选择",
-  },
-  closeHint: {
-    en: "to close",
-    lo: "ປິດ",
-    zh: "关闭",
-  },
-} as const;
+import { useSearchDialog } from "@/hooks/use-serach-dialog";
 
 export function SearchDialog() {
-  const { isSearchOpen, closeSearch, lang, t } = useApp();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<SearchableItem[]>([]);
-  const [recentSearches, setRecentSearches] = useState<string[]>([]);
-  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
-
-  // Load recent searches from localStorage
-  useEffect(() => {
-    const saved = localStorage.getItem("recentSearches");
-    if (saved) {
-      setRecentSearches(JSON.parse(saved));
-    }
-  }, []);
-
-  // Reset selected index when results change
-  useEffect(() => {
-    setSelectedIndex(-1);
-  }, [searchResults]);
-
-  // Enhanced search functionality - search across ALL languages
-  useEffect(() => {
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-
-      const results = allSearchItems.filter((item) => {
-        // Search in all language fields for title
-        const titleMatchEn = item.title.en.toLowerCase().includes(query);
-        const titleMatchLo = item.title.lo.toLowerCase().includes(query);
-        const titleMatchZh = item.title.zh.toLowerCase().includes(query);
-
-        // Search in all language fields for description
-        const descMatchEn = item.description.en.toLowerCase().includes(query);
-        const descMatchLo = item.description.lo.toLowerCase().includes(query);
-        const descMatchZh = item.description.zh.toLowerCase().includes(query);
-
-        // Search in all language fields for category
-        const catMatchEn = item.category.en.toLowerCase().includes(query);
-        const catMatchLo = item.category.lo.toLowerCase().includes(query);
-        const catMatchZh = item.category.zh.toLowerCase().includes(query);
-
-        // Search in all language keywords
-        const keywordMatchEn = item.keywords.en.some((keyword) =>
-          keyword.toLowerCase().includes(query),
-        );
-        const keywordMatchLo = item.keywords.lo.some((keyword) =>
-          keyword.toLowerCase().includes(query),
-        );
-        const keywordMatchZh = item.keywords.zh.some((keyword) =>
-          keyword.toLowerCase().includes(query),
-        );
-
-        return (
-          titleMatchEn ||
-          titleMatchLo ||
-          titleMatchZh ||
-          descMatchEn ||
-          descMatchLo ||
-          descMatchZh ||
-          catMatchEn ||
-          catMatchLo ||
-          catMatchZh ||
-          keywordMatchEn ||
-          keywordMatchLo ||
-          keywordMatchZh
-        );
-      });
-
-      setSearchResults(results);
-    } else {
-      setSearchResults([]);
-    }
-  }, [searchQuery]); // Removed lang dependency to search all languages
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isSearchOpen || searchResults.length === 0) return;
-
-      switch (e.key) {
-        case "ArrowDown":
-          e.preventDefault();
-          setSelectedIndex((prev) =>
-            prev < searchResults.length - 1 ? prev + 1 : prev,
-          );
-          break;
-        case "ArrowUp":
-          e.preventDefault();
-          setSelectedIndex((prev) => (prev > 0 ? prev - 1 : -1));
-          break;
-        case "Enter":
-          e.preventDefault();
-          if (selectedIndex >= 0 && selectedIndex < searchResults.length) {
-            const selectedItem = searchResults[selectedIndex];
-            // Save to recent searches when user selects with Enter
-            saveToRecentSearches(searchQuery);
-            window.location.href = `/${lang}${selectedItem.url}`;
-            handleClose();
-          }
-          break;
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isSearchOpen, searchResults, selectedIndex, lang, searchQuery]);
-
-  // Scroll selected item into view
-  useEffect(() => {
-    if (selectedIndex >= 0) {
-      const element = document.getElementById(`search-result-${selectedIndex}`);
-      if (element) {
-        element.scrollIntoView({ block: "nearest", behavior: "smooth" });
-      }
-    }
-  }, [selectedIndex]);
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-  };
-
-  const saveToRecentSearches = (query: string) => {
-    if (query.trim()) {
-      const updated = [
-        query,
-        ...recentSearches.filter((s) => s !== query),
-      ].slice(0, 5);
-      setRecentSearches(updated);
-      localStorage.setItem("recentSearches", JSON.stringify(updated));
-    }
-  };
-
-  const clearRecentSearches = () => {
-    setRecentSearches([]);
-    localStorage.removeItem("recentSearches");
-  };
-
-  const handleClose = () => {
-    setSearchQuery("");
-    setSelectedIndex(-1);
-    closeSearch();
-  };
-
-  // Get popular searches for current language
-  const currentPopularSearches =
-    popularSearches[lang as Lang] || popularSearches.en;
+  const {
+    lang,
+    isSearchOpen,
+    searchQuery,
+    searchResults,
+    recentSearches,
+    selectedIndex,
+    setSearchQuery,
+    handleSearch,
+    saveToRecentSearches,
+    clearRecentSearches,
+    handleClose,
+    currentPopularSearches,
+    t,
+  } = useSearchDialog();
 
   return (
     <Dialog open={isSearchOpen} onClose={handleClose} className="relative z-50">
@@ -228,7 +43,7 @@ export function SearchDialog() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
-                placeholder={t(translations.searchPlaceholder)}
+                placeholder={t.searchPlaceholder}
                 className="flex-1 border-none bg-transparent text-sm outline-none placeholder:text-gray-400"
                 autoFocus
               />
@@ -248,7 +63,7 @@ export function SearchDialog() {
                   {searchResults.length > 0 ? (
                     <>
                       <h3 className="mb-4 text-sm font-semibold text-gray-500">
-                        {t(translations.searchResults)}
+                        {t.searchResults}
                       </h3>
                       <div className="space-y-2">
                         {searchResults.map((result, index) => {
@@ -260,7 +75,6 @@ export function SearchDialog() {
                               id={`search-result-${index}`}
                               href={`/${lang}${result.url}`}
                               onClick={() => {
-                                // Save to recent searches when user clicks a result
                                 saveToRecentSearches(searchQuery);
                                 handleClose();
                               }}
@@ -333,9 +147,7 @@ export function SearchDialog() {
                   ) : (
                     <div className="py-12 text-center">
                       <Search className="mx-auto h-12 w-12 text-gray-300" />
-                      <p className="mt-4 text-gray-600">
-                        {t(translations.noResults)}
-                      </p>
+                      <p className="mt-4 text-gray-600">{t.noResults}</p>
                     </div>
                   )}
                 </div>
@@ -348,13 +160,13 @@ export function SearchDialog() {
                       <div className="mb-4 flex items-center justify-between">
                         <h3 className="flex items-center gap-x-2 text-sm font-semibold text-gray-500">
                           <Clock className="h-4 w-4" />
-                          {t(translations.recentSearches)}
+                          {t.recentSearches}
                         </h3>
                         <button
                           onClick={clearRecentSearches}
                           className="text-xs text-gray-400 hover:text-gray-600"
                         >
-                          {t(translations.clear)}
+                          {t.clear}
                         </button>
                       </div>
                       <div className="flex flex-wrap gap-2">
@@ -377,7 +189,7 @@ export function SearchDialog() {
                   <div>
                     <h3 className="mb-4 flex items-center gap-x-2 text-sm font-semibold text-gray-500">
                       <TrendingUp className="h-4 w-4" />
-                      {t(translations.popularSearches)}
+                      {t.popularSearches}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {currentPopularSearches.map((query, index) => (
@@ -409,20 +221,20 @@ export function SearchDialog() {
                     <kbd className="rounded bg-white px-2 py-1 font-mono shadow-sm">
                       ↓
                     </kbd>
-                    <span>{t(translations.toNavigate)}</span>
+                    <span>{t.toNavigate}</span>
                   </div>
                   <div className="flex items-center gap-x-2">
                     <kbd className="rounded bg-white px-2 py-1 font-mono shadow-sm">
                       ENTER
                     </kbd>
-                    <span>{t(translations.toSelect)}</span>
+                    <span>{t.toSelect}</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-x-2">
                   <kbd className="rounded bg-white px-2 py-1 font-mono shadow-sm">
                     ESC
                   </kbd>
-                  <span>{t(translations.closeHint)}</span>
+                  <span>{t.closeHint}</span>
                 </div>
               </div>
             </div>

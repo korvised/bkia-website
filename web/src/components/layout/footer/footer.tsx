@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Lang } from "@/types/language";
 import { FaFacebook, FaLinkedin, FaTiktok, FaYoutube } from "react-icons/fa6";
+import { createLayoutI18n } from "@/data/i18n/layout";
 
 interface FooterProps {
   lang: Lang;
@@ -31,161 +32,9 @@ const socialLinks = [
   },
 ];
 
-const translations = {
-  flightInfo: {
-    en: "Flight Information",
-    lo: "ຂໍ້ມູນຖ້ຽວບິນ",
-    zh: "航班信息",
-  },
-  arrivals: {
-    en: "Arrivals",
-    lo: "ຖ້ຽວບິນຂາເຂົ້າ",
-    zh: "到达航班",
-  },
-  departures: {
-    en: "Departures",
-    lo: "ຖ້ຽວບິນອອກ",
-    zh: "出发航班",
-  },
-  airlines: {
-    en: "Airlines",
-    lo: "ສາຍການບິນ",
-    zh: "航空公司",
-  },
-  passengerGuide: {
-    en: "Passenger Guide",
-    lo: "ຄູ່ມືຜູ້ໂດຍສານ",
-    zh: "旅客指南",
-  },
-  arrivalGuide: {
-    en: "Arrival Guide",
-    lo: "ຄູ່ມືຂາເຂົ້າ",
-    zh: "到达指南",
-  },
-  departureGuide: {
-    en: "Departure Guide",
-    lo: "ຄູ່ມືຂາອອກ",
-    zh: "出发指南",
-  },
-  security: {
-    en: "Security Check",
-    lo: "ການກວດຄວາມປອດໄພ",
-    zh: "安检须知",
-  },
-  facilities: {
-    en: "Airport Facilities",
-    lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
-    zh: "机场设施",
-  },
-  services: {
-    en: "Airport Services",
-    lo: "ບໍລິການສະໜາມບິນ",
-    zh: "机场服务",
-  },
-  dining: {
-    en: "Dining & Shopping",
-    lo: "ຮ້ານອາຫານ ແລະ ຮ້ານຄ້າ",
-    zh: "餐饮购物",
-  },
-  lounges: {
-    en: "Lounges",
-    lo: "ຫ້ອງຮັບຮອງ",
-    zh: "贵宾室",
-  },
-  transportation: {
-    en: "Transportation",
-    lo: "ການຂົນສົ່ງ",
-    zh: "交通",
-  },
-  parking: {
-    en: "Parking",
-    lo: "ບ່ອນຈອດລົດ",
-    zh: "停车场",
-  },
-  aboutUs: {
-    en: "About Airport",
-    lo: "ກ່ຽວກັບສະໜາມບິນ",
-    zh: "关于机场",
-  },
-  overview: {
-    en: "Overview",
-    lo: "ພາບລວມ",
-    zh: "概况",
-  },
-  visionMission: {
-    en: "Vision & Mission",
-    lo: "ວິໄສທັດ ແລະ ພາລະກິດ",
-    zh: "愿景使命",
-  },
-  careers: {
-    en: "Careers",
-    lo: "ຮ່ວມງານກັບພວກເຮົາ",
-    zh: "招聘",
-  },
-  newsroom: {
-    en: "Newsroom",
-    lo: "ຂ່າວສານ",
-    zh: "新闻中心",
-  },
-  contactUs: {
-    en: "Contact Us",
-    lo: "ຕິດຕໍ່ພວກເຮົາ",
-    zh: "联系我们",
-  },
-  address: {
-    en: "Tônpheung District, Bokeo Province, Lao PDR",
-    lo: "ບ້ານໃຫຍ່ສີເມືອງງາມ, ເມື່ອງຕົ້ນເຜີ້ງ, ແຂວງບໍ່ແກ້ວ, ສປປ ລາວ",
-    zh: "老挝博乔省会晒村",
-  },
-  email: {
-    en: "info@bokeointernationalairport.com",
-    lo: "info@bokeointernationalairport.com",
-    zh: "info@bokeointernationalairport.com",
-  },
-  operatingHours: {
-    en: "24/7 Operations",
-    lo: "ເປີດບໍລິການ 24/7",
-    zh: "24小时运营",
-  },
-  followUs: {
-    en: "Follow Us",
-    lo: "ຕິດຕາມພວກເຮົາ",
-    zh: "关注我们",
-  },
-  quickLinks: {
-    en: "Quick Links",
-    lo: "ລິ້ງດ່ວນ",
-    zh: "快速链接",
-  },
-  legal: {
-    en: "Legal",
-    lo: "ກົດໝາຍ",
-    zh: "法律",
-  },
-  privacyPolicy: {
-    en: "Privacy Policy",
-    lo: "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
-    zh: "隐私政策",
-  },
-  termsOfUse: {
-    en: "Terms of Use",
-    lo: "ເງື່ອນໄຂການໃຊ້ງານ",
-    zh: "使用条款",
-  },
-  accessibility: {
-    en: "Accessibility",
-    lo: "ການເຂົ້າເຖິງ",
-    zh: "无障碍",
-  },
-  allRightsReserved: {
-    en: "All Rights Reserved",
-    lo: "ສະຫງວນລິຂະສິດ",
-    zh: "版权所有",
-  },
-};
-
 export default async function Footer({ lang }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const { footer: t } = createLayoutI18n(lang);
 
   return (
     <footer className="bg-primary-600 text-white">
@@ -219,7 +68,7 @@ export default async function Footer({ lang }: FooterProps) {
               <div className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 opacity-80" />
                 <p className="text-sm leading-relaxed opacity-90">
-                  {translations.address[lang]}
+                  {t.address}
                 </p>
               </div>
 
@@ -229,7 +78,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href="tel:+85684260179"
                   className="text-sm font-medium transition-opacity hover:opacity-80"
                 >
-                  +85620 84 260 179
+                  +856 84 260 179
                 </a>
               </div>
 
@@ -239,22 +88,20 @@ export default async function Footer({ lang }: FooterProps) {
                   href="mailto:info@bokeointernationalairport.com"
                   className="text-sm transition-opacity hover:opacity-80"
                 >
-                  {translations.email[lang]}
+                  {t.email}
                 </a>
               </div>
 
               <div className="flex items-center gap-3">
                 <Clock className="h-5 w-5 flex-shrink-0 opacity-80" />
-                <p className="text-sm opacity-90">
-                  {translations.operatingHours[lang]}
-                </p>
+                <p className="text-sm opacity-90">{t.operatingHours}</p>
               </div>
             </div>
 
             {/* Social Media */}
             <div className="mt-6">
               <p className="mb-3 text-sm font-semibold opacity-90">
-                {translations.followUs[lang]}
+                {t.followUs}
               </p>
               <div className="flex gap-3">
                 {socialLinks.map((social) => (
@@ -278,7 +125,7 @@ export default async function Footer({ lang }: FooterProps) {
           {/* Flight Information */}
           <div className="lg:col-span-2">
             <h3 className="mb-4 flex items-center gap-2 text-sm font-bold tracking-wide uppercase">
-              {translations.flightInfo[lang]}
+              {t.flightInfo}
             </h3>
             <ul className="space-y-2.5">
               <li>
@@ -286,7 +133,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/flights/arrivals`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.arrivals[lang]}
+                  {t.arrivals}
                 </Link>
               </li>
               <li>
@@ -294,7 +141,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/flights/departures`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.departures[lang]}
+                  {t.departures}
                 </Link>
               </li>
               <li>
@@ -302,7 +149,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/flights/airlines`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.airlines[lang]}
+                  {t.airlines}
                 </Link>
               </li>
             </ul>
@@ -311,7 +158,7 @@ export default async function Footer({ lang }: FooterProps) {
           {/* Passenger Guide */}
           <div className="lg:col-span-2">
             <h3 className="mb-4 text-sm font-bold tracking-wide uppercase">
-              {translations.passengerGuide[lang]}
+              {t.passengerGuide}
             </h3>
             <ul className="space-y-2.5">
               <li>
@@ -319,7 +166,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/guides/arrivals`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.arrivalGuide[lang]}
+                  {t.arrivalGuide}
                 </Link>
               </li>
               <li>
@@ -327,7 +174,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/guides/departures`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.departureGuide[lang]}
+                  {t.departureGuide}
                 </Link>
               </li>
               <li>
@@ -335,7 +182,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/guides/security`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.security[lang]}
+                  {t.security}
                 </Link>
               </li>
               <li>
@@ -343,7 +190,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/guides/facilities`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.facilities[lang]}
+                  {t.facilities}
                 </Link>
               </li>
             </ul>
@@ -352,7 +199,7 @@ export default async function Footer({ lang }: FooterProps) {
           {/* Services */}
           <div className="lg:col-span-2">
             <h3 className="mb-4 text-sm font-bold tracking-wide uppercase">
-              {translations.services[lang]}
+              {t.services}
             </h3>
             <ul className="space-y-2.5">
               <li>
@@ -360,7 +207,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/services/dining-shopping`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.dining[lang]}
+                  {t.dining}
                 </Link>
               </li>
               <li>
@@ -368,7 +215,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/services/lounges`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.lounges[lang]}
+                  {t.lounges}
                 </Link>
               </li>
               <li>
@@ -376,7 +223,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/transports`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.transportation[lang]}
+                  {t.transportation}
                 </Link>
               </li>
               <li>
@@ -384,7 +231,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/transports/parking`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.parking[lang]}
+                  {t.parking}
                 </Link>
               </li>
             </ul>
@@ -393,7 +240,7 @@ export default async function Footer({ lang }: FooterProps) {
           {/* About */}
           <div className="lg:col-span-2">
             <h3 className="mb-4 text-sm font-bold tracking-wide uppercase">
-              {translations.aboutUs[lang]}
+              {t.aboutUs}
             </h3>
             <ul className="space-y-2.5">
               <li>
@@ -401,7 +248,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/about/overview`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.overview[lang]}
+                  {t.overview}
                 </Link>
               </li>
               <li>
@@ -409,7 +256,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/about/vision-mission`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.visionMission[lang]}
+                  {t.visionMission}
                 </Link>
               </li>
               <li>
@@ -417,7 +264,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/about/careers`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.careers[lang]}
+                  {t.careers}
                 </Link>
               </li>
               <li>
@@ -425,7 +272,7 @@ export default async function Footer({ lang }: FooterProps) {
                   href={`/${lang}/news`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {translations.newsroom[lang]}
+                  {t.newsroom}
                 </Link>
               </li>
             </ul>
@@ -440,7 +287,7 @@ export default async function Footer({ lang }: FooterProps) {
             {/* Copyright */}
             <p className="text-center text-sm opacity-80">
               © {currentYear} Bokeo International Airport.{" "}
-              {translations.allRightsReserved[lang]}.
+              {t.allRightsReserved}.
             </p>
 
             {/* Legal Links */}
@@ -449,19 +296,19 @@ export default async function Footer({ lang }: FooterProps) {
                 href={`/${lang}/legal/privacy`}
                 className="opacity-80 transition-opacity hover:opacity-100"
               >
-                {translations.privacyPolicy[lang]}
+                {t.privacyPolicy}
               </Link>
               <Link
                 href={`/${lang}/legal/terms`}
                 className="opacity-80 transition-opacity hover:opacity-100"
               >
-                {translations.termsOfUse[lang]}
+                {t.termsOfUse}
               </Link>
               <Link
                 href={`/${lang}/legal/accessibility`}
                 className="opacity-80 transition-opacity hover:opacity-100"
               >
-                {translations.accessibility[lang]}
+                {t.accessibility}
               </Link>
             </div>
           </div>

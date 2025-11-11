@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import type { OpenWeatherResponse } from "@/types/weather";
 import type { Lang } from "@/types/language";
+import { fetchWeather } from "@/services/weather";
 
 interface UseWeatherResult {
   weather: OpenWeatherResponse | null;
@@ -16,20 +17,11 @@ export function useWeather(lang: Lang): UseWeatherResult {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchWeather = useCallback(async () => {
+  const fetch = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
-
-      const response = await fetch(
-        `http://localhost:8080/weather?lang=${lang}`,
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data: OpenWeatherResponse = await response.json();
+      const data = await fetchWeather();
       setWeather(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to fetch weather");
@@ -40,7 +32,7 @@ export function useWeather(lang: Lang): UseWeatherResult {
   }, [lang]);
 
   useEffect(() => {
-    fetchWeather();
+    fetch();
 
     // Refresh weather data every 10 minutes
     const interval = setInterval(fetchWeather, 10 * 60 * 1000);
@@ -48,5 +40,5 @@ export function useWeather(lang: Lang): UseWeatherResult {
     return () => clearInterval(interval);
   }, [fetchWeather]);
 
-  return { weather, loading, error, refetch: fetchWeather };
+  return { weather, loading, error, refetch: fetch };
 }

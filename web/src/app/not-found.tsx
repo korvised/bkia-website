@@ -3,11 +3,12 @@ import Link from "next/link";
 import { Home, Plane } from "lucide-react";
 import type { Lang } from "@/types/language";
 import { defaultLanguage } from "@/lib";
-import { notFoundTranslations } from "@/data/translations/not-found";
+import { createLayoutI18n } from "@/data/i18n/layout";
 
 export default async function RootNotFound() {
   const c = await cookies();
   const lang = (c.get("lang")?.value as Lang) ?? defaultLanguage;
+  const { notfound: t } = createLayoutI18n(lang);
 
   return (
     <div className="flex h-screen items-center justify-center bg-gray-50 p-4">
@@ -51,14 +52,10 @@ export default async function RootNotFound() {
 
         {/* Error Message - i18n */}
         <h1 className="text-primary-600 mb-2 text-7xl font-bold">
-          {notFoundTranslations.subtitle[lang]}
+          {t.subtitle}
         </h1>
-        <h2 className="mb-4 text-2xl font-semibold text-gray-800">
-          {notFoundTranslations.title[lang]}
-        </h2>
-        <p className="mb-8 text-gray-600">
-          {notFoundTranslations.message[lang]}
-        </p>
+        <h2 className="mb-4 text-2xl font-semibold text-gray-800">{t.title}</h2>
+        <p className="mb-8 text-gray-600">{t.message}</p>
 
         {/* Flight Path Decoration */}
         <div className="mb-8 flex items-center justify-center gap-2 opacity-30">
@@ -76,7 +73,7 @@ export default async function RootNotFound() {
             className="bg-primary-600 hover:bg-primary-700 inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-medium text-white transition-colors"
           >
             <Home className="h-5 w-5" />
-            {notFoundTranslations.goHome[lang]}
+            {t.goHome}
           </Link>
 
           <Link
@@ -84,14 +81,12 @@ export default async function RootNotFound() {
             className="border-primary-600 text-primary-600 hover:bg-primary-50 inline-flex items-center justify-center gap-2 rounded-lg border-2 bg-white px-6 py-3 font-medium transition-colors"
           >
             <Plane className="h-5 w-5" />
-            {notFoundTranslations.viewFlights[lang]}
+            {t.viewFlights}
           </Link>
         </div>
 
         {/* Help Text - i18n */}
-        <p className="mt-8 text-sm text-gray-500">
-          {notFoundTranslations.helpText[lang]}
-        </p>
+        <p className="mt-8 text-sm text-gray-500">{t.helpText}</p>
       </div>
     </div>
   );

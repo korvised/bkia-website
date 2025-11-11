@@ -10,14 +10,14 @@ import { Lang } from "@/types/language";
 import { cn } from "@/utils/cn";
 import { useApp } from "@/context/app-context";
 import { BreadcrumDropdown } from "@/components/common";
-import { mainNavigation, MenuItem as IMenuItem } from "@/data/main-navigation";
+import { navigation, MenuItem as IMenuItem } from "@/data/navigation";
 
 interface GuidesLayoutProps {
   lang: Lang;
   children: React.ReactNode;
 }
 
-const MenuItems: IMenuItem[] = (mainNavigation.find((m) => m.id === "guides")
+const MenuItems: IMenuItem[] = (navigation.find((m) => m.id === "guides")
   ?.menuItems || []) as IMenuItem[];
 
 // Translations
@@ -93,7 +93,7 @@ export function GuidesLayout({ lang, children }: GuidesLayoutProps) {
                     />
                   </Fragment>
                 )}
-                items={mainNavigation.map((item) => (
+                items={navigation.map((item) => (
                   <MenuItem key={item.id}>
                     <Link
                       href={`/${lang}${item.href}`}

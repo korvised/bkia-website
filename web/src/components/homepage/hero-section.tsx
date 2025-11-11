@@ -9,6 +9,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { ChevronLeft, ChevronRight, Volume2 } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { useLanguage } from "@/context";
+import { createHomepageI18n } from "@/data/i18n/homepage";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -70,24 +71,17 @@ const announcements: Announcement[] = [
   },
 ];
 
-const translations = {
-  announcements: {
-    en: "Announcements",
-    zh: "公告",
-    lo: "ແຈ້ງການ",
-  },
-};
-
 interface HeroSectionProps {
   className?: string;
 }
 
 export default function HeroSection({ className }: HeroSectionProps) {
-  const { lang, t } = useLanguage();
+  const { lang } = useLanguage();
   const [heroSwiper, setHeroSwiper] = useState<SwiperType | null>(null);
   const [announcementSwiper, setAnnouncementSwiper] =
     useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const { hero: t } = createHomepageI18n(lang);
 
   return (
     <div className={cn("relative h-full w-full", className)}>
@@ -193,7 +187,7 @@ export default function HeroSection({ className }: HeroSectionProps) {
               <div className="from-primary-500/90 to-primary-500 flex flex-shrink-0 items-center gap-2.5 rounded-full bg-gradient-to-br p-1 text-transparent xl:rounded-l-full xl:rounded-r-none xl:px-2 xl:py-1">
                 <Volume2 className="h-4.5 w-4.5 text-white sm:h-5 sm:w-5" />
                 <span className="hidden text-sm font-semibold text-white/90 xl:inline">
-                  {translations.announcements[lang]}
+                  {t.announcements}
                 </span>
               </div>
 
@@ -219,7 +213,7 @@ export default function HeroSection({ className }: HeroSectionProps) {
                         }
                       >
                         <span className="group-hover:text-primary-600 line-clamp-1 text-xs text-gray-600 transition-all group-hover:underline sm:text-sm">
-                          {t(a.content)}
+                          {a.content[lang]}
                         </span>
                         <span className="hidden rounded-full bg-gray-100 px-3 py-1 text-xs whitespace-nowrap text-gray-500 lg:inline">
                           {a.date}

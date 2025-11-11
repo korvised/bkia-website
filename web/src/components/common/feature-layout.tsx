@@ -9,7 +9,7 @@ import { MenuItem } from "@headlessui/react";
 import { useApp } from "@/context";
 import { cn } from "@/utils/cn";
 import { Lang } from "@/types/language";
-import { mainNavigation, MenuItem as IMenuItem } from "@/data/main-navigation";
+import { navigation, MenuItem as IMenuItem } from "@/data/navigation";
 import { BreadcrumDropdown } from "./breadcrum-dropdown";
 
 interface FeatureLayoutProps {
@@ -87,7 +87,7 @@ export function FeatureLayout({
                     />
                   </Fragment>
                 )}
-                items={mainNavigation.map((item) => (
+                items={navigation.map((item) => (
                   <MenuItem key={item.id}>
                     <Link
                       href={`/${lang}${item.href}`}

@@ -11,7 +11,7 @@ import {
 import { ChevronDown, X } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { useApp } from "@/context/app-context";
-import { mainNavigation } from "@/data/main-navigation";
+import { navigation } from "@/data/navigation";
 import { LanguageSelector } from "@/components/layout/header/language-selector";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import { PiWheelchairDuotone } from "react-icons/pi";
@@ -98,7 +98,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                     {/* Content */}
                     <div className="flex-1 overflow-y-auto">
                       <nav className="py-2">
-                        {mainNavigation.map((item) => {
+                        {navigation.map((item) => {
                           const expandedNow = isExpanded(item.id);
 
                           return (

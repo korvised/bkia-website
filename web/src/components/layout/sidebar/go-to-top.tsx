@@ -48,7 +48,7 @@ export default function GoToTop() {
                 "bg-gradient-to-t from-white/30 to-transparent",
                 "h-0 group-hover:h-6",
                 isClicked &&
-                  "!from-primary-400 !to-primary-10 !h-8 !bg-gradient-to-t",
+                  "!from-primary-400 !to-primary-100 !h-8 !bg-gradient-to-t",
               )}
             />
 
@@ -73,26 +73,10 @@ export default function GoToTop() {
                   "group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100",
                   // Click: takes off dramatically
                   isClicked &&
-                    "!-translate-y-6 !scale-125 !-rotate-12 !opacity-0 !duration-800",
+                    "!-translate-y-6 !scale-125 !opacity-0 !duration-800",
                 )}
               />
             </div>
-
-            {/* Takeoff blast effect */}
-            <div
-              className={cn(
-                "bg-primary-100 absolute inset-0 rounded-xl transition-all duration-300",
-                isClicked ? "scale-110 opacity-0" : "scale-100 opacity-0",
-              )}
-            />
-
-            {/* Sky glow effect on click */}
-            <div
-              className={cn(
-                "absolute inset-0 rounded-xl bg-gradient-to-t from-transparent to-sky-400/20 transition-opacity duration-500",
-                isClicked ? "opacity-100" : "opacity-0",
-              )}
-            />
           </button>
         </div>
       )}

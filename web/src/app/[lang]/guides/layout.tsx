@@ -1,14 +1,14 @@
 import { ReactNode } from "react";
 import { Lang } from "@/types/language";
 import { FeatureLayout } from "@/components/common";
-import { mainNavigation, MenuItem } from "@/data/main-navigation";
+import { navigation, MenuItem } from "@/data/navigation";
 
 interface GuideLayoutProps {
   children: ReactNode;
   params: Promise<{ lang: string }>;
 }
 
-const menuItems: MenuItem[] = (mainNavigation.find((m) => m.id === "guides")
+const menuItems: MenuItem[] = (navigation.find((m) => m.id === "guides")
   ?.menuItems || []) as MenuItem[];
 
 const title = {

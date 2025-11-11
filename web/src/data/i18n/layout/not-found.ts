@@ -1,16 +1,6 @@
-import { MultilingualText } from "@/types/language";
+import type { Lang } from "@/types/language";
 
-export interface NotFoundTranslations {
-  title: MultilingualText;
-  subtitle: MultilingualText;
-  message: MultilingualText;
-  suggestions: MultilingualText;
-  goHome: MultilingualText;
-  viewFlights: MultilingualText;
-  helpText: MultilingualText;
-}
-
-export const notFoundTranslations: NotFoundTranslations = {
+export const notfound = {
   title: {
     en: "Page Not Found",
     lo: "ບໍ່ພົບໜ້ານີ້",
@@ -46,4 +36,9 @@ export const notFoundTranslations: NotFoundTranslations = {
     lo: "ຕ້ອງການຄວາມຊ່ວຍເຫຼືອ? ຕິດຕໍ່ພະແນກຂໍ້ມູນສະໜາມບິນພວກເຮົາ.",
     zh: "需要帮助？请联系我们的信息台。",
   },
-};
+} as const;
+
+export type NotfoundKey = keyof typeof notfound;
+
+export const tNotfound = (k: NotfoundKey, lang: Lang) =>
+  notfound[k][lang] ?? notfound[k].en;

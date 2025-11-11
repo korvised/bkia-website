@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { FeaturedContent } from "@/data/main-navigation";
+import { FeaturedContent } from "@/data/navigation";
 import { Lang } from "@/types/language";
 
 interface FeaturedCardProps {

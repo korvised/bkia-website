@@ -1,6 +1,5 @@
 import type { Lang } from "@/types/language";
 
-// Add these to your airline i18n object
 export const airline = {
   pageTitle: {
     en: "Airlines",
