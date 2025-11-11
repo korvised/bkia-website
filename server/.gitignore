@@ -60,3 +60,4 @@ mock
 test.json
 *_test.json
 db/migrations
+db/backups
