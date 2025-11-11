@@ -10,17 +10,17 @@ import {
 } from "react";
 import { DayPicker } from "react-day-picker";
 import { Calendar } from "lucide-react";
-import { loLocale } from "@/constants";
-import { fmtDate } from "@/lib";
 import { enUS, zhCN } from "react-day-picker/locale";
 import { addDays, format, subDays } from "date-fns";
+import { loLocale } from "@/constants";
+import { fmtDate } from "@/lib";
 import { Lang } from "@/types/language";
 
 import "react-day-picker/style.css";
 import "@/styles/custom-react-day-picker.css";
 
 const today = new Date();
-const ESTIMATED_POPUP_HEIGHT = 380; // Estimated height of the calendar popup
+const ESTIMATED_POPUP_HEIGHT = 380;
 
 interface DatePickerProps {
   value: string;
@@ -67,7 +67,7 @@ export function DatePicker({ value, onChange, lang }: DatePickerProps) {
       const spaceBelow = viewportHeight - buttonRect.bottom;
       const spaceAbove = buttonRect.top;
 
-      // Position above if not enough space below but enough above
+      // The position above if not enough space below but enough above
       setPositionAbove(
         spaceBelow < ESTIMATED_POPUP_HEIGHT &&
           spaceAbove > ESTIMATED_POPUP_HEIGHT,

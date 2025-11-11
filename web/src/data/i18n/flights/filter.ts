@@ -2,9 +2,9 @@ import type { Lang } from "@/types/language";
 
 export const filter = {
   searchPlaceholder: {
-    en: "Flight number, airline or city",
-    lo: "ເລກຖ້ຽວບິນ, ສາຍການບິນ ຫຼື ເມືອງ",
-    zh: "航班号、航空公司或城市",
+    en: "Flight no., city or airline",
+    lo: "ເລກຖ້ຽວບິນ, ເມືອງ ຫຼື ສາຍການບິນ",
+    zh: "航班号、城市或航空公司",
   },
   lastUpdated: {
     en: "Last Updated",

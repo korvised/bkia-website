@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { ArrowRight, Clock, PlaneLanding, PlaneTakeoff } from "lucide-react";
-import { LuMoveRight } from "react-icons/lu";
 import { createFlightI18n } from "@/data/i18n/flights";
 import { cn } from "@/utils/cn";
 import { IFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
-import { formatDate, formatTime } from "@/utils/date";
+import { formatTime } from "@/utils/date";
 import { getBorderColor, getStatusStyle } from "@/utils/flight";
 import { asset } from "@/utils/asset";
 import { FlightTypeBadge } from "./flight-type-badge";
@@ -31,7 +30,7 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
   return (
     <div
       className={cn(
-        "grid gap-y-3 rounded-lg border-l-4 bg-white p-4 shadow-sm transition-all duration-200 hover:shadow-md",
+        "grid gap-y-3 rounded-sm border-l-4 bg-white p-4 shadow-sm transition-all duration-200 hover:shadow-md",
         borderColor,
       )}
     >
@@ -81,10 +80,10 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
         </div>
       </div>
 
-      {/* Time Section */}
-      <div className="flex items-center justify-center gap-3 rounded-lg bg-gray-50 p-3">
-        {/* Departure Time */}
-        <div className="flex flex-col items-center">
+      {/* Combined Time and Route Section - Single Row */}
+      <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 p-3">
+        {/* Departure Time & Location */}
+        <div className="flex flex-1 flex-col gap-1">
           <div className="flex items-center gap-2">
             <PlaneTakeoff
               className={cn(
@@ -92,90 +91,79 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
                 isDepartureBOR ? "text-primary-600" : "text-gray-400",
               )}
             />
-            <span className="text-lg font-bold text-gray-900">
-              {formatTime(flight.actualDepTime || flight.scheduledDepTime)}
-            </span>
+            <div className="flex flex-col">
+              <span className="text-lg leading-tight font-bold text-gray-900">
+                {formatTime(flight.actualDepTime || flight.scheduledDepTime)}
+              </span>
+              {flight.actualDepTime && (
+                <span className="text-xs font-medium text-gray-400 line-through">
+                  {formatTime(flight.scheduledDepTime)}
+                </span>
+              )}
+            </div>
           </div>
-          {flight.actualDepTime && (
-            <span className="ml-6 text-xs font-medium text-gray-400 line-through">
-              {formatTime(flight.scheduledDepTime)}
-            </span>
-          )}
+          <div className="ml-6">
+            <div className="font-lo text-xs font-medium text-gray-700">
+              {flight.route.origin.names[lang] ?? flight.route.origin.name}
+            </div>
+            <div
+              className={cn(
+                "font-mono text-xs font-semibold",
+                isDepartureBOR ? "text-primary-600" : "text-gray-500",
+              )}
+            >
+              {flight.route.origin.code}
+            </div>
+          </div>
         </div>
 
         {/* Arrow Separator */}
-        <ArrowRight className="h-5 w-5 flex-shrink-0 text-gray-300" />
-
-        {/* Arrival Time */}
         <div className="flex flex-col items-center">
-          <div className="flex items-center gap-2">
+          <ArrowRight className="h-5 w-5 flex-shrink-0 text-gray-400" />
+        </div>
+
+        {/* Arrival Time & Location */}
+        <div className="flex flex-1 flex-col gap-1">
+          <div className="flex items-center justify-end gap-2">
+            <div className="flex flex-col items-end">
+              <span className="text-lg leading-tight font-bold text-gray-900">
+                {formatTime(flight.actualArrTime || flight.scheduledArrTime)}
+              </span>
+              {flight.actualArrTime && (
+                <span className="text-xs font-medium text-gray-400 line-through">
+                  {formatTime(flight.scheduledArrTime)}
+                </span>
+              )}
+            </div>
             <PlaneLanding
               className={cn(
                 "h-4 w-4 flex-shrink-0",
                 isArrivalBOR ? "text-primary-600" : "text-gray-400",
               )}
             />
-            <span className="text-lg font-bold text-gray-900">
-              {formatTime(flight.actualArrTime || flight.scheduledArrTime)}
-            </span>
           </div>
-          {flight.actualArrTime && (
-            <span className="ml-6 text-xs font-medium text-gray-400 line-through">
-              {formatTime(flight.scheduledArrTime)}
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Route Section */}
-      <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-3">
-        <div className="flex-1 text-left">
-          <div className="font-lo text-sm font-medium text-gray-900">
-            {flight.route.origin.names[lang] ?? flight.route.origin.name}
+          <div className="mr-6 text-right">
+            <div className="font-lo text-xs font-medium text-gray-700">
+              {flight.route.destination.names[lang] ??
+                flight.route.destination.name}
+            </div>
+            <div
+              className={cn(
+                "font-mono text-xs font-semibold",
+                isArrivalBOR ? "text-primary-600" : "text-gray-500",
+              )}
+            >
+              {flight.route.destination.code}
+            </div>
           </div>
-          <div
-            className={cn(
-              "font-mono text-xs font-semibold",
-              isDepartureBOR ? "text-primary-600" : "text-gray-500",
-            )}
-          >
-            {flight.route.origin.code}
-          </div>
-        </div>
-        <LuMoveRight className="h-5 w-5 flex-shrink-0 text-gray-400" />
-        <div className="flex-1 text-right">
-          <div className="font-lo text-sm font-medium text-gray-900">
-            {flight.route.destination.names[lang] ??
-              flight.route.destination.name}
-          </div>
-          <div
-            className={cn(
-              "font-mono text-xs font-semibold",
-              isArrivalBOR ? "text-primary-600" : "text-gray-500",
-            )}
-          >
-            {flight.route.destination.code}
-          </div>
-        </div>
-      </div>
-
-      {/* Operation Date */}
-      <div className="rounded-lg border border-gray-200 bg-white p-3">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-medium text-gray-500">
-            {t.operationDate}
-          </span>
-          <span className="text-sm font-semibold text-gray-700">
-            {formatDate(flight.operationDate)}
-          </span>
         </div>
       </div>
 
       {/* Terminal, Gate, and Check-in Counter Row */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-stretch gap-3">
         {/* Terminal */}
-        <div className="flex items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2">
-          <div className="flex flex-col gap-y-1">
+        <div className="flex gap-2 rounded-md border border-gray-200 bg-white px-3 py-2">
+          <div className="flex flex-col gap-y-1.5">
             <span className="text-xs font-medium text-gray-500">
               {t.terminal}
             </span>
@@ -186,8 +174,8 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
         </div>
 
         {/* Gate */}
-        <div className="flex items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2">
-          <div className="flex flex-col gap-y-1">
+        <div className="flex gap-2 rounded-md border border-gray-200 bg-white px-3 py-2">
+          <div className="flex flex-col gap-y-1.5">
             <span className="text-xs font-medium text-gray-500">{t.gate}</span>
             <span className="text-center text-sm font-bold text-gray-900">
               {flight.gate ?? "-"}
@@ -196,42 +184,36 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
         </div>
 
         {/* Check-in Counter */}
-        <div className="flex flex-1 items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2">
-          <div className="flex flex-col gap-1">
-            <span className="text-xs font-medium text-gray-500">
-              {t.checkInCounter}
-            </span>
-            {flight.checkInCounters.length > 0 ? (
-              <div className="flex flex-wrap gap-2">
+        {flight.checkInCounters.length > 0 && (
+          <div className="flex flex-1 rounded-md border border-gray-200 bg-white px-3 py-2">
+            <div className="flex w-full flex-col gap-1.5">
+              <span className="text-xs font-medium text-gray-500">
+                {t.checkInCounter}
+              </span>
+              <div className="flex flex-wrap gap-1.5">
                 {flight.checkInCounters.map((counter) => (
                   <span
                     key={counter.id}
-                    className="bg-primary-100 text-primary-800 rounded-md px-1.5 py-0.5 text-xs font-semibold"
+                    className="bg-primary-100 text-primary-800 rounded-md px-2 py-0.5 text-xs font-semibold"
                   >
                     {counter.name}
                   </span>
                 ))}
               </div>
-            ) : (
-              <span className="text-sm font-bold text-gray-400">-</span>
-            )}
+              {/* Check-in Time - clean design like the image */}
+              {flight.checkInStartTime && flight.checkInEndTime && (
+                <div className="mt-0.5 flex items-center gap-1 text-xs text-gray-500">
+                  <Clock className="h-3 w-3" />
+                  <span>
+                    {formatTime(flight.checkInStartTime)} -{" "}
+                    {formatTime(flight.checkInEndTime)}
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
-
-      {/* Check-in Time - If exists */}
-      {flight.checkInStartTime && flight.checkInEndTime && (
-        <div className="flex items-center justify-center gap-1.5 rounded-md bg-blue-50 px-3 py-2 text-xs text-gray-600">
-          <Clock className="h-3.5 w-3.5 text-gray-500" />
-          <span className="font-medium">
-            {t.checkInTime}:{" "}
-            <span className="font-semibold">
-              {formatTime(flight.checkInStartTime)} -{" "}
-              {formatTime(flight.checkInEndTime)}
-            </span>
-          </span>
-        </div>
-      )}
     </div>
   );
 };

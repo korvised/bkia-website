@@ -1,5 +1,4 @@
 import { createFlightI18n } from "@/data/i18n/flights";
-import { FlightDirection } from "@/types/enum";
 import type { QueryFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
 import { FilterForm } from "./filter-form";
@@ -47,8 +46,8 @@ export function FlightBoard({
       <div className="mb-6 rounded-lg bg-blue-50 p-4">
         <ul className="space-y-2 text-sm text-gray-700">
           {tips.map((tip, index) => (
-            <li key={index} className="flex items-center gap-2">
-              <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-700" />
+            <li key={index} className="flex gap-2">
+              <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-700" />
               <span>{tip}</span>
             </li>
           ))}
