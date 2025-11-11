@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="backup db">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="add test docker-compose.yml">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,15 +171,7 @@
       <workItem from="1762477797870" duration="23789000" />
       <workItem from="1762738752311" duration="7670000" />
       <workItem from="1762758493441" duration="7746000" />
-      <workItem from="1762826193394" duration="11626000" />
-    </task>
-    <task id="LOCAL-00003" summary="implement lost &amp; found pages">
-      <option name="closed" value="true" />
-      <created>1759290079622</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1759290079622</updated>
+      <workItem from="1762826193394" duration="11990000" />
     </task>
     <task id="LOCAL-00004" summary="implement lost &amp; found pages">
       <option name="closed" value="true" />
@@ -566,14 +557,21 @@
       <option name="project" value="LOCAL" />
       <updated>1762837214634</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="add test docker-compose.yml">
+      <option name="closed" value="true" />
+      <created>1762843657636</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1762843657636</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor welcome popup" />
     <MESSAGE value="refactor layout" />
     <MESSAGE value="refactor homepage" />
     <MESSAGE value="refactor homepage hero session &amp; flight search" />
@@ -598,6 +596,7 @@
     <MESSAGE value="refactor flight pages" />
     <MESSAGE value="implement flight pages metadata" />
     <MESSAGE value="backup db" />
-    <option name="LAST_COMMIT_MESSAGE" value="backup db" />
+    <MESSAGE value="add test docker-compose.yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="add test docker-compose.yml" />
   </component>
 </project>
