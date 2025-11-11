@@ -7,14 +7,13 @@ import {
   CheckinContent,
   CustomsContent,
   DepartureTabNavigation,
-  PurchaseContent,
   RelatedServices,
   SecurityContent,
 } from "@/components/guides/departure";
 import { DepartureTab } from "@/types/guide";
 
 interface DeparturePageProps {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: Lang }>;
   searchParams: Promise<{ tab?: DepartureTab }>;
 }
 
@@ -42,8 +41,8 @@ export async function generateMetadata({
   };
 
   return {
-    title: metadata[lang as Lang].title,
-    description: metadata[lang as Lang].description,
+    title: metadata[lang].title,
+    description: metadata[lang].description,
   };
 }
 
@@ -57,12 +56,12 @@ export default async function DepartureGuidePage({
   return (
     <div>
       {/* Tab Navigation */}
-      <DepartureTabNavigation lang={lang as Lang} activeTab={tab} />
+      <DepartureTabNavigation lang={lang} activeTab={tab} />
 
       {/* Content */}
       <div className="rounded-lg bg-white p-8 shadow-sm">
         <Suspense fallback={<ContentSkeleton />}>
-          <DepartureContent tab={tab} />
+          <DepartureContent tab={tab} lang={lang} />
         </Suspense>
       </div>
 
@@ -72,12 +71,10 @@ export default async function DepartureGuidePage({
   );
 }
 
-function DepartureContent({ tab }: { tab: DepartureTab }) {
+function DepartureContent({ tab, lang }: { tab: DepartureTab; lang: Lang }) {
   switch (tab) {
-    case "purchase":
-      return <PurchaseContent />;
     case "checkin":
-      return <CheckinContent />;
+      return <CheckinContent lang={lang} />;
     case "customs":
       return <CustomsContent />;
     case "border":
@@ -87,7 +84,7 @@ function DepartureContent({ tab }: { tab: DepartureTab }) {
     case "boarding":
       return <BoardingContent />;
     default:
-      return <PurchaseContent />;
+      return <CheckinContent lang={lang} />;
   }
 }
 
