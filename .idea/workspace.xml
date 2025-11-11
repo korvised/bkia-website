@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement flight pages metadata">
-      <change afterPath="$PROJECT_DIR$/server/db/db_bkia_website.dump" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="backup db">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
     "git-widget-placeholder": "v2",
-    "last_opened_file_path": "D:/projects/bkia-website/server/db",
+    "last_opened_file_path": "D:/projects/bkia-website",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -73,11 +72,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website" />
+      <recent name="D:\projects\bkia-website\server\db" />
       <recent name="D:\projects\bkia-website\web\src\components\common" />
       <recent name="D:\projects\bkia-website\web\src" />
       <recent name="D:\projects\bkia-website\web\src\components\flights" />
-      <recent name="D:\projects\bkia-website\web\src\types" />
-      <recent name="D:\projects\bkia-website\server\src\modules\flight" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\server\mock" />
@@ -173,15 +172,7 @@
       <workItem from="1762477797870" duration="23789000" />
       <workItem from="1762738752311" duration="7670000" />
       <workItem from="1762758493441" duration="7746000" />
-      <workItem from="1762826193394" duration="10049000" />
-    </task>
-    <task id="LOCAL-00002" summary="implement notice &amp; announcement pages">
-      <option name="closed" value="true" />
-      <created>1759226272250</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1759226272250</updated>
+      <workItem from="1762826193394" duration="11626000" />
     </task>
     <task id="LOCAL-00003" summary="implement lost &amp; found pages">
       <option name="closed" value="true" />
@@ -567,14 +558,21 @@
       <option name="project" value="LOCAL" />
       <updated>1762830757060</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="backup db">
+      <option name="closed" value="true" />
+      <created>1762837214634</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1762837214634</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add welcome popup" />
     <MESSAGE value="refactor welcome popup" />
     <MESSAGE value="refactor layout" />
     <MESSAGE value="refactor homepage" />
@@ -599,6 +597,7 @@
     <MESSAGE value="refactor flight pages for connect api" />
     <MESSAGE value="refactor flight pages" />
     <MESSAGE value="implement flight pages metadata" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement flight pages metadata" />
+    <MESSAGE value="backup db" />
+    <option name="LAST_COMMIT_MESSAGE" value="backup db" />
   </component>
 </project>
