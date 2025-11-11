@@ -17,7 +17,7 @@ export async function generateMetadata({
 
   const metadata = {
     en: {
-      title: "Arrivals | Bokeo International Airport",
+      title: "Arrival Flights | Bokeo International Airport",
       description:
         "Check arriving flights status, baggage belt information, and scheduled arrival times at Bokeo International Airport.",
     },
@@ -27,7 +27,7 @@ export async function generateMetadata({
         "ກວດເບິ່ງສະຖານະການບິນຂາເຂົ້າ, ສາຍພານກະເປົາ ແລະ ເວລາມາຮອດຕາມກຳນົດ ທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ.",
     },
     zh: {
-      title: "到达 | 博胶国际机场",
+      title: "到达航班 | 博胶国际机场",
       description:
         "查看到达航班状态、行李提取传送带信息以及计划到达时间（博胶国际机场）。",
     },

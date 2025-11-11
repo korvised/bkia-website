@@ -14,11 +14,12 @@ export async function generateMetadata({
   params,
 }: FlightPageProps): Promise<Metadata> {
   const { lang } = await params;
+
   const metadata = {
     en: {
-      title: "Departures | Bokeo International Airport",
+      title: "Departures Flights | Bokeo International Airport",
       description:
-        "Check departing flights status, gate info, and scheduled departure times at Bokeo International Airport.",
+        "Check departing flights status, gate information, and scheduled departure times at Bokeo International Airport.",
     },
     lo: {
       title: "ຂາອອກ | ສະໜາມບິນສາກົນບໍ່ແກ້ວ",
@@ -26,9 +27,9 @@ export async function generateMetadata({
         "ກວດເບິ່ງສະຖານະການບິນຂາອອກ, ປະຕູຂຶ້ນເຄື່ອງ ແລະ ເວລາອອກຕາມກຳນົດ ທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ.",
     },
     zh: {
-      title: "出发 | 博胶国际机场",
+      title: "出发航班 | 博胶国际机场",
       description:
-        "查看出发航班状态、登机口信息和计划起飞时间（博胶国际机场）。",
+        "查看出发航班状态、登机口信息及计划起飞时间（博胶国际机场）。",
     },
   } as const;
 
