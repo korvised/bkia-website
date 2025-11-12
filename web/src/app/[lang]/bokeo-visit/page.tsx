@@ -8,11 +8,6 @@ import {
   Star,
 } from "lucide-react";
 import Image from "next/image";
-// import { Lang } from "@/types/language";
-
-/*interface BokeoVisitPageProps {
-  params: Promise<{ lang: Lang }>;
-}*/
 
 interface Attraction {
   id: string;
@@ -225,7 +220,7 @@ export default async function BokeoVisitPage() {
               About Bokeo Province
             </h2>
             <p className="mb-3 text-sm leading-relaxed text-gray-700 sm:text-base">
-              Bokeo, meaning "gem mine," is Laos' smallest province but offers
+              Bokeo, meaning &#34;gem mine,&#34; is Laos&#39; smallest province but offers
               some of its richest experiences. Located in the Golden Triangle
               where Laos, Myanmar, and Thailand converge, Bokeo is renowned for
               eco-tourism, wildlife conservation, and cultural diversity with
@@ -454,7 +449,7 @@ export default async function BokeoVisitPage() {
           Ready to Explore Bokeo?
         </h2>
         <p className="mx-auto mb-4 max-w-2xl text-base sm:mb-6 sm:text-lg">
-          Start your adventure in one of Laos' most captivating provinces. From
+          Start your adventure in one of Laos&#39; most captivating provinces. From
           jungle canopies to ancient temples, unforgettable experiences await.
         </p>
         <div className="flex flex-col flex-wrap justify-center gap-3 sm:flex-row sm:gap-4">

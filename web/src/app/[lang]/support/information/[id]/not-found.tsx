@@ -20,7 +20,7 @@ export default function InformationNotFound() {
       </h1>
 
       <p className="mb-8 max-w-md text-center text-gray-600">
-        The information you're looking for doesn't exist or may have been
+        The information you&#39;re looking for doesn&#39;t exist or may have been
         removed.
       </p>
 

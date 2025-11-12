@@ -9,9 +9,9 @@ import {
   Phone,
 } from "lucide-react";
 
-interface ParkingPageProps {
+/*interface ParkingPageProps {
   params: Promise<{ lang: string }>;
-}
+}*/
 
 const parkingRates = [
   { duration: "First hour", rate: "10,000 LAK" },
@@ -21,9 +21,7 @@ const parkingRates = [
   { duration: "Monthly rate", rate: "1,500,000 LAK" },
 ];
 
-export default async function ParkingPage({ params }: ParkingPageProps) {
-  const { lang } = await params;
-
+export default async function ParkingPage() {
   return (
     <div className="space-y-6">
       {/* Page Title */}
@@ -286,7 +284,7 @@ export default async function ParkingPage({ params }: ParkingPageProps) {
           <li className="flex items-start gap-2">
             <span className="text-primary-600 mt-1">✓</span>
             <span>
-              Keep your parking ticket safe - you'll need it to exit and pay
+              Keep your parking ticket safe - you&#39;ll need it to exit and pay
             </span>
           </li>
           <li className="flex items-start gap-2">

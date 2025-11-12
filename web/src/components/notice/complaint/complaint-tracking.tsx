@@ -8,6 +8,34 @@ import { useLanguage } from "@/context";
 import { complaintStatuses } from "@/data/notice/complaints";
 import { complaintTranslations } from "@/data/translations/complaint";
 
+/** Domain types */
+type ComplaintStatus = "submitted" | "under-review" | "resolved" | "closed";
+type ComplaintPriority = "low" | "medium" | "high";
+
+interface ComplaintTimelineItem {
+  status: ComplaintStatus;
+  date: string; // ISO or display string from API
+  description: string;
+}
+
+interface Complaint {
+  referenceNumber: string;
+  category: string; // could be a union if you have a fixed set
+  subject: string;
+  status: ComplaintStatus;
+  priority: ComplaintPriority;
+  submittedDate: string; // ISO string from API
+  lastUpdated: string; // ISO string from API
+  estimatedResolution: string; // ISO string from API
+  timeline: ComplaintTimelineItem[];
+}
+
+interface ComplaintStatusMeta {
+  id: ComplaintStatus;
+  label: string; // translation key
+  color: string; // tailwind classes like "bg-... text-..."
+}
+
 interface ComplaintTrackingProps {
   lang: Lang;
 }
@@ -15,10 +43,14 @@ interface ComplaintTrackingProps {
 export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
   const { t } = useLanguage();
   const translations = complaintTranslations;
-  const [referenceNumber, setReferenceNumber] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
-  const [complaint, setComplaint] = useState<any>(null);
-  const [error, setError] = useState("");
+
+  const [referenceNumber, setReferenceNumber] = useState<string>("");
+  const [isSearching, setIsSearching] = useState<boolean>(false);
+  const [complaint, setComplaint] = useState<Complaint | null>(null);
+  const [error, setError] = useState<string>("");
+
+  // If your imported data is already typed, remove this cast.
+  const STATUS_META = complaintStatuses as unknown as ComplaintStatusMeta[];
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,9 +61,9 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    // Mock data - in production, this would fetch from API
+    // Mock data (replace with real API response)
     if (referenceNumber.toUpperCase().startsWith("COMP")) {
-      setComplaint({
+      const mock: Complaint = {
         referenceNumber,
         category: "service-quality",
         subject: "Long wait time at check-in counter",
@@ -57,7 +89,8 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
             description: "Investigation in progress",
           },
         ],
-      });
+      };
+      setComplaint(mock);
     } else {
       setError(t(translations.tracking.notFound));
     }
@@ -65,7 +98,7 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
     setIsSearching(false);
   };
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status: ComplaintStatus) => {
     switch (status) {
       case "submitted":
         return <Clock className="h-5 w-5 text-blue-500" />;
@@ -75,20 +108,25 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
         return <CheckCircle className="h-5 w-5 text-green-500" />;
       case "closed":
         return <XCircle className="h-5 w-5 text-gray-500" />;
-      default:
-        return <Clock className="h-5 w-5 text-gray-500" />;
     }
   };
 
-  const getStatusLabel = (status: string) => {
-    const statusObj = complaintStatuses.find((s) => s.id === status);
-    return statusObj ? t(statusObj.label) : status;
+  const getStatusLabel = (status: ComplaintStatus) => {
+    const s = STATUS_META.find((x) => x.id === status);
+    if (!s) return status;
+    const labelObj =
+      complaintTranslations.tracking.statusLabels[
+        s.label as keyof typeof complaintTranslations.tracking.statusLabels
+      ];
+    return labelObj ? t(labelObj) : status;
   };
 
-  const getStatusColor = (status: string) => {
-    const statusObj = complaintStatuses.find((s) => s.id === status);
+  const getStatusColor = (status: ComplaintStatus) => {
+    const statusObj = STATUS_META.find((s) => s.id === status);
     return statusObj ? statusObj.color : "bg-gray-100 text-gray-700";
   };
+
+  const locale = lang === "zh" ? "zh-CN" : lang === "lo" ? "lo-LA" : "en-US";
 
   return (
     <div className="space-y-6">
@@ -125,7 +163,7 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
                 )}
               >
                 {isSearching ? (
-                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
                 ) : (
                   <Search className="h-5 w-5" />
                 )}
@@ -175,9 +213,7 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
                   {t(translations.tracking.submitted)}
                 </p>
                 <p className="font-medium text-gray-900">
-                  {new Date(complaint.submittedDate).toLocaleDateString(
-                    lang === "zh" ? "zh-CN" : lang === "lo" ? "lo-LA" : "en-US",
-                  )}
+                  {new Date(complaint.submittedDate).toLocaleDateString(locale)}
                 </p>
               </div>
               <div>
@@ -185,9 +221,7 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
                   {t(translations.tracking.lastUpdated)}
                 </p>
                 <p className="font-medium text-gray-900">
-                  {new Date(complaint.lastUpdated).toLocaleDateString(
-                    lang === "zh" ? "zh-CN" : lang === "lo" ? "lo-LA" : "en-US",
-                  )}
+                  {new Date(complaint.lastUpdated).toLocaleDateString(locale)}
                 </p>
               </div>
               <div>
@@ -196,7 +230,7 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
                 </p>
                 <p className="font-medium text-gray-900">
                   {new Date(complaint.estimatedResolution).toLocaleDateString(
-                    lang === "zh" ? "zh-CN" : lang === "lo" ? "lo-LA" : "en-US",
+                    locale,
                   )}
                 </p>
               </div>
@@ -210,14 +244,14 @@ export function ComplaintTracking({ lang }: ComplaintTrackingProps) {
             </h3>
 
             <div className="space-y-4">
-              {complaint.timeline.map((item: any, index: number) => (
+              {complaint.timeline.map((item, index) => (
                 <div key={index} className="flex gap-4">
                   <div className="flex flex-col items-center">
                     <div className="bg-primary-100 rounded-full p-2">
                       {getStatusIcon(item.status)}
                     </div>
                     {index < complaint.timeline.length - 1 && (
-                      <div className="my-2 h-full w-0.5 bg-gray-200"></div>
+                      <div className="my-2 h-full w-0.5 bg-gray-200" />
                     )}
                   </div>
                   <div className="flex-1 pb-6">

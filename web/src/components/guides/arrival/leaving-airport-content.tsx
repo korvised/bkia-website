@@ -28,10 +28,10 @@ export function LeavingAirportContent() {
           <div className="space-y-6 text-sm sm:text-base">
             <div>
               <p className="mb-4 text-gray-700">
-                Welcome to Laos! After completing all arrival procedures, you'll
-                exit into the main arrivals hall where various transportation
-                options and services are available to help you reach your final
-                destination.
+                Welcome to Laos! After completing all arrival procedures,
+                you&#39;ll exit into the main arrivals hall where various
+                transportation options and services are available to help you
+                reach your final destination.
               </p>
             </div>
 

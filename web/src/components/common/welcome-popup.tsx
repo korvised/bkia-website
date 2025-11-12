@@ -19,6 +19,7 @@ import { cn } from "@/utils/cn";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-fade";
+import Image from "next/image";
 
 export function WelcomePopup() {
   const { isOpen, images, canClose, isLoading, handleClose, trackClick } =
@@ -152,10 +153,12 @@ export function WelcomePopup() {
                   {images.map((image, index) => (
                     <SwiperSlide key={image.id || index}>
                       <div className="relative h-full w-full">
-                        <img
+                        <Image
                           src={image.imageUrl}
                           alt={image.title}
+                          fill
                           className="h-full w-full object-cover"
+                          priority
                         />
 
                         {/* Overlay */}

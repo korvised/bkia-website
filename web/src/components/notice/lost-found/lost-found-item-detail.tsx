@@ -304,7 +304,7 @@ export function LostFoundItemDetail({ lang, item }: LostFoundItemDetailProps) {
                   <div>
                     <p className="font-medium">Submit Online Claim Form</p>
                     <p className="text-gray-600">
-                      Click the "Claim This Item" button above to fill out the
+                      Click the &#34;Claim This Item&#34; button above to fill out the
                       claim form with your details.
                     </p>
                   </div>

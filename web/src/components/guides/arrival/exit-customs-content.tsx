@@ -1,4 +1,4 @@
-import { ClipboardCheck, AlertCircle, UserCheck } from "lucide-react";
+import { AlertCircle, ClipboardCheck } from "lucide-react";
 
 export function ExitCustomsContent() {
   return (
@@ -152,8 +152,8 @@ export function ExitCustomsContent() {
                 <li>• Travel ban: Entry refusal for future visits</li>
               </ul>
               <p className="mt-3 text-xs font-medium text-red-800">
-                ⚖️ When in doubt, use the Red Channel and declare. It's always
-                better to declare and pay duty than face penalties.
+                ⚖️ When in doubt, use the Red Channel and declare. It&#39;s
+                always better to declare and pay duty than face penalties.
               </p>
             </div>
 
@@ -163,8 +163,8 @@ export function ExitCustomsContent() {
               </h3>
               <div className="rounded-lg bg-blue-50 p-4">
                 <p className="mb-2 text-sm text-gray-800">
-                  Once you clear customs, you've officially entered Lao PDR!
-                  You'll exit into the arrivals hall where you can:
+                  Once you clear customs, you&#39;ve officially entered Lao PDR!
+                  You&#39;ll exit into the arrivals hall where you can:
                 </p>
                 <ul className="ml-4 space-y-1 text-sm text-gray-700">
                   <li>• Meet greeters and hotel representatives</li>

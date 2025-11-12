@@ -5,7 +5,7 @@ import { LuMoveRight } from "react-icons/lu";
 import { cn } from "@/utils/cn";
 import { createFlightI18n } from "@/data/i18n/flights";
 import { asset } from "@/utils/asset";
-import { formatDate, formatTime } from "@/utils/date";
+import { formatTime } from "@/utils/date";
 import {
   getBorderColor,
   getFlightDisplayStatus,

@@ -1,4 +1,4 @@
-import { Luggage, AlertCircle, Clock, Search, UserCheck } from "lucide-react";
+import { AlertCircle, Clock, Luggage, Search } from "lucide-react";
 
 export function BaggageClaimContent() {
   return (
@@ -109,8 +109,8 @@ export function BaggageClaimContent() {
                   </h4>
                   <ul className="space-y-2 text-sm text-yellow-800">
                     <li>
-                      • Keep your baggage claim tag (from check-in) until you've
-                      collected all luggage
+                      • Keep your baggage claim tag (from check-in) until
+                      you&#39;ve collected all luggage
                     </li>
                     <li>
                       • Watch your belongings - never leave bags unattended
@@ -141,7 +141,7 @@ export function BaggageClaimContent() {
                     </h4>
                   </div>
                   <p className="mb-3 text-sm text-red-800">
-                    If your luggage doesn't arrive:
+                    If your luggage doesn&#39;t arrive:
                   </p>
                   <ul className="space-y-2 text-sm text-red-800">
                     <li>• Wait until carousel stops completely</li>
@@ -214,7 +214,7 @@ export function BaggageClaimContent() {
               <p>Phone: +856-84-211-XXX</p>
               <p>Email: baggage@bokeoairport.la</p>
               <p>
-                For airline-specific issues, contact your airline's customer
+                For airline-specific issues, contact your airline&#39;s customer
                 service directly
               </p>
             </div>

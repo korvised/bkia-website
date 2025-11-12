@@ -73,7 +73,7 @@ export default async function ImportantNoticesPage({
       {/* Category (priority) filter */}
       <ImportantCategoryFilter
         lang={lang as Lang}
-        selectedPriority={(priority as any) || "all"}
+        selectedPriority={(priority as never) || "all"}
       />
 
       {/* List */}

@@ -43,7 +43,7 @@ const dict = {
 } as const;
 
 function createT(lang: Lang): T {
-  const l = (["en", "lo", "zh"] as const).includes(lang as any) ? lang : "en";
+  const l = (["en", "lo", "zh"] as const).includes(lang as never) ? lang : "en";
   return (k) => dict[l].tabs[k];
 }
 

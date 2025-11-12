@@ -260,8 +260,8 @@ export default function CareersPage() {
             Join Our Team
           </h1>
           <p className="text-sm opacity-90 sm:text-base">
-            Build your aviation career at Northern Laos' premier international
-            airport
+            Build your aviation career at Northern Laos&#39; premier
+            international airport
           </p>
         </div>
       </div>
@@ -505,7 +505,7 @@ export default function CareersPage() {
             Ready to Take Off?
           </h2>
           <p className="mb-6 text-sm opacity-90 sm:text-base">
-            Don't see the right position? Submit your resume for future
+            Don&#39;t see the right position? Submit your resume for future
             opportunities
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">

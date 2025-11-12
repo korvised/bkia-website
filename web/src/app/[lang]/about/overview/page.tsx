@@ -2,17 +2,15 @@
 
 import { useState } from "react";
 import {
-  Plane,
-  Users,
-  Package,
-  MapPin,
   Building2,
+  ChevronRight,
   Gauge,
   Globe2,
+  MapPin,
+  Package,
+  Plane,
   TrendingUp,
-  ChevronRight,
-  Download,
-  FileText,
+  Users,
 } from "lucide-react";
 
 type Year = "2024" | "2023" | "2022";
@@ -140,7 +138,7 @@ export default function SurveyPage() {
             Airport Overview
           </h1>
           <p className="text-sm opacity-90 sm:text-base">
-            Northern Laos' premier international gateway
+            Northern Laos&#39; premier international gateway
           </p>
         </div>
       </div>
@@ -171,15 +169,12 @@ export default function SurveyPage() {
             </p>
             <p>
               In 2024, the airport achieved a milestone of serving over{" "}
-              <strong className="text-gray-900">
-                1.2 million passengers
-              </strong>
-              , establishing itself as a key aviation hub in northern Laos
-              with connections to major cities across Southeast Asia.
+              <strong className="text-gray-900">1.2 million passengers</strong>,
+              establishing itself as a key aviation hub in northern Laos with
+              connections to major cities across Southeast Asia.
             </p>
           </div>
         </div>
-
       </div>
 
       {/* Infrastructure */}
@@ -241,8 +236,8 @@ export default function SurveyPage() {
                 Domestic Routes
               </h3>
               <span className="rounded-full bg-blue-600 px-2.5 py-1 text-xs font-bold text-white">
-                  {routeStats.domestic.count}
-                </span>
+                {routeStats.domestic.count}
+              </span>
             </div>
             <ul className="space-y-1.5">
               {routeStats.domestic.destinations.map((dest, idx) => (
@@ -264,8 +259,8 @@ export default function SurveyPage() {
                 International Routes
               </h3>
               <span className="rounded-full bg-emerald-600 px-2.5 py-1 text-xs font-bold text-white">
-                  {routeStats.international.count}
-                </span>
+                {routeStats.international.count}
+              </span>
             </div>
             <ul className="space-y-1.5">
               {routeStats.international.destinations.map((dest, idx) => (
@@ -287,8 +282,8 @@ export default function SurveyPage() {
                 Operating Airlines
               </h3>
               <span className="rounded-full bg-purple-600 px-2.5 py-1 text-xs font-bold text-white">
-                  {routeStats.airlines.count}
-                </span>
+                {routeStats.airlines.count}
+              </span>
             </div>
             <ul className="space-y-1.5">
               {routeStats.airlines.carriers.map((airline, idx) => (
@@ -347,12 +342,12 @@ export default function SurveyPage() {
             </h3>
 
             <div className="mb-1 flex items-baseline gap-1.5">
-                <span className="text-3xl font-bold text-gray-900">
-                  {yearlyData[selectedYear].passengers}
-                </span>
+              <span className="text-3xl font-bold text-gray-900">
+                {yearlyData[selectedYear].passengers}
+              </span>
               <span className="text-sm text-gray-600">
-                  {yearlyData[selectedYear].passengersUnit}
-                </span>
+                {yearlyData[selectedYear].passengersUnit}
+              </span>
             </div>
 
             <a
@@ -377,12 +372,12 @@ export default function SurveyPage() {
             </h3>
 
             <div className="mb-1 flex items-baseline gap-1.5">
-                <span className="text-3xl font-bold text-gray-900">
-                  {yearlyData[selectedYear].flights}
-                </span>
+              <span className="text-3xl font-bold text-gray-900">
+                {yearlyData[selectedYear].flights}
+              </span>
               <span className="text-sm text-gray-600">
-                  {yearlyData[selectedYear].flightsUnit}
-                </span>
+                {yearlyData[selectedYear].flightsUnit}
+              </span>
             </div>
 
             <a
@@ -407,12 +402,12 @@ export default function SurveyPage() {
             </h3>
 
             <div className="mb-1 flex items-baseline gap-1.5">
-                <span className="text-3xl font-bold text-gray-900">
-                  {yearlyData[selectedYear].cargo}
-                </span>
+              <span className="text-3xl font-bold text-gray-900">
+                {yearlyData[selectedYear].cargo}
+              </span>
               <span className="text-sm text-gray-600">
-                  {yearlyData[selectedYear].cargoUnit}
-                </span>
+                {yearlyData[selectedYear].cargoUnit}
+              </span>
             </div>
 
             <a
@@ -443,17 +438,13 @@ export default function SurveyPage() {
           </div>
 
           <div className="rounded-lg border-2 border-gray-200 bg-gradient-to-br from-emerald-50 to-white p-4 text-center">
-            <div className="mb-2 text-3xl font-bold text-[#00AAAC]">
-              $120M
-            </div>
+            <div className="mb-2 text-3xl font-bold text-[#00AAAC]">$120M</div>
             <p className="text-sm font-medium text-gray-700">Investment</p>
             <p className="text-xs text-gray-600">Phase I development</p>
           </div>
 
           <div className="rounded-lg border-2 border-gray-200 bg-gradient-to-br from-purple-50 to-white p-4 text-center">
-            <div className="mb-2 text-3xl font-bold text-[#00AAAC]">
-              450ha
-            </div>
+            <div className="mb-2 text-3xl font-bold text-[#00AAAC]">450ha</div>
             <p className="text-sm font-medium text-gray-700">Total Area</p>
             <p className="text-xs text-gray-600">Airport campus</p>
           </div>

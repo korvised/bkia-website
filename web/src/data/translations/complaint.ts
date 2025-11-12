@@ -270,6 +270,12 @@ export const complaintTranslations = {
       lo: "ຕ້ອງການຂໍ້ມູນເພີ່ມເຕີມບໍ? ຕິດຕໍ່ທີມບໍລິການລູກຄ້າຂອງພວກເຮົາທີ່ +856-84-211-2000 ຫຼື complaints@bokeoairport.la",
       zh: "需要更多信息？请联系我们的客户服务团队，电话：+856-84-211-2000 或邮箱：complaints@bokeoairport.la",
     },
+    statusLabels: {
+      submitted: { en: "Submitted", lo: "ຍື່ນແລ້ວ", zh: "已提交" },
+      "under-review": { en: "Under Review", lo: "ກຳລັງກວດສອບ", zh: "审核中" },
+      resolved: { en: "Resolved", lo: "ແກ້ໄຂແລ້ວ", zh: "已解决" },
+      closed: { en: "Closed", lo: "ປິດເຄສ", zh: "已关闭" },
+    }
   },
 
   faq: {

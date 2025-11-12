@@ -232,7 +232,7 @@ export function ClaimFoundItemForm({ lang }: ClaimFoundItemFormProps) {
                 <option value="">Select ID type</option>
                 <option value="passport">Passport</option>
                 <option value="national-id">National ID</option>
-                <option value="drivers-license">Driver's License</option>
+                <option value="drivers-license">Driver&#39;s License</option>
                 <option value="other">Other Government ID</option>
               </select>
             </div>

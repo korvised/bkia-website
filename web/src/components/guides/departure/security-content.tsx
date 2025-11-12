@@ -267,7 +267,7 @@ export function SecurityContent() {
               </h3>
               <div className="rounded-lg border border-gray-200 bg-white p-4">
                 <p className="mb-3 text-sm text-gray-700">
-                  Once you clear security, you'll enter the departure lounge
+                  Once you clear security, you&#39;ll enter the departure lounge
                   where you can:
                 </p>
                 <ul className="space-y-2 text-sm text-gray-700">

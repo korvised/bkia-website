@@ -192,7 +192,7 @@ export default async function TransferGuidePage() {
                 </div>
                 <div className="bg-primary-50 border-primary-200 rounded-lg border p-3 sm:p-4">
                   <h4 className="mb-2 text-xs font-semibold text-gray-900 sm:text-sm">
-                    You'll Receive:
+                    You&#39;ll Receive:
                   </h4>
                   <ul className="space-y-1 text-xs text-gray-700 sm:text-sm">
                     <li>✓ New boarding pass</li>
@@ -295,7 +295,7 @@ export default async function TransferGuidePage() {
                 <p className="leading-relaxed">
                   If your baggage is checked through to your final destination,
                   inform the transfer counter staff. They will coordinate the
-                  transfer for you – you don't need to collect your bags.
+                  transfer for you – you don&#39;t need to collect your bags.
                 </p>
               </div>
               <div>

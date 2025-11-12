@@ -18,7 +18,7 @@ export default function LostFoundItemNotFound() {
       <h1 className="mb-2 text-3xl font-bold text-gray-900">Item Not Found</h1>
 
       <p className="mb-8 max-w-md text-center text-gray-600">
-        The item you're looking for doesn't exist, may have been claimed, or has
+        The item you&#39;re looking for doesn&#39;t exist, may have been claimed, or has
         been removed from our system.
       </p>
 

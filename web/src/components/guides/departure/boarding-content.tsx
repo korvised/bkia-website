@@ -327,9 +327,9 @@ export function BoardingContent() {
             <div className="rounded bg-gray-50 p-3 text-xs text-gray-600">
               <p className="mb-1 font-medium">Need Assistance?</p>
               <p>
-                Cabin crew are here to help. Don't hesitate to press the call
-                button for assistance, questions, or emergencies. We wish you a
-                safe and pleasant flight from Bokeo International Airport!
+                Cabin crew are here to help. Don&#39;t hesitate to press the
+                call button for assistance, questions, or emergencies. We wish
+                you a safe and pleasant flight from Bokeo International Airport!
               </p>
             </div>
           </div>

@@ -4,25 +4,60 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor files">
-      <change afterPath="$PROJECT_DIR$/web/src/data/flights/flight-display-status.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/flights/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/lib/flights/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/lib/flights/status-display.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/lib/flights/status-style.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor flights status">
+      <change afterPath="$PROJECT_DIR$/web/src/lib/homepage/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/lib/layout/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/lib/layout/search-dialog.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/flight/dtos/query-flight.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/flight/dtos/query-flight.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/flight/flight.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/flight/flight.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/common/feature-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/feature-layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-schedule-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-schedule-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/web/eslint.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/web/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/about/overview/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/about/overview/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/bokeo-visit/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/bokeo-visit/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/careers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/careers/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/facilities/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/facilities/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/transfer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/transfer/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/news/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/news/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/support/important/[id]/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/important/[id]/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/support/important/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/important/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/support/information/[id]/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/information/[id]/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/support/lost-found/[id]/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/lost-found/[id]/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/complaint/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/complaint/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/important/[id]/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/important/[id]/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/important/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/important/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/information/[id]/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/support/notices/information/[id]/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transports/parking/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/transports/parking/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/api/weather/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/welcome-popup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/welcome-popup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/airline-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/airline-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/flights/date-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/date-picker.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-schedule-table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-schedule-table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/flights/flight-type-badge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/flights/flight-type-badge.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/services/flights.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/services/flights.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/types/flight.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/types/flight.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/utils/flight.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/airport-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/baggage-claim-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/baggage-claim-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/border-inspection-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/border-inspection-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/exit-customs-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/exit-customs-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/leaving-airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/leaving-airport-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/boarding-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/boarding-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/border-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/border-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/checkin-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/checkin-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/tab-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/weather-widget.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/weather-widget.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/common/notice-search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/common/notice-search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/complaint/complaint-faq.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/complaint/complaint-faq.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/complaint/complaint-tracking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/complaint/complaint-tracking.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/complaint/complaint-workflow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/complaint/complaint-workflow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/lost-found/claim-found-item-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/claim-found-item-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/lost-found/lost-found-item-detail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/lost-found-item-detail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/notice/lost-found/lost-found-search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/notice/lost-found/lost-found-search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/ui/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/context/app-context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/context/app-context.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/translations/complaint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/translations/complaint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/hooks/use-serach-dialog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/hooks/use-serach-dialog.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/hooks/use-weather.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/hooks/use-weather.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/hooks/use-welcome-popup.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/hooks/use-welcome-popup.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/lib/get-weather-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/homepage/get-weather-icon.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,14 +131,14 @@
       <recent name="D:\projects\bkia-website\web\src\components\common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\src\lib\homepage" />
       <recent name="D:\projects\bkia-website\web\src\lib\flights" />
       <recent name="D:\projects\bkia-website\server\mock" />
       <recent name="D:\projects\bkia-website\server\src\utils" />
       <recent name="D:\projects\bkia-website\web\src\utils" />
-      <recent name="D:\projects\bkia-website\web\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web">
+  <component name="RunManager" selected="npm.server">
     <configuration name="server" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/server/package.json" />
       <command value="run" />
@@ -130,8 +165,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.web" />
         <item itemvalue="npm.server" />
+        <item itemvalue="npm.web" />
       </list>
     </recent_temporary>
   </component>
@@ -190,15 +225,8 @@
       <workItem from="1762738752311" duration="7670000" />
       <workItem from="1762758493441" duration="7746000" />
       <workItem from="1762826193394" duration="23045000" />
-      <workItem from="1762911732823" duration="6289000" />
-    </task>
-    <task id="LOCAL-00006" summary="refactor notice &amp; announcement pages">
-      <option name="closed" value="true" />
-      <created>1759392559636</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1759392559636</updated>
+      <workItem from="1762911732823" duration="7960000" />
+      <workItem from="1762928081136" duration="5572000" />
     </task>
     <task id="LOCAL-00007" summary="deploy demo in ecs">
       <option name="closed" value="true" />
@@ -584,14 +612,21 @@
       <option name="project" value="LOCAL" />
       <updated>1762855010730</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="refactor flights status">
+      <option name="closed" value="true" />
+      <created>1762918135874</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1762918135874</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor homepage" />
     <MESSAGE value="refactor homepage hero session &amp; flight search" />
     <MESSAGE value="refactor flight page" />
     <MESSAGE value="adjust with container class" />
@@ -616,6 +651,7 @@
     <MESSAGE value="backup db" />
     <MESSAGE value="add test docker-compose.yml" />
     <MESSAGE value="refactor files" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor files" />
+    <MESSAGE value="refactor flights status" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor flights status" />
   </component>
 </project>

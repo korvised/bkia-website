@@ -20,7 +20,7 @@ export default function NoticeNotFound() {
       </h1>
 
       <p className="mb-8 max-w-md text-center text-gray-600">
-        The notice you're looking for doesn't exist or may have been removed.
+        The notice you&#39;re looking for doesn&#39;t exist or may have been removed.
       </p>
 
       <Link

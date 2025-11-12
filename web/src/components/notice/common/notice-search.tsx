@@ -67,7 +67,7 @@ export function NoticeSearch({ lang, resultsCount }: NoticeSearchProps) {
         <div className="flex items-center justify-between rounded-lg bg-gray-50 px-4 py-3">
           <p className="text-sm text-gray-600">
             Found <span className="font-semibold">{resultsCount}</span> result
-            {resultsCount !== 1 ? "s" : ""} for "{searchQuery}"
+            {resultsCount !== 1 ? "s" : ""} for &#34;{searchQuery}&#34;
           </p>
           <button
             onClick={handleClear}

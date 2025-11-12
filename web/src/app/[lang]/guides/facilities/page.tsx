@@ -383,7 +383,7 @@ export default async function AirportFacilitiesPage() {
         </h3>
         <p className="mb-3 text-sm text-gray-700 sm:mb-4 sm:text-base">
           Our friendly staff at the Information Desk are available to assist you
-          with any questions or concerns. We're here to make your airport
+          with any questions or concerns. We&#39;re here to make your airport
           experience as smooth and pleasant as possible.
         </p>
         <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">

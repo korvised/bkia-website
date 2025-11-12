@@ -1,16 +1,11 @@
 "use client";
 
 import { CheckCircle } from "lucide-react";
-import { Lang } from "@/types/language";
 import { useLanguage } from "@/context";
 import { complaintWorkflow } from "@/data/notice/complaints";
 import { complaintTranslations } from "@/data/translations/complaint";
 
-interface ComplaintWorkflowProps {
-  lang: Lang;
-}
-
-export function ComplaintWorkflow({ lang }: ComplaintWorkflowProps) {
+export function ComplaintWorkflow() {
   const { t } = useLanguage();
   const translations = complaintTranslations;
 

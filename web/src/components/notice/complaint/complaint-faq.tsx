@@ -2,17 +2,16 @@
 
 import { useState } from "react";
 import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
-import { Lang } from "@/types/language";
 import { useLanguage } from "@/context";
 import { complaintFAQs } from "@/data/notice/complaints";
 import { cn } from "@/utils/cn";
 import { complaintTranslations } from "@/data/translations/complaint";
 
-interface ComplaintFAQProps {
+/*interface ComplaintFAQProps {
   lang: Lang;
-}
+}*/
 
-export function ComplaintFAQ({ lang }: ComplaintFAQProps) {
+export function ComplaintFAQ() {
   const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 

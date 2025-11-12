@@ -3,15 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import {
+  Award,
   Calendar,
-  Search,
+  ChevronRight,
   Download,
   ExternalLink,
-  ChevronRight,
   FileText,
-  Image as ImageIcon,
-  Video,
-  Award,
+  Search,
 } from "lucide-react";
 
 export default function NewsPage() {
@@ -153,37 +151,6 @@ export default function NewsPage() {
     },
   ];
 
-  const mediaKit = [
-    {
-      title: "Official Logo Pack",
-      description: "High-resolution logos in various formats",
-      type: "ZIP",
-      size: "15.2 MB",
-      icon: ImageIcon,
-    },
-    {
-      title: "Fact Sheet 2025",
-      description: "Key statistics and facilities information",
-      type: "PDF",
-      size: "2.8 MB",
-      icon: FileText,
-    },
-    {
-      title: "Photos Library",
-      description: "Professional photography for media use",
-      type: "ZIP",
-      size: "125 MB",
-      icon: ImageIcon,
-    },
-    {
-      title: "Video Package",
-      description: "Promotional videos and B-roll footage",
-      type: "ZIP",
-      size: "850 MB",
-      icon: Video,
-    },
-  ];
-
   const filteredNews = newsItems.filter((item) => {
     const matchesCategory =
       selectedCategory === "all" || item.category === selectedCategory;
@@ -256,8 +223,8 @@ export default function NewsPage() {
               <span
                 className={`rounded-full px-1.5 py-0.5 text-xs ${selectedCategory === cat.id ? "bg-white/20" : "bg-gray-100"}`}
               >
-                  {cat.count}
-                </span>
+                {cat.count}
+              </span>
             </button>
           ))}
         </div>
@@ -289,11 +256,11 @@ export default function NewsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <div className="absolute bottom-2 left-2 z-10">
-                      <span
-                        className={`inline-block rounded px-2 py-0.5 text-xs font-semibold ${getCategoryColor(item.category)}`}
-                      >
-                        {categories.find((c) => c.id === item.category)?.name}
-                      </span>
+                    <span
+                      className={`inline-block rounded px-2 py-0.5 text-xs font-semibold ${getCategoryColor(item.category)}`}
+                    >
+                      {categories.find((c) => c.id === item.category)?.name}
+                    </span>
                   </div>
                 </div>
                 <div className="p-4">
@@ -317,8 +284,8 @@ export default function NewsPage() {
                         key={i}
                         className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600"
                       >
-                          {tag}
-                        </span>
+                        {tag}
+                      </span>
                     ))}
                   </div>
                   <button className="inline-flex items-center gap-1 text-sm font-semibold text-[#00AAAC] transition-all hover:gap-2">
@@ -361,11 +328,11 @@ export default function NewsPage() {
                   )}
                 </div>
                 <div className="p-4">
-                    <span
-                      className={`mb-1.5 inline-block rounded px-2 py-0.5 text-xs font-semibold ${getCategoryColor(item.category)}`}
-                    >
-                      {categories.find((c) => c.id === item.category)?.name}
-                    </span>
+                  <span
+                    className={`mb-1.5 inline-block rounded px-2 py-0.5 text-xs font-semibold ${getCategoryColor(item.category)}`}
+                  >
+                    {categories.find((c) => c.id === item.category)?.name}
+                  </span>
                   <div className="mb-2 flex items-center gap-1.5 text-xs text-gray-500">
                     <Calendar className="h-3 w-3" />
                     {new Date(item.date).toLocaleDateString("en-US", {

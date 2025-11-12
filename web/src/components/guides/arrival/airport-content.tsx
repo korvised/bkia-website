@@ -20,7 +20,7 @@ export function ArrivalAirportContent() {
           </div>
           <div className="mt-2 space-y-4 text-sm text-gray-700 sm:mt-0 sm:text-base">
             <p>
-              Welcome to Bokeo International Airport! If you're arriving on a
+              Welcome to Bokeo International Airport! If you&#39;re arriving on a
               flight with a stopover or transfer, please follow the passage
               directly to proceed to international arrivals. If your flight is
               non-stop to Bokeo, please follow signs to the international
@@ -55,7 +55,7 @@ export function ArrivalAirportContent() {
                   documents)
                 </li>
                 <li>
-                  Follow signs for "International Arrivals" (ມາເຖິງສາກົນ /
+                  Follow signs for &#34;International Arrivals&#34; (ມາເຖິງສາກົນ /
                   国际到达)
                 </li>
                 <li>

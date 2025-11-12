@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { OpenWeatherResponse } from "@/types/weather";
-import type { Lang } from "@/types/language";
 import { fetchWeather } from "@/services/weather";
 
 interface UseWeatherResult {
@@ -12,7 +11,7 @@ interface UseWeatherResult {
   refetch: () => Promise<void>;
 }
 
-export function useWeather(lang: Lang): UseWeatherResult {
+export function useWeather(): UseWeatherResult {
   const [weather, setWeather] = useState<OpenWeatherResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,7 +28,7 @@ export function useWeather(lang: Lang): UseWeatherResult {
     } finally {
       setLoading(false);
     }
-  }, [lang]);
+  }, []);
 
   useEffect(() => {
     fetch();
@@ -38,7 +37,7 @@ export function useWeather(lang: Lang): UseWeatherResult {
     const interval = setInterval(fetchWeather, 10 * 60 * 1000);
 
     return () => clearInterval(interval);
-  }, [fetchWeather]);
+  }, [fetch]);
 
   return { weather, loading, error, refetch: fetch };
 }

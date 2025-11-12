@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Fragment,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { Fragment, useCallback, useMemo, useRef, useState } from "react";
 import { DayPicker } from "react-day-picker";
 import { Calendar } from "lucide-react";
 import { enUS, zhCN } from "react-day-picker/locale";
@@ -30,17 +23,19 @@ interface DatePickerProps {
 
 export function DatePicker({ value, onChange, lang }: DatePickerProps) {
   const [showPicker, setShowPicker] = useState(false);
-  const [month, setMonth] = useState<Date>(new Date(value));
-  const [mounted, setMounted] = useState(false);
+  const [month, setMonth] = useState<Date>(
+    value ? new Date(value) : new Date(),
+  );
   const [positionAbove, setPositionAbove] = useState(false);
-
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const selectedDate = value ? new Date(value) : new Date();
+  const selectedDate = useMemo(
+    () => (value ? new Date(value) : new Date()),
+    [value],
+  );
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // No effect/state needed—this is safe to read at render time.
+  const isClient = typeof window !== "undefined";
 
   const getLocale = useCallback(() => {
     switch (lang) {
@@ -54,25 +49,24 @@ export function DatePicker({ value, onChange, lang }: DatePickerProps) {
   }, [lang]);
 
   const formattedDate = useMemo(
-    () => (mounted ? fmtDate(selectedDate, lang) : value),
-    [mounted, value, lang, selectedDate],
+    () => (isClient ? fmtDate(selectedDate, lang) : value),
+    [isClient, value, lang, selectedDate],
   );
 
   const handleToggleCalendar = () => {
-    if (!showPicker && buttonRef.current) {
-      // Calculate position before showing
+    if (!showPicker && buttonRef.current && typeof window !== "undefined") {
       const buttonRect = buttonRef.current.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
       const spaceBelow = viewportHeight - buttonRect.bottom;
       const spaceAbove = buttonRect.top;
 
-      // The position above if not enough space below but enough above
       setPositionAbove(
         spaceBelow < ESTIMATED_POPUP_HEIGHT &&
           spaceAbove > ESTIMATED_POPUP_HEIGHT,
       );
-      setMonth(new Date(value));
+
+      setMonth(value ? new Date(value) : new Date());
     }
 
     setShowPicker(!showPicker);
@@ -108,7 +102,7 @@ export function DatePicker({ value, onChange, lang }: DatePickerProps) {
             <DayPicker
               mode="single"
               locale={getLocale()}
-              selected={new Date(value)}
+              selected={selectedDate}
               month={month}
               onMonthChange={setMonth}
               onSelect={handleSelect}

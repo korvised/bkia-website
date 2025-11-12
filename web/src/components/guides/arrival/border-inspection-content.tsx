@@ -1,4 +1,4 @@
-import { UserCheck, FileText, AlertCircle, Clock, Package } from "lucide-react";
+import { AlertCircle, Clock, FileText, UserCheck } from "lucide-react";
 
 export function BorderInspectionContent() {
   return (
@@ -158,7 +158,8 @@ export function BorderInspectionContent() {
                     <strong>Q:</strong> How long will you stay in Laos?
                     <br />
                     <span className="text-xs text-gray-600">
-                      A: State your planned duration (e.g., "5 days," "2 weeks")
+                      A: State your planned duration (e.g., &#34;5 days,&#34;
+                      &#34;2 weeks&#34;)
                     </span>
                   </li>
                   <li>
@@ -189,8 +190,8 @@ export function BorderInspectionContent() {
                   </h4>
                   <ul className="space-y-2 text-sm text-yellow-800">
                     <li>
-                      • Keep the departure portion of your arrival card - you'll
-                      need it when leaving Laos
+                      • Keep the departure portion of your arrival card -
+                      you&#39;ll need it when leaving Laos
                     </li>
                     <li>
                       • Immigration will stamp your passport with entry date and

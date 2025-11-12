@@ -72,14 +72,14 @@ export default async function ComplaintPage({ params }: ComplaintPageProps) {
             <h2 className="mb-4 text-2xl font-bold text-gray-900">
               {t.sections.faq[lang as Lang]}
             </h2>
-            <ComplaintFAQ lang={lang as Lang} />
+            <ComplaintFAQ />
           </section>
         </div>
 
         {/* Right Column - Workflow and Contact (1/3 width) */}
         <div className="space-y-8">
           {/* Processing Workflow */}
-          <ComplaintWorkflow lang={lang as Lang} />
+          <ComplaintWorkflow />
 
           {/* Contact Information Card */}
           <div className="rounded-lg border border-gray-200 bg-white p-6">

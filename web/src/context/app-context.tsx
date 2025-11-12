@@ -3,6 +3,7 @@
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -50,9 +51,18 @@ export function AppProvider({
     return getLocalizedText(text, lang);
   };
 
-  const openSearch = () => setIsSearchOpen(true);
-  const closeSearch = () => setIsSearchOpen(false);
-  const toggleSearch = () => setIsSearchOpen((prev) => !prev);
+  const openSearch = useCallback(
+    () => setIsSearchOpen(true),
+    [setIsSearchOpen],
+  );
+  const closeSearch = useCallback(
+    () => setIsSearchOpen(false),
+    [setIsSearchOpen],
+  );
+  const toggleSearch = useCallback(
+    () => setIsSearchOpen((prev) => !prev),
+    [setIsSearchOpen],
+  );
 
   // Handle scroll events
   useEffect(() => {

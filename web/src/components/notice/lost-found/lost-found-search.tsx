@@ -2,13 +2,14 @@
 
 import { Search, X, Filter } from "lucide-react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
 import { Lang } from "@/types/language";
 import {
   lostFoundCategories,
   lostFoundStatuses,
   lostFoundTypes,
 } from "@/data/notice/lost-found";
+import { useMemo } from "react";
+import { cn } from "@/utils/cn";
 
 interface LostFoundSearchProps {
   lang: Lang;
@@ -27,19 +28,15 @@ export function LostFoundSearch({
 }: LostFoundSearchProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const queryParam = searchParams.get("query") || "";
 
-  const [searchQuery, setSearchQuery] = useState(queryParam);
-  const [category, setCategory] = useState(selectedCategory || "all");
-  const [status, setStatus] = useState(selectedStatus || "all");
-  const [type, setType] = useState(selectedType || "all");
-
-  useEffect(() => {
-    setSearchQuery(queryParam);
-    setCategory(selectedCategory || "all");
-    setStatus(selectedStatus || "all");
-    setType(selectedType || "all");
-  }, [queryParam, selectedCategory, selectedStatus, selectedType]);
+  // Derive current filters from URL (with prop fallbacks) — no local mirroring
+  const { query, category, status, type } = useMemo(() => {
+    const qp = searchParams.get("query") ?? "";
+    const cat = searchParams.get("category") ?? selectedCategory ?? "all";
+    const st = searchParams.get("status") ?? selectedStatus ?? "all";
+    const tp = searchParams.get("type") ?? selectedType ?? "all";
+    return { query: qp, category: cat, status: st, type: tp };
+  }, [searchParams, selectedCategory, selectedStatus, selectedType]);
 
   const updateURL = (params: {
     query: string;
@@ -78,36 +75,25 @@ export function LostFoundSearch({
     });
   };
 
-  const handleSearch = (value: string) => {
-    setSearchQuery(value);
+  // Handlers push updates to URL only (no setState)
+  const handleSearch = (value: string) =>
     updateURL({ query: value, category, status, type });
-  };
 
-  const handleCategoryChange = (value: string) => {
-    setCategory(value);
-    updateURL({ query: searchQuery, category: value, status, type });
-  };
+  const handleCategoryChange = (value: string) =>
+    updateURL({ query, category: value, status, type });
 
-  const handleStatusChange = (value: string) => {
-    setStatus(value);
-    updateURL({ query: searchQuery, category, status: value, type });
-  };
+  const handleStatusChange = (value: string) =>
+    updateURL({ query, category, status: value, type });
 
-  const handleTypeChange = (value: string) => {
-    setType(value);
-    updateURL({ query: searchQuery, category, status, type: value });
-  };
+  const handleTypeChange = (value: string) =>
+    updateURL({ query, category, status, type: value });
 
   const handleClear = () => {
-    setSearchQuery("");
-    setCategory("all");
-    setStatus("all");
-    setType("all");
     router.push(`/${lang}/notices/lost-found`, { scroll: false });
   };
 
   const hasActiveFilters =
-    searchQuery || category !== "all" || status !== "all" || type !== "all";
+    query !== "" || category !== "all" || status !== "all" || type !== "all";
 
   return (
     <div className="space-y-4">
@@ -115,12 +101,12 @@ export function LostFoundSearch({
         <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-400" />
         <input
           type="text"
-          value={searchQuery}
+          value={query}
           onChange={(e) => handleSearch(e.target.value)}
           placeholder="Search by item name, description, location, or reference number..."
           className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 py-3 pr-10 pl-10 text-sm focus:ring-2 focus:outline-none"
         />
-        {searchQuery && (
+        {query && (
           <button
             onClick={() => handleSearch("")}
             className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 hover:text-gray-600"
@@ -191,7 +177,9 @@ export function LostFoundSearch({
           </p>
           <button
             onClick={handleClear}
-            className="text-primary-600 hover:text-primary-700 text-sm font-medium"
+            className={cn(
+              "text-primary-600 hover:text-primary-700 text-sm font-medium",
+            )}
           >
             Clear filters
           </button>

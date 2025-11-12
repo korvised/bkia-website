@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { WelcomePopupConfig, WelcomePopupImage } from "@/types/welcome-popup";
 import {
   mockWelcomePopupData,
@@ -36,6 +36,14 @@ export function useWelcomePopup(
   const [isLoading, setIsLoading] = useState(true);
   const [closeDelay, setCloseDelay] = useState(2000);
 
+  const trackImpression = useCallback(() => {
+    if (images.length > 0 && images[currentIndex]) {
+      apiClient.welcome.trackImpression(images[currentIndex].id).catch(() => {
+        // Silently fail
+      });
+    }
+  }, [images, currentIndex]);
+
   useEffect(() => {
     const initializePopup = async () => {
       // Check if we should show the popup based on frequency
@@ -46,7 +54,7 @@ export function useWelcomePopup(
 
       try {
         // Try to fetch from API first, fallback to mock data
-        let config: WelcomePopupConfig = mockWelcomePopupData;
+        const config: WelcomePopupConfig = mockWelcomePopupData;
 
         /*        try {
           config = await apiClient.welcome.getWelcomePopup();
@@ -84,7 +92,7 @@ export function useWelcomePopup(
     };
 
     initializePopup();
-  }, [frequency]);
+  }, [frequency, trackImpression]);
 
   const shouldShowPopup = (freq: ShowFrequency): boolean => {
     const lastShown = localStorage.getItem(STORAGE_KEY);
@@ -125,14 +133,6 @@ export function useWelcomePopup(
       case "once":
         localStorage.setItem(STORAGE_KEY, now.toISOString());
         break;
-    }
-  };
-
-  const trackImpression = () => {
-    if (images.length > 0 && images[currentIndex]) {
-      apiClient.welcome.trackImpression(images[currentIndex].id).catch(() => {
-        // Silently fail
-      });
     }
   };
 

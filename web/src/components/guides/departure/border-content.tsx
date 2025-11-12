@@ -112,7 +112,7 @@ export function BorderContent() {
                       <span>•</span>
                       <span>
                         Keep the arrival portion of your immigration card with
-                        your passport - you'll need to surrender it upon
+                        your passport - you&#39;ll need to surrender it upon
                         departure.
                       </span>
                     </li>
@@ -168,9 +168,9 @@ export function BorderContent() {
                   </li>
                 </ul>
                 <p className="mt-3 text-sm text-red-800">
-                  If you realize you've overstayed, visit the Immigration Office
-                  in Ban Houayxay before attempting to depart to settle fines
-                  and obtain proper documentation.
+                  If you realize you&#39;ve overstayed, visit the Immigration
+                  Office in Ban Houayxay before attempting to depart to settle
+                  fines and obtain proper documentation.
                 </p>
               </div>
             </div>

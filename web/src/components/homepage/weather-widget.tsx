@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { WiCloudy } from "react-icons/wi";
 import { Clock } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { fmtTime } from "@/lib";
 import { useWeather } from "@/hooks/use-weather";
-import { getWeatherIcon, getWeatherIconColor } from "@/lib/get-weather-icon";
+import {
+  getWeatherIconColor,
+  getWeatherIconElement,
+} from "@/lib/homepage/get-weather-icon";
 import type { Lang } from "@/types/language";
 import { createHomepageI18n } from "@/data/i18n/homepage";
 import { getWeatherDescription } from "@/data/weather-description";
@@ -17,7 +20,7 @@ interface WeatherWidgetProps {
 }
 
 export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
-  const { weather, loading, error } = useWeather(lang);
+  const { weather, loading, error } = useWeather();
   const [currentTime, setCurrentTime] = useState<string>("");
   const { weather: t } = createHomepageI18n(lang);
 
@@ -34,6 +37,22 @@ export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
 
     return () => clearInterval(interval);
   }, [lang]);
+
+  const { iconEl, temperature, feelsLike, localizedDescription } =
+    useMemo(() => {
+      const weatherIcon = weather?.weather?.[0]?.icon || "01d";
+      const iconColorClass = getWeatherIconColor(weatherIcon);
+      const iconEl = getWeatherIconElement(
+        weatherIcon,
+        cn("h-10 w-10", iconColorClass),
+      );
+
+      const temperature = Math.round(weather?.main?.temp ?? 0);
+      const feelsLike = Math.round(weather?.main?.feels_like ?? 0);
+      const localizedDescription = getWeatherDescription(weatherIcon, lang);
+
+      return { iconEl, temperature, feelsLike, localizedDescription };
+    }, [weather, lang]);
 
   // Skeleton loading state
   if (loading) {
@@ -87,14 +106,6 @@ export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
   }
 
   // Get weather data
-  const weatherIcon = weather.weather[0]?.icon || "01d";
-  const WeatherIconComponent = getWeatherIcon(weatherIcon);
-  const iconColorClass = getWeatherIconColor(weatherIcon);
-  const temperature = Math.round(weather.main.temp);
-  const feelsLike = Math.round(weather.main.feels_like);
-
-  // Use our own localized description
-  const localizedDescription = getWeatherDescription(weatherIcon, lang);
 
   return (
     <div
@@ -107,7 +118,7 @@ export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
       <div className="flex items-center gap-3">
         {/* Weather Icon - Colorful and bigger */}
         <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/80">
-          <WeatherIconComponent className={cn("h-10 w-10", iconColorClass)} />
+          {iconEl}
         </div>
 
         {/* Temperature and Time */}
