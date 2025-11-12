@@ -33,7 +33,7 @@ export function listFlights(query: QueryFlight) {
     direction: query.direction,
     operationDate: query.date,
     airline: query.airline,
-    orderBy: query.orderBy,
+    orderBy: "scheduledDepTime",
     order: query.order,
     page: query.page,
     limit: query.limit,

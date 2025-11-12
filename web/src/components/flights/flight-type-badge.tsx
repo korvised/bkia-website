@@ -1,5 +1,5 @@
 import { FlightType } from "@/types/enum";
-import { getTypeStyle } from "@/utils/flight";
+import { getTypeStyle } from "@/lib/flights";
 import { cn } from "@/utils/cn";
 
 interface FlightTypeBadgeProps {

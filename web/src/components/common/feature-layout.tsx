@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, useMemo } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown, Home } from "lucide-react";
 import { HiOutlineChevronRight } from "react-icons/hi2";
@@ -16,6 +16,7 @@ interface FeatureLayoutProps {
   lang: Lang;
   title: string;
   menuItems: IMenuItem[];
+  preserveQuery?: boolean | string[];
   children: React.ReactNode;
 }
 
@@ -24,14 +25,43 @@ export function FeatureLayout({
   title,
   menuItems,
   children,
+  preserveQuery = false,
 }: FeatureLayoutProps) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { t } = useApp();
 
   const activeMenu = useMemo(
     () => menuItems.find((item) => pathname.includes(item.href)),
-    [pathname],
+    [pathname, menuItems],
   );
+
+  // Helper function to build URL with query params
+  const buildUrl = (href: string) => {
+    if (!preserveQuery) {
+      return href;
+    }
+
+    const params = new URLSearchParams();
+
+    if (preserveQuery === true) {
+      // Preserve all query params
+      searchParams.forEach((value, key) => {
+        params.set(key, value);
+      });
+    } else if (Array.isArray(preserveQuery)) {
+      // Preserve only specified query params
+      preserveQuery.forEach((key) => {
+        const value = searchParams.get(key);
+        if (value !== null) {
+          params.set(key, value);
+        }
+      });
+    }
+
+    const queryString = params.toString();
+    return queryString ? `${href}?${queryString}` : href;
+  };
 
   return (
     <div className="min-h-screen">
@@ -65,7 +95,7 @@ export function FeatureLayout({
             >
               {/* Home Link */}
               <Link
-                href={`/${lang}`}
+                href={buildUrl(`/${lang}`)}
                 className="flex items-center transition-colors hover:text-white"
                 aria-label="Home"
               >
@@ -90,7 +120,7 @@ export function FeatureLayout({
                 items={navigation.map((item) => (
                   <MenuItem key={item.id}>
                     <Link
-                      href={`/${lang}${item.href}`}
+                      href={buildUrl(`/${lang}${item.href}`)}
                       className={cn(
                         "flex w-full items-center rounded-md px-3 py-2.5 text-sm transition-colors",
                         "hover:bg-primary-50 hover:text-primary-700",
@@ -128,7 +158,7 @@ export function FeatureLayout({
                 items={menuItems.map((item) => (
                   <MenuItem key={item.href}>
                     <Link
-                      href={`/${lang}${item.href}`}
+                      href={buildUrl(`/${lang}${item.href}`)}
                       className={cn(
                         "flex w-full items-center rounded-md px-3 py-2.5 text-sm transition-colors",
                         "hover:bg-primary-50 hover:text-primary-700",
@@ -157,7 +187,7 @@ export function FeatureLayout({
             return (
               <Link
                 key={item.href}
-                href={`/${lang}${item.href}`}
+                href={buildUrl(`/${lang}${item.href}`)}
                 className={cn(
                   "group relative flex-shrink-0 py-2 text-sm font-semibold transition-colors duration-200 md:py-4 md:text-base",
                   "hover:text-primary-600",

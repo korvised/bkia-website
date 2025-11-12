@@ -5,7 +5,11 @@ import { cn } from "@/utils/cn";
 import { createFlightI18n } from "@/data/i18n/flights";
 import { asset } from "@/utils/asset";
 import { formatTime } from "@/utils/date";
-import { getBorderColor, getStatusStyle } from "@/utils/flight";
+import {
+  getBorderColor,
+  getFlightDisplayStatus,
+  getStatusStyle,
+} from "@/lib/flights";
 import type { Lang } from "@/types/language";
 import { FlightDirection } from "@/types/enum";
 import type { IFlight } from "@/types/flight";
@@ -57,8 +61,9 @@ export function FlightTable({ lang, direction, flights }: FlightTableProps) {
           <tbody className="divide-y divide-gray-200 bg-white">
             {flights.length > 0 ? (
               flights.map((flight) => {
-                const statusStyle = getStatusStyle(flight.status);
-                const borderColor = getBorderColor(flight.status);
+                const { code, labels } = getFlightDisplayStatus(flight);
+                const statusStyle = getStatusStyle(code);
+                const borderColor = getBorderColor(code);
 
                 // Get the relevant airport based on direction
                 const airport =
@@ -203,13 +208,14 @@ export function FlightTable({ lang, direction, flights }: FlightTableProps) {
                       <div className="flex justify-center">
                         <span
                           className={cn(
-                            "inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold tracking-wide uppercase",
+                            "inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-xs font-semibold tracking-wide",
                             statusStyle.bg,
                             statusStyle.text,
                             statusStyle.border,
                           )}
+                          title={labels[lang] ?? labels.en}
                         >
-                          {flight.status}
+                          {labels[lang] ?? labels.en}
                         </span>
                       </div>
                     </td>

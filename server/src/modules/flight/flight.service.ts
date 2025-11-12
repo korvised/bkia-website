@@ -158,6 +158,8 @@ export class FlightService {
     const orderMap: Record<string, string> = {
       flightNo: 'f.flightNo',
       operationDate: 'f.operationDate',
+      scheduledDepTime: 'f.scheduledDepTime',
+      scheduledArrTime: 'f.scheduledArrTime',
       createdAt: 'f.createdAt',
       status: 'f.status',
     };

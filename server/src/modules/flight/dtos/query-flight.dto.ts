@@ -66,11 +66,27 @@ export class QueryFlightDto extends PaginationDto {
   /** Field to order by */
   @IsOptional()
   @IsString()
-  @IsIn(['flightNo', 'operationDate', 'createdAt', 'status'], {
-    message:
-      'orderBy must be one of flightNo, operationDate, createdAt, or status',
-  })
-  orderBy?: 'flightNo' | 'operationDate' | 'createdAt' | 'status';
+  @IsIn(
+    [
+      'flightNo',
+      'operationDate',
+      'scheduledDepTime',
+      'scheduledArrTime',
+      'createdAt',
+      'status',
+    ],
+    {
+      message:
+        'orderBy must be one of flightNo, operationDate, scheduledDepTime, scheduledArrTime, createdAt, or status',
+    },
+  )
+  orderBy?:
+    | 'flightNo'
+    | 'operationDate'
+    | 'scheduledDepTime'
+    | 'scheduledArrTime'
+    | 'createdAt'
+    | 'status';
 
   /** Sort direction */
   @IsOptional()

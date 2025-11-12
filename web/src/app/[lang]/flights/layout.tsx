@@ -26,6 +26,7 @@ export default async function FlightsLayout({
     <FeatureLayout
       lang={lang as Lang}
       title={title[lang as Lang]}
+      preserveQuery={["date"]}
       menuItems={menuItems}
     >
       {children}

@@ -5,7 +5,7 @@ import { cn } from "@/utils/cn";
 import { IFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
 import { formatTime } from "@/utils/date";
-import { getBorderColor, getStatusStyle } from "@/utils/flight";
+import { getBorderColor, getStatusStyle } from "@/lib/flights";
 import { asset } from "@/utils/asset";
 import { FlightTypeBadge } from "./flight-type-badge";
 

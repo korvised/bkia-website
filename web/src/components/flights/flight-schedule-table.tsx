@@ -6,7 +6,11 @@ import { cn } from "@/utils/cn";
 import { createFlightI18n } from "@/data/i18n/flights";
 import { asset } from "@/utils/asset";
 import { formatDate, formatTime } from "@/utils/date";
-import { getBorderColor, getStatusStyle } from "@/utils/flight";
+import {
+  getBorderColor,
+  getFlightDisplayStatus,
+  getStatusStyle,
+} from "@/lib/flights";
 import type { Lang } from "@/types/language";
 import type { IFlight } from "@/types/flight";
 import { FlightTypeBadge } from "./flight-type-badge";
@@ -41,9 +45,6 @@ export function FlightScheduleTable({
                 {t.airlineFlightNo}
               </th>
               <th className="px-4 py-3 text-center text-sm font-semibold tracking-wide whitespace-nowrap text-gray-700 uppercase">
-                {t.operationDate}
-              </th>
-              <th className="px-4 py-3 text-center text-sm font-semibold tracking-wide whitespace-nowrap text-gray-700 uppercase">
                 {t.terminal}
               </th>
               <th className="px-4 py-3 text-center text-sm font-semibold tracking-wide whitespace-nowrap text-gray-700 uppercase">
@@ -60,8 +61,9 @@ export function FlightScheduleTable({
           <tbody className="divide-y divide-gray-200 bg-white">
             {flights.length > 0 ? (
               flights.map((flight) => {
-                const statusStyle = getStatusStyle(flight.status);
-                const borderColor = getBorderColor(flight.status);
+                const { code, labels } = getFlightDisplayStatus(flight);
+                const statusStyle = getStatusStyle(code);
+                const borderColor = getBorderColor(code);
 
                 // Determine if origin or destination is BOR for color coding
                 const isDepartureBOR =
@@ -198,13 +200,6 @@ export function FlightScheduleTable({
                       </div>
                     </td>
 
-                    {/* Operation Date */}
-                    <td className="px-4 py-3 text-center">
-                      <span className="text-sm font-semibold text-gray-600">
-                        {formatDate(flight.operationDate)}
-                      </span>
-                    </td>
-
                     {/* Terminal */}
                     <td className="px-4 py-3 text-center">
                       <span className="text-sm font-semibold text-gray-700">
@@ -253,13 +248,14 @@ export function FlightScheduleTable({
                       <div className="flex justify-center">
                         <span
                           className={cn(
-                            "inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold tracking-wide uppercase",
+                            "inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-xs font-semibold tracking-wide",
                             statusStyle.bg,
                             statusStyle.text,
                             statusStyle.border,
                           )}
+                          title={labels[lang] ?? labels.en}
                         >
-                          {flight.status}
+                          {labels[lang] ?? labels.en}
                         </span>
                       </div>
                     </td>

@@ -1,4 +1,3 @@
-// flight-card.tsx
 import Image from "next/image";
 import { Clock, MapPin, PlaneLanding, PlaneTakeoff } from "lucide-react";
 import { createFlightI18n } from "@/data/i18n/flights";
@@ -7,7 +6,7 @@ import { IFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
 import { FlightDirection } from "@/types/enum";
 import { formatTime } from "@/utils/date";
-import { getBorderColor, getStatusStyle } from "@/utils/flight";
+import { getBorderColor, getStatusStyle } from "@/lib/flights";
 import { asset } from "@/utils/asset";
 import { FlightTypeBadge } from "./flight-type-badge";
 
@@ -18,10 +17,10 @@ interface FlightCardProps {
 }
 
 export const FlightCard: React.FC<FlightCardProps> = ({
-                                                        flight,
-                                                        direction,
-                                                        lang,
-                                                      }) => {
+  flight,
+  direction,
+  lang,
+}) => {
   const { table: t } = createFlightI18n(lang);
   const statusStyle = getStatusStyle(flight.status);
   const borderColor = getBorderColor(flight.status);

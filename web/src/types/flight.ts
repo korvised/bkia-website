@@ -9,6 +9,21 @@ import { IFile } from "@/types/file";
 import { type IPagination, Order } from "@/types/pagination";
 import { Lang } from "@/types/language";
 
+export type DisplayStatusCode =
+  | "CHECK_IN_OPEN"
+  | "CHECK_IN_CLOSED"
+  | "BOARDING"
+  | "FINAL_CALL"
+  | "GATE_CLOSED"
+  | "ON_TIME"
+  | "DELAYED"
+  | "DEPARTED"
+  | "ARRIVED"
+  | "EN_ROUTE"
+  | "CANCELED"
+  | "DIVERTED"
+  | "SCHEDULED";
+
 export interface FlightPageProps {
   params: Promise<{ lang: Lang }>;
   searchParams: Promise<{
@@ -21,7 +36,13 @@ export interface FlightPageProps {
   }>;
 }
 
-export type OrderBy = "flightNo" | "operationDate" | "createdAt" | "status";
+export type OrderBy =
+  | "flightNo"
+  | "operationDate"
+  | "scheduledDepTime"
+  | "scheduledArrTime"
+  | "createdAt"
+  | "status";
 
 export interface QueryFlight {
   // pagination
