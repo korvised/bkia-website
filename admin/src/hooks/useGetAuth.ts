@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/app/hooks";
+import { useAppSelector } from "@/hooks";
 
 export const useGetAuth = () => {
   const { isInitialized, isLoading, isAuthenticated, user } = useAppSelector(

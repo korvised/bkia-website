@@ -3,7 +3,7 @@ import {
   ForgotPasswordPage,
   ResetPasswordPage,
   SignInPage,
-} from "@/modules/auth/pages";
+} from "@/features/auth/pages";
 
 export const authRoutes: IRoute[] = [
   { path: "/", element: SignInPage },

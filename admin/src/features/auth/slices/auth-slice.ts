@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { IUser } from '@/types';
+import { tokenStorageService } from "@/services";
+import type { IUser } from "@/types";
 import type {
   ChangePasswordPayload,
   ForgotPasswordFormData,
   IAuthResponse,
-  SignInPayload
-} from '@/modules/auth/types';
-import { authApiService } from './auth-service.ts';
-import { storage } from '@/lib/storage.ts';
+  SignInPayload,
+} from "@/features/auth/types";
+import { authApiService } from "@/features/auth/api";
 
 interface AuthState {
   isInitialized: boolean;
@@ -51,10 +51,10 @@ export const fetchCurrentUser = createAsyncThunk<IUser>(
 
 export const forgotPassword = createAsyncThunk<
   void,
-  {  payload: ForgotPasswordFormData }
+  { payload: ForgotPasswordFormData }
 >(
   "hooks/forgotPassword",
-  async ({  payload }, { rejectWithValue, dispatch }) => {
+  async ({ payload }, { rejectWithValue, dispatch }) => {
     try {
       await authApiService.forgotPassword(payload);
       // After verify success backend set cookie, fetch the current user to update user status
@@ -86,7 +86,7 @@ const authSlice = createSlice({
       state.user = null;
       state.isLoading = false;
       state.error = null;
-      storage.removeTokens();
+      tokenStorageService.removeTokens();
     },
   },
   extraReducers: (builder) => {
@@ -97,7 +97,7 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(signIn.fulfilled, (state, action) => {
-        storage.storeTokens(action.payload.accessToken);
+        tokenStorageService.storeTokens(action.payload.accessToken);
         state.user = action.payload.user;
         state.isInitialized = true;
         state.isAuthenticated = true;
@@ -126,7 +126,7 @@ const authSlice = createSlice({
         state.isInitialized = true;
         state.isAuthenticated = false;
         state.isLoading = false;
-      })
+      });
   },
 });
 

@@ -1,5 +1,5 @@
-import type { UserStatus } from './enum.ts';
-import type { IRole } from './user-role.ts';
+import type { UserStatus } from './enum.type.ts';
+import type { IRole } from './user-role.type.ts';
 
 export interface IUser {
   id: string;

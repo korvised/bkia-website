@@ -1,5 +1,5 @@
 import { type Action, combineReducers, configureStore } from '@reduxjs/toolkit';
-import { authReducer } from '@/modules/auth/api';
+import { authReducer } from '@/features/auth/slices';
 import { apiSlice } from './api-slice.ts';
 import { errorHandler } from './error-handler.ts';
 

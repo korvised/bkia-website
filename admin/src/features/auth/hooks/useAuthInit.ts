@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { useAppDispatch } from "@/app/hooks.ts";
-import { useGetAuth } from "@/hooks";
-import { storage } from "@/lib";
-import { fetchCurrentUser, signOut } from "@/modules/auth/api";
+import { useAppDispatch, useGetAuth } from "@/hooks";
+import { tokenStorageService } from "@/services";
+import { fetchCurrentUser, signOut } from "@/features/auth/slices";
 
 export const useAuthInit = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +10,7 @@ export const useAuthInit = () => {
     useGetAuth();
 
   useEffect(() => {
-    const { accessToken } = storage.getTokens();
+    const { accessToken } = tokenStorageService.getTokens();
     if (accessToken) {
       dispatch(fetchCurrentUser());
     } else {

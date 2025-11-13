@@ -1,19 +1,19 @@
-import { api } from 'lib';
+import { api } from "@/lib";
 import type {
   ChangePasswordPayload,
   ForgotPasswordFormData,
   IAuthResponse,
-  SignInPayload
-} from '@/modules/auth/types';
-import type { IUser } from '@/types';
+  SignInPayload,
+} from "@/features/auth/types";
+import type { IUser } from "@/types";
 
-export class AuthApiService {
+class AuthApiService {
   signIn(credentials: SignInPayload) {
-    return api.post<IAuthResponse>('/auth/sign-in', credentials);
+    return api.post<IAuthResponse>("/auth/sign-in", credentials);
   }
 
   fetchCurrentUser() {
-    return api.get<IUser>('/auth/current-user');
+    return api.get<IUser>("/auth/current-user");
   }
 
   forgotPassword(payload: ForgotPasswordFormData) {
@@ -21,7 +21,7 @@ export class AuthApiService {
   }
 
   changePassword(payload: ChangePasswordPayload) {
-    return api.patch<IUser>('/auth/change-password', payload);
+    return api.patch<IUser>("/auth/change-password", payload);
   }
 }
 

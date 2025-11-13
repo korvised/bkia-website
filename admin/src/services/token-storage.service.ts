@@ -1,13 +1,13 @@
-const ACCESS_TOKEN = 'access_token';
-const REFRESH_TOKEN = 'refresh_token';
-const REMEMBER_ME = 'remember_me';
+const ACCESS_TOKEN = "access_token";
+const REFRESH_TOKEN = "refresh_token";
+const REMEMBER_ME = "remember_me";
 
-class StorageService {
+class TokenStorageService {
   private rememberMe: boolean = false;
 
   constructor() {
     const remember = this.getLocalStorage(REMEMBER_ME);
-    this.rememberMe = remember === 'true';
+    this.rememberMe = remember === "true";
   }
 
   // Session storage helpers
@@ -59,7 +59,7 @@ class StorageService {
       : this.getSessionStorage.bind(this);
     return {
       accessToken: get(ACCESS_TOKEN),
-      refreshToken: get(REFRESH_TOKEN)
+      refreshToken: get(REFRESH_TOKEN),
     };
   }
 
@@ -73,4 +73,4 @@ class StorageService {
   }
 }
 
-export const storage = new StorageService();
+export const tokenStorageService = new TokenStorageService();

@@ -1,4 +1,4 @@
 import { type IRoute } from "@/types";
-import { authRoutes } from "@/modules/auth/routes";
+import { authRoutes } from "@/features/auth/routes";
 
 export const publicRoutes: IRoute[] = [...authRoutes];

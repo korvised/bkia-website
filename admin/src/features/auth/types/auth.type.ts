@@ -1,4 +1,4 @@
-import type { IUser } from '@/types';
+import type { IUser } from "@/types";
 
 export interface IActivateAccountForm {
   password: string;
@@ -10,10 +10,9 @@ export interface IActivateAccountPayload {
 }
 
 export interface SignInFormData {
-  rememberMe: boolean;
-  employeeId: string;
-  email: string;
+  username: string;
   password: string;
+  rememberMe: boolean;
 }
 
 export interface RememberedUserData {
@@ -50,7 +49,10 @@ export type ResetPasswordFormErrors = Partial<
   submit?: string;
 };
 
-export type SignInPayload = Omit<SignInFormData, 'rememberMe'>;
+export type SignInPayload = Pick<SignInFormData, "password"> & {
+  type: "email" | "employeeId";
+  value: string;
+};
 
 export interface ChangePasswordPayload {
   oldPassword: string;

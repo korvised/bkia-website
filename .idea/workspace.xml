@@ -4,73 +4,57 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="create admin by vitejs + ts">
-      <change afterPath="$PROJECT_DIR$/admin/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/public/404.avif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/public/earth.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/public/plane.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/app/api-slice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/app/axios-base-query.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/app/error-handler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/app/hooks.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/app/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/assets/styles/_sweetAlert.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/components/layout/header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/components/layout/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/components/layout/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/components/layout/loading.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/config/env.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/config/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/constants/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/constants/redux-tag.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/hooks/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/hooks/use-get-auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/hooks/use-navigation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/lib/asset.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/lib/axios.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/lib/cn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/lib/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/lib/storage.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/lib/swal.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/api/auth-service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/api/auth-slice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/api/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/hooks/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/hooks/use-auth-init.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/pages/forgot-password.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/pages/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/pages/reset-password.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/pages/sign-in.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/types/auth.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/types/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/pages/home.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/pages/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/pages/not-found.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/pages/profile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/routes/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/routes/main-routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/routes/private-routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/routes/protected-route.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/routes/public-routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/routes/routers.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/types/auth-user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/types/enum.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/types/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/types/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/types/user-role.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="setting up admin project">
+      <change afterPath="$PROJECT_DIR$/admin/src/app/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/assets/images/bkia-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/auth/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/auth/hooks/useSignOut.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/auth/schemas/sign-in.schema.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/auth/services/auth-storage.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/auth/services/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/auth/slices/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/hooks/useReduxHook.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/lib/utils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/services/alert.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/services/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/utils/error-handler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/utils/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/admin/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/app/error-handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/app/error-handler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/app/hooks.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/app/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/layout/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/layout/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/layout/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/layout/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/hooks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/hooks/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/hooks/use-get-auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/hooks/useGetAuth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/hooks/use-navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/hooks/useNavigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/lib/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/lib/cn.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/lib/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/lib/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/lib/storage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/services/token-storage.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/lib/swal.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tsconfig.app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/vite.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/api/auth-service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/api/auth-slice.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/api/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/hooks/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/hooks/use-auth-init.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/pages/forgot-password.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/pages/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/pages/reset-password.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/pages/sign-in.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/routes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/types/auth.type.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/modules/auth/types/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/routes/public-routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/routes/public-routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/types/auth-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/types/auth-user.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/types/enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/types/enum.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/types/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/types/route.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/types/user-role.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/types/user-role.type.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,51 +89,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;v2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website/admin/src/components/layout&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.admin.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start:dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.web.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\projects\\bkia-website\\server\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
+    "git-widget-placeholder": "v2",
+    "last_opened_file_path": "D:/projects/bkia-website/admin/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.admin.executor": "Run",
+    "npm.dev.executor": "Run",
+    "npm.server.executor": "Run",
+    "npm.start:dev.executor": "Run",
+    "npm.web.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "D:\\projects\\bkia-website\\server\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\admin\public" />
+      <recent name="D:\projects\bkia-website\admin\src\features\auth\hooks" />
+      <recent name="D:\projects\bkia-website\admin\src\modules\auth\hooks" />
       <recent name="D:\projects\bkia-website\admin\src\components\layout" />
       <recent name="D:\projects\bkia-website\admin\src\hooks" />
-      <recent name="D:\projects\bkia-website\admin\public" />
-      <recent name="D:\projects\bkia-website\admin\src\pages" />
-      <recent name="D:\projects\bkia-website\admin\src\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\projects\bkia-website\admin\src\lib" />
-      <recent name="D:\projects\bkia-website\web\src\lib\homepage" />
-      <recent name="D:\projects\bkia-website\web\src\lib\flights" />
-      <recent name="D:\projects\bkia-website\server\mock" />
-      <recent name="D:\projects\bkia-website\server\src\utils" />
+      <recent name="D:\projects\bkia-website\admin\src\assets\images" />
+      <recent name="D:\projects\bkia-website\admin\src\assets" />
+      <recent name="D:\projects\bkia-website\admin\src\features\auth\api" />
+      <recent name="D:\projects\bkia-website\admin\src\features\auth\services" />
+      <recent name="D:\projects\bkia-website\admin\src\features\auth\slices" />
     </key>
   </component>
   <component name="RunManager" selected="npm.admin">
@@ -254,15 +238,8 @@
       <workItem from="1762911732823" duration="7960000" />
       <workItem from="1762928081136" duration="7329000" />
       <workItem from="1762999183503" duration="8794000" />
-      <workItem from="1763009366520" duration="72000" />
-    </task>
-    <task id="LOCAL-00009" summary="adjust responsive">
-      <option name="closed" value="true" />
-      <created>1760081486828</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1760081486828</updated>
+      <workItem from="1763009366520" duration="2648000" />
+      <workItem from="1763016774892" duration="8965000" />
     </task>
     <task id="LOCAL-00010" summary="adjust responsive">
       <option name="closed" value="true" />
@@ -648,14 +625,21 @@
       <option name="project" value="LOCAL" />
       <updated>1762999236801</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="setting up admin project">
+      <option name="closed" value="true" />
+      <created>1763009564693</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1763009564693</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adjust with container class" />
     <MESSAGE value="adjust flight search query" />
     <MESSAGE value="refactor project layouts" />
     <MESSAGE value="refactor guides, transport pages" />
@@ -680,6 +664,7 @@
     <MESSAGE value="refactor flights status" />
     <MESSAGE value="fix ESLint build error" />
     <MESSAGE value="create admin by vitejs + ts" />
-    <option name="LAST_COMMIT_MESSAGE" value="create admin by vitejs + ts" />
+    <MESSAGE value="setting up admin project" />
+    <option name="LAST_COMMIT_MESSAGE" value="setting up admin project" />
   </component>
 </project>

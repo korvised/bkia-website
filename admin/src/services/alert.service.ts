@@ -143,4 +143,4 @@ class AlertService {
   }
 }
 
-export const swal = new AlertService();
+export const alertService = new AlertService();
