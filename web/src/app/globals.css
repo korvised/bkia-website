@@ -149,26 +149,3 @@
         display: none !important;
     }
 }
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-    .animate-bounce-gentle,
-    .animate-pulse-slow {
-        animation: none;
-    }
-
-    * {
-        transition: none !important;
-        animation: none !important;
-    }
-}
-
-/* Hero section animation */
-@keyframes kenburns {
-    0% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1.15);
-    }
-}

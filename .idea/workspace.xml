@@ -4,8 +4,73 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="fix ESLint build error">
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="create admin by vitejs + ts">
+      <change afterPath="$PROJECT_DIR$/admin/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/public/404.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/public/earth.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/public/plane.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/app/api-slice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/app/axios-base-query.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/app/error-handler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/app/hooks.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/app/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/assets/styles/_sweetAlert.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/layout/header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/layout/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/layout/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/layout/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/config/env.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/config/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/constants/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/constants/redux-tag.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/hooks/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/hooks/use-get-auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/hooks/use-navigation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/lib/asset.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/lib/axios.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/lib/cn.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/lib/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/lib/storage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/lib/swal.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/api/auth-service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/api/auth-slice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/hooks/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/hooks/use-auth-init.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/pages/forgot-password.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/pages/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/pages/reset-password.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/pages/sign-in.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/types/auth.type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/modules/auth/types/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/pages/home.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/pages/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/pages/not-found.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/pages/profile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/routes/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/routes/main-routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/routes/private-routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/routes/protected-route.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/routes/public-routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/routes/routers.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/types/auth-user.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/types/enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/types/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/types/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/types/user-role.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/admin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tsconfig.app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +114,13 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
     &quot;git-widget-placeholder&quot;: &quot;v2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website/web/src/data/i18n/home&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website/admin/src/components/layout&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.admin.executor&quot;: &quot;Run&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;npm.server.executor&quot;: &quot;Run&quot;,
     &quot;npm.start:dev.executor&quot;: &quot;Run&quot;,
@@ -72,21 +138,31 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\projects\bkia-website\web\src\data\i18n\home" />
-      <recent name="D:\projects\bkia-website\web\src\data\i18n\layout" />
-      <recent name="D:\projects\bkia-website" />
-      <recent name="D:\projects\bkia-website\server\db" />
-      <recent name="D:\projects\bkia-website\web\src\components\common" />
+      <recent name="D:\projects\bkia-website\admin\src\components\layout" />
+      <recent name="D:\projects\bkia-website\admin\src\hooks" />
+      <recent name="D:\projects\bkia-website\admin\public" />
+      <recent name="D:\projects\bkia-website\admin\src\pages" />
+      <recent name="D:\projects\bkia-website\admin\src\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\admin\src\lib" />
       <recent name="D:\projects\bkia-website\web\src\lib\homepage" />
       <recent name="D:\projects\bkia-website\web\src\lib\flights" />
       <recent name="D:\projects\bkia-website\server\mock" />
       <recent name="D:\projects\bkia-website\server\src\utils" />
-      <recent name="D:\projects\bkia-website\web\src\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server">
+  <component name="RunManager" selected="npm.admin">
+    <configuration name="admin" type="js.build_tools.npm" temporary="true">
+      <package-json value="$PROJECT_DIR$/admin/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="server" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/server/package.json" />
       <command value="run" />
@@ -108,11 +184,13 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="npm.admin" />
       <item itemvalue="npm.server" />
       <item itemvalue="npm.web" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.admin" />
         <item itemvalue="npm.server" />
         <item itemvalue="npm.web" />
       </list>
@@ -175,14 +253,8 @@
       <workItem from="1762826193394" duration="23045000" />
       <workItem from="1762911732823" duration="7960000" />
       <workItem from="1762928081136" duration="7329000" />
-    </task>
-    <task id="LOCAL-00008" summary="adjust responsive">
-      <option name="closed" value="true" />
-      <created>1760079944906</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1760079944906</updated>
+      <workItem from="1762999183503" duration="8794000" />
+      <workItem from="1763009366520" duration="72000" />
     </task>
     <task id="LOCAL-00009" summary="adjust responsive">
       <option name="closed" value="true" />
@@ -568,14 +640,21 @@
       <option name="project" value="LOCAL" />
       <updated>1762933846256</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="create admin by vitejs + ts">
+      <option name="closed" value="true" />
+      <created>1762999236801</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1762999236801</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor flight page" />
     <MESSAGE value="adjust with container class" />
     <MESSAGE value="adjust flight search query" />
     <MESSAGE value="refactor project layouts" />
@@ -600,6 +679,7 @@
     <MESSAGE value="refactor files" />
     <MESSAGE value="refactor flights status" />
     <MESSAGE value="fix ESLint build error" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix ESLint build error" />
+    <MESSAGE value="create admin by vitejs + ts" />
+    <option name="LAST_COMMIT_MESSAGE" value="create admin by vitejs + ts" />
   </component>
 </project>
