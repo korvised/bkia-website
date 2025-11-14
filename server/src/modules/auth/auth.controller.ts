@@ -13,6 +13,7 @@ import { User } from '@/database';
 import { JwtAuthGuard, LocalAuthGuard } from '@/common/guards';
 import { CurrentUser } from '@/common/decorators';
 import { ResetPasswordDto } from '@/common/dtos';
+import { Employee } from '@/types/hrms';
 import { ChangePasswordDto, ForgotPasswordDto } from './dtos';
 import { AuthService } from './auth.service';
 
@@ -22,8 +23,12 @@ export class AuthController {
 
   @Get('current')
   @UseGuards(JwtAuthGuard)
-  getCurrentUser(@CurrentUser() user: User) {
-    return user;
+  async getCurrentUser(@CurrentUser() user: User) {
+    let employee: Employee | null = null;
+    if (user.empId) {
+      employee = await this.authService.getEmployeeById(user.empId);
+    }
+    return { user, employee };
   }
 
   @Post('sign-in')

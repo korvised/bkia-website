@@ -10,12 +10,20 @@ export class RedisService {
     return raw ? (JSON.parse(raw) as T) : null;
   }
 
-  async setJSON(key: string, value: unknown, ttlSeconds?: number): Promise<void> {
+  async setJSON(
+    key: string,
+    value: unknown,
+    ttlSeconds?: number,
+  ): Promise<void> {
     const payload = JSON.stringify(value);
     if (ttlSeconds && ttlSeconds > 0) {
       await this.redis.set(key, payload, 'EX', ttlSeconds);
     } else {
       await this.redis.set(key, payload);
     }
+  }
+
+  async del(key: string): Promise<void> {
+    await this.redis.del(key);
   }
 }

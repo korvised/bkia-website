@@ -5,8 +5,8 @@ import {
   Environment,
   IAppConfig,
   IAwsConfig,
-  IClientConfig,
   IDbConfig,
+  IIntegrationConfig,
   IJwtConfig,
   ISmtpConfig,
 } from '@/types/config';
@@ -18,8 +18,10 @@ const appConfig = registerAs<IAppConfig>(ConfigKey.app, () => ({
   version: process.env.APP_VERSION!,
 }));
 
-const clientConfig = registerAs<IClientConfig>(ConfigKey.client, () => ({
-  url: process.env.CLIENT_URL!,
+const integrationConfig = registerAs<IIntegrationConfig>(ConfigKey.igt, () => ({
+  clientUrl: process.env.CLIENT_URL!,
+  hrmsApiUrl: process.env.HRMS_API_URL!,
+  hrmsApiKey: process.env.HRMS_API_KEY!,
 }));
 
 const databaseConfig = registerAs<IDbConfig>(ConfigKey.db, () => ({
@@ -45,14 +47,14 @@ const smtpConfig = registerAs<ISmtpConfig>(ConfigKey.smtp, () => ({
 
 const awsConfig = registerAs<IAwsConfig>(ConfigKey.aws, () => ({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  secretAccessKey: process.env.AWS_SECRET_KEY!,
   region: process.env.AWS_REGION!,
   bucket: process.env.AWS_S3_BUCKET!,
 }));
 
 export const configurations = [
   appConfig,
-  clientConfig,
+  integrationConfig,
   databaseConfig,
   jwtConfig,
   smtpConfig,

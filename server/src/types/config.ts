@@ -2,7 +2,7 @@ import type { StringValue } from 'ms';
 
 export enum ConfigKey {
   app = 'app',
-  client = 'client',
+  igt = 'igt',
   db = 'db',
   jwt = 'jwt',
   smtp = 'smtp',
@@ -22,8 +22,10 @@ export interface IAppConfig {
   version: string;
 }
 
-export interface IClientConfig {
-  url: string;
+export interface IIntegrationConfig {
+  clientUrl: string;
+  hrmsApiUrl: string;
+  hrmsApiKey: string;
 }
 
 export interface IDbConfig {
@@ -56,7 +58,7 @@ export interface IAwsConfig {
 
 export interface IConfig {
   app: IAppConfig;
-  client: IClientConfig;
+  igt: IIntegrationConfig;
   db: IDbConfig;
   jwt: IJwtConfig;
   smtp: ISmtpConfig;

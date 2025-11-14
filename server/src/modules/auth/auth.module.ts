@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ForgotPassword } from '@/database';
 import { ConfigModule, ConfigService } from '@/common/config';
 import { MailModule } from '@/common/mail';
+import { HrmsModule } from '@/common/hrms';
 import { UserModule } from '@/modules/user';
 import { RoleModule } from '@/modules/role';
 import { JwtStrategy, LocalStrategy } from './strategies';
@@ -25,6 +26,7 @@ import { AuthController } from './auth.controller';
     TypeOrmModule.forFeature([ForgotPassword]),
     ConfigModule,
     MailModule,
+    HrmsModule,
     RoleModule,
     UserModule,
   ],

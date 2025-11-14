@@ -33,11 +33,21 @@ class EnvironmentVariables {
   @MinLength(1)
   APP_VERSION: string;
 
-  // CLIENT CONFIG
+  // INTEGRATION CONFIG
   @IsDefined()
   @IsString()
   @MinLength(1)
   CLIENT_URL: string;
+
+  @IsDefined()
+  @IsString()
+  @MinLength(1)
+  HRMS_API_URL: string;
+
+  @IsDefined()
+  @IsString()
+  @MinLength(1)
+  HRMS_API_KEY: string;
 
   /* DATABASE CONFIG */
   @IsDefined()
@@ -103,12 +113,12 @@ class EnvironmentVariables {
   @IsDefined()
   @IsString()
   @MinLength(1)
-  AWS_ACCESS_KEY_ID: string;
+  AWS_ACCESS_KEY: string;
 
   @IsDefined()
   @IsString()
   @MinLength(1)
-  AWS_SECRET_ACCESS_KEY: string;
+  AWS_SECRET_KEY: string;
 
   @IsDefined()
   @IsString()

@@ -7,11 +7,13 @@ import { ForgotPassword } from '@/database';
 import { ConfigService } from '@/common/config';
 import { UserService } from '@/modules/user';
 import { MailService } from '@/common/mail';
+import { HrmsService } from '@/common/hrms';
 import { ResetPasswordDto } from '@/common/dtos';
 import { AccessTokenPayload } from '@/types/auth';
 import { IMailPayload } from '@/types/mail';
 import { ChangePasswordDto, ForgotPasswordDto } from './dtos';
 import { createResetPasswordEmailContent } from './mail-template';
+import { Employee } from '@/types/hrms';
 
 @Injectable()
 export class AuthService {
@@ -20,24 +22,31 @@ export class AuthService {
     private readonly forgotPasswordRepository: Repository<ForgotPassword>,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
+    private readonly hrmsService: HrmsService,
     private readonly mailService: MailService,
     private readonly userService: UserService,
   ) {}
+
+  getEmployeeById(empId: string) {
+    return this.hrmsService.getEmployeeById(empId);
+  }
 
   async signIn(userId: string) {
     // Generate JWT token
     const accessTokenPayload: AccessTokenPayload = { userId };
 
-    const token = this.jwtService.sign(accessTokenPayload, {
+    const accessToken = this.jwtService.sign(accessTokenPayload, {
       expiresIn: this.configService.get('jwt.expiresIn'),
     });
 
     const user = await this.userService.findOneById(userId);
 
-    return {
-      accessToken: token,
-      user: user,
-    };
+    let employee: Employee | null = null;
+    if (user?.empId) {
+      employee = await this.getEmployeeById(user.empId);
+    }
+
+    return { accessToken, user, employee };
   }
 
   async changePassword(id: string, userDto: ChangePasswordDto) {
@@ -87,7 +96,7 @@ export class AuthService {
     // Send email with reset password link
     // const logoUrl = this.configService.get('client.url') + '/logo.svg';
     const logoUrl = 'https://admin.bkia.net/images/BOKEO%20LOGO.png';
-    const link = `${this.configService.get('client.url')}/reset-password?token=${newResetPassword.id}`;
+    const link = `${this.configService.get('igt.clientUrl')}/reset-password?token=${newResetPassword.id}`;
     const mailContent = createResetPasswordEmailContent(logoUrl, link);
 
     const mailPayload: IMailPayload = {
@@ -138,7 +147,7 @@ export class AuthService {
 
     // Change password
     await this.userService.changePassword(
-      resetPassword?.user?.id!,
+      resetPassword?.user?.id as string,
       resetPasswordDto,
     );
 
