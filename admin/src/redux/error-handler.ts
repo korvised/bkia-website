@@ -22,7 +22,7 @@ export const errorHandler: Middleware = () => (next) => (action) => {
 
     const payload = action.payload;
 
-    // ✅ Case 1: RTK Query (payload.data)
+    // Case 1: RTK Query (payload.data)
     if (
       payload &&
       typeof payload === "object" &&
@@ -33,7 +33,7 @@ export const errorHandler: Middleware = () => (next) => (action) => {
       handleNestJsError(data, "[RTK Query Error]");
     }
 
-    // ✅ Case 2: Thunk AxiosError (payload.response.data)
+    // Case 2: Thunk AxiosError (payload.response.data)
     else if (
       payload instanceof AxiosError &&
       payload.response?.data &&
@@ -43,13 +43,13 @@ export const errorHandler: Middleware = () => (next) => (action) => {
       handleNestJsError(data, "[Thunk Axios Error]");
     }
 
-    // ✅ Case 3: String payload
+    // Case 3: String payload
     else if (typeof payload === "string") {
       alertService.error("", payload);
       // console.error("[Thunk Error]", payload);
     }
 
-    // ✅ Fallback
+    // Fallback
     else {
       alertService.error("Something went wrong", "Unexpected error");
       // console.error("[Unknown Error]", payload);

@@ -8,20 +8,23 @@ import { UserService } from '@/modules/user';
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly usersService: UserService) {
     super({
-      usernameField: 'loginType',
+      usernameField: 'type',
       passReqToCallback: true,
     });
   }
 
   async validate(req: Request, _: any, password: string) {
-    const { loginType, employeeId, email } = req.body;
+    const { type, value } = req.body as {
+      type: 'email' | 'employeeId';
+      value: string;
+    };
 
-    if (loginType === 'employeeId' && employeeId) {
-      return await this.usersService.verifyByEmployeeId(employeeId, password);
+    if (type === 'employeeId') {
+      return await this.usersService.verifyByEmployeeId(value, password);
     }
 
-    if (loginType === 'email' && email) {
-      return await this.usersService.verifyUser(email, password);
+    if (type === 'email') {
+      return await this.usersService.verifyUser(value, password);
     }
 
     throw new Error('Invalid login credentials');

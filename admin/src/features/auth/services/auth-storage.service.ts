@@ -9,7 +9,7 @@ class AuthStorageService {
    */
   saveUser(userData: RememberedUserData): boolean {
     try {
-      if (!userData.employeeId || !userData.email) {
+      if (!userData.user || !userData.user.email) {
         return false;
       }
 
@@ -46,7 +46,7 @@ class AuthStorageService {
       }
 
       // Validate required fields
-      if (!userData.employeeId || !userData.email) {
+      if (!userData.user || !userData.user.email) {
         this.clearUser();
         return null;
       }

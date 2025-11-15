@@ -5,7 +5,7 @@ import { type IRoute } from "@/types";
 import { NotFoundPage } from "@/pages";
 import { ProtectedRoute } from "./protected-route.tsx";
 import { publicRoutes } from "./public-routes.ts";
-import { mainRoutes } from "./main-routes.ts";
+import { authRoutes } from "./auth-routes.ts";
 import { privateRoutes } from "./private-routes.ts";
 
 const mapPublicRoutes = (routes: IRoute[]): RouteObject[] =>
@@ -29,7 +29,7 @@ const mapRoutes = (routes: IRoute[]): RouteObject => ({
 
 export const routers = createBrowserRouter([
   ...mapPublicRoutes(publicRoutes),
-  mapRoutes([...mainRoutes, ...privateRoutes]),
+  mapRoutes([...authRoutes, ...privateRoutes]),
   {
     path: "*",
     element: <NotFoundPage />,

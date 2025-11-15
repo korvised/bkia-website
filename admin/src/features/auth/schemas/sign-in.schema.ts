@@ -1,21 +1,36 @@
 import * as Yup from "yup";
+import { config } from "@/config";
 
 export const signInSchema = Yup.object().shape({
   username: Yup.string()
-    .required("Username is required")
-    .test("valid-username", "Invalid email or employee ID format", (value) => {
-      if (!value) return false;
+    .required("Email or employee ID is required")
+    .test(
+      "valid-username",
+      "Invalid email or employee ID format",
+      function (value) {
+        if (!value) return false;
 
-      // Check if it's an email with @bkia.com (case insensitive)
-      const emailRegex = /^[^\s@]+@bkia\.com$/i;
-      if (emailRegex.test(value)) return true;
+        // Normalize to lowercase and trim whitespace
+        const normalizedValue = value.toLowerCase().trim();
 
-      // Check if it's an employee ID (5 digits, can start with bkia or bkia- case insensitive)
-      const empIdRegex = /^(bkia-?)?(\d{5})$/i;
-      if (empIdRegex.test(value)) return true;
+        // Check if it's an email with domain from config
+        if (normalizedValue.includes("@")) {
+          // Create regex pattern with config domain
+          // Escape dots in domain for regex
+          const domain = config.mailDomain.replace(/\./g, "\\.");
+          const emailRegex = new RegExp(`^[^\\s@]+${domain}$`);
+          return emailRegex.test(normalizedValue);
+        }
 
-      return false;
-    }),
+        // Check if it's an employee ID
+        // Remove any bkia or bkia- prefix first
+        const withoutPrefix = normalizedValue.replace(/^bkia-?/, "");
+
+        // Check if what remains is exactly 5 digits
+        const digitRegex = /^\d{4}$/;
+        return digitRegex.test(withoutPrefix);
+      },
+    ),
   password: Yup.string()
     .required("Password is required")
     .min(4, "Password must be at least 4 characters"),

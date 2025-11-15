@@ -3,9 +3,17 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>1238</IntrospectionStateNumber>
+      <Grants>1||-9223372036854775808|c|G
+1||10|c|G
+1||10|C|G
+1||10|T|G
+4||-9223372036854775808|c|G
+4||10|c|G
+4||10|C|G
+4||10|T|G</Grants>
+      <IntrospectionStateNumber>1303</IntrospectionStateNumber>
       <ServerVersion>16.2</ServerVersion>
-      <StartupTime>1762477640</StartupTime>
+      <StartupTime>1763106307</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1403,7 +1411,7 @@ false posixrules
 13212||10|C|G
 13212||-9223372036854775808|U|G
 13212||10|U|G</Grants>
-      <IntrospectionStateNumber>1238</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1303</IntrospectionStateNumber>
       <ObjectId>24577</ObjectId>
       <OwnerName>bkia</OwnerName>
     </database>
@@ -4850,11 +4858,11 @@ false posixrules
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <LastIntrospectionL1Xid>1238</LastIntrospectionL1Xid>
-      <LastIntrospectionL2Xid>1238</LastIntrospectionL2Xid>
-      <LastIntrospectionL3Xid>1238</LastIntrospectionL3Xid>
+      <LastIntrospectionL1Xid>1303</LastIntrospectionL1Xid>
+      <LastIntrospectionL2Xid>1303</LastIntrospectionL2Xid>
+      <LastIntrospectionL3Xid>1303</LastIntrospectionL3Xid>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-11-07.08:17:21</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-11-14.09:38:13</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>

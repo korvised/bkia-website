@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { tokenStorageService } from "@/services";
-import type { IUser } from "@/types";
+import type { ICurrentUser } from "@/types";
 import type {
   ChangePasswordPayload,
   ForgotPasswordFormData,
@@ -12,7 +12,7 @@ import { authApiService } from "@/features/auth/api";
 interface AuthState {
   isInitialized: boolean;
   isAuthenticated: boolean;
-  user: IUser | null;
+  currentUser: ICurrentUser | null;
   isLoading: boolean;
   error: string | null;
 }
@@ -20,7 +20,7 @@ interface AuthState {
 const initialState: AuthState = {
   isInitialized: false,
   isAuthenticated: false,
-  user: null,
+  currentUser: null,
   isLoading: true,
   error: null,
 };
@@ -37,7 +37,7 @@ export const signIn = createAsyncThunk<IAuthResponse, SignInPayload>(
   },
 );
 
-export const fetchCurrentUser = createAsyncThunk<IUser>(
+export const fetchCurrentUser = createAsyncThunk<ICurrentUser>(
   "hooks/fetchCurrentUser",
   async (_, { rejectWithValue }) => {
     try {
@@ -83,7 +83,7 @@ const authSlice = createSlice({
     signOut: (state) => {
       state.isInitialized = true;
       state.isAuthenticated = false;
-      state.user = null;
+      state.currentUser = null;
       state.isLoading = false;
       state.error = null;
       tokenStorageService.removeTokens();
@@ -98,7 +98,10 @@ const authSlice = createSlice({
       })
       .addCase(signIn.fulfilled, (state, action) => {
         tokenStorageService.storeTokens(action.payload.accessToken);
-        state.user = action.payload.user;
+        state.currentUser = {
+          user: action.payload.user,
+          employee: action.payload.employee,
+        };
         state.isInitialized = true;
         state.isAuthenticated = true;
         state.isLoading = false;
@@ -115,14 +118,14 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.currentUser = action.payload;
         state.isInitialized = true;
         state.isAuthenticated = true;
         state.isLoading = false;
       })
       .addCase(fetchCurrentUser.rejected, (state, action) => {
         state.error = action.payload as string;
-        state.user = null;
+        state.currentUser = null;
         state.isInitialized = true;
         state.isAuthenticated = false;
         state.isLoading = false;

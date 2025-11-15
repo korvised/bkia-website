@@ -1,5 +1,6 @@
-import type { UserStatus } from './enum.type.ts';
-import type { IRole } from './user-role.type.ts';
+import type { UserStatus } from "./enum.type.ts";
+import type { IRole } from "./user-role.type.ts";
+import type { IEmployee } from "./employee.type.ts";
 
 export interface IUser {
   id: string;
@@ -12,4 +13,9 @@ export interface IUser {
   createdAt: string;
   updatedAt: string;
   roles: IRole[];
+}
+
+export interface ICurrentUser {
+  user: IUser;
+  employee: IEmployee | null;
 }

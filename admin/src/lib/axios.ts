@@ -1,7 +1,7 @@
 import axios from "axios";
-import { store } from "@/app";
 import { config } from "@/config";
 import { signOut } from "@/features/auth/slices";
+import { store } from "@/redux/store";
 import { tokenStorageService } from "@/services";
 
 const api = axios.create({
@@ -9,7 +9,7 @@ const api = axios.create({
 });
 
 // Skip these routes from setting Authorization header
-const excludedAuthRoutes = ["/auth/sign-in", "/auth/sign-up", "/auth/verify/"];
+const excludedAuthRoutes = ["/auth/sign-in"];
 
 api.interceptors.request.use((config) => {
   const requestUrl = config.url ?? "";

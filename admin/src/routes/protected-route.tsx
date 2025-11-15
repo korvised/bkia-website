@@ -23,8 +23,8 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     return <Loading />;
   }
 
-  if (allowRoles && allowRoles.length > 0 && currentUser) {
-    const hasAllowedRole = currentUser.roles.some((r) =>
+  if (allowRoles && allowRoles.length > 0 && currentUser?.user) {
+    const hasAllowedRole = currentUser.user.roles.some((r) =>
       allowRoles.includes(r.role),
     );
     if (!hasAllowedRole) {

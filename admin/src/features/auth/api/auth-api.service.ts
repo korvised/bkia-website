@@ -5,7 +5,7 @@ import type {
   IAuthResponse,
   SignInPayload,
 } from "@/features/auth/types";
-import type { IUser } from "@/types";
+import type { ICurrentUser, IUser } from "@/types";
 
 class AuthApiService {
   signIn(credentials: SignInPayload) {
@@ -13,7 +13,7 @@ class AuthApiService {
   }
 
   fetchCurrentUser() {
-    return api.get<IUser>("/auth/current-user");
+    return api.get<ICurrentUser>("/auth/current-user");
   }
 
   forgotPassword(payload: ForgotPasswordFormData) {
