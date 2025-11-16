@@ -5,47 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor auth add employee information in response">
-      <change afterPath="$PROJECT_DIR$/admin/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/auth/components/PasswordOnlyForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/auth/components/RememberMeCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/auth/components/SignInForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/auth/components/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/types/employee.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251/storage_v2/_src_/database/db_bkia_website.nhtrdg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251/storage_v2/_src_/database/db_bkia_website.nhtrdg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/layout/footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/layout/sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/constants/navigation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/services/current-user.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/app/api-slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/redux/api-slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/app/axios-base-query.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/redux/axios-base-query.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/app/error-handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/redux/error-handler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/app/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/redux/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/redux/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/config/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/config/env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/layout/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/layout/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/layout/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/layout/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/constants/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/constants/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/features/auth/api/auth-api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/auth/api/auth-api.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/auth/hooks/useSignIn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/auth/hooks/useSignIn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/auth/pages/SignInPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/auth/pages/SignInPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/auth/schemas/sign-in.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/auth/schemas/sign-in.schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/auth/services/auth-storage.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/auth/services/auth-storage.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/auth/slices/auth-slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/auth/slices/auth-slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/auth/types/auth.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/auth/types/auth.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/hooks/useGetAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/hooks/useGetAuth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/hooks/useReduxHook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/hooks/useReduxHook.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/lib/axios.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/pages/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/pages/HomePage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/pages/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/pages/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/pages/NotfoundPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/pages/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/pages/ProfilePage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/routes/main-routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/routes/auth-routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/routes/private-routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/routes/private-routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/routes/protected-route.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/routes/protected-route.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/routes/routers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/routes/routers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/types/auth-user.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/types/auth-user.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/types/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tsconfig.app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tsconfig.node.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tsconfig.node.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/auth/strategies/local.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/auth/strategies/local.strategy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/services/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/services/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,6 +206,7 @@
       <workItem from="1763114515373" duration="315000" />
       <workItem from="1763183348603" duration="212000" />
       <workItem from="1763183597797" duration="5752000" />
+      <workItem from="1763269382093" duration="7101000" />
     </task>
     <task id="LOCAL-00012" summary="about pages">
       <option name="closed" value="true" />

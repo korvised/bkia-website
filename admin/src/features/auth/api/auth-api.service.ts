@@ -13,7 +13,7 @@ class AuthApiService {
   }
 
   fetchCurrentUser() {
-    return api.get<ICurrentUser>("/auth/current-user");
+    return api.get<ICurrentUser>("/auth/current");
   }
 
   forgotPassword(payload: ForgotPasswordFormData) {
