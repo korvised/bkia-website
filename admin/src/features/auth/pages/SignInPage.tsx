@@ -28,8 +28,8 @@ export const SignInPage = () => {
               className="h-28 w-auto object-contain"
             />
           </div>
-          <h1 className="text-xl font-semibold text-gray-700">
-            Website Admin Management
+          <h1 className="text-xl font-extrabold text-gray-600">
+            Website Content Management System
           </h1>
         </div>
 

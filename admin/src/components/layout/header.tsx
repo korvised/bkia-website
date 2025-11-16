@@ -1,9 +1,11 @@
 import { Fragment, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { LuMenu, LuUser, LuSettings, LuLogOut } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 import { CurrentUserService } from "@/services";
 import type { ICurrentUser } from "@/types";
+import logo from "@/assets/images/bkia-logo.png";
 
 interface HeaderProps {
   isLoading: boolean;
@@ -11,7 +13,6 @@ interface HeaderProps {
   onSignOut: () => void;
   onMobileMenuToggle: () => void;
   onDesktopMenuToggle: () => void;
-  isDesktopCollapsed: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -20,7 +21,6 @@ export const Header: React.FC<HeaderProps> = ({
   onSignOut,
   onMobileMenuToggle,
   onDesktopMenuToggle,
-  isDesktopCollapsed,
 }) => {
   // Create service instance and memoize user info
   const userInfo = useMemo(() => {
@@ -48,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
   }, [isLoading, currentUser]);
 
   return (
-    <header className="sticky top-0 z-20 border-b border-gray-200 bg-white shadow-sm">
+    <header className="sticky top-0 z-20 border-b border-gray-200 bg-white">
       <div className="flex h-16 items-center justify-between px-4 lg:px-6">
         {/* Left Section */}
         <div className="flex items-center gap-4">
@@ -61,22 +61,24 @@ export const Header: React.FC<HeaderProps> = ({
             <LuMenu className="h-6 w-6 text-gray-700" />
           </button>
 
-          {/* Desktop Menu Toggle - Only show when collapsed */}
-          {isDesktopCollapsed && (
-            <button
-              onClick={onDesktopMenuToggle}
-              className="hidden rounded-lg p-2 transition-colors hover:bg-gray-100 lg:block"
-              aria-label="Toggle sidebar"
-            >
-              <LuMenu className="h-6 w-6 text-gray-700" />
-            </button>
-          )}
-
-          {/* Mobile Logo */}
-          <div className="text-primary-600 text-base font-bold lg:hidden">
-            Website CMS
-          </div>
+          {/* Desktop Menu Toggle */}
+          <button
+            onClick={onDesktopMenuToggle}
+            className="hidden rounded-lg p-2 transition-colors hover:bg-gray-100 lg:block"
+            aria-label="Toggle sidebar"
+          >
+            <LuMenu className="h-6 w-6 text-gray-700" />
+          </button>
         </div>
+
+        {/* Mobile Logo */}
+        <Link to="/home" className="block lg:hidden">
+          <img
+            src={logo}
+            alt="BKIA Logo"
+            className="h-10 w-10 flex-shrink-0 object-contain"
+          />
+        </Link>
 
         {/* Spacer for desktop */}
         <div className="hidden flex-1 lg:block" />
@@ -170,7 +172,8 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="p-1">
               <MenuItem>
                 {({ focus }) => (
-                  <button
+                  <Link
+                    to="/profile"
                     className={cn(
                       "flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm text-gray-700",
                       focus && "bg-gray-100",
@@ -178,13 +181,14 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <LuUser className="h-4 w-4 text-gray-500" />
                     <span>My Profile</span>
-                  </button>
+                  </Link>
                 )}
               </MenuItem>
 
               <MenuItem>
                 {({ focus }) => (
-                  <button
+                  <Link
+                    to="/profile/setting"
                     className={cn(
                       "flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm text-gray-700",
                       focus && "bg-gray-100",
@@ -192,7 +196,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <LuSettings className="h-4 w-4 text-gray-500" />
                     <span>Settings</span>
-                  </button>
+                  </Link>
                 )}
               </MenuItem>
 

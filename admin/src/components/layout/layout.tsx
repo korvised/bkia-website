@@ -28,10 +28,10 @@ export const Layout = () => {
   return (
     <Fragment>
       <Sidebar
+        currentUser={currentUser}
+        isCollapsed={isDesktopCollapsed}
         isMobileOpen={isMobileSidebarOpen}
         onMobileClose={handleMobileSidebarClose}
-        onDesktopToggle={handleDesktopToggle}
-        isCollapsed={isDesktopCollapsed}
       />
 
       <div
@@ -46,7 +46,6 @@ export const Layout = () => {
           onSignOut={handleSignOut}
           onMobileMenuToggle={handleMobileMenuToggle}
           onDesktopMenuToggle={handleDesktopToggle}
-          isDesktopCollapsed={isDesktopCollapsed}
         />
 
         <main className="flex-1 bg-gray-50">

@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useGetAuth } from "@/hooks";
 import { tokenStorageService } from "@/services";
-import { getErrorMessage } from "@/utils";
+import { getErrorMessage } from "@/lib/utils";
 import { signIn } from "@/features/auth/slices";
 import { signInSchema } from "@/features/auth/schemas";
 import { authStorageService } from "@/features/auth/services";
@@ -23,11 +23,14 @@ export const useSignIn = () => {
   // Memoize remembered user to avoid re-reading from localStorage on every render
   const rememberedUser = useMemo<RememberedUserData | null>(
     () => authStorageService.getUser(),
-    []
+    [],
   );
 
-  const [useRememberedUser, setUseRememberedUser] = useState(() => !!rememberedUser);
-  const [currentRememberedUser, setCurrentRememberedUser] = useState(rememberedUser);
+  const [useRememberedUser, setUseRememberedUser] = useState(
+    () => !!rememberedUser,
+  );
+  const [currentRememberedUser, setCurrentRememberedUser] =
+    useState(rememberedUser);
 
   // Redirect if already authenticated
   useEffect(() => {
