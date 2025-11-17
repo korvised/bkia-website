@@ -75,6 +75,17 @@ class EnvironmentVariables {
   @MinLength(1)
   DB_NAME: string;
 
+  /* REDIS CONFIG */
+  @IsDefined()
+  @IsString()
+  @MinLength(1)
+  RDS_HOST: string;
+
+  @IsDefined()
+  @IsNumberString()
+  @MinLength(1)
+  RDS_PORT: string;
+
   /* JWT CONFIG */
   @IsDefined()
   @IsString()

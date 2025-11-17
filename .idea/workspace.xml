@@ -5,24 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement layout">
-      <change afterPath="$PROJECT_DIR$/admin/src/constants/access-roles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/pages/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/Docker.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/components/layout/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/layout/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/components/layout/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/layout/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/components/layout/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/layout/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/components/layout/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/layout/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/components/layout/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/layout/sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/constants/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/constants/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/constants/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/constants/navigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/auth/hooks/useSignIn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/auth/hooks/useSignIn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/auth/pages/SignInPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/auth/pages/SignInPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/lib/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/routes/private-routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/routes/private-routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/utils/error-handler.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/utils/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AWS.md" beforeDir="false" afterPath="$PROJECT_DIR$/AWS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx-reverse-proxy.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-reverse-proxy.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/common/config/config-validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/config/config-validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/common/redis/redis.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/redis/redis.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/constants/configuration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/constants/configuration.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/types/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/types/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/Docker.md" beforeDir="false" afterPath="$PROJECT_DIR$/web/Docker.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/web/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/config/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/config/env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/config/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/config/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/services/flights.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/services/flights.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/services/http.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/services/http.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/services/weather.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/services/weather.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,44 +66,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
-    "git-widget-placeholder": "v2",
-    "last_opened_file_path": "D:/projects/bkia-website/admin/src/features/flight",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "npm.admin.executor": "Run",
-    "npm.dev.executor": "Run",
-    "npm.server.executor": "Run",
-    "npm.start:dev.executor": "Run",
-    "npm.web.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "D:\\projects\\bkia-website\\server\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;v2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website/admin&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.admin.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.server.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start:dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.web.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\projects\\bkia-website\\server\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\projects\\bkia-website\\web\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\admin" />
+      <recent name="D:\projects\bkia-website\server" />
       <recent name="D:\projects\bkia-website\admin\src\features\flight" />
       <recent name="D:\projects\bkia-website\admin\public" />
       <recent name="D:\projects\bkia-website\admin\src\features\auth\hooks" />
-      <recent name="D:\projects\bkia-website\admin\src\modules\auth\hooks" />
-      <recent name="D:\projects\bkia-website\admin\src\components\layout" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\server\src\common\hrms" />
@@ -104,7 +113,7 @@
       <recent name="D:\projects\bkia-website\admin\src\features\auth\services" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.admin">
+  <component name="RunManager" selected="npm.web">
     <configuration name="admin" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/admin/package.json" />
       <command value="run" />
@@ -142,9 +151,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.admin" />
-        <item itemvalue="npm.server" />
         <item itemvalue="npm.web" />
+        <item itemvalue="npm.server" />
+        <item itemvalue="npm.admin" />
       </list>
     </recent_temporary>
   </component>
@@ -214,15 +223,10 @@
       <workItem from="1763114515373" duration="315000" />
       <workItem from="1763183348603" duration="212000" />
       <workItem from="1763183597797" duration="5752000" />
-      <workItem from="1763269382093" duration="12724000" />
-    </task>
-    <task id="LOCAL-00013" summary="refactor layout &amp; home page">
-      <option name="closed" value="true" />
-      <created>1760692665501</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1760692665501</updated>
+      <workItem from="1763269382093" duration="12904000" />
+      <workItem from="1763341434808" duration="3000" />
+      <workItem from="1763341485144" duration="22228000" />
+      <workItem from="1763371502425" duration="410000" />
     </task>
     <task id="LOCAL-00014" summary="refactor color theme and implement search feature">
       <option name="closed" value="true" />
@@ -608,7 +612,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763276657125</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="implement layout">
+      <option name="closed" value="true" />
+      <created>1763299968057</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1763299968057</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

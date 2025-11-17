@@ -1,6 +1,7 @@
-import { API_BASE_URL, fetchJSON } from "@/services/http";
+import { config } from "@/config";
+import { fetchJSON } from "@/services/http";
 import type { OpenWeatherResponse } from "@/types/weather";
 
 export function fetchWeather() {
-  return fetchJSON<OpenWeatherResponse>(`${API_BASE_URL}/weather`);
+  return fetchJSON<OpenWeatherResponse>(`${config.apiBaseUrl}/weather`);
 }

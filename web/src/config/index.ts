@@ -1,4 +1,3 @@
-// src/config/index.ts
 import {
   NEXT_PUBLIC_API_BASE_URL,
   NEXT_PUBLIC_ASSET_BASE_URL,

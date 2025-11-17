@@ -1,4 +1,5 @@
-import { API_BASE_URL, fetchJSON } from "./http";
+import { fetchJSON } from "./http";
+import { config } from "@/config";
 import { withQuery } from "@/utils/url";
 import type { IPagination } from "@/types/pagination";
 import type {
@@ -28,7 +29,7 @@ export function toQuery(
 }
 
 export function listFlights(query: QueryFlight) {
-  const url = withQuery(`${API_BASE_URL}/flights`, {
+  const url = withQuery(`${config.apiBaseUrl}/flights`, {
     search: query.search,
     direction: query.direction,
     operationDate: query.date,
@@ -42,7 +43,7 @@ export function listFlights(query: QueryFlight) {
 }
 
 export function listAirlines() {
-  const url = withQuery(`${API_BASE_URL}/airlines`, {
+  const url = withQuery(`${config.apiBaseUrl}/airlines`, {
     isActive: true,
     orderBy: "createdAt",
     order: "ASC",

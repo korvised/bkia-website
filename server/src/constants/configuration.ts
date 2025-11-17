@@ -8,6 +8,7 @@ import {
   IDbConfig,
   IIntegrationConfig,
   IJwtConfig,
+  IRdsConfig,
   ISmtpConfig,
 } from '@/types/config';
 
@@ -30,6 +31,11 @@ const databaseConfig = registerAs<IDbConfig>(ConfigKey.db, () => ({
   user: process.env.DB_USER!,
   pass: process.env.DB_PASS!,
   name: process.env.DB_NAME!,
+}));
+
+const redisConfig = registerAs<IRdsConfig>(ConfigKey.rds, () => ({
+  host: process.env.RDS_HOST!,
+  port: Number(process.env.RDS_PORT),
 }));
 
 const jwtConfig = registerAs<IJwtConfig>(ConfigKey.jwt, () => ({
@@ -56,6 +62,7 @@ export const configurations = [
   appConfig,
   integrationConfig,
   databaseConfig,
+  redisConfig,
   jwtConfig,
   smtpConfig,
   awsConfig,

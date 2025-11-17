@@ -4,6 +4,7 @@ export enum ConfigKey {
   app = 'app',
   igt = 'igt',
   db = 'db',
+  rds = 'rds',
   jwt = 'jwt',
   smtp = 'smtp',
   aws = 'aws',
@@ -36,6 +37,11 @@ export interface IDbConfig {
   name: string;
 }
 
+export interface IRdsConfig {
+  host: string;
+  port: number;
+}
+
 export interface IJwtConfig {
   secret: string;
   expiresIn: StringValue;
@@ -60,6 +66,7 @@ export interface IConfig {
   app: IAppConfig;
   igt: IIntegrationConfig;
   db: IDbConfig;
+  rds: IRdsConfig;
   jwt: IJwtConfig;
   smtp: ISmtpConfig;
   aws: IAwsConfig;

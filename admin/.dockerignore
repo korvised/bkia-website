@@ -1,0 +1,46 @@
+# Node modules (not needed; Docker installs them)
+node_modules
+.pnpm-store
+
+# Build output
+dist
+build
+*.log
+
+# Local env files (except the prod CI one)
+.env
+.env.*.local
+!.env.prod.local
+!.env.example
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+
+# IDE / workspace
+.vscode
+.idea
+
+# Git
+.git
+.gitignore
+
+# Tests / coverage
+coverage
+*.spec.ts
+*.test.ts
+
+# Temporary files
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.swp
+
+# Docker output
+docker/
+docker-compose*
+
+# Test files
+test.*
+*test.*

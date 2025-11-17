@@ -1,5 +1,3 @@
-import { config } from "@/config";
-
 export async function fetchJSON<T>(
   path: string,
   init?: RequestInit,
@@ -15,5 +13,3 @@ export async function fetchJSON<T>(
   }
   return res.json() as Promise<T>;
 }
-
-export const API_BASE_URL = config.apiBaseUrl;
