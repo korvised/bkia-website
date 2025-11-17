@@ -1,4 +1,4 @@
-import { addMinutes, differenceInMinutes, isAfter, isBefore } from "date-fns";
+import { differenceInMinutes, isAfter, isBefore } from "date-fns";
 import type { DisplayStatusCode, IFlight } from "@/types/flight";
 import type { Lang } from "@/types/language";
 import { labelsByCode } from "@/data/flights";
@@ -11,6 +11,7 @@ const BOARDING_WINDOW_MIN = 40; // show "Boarding" starting this many minutes be
 const FINAL_CALL_WINDOW_MIN = 15; // "Final call" within this many minutes before STD
 const GATE_CLOSED_MIN = 10; // "Gate closed" within this many minutes before STD
 const DELAY_TOLERANCE_MIN = 15; // grace after STD/STA before "Delayed"
+const AUTO_FINALIZE_THRESHOLD_MIN = 1; // auto-finalize as DEPARTED/ARRIVED after this many minutes past scheduled time
 
 // ---------------- helpers ----------------
 
@@ -74,23 +75,30 @@ export function getFlightDisplayStatus(
   // Build key times (accept "HH:mm:ss" or "HH:mm")
   const std = toLocal(flight.operationDate, flight.scheduledDepTime);
   const sta = toLocal(flight.operationDate, flight.scheduledArrTime);
-  const atdRaw = flight.actualDepTime
-    ? toLocal(flight.operationDate, flight.actualDepTime)
-    : null;
-  const ataRaw = flight.actualArrTime
-    ? toLocal(flight.operationDate, flight.actualArrTime)
-    : null;
 
-  // Only treat actuals as final if they are in the past (or now)
+  // Handle null actualDepTime and actualArrTime explicitly
+  const atdRaw =
+    flight.actualDepTime && flight.actualDepTime.trim() !== ""
+      ? toLocal(flight.operationDate, flight.actualDepTime)
+      : null;
+  const ataRaw =
+    flight.actualArrTime && flight.actualArrTime.trim() !== ""
+      ? toLocal(flight.operationDate, flight.actualArrTime)
+      : null;
+
+  // Only treat actuals as final if they exist AND are in the past (or now)
   const atd = atdRaw && isPastOrNow(atdRaw, realNow) ? atdRaw : null;
   const ata = ataRaw && isPastOrNow(ataRaw, realNow) ? ataRaw : null;
 
-  const ckinOpen = flight.checkInStartTime
-    ? toLocal(flight.operationDate, flight.checkInStartTime)
-    : null;
-  const ckinClose = flight.checkInEndTime
-    ? toLocal(flight.operationDate, flight.checkInEndTime)
-    : null;
+  // Handle null check-in times explicitly
+  const ckinOpen =
+    flight.checkInStartTime && flight.checkInStartTime.trim() !== ""
+      ? toLocal(flight.operationDate, flight.checkInStartTime)
+      : null;
+  const ckinClose =
+    flight.checkInEndTime && flight.checkInEndTime.trim() !== ""
+      ? toLocal(flight.operationDate, flight.checkInEndTime)
+      : null;
 
   // 2) Future op day → default to SCHEDULED (unless admin overrides hit above)
   if (isBefore(realNow, opStart)) {
@@ -112,37 +120,68 @@ export function getFlightDisplayStatus(
   if (isDep && atd) return withLabels("DEPARTED");
   if (!isDep && ata) return withLabels("ARRIVED");
 
-  // 5) Delay detection (after scheduled + tolerance with no actual)
+  // 4.5) Auto-finalize if significantly past scheduled time (no actuals recorded)
+  // This prevents flights from showing as "DELAYED" indefinitely
   if (isDep) {
-    if (isAfter(realNow, addMinutes(std, DELAY_TOLERANCE_MIN)) && !atd) {
+    const minsPastSTD = differenceInMinutes(realNow, std);
+    if (minsPastSTD > AUTO_FINALIZE_THRESHOLD_MIN && !atd) {
+      return withLabels("DEPARTED");
+    }
+  } else {
+    const minsPastSTA = differenceInMinutes(realNow, sta);
+    if (minsPastSTA > AUTO_FINALIZE_THRESHOLD_MIN && !ata) {
+      return withLabels("ARRIVED");
+    }
+  }
+
+  // 5) Delay detection (after scheduled + tolerance with no actual)
+  // Only show DELAYED if within the delay window (between tolerance and auto-finalize threshold)
+  if (isDep) {
+    const minsPastSTD = differenceInMinutes(realNow, std);
+    if (
+      minsPastSTD > DELAY_TOLERANCE_MIN &&
+      minsPastSTD <= AUTO_FINALIZE_THRESHOLD_MIN &&
+      !atd
+    ) {
       return withLabels("DELAYED");
     }
   } else {
-    if (isAfter(realNow, addMinutes(sta, DELAY_TOLERANCE_MIN)) && !ata) {
+    const minsPastSTA = differenceInMinutes(realNow, sta);
+    if (
+      minsPastSTA > DELAY_TOLERANCE_MIN &&
+      minsPastSTA <= AUTO_FINALIZE_THRESHOLD_MIN &&
+      !ata
+    ) {
       return withLabels("DELAYED");
     }
   }
 
   // 6) Departure-side UX (only when BOR is origin)
   if (isDep) {
-    // Check-in window if provided
-    if (ckinOpen && ckinClose) {
-      if (isAfter(realNow, ckinOpen) && isBefore(realNow, ckinClose)) {
-        return withLabels("CHECK_IN_OPEN");
+    // Boarding phases relative to STD (check this first for more granular status)
+    const minsToSTD = differenceInMinutes(std, realNow); // >0 means in future
+
+    // If we're far from departure (>40 min), check check-in status
+    if (minsToSTD > BOARDING_WINDOW_MIN) {
+      // Check-in window if provided
+      if (ckinOpen && ckinClose) {
+        if (isAfter(realNow, ckinOpen) && isBefore(realNow, ckinClose)) {
+          return withLabels("CHECK_IN_OPEN");
+        }
+        if (isAfter(realNow, ckinClose)) {
+          return withLabels("CHECK_IN_CLOSED");
+        }
       }
-      if (isAfter(realNow, ckinClose) && isBefore(realNow, std)) {
-        return withLabels("CHECK_IN_CLOSED");
-      }
+      return withLabels("ON_TIME");
     }
 
-    // Boarding phases relative to STD
-    const minsToSTD = differenceInMinutes(std, realNow); // >0 means in future
-    if (minsToSTD > BOARDING_WINDOW_MIN) return withLabels("ON_TIME");
+    // Within boarding window (0-40 min before departure)
     if (minsToSTD > FINAL_CALL_WINDOW_MIN) return withLabels("BOARDING");
     if (minsToSTD > GATE_CLOSED_MIN) return withLabels("FINAL_CALL");
     if (minsToSTD > 0) return withLabels("GATE_CLOSED");
 
-    // Reached STD without actuals/delay/override → keep SCHEDULED
+    // Reached or passed STD without actuals/delay/override
+    // This shouldn't normally happen as steps 4.5 and 5 should catch it
     return withLabels("SCHEDULED");
   }
 

@@ -4,34 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement layout">
-      <change afterPath="$PROJECT_DIR$/admin/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/Docker.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="deployment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AWS.md" beforeDir="false" afterPath="$PROJECT_DIR$/AWS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx-reverse-proxy.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-reverse-proxy.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/common/config/config-validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/config/config-validation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/common/redis/redis.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/common/redis/redis.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/constants/configuration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/constants/configuration.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/types/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/types/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/Docker.md" beforeDir="false" afterPath="$PROJECT_DIR$/web/Docker.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/web/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/config/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/config/env.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/config/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/config/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/services/flights.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/services/flights.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/services/http.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/services/http.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/services/weather.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/services/weather.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/lib/flights/status-display.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/lib/flights/status-display.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,15 +201,7 @@
       <workItem from="1763269382093" duration="12904000" />
       <workItem from="1763341434808" duration="3000" />
       <workItem from="1763341485144" duration="22228000" />
-      <workItem from="1763371502425" duration="410000" />
-    </task>
-    <task id="LOCAL-00014" summary="refactor color theme and implement search feature">
-      <option name="closed" value="true" />
-      <created>1760934993937</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1760934993937</updated>
+      <workItem from="1763371502425" duration="1595000" />
     </task>
     <task id="LOCAL-00015" summary="add welcome popup">
       <option name="closed" value="true" />
@@ -620,14 +587,21 @@
       <option name="project" value="LOCAL" />
       <updated>1763299968057</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="deployment">
+      <option name="closed" value="true" />
+      <created>1763372021826</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1763372021826</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor support &amp; about pages" />
     <MESSAGE value="initial server" />
     <MESSAGE value="implement config" />
     <MESSAGE value="implement weather feature (api&amp;ui)" />
@@ -652,6 +626,7 @@
     <MESSAGE value="implement admin auth - sign in feature" />
     <MESSAGE value="refactor auth add employee information in response" />
     <MESSAGE value="implement layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement layout" />
+    <MESSAGE value="deployment" />
+    <option name="LAST_COMMIT_MESSAGE" value="deployment" />
   </component>
 </project>
