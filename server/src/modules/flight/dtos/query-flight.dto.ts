@@ -74,19 +74,21 @@ export class QueryFlightDto extends PaginationDto {
       'scheduledArrTime',
       'createdAt',
       'status',
+      'type',
     ],
     {
       message:
-        'orderBy must be one of flightNo, operationDate, scheduledDepTime, scheduledArrTime, createdAt, or status',
+        'sortBy must be one of flightNo, operationDate, scheduledDepTime, scheduledArrTime, createdAt, status, or type',
     },
   )
-  orderBy?:
+  sortBy?:
     | 'flightNo'
     | 'operationDate'
     | 'scheduledDepTime'
     | 'scheduledArrTime'
     | 'createdAt'
-    | 'status';
+    | 'status'
+    | 'type';
 
   /** Sort direction */
   @IsOptional()

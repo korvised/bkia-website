@@ -2,7 +2,7 @@ import { Fragment, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { LuMenu, LuUser, LuSettings, LuLogOut } from "react-icons/lu";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib";
 import { CurrentUserService } from "@/services";
 import type { ICurrentUser } from "@/types";
 import logo from "@/assets/images/bkia-logo.png";

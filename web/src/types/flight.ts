@@ -58,7 +58,7 @@ export interface QueryFlight {
 
   // optional extras if you support them
   status?: FlightStatus;
-  orderBy?: OrderBy;
+  sortBy?: OrderBy;
   order?: Order;
 }
 

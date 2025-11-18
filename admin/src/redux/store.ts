@@ -1,10 +1,12 @@
 import { type Action, combineReducers, configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "@/features/auth/slices";
+import { flightReducer } from "@/features/flight/slices";
 import { apiSlice } from "./api-slice";
 import { errorHandler } from "./error-handler";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  flight: flightReducer,
   [apiSlice.reducerPath]: apiSlice.reducer,
 });
 
@@ -26,6 +28,5 @@ export const store = configureStore({
     getDefaultMiddleware().concat(apiSlice.middleware, errorHandler),
 });
 
-// Export these here normally
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

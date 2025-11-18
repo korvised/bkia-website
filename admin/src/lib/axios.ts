@@ -5,7 +5,7 @@ import { store } from "@/redux/store";
 import { tokenStorageService } from "@/services";
 
 const api = axios.create({
-  baseURL: config.apiBaseUrl,
+  baseURL: `${config.apiBaseUrl}/api`,
 });
 
 // Skip these routes from setting Authorization header

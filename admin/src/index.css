@@ -99,13 +99,13 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-primary);
+    background-color: var(--color-gray-500);
 }
 
 /* Services Navigation Horizontal Scrollbar */
 .horizontal-scroll {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-gray-300) rgba(0, 0, 0, 0.1);
+    scrollbar-color: var(--color-gray-300) transparent;
 }
 
 .horizontal-scroll::-webkit-scrollbar {
@@ -113,12 +113,12 @@
 }
 
 .horizontal-scroll::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
+    background: transparent; /* Changed from rgba(0, 0, 0, 0.1) */
     border-radius: 3px;
 }
 
 .horizontal-scroll::-webkit-scrollbar-thumb {
-    background: var(--color-primary);
+    background: var(--color-gray-300);
     border-radius: 3px;
     transition: background-color 0.2s ease;
 }
@@ -149,7 +149,6 @@
         display: none !important;
     }
 }
-
 
 
 /* Loading */

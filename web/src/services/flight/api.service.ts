@@ -21,7 +21,7 @@ export function toQuery(
     search: filters.q,
     page: filters.page ? Number(filters.page) : 1,
     limit: filters.limit ? Number(filters.limit) : 25,
-    orderBy: "operationDate",
+    sortBy: "operationDate",
     order: "ASC",
   };
 }
@@ -32,7 +32,7 @@ export function listFlights(query: QueryFlight) {
     direction: query.direction,
     operationDate: query.date,
     airline: query.airline,
-    orderBy: "scheduledDepTime",
+    sortBy: "scheduledDepTime",
     order: query.order,
     page: query.page,
     limit: query.limit,

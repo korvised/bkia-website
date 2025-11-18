@@ -11,33 +11,33 @@ function joinUrl(base: string, path: string, v?: string) {
 }
 
 /**
- * Returns a public URL for an image/file stored on S3 or CDN.
- * - If VITE_CDN_DOMAIN is set, uses https://<cdnDomain>/<path>
- * - Else falls back to VITE_ASSET_BASE_URL or auto-built S3 URL
- * - Automatically strips/normalizes slashes
- * - Optionally appends app version (?v=...) for cache-busting
+ * Returns a public URL for an image/file stored on CDN, custom asset base, or S3.
  */
 export function asset(path: string, opts?: { cacheBust?: boolean }) {
   if (!path) return '';
 
   const version = opts?.cacheBust ? config.appVersion : undefined;
 
-  // Prefer CDN domain
+  /** 1) CDN domain → highest priority */
   if (config.cdnDomain) {
     return joinUrl(`https://${config.cdnDomain}`, path, version);
   }
 
-  // Missing base URL → warn only in development
-  if (!config.assetBaseUrl) {
-    if (config.isDev) {
-      console.warn(
-        '[asset] Missing asset base URL. Set VITE_CDN_DOMAIN or VITE_ASSET_BASE_URL or S3 bucket + region.'
-      );
-    }
-    // Use relative path fallback
-    return joinUrl('/', path, version);
+  /** 2) Asset base URL (custom static/CDN) */
+  if (config.assetBaseUrl) {
+    return joinUrl(config.assetBaseUrl, path, version);
   }
 
-  // Use configured asset base URL
-  return joinUrl(config.assetBaseUrl, path, version);
+  /** 3) Auto-build S3 URL if bucket + region exist */
+  if (config.s3Bucket && config.s3Region) {
+    const s3Base = `https://${config.s3Bucket}.s3.${config.s3Region}.amazonaws.com`;
+    return joinUrl(s3Base, path, version);
+  }
+
+  /** 4) Final fallback: relative path */
+  if (config.isDev) {
+    console.warn('[asset] No CDN/asset/S3 config found. Using relative path.');
+  }
+
+  return joinUrl('/', path, version);
 }

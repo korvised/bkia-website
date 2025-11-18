@@ -42,7 +42,7 @@ export class FlightService {
   /**
    * List flights with filters + pagination.
    * Supports: search, status, type, direction (departure|arrival), airlineId, counterId,
-   * orderBy, order; plus PaginationDto (page, limit).
+   * terminal, gate, orderBy, order; plus PaginationDto (page, limit).
    * Loads the same relations as findOne.
    */
   async findAll(dto: QueryFlightDto) {
@@ -56,7 +56,7 @@ export class FlightService {
       status,
       airlineId,
       counterId,
-      orderBy = 'operationDate',
+      sortBy = 'operationDate',
       order = 'ASC',
     } = dto;
 
@@ -79,37 +79,37 @@ export class FlightService {
 
       qb.andWhere(
         `
-        (
-          -- Flight No
-          f.flightNo ILIKE :s
-    
-          -- Airline: code, name, names (all langs)
-          OR airline.code ILIKE :s
-          OR airline.name ILIKE :s
-          OR EXISTS (
-            SELECT 1
-            FROM jsonb_each_text(COALESCE(airline.names, '{}'::jsonb)) AS aj(k, v)
-            WHERE v ILIKE :s
-          )
-    
-          -- Origin: code, name, names (all langs)
-          OR origin.code ILIKE :s
-          OR origin.name ILIKE :s
-          OR EXISTS (
-            SELECT 1
-            FROM jsonb_each_text(COALESCE(origin.names, '{}'::jsonb)) AS oj(k, v)
-            WHERE v ILIKE :s
-          )
-    
-          -- Destination: code, name, names (all langs)
-          OR destination.code ILIKE :s
-          OR destination.name ILIKE :s
-          OR EXISTS (
-            SELECT 1
-            FROM jsonb_each_text(COALESCE(destination.names, '{}'::jsonb)) AS dj(k, v)
-            WHERE v ILIKE :s
-          )
-        )`,
+      (
+        -- Flight No
+        f.flightNo ILIKE :s
+
+        -- Airline: code, name, names (all langs)
+        OR airline.code ILIKE :s
+        OR airline.name ILIKE :s
+        OR EXISTS (
+          SELECT 1
+          FROM jsonb_each_text(COALESCE(airline.names, '{}'::jsonb)) AS aj(k, v)
+          WHERE v ILIKE :s
+        )
+
+        -- Origin: code, name, names (all langs)
+        OR origin.code ILIKE :s
+        OR origin.name ILIKE :s
+        OR EXISTS (
+          SELECT 1
+          FROM jsonb_each_text(COALESCE(origin.names, '{}'::jsonb)) AS oj(k, v)
+          WHERE v ILIKE :s
+        )
+
+        -- Destination: code, name, names (all langs)
+        OR destination.code ILIKE :s
+        OR destination.name ILIKE :s
+        OR EXISTS (
+          SELECT 1
+          FROM jsonb_each_text(COALESCE(destination.names, '{}'::jsonb)) AS dj(k, v)
+          WHERE v ILIKE :s
+        )
+      )`,
         { s },
       );
     }
@@ -140,10 +140,12 @@ export class FlightService {
     }
 
     // Direction: 'departure' or 'arrival'
+    // For airport website: departure = flights leaving from this airport (origin = BOR)
+    // arrival = flights coming to this airport (destination = BOR)
     if (direction === FlightDirection.DEPARTURE) {
-      qb.andWhere('origin.code = :code', { code: 'BOR' });
+      qb.andWhere('origin.code = :airportCode', { airportCode: 'BOR' });
     } else if (direction === FlightDirection.ARRIVAL) {
-      qb.andWhere('destination.code = :code', { code: 'BOR' });
+      qb.andWhere('destination.code = :airportCode', { airportCode: 'BOR' });
     }
 
     if (airlineId) {
@@ -162,17 +164,38 @@ export class FlightService {
       scheduledArrTime: 'f.scheduledArrTime',
       createdAt: 'f.createdAt',
       status: 'f.status',
+      type: 'f.type',
     };
 
-    // Priority over orderBy when direction is provided, always order by departure/arrival time first
-    const orderField =
-      direction === FlightDirection.DEPARTURE
-        ? 'f.scheduledDepTime'
-        : direction === FlightDirection.ARRIVAL
-          ? 'f.scheduledArrTime'
-          : (orderMap[orderBy] ?? 'f.operationDate');
+    // Primary sort field based on direction or explicit sortBy
+    let primaryOrderField: string;
 
-    qb.orderBy(orderField, order === 'DESC' ? 'DESC' : 'ASC');
+    if (direction === FlightDirection.DEPARTURE) {
+      primaryOrderField = 'f.scheduledDepTime';
+    } else if (direction === FlightDirection.ARRIVAL) {
+      primaryOrderField = 'f.scheduledArrTime';
+    } else {
+      primaryOrderField = orderMap[sortBy] ?? 'f.operationDate';
+    }
+
+    const orderDirection = order === 'DESC' ? 'DESC' : 'ASC';
+
+    // Apply primary sort
+    qb.orderBy(primaryOrderField, orderDirection);
+
+    // Add secondary sort for better ordering
+    // When sorting by operationDate, add scheduledDepTime as secondary
+    if (primaryOrderField === 'f.operationDate') {
+      qb.addOrderBy('f.scheduledDepTime', orderDirection);
+    }
+    // When sorting by time, add operationDate as secondary for flights on different days
+    else if (
+      primaryOrderField === 'f.scheduledDepTime' ||
+      primaryOrderField === 'f.scheduledArrTime'
+    ) {
+      qb.addOrderBy('f.operationDate', orderDirection);
+    }
+
     qb.skip(skip).take(limit);
 
     const [data, total] = await qb.getManyAndCount();
