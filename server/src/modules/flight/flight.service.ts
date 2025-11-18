@@ -4,17 +4,24 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { Counter, Flight } from '@/database';
 import { AirlineService } from '@/modules/airline';
 import { CounterService } from '@/modules/counter';
 import { RouteService } from '@/modules/route';
 import { FlightDirection, FlightStatus } from '@/types/enum';
-import { CreateFlightDto, QueryFlightDto, UpdateFlightDto } from './dtos';
+import {
+  BatchCreateFlightsDto,
+  BulkCreateFlightDto,
+  CreateFlightDto,
+  QueryFlightDto,
+  UpdateFlightDto,
+} from './dtos';
 
 @Injectable()
 export class FlightService {
   constructor(
+    private readonly dataSource: DataSource,
     @InjectRepository(Flight)
     private readonly flightRepo: Repository<Flight>,
     private readonly airlineService: AirlineService,
@@ -37,6 +44,21 @@ export class FlightService {
 
     if (!flight) throw new NotFoundException('Flight not found');
     return flight;
+  }
+
+  /**
+   * Find flights by IDs (with relations).
+   */
+  async findByIds(ids: string[]): Promise<Flight[]> {
+    return this.flightRepo.find({
+      where: ids.map((id) => ({ id })),
+      relations: {
+        route: { origin: true, destination: true },
+        airline: { logoFile: true },
+        checkInCounters: true,
+      },
+      order: { operationDate: 'ASC', scheduledDepTime: 'ASC' },
+    });
   }
 
   /**
@@ -213,9 +235,9 @@ export class FlightService {
   }
 
   /**
-   * Create a new flight.
+   * Create a single flight.
    */
-  async create(dto: CreateFlightDto) {
+  async create(dto: CreateFlightDto): Promise<Flight> {
     const route = await this.routeService.findOne(dto.routeId);
     if (!route) throw new BadRequestException('Invalid routeId');
 
@@ -253,7 +275,151 @@ export class FlightService {
       checkInCounters: counters,
     });
 
-    return await this.flightRepo.save(flight);
+    const saved = await this.flightRepo.save(flight);
+    return this.findOne(saved.id);
+  }
+
+  /**
+   * Bulk create flights - same flight data with multiple dates.
+   * Useful for scheduling recurring flights.
+   */
+  async bulkCreate(dto: BulkCreateFlightDto): Promise<Flight[]> {
+    const route = await this.routeService.findOne(dto.routeId);
+    if (!route) throw new BadRequestException('Invalid routeId');
+
+    const airline = await this.airlineService.findOne(dto.airlineId);
+    if (!airline) throw new BadRequestException('Invalid airlineId');
+
+    let counters: Counter[] = [];
+    if (dto.checkInCounterIds?.length) {
+      counters = await this.counterService.findByCounterIds(
+        dto.checkInCounterIds,
+      );
+      if (counters.length !== dto.checkInCounterIds.length) {
+        throw new BadRequestException(
+          'One or more counterId values are invalid',
+        );
+      }
+    }
+
+    // Use transaction for bulk insert
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      const flights: Flight[] = [];
+
+      for (const operationDate of dto.operationDates) {
+        const flight = this.flightRepo.create({
+          flightNo: dto.flightNo,
+          type: dto.type,
+          terminal: dto.terminal,
+          gate: dto.gate?.trim() ?? null,
+          operationDate,
+          scheduledDepTime: dto.scheduledDepTime,
+          scheduledArrTime: dto.scheduledArrTime,
+          actualDepTime: dto.actualDepTime ?? null,
+          actualArrTime: dto.actualArrTime ?? null,
+          checkInStartTime: dto.checkInStartTime ?? null,
+          checkInEndTime: dto.checkInEndTime ?? null,
+          status: dto.status ?? FlightStatus.SCHEDULED,
+          remarks: dto.remarks ?? null,
+          route,
+          airline,
+          checkInCounters: counters,
+        });
+
+        const saved = await queryRunner.manager.save(flight);
+        flights.push(saved);
+      }
+
+      await queryRunner.commitTransaction();
+
+      // Return flights with full relations
+      const flightIds = flights.map((f) => f.id);
+      return this.findByIds(flightIds);
+    } catch (error) {
+      await queryRunner.rollbackTransaction();
+      throw error;
+    } finally {
+      await queryRunner.release();
+    }
+  }
+
+  /**
+   * Batch create multiple different flights.
+   * Useful for importing or creating various flights at once.
+   */
+  async batchCreate(dto: BatchCreateFlightsDto): Promise<Flight[]> {
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      const flights: Flight[] = [];
+
+      for (const flightDto of dto.flights) {
+        const route = await this.routeService.findOne(flightDto.routeId);
+        if (!route) {
+          throw new BadRequestException(
+            `Invalid routeId: ${flightDto.routeId}`,
+          );
+        }
+
+        const airline = await this.airlineService.findOne(flightDto.airlineId);
+        if (!airline) {
+          throw new BadRequestException(
+            `Invalid airlineId: ${flightDto.airlineId}`,
+          );
+        }
+
+        let counters: Counter[] = [];
+        if (flightDto.checkInCounterIds?.length) {
+          counters = await this.counterService.findByCounterIds(
+            flightDto.checkInCounterIds,
+          );
+          if (counters.length !== flightDto.checkInCounterIds.length) {
+            throw new BadRequestException(
+              `One or more counterId values are invalid for flight ${flightDto.flightNo}`,
+            );
+          }
+        }
+
+        const flight = this.flightRepo.create({
+          flightNo: flightDto.flightNo,
+          type: flightDto.type,
+          terminal: flightDto.terminal,
+          gate: flightDto.gate?.trim() ?? null,
+          operationDate: flightDto.operationDate,
+          scheduledDepTime: flightDto.scheduledDepTime,
+          scheduledArrTime: flightDto.scheduledArrTime,
+          actualDepTime: flightDto.actualDepTime ?? null,
+          actualArrTime: flightDto.actualArrTime ?? null,
+          checkInStartTime: flightDto.checkInStartTime ?? null,
+          checkInEndTime: flightDto.checkInEndTime ?? null,
+          status: flightDto.status ?? FlightStatus.SCHEDULED,
+          remarks: flightDto.remarks ?? null,
+          route,
+          airline,
+          checkInCounters: counters,
+        });
+
+        const saved = await queryRunner.manager.save(flight);
+        flights.push(saved);
+      }
+
+      await queryRunner.commitTransaction();
+
+      // Return flights with full relations
+      const flightIds = flights.map((f) => f.id);
+      return this.findByIds(flightIds);
+    } catch (error) {
+      await queryRunner.rollbackTransaction();
+      throw error;
+    } finally {
+      await queryRunner.release();
+    }
   }
 
   /**

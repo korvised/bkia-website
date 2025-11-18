@@ -1,5 +1,14 @@
-import { FlightDirection, FlightStatus, FlightType, Terminal } from "@/types";
+import {
+  FlightDirection,
+  FlightStatus,
+  FlightType,
+  Terminal,
+  RouteType,
+} from "@/types";
 import type { SelectOption } from "@/components/ui";
+
+// Airport code
+export const AIRPORT_CODE = "BOR";
 
 // Base options without "All" option - for create/update forms
 export const FLIGHT_DIRECTION_OPTIONS: SelectOption[] = [
@@ -30,6 +39,11 @@ export const TERMINAL_OPTIONS: SelectOption[] = [
   { value: Terminal.DOM, label: "Terminal B (Domestic)" },
 ];
 
+export const ROUTE_TYPE_OPTIONS: SelectOption[] = [
+  { value: RouteType.INT, label: "International" },
+  { value: RouteType.DOM, label: "Domestic" },
+];
+
 // Filter options with "All" option - for list filters
 export const FLIGHT_DIRECTION_FILTER_OPTIONS: SelectOption[] = [
   { value: "", label: "All Directions" },
@@ -49,4 +63,9 @@ export const FLIGHT_STATUS_FILTER_OPTIONS: SelectOption[] = [
 export const TERMINAL_FILTER_OPTIONS: SelectOption[] = [
   { value: "", label: "All Terminals" },
   ...TERMINAL_OPTIONS,
+];
+
+export const ROUTE_TYPE_FILTER_OPTIONS: SelectOption[] = [
+  { value: "", label: "All Routes" },
+  ...ROUTE_TYPE_OPTIONS,
 ];

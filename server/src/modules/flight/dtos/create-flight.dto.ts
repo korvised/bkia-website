@@ -1,4 +1,4 @@
-import { Transform } from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
 import {
   IsArray,
   IsDateString,
@@ -9,13 +9,15 @@ import {
   IsUUID,
   Length,
   Matches,
+  ValidateNested,
+  ArrayMinSize,
 } from 'class-validator';
 import { FlightStatus, FlightType, Terminal } from '@/types/enum';
-import { Optional } from '@nestjs/common';
 
 const TIME_HH_MM = /^(?:[01]\d|2[0-3]):[0-5]\d$/; // 24h "HH:mm"
 
-export class CreateFlightDto {
+// Base class with common flight properties
+export class BaseFlightDto {
   @IsString()
   @IsNotEmpty()
   @Length(1, 20)
@@ -28,13 +30,10 @@ export class CreateFlightDto {
   @IsEnum(Terminal)
   terminal!: Terminal;
 
-  @Optional()
+  @IsOptional()
   @IsString()
   @Length(1, 5)
   gate?: string | null;
-
-  @IsDateString() // ISO date "YYYY-MM-DD"
-  operationDate!: string;
 
   @IsString()
   @Matches(TIME_HH_MM, {
@@ -62,7 +61,6 @@ export class CreateFlightDto {
   })
   actualArrTime?: string | null;
 
-  // Check-in window (departures)
   @IsOptional()
   @IsString()
   @Matches(TIME_HH_MM, {
@@ -77,10 +75,9 @@ export class CreateFlightDto {
   })
   checkInEndTime?: string | null;
 
-  // Enum default mirrors entity default
   @IsOptional()
   @IsEnum(FlightStatus)
-  status: FlightStatus = FlightStatus.SCHEDULED;
+  status?: FlightStatus = FlightStatus.SCHEDULED;
 
   @IsOptional()
   @IsString()
@@ -90,14 +87,37 @@ export class CreateFlightDto {
   )
   remarks?: string | null;
 
-  // Relations as IDs
   @IsUUID('4', { message: 'routeId must be a valid UUID' })
   routeId!: string;
 
   @IsUUID('4', { message: 'airlineId must be a valid UUID' })
   airlineId!: string;
 
+  @IsOptional()
   @IsArray()
   @IsUUID('4', { each: true, message: 'Each counterId must be a valid UUID' })
-  checkInCounterIds: string[];
+  checkInCounterIds?: string[];
+}
+
+// Single flight - extends base with single date
+export class CreateFlightDto extends BaseFlightDto {
+  @IsDateString()
+  operationDate!: string;
+}
+
+// Bulk create - extends base with multiple dates
+export class BulkCreateFlightDto extends BaseFlightDto {
+  @IsArray()
+  @ArrayMinSize(1, { message: 'At least one operation date is required' })
+  @IsDateString({}, { each: true })
+  operationDates!: string[];
+}
+
+// Batch create - array of single flights
+export class BatchCreateFlightsDto {
+  @IsArray()
+  @ArrayMinSize(1, { message: 'At least one flight is required' })
+  @ValidateNested({ each: true })
+  @Type(() => CreateFlightDto)
+  flights!: CreateFlightDto[];
 }

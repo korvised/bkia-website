@@ -4,15 +4,60 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement flight list page">
-      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/hooks/useGetFlightById.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightDetailPage.tsx" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement flight detail page">
+      <change afterPath="$PROJECT_DIR$/admin/src/assets/styles/react-time-picker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/ui/form/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/ui/form/muti-date-picker.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/ui/form/muti-select.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/ui/form/textarea.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/ui/form/time-picker.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/components/ui/table/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/counter/api/counterApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/counter/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/counter/types/filter.type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/components/flight-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/constants/default-flight-form.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/hooks/useCreateFlight.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/hooks/useUpdateFlight.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightCreatePage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightEditPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/types/create-flight.type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/types/update-flight.type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/validations/create-flight.validation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/validations/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/validations/update-flight.validation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/route/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/route/api/routeApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/route/types/filter.type.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/assets/styles/_date-picker.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/assets/styles/react-date-picker.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/assets/styles/_sweetAlert.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/assets/styles/sweet-alert.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/ui/date-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/ui/form/date-picker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/ui/form/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/ui/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/ui/table/pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/ui/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/ui/form/select.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/ui/table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/ui/table/table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/constants/tags.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/constants/tags.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/counter/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/counter/types/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/features/flight/api/flightApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/api/flightApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/components/flight-filters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/components/flight-filters.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/components/flight-status-badge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/components/flight-status-badge.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/constants/flight-options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/constants/flight-options.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/constants/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/constants/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/features/flight/hooks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/hooks/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightDetailPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/features/flight/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/pages/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/features/flight/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/lib/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/route/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/route/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/redux/api-slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/redux/api-slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/services/alert.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/services/alert.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/flight/dtos/create-flight.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/flight/dtos/create-flight.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/flight/flight.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/flight/flight.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/modules/flight/flight.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/flight/flight.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +101,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
     "git-widget-placeholder": "v2",
-    "last_opened_file_path": "D:/projects/bkia-website/admin/src/types",
+    "last_opened_file_path": "D:/projects/bkia-website/admin/src/assets/styles",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,18 +125,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\projects\bkia-website\admin\src\types" />
-      <recent name="D:\projects\bkia-website\admin\src\features\flight" />
-      <recent name="D:\projects\bkia-website\admin\src\features\route" />
+      <recent name="D:\projects\bkia-website\admin\src\assets\styles" />
+      <recent name="D:\projects\bkia-website\admin\src\features\flight\validations" />
+      <recent name="D:\projects\bkia-website\admin\src\features\counter\types" />
       <recent name="D:\projects\bkia-website\admin\src\features\counter" />
-      <recent name="D:\projects\bkia-website\admin\src\features\airport" />
+      <recent name="D:\projects\bkia-website\admin\src\features\route" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\admin\src\components\ui\table" />
+      <recent name="D:\projects\bkia-website\admin\src\components\ui\form" />
       <recent name="D:\projects\bkia-website\web\src\lib" />
       <recent name="D:\projects\bkia-website\server\src\common\hrms" />
       <recent name="D:\projects\bkia-website\admin\src\assets\images" />
-      <recent name="D:\projects\bkia-website\admin\src\assets" />
-      <recent name="D:\projects\bkia-website\admin\src\features\auth\api" />
     </key>
   </component>
   <component name="RunManager" selected="npm.admin">
@@ -208,15 +253,7 @@
       <workItem from="1763341434808" duration="3000" />
       <workItem from="1763341485144" duration="22228000" />
       <workItem from="1763371502425" duration="2402000" />
-      <workItem from="1763427523333" duration="18030000" />
-    </task>
-    <task id="LOCAL-00018" summary="refactor layout">
-      <option name="closed" value="true" />
-      <created>1761182105557</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1761182105557</updated>
+      <workItem from="1763427523333" duration="30200000" />
     </task>
     <task id="LOCAL-00019" summary="refactor layout">
       <option name="closed" value="true" />
@@ -602,14 +639,21 @@
       <option name="project" value="LOCAL" />
       <updated>1763447470233</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="implement flight detail page">
+      <option name="closed" value="true" />
+      <created>1763449107938</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1763449107939</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="implement config" />
     <MESSAGE value="implement weather feature (api&amp;ui)" />
     <MESSAGE value="refactor time ui" />
     <MESSAGE value="implement flight entity &amp; airline module" />
@@ -634,6 +678,7 @@
     <MESSAGE value="deployment" />
     <MESSAGE value="refactor files" />
     <MESSAGE value="implement flight list page" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement flight list page" />
+    <MESSAGE value="implement flight detail page" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement flight detail page" />
   </component>
 </project>

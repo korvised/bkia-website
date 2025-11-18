@@ -1,6 +1,11 @@
 import { type IRoute } from "@/types";
 import { FLIGHT_ACCESS_ROLES } from "@/constants";
-import { FlightDetailPage, FlightPage } from "@/features/flight/pages";
+import {
+  FlightCreatePage,
+  FlightDetailPage,
+  FlightEditPage,
+  FlightPage,
+} from "@/features/flight/pages";
 
 export const flightRoutes: IRoute[] = [
   {
@@ -9,8 +14,18 @@ export const flightRoutes: IRoute[] = [
     allowRoles: FLIGHT_ACCESS_ROLES.FLIGHT_OPERATIONS,
   },
   {
+    path: "/flights/create",
+    element: FlightCreatePage,
+    allowRoles: FLIGHT_ACCESS_ROLES.FLIGHT_OPERATIONS,
+  },
+  {
     path: "/flights/:id",
     element: FlightDetailPage,
+    allowRoles: FLIGHT_ACCESS_ROLES.FLIGHT_OPERATIONS,
+  },
+  {
+    path: "/flights/:id/edit",
+    element: FlightEditPage,
     allowRoles: FLIGHT_ACCESS_ROLES.FLIGHT_OPERATIONS,
   },
 ];

@@ -1,0 +1,102 @@
+/* Fix time picker scrollbar for react-datepicker v8+ */
+.react-datepicker__time-container {
+    border-left: 1px solid #e5e7eb !important;
+    border-radius: 0 0.5rem 0.5rem 0 !important;
+    overflow: hidden !important;
+    width: 100px !important;
+}
+
+.react-datepicker__time {
+    border-radius: 0 0 0.5rem 0 !important;
+    overflow: hidden !important;
+    background: white !important;
+}
+
+.react-datepicker__time-box {
+    width: 100% !important;
+    overflow: hidden !important;
+    text-align: center !important;
+}
+
+.react-datepicker__time-list {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: 200px !important;
+    box-sizing: border-box !important;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gray-300) #f3f4f6;
+}
+
+/* Custom scrollbar for time list - WebKit browsers */
+.react-datepicker__time-list::-webkit-scrollbar {
+    width: 4px !important;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-track {
+    background: #f3f4f6 !important;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-thumb {
+    background-color: var(--color-gray-300) !important;
+    border-radius: 9999px !important;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-gray-300) !important;
+}
+
+/* Time list items */
+.react-datepicker__time-list-item {
+    padding: 8px 12px !important;
+    height: auto !important;
+    line-height: 1.5 !important;
+    color: #374151 !important;
+    white-space: nowrap !important;
+}
+
+.react-datepicker__time-list-item:hover {
+    background-color: #e6f9f9 !important;
+    color: #00AAAC !important;
+}
+
+.react-datepicker__time-list-item--selected {
+    background-color: #00AAAC !important;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+.react-datepicker__time-list-item--selected:hover {
+    background-color: #00888a !important;
+    color: white !important;
+}
+
+/* Time header */
+.react-datepicker-time__header {
+    background-color: #f9fafb !important;
+    padding: 8px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: #374151 !important;
+}
+
+/* Ensure calendar container clips overflow */
+.react-datepicker {
+    overflow: hidden !important;
+}
+
+/* For time-only picker */
+.react-datepicker--time-only {
+    border-radius: 0.5rem !important;
+    overflow: hidden !important;
+}
+
+.react-datepicker--time-only .react-datepicker__time-container {
+    border-left: none !important;
+    border-radius: 0.5rem !important;
+}
+
+.react-datepicker--time-only .react-datepicker__time {
+    border-radius: 0 0 0.5rem 0.5rem !important;
+}

@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-import "@/assets/styles/_sweetAlert.css";
+import "@/assets/styles/sweet-alert.css";
 
 const MySwal = withReactContent(Swal);
 

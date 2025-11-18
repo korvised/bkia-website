@@ -5,7 +5,7 @@ import {
   LuChevronsRight,
 } from "react-icons/lu";
 import { cn } from "@/lib";
-import { Select } from "./select.tsx";
+import { Select } from "../form/select.tsx";
 
 interface PaginationProps {
   currentPage: number;

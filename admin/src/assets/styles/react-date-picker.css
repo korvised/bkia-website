@@ -90,3 +90,39 @@
     background-color: #00AAAC !important;
     color: white !important;
 }
+
+/* Disabled dates (before minDate or after maxDate) */
+.react-datepicker__day--disabled {
+    color: #d1d5db !important;
+    cursor: not-allowed !important;
+    background-color: transparent !important;
+}
+
+.react-datepicker__day--disabled:hover {
+    background-color: transparent !important;
+    color: #d1d5db !important;
+    cursor: not-allowed !important;
+}
+
+/* Outside month dates that are also disabled */
+.react-datepicker__day--outside-month.react-datepicker__day--disabled {
+    color: #e5e7eb !important;
+}
+
+/* Ensure disabled dates don't show selection styles */
+.react-datepicker__day--disabled.react-datepicker__day--selected,
+.react-datepicker__day--disabled.react-datepicker__day--keyboard-selected {
+    background-color: transparent !important;
+    color: #d1d5db !important;
+}
+
+/* Multi-select date picker - highlight selected dates */
+.react-datepicker-multi-select .react-datepicker__day--highlighted {
+    background-color: #00AAAC !important;
+    color: white !important;
+    border-radius: 0.375rem !important;
+}
+
+.react-datepicker-multi-select .react-datepicker__day--highlighted:hover {
+    background-color: #00888a !important;
+}

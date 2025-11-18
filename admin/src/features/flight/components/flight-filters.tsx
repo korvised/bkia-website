@@ -1,15 +1,17 @@
 import { useMemo } from "react";
-import { Input, Select, DatePicker } from "@/components/ui";
+import { isValid } from "date-fns";
+import { DatePicker, Input, Select } from "@/components/ui";
+import { LuFilter, LuSearch, LuX } from "react-icons/lu";
 import { FlightDirection, FlightStatus, FlightType, Terminal } from "@/types";
-import { LuSearch, LuX, LuFilter } from "react-icons/lu";
 import type { IFlightFilter } from "@/features/flight/types";
 import type { IAirline } from "@/features/airline/types";
 import {
   FLIGHT_DIRECTION_FILTER_OPTIONS,
-  FLIGHT_TYPE_FILTER_OPTIONS,
   FLIGHT_STATUS_FILTER_OPTIONS,
+  FLIGHT_TYPE_FILTER_OPTIONS,
   TERMINAL_FILTER_OPTIONS,
 } from "@/features/flight/constants";
+import { formatDate } from "@/lib/utils.ts";
 
 interface FlightFiltersProps {
   filters: IFlightFilter;
@@ -42,9 +44,8 @@ export function FlightFilters({
   }, [airlines]);
 
   const handleDateChange = (date: Date | null) => {
-    if (date) {
-      const formatted = date.toISOString().split("T")[0];
-      onFilterChange({ operationDate: formatted });
+    if (date && isValid(date)) {
+      onFilterChange({ operationDate: formatDate(date, "yyyy-MM-dd") });
     } else {
       onFilterChange({ operationDate: "" });
     }

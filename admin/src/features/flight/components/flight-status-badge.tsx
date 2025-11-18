@@ -46,7 +46,7 @@ export function FlightStatusBadge({ status }: FlightStatusBadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium uppercase",
+        "inline-flex items-center rounded-full px-2.5 py-0.5 text-[10.5px] font-medium uppercase",
         config.className,
       )}
     >

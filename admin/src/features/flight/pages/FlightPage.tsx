@@ -1,8 +1,9 @@
-import { LuPlane, LuPlus } from "react-icons/lu";
-import { Table, Pagination } from "@/components/ui";
+import { LuPlus, LuRailSymbol } from "react-icons/lu";
+import { Pagination, Table } from "@/components/ui";
 import { cn } from "@/lib";
 import { FlightFilters } from "../components";
-import { useGetFlights, useFlightColumns } from "../hooks";
+import { useFlightColumns, useGetFlights } from "../hooks";
+import { Link } from "react-router-dom";
 
 export function FlightPage() {
   const {
@@ -29,7 +30,7 @@ export function FlightPage() {
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <div className="bg-primary-100 rounded-lg p-2">
-            <LuPlane className="text-primary h-6 w-6" />
+            <LuRailSymbol className="text-primary h-6 w-6" />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Flights</h1>
@@ -38,7 +39,8 @@ export function FlightPage() {
             </p>
           </div>
         </div>
-        <button
+        <Link
+          to="/flights/create"
           className={cn(
             "bg-primary flex items-center gap-2 rounded-lg px-4 py-2 text-white",
             "hover:bg-primary-600 transition-colors",
@@ -47,7 +49,7 @@ export function FlightPage() {
         >
           <LuPlus className="h-4 w-4" />
           Add Flight
-        </button>
+        </Link>
       </div>
 
       {/* Filters */}

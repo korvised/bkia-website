@@ -5,6 +5,8 @@ import type {
   IFlight,
   IFlightResponse,
   IFlightFilter,
+  IBulkCreateFlightPayload,
+  IUpdateFlightPayload,
 } from "@/features/flight/types";
 
 const flightApi = apiSlice.injectEndpoints({
@@ -35,9 +37,9 @@ const flightApi = apiSlice.injectEndpoints({
       providesTags: (_result, _error, id) => [{ type: FLIGHT_TAG, id }],
     }),
 
-    addFlight: builder.mutation<IFlight, Record<string, unknown>>({
+    bulkCreateFlights: builder.mutation<IFlight[], IBulkCreateFlightPayload>({
       query: (body) => ({
-        url: "/flights",
+        url: "/flights/bulk",
         method: "POST",
         data: body,
       }),
@@ -46,14 +48,17 @@ const flightApi = apiSlice.injectEndpoints({
 
     updateFlight: builder.mutation<
       IFlight,
-      { id: string; body: Record<string, unknown> }
+      { id: string; body: IUpdateFlightPayload }
     >({
       query: ({ id, body }) => ({
         url: `/flights/${id}`,
         method: "PATCH",
         data: body,
       }),
-      invalidatesTags: (_result, _error, { id }) => [{ type: FLIGHT_TAG, id }],
+      invalidatesTags: (_result, _error, { id }) => [
+        { type: FLIGHT_TAG, id },
+        { type: FLIGHT_TAG, id: "LIST" },
+      ],
     }),
 
     deleteFlight: builder.mutation<void, string>({
@@ -72,7 +77,7 @@ const flightApi = apiSlice.injectEndpoints({
 export const {
   useFetchFlightsQuery,
   useFetchFlightByIdQuery,
-  useAddFlightMutation,
+  useBulkCreateFlightsMutation,
   useUpdateFlightMutation,
   useDeleteFlightMutation,
 } = flightApi;

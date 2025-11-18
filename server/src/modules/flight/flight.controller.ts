@@ -13,7 +13,13 @@ import { Roles } from '@/common/decorators';
 import { JwtAuthGuard, RolesGuard } from '@/common/guards';
 import { UserRole } from '@/types/enum';
 import { FlightService } from './flight.service';
-import { CreateFlightDto, QueryFlightDto, UpdateFlightDto } from './dtos';
+import {
+  BatchCreateFlightsDto,
+  BulkCreateFlightDto,
+  CreateFlightDto,
+  QueryFlightDto,
+  UpdateFlightDto,
+} from './dtos';
 
 @Controller('flights')
 export class FlightController {
@@ -46,6 +52,18 @@ export class FlightController {
   @Post()
   async create(@Body() dto: CreateFlightDto) {
     return await this.service.create(dto);
+  }
+
+  // Bulk create - same flight with multiple dates
+  @Post('bulk')
+  bulkCreate(@Body() dto: BulkCreateFlightDto) {
+    return this.service.bulkCreate(dto);
+  }
+
+  // Batch create - multiple different flights
+  @Post('batch')
+  batchCreate(@Body() dto: BatchCreateFlightsDto) {
+    return this.service.batchCreate(dto);
   }
 
   /**
