@@ -11,9 +11,9 @@ import {
   Tag,
 } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib";
 import { Lang } from "@/types/language";
 import { ImportantNotice } from "@/data/notice/important-notices";
-import { cn } from "@/utils/cn";
 
 interface ImportantNoticeDetailProps {
   lang: Lang;

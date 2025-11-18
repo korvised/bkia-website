@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createLayoutI18n } from "@/data/i18n/layout";
 import { useApp } from "@/context";
-import { allSearchItems, popularSearches } from "@/lib/layout";
+import { allSearchItems, popularSearches } from "@/services/layout";
 
 export const useSearchDialog = () => {
   const { isSearchOpen, closeSearch, lang } = useApp();

@@ -3,13 +3,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { WiCloudy } from "react-icons/wi";
 import { Clock } from "lucide-react";
-import { cn } from "@/utils/cn";
-import { fmtTime } from "@/lib";
+import { cn, fmtTime } from "@/lib";
 import { useWeather } from "@/hooks/use-weather";
 import {
   getWeatherIconColor,
   getWeatherIconElement,
-} from "@/lib/homepage/get-weather-icon";
+} from "@/services/homepage";
 import type { Lang } from "@/types/language";
 import { createHomepageI18n } from "@/data/i18n/homepage";
 import { getWeatherDescription } from "@/data/weather-description";

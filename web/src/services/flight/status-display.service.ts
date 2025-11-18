@@ -1,7 +1,7 @@
 import { differenceInMinutes, isAfter, isBefore } from "date-fns";
 import type { DisplayStatusCode, IFlight } from "@/types/flight";
 import type { Lang } from "@/types/language";
-import { labelsByCode } from "@/data/flights";
+import { labelsByCode } from "@/data/flight";
 
 const HOME_AIRPORT = "BOR";
 const TZ_OFFSET = "+07:00";

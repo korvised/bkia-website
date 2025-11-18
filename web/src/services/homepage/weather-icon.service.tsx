@@ -59,7 +59,7 @@ export const weatherIconColors: Record<string, string> = {
  * @param iconCode - OpenWeatherMap icon code (e.g., '01d', '10n')
  * @returns React icon component
  */
-export const getWeatherIcon = (iconCode: string): IconType => {
+export const weatherIconService = (iconCode: string): IconType => {
   const iconMap: Record<string, IconType> = {
     // Clear sky
     "01d": WiDaySunny,
@@ -111,6 +111,6 @@ export const getWeatherIconColor = (iconCode: string): string => {
 };
 
 export function getWeatherIconElement(code: string, className?: string) {
-  const Icon = getWeatherIcon(code);
+  const Icon = weatherIconService(code);
   return <Icon className={className} />;
 }

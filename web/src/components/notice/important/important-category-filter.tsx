@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { Lang } from "@/types/language";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib";
 import { impNoticeCats } from "@/data/notice/important-notices";
 import { ImportantPriority } from "@/types/notice";
 

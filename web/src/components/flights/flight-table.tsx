@@ -1,15 +1,13 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import { Plane, PlaneLanding, PlaneTakeoff } from "lucide-react";
-import { cn } from "@/utils/cn";
+import { asset, cn, formatTime } from "@/lib";
 import { createFlightI18n } from "@/data/i18n/flights";
-import { asset } from "@/utils/asset";
-import { formatTime } from "@/utils/date";
 import {
   getBorderColor,
   getFlightDisplayStatus,
   getStatusStyle,
-} from "@/lib/flights";
+} from "@/services/flight";
 import type { Lang } from "@/types/language";
 import { FlightDirection } from "@/types/enum";
 import type { IFlight } from "@/types/flight";

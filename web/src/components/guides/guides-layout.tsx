@@ -7,9 +7,9 @@ import { MenuItem } from "@headlessui/react";
 import { ChevronDown, Home } from "lucide-react";
 import { HiOutlineChevronRight } from "react-icons/hi2";
 import { Lang } from "@/types/language";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib";
 import { useApp } from "@/context/app-context";
-import { BreadcrumDropdown } from "@/components/common";
+import { BreadcrumbDropdown } from "@/components/common";
 import { navigation, MenuItem as IMenuItem } from "@/data/navigation";
 
 interface GuidesLayoutProps {
@@ -81,7 +81,7 @@ export function GuidesLayout({ lang, children }: GuidesLayoutProps) {
               <HiOutlineChevronRight className="h-4 w-4 text-white/60 sm:h-4.5 sm:w-4.5" />
 
               {/* Guides Dropdown */}
-              <BreadcrumDropdown
+              <BreadcrumbDropdown
                 trigger={(open: boolean) => (
                   <Fragment>
                     <span className="font-medium">{t(translations.title)}</span>
@@ -115,7 +115,7 @@ export function GuidesLayout({ lang, children }: GuidesLayoutProps) {
               <HiOutlineChevronRight className="h-4 w-4 text-white/60 sm:h-4.5 sm:w-4.5" />
 
               {/* Guides Section Dropdown */}
-              <BreadcrumDropdown
+              <BreadcrumbDropdown
                 trigger={(open: boolean) => (
                   <>
                     <span className="font-medium">

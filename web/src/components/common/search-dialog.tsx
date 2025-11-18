@@ -3,7 +3,7 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { ArrowRight, Clock, Search, TrendingUp, X } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib";
 import { useSearchDialog } from "@/hooks/use-serach-dialog";
 
 export function SearchDialog() {

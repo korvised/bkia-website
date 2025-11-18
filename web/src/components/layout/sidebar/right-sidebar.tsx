@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { ChevronUp, Plane } from "lucide-react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib";
 import { sidebarItems } from "@/data/right-sidebar";
 import { Lang } from "@/types/language";
 

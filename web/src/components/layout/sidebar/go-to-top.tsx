@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useState } from "react";
 import { ChevronUp, Plane } from "lucide-react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib";
 
 export default function GoToTop() {
   const [showScrollTop, setShowScrollTop] = useState(false);

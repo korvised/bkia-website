@@ -1,4 +1,4 @@
-import { createTranslator } from "@/utils/i18n";
+import { createTranslator } from "@/lib";
 import { Lang } from "@/types/language";
 import { hero, type HeroKey } from "./hero";
 import { weather, type WeatherKey } from "./weather";

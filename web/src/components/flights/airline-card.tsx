@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Globe, Phone } from "lucide-react";
 import { IAirline } from "@/types/flight";
 import { Lang } from "@/types/language";
-import { asset } from "@/utils/asset";
+import { asset } from "@/lib";
 import { createFlightI18n } from "@/data/i18n/flights";
 
 interface AirlineCardProps {

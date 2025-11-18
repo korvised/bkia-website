@@ -7,7 +7,7 @@ import {
 } from "@/components/flights";
 import type { FlightPageProps, QueryFlight } from "@/types/flight";
 import { FlightDirection } from "@/types/enum";
-import { listFlights, toQuery } from "@/services/flights";
+import { listFlights, toQuery } from "@/services/flight";
 import { Lang } from "@/types/language";
 
 export async function generateMetadata({

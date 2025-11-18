@@ -4,12 +4,12 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
 import { PlaneLanding, PlaneTakeoff, Search } from "lucide-react";
-import { cn } from "@/utils/cn";
-import { useLanguage } from "@/context";
-import DatePicker from "./date-picker";
 import { PiAirplaneInFlightBold } from "react-icons/pi";
-import WeatherWidget from "@/components/homepage/weather-widget";
+import { useLanguage } from "@/context";
+import { cn } from "@/lib";
+import { WeatherWidget } from "@/components/homepage";
 import { createFlightI18n } from "@/data/i18n/flights";
+import DatePicker from "./date-picker";
 
 type Tab = "departures" | "arrivals";
 

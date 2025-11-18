@@ -7,8 +7,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { ChevronLeft, ChevronRight, Volume2 } from "lucide-react";
-import { cn } from "@/utils/cn";
 import { useLanguage } from "@/context";
+import { cn } from "@/lib";
 import { createHomepageI18n } from "@/data/i18n/homepage";
 
 import "swiper/css";

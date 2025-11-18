@@ -1,7 +1,5 @@
 import { WelcomePopupConfig } from "@/types/welcome-popup";
-
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8080";
+import { config } from "@/config";
 
 async function fetchJSON<T>(
   input: RequestInfo,
@@ -27,16 +25,19 @@ export const apiClient = {
   welcome: {
     // Get welcome popups configuration
     getWelcomePopup(): Promise<WelcomePopupConfig> {
-      return fetchJSON<WelcomePopupConfig>(`${API_BASE_URL}/welcome-popup`, {
-        cache: "no-store",
-      });
+      return fetchJSON<WelcomePopupConfig>(
+        `${config.apiBaseUrl}/welcome-popup`,
+        {
+          cache: "no-store",
+        },
+      );
     },
 
     // Track popup impression (optional analytics)
     async trackImpression(popupId: string): Promise<void> {
       try {
         // keepalive lets this succeed even if the page is unloading
-        await fetch(`${API_BASE_URL}/welcome-popup/track`, {
+        await fetch(`${config.apiBaseUrl}/welcome-popup/track`, {
           method: "POST",
           keepalive: true,
           headers: { "Content-Type": "application/json" },
@@ -55,7 +56,7 @@ export const apiClient = {
     // Track popup click (optional analytics)
     async trackClick(popupId: string, link: string): Promise<void> {
       try {
-        await fetch(`${API_BASE_URL}/welcome-popup/click`, {
+        await fetch(`${config.apiBaseUrl}/welcome-popup/click`, {
           method: "POST",
           keepalive: true,
           headers: { "Content-Type": "application/json" },

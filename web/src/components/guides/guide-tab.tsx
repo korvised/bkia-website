@@ -11,7 +11,7 @@ import {
   PlaneLanding,
   RefreshCcw,
 } from "lucide-react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib";
 import { useLanguage } from "@/context";
 import { guideTranslations } from "@/data/translations/guide";
 

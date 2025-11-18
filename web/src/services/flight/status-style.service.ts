@@ -67,9 +67,9 @@ export const getStatusStyle = (status: AnyStatus) => {
     case "DEPARTED":
       return {
         icon: MdFlightTakeoff,
-        bg: "bg-gray-100",
-        text: "text-gray-800",
-        border: "border-gray-200",
+        bg: "bg-teal-100",
+        text: "text-teal-800",
+        border: "border-teal-200",
       };
 
     // === ARRIVED ===
@@ -165,7 +165,7 @@ export const getBorderColor = (status: AnyStatus) => {
       return "border-l-amber-500";
     case FlightStatus.DEPARTED:
     case "DEPARTED":
-      return "border-l-gray-500";
+      return "border-l-teal-500";
     case FlightStatus.ARRIVED:
     case "ARRIVED":
       return "border-l-teal-500";

@@ -1,4 +1,4 @@
-import { createTranslator } from "@/utils/i18n";
+import { createTranslator } from "@/lib";
 import { Lang } from "@/types/language";
 import { airline, type AirlineKey, tAirline } from "./airline";
 import { board, type BoardKey, tBoard } from "./board";

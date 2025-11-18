@@ -13,8 +13,8 @@ import { Fragment, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
+import { cn } from "@/lib";
 import { useWelcomePopup } from "@/hooks/use-welcome-popup";
-import { cn } from "@/utils/cn";
 
 // Import Swiper styles
 import "swiper/css";

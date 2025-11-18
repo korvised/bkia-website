@@ -1,6 +1,6 @@
 import { FlightType } from "@/types/enum";
-import { getTypeStyle } from "@/lib/flights";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib";
+import { getTypeStyle } from "@/services/flight";
 
 interface FlightTypeBadgeProps {
   type: FlightType;

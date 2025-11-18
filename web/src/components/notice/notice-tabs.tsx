@@ -9,8 +9,8 @@ import {
   MessageSquareWarning,
   SearchCheck,
 } from "lucide-react";
-import { cn } from "@/utils/cn";
 import { useLanguage } from "@/context";
+import { cn } from "@/lib";
 import { noticeTranslations } from "@/data/translations/notice";
 
 export type NoticeTab =

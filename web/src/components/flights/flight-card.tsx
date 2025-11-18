@@ -1,13 +1,11 @@
 import Image from "next/image";
 import { Clock, MapPin, PlaneLanding, PlaneTakeoff } from "lucide-react";
+import { asset, cn, formatTime } from "@/lib";
 import { createFlightI18n } from "@/data/i18n/flights";
-import { cn } from "@/utils/cn";
 import { IFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
 import { FlightDirection } from "@/types/enum";
-import { formatTime } from "@/utils/date";
-import { getBorderColor, getStatusStyle } from "@/lib/flights";
-import { asset } from "@/utils/asset";
+import { getBorderColor, getStatusStyle } from "@/services/flight";
 import { FlightTypeBadge } from "./flight-type-badge";
 
 interface FlightCardProps {

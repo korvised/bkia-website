@@ -7,7 +7,7 @@ import {
   ListboxOptions,
 } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib";
 
 export interface ISelectOption {
   value: string;

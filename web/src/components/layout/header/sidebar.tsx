@@ -9,12 +9,12 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import { ChevronDown, X } from "lucide-react";
-import { cn } from "@/utils/cn";
-import { useApp } from "@/context/app-context";
-import { navigation } from "@/data/navigation";
-import { LanguageSelector } from "@/components/layout/header/language-selector";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import { PiWheelchairDuotone } from "react-icons/pi";
+import { cn } from "@/lib";
+import { useApp } from "@/context/app-context";
+import { navigation } from "@/data/navigation";
+import { LanguageSelector } from "@/components/layout/header";
 
 interface SidebarProps {
   isOpen: boolean;

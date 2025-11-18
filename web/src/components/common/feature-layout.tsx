@@ -7,10 +7,10 @@ import { ChevronDown, Home } from "lucide-react";
 import { HiOutlineChevronRight } from "react-icons/hi2";
 import { MenuItem } from "@headlessui/react";
 import { useApp } from "@/context";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib";
 import { Lang } from "@/types/language";
 import { navigation, MenuItem as IMenuItem } from "@/data/navigation";
-import { BreadcrumDropdown } from "./breadcrum-dropdown";
+import { BreadcrumbDropdown } from "./breadcrumb-dropdown";
 
 interface FeatureLayoutProps {
   lang: Lang;
@@ -105,7 +105,7 @@ export function FeatureLayout({
               <HiOutlineChevronRight className="h-4 w-4 text-white/60 sm:h-4.5 sm:w-4.5" />
 
               {/* Guides Dropdown */}
-              <BreadcrumDropdown
+              <BreadcrumbDropdown
                 trigger={(open: boolean) => (
                   <Fragment>
                     <span className="font-medium">{title}</span>
@@ -139,7 +139,7 @@ export function FeatureLayout({
               <HiOutlineChevronRight className="h-4 w-4 text-white/60 sm:h-4.5 sm:w-4.5" />
 
               {/* Guides Section Dropdown */}
-              <BreadcrumDropdown
+              <BreadcrumbDropdown
                 trigger={(open: boolean) => (
                   <>
                     <span className="font-medium">

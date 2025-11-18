@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import type { OpenWeatherResponse } from "@/types/weather";
-import { fetchWeather } from "@/services/weather";
+import { fetchWeather } from "@/services/homepage";
 
 interface UseWeatherResult {
   weather: OpenWeatherResponse | null;

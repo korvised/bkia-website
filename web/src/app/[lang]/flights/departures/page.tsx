@@ -6,7 +6,7 @@ import {
   FlightBoardSkeleton,
   FlightTable,
 } from "@/components/flights";
-import { listFlights, toQuery } from "@/services/flights";
+import { listFlights, toQuery } from "@/services/flight";
 import type { FlightPageProps, QueryFlight } from "@/types/flight";
 import { FlightDirection } from "@/types/enum";
 
