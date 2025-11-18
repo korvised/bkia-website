@@ -1,1 +1,2 @@
-export { FlightPage } from "./FlightPage.tsx";
+export * from "./FlightPage";
+export * from "./FlightDetailPage";

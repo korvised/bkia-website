@@ -27,6 +27,14 @@ const flightApi = apiSlice.injectEndpoints({
           : [{ type: FLIGHT_TAG, id: "LIST" }],
     }),
 
+    fetchFlightById: builder.query<IFlight, string>({
+      query: (id) => ({
+        url: `/flights/${id}`,
+        method: "GET",
+      }),
+      providesTags: (_result, _error, id) => [{ type: FLIGHT_TAG, id }],
+    }),
+
     addFlight: builder.mutation<IFlight, Record<string, unknown>>({
       query: (body) => ({
         url: "/flights",
@@ -63,6 +71,7 @@ const flightApi = apiSlice.injectEndpoints({
 
 export const {
   useFetchFlightsQuery,
+  useFetchFlightByIdQuery,
   useAddFlightMutation,
   useUpdateFlightMutation,
   useDeleteFlightMutation,
