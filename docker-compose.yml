@@ -30,12 +30,23 @@ services:
     image: korvisedyotsaiy/bkia-website-server:latest
     restart: always
     ports:
-      - "8080:8080"
+      - "8080"
     env_file:
       - ./data/env/server/.env
     depends_on:
       - redis
       - postgres
+    networks:
+      - app-network
+
+  admin:
+    container_name: admin
+    image: korvisedyotsaiy/bkia-website-admin:latest
+    restart: always
+    expose:
+      - "80"
+    depends_on:
+      - server
     networks:
       - app-network
 
@@ -46,7 +57,7 @@ services:
     env_file:
       - ./data/env/web/.env
     expose:
-      - "3000:3000"
+      - "3000"
     depends_on:
       - server
     networks:
@@ -63,6 +74,7 @@ services:
     depends_on:
       - server
       - web
+      - admin
     networks:
       - app-network
 

@@ -10,7 +10,7 @@ build
 # Local env files (except the prod CI one)
 .env
 .env.*.local
-!.env.prod.local
+!.env.production.local
 !.env.example
 
 # OS / Editor junk

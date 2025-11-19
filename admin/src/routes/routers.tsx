@@ -27,11 +27,16 @@ const mapRoutes = (routes: IRoute[]): RouteObject => ({
   })),
 });
 
-export const routers = createBrowserRouter([
-  ...mapPublicRoutes(publicRoutes),
-  mapRoutes([...authRoutes, ...privateRoutes]),
+export const routers = createBrowserRouter(
+  [
+    ...mapPublicRoutes(publicRoutes),
+    mapRoutes([...authRoutes, ...privateRoutes]),
+    {
+      path: "*",
+      element: <NotFoundPage />,
+    },
+  ],
   {
-    path: "*",
-    element: <NotFoundPage />,
+    basename: "/admin",
   },
-]);
+);

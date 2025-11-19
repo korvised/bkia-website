@@ -1,46 +1,45 @@
 # -----------------------------
 # Stage 1: Build with pnpm
 # -----------------------------
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 
-# Set working directory
+# Enable pnpm via corepack (Node 22+)
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
 WORKDIR /app
 
-# Copy package files first (better caching)
+# Copy dependency files first (for cache)
 COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies
-RUN pnpm install
+# Install dependencies (including devDeps)
+RUN pnpm install --frozen-lockfile
 
-# Copy the rest of your project
+# Copy the rest of the project
 COPY . .
 
-# Copy the .env file created by GitHub Actions (if exists)
-# It will be available only in CI, and safely ignored locally
-COPY .env.prod.local .env
+# Optionally copy CI-generated env file into .env (if present)
+# Assumes CI creates .env.production.local BEFORE docker build
+RUN if [ -f .env.production.local ]; then cp .env.production.local .env; fi
 
-# Build Vite app
+# Build Vite app (make sure Vite is configured with base: '/admin/')
 RUN pnpm run build
 
 # -----------------------------
 # Stage 2: Nginx production server
 # -----------------------------
-FROM nginx:alpine AS production
+FROM nginx:1.24-alpine AS production
 
-# Set timezone
 ENV TZ=Asia/Vientiane
 
-# Nginx working directory
 WORKDIR /usr/share/nginx/html
 
 # Copy built files from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html/admin
 
 # Copy custom Nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose Nginx port
+# Nginx listens on port 80 inside the container
 EXPOSE 80
 
-# Run Nginx
 CMD ["nginx", "-g", "daemon off;"]
