@@ -103,9 +103,13 @@ export const useUpdateFlight = (id: string) => {
     validationSchema: updateFlightSchema,
     validateOnChange: true,
     validateOnBlur: true,
-    enableReinitialize: true, // will update form when initialValues changes
+    enableReinitialize: true,
     onSubmit: async (values, { setFieldError }) => {
       try {
+        // Check if it's a departure flight based on route
+        const selectedRoute = routes.find((r) => r.id === values.routeId);
+        const isDeparture = selectedRoute?.origin.code === AIRPORT_CODE;
+
         const payload: IUpdateFlightPayload = {
           flightNo: values.flightNo.trim().toUpperCase(),
           type: values.type as FlightType,
@@ -117,15 +121,18 @@ export const useUpdateFlight = (id: string) => {
           scheduledArrTime: values.scheduledArrTime,
           actualDepTime: values.actualDepTime || null,
           actualArrTime: values.actualArrTime || null,
-          checkInStartTime: values.checkInStartTime || null,
-          checkInEndTime: values.checkInEndTime || null,
+          // Only include check-in fields for departure flights
+          checkInStartTime: isDeparture
+            ? values.checkInStartTime || null
+            : null,
+          checkInEndTime: isDeparture ? values.checkInEndTime || null : null,
           status: values.status,
           remarks: values.remarks?.trim() || null,
           routeId: values.routeId,
           airlineId: values.airlineId,
+          // Only include check-in counters for departure flights
           checkInCounterIds:
-            values.direction === "departure" &&
-            values.checkInCounterIds.length > 0
+            isDeparture && values.checkInCounterIds.length > 0
               ? values.checkInCounterIds
               : undefined,
         };

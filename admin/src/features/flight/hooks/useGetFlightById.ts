@@ -38,7 +38,7 @@ export const useGetFlightById = (id: string) => {
       `Are you sure you want to delete flight ${flight?.flightNo}? This action cannot be undone.`,
     );
 
-    if (!confirmed) return;
+    if (!confirmed.isConfirmed) return;
 
     try {
       setIsDeleted(true);

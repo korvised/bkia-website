@@ -7,7 +7,10 @@ import { useBulkCreateFlightsMutation } from "@/features/flight/api";
 import { useFetchAirlinesQuery } from "@/features/airline/api";
 import { useFetchRoutesQuery } from "@/features/route/api";
 import { useFetchCountersQuery } from "@/features/counter/api";
-import { DEFAULT_FLIGHT_FORM_VALUES } from "@/features/flight/constants";
+import {
+  AIRPORT_CODE,
+  DEFAULT_FLIGHT_FORM_VALUES,
+} from "@/features/flight/constants";
 import type { IBulkCreateFlightPayload } from "@/features/flight/types";
 import { createFlightSchema } from "@/features/flight/validations";
 
@@ -34,6 +37,10 @@ export const useCreateFlight = () => {
     validateOnBlur: true,
     onSubmit: async (values, { setFieldError }) => {
       try {
+        // Check if it's a departure flight based on route
+        const selectedRoute = routes.find((r) => r.id === values.routeId);
+        const isDeparture = selectedRoute?.origin.code === AIRPORT_CODE;
+
         const payload: IBulkCreateFlightPayload = {
           flightNo: values.flightNo.trim().toUpperCase(),
           type: values.type as FlightType,
@@ -46,15 +53,18 @@ export const useCreateFlight = () => {
           scheduledArrTime: values.scheduledArrTime,
           actualDepTime: values.actualDepTime || null,
           actualArrTime: values.actualArrTime || null,
-          checkInStartTime: values.checkInStartTime || null,
-          checkInEndTime: values.checkInEndTime || null,
+          // Only include check-in fields for departure flights
+          checkInStartTime: isDeparture
+            ? values.checkInStartTime || null
+            : null,
+          checkInEndTime: isDeparture ? values.checkInEndTime || null : null,
           status: values.status,
           remarks: values.remarks?.trim() || null,
           routeId: values.routeId,
           airlineId: values.airlineId,
+          // Only include check-in counters for departure flights
           checkInCounterIds:
-            values.direction === "departure" &&
-            values.checkInCounterIds.length > 0
+            isDeparture && values.checkInCounterIds.length > 0
               ? values.checkInCounterIds
               : undefined,
         };

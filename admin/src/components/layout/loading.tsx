@@ -1,4 +1,6 @@
 import { cn } from "@/lib";
+import plane from "@/assets/images/plane.svg";
+import earth from "@/assets/images/earth.svg";
 
 interface Props extends React.ComponentPropsWithoutRef<"div"> {
   className?: string;
@@ -44,12 +46,12 @@ export const LoadingWithPlaneAndEarth: React.FC<
     >
       {/* Earth */}
       <div>
-        <img src="/earth.svg" alt="Earth" className="h-20 w-20" />
+        <img src={earth} alt="Earth" className="h-20 w-20" />
       </div>
 
       {/* Plane orbiting */}
       <div className="reverse-spin absolute top-0 left-0">
-        <img src="/plane.svg" alt="Plane" className="h-20 w-20" />
+        <img src={plane} alt="Plane" className="h-20 w-20" />
       </div>
     </div>
   );

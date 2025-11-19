@@ -1,9 +1,9 @@
-import { forwardRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ReactDatePicker from "react-datepicker";
 import { LuCalendar, LuX } from "react-icons/lu";
 import { cn } from "@/lib";
 import "react-datepicker/dist/react-datepicker.css";
-import "@/assets/styles/react-date-picker.css";
+import "@/assets/styles/react-multi-datepicker.css";
 
 interface MultiDatePickerProps {
   label?: string;
@@ -17,39 +17,6 @@ interface MultiDatePickerProps {
   maxDate?: Date;
 }
 
-interface CustomInputProps {
-  value?: string;
-  onClick?: () => void;
-  placeholder?: string;
-  disabled?: boolean;
-  error?: string;
-  count: number;
-}
-
-const CustomInput = forwardRef<HTMLDivElement, CustomInputProps>(
-  ({ onClick, placeholder, disabled, error, count }, ref) => (
-    <div
-      ref={ref}
-      onClick={disabled ? undefined : onClick}
-      className={cn(
-        "relative flex w-full cursor-pointer items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm",
-        "focus-within:ring-primary focus-within:border-transparent focus-within:ring-2 focus-within:outline-none",
-        disabled && "cursor-not-allowed bg-gray-100",
-        error && "border-danger focus-within:ring-danger",
-      )}
-    >
-      <LuCalendar className="mr-2 h-4 w-4 text-gray-400" />
-      <span className={cn("flex-1", count === 0 && "text-gray-400")}>
-        {count > 0
-          ? `${count} date${count > 1 ? "s" : ""} selected`
-          : placeholder}
-      </span>
-    </div>
-  ),
-);
-
-CustomInput.displayName = "CustomInput";
-
 export function MultiDatePicker({
   label,
   values,
@@ -61,6 +28,24 @@ export function MultiDatePicker({
   minDate,
   maxDate,
 }: MultiDatePickerProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Close on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const handleChange = (date: Date | null) => {
     if (!date) return;
 
@@ -79,37 +64,70 @@ export function MultiDatePicker({
     );
   };
 
+  const handleInputClick = () => {
+    if (!disabled) {
+      setIsOpen(!isOpen);
+    }
+  };
+
+  // Custom day class to properly mark today only in current month
+  const getDayClassName = (date: Date) => {
+    const today = new Date();
+    const isToday =
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear();
+
+    return isToday ? "react-datepicker__day--actual-today" : "";
+  };
+
   return (
-    <div className={cn("w-full", className)}>
+    <div className={cn("w-full", className)} ref={containerRef}>
       {label && (
         <label className="mb-1 block text-sm font-medium text-gray-700">
           {label}
         </label>
       )}
-      <ReactDatePicker
-        selected={null}
-        onChange={handleChange}
-        dateFormat="dd/MM/yyyy"
-        placeholderText={placeholder}
-        disabled={disabled}
-        minDate={minDate}
-        maxDate={maxDate}
-        highlightDates={values}
-        customInput={
-          <CustomInput
-            placeholder={placeholder}
-            disabled={disabled}
-            error={error}
-            count={values.length}
-          />
-        }
-        popperClassName="react-datepicker-popper-custom"
-        calendarClassName="react-datepicker-calendar-custom react-datepicker-multi-select"
-        wrapperClassName="w-full"
-        portalId="datepicker-portal"
-        shouldCloseOnSelect={false}
-        inline={false}
-      />
+
+      <div className="relative">
+        {/* Custom Input */}
+        <div
+          onClick={handleInputClick}
+          className={cn(
+            "relative flex w-full cursor-pointer items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm",
+            "focus-within:ring-primary focus-within:border-transparent focus-within:ring-2 focus-within:outline-none",
+            disabled && "cursor-not-allowed bg-gray-100",
+            error && "border-danger focus-within:ring-danger",
+          )}
+        >
+          <LuCalendar className="mr-2 h-4 w-4 text-gray-400" />
+          <span
+            className={cn("flex-1", values.length === 0 && "text-gray-400")}
+          >
+            {values.length > 0
+              ? `${values.length} date${values.length > 1 ? "s" : ""} selected`
+              : placeholder}
+          </span>
+        </div>
+
+        {/* Calendar Popup */}
+        {isOpen && (
+          <div className="absolute top-full left-0 z-50 mt-1">
+            <ReactDatePicker
+              selected={null}
+              onChange={handleChange}
+              dateFormat="dd/MM/yyyy"
+              disabled={disabled}
+              minDate={minDate}
+              maxDate={maxDate}
+              highlightDates={values}
+              dayClassName={getDayClassName}
+              inline
+              calendarClassName="react-datepicker-multi-select"
+            />
+          </div>
+        )}
+      </div>
 
       {/* Selected dates with primary theme */}
       {values.length > 0 && (

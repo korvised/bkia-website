@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import type { FormikProps } from "formik";
 import {
   LuCalendar,
@@ -30,6 +30,8 @@ import {
   ROUTE_TYPE_FILTER_OPTIONS,
   TERMINAL_OPTIONS,
 } from "../constants";
+import { FormSectionHeader as SectionHeader } from "./form-session-header.tsx";
+import { calculateArrivalTime, calculateCheckInTimes } from "../utils";
 import type { FlightDirection, ICreateFlightForm } from "../types";
 
 interface FlightFormProps {
@@ -41,26 +43,6 @@ interface FlightFormProps {
   isLoadingRoutes?: boolean;
   isLoadingCounters?: boolean;
   isEdit?: boolean;
-}
-
-interface SectionHeaderProps {
-  icon: React.ReactNode;
-  title: string;
-  description?: string;
-}
-
-function SectionHeader({ icon, title, description }: SectionHeaderProps) {
-  return (
-    <div className="mb-5 flex items-center gap-3">
-      <div className="bg-primary/10 text-primary flex h-9 w-9 items-center justify-center rounded-lg">
-        {icon}
-      </div>
-      <div>
-        <h3 className="font-semibold text-gray-900">{title}</h3>
-        {description && <p className="text-sm text-gray-500">{description}</p>}
-      </div>
-    </div>
-  );
 }
 
 export function FlightForm({
@@ -80,11 +62,49 @@ export function FlightForm({
     return touched[field] && errors[field] ? String(errors[field]) : undefined;
   };
 
+  // Get selected route
+  const selectedRoute = useMemo(() => {
+    return routes.find((route) => route.id === values.routeId);
+  }, [routes, values.routeId]);
+
   // Check if selected route is departure (origin is our airport)
   const isDeparture = useMemo(() => {
-    const selectedRoute = routes.find((route) => route.id === values.routeId);
     return selectedRoute?.origin.code === AIRPORT_CODE;
-  }, [routes, values.routeId]);
+  }, [selectedRoute]);
+
+  // Get current route type from selected route
+  const currentRouteType = useMemo(() => {
+    return selectedRoute?.routeType ?? values.routeType;
+  }, [selectedRoute, values.routeType]);
+
+  // Get route duration
+  const routeDuration = useMemo(() => {
+    return selectedRoute?.durationMin ?? 0;
+  }, [selectedRoute]);
+
+  // Auto-calculate arrival time when departure time or route changes
+  useEffect(() => {
+    if (values.scheduledDepTime && routeDuration > 0) {
+      const arrivalTime = calculateArrivalTime(
+        values.scheduledDepTime,
+        routeDuration,
+      );
+      setFieldValue("scheduledArrTime", arrivalTime);
+    }
+  }, [values.scheduledDepTime, routeDuration, setFieldValue]);
+
+  // Auto-calculate check-in times when departure time or route changes
+  useEffect(() => {
+    if (isDeparture && values.scheduledDepTime && currentRouteType) {
+      const { checkInStartTime, checkInEndTime } = calculateCheckInTimes(
+        values.scheduledDepTime,
+        currentRouteType,
+      );
+
+      setFieldValue("checkInStartTime", checkInStartTime);
+      setFieldValue("checkInEndTime", checkInEndTime);
+    }
+  }, [isDeparture, values.scheduledDepTime, currentRouteType, setFieldValue]);
 
   // Filter routes based on direction and route type
   const filteredRoutes = useMemo(() => {
@@ -145,6 +165,15 @@ export function FlightForm({
   const handleRouteTypeChange = (routeType: RouteType | "") => {
     setFieldValue("routeType", routeType);
     setFieldValue("routeId", "");
+  };
+
+  // Format duration for display
+  const formatDuration = (minutes: number): string => {
+    const h = Math.floor(minutes / 60);
+    const m = minutes % 60;
+    if (h > 0 && m > 0) return `${h}h ${m}m`;
+    if (h > 0) return `${h}h`;
+    return `${m}m`;
   };
 
   return (
@@ -298,6 +327,17 @@ export function FlightForm({
             )}
           </div>
 
+          {/* Route duration info */}
+          {routeDuration > 0 && (
+            <div className="flex items-start gap-2 rounded-lg bg-blue-50 p-3 text-sm text-blue-700">
+              <LuInfo className="mt-0.5 h-4 w-4 flex-shrink-0" />
+              <span>
+                Flight duration: {formatDuration(routeDuration)}. Arrival time
+                will be auto-calculated based on departure time.
+              </span>
+            </div>
+          )}
+
           {/* Times Grid */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {/* Scheduled Times */}
@@ -369,6 +409,26 @@ export function FlightForm({
             title="Check-in Configuration"
             description="Counter assignments and check-in window"
           />
+
+          {/* Auto-calculation info */}
+          {values.scheduledDepTime && currentRouteType && (
+            <div className="mb-4 flex items-start gap-2 rounded-lg bg-blue-50 p-3 text-sm text-blue-700">
+              <LuInfo className="mt-0.5 h-4 w-4 flex-shrink-0" />
+              <span>
+                Check-in times auto-calculated for{" "}
+                {currentRouteType === RouteType.DOM
+                  ? "domestic"
+                  : "international"}{" "}
+                flight: Opens{" "}
+                {currentRouteType === RouteType.DOM ? "2 hours" : "2.5 hours"}{" "}
+                before departure, closes{" "}
+                {currentRouteType === RouteType.DOM
+                  ? "30 minutes"
+                  : "40 minutes"}{" "}
+                before departure.
+              </span>
+            </div>
+          )}
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
             <TimePicker

@@ -77,9 +77,10 @@ export const createFlightSchema = Yup.object().shape({
   checkInCounterIds: Yup.array().of(Yup.string().uuid("Invalid counter ID")),
 
   // Form-only fields (not sent to API)
-  direction: Yup.string()
-    .required("Direction is required")
-    .oneOf(["departure", "arrival"], "Invalid direction"),
+  direction: Yup.string().oneOf(
+    ["departure", "arrival", ""],
+    "Invalid direction",
+  ),
 
   routeType: Yup.string()
     .nullable()

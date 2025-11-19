@@ -4,16 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement breadcrumb and update flight pages ui">
-      <change afterPath="$PROJECT_DIR$/admin/Docker.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/nginx.conf" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="deploy admin website">
+      <change afterPath="$PROJECT_DIR$/admin/src/assets/styles/react-multi-datepicker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/components/form-session-header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/utils/calculate-arrival-time.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/utils/calculate-check-in-times.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/utils/calculate-flight-duration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/utils/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/admin/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/admin/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/routes/routers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/routes/routers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/vite.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx-reverse-proxy.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-reverse-proxy.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/public/earth.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/assets/images/earth.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/public/plane.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/assets/images/plane.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/assets/styles/react-time-picker.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/assets/styles/react-time-picker.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/layout/loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/layout/loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/ui/form/muti-date-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/ui/form/muti-date-picker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/components/ui/form/time-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/ui/form/time-picker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/components/flight-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/components/flight-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/hooks/useCreateFlight.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/hooks/useCreateFlight.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/hooks/useGetFlightById.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/hooks/useGetFlightById.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/hooks/useUpdateFlight.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/hooks/useUpdateFlight.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightDetailPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/validations/create-flight.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/validations/create-flight.validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/validations/update-flight.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/validations/update-flight.validation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +71,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
     "git-widget-placeholder": "v2",
-    "last_opened_file_path": "D:/projects/bkia-website/admin",
+    "last_opened_file_path": "D:/projects/bkia-website/admin/src/assets/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,11 +95,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\admin\src\assets\images" />
+      <recent name="D:\projects\bkia-website\admin\src\features\flight\utils" />
       <recent name="D:\projects\bkia-website\admin" />
       <recent name="D:\projects\bkia-website\admin\src\assets\styles" />
       <recent name="D:\projects\bkia-website\admin\src\features\flight\validations" />
-      <recent name="D:\projects\bkia-website\admin\src\features\counter\types" />
-      <recent name="D:\projects\bkia-website\admin\src\features\counter" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\admin\src\components\ui\table" />
@@ -95,7 +109,7 @@
       <recent name="D:\projects\bkia-website\admin\src\assets\images" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.admin">
+  <component name="RunManager" selected="npm.web">
     <configuration name="admin" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/admin/package.json" />
       <command value="run" />
@@ -133,9 +147,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.web" />
         <item itemvalue="npm.admin" />
         <item itemvalue="npm.server" />
-        <item itemvalue="npm.web" />
       </list>
     </recent_temporary>
   </component>
@@ -210,15 +224,7 @@
       <workItem from="1763341485144" duration="22228000" />
       <workItem from="1763371502425" duration="2402000" />
       <workItem from="1763427523333" duration="30340000" />
-      <workItem from="1763514044243" duration="18996000" />
-    </task>
-    <task id="LOCAL-00021" summary="refactor homepage">
-      <option name="closed" value="true" />
-      <created>1761720606868</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1761720606868</updated>
+      <workItem from="1763514044243" duration="24311000" />
     </task>
     <task id="LOCAL-00022" summary="refactor homepage hero session &amp; flight search">
       <option name="closed" value="true" />
@@ -604,14 +610,21 @@
       <option name="project" value="LOCAL" />
       <updated>1763524258204</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="deploy admin website">
+      <option name="closed" value="true" />
+      <created>1763537419669</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1763537419669</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="implement flight entity &amp; airline module" />
     <MESSAGE value="implement auth module" />
     <MESSAGE value="implement counter module" />
     <MESSAGE value="refactor flight feature entities" />
@@ -636,6 +649,7 @@
     <MESSAGE value="implement flight detail page" />
     <MESSAGE value="implement create &amp; edit flight page" />
     <MESSAGE value="implement breadcrumb and update flight pages ui" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement breadcrumb and update flight pages ui" />
+    <MESSAGE value="deploy admin website" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy admin website" />
   </component>
 </project>
