@@ -41,9 +41,40 @@ export const Sidebar: React.FC<SidebarProps> = ({
     [currentUserRoles],
   );
 
+  // Collect all navigation paths for best match calculation
+  const allNavPaths = useMemo(() => {
+    return navigationGroups.flatMap((group) =>
+      group.items.map((item) => item.path),
+    );
+  }, [navigationGroups]);
+
+  // Find the best matching path for current location
+  const bestMatchPath = useMemo(() => {
+    const currentPath = location.pathname;
+
+    // Filter paths that match current location
+    const matches = allNavPaths.filter((path) => {
+      if (path === currentPath) return true;
+
+      if (path !== "/" && currentPath.startsWith(path)) {
+        const nextChar = currentPath[path.length];
+        return nextChar === undefined || nextChar === "/";
+      }
+
+      return false;
+    });
+
+    if (matches.length === 0) return null;
+
+    // Return the longest (most specific) match
+    return matches.reduce((best, current) =>
+      current.length > best.length ? current : best,
+    );
+  }, [location.pathname, allNavPaths]);
+
   const isActiveLink = useCallback(
-    (path: string) => location.pathname === path,
-    [location.pathname],
+    (path: string) => path === bestMatchPath,
+    [bestMatchPath],
   );
 
   const sidebarContent = (

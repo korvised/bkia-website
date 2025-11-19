@@ -4,9 +4,9 @@ import {
   LuCalendar,
   LuClock,
   LuInfo,
+  LuNetwork,
   LuPlane,
   LuRoute,
-  LuUsers,
 } from "react-icons/lu";
 import {
   DatePicker,
@@ -267,7 +267,11 @@ export function FlightForm({
 
         <div className="space-y-6">
           {/* Operation Dates */}
-          <div>
+          <div
+            className={cn(
+              isEdit && "grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4",
+            )}
+          >
             {isEdit ? (
               <DatePicker
                 label="Operation Date"
@@ -361,7 +365,7 @@ export function FlightForm({
       {isDeparture && (
         <div className="border-b border-gray-200 p-6">
           <SectionHeader
-            icon={<LuUsers className="h-4 w-4" />}
+            icon={<LuNetwork className="h-4 w-4" />}
             title="Check-in Configuration"
             description="Counter assignments and check-in window"
           />

@@ -1,4 +1,5 @@
-import { LuArrowLeft, LuRailSymbol, LuRotateCcw, LuSave } from "react-icons/lu";
+import { LuArrowLeft, LuPlane, LuRotateCcw, LuSave } from "react-icons/lu";
+import { Breadcrumb } from "@/components/ui";
 import { cn } from "@/lib";
 import { useCreateFlight } from "../hooks";
 import { FlightForm } from "../components";
@@ -17,9 +18,16 @@ export function FlightCreatePage() {
   } = useCreateFlight();
 
   return (
-    <div className="p-6">
+    <div className="space-y-6">
+      <Breadcrumb
+        items={[
+          { label: "Flights", path: "/flights", icon: LuPlane },
+          { label: "Create Flight" },
+        ]}
+      />
+
       {/* Header */}
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -29,7 +37,7 @@ export function FlightCreatePage() {
             <LuArrowLeft className="h-5 w-5" />
           </button>
           <div className="bg-primary-100 rounded-lg p-2">
-            <LuRailSymbol className="text-primary h-6 w-6" />
+            <LuPlane className="text-primary h-6 w-6" />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Create Flight</h1>

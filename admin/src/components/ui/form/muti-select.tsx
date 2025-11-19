@@ -144,14 +144,14 @@ export function MultiSelect({
           {selectedOptions.map((option) => (
             <span
               key={option.value}
-              className="bg-secondary-100 text-secondary-700 inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium"
+              className="bg-primary-100 text-primary-700 inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium"
             >
               {option.label}
               {!disabled && (
                 <button
                   type="button"
                   onClick={() => handleRemove(option.value)}
-                  className="hover:bg-secondary-200 rounded-full p-0.5"
+                  className="hover:bg-primary-200 rounded-full p-0.5"
                 >
                   <LuX className="h-3 w-3" />
                 </button>

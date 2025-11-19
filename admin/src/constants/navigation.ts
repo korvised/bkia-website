@@ -1,3 +1,4 @@
+import type { IconType } from "react-icons";
 import {
   LuBell,
   LuBriefcase,
@@ -23,13 +24,13 @@ import { UserRole } from "@/types";
 export interface INavigationItem {
   name: string;
   path: string;
-  icon?: React.ComponentType<{ className?: string }>;
+  icon?: IconType;
   allowRoles?: UserRole[];
 }
 
 export interface INavigationGroup {
   groupName: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: IconType;
   items: INavigationItem[];
   allowRoles?: UserRole[];
 }

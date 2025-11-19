@@ -3,6 +3,7 @@ import { cn } from "@/lib";
 
 interface FlightStatusBadgeProps {
   status: FlightStatus;
+  className?: string;
 }
 
 const statusConfig: Record<FlightStatus, { label: string; className: string }> =
@@ -37,7 +38,10 @@ const statusConfig: Record<FlightStatus, { label: string; className: string }> =
     },
   };
 
-export function FlightStatusBadge({ status }: FlightStatusBadgeProps) {
+export function FlightStatusBadge({
+  status,
+  className,
+}: FlightStatusBadgeProps) {
   const config = statusConfig[status] || {
     label: status,
     className: "bg-gray-100 text-gray-700",
@@ -46,8 +50,9 @@ export function FlightStatusBadge({ status }: FlightStatusBadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full px-2.5 py-0.5 text-[10.5px] font-medium uppercase",
+        "inline-flex items-center rounded-full px-2.5 pt-1 pb-0.5 text-[10.5px] font-medium uppercase",
         config.className,
+        className,
       )}
     >
       {config.label}

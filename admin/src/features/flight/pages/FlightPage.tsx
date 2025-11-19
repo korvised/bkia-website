@@ -1,5 +1,5 @@
-import { LuPlus, LuRailSymbol } from "react-icons/lu";
-import { Pagination, Table } from "@/components/ui";
+import { LuPlane, LuPlus } from "react-icons/lu";
+import { Breadcrumb, Pagination, Table } from "@/components/ui";
 import { cn } from "@/lib";
 import { FlightFilters } from "../components";
 import { useFlightColumns, useGetFlights } from "../hooks";
@@ -25,12 +25,14 @@ export function FlightPage() {
   const columns = useFlightColumns();
 
   return (
-    <div className="p-6">
+    <div className="space-y-6">
+      <Breadcrumb items={[{ label: "Flights", icon: LuPlane }]} />
+
       {/* Header */}
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <div className="bg-primary-100 rounded-lg p-2">
-            <LuRailSymbol className="text-primary h-6 w-6" />
+            <LuPlane className="text-primary h-6 w-6" />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Flights</h1>

@@ -11,7 +11,6 @@ import { CounterService } from '@/modules/counter';
 import { RouteService } from '@/modules/route';
 import { FlightDirection, FlightStatus } from '@/types/enum';
 import {
-  BatchCreateFlightsDto,
   BulkCreateFlightDto,
   CreateFlightDto,
   QueryFlightDto,
@@ -348,81 +347,6 @@ export class FlightService {
   }
 
   /**
-   * Batch create multiple different flights.
-   * Useful for importing or creating various flights at once.
-   */
-  async batchCreate(dto: BatchCreateFlightsDto): Promise<Flight[]> {
-    const queryRunner = this.dataSource.createQueryRunner();
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-
-    try {
-      const flights: Flight[] = [];
-
-      for (const flightDto of dto.flights) {
-        const route = await this.routeService.findOne(flightDto.routeId);
-        if (!route) {
-          throw new BadRequestException(
-            `Invalid routeId: ${flightDto.routeId}`,
-          );
-        }
-
-        const airline = await this.airlineService.findOne(flightDto.airlineId);
-        if (!airline) {
-          throw new BadRequestException(
-            `Invalid airlineId: ${flightDto.airlineId}`,
-          );
-        }
-
-        let counters: Counter[] = [];
-        if (flightDto.checkInCounterIds?.length) {
-          counters = await this.counterService.findByCounterIds(
-            flightDto.checkInCounterIds,
-          );
-          if (counters.length !== flightDto.checkInCounterIds.length) {
-            throw new BadRequestException(
-              `One or more counterId values are invalid for flight ${flightDto.flightNo}`,
-            );
-          }
-        }
-
-        const flight = this.flightRepo.create({
-          flightNo: flightDto.flightNo,
-          type: flightDto.type,
-          terminal: flightDto.terminal,
-          gate: flightDto.gate?.trim() ?? null,
-          operationDate: flightDto.operationDate,
-          scheduledDepTime: flightDto.scheduledDepTime,
-          scheduledArrTime: flightDto.scheduledArrTime,
-          actualDepTime: flightDto.actualDepTime ?? null,
-          actualArrTime: flightDto.actualArrTime ?? null,
-          checkInStartTime: flightDto.checkInStartTime ?? null,
-          checkInEndTime: flightDto.checkInEndTime ?? null,
-          status: flightDto.status ?? FlightStatus.SCHEDULED,
-          remarks: flightDto.remarks ?? null,
-          route,
-          airline,
-          checkInCounters: counters,
-        });
-
-        const saved = await queryRunner.manager.save(flight);
-        flights.push(saved);
-      }
-
-      await queryRunner.commitTransaction();
-
-      // Return flights with full relations
-      const flightIds = flights.map((f) => f.id);
-      return this.findByIds(flightIds);
-    } catch (error) {
-      await queryRunner.rollbackTransaction();
-      throw error;
-    } finally {
-      await queryRunner.release();
-    }
-  }
-
-  /**
    * Update an existing flight.
    */
   async update(id: string, dto: UpdateFlightDto) {
@@ -475,5 +399,11 @@ export class FlightService {
     }
 
     return await this.flightRepo.save(flight);
+  }
+
+  async delete(id: string) {
+    const flight = await this.findOne(id);
+    if (!flight) throw new NotFoundException(`Flight ${id} not found`);
+    return await this.flightRepo.remove(flight);
   }
 }

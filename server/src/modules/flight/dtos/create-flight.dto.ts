@@ -112,12 +112,3 @@ export class BulkCreateFlightDto extends BaseFlightDto {
   @IsDateString({}, { each: true })
   operationDates!: string[];
 }
-
-// Batch create - array of single flights
-export class BatchCreateFlightsDto {
-  @IsArray()
-  @ArrayMinSize(1, { message: 'At least one flight is required' })
-  @ValidateNested({ each: true })
-  @Type(() => CreateFlightDto)
-  flights!: CreateFlightDto[];
-}

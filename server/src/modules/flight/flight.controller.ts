@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseUUIDPipe,
@@ -14,7 +15,6 @@ import { JwtAuthGuard, RolesGuard } from '@/common/guards';
 import { UserRole } from '@/types/enum';
 import { FlightService } from './flight.service';
 import {
-  BatchCreateFlightsDto,
   BulkCreateFlightDto,
   CreateFlightDto,
   QueryFlightDto,
@@ -54,16 +54,15 @@ export class FlightController {
     return await this.service.create(dto);
   }
 
-  // Bulk create - same flight with multiple dates
+  /**
+   * POST /flights/bulk
+   * Create muti flights.
+   */
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
   @Post('bulk')
   bulkCreate(@Body() dto: BulkCreateFlightDto) {
     return this.service.bulkCreate(dto);
-  }
-
-  // Batch create - multiple different flights
-  @Post('batch')
-  batchCreate(@Body() dto: BatchCreateFlightsDto) {
-    return this.service.batchCreate(dto);
   }
 
   /**
@@ -78,5 +77,16 @@ export class FlightController {
     @Body() dto: UpdateFlightDto,
   ) {
     return await this.service.update(id, dto);
+  }
+
+  /**
+   * DELETE /flights/:id
+   * Delete existing flight.
+   */
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @Delete(':id')
+  async delete(@Param('id', ParseUUIDPipe) id: string) {
+    return await this.service.delete(id);
   }
 }

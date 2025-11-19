@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
-import { LuArrowLeft, LuRailSymbol, LuSave } from "react-icons/lu";
+import { LuArrowLeft, LuPlane, LuSave } from "react-icons/lu";
 import { cn } from "@/lib";
 import { useUpdateFlight } from "../hooks";
 import { FlightForm } from "../components";
+import { useMemo } from "react";
+import { Breadcrumb } from "@/components/ui";
 
 export function FlightEditPage() {
   const { id } = useParams<{ id: string }>();
@@ -22,12 +24,29 @@ export function FlightEditPage() {
     handleBack,
   } = useUpdateFlight(id!);
 
+  const breadcrumbs = useMemo(
+    () => (
+      <Breadcrumb
+        items={[
+          { label: "Flights", path: "/flights", icon: LuPlane },
+          { label: flight?.flightNo || "...", path: `/flights/${id}` },
+          { label: "Edit" },
+        ]}
+      />
+    ),
+    [flight?.flightNo, id],
+  );
+
   if (isLoadingFlight || isLoadingRoutes) {
     return (
-      <div className="flex h-96 items-center justify-center">
-        <div className="flex items-center gap-2">
-          <div className="border-primary h-6 w-6 animate-spin rounded-full border-2 border-t-transparent" />
-          <span className="text-gray-500">Loading flight...</span>
+      <div className="space-y-6">
+        {breadcrumbs}
+
+        <div className="flex h-96 items-center justify-center">
+          <div className="flex items-center gap-2">
+            <div className="border-primary h-6 w-6 animate-spin rounded-full border-2 border-t-transparent" />
+            <span className="text-gray-500">Loading flight...</span>
+          </div>
         </div>
       </div>
     );
@@ -35,7 +54,9 @@ export function FlightEditPage() {
 
   if (isError || !flight) {
     return (
-      <div className="p-6">
+      <div className="space-y-6">
+        {breadcrumbs}
+
         <div className="border-danger-200 bg-danger-50 rounded-lg border p-6 text-center">
           <p className="text-danger-700">
             Flight not found or an error occurred.
@@ -52,9 +73,11 @@ export function FlightEditPage() {
   }
 
   return (
-    <div className="p-6">
+    <div className="space-y-6">
+      {breadcrumbs}
+
       {/* Header */}
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -64,7 +87,7 @@ export function FlightEditPage() {
             <LuArrowLeft className="h-5 w-5" />
           </button>
           <div className="bg-primary-100 rounded-lg p-2">
-            <LuRailSymbol className="text-primary h-6 w-6" />
+            <LuPlane className="text-primary h-6 w-6" />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-gray-900">
