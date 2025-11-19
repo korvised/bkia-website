@@ -4,30 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="deploy admin website">
-      <change afterPath="$PROJECT_DIR$/admin/src/assets/styles/react-multi-datepicker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/components/form-session-header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/utils/calculate-arrival-time.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/utils/calculate-check-in-times.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/utils/calculate-flight-duration.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/features/flight/utils/index.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="fix flight form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/public/earth.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/assets/images/earth.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/public/plane.svg" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/assets/images/plane.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/assets/styles/react-time-picker.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/assets/styles/react-time-picker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/components/layout/loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/layout/loading.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/components/ui/form/muti-date-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/ui/form/muti-date-picker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/components/ui/form/time-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/components/ui/form/time-picker.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/features/flight/components/flight-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/components/flight-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/hooks/useCreateFlight.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/hooks/useCreateFlight.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/hooks/useGetFlightById.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/hooks/useGetFlightById.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/hooks/useUpdateFlight.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/hooks/useUpdateFlight.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/pages/FlightDetailPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/validations/create-flight.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/validations/create-flight.validation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/validations/update-flight.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/validations/update-flight.validation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,15 +203,7 @@
       <workItem from="1763341485144" duration="22228000" />
       <workItem from="1763371502425" duration="2402000" />
       <workItem from="1763427523333" duration="30340000" />
-      <workItem from="1763514044243" duration="24311000" />
-    </task>
-    <task id="LOCAL-00022" summary="refactor homepage hero session &amp; flight search">
-      <option name="closed" value="true" />
-      <created>1761733620545</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1761733620545</updated>
+      <workItem from="1763514044243" duration="24921000" />
     </task>
     <task id="LOCAL-00023" summary="refactor flight page">
       <option name="closed" value="true" />
@@ -618,14 +589,21 @@
       <option name="project" value="LOCAL" />
       <updated>1763537419669</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="fix flight form">
+      <option name="closed" value="true" />
+      <created>1763544503329</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1763544503330</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="implement auth module" />
     <MESSAGE value="implement counter module" />
     <MESSAGE value="refactor flight feature entities" />
     <MESSAGE value="implement airport module" />
@@ -650,6 +628,7 @@
     <MESSAGE value="implement create &amp; edit flight page" />
     <MESSAGE value="implement breadcrumb and update flight pages ui" />
     <MESSAGE value="deploy admin website" />
-    <option name="LAST_COMMIT_MESSAGE" value="deploy admin website" />
+    <MESSAGE value="fix flight form" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix flight form" />
   </component>
 </project>

@@ -82,7 +82,7 @@ export function FlightForm({
     return selectedRoute?.durationMin ?? 0;
   }, [selectedRoute]);
 
-  // Auto-calculate arrival time when departure time or route changes
+  // Auto-calculate scheduled arrival time when departure time or route changes
   useEffect(() => {
     if (values.scheduledDepTime && routeDuration > 0) {
       const arrivalTime = calculateArrivalTime(
@@ -92,6 +92,20 @@ export function FlightForm({
       setFieldValue("scheduledArrTime", arrivalTime);
     }
   }, [values.scheduledDepTime, routeDuration, setFieldValue]);
+
+  // Auto-calculate actual arrival time when actual departure time changes
+  useEffect(() => {
+    if (values.actualDepTime && routeDuration > 0) {
+      const actualArrivalTime = calculateArrivalTime(
+        values.actualDepTime,
+        routeDuration,
+      );
+      setFieldValue("actualArrTime", actualArrivalTime);
+    } else if (!values.actualDepTime) {
+      // Clear actual arrival time if actual departure is cleared
+      setFieldValue("actualArrTime", "");
+    }
+  }, [values.actualDepTime, routeDuration, setFieldValue]);
 
   // Auto-calculate check-in times when departure time or route changes
   useEffect(() => {
@@ -332,8 +346,8 @@ export function FlightForm({
             <div className="flex items-start gap-2 rounded-lg bg-blue-50 p-3 text-sm text-blue-700">
               <LuInfo className="mt-0.5 h-4 w-4 flex-shrink-0" />
               <span>
-                Flight duration: {formatDuration(routeDuration)}. Arrival time
-                will be auto-calculated based on departure time.
+                Flight duration: {formatDuration(routeDuration)}. Arrival times
+                will be auto-calculated based on departure times.
               </span>
             </div>
           )}
