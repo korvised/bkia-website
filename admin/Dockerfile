@@ -17,10 +17,6 @@ RUN pnpm install --frozen-lockfile
 # Copy the rest of the project
 COPY . .
 
-# Optionally copy CI-generated env file into .env (if present)
-# Assumes CI creates .env.production.local BEFORE docker build
-RUN if [ -f .env.production.local ]; then cp .env.production.local .env; fi
-
 # Build Vite app (make sure Vite is configured with base: '/admin/')
 RUN pnpm run build
 

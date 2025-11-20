@@ -3,56 +3,133 @@ import type { DisplayStatusCode, IFlight } from "@/types/flight";
 import type { Lang } from "@/types/language";
 import { labelsByCode } from "@/data/flight";
 
+// Home airport code for Bokeo International Airport
 const HOME_AIRPORT = "BOR";
+
+// Timezone offset for Laos (UTC+7)
 const TZ_OFFSET = "+07:00";
 
-// Tunables (minutes)
-const BOARDING_WINDOW_MIN = 40; // show "Boarding" starting this many minutes before STD
-const FINAL_CALL_WINDOW_MIN = 15; // "Final call" within this many minutes before STD
-const GATE_CLOSED_MIN = 10; // "Gate closed" within this many minutes before STD
-const DELAY_TOLERANCE_MIN = 15; // grace after STD/STA before "Delayed"
-const AUTO_FINALIZE_THRESHOLD_MIN = 1; // auto-finalize as DEPARTED/ARRIVED after this many minutes past scheduled time
+// =============================================================================
+// CONFIGURABLE TIME THRESHOLDS (in minutes)
+// =============================================================================
 
-// ---------------- helpers ----------------
+// Show "Boarding" status starting this many minutes before scheduled departure
+const BOARDING_WINDOW_MIN = 40;
 
-/** Accepts "HH:mm:ss" or "HH:mm" and returns "HH:mm:ss" */
-function normalizeToHHmmss(time: string) {
+// Show "Final Call" status within this many minutes before scheduled departure
+const FINAL_CALL_WINDOW_MIN = 15;
+
+// Show "Gate Closed" status within this many minutes before scheduled departure
+const GATE_CLOSED_MIN = 10;
+
+// Minimal buffer before auto-finalizing (1-5 minutes recommended)
+// After this time past scheduled, flight will show as DEPARTED/ARRIVED
+// Example: If set to 2, flight at 16:40 will show DEPARTED at 16:42
+const AUTO_FINALIZE_THRESHOLD_MIN = 2;
+
+// =============================================================================
+// HELPER FUNCTIONS
+// =============================================================================
+
+/**
+ * Normalizes time string to "HH:mm:ss" format
+ * Accepts "HH:mm:ss" or "HH:mm" and returns "HH:mm:ss"
+ */
+function normalizeToHHmmss(time: string): string {
   if (!time) return "00:00:00";
   if (time.length === 5) return `${time}:00`;
-  return time; // assume already HH:mm:ss
+  return time;
 }
 
-function toLocal(dateISO: string, time: string, tz = TZ_OFFSET) {
+/**
+ * Converts date and time strings to a Date object with timezone
+ */
+function toLocal(dateISO: string, time: string, tz = TZ_OFFSET): Date {
   return new Date(`${dateISO}T${normalizeToHHmmss(time)}${tz}`);
 }
 
-function startOfOpDay(dateISO: string, tz = TZ_OFFSET) {
+/**
+ * Gets the start of operation day (00:00:00)
+ */
+function startOfOpDay(dateISO: string, tz = TZ_OFFSET): Date {
   return new Date(`${dateISO}T00:00:00${tz}`);
 }
 
-function endOfOpDay(dateISO: string, tz = TZ_OFFSET) {
+/**
+ * Gets the end of operation day (23:59:59)
+ */
+function endOfOpDay(dateISO: string, tz = TZ_OFFSET): Date {
   return new Date(`${dateISO}T23:59:59${tz}`);
 }
 
-function isDepartureFromHome(f: IFlight) {
-  // Your data uses origin/destination; departures from BOR mean origin.code === BOR
-  const depCode = f.route?.origin?.code ?? f.route?.origin?.code;
-  return depCode === HOME_AIRPORT;
+/**
+ * Checks if the flight is departing from home airport (BOR)
+ * Returns true for departures, false for arrivals
+ */
+function isDepartureFromHome(flight: IFlight): boolean {
+  const originCode = flight.route?.origin?.code;
+  return originCode === HOME_AIRPORT;
 }
 
-function withLabels(code: DisplayStatusCode) {
+/**
+ * Wraps status code with multilingual labels
+ */
+function withLabels(code: DisplayStatusCode): {
+  code: DisplayStatusCode;
+  labels: { en: string; lo: string; zh: string };
+} {
   return { code, labels: labelsByCode[code] };
 }
 
-const isPastOrNow = (d: Date, now: Date) => !isAfter(d, now);
+/**
+ * Checks if a date is in the past or equal to now
+ */
+function isPastOrNow(date: Date, now: Date): boolean {
+  return !isAfter(date, now);
+}
 
-// ---------------- core --------------------
+/**
+ * Safely parses time string to Date, returns null if empty or invalid
+ */
+function parseTimeOrNull(
+  dateISO: string,
+  time: string | null | undefined,
+): Date | null {
+  if (!time || time.trim() === "") return null;
+  return toLocal(dateISO, time);
+}
 
+// =============================================================================
+// MAIN FUNCTION
+// =============================================================================
+
+/**
+ * Determines the display status for a flight based on current time and flight data.
+ *
+ * This function provides real-time status information for airport displays.
+ * Status changes immediately when scheduled time passes (with minimal 2-minute buffer).
+ *
+ * Priority order:
+ * 1. Hard system statuses (CANCELED, DIVERTED, etc.)
+ * 2. Future operation day → SCHEDULED
+ * 3. Past operation day → Auto-finalize
+ * 4. Actual times (if recorded and past)
+ * 5. Real-time auto-finalize (2 min after scheduled time)
+ * 6. Departure-side UX (check-in, boarding phases)
+ * 7. Arrival-side UX (en-route, scheduled)
+ *
+ * @param flight - The flight object containing schedule and status data
+ * @param realNow - Current time (defaults to now, can be overridden for testing)
+ * @returns Object with status code and multilingual labels
+ */
 export function getFlightDisplayStatus(
   flight: IFlight,
   realNow: Date = new Date(),
 ): { code: DisplayStatusCode; labels: { en: string; lo: string; zh: string } } {
-  // 1) Always respect hard admin/system statuses first
+  // =========================================================================
+  // STEP 1: Check hard system statuses (highest priority)
+  // These are set by admin/system and always take precedence
+  // =========================================================================
   switch (flight.status) {
     case "CANCELED":
       return withLabels("CANCELED");
@@ -68,133 +145,166 @@ export function getFlightDisplayStatus(
       return withLabels("DELAYED");
   }
 
+  // =========================================================================
+  // STEP 2: Parse and prepare time data
+  // =========================================================================
   const opStart = startOfOpDay(flight.operationDate);
   const opEnd = endOfOpDay(flight.operationDate);
-  const isDep = isDepartureFromHome(flight);
+  const isDeparture = isDepartureFromHome(flight);
 
-  // Build key times (accept "HH:mm:ss" or "HH:mm")
-  const std = toLocal(flight.operationDate, flight.scheduledDepTime);
-  const sta = toLocal(flight.operationDate, flight.scheduledArrTime);
+  // Scheduled times
+  const scheduledDep = toLocal(flight.operationDate, flight.scheduledDepTime);
+  const scheduledArr = toLocal(flight.operationDate, flight.scheduledArrTime);
 
-  // Handle null actualDepTime and actualArrTime explicitly
-  const atdRaw =
-    flight.actualDepTime && flight.actualDepTime.trim() !== ""
-      ? toLocal(flight.operationDate, flight.actualDepTime)
-      : null;
-  const ataRaw =
-    flight.actualArrTime && flight.actualArrTime.trim() !== ""
-      ? toLocal(flight.operationDate, flight.actualArrTime)
-      : null;
+  // Actual times (null if not recorded or not yet occurred)
+  const actualDepRaw = parseTimeOrNull(
+    flight.operationDate,
+    flight.actualDepTime,
+  );
+  const actualArrRaw = parseTimeOrNull(
+    flight.operationDate,
+    flight.actualArrTime,
+  );
 
-  // Only treat actuals as final if they exist AND are in the past (or now)
-  const atd = atdRaw && isPastOrNow(atdRaw, realNow) ? atdRaw : null;
-  const ata = ataRaw && isPastOrNow(ataRaw, realNow) ? ataRaw : null;
+  // Only consider actuals as final if they exist AND are in the past
+  const actualDep =
+    actualDepRaw && isPastOrNow(actualDepRaw, realNow) ? actualDepRaw : null;
+  const actualArr =
+    actualArrRaw && isPastOrNow(actualArrRaw, realNow) ? actualArrRaw : null;
 
-  // Handle null check-in times explicitly
-  const ckinOpen =
-    flight.checkInStartTime && flight.checkInStartTime.trim() !== ""
-      ? toLocal(flight.operationDate, flight.checkInStartTime)
-      : null;
-  const ckinClose =
-    flight.checkInEndTime && flight.checkInEndTime.trim() !== ""
-      ? toLocal(flight.operationDate, flight.checkInEndTime)
-      : null;
+  // Check-in times
+  const checkInOpen = parseTimeOrNull(
+    flight.operationDate,
+    flight.checkInStartTime,
+  );
+  const checkInClose = parseTimeOrNull(
+    flight.operationDate,
+    flight.checkInEndTime,
+  );
 
-  // 2) Future op day → default to SCHEDULED (unless admin overrides hit above)
+  // =========================================================================
+  // STEP 3: Handle future operation day
+  // If the flight date hasn't started yet, show SCHEDULED
+  // =========================================================================
   if (isBefore(realNow, opStart)) {
     return withLabels("SCHEDULED");
   }
 
-  // 3) Past op day → if backend still SCHEDULED and no past actuals, auto-finalize
+  // =========================================================================
+  // STEP 4: Handle past operation day
+  // Auto-finalize flights from previous days that weren't properly closed
+  // =========================================================================
   if (isAfter(realNow, opEnd)) {
-    if (flight.status === "SCHEDULED" && !atd && !ata) {
-      return withLabels(isDep ? "DEPARTED" : "ARRIVED");
+    // If still SCHEDULED with no actuals, auto-finalize based on direction
+    if (flight.status === "SCHEDULED" && !actualDep && !actualArr) {
+      return withLabels(isDeparture ? "DEPARTED" : "ARRIVED");
     }
-    // If actuals exist (and in the past), prefer them:
-    if (isDep && atd) return withLabels("DEPARTED");
-    if (!isDep && ata) return withLabels("ARRIVED");
-    // Otherwise, keep deriving below (shouldn't usually happen for past days)
+    // If actuals exist, use them
+    if (isDeparture && actualDep) return withLabels("DEPARTED");
+    if (!isDeparture && actualArr) return withLabels("ARRIVED");
   }
 
-  // 4) Today (within op day): prefer actuals when present (and past)
-  if (isDep && atd) return withLabels("DEPARTED");
-  if (!isDep && ata) return withLabels("ARRIVED");
+  // =========================================================================
+  // STEP 5: Handle actual times for today
+  // If actual departure/arrival time has passed, show final status
+  // =========================================================================
+  if (isDeparture && actualDep) return withLabels("DEPARTED");
+  if (!isDeparture && actualArr) return withLabels("ARRIVED");
 
-  // 4.5) Auto-finalize if significantly past scheduled time (no actuals recorded)
-  // This prevents flights from showing as "DELAYED" indefinitely
-  if (isDep) {
-    const minsPastSTD = differenceInMinutes(realNow, std);
-    if (minsPastSTD > AUTO_FINALIZE_THRESHOLD_MIN && !atd) {
+  // =========================================================================
+  // STEP 6: Real-time auto-finalize
+  // Show DEPARTED/ARRIVED immediately after scheduled time + minimal buffer
+  // Example: If departure is 16:40, show DEPARTED at 16:42
+  // =========================================================================
+  if (isDeparture) {
+    const minutesPastDep = differenceInMinutes(realNow, scheduledDep);
+    if (minutesPastDep >= AUTO_FINALIZE_THRESHOLD_MIN) {
       return withLabels("DEPARTED");
     }
   } else {
-    const minsPastSTA = differenceInMinutes(realNow, sta);
-    if (minsPastSTA > AUTO_FINALIZE_THRESHOLD_MIN && !ata) {
+    const minutesPastArr = differenceInMinutes(realNow, scheduledArr);
+    if (minutesPastArr >= AUTO_FINALIZE_THRESHOLD_MIN) {
       return withLabels("ARRIVED");
     }
   }
 
-  // 5) Delay detection (after scheduled + tolerance with no actual)
-  // Only show DELAYED if within the delay window (between tolerance and auto-finalize threshold)
-  if (isDep) {
-    const minsPastSTD = differenceInMinutes(realNow, std);
-    if (
-      minsPastSTD > DELAY_TOLERANCE_MIN &&
-      minsPastSTD <= AUTO_FINALIZE_THRESHOLD_MIN &&
-      !atd
-    ) {
-      return withLabels("DELAYED");
-    }
-  } else {
-    const minsPastSTA = differenceInMinutes(realNow, sta);
-    if (
-      minsPastSTA > DELAY_TOLERANCE_MIN &&
-      minsPastSTA <= AUTO_FINALIZE_THRESHOLD_MIN &&
-      !ata
-    ) {
-      return withLabels("DELAYED");
-    }
-  }
+  // =========================================================================
+  // STEP 7: Departure-side UX (when BOR is origin)
+  // Show progressive statuses: Check-in → Boarding → Final Call → Gate Closed
+  // =========================================================================
+  if (isDeparture) {
+    const minutesToDep = differenceInMinutes(scheduledDep, realNow);
 
-  // 6) Departure-side UX (only when BOR is origin)
-  if (isDep) {
-    // Boarding phases relative to STD (check this first for more granular status)
-    const minsToSTD = differenceInMinutes(std, realNow); // >0 means in future
-
-    // If we're far from departure (>40 min), check check-in status
-    if (minsToSTD > BOARDING_WINDOW_MIN) {
-      // Check-in window if provided
-      if (ckinOpen && ckinClose) {
-        if (isAfter(realNow, ckinOpen) && isBefore(realNow, ckinClose)) {
+    // More than 40 minutes before departure
+    if (minutesToDep > BOARDING_WINDOW_MIN) {
+      // Check if we're in the check-in window
+      if (checkInOpen && checkInClose) {
+        if (isAfter(realNow, checkInOpen) && isBefore(realNow, checkInClose)) {
           return withLabels("CHECK_IN_OPEN");
         }
-        if (isAfter(realNow, ckinClose)) {
+        if (isAfter(realNow, checkInClose)) {
           return withLabels("CHECK_IN_CLOSED");
         }
       }
       return withLabels("ON_TIME");
     }
 
-    // Within boarding window (0-40 min before departure)
-    if (minsToSTD > FINAL_CALL_WINDOW_MIN) return withLabels("BOARDING");
-    if (minsToSTD > GATE_CLOSED_MIN) return withLabels("FINAL_CALL");
-    if (minsToSTD > 0) return withLabels("GATE_CLOSED");
+    // 15-40 minutes before departure: Boarding
+    if (minutesToDep > FINAL_CALL_WINDOW_MIN) {
+      return withLabels("BOARDING");
+    }
 
-    // Reached or passed STD without actuals/delay/override
-    // This shouldn't normally happen as steps 4.5 and 5 should catch it
+    // 10-15 minutes before departure: Final Call
+    if (minutesToDep > GATE_CLOSED_MIN) {
+      return withLabels("FINAL_CALL");
+    }
+
+    // 0-10 minutes before departure: Gate Closed
+    if (minutesToDep > 0) {
+      return withLabels("GATE_CLOSED");
+    }
+
+    // 0-2 minutes past departure: Still show Gate Closed (buffer period)
+    return withLabels("GATE_CLOSED");
+  }
+
+  // =========================================================================
+  // STEP 8: Arrival-side UX (when BOR is destination)
+  // =========================================================================
+
+  // Flight has departed but not yet arrived, and before scheduled arrival
+  if (actualDep && !actualArr && isBefore(realNow, scheduledArr)) {
+    return withLabels("EN_ROUTE");
+  }
+
+  // Flight hasn't departed yet and before scheduled arrival
+  if (!actualDep && isBefore(realNow, scheduledArr)) {
     return withLabels("SCHEDULED");
   }
 
-  // 7) Arrival-side UX (BOR is destination)
-  if (atd && !ata && isBefore(realNow, sta)) return withLabels("EN_ROUTE");
-  if (!atd && isBefore(realNow, sta)) return withLabels("SCHEDULED");
-
-  // 8) Fallback
+  // =========================================================================
+  // STEP 9: Fallback
+  // =========================================================================
   return withLabels("SCHEDULED");
 }
 
-/** Convenience: get localized label directly */
-export function getFlightStatusLabel(flight: IFlight, lang: Lang, now?: Date) {
+// =============================================================================
+// CONVENIENCE FUNCTION
+// =============================================================================
+
+/**
+ * Gets the localized status label for a flight
+ *
+ * @param flight - The flight object
+ * @param lang - Language code ('en', 'lo', or 'zh')
+ * @param now - Optional current time for testing
+ * @returns Localized status label string
+ */
+export function getFlightStatusLabel(
+  flight: IFlight,
+  lang: Lang,
+  now?: Date,
+): string {
   const { labels } = getFlightDisplayStatus(flight, now);
   return labels[lang] ?? labels.en;
 }

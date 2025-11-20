@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="fix flight form">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/docker-build-push.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/features/flight/components/flight-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/features/flight/components/flight-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/admin/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/services/flight/status-display.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/services/flight/status-display.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +52,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
     "git-widget-placeholder": "v2",
-    "last_opened_file_path": "D:/projects/bkia-website/admin/src/assets/images",
+    "last_opened_file_path": "D:/projects/bkia-website",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,11 +76,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website" />
       <recent name="D:\projects\bkia-website\admin\src\assets\images" />
       <recent name="D:\projects\bkia-website\admin\src\features\flight\utils" />
       <recent name="D:\projects\bkia-website\admin" />
       <recent name="D:\projects\bkia-website\admin\src\assets\styles" />
-      <recent name="D:\projects\bkia-website\admin\src\features\flight\validations" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\admin\src\components\ui\table" />
@@ -88,7 +90,7 @@
       <recent name="D:\projects\bkia-website\admin\src\assets\images" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web">
+  <component name="RunManager" selected="npm.admin">
     <configuration name="admin" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/admin/package.json" />
       <command value="run" />
@@ -126,8 +128,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.web" />
         <item itemvalue="npm.admin" />
+        <item itemvalue="npm.web" />
         <item itemvalue="npm.server" />
       </list>
     </recent_temporary>
@@ -203,15 +205,8 @@
       <workItem from="1763341485144" duration="22228000" />
       <workItem from="1763371502425" duration="2402000" />
       <workItem from="1763427523333" duration="30340000" />
-      <workItem from="1763514044243" duration="24921000" />
-    </task>
-    <task id="LOCAL-00023" summary="refactor flight page">
-      <option name="closed" value="true" />
-      <created>1761817083010</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1761817083010</updated>
+      <workItem from="1763514044243" duration="27110000" />
+      <workItem from="1763604799145" duration="1629000" />
     </task>
     <task id="LOCAL-00024" summary="adjust with container class">
       <option name="closed" value="true" />
@@ -597,7 +592,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763544503330</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="fix flight form">
+      <option name="closed" value="true" />
+      <created>1763545090370</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1763545090370</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
