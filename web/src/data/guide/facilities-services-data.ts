@@ -638,7 +638,7 @@ export const facilitiesServices: FacilityService[] = [
     category: "terminal",
     name: {
       en: "Lost & Found",
-      lo: "ບໍລິການພັນຮັບເຄື່ອງ",
+      lo: "ບໍລິການພົວພັນຮັບເຄື່ອງ",
       zh: "失物招领",
     },
     icon: FaSearch,
