@@ -262,32 +262,72 @@ export const facilitiesServices: FacilityService[] = [
     ],
     pricing: [
       {
-        item: { en: "Within City", lo: "ພາຍໃນເມືອງ", zh: "市内" },
-        price: "30,000 LAK",
+        item: { en: "Si Muang Ngam", lo: "ສີເມືອງງາມ", zh: "西蒙昂" },
+        price: "250,000 LAK / 80 CNY",
       },
+
       {
         item: {
-          en: "To Houayxay District",
-          lo: "ໄປເມືອງຫ້ວຍຊາຍ",
-          zh: "到会晒区",
+          en: "Nam Ngan / Ton Pheung / Ton Pheung Checkpoint",
+          lo: "ນ້ຳແງ້ນ / ຕົ້ນເຜິ້ງ / ດ່ານຕົ້ນເຜິ້ງ",
+          zh: "南岸 / 吞盆 / 吞盆口岸",
         },
-        price: "50,000 LAK",
+        price: "450,000 LAK / 150 CNY",
       },
+
       {
         item: {
-          en: "To Border Crossing",
-          lo: "ໄປດ່ານຊາຍແດນ",
-          zh: "到边境口岸",
+          en: "Si Thad / Si Boun Heuang",
+          lo: "ສີທາດ / ສີບຸນເຮືອງ",
+          zh: "西塔 / 西本香",
         },
-        price: "70,000 LAK",
+        price: "600,000 LAK / 200 CNY",
       },
+
       {
         item: {
-          en: "To Nearby Districts",
-          lo: "ໄປເມືອງໃກ້ຄຽງ",
-          zh: "到附近地区",
+          en: "Si Don Yang / Houy Pheung",
+          lo: "ສີດອນແຍງ / ຫ້ວຍເຜິ້ງ",
+          zh: "西东阳 / 会盆",
         },
-        price: "100,000+ LAK",
+        price: "660,000 LAK / 220 CNY",
+      },
+
+      {
+        item: {
+          en: "B. Mom / Nam Kerng Mai / Si Don Me / Nam Kerng Kao",
+          lo: "ບ້ານມອມ / ນ້ຳເກີ່ງໃໝ່ / ສີດອນໝີ / ນ້ຳເກີ່ງເກົ່າ",
+          zh: "孟村 / 新南更 / 西东梅 / 老南更",
+        },
+        price: "750,000 LAK / 250 CNY",
+      },
+
+      {
+        item: { en: "Houy Tamg", lo: "ຫ້ວຍຕ້າງ", zh: "会当" },
+        price: "850,000 LAK / 280 CNY",
+      },
+
+      {
+        item: {
+          en: "Louang Sing Chai / Nam Yone",
+          lo: "ຫຼວງສິງໃຈ / ນ້ຳຍອນ",
+          zh: "龙星寨 / 南苑",
+        },
+        price: "900,000 LAK / 300 CNY",
+      },
+
+      {
+        item: { en: "Pak Ngao", lo: "ປາກງາວ", zh: "帕瑙" },
+        price: "960,000 LAK / 320 CNY",
+      },
+
+      {
+        item: {
+          en: "Houy Tap / Houy Mone / Nong Xay / Houy Xay",
+          lo: "ຫ້ວຍຕາບ / ຫ້ວຍມອນ / ຫນອງໄຊ / ຫ້ວຍຊາຍ",
+          zh: "会塔 / 会蒙 / 农赛 / 会晒",
+        },
+        price: "1,000,000 LAK / 350 CNY",
       },
     ],
   },
