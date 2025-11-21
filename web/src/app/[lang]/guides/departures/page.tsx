@@ -51,7 +51,7 @@ export default async function DepartureGuidePage({
   searchParams,
 }: DeparturePageProps) {
   const { lang } = await params;
-  const { tab = "purchase" } = await searchParams;
+  const { tab = "checkin" } = await searchParams;
 
   return (
     <div>

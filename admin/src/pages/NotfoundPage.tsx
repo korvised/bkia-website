@@ -1,40 +1,49 @@
-import { TbArrowBackUp } from "react-icons/tb";
-import { useNavigation } from "@/hooks";
-import { cn } from "@/lib";
+import { Link, useNavigate } from "react-router-dom";
+import { LuArrowLeft, LuHouse } from "react-icons/lu";
 
 export const NotFoundPage = () => {
-  const { onGoBack } = useNavigation();
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   return (
-    <main className="bg-dark h-full w-full">
-      <div className="relative isolate min-h-screen">
-        <img
-          alt=""
-          src="/404.avif"
-          className="absolute inset-0 -z-10 size-full object-cover object-top"
-        />
-        <div className="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
-          <p className="text-base/8 font-semibold text-white">404</p>
-          <h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl">
-            Page not found
-          </h1>
-          <p className="mt-6 text-lg font-medium text-pretty text-white/70 sm:text-xl/8">
-            Sorry, we couldn’t find the page you’re looking for.
-          </p>
-          <div className="mt-10 flex justify-center">
-            <button
-              onClick={() => onGoBack()}
-              className={cn(
-                "flex cursor-pointer items-center gap-x-2 rounded-md px-4 py-1.5 text-sm/7 font-semibold text-white",
-                "hover:bg-dark/10 hover:text-white",
-              )}
-            >
-              <TbArrowBackUp className="h-6 w-6" />
-              <span className="ml-2">Go back</span>
-            </button>
-          </div>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 px-4">
+      <div className="w-full max-w-md text-center">
+        {/* Error Code */}
+        <h1 className="mb-2 text-6xl font-bold text-gray-900">404</h1>
+
+        {/* Title */}
+        <h2 className="mb-4 text-2xl font-semibold text-gray-800">
+          Page Not Found
+        </h2>
+
+        {/* Description */}
+        <p className="mb-8 text-gray-600">
+          Sorry, the page you are looking for doesn't exist or has been moved.
+          Please check the URL or navigate back to the homepage.
+        </p>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <button
+            onClick={handleGoBack}
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          >
+            <LuArrowLeft className="h-4 w-4" />
+            Go Back
+          </button>
+
+          <Link
+            to="/home"
+            className="bg-primary-500 hover:bg-primary-600 inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium text-white transition-colors"
+          >
+            <LuHouse className="h-4 w-4" />
+            Back to Home
+          </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 };

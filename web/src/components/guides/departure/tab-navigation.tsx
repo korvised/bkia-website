@@ -70,6 +70,7 @@ function getTabStatus(
   tab: Tab,
   activeTab: DepartureTab,
 ): "complete" | "current" | "upcoming" {
+  console.log(activeTab, tab.id);
   const activeIndex = tabs.findIndex((t) => t.id === activeTab);
   const tabIndex = tabs.findIndex((t) => t.id === tab.id);
   if (tabIndex < activeIndex) return "complete";
