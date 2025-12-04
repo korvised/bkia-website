@@ -18,12 +18,12 @@ export const baggage = {
   // Checked Baggage Section
   checkedBaggageTitle: {
     en: "Checked Baggage",
-    lo: "ກະເປົາໂຫຼດໃຕ້ທ້ອງເຮືອ",
+    lo: "ກວດສອບກະເປົາ",
     zh: "托运行李",
   },
   checkedBaggageDesc: {
     en: "Checked baggage is stored in the aircraft cargo hold during the flight. Weight and size limits vary by airline and ticket class.",
-    lo: "ກະເປົາໂຫຼດໃຕ້ທ້ອງເຮືອຈະຖືກເກັບໄວ້ໃນຫ້ອງສິນຄ້າຂອງເຮືອບິນລະຫວ່າງການບິນ. ນ້ຳໜັກ ແລະ ຂະໜາດແຕກຕ່າງກັນຕາມສາຍການບິນ ແລະ ຊັ້ນບິນ.",
+    lo: "ກະເປົາທີ່ໂຫຼດຂື້ນເຮືອບິນຈະຖືກເກັບໄວ້ໃນຫ້ອງສິນຄ້າຂອງເຮືອບິນລະຫວ່າງການບິນ. ນ້ຳໜັກ ແລະ ຂະໜາດແຕກຕ່າງກັນຕາມສາຍການບິນ ແລະ ຊັ້ນບິນ.",
     zh: "托运行李在飞行期间存放在飞机货舱内。重量和尺寸限制因航空公司和票务舱位而异。",
   },
   weightAllowance: {
@@ -55,7 +55,7 @@ export const baggage = {
   },
   cabinBaggageDesc: {
     en: "Cabin baggage is carried with you into the aircraft cabin. It must fit in the overhead compartment or under the seat in front of you.",
-    lo: "ກະເປົາຖືຂຶ້ນເຮືອແມ່ນນຳຕິດໂຕເຂົ້າໄປໃນຫ້ອງໂດຍສານ. ຕ້ອງໃສ່ໄດ້ໃນຊ່ອງເກັບຂອງດ້ານເທິງ ຫຼື ໃຕ້ບ່ອນນັ່ງໜ້າທ່ານ.",
+    lo: "ກະເປົາຖືຂຶ້ນເຮືອແມ່ນນຳຕິດໂຕເຂົ້າໄປໃນຫ້ອງໂດຍສານ. ຕ້ອງໃສ່ໄດ້ໃນຊ່ອງເກັບຂອງດ້ານເທິງ ຫຼື ໃຕ້ບ່ອນນັ່ງຂ້າງໜ້າຂອງທ່ານ.",
     zh: "随身行李随您进入客舱。必须能放入头顶行李舱或前排座位下方。",
   },
   cabinWeightVal: {
@@ -114,7 +114,7 @@ export const baggage = {
   // Cabin Restricted Items
   cabinRestrictedTitle: {
     en: "Cabin Baggage Restrictions",
-    lo: "ຂໍ້ຈຳກັດກະເປົາຖືຂຶ້ນເຮືອ",
+    lo: "ຂໍ້ຈຳກັດກະເປົາຖືຂຶ້ນເຮືອບິນ",
     zh: "随身行李限制",
   },
   cabinRestrictedLiquids: {
@@ -124,7 +124,7 @@ export const baggage = {
   },
   cabinRestrictedSharp: {
     en: "Sharp objects (scissors, knives, razors)",
-    lo: "ຂອງມີຄົມ (ມີດ, ກະໄຕ, ມີດໂກນ)",
+    lo: "ຂອງມີຄົມ (ມີດຕັດ, ມີດ, ມີດໂກນ)",
     zh: "尖锐物品（剪刀、刀具、剃刀）",
   },
   cabinRestrictedSports: {

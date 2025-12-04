@@ -25,7 +25,7 @@ export function SecurityContent({ lang }: SecurityContentProps) {
       {/* Main Content with Image */}
       <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
         {/* Left side - Illustration */}
-        <div className="lg:w-96 lg:flex-none">
+        <div className="flex justify-center lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:mt-4 lg:h-[500px] lg:max-w-none">
             <Image
               src="/images/guides/security.png"

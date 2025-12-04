@@ -87,7 +87,7 @@ export const security = {
   // Liquid Restrictions Section
   liquidTitle: {
     en: "Liquid Restrictions (100ml Rule)",
-    lo: "ຂໍ້ຈຳກັດຂອງແຫຼວ (ກົດ 100ml)",
+    lo: "ຂໍ້ຈຳກັດຂອງແຫຼວ (ກຳນົດ 100ml)",
     zh: "液体限制（100毫升规定）",
   },
   liquidDesc: {
@@ -122,7 +122,7 @@ export const security = {
   },
   liquidExamples: {
     en: "Water, beverages, perfume, shampoo, toothpaste, lotion, sunscreen, lip gloss, mascara, gel deodorant, and similar items",
-    lo: "ນ້ຳ, ເຄື່ອງດື່ມ, ນ້ຳຫອມ, ແຊມພູ, ຢາສີຟັນ, ໂລຊັ່ນ, ກັນແດດ, ລິບກລອສ, ມາສຄາຣ່າ, ເຈວລະງັບກິ່ນ, ແລະ ສິ່ງຂອງທີ່ຄ້າຍຄືກັນ",
+    lo: "ນ້ຳ, ເຄື່ອງດື່ມ, ນ້ຳຫອມ, ແຊມພູ, ຢາສີຟັນ, ໂລຊັ່ນ, ກັນແດດ, ລິບທາປາກ, ມາສຄາຣ່າ, ເຈວລະງັບກິ່ນ, ແລະ ສິ່ງຂອງທີ່ຄ້າຍຄືກັນ",
     zh: "水、饮料、香水、洗发水、牙膏、乳液、防晒霜、唇彩、睫毛膏、凝胶除臭剂及类似物品",
   },
   liquidExceptions: {
@@ -142,7 +142,7 @@ export const security = {
   },
   liquidDutyFree: {
     en: "Duty-free liquids purchased at airport (sealed bag with receipt)",
-    lo: "ຂອງແຫຼວປອດພາສີທີ່ຊື້ຢູ່ສະໜາມບິນ (ຖົງປິດຜະນຶກພ້ອມໃບບິນ)",
+    lo: "ຂອງແຫຼວປອດພາສີທີ່ຊື້ຢູ່ສະໜາມບິນ (ຫຸ້ມຫໍ່ເປັນຢ່າງດີພ້ອມໃບບິນ)",
     zh: "在机场购买的免税液体（密封袋附收据）",
   },
 
@@ -154,7 +154,7 @@ export const security = {
   },
   reminderArriveEarly: {
     en: "Arrive early - security screening can take 15-30 minutes during peak times",
-    lo: "ມາຮອດລ່ວງໜ້າ - ການກວດຄວາມປອດໄພອາດໃຊ້ເວລາ 15-30 ນາທີໃນຊ່ວງເວລາຫຍຸ້ງ",
+    lo: "ມາຮອດລ່ວງໜ້າ - ການກວດຄວາມປອດໄພອາດໃຊ້ເວລາ 15-30 ນາທີໃນຊ່ວງໂມງເລັງດ່ວນ",
     zh: "请提前到达——高峰时段安检可能需要15-30分钟",
   },
   reminderCooperate: {

@@ -26,7 +26,7 @@ export function CheckinContent({ lang }: CheckinContentProps) {
       {/* Main Content with Image */}
       <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
         {/* Left side - Illustration (aligned to start, not centered) */}
-        <div className="lg:w-96 lg:flex-none">
+        <div className="flex justify-center lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
             <Image
               src="/images/guides/check-in.png"
@@ -52,7 +52,7 @@ export function CheckinContent({ lang }: CheckinContentProps) {
             <p className="text-base leading-relaxed text-gray-600">
               {t.counterCheckinDesc}{" "}
               <Link
-                href={`/${lang}/flights/airlines`}
+                href={`/${lang}/flights/departures`}
                 className="text-primary-600 hover:text-primary-700 font-medium transition-colors hover:underline"
               >
                 {t.viewAirlineCounters}

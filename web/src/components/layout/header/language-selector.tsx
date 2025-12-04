@@ -1,7 +1,13 @@
 "use client";
 
-import { startTransition, useState, useRef, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import {
+  startTransition,
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+} from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChevronDown, Check } from "lucide-react";
 import { useLanguage } from "@/context";
 import { setLangCookie } from "@/actions";
@@ -21,46 +27,57 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   const { lang, languageConfig } = useLanguage();
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleLanguageChange = (newLang: Lang) => {
-    if (newLang === lang) {
+  const handleLanguageChange = useCallback(
+    (newLang: Lang) => {
+      if (newLang === lang) {
+        setIsOpen(false);
+        return;
+      }
+
+      // Build new path with language
+      const segments = pathname.split("/");
+      segments[1] = newLang;
+      const newPath = segments.join("/");
+
+      // Preserve query parameters
+      const queryString = searchParams.toString();
+      const fullPath = queryString ? `${newPath}?${queryString}` : newPath;
+
+      startTransition(async () => {
+        await setLangCookie(newLang);
+        router.push(fullPath);
+      });
+
       setIsOpen(false);
-      return;
-    }
+    },
+    [lang, pathname, searchParams, router],
+  );
 
-    const segments = pathname.split("/");
-    segments[1] = newLang;
-    const newPath = segments.join("/");
-
-    startTransition(async () => {
-      await setLangCookie(newLang);
-      router.push(newPath);
-    });
-
-    setIsOpen(false);
-  };
-
-  const handleMouseEnter = () => {
-    // Clear any pending close timeout
+  const handleMouseEnter = useCallback(() => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
     setIsOpen(true);
-  };
+  }, []);
 
-  const handleMouseLeave = () => {
-    // Delay closing to allow smooth transition between trigger and dropdown
+  const handleMouseLeave = useCallback(() => {
     timeoutRef.current = setTimeout(() => {
       setIsOpen(false);
     }, 150);
-  };
+  }, []);
 
-  // Cleanup on unmount
+  const handleToggle = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
+
+  // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {
@@ -71,9 +88,9 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
 
   // Handle keyboard navigation
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen) return;
+    if (!isOpen) return;
 
+    const handleKeyDown = (e: KeyboardEvent) => {
       switch (e.key) {
         case "Escape":
           setIsOpen(false);
@@ -85,17 +102,14 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
       }
     };
 
-    if (isOpen) {
-      document.addEventListener("keydown", handleKeyDown);
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleClickOutside = (event: MouseEvent) => {
       if (
         containerRef.current &&
@@ -105,13 +119,8 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
       }
     };
 
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
   return (
@@ -123,7 +132,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     >
       {/* Trigger Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle}
         className={cn(
           "flex items-center gap-x-1.5 rounded-lg border-0 px-2 py-1.5 transition-all duration-300 outline-none sm:px-2.5 sm:py-2",
           "focus-visible:ring-primary-500 focus-visible:ring-2 focus-visible:ring-offset-2",
@@ -202,7 +211,6 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
                   </span>
                 </div>
 
-                {/* Active Indicator */}
                 {isActive && (
                   <Check className="text-primary-600 h-3.5 w-3.5 flex-shrink-0 sm:h-4 sm:w-4" />
                 )}

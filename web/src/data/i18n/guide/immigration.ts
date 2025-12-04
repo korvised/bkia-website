@@ -131,7 +131,7 @@ export const immigration = {
   },
   noteQuestions: {
     en: "Immigration officers may ask about your travel purpose and destination",
-    lo: "ເຈົ້າໜ້າທີ່ຕມ ອາດຖາມກ່ຽວກັບຈຸດປະສົງ ແລະ ຈຸດໝາຍປາຍທາງຂອງການເດີນທາງ",
+    lo: "ເຈົ້າໜ້າທີ່ ຕມ ອາດຖາມກ່ຽວກັບຈຸດປະສົງ ແລະ ຈຸດໝາຍປາຍທາງຂອງການເດີນທາງ",
     zh: "边检人员可能会询问您的旅行目的和目的地",
   },
   noteProhibited: {

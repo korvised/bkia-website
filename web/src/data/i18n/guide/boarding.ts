@@ -55,12 +55,12 @@ export const boarding = {
   // Boarding Groups Section
   boardingGroupsTitle: {
     en: "Boarding Groups",
-    lo: "ກຸ່ມຂຶ້ນເຮືອບິນ",
+    lo: "ກຸ່ມຜູ້ໂດຍສານ",
     zh: "登机顺序",
   },
   priorityBoarding: {
     en: "Priority Boarding",
-    lo: "ຂຶ້ນເຮືອບິນບຸລິມະສິດ",
+    lo: "ຜູ້ໂດຍສານບຸລິມະສິດ",
     zh: "优先登机",
   },
   priorityBoardingDesc: {
@@ -92,7 +92,7 @@ export const boarding = {
   // Required Documents Section
   requiredTitle: {
     en: "Required at Boarding Gate",
-    lo: "ຕ້ອງການຢູ່ປະຕູຂຶ້ນເຮືອບິນ",
+    lo: "ເອກະສານທີ່ຕ້ອງແຈ້ງກ່ອນຂຶ້ນປະຕູເຮືອບິນ",
     zh: "登机口所需证件",
   },
   requiredBoardingPass: {
@@ -170,7 +170,7 @@ export const boarding = {
   },
   prohibitedSmoking: {
     en: "Smoking (including e-cigarettes and vaping)",
-    lo: "ສູບຢາ (ລວມທັງຢາໄຟຟ້າ ແລະ ວາບ)",
+    lo: "ສູບຢາ (ລວມທັງຢາສູບໄຟຟ້າ)",
     zh: "吸烟（包括电子烟）",
   },
   prohibitedAlcohol: {

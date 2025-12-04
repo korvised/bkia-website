@@ -22,14 +22,14 @@ export const checkin = {
     zh: "柜台值机",
   },
   counterCheckinDesc: {
-    en: "Our check-in counters are located in the departure hall. Present your passport and booking confirmation to the airline staff to receive your boarding pass and check in your luggage.",
-    lo: "ເຄົາເຕີແຈ້ງປີ້ຕັ້ງຢູ່ໃນໂຖງຜູ້ໂດຍສານຂາອອກ. ສະແດງໜັງສືຜ່ານແດນ ແລະ ການຢືນຢັນການຈອງໃຫ້ພະນັກງານສາຍການບິນ ເພື່ອຮັບບັດຂຶ້ນເຮືອບິນ ແລະ ໂຫຼດກະເປົາ.",
-    zh: "值机柜台位于出发大厅。请向航空公司工作人员出示护照和预订确认函，以领取登机牌并托运行李。",
+    en: "Our dedicated airport check-in staff are located at the counters in the departure hall. Present your passport and booking confirmation to receive your boarding pass and check in your luggage.",
+    lo: "ພະນັກງານແຈ້ງປີ້ສະໜາມບິນຂອງພວກເຮົາແມ່ນປະຈຳການຢູ່ເຄົາເຕີໃນໂຖງຜູ້ໂດຍສານຂາອອກ. ສະແດງໜັງສືຜ່ານແດນ ແລະ ການຢືນຢັນການຈອງ ເພື່ອຮັບບັດຂຶ້ນເຮືອບິນ ແລະ ໂຫຼດກະເປົາ.",
+    zh: "我们专门的机场值机工作人员位于出发大厅的柜台。请出示您的护照和预订确认函，以领取登机牌并托运行李。",
   },
   viewAirlineCounters: {
-    en: "Click here to see which check-in counter your airline is using",
-    lo: "ກົດທີ່ນີ້ເພື່ອເບິ່ງວ່າສາຍການບິນຂອງທ່ານໃຊ້ເຄົາເຕີໃດ",
-    zh: "点击此处查看您的航空公司使用哪个值机柜台",
+    en: "Click here to view your flight and its assigned check-in counter number",
+    lo: "ກົດທີ່ນີ້ເພື່ອກວດເບິ່ງຖ້ຽວບິນຂອງທ່ານ ແລະ ເບີເຄົາເຕີແຈ້ງປີ້ທີ່ຖືກກຳນົດ",
+    zh: "点击此处查看您的航班及其指定的柜台编号",
   },
 
   // Arrival Times Section
