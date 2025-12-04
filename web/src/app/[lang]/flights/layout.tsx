@@ -29,7 +29,7 @@ export default async function FlightsLayout({
       preserveQuery={["date"]}
       menuItems={menuItems}
     >
-      {children}
+      <div className="container">{children}</div>
     </FeatureLayout>
   );
 }

@@ -1,3 +1,5 @@
 *.pem
 data/*
 EC2.md
+test.*
+*test.*

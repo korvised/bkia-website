@@ -213,7 +213,7 @@ export function FeatureLayout({
       </div>
 
       {/* Main Content */}
-      <div className="container py-8">{children}</div>
+      <div className="py-8">{children}</div>
     </div>
   );
 }

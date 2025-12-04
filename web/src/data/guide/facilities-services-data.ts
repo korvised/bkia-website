@@ -14,6 +14,8 @@ import { MdAtm } from "react-icons/md";
 import { LuBaggageClaim } from "react-icons/lu";
 import { IoRestaurantOutline } from "react-icons/io5";
 import { RiVipLine } from "react-icons/ri";
+import { MdChildCare, MdMosque } from "react-icons/md";
+import { GiPrayer } from "react-icons/gi";
 
 type ServiceCategory = "terminal" | "transport" | "hospitality";
 type ServiceColor =
@@ -668,6 +670,217 @@ export const facilitiesServices: FacilityService[] = [
           en: "Multiple locations in arrivals and departures",
           lo: "ຫຼາຍຈຸດໃນພື້ນທີ່ຂາເຂົ້າ ແລະ ຂາອອກ",
           zh: "到达和出发区有多个位置",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "mother-child-room",
+    category: "terminal",
+    name: {
+      en: "Mother & Child Room",
+      lo: "ຫ້ອງແມ່ ແລະ ເດັກ",
+      zh: "母婴室",
+    },
+    icon: MdChildCare,
+    color: "fuchsia",
+    shortDescription: {
+      en: "Nursing and childcare facilities",
+      lo: "ຫ້ອງລ້ຽງເດັກ ແລະ ໃຫ້ນົມລູກ",
+      zh: "哺乳和育儿设施",
+    },
+    description: {
+      en: "Dedicated room for mothers to breastfeed and care for infants in privacy. Provides a quiet, comfortable space away from other passengers when babies need feeding or are crying.",
+      lo: "ຫ້ອງສຳລັບແມ່ລູກອ່ອນສາມາດໃຫ້ນົມລູກ ແລະ ດູແລເດັກນ້ອຍເປັນສ່ວນຕົວ. ເປັນພື້ນທີ່ງຽບສະຫງົບ, ສະດວກສະບາຍ ບໍ່ລົບກວນຜູ້ໂດຍສານຄົນອື່ນ ໃນເວລາເດັກຮ້ອງ ຫຼື ໄຫ້.",
+      zh: "专为母亲提供私密空间进行哺乳和照顾婴儿。当婴儿需要喂食或哭闹时，提供安静舒适的空间，不打扰其他乘客。",
+    },
+    features: [
+      {
+        en: "Private breastfeeding area",
+        lo: "ພື້ນທີ່ໃຫ້ນົມລູກເປັນສ່ວນຕົວ",
+        zh: "私密哺乳区",
+      },
+      {
+        en: "Comfortable seating for mothers",
+        lo: "ບ່ອນນັ່ງສະດວກສະບາຍສຳລັບແມ່",
+        zh: "为母亲提供舒适座椅",
+      },
+      {
+        en: "Baby changing facilities",
+        lo: "ສິ່ງອຳນວຍຄວາມສະດວກປ່ຽນຜ້າອ້ອມ",
+        zh: "婴儿换尿布设施",
+      },
+      {
+        en: "Quiet and peaceful environment",
+        lo: "ສະພາບແວດລ້ອມງຽບສະຫງົບ",
+        zh: "安静祥和的环境",
+      },
+    ],
+    location: [
+      {
+        area: {
+          en: "International Departure",
+          lo: "ຂາອອກສາຍຕ່າງປະເທດ",
+          zh: "国际出发",
+        },
+        floor: {
+          en: "2nd Floor",
+          lo: "ຊັ້ນ 2",
+          zh: "2楼",
+        },
+        nearBy: {
+          en: "Near Gate 03 waiting area",
+          lo: "ໂຖງລໍຖ້າຜູ້ໂດຍສານ ປະຕູເກດ 03",
+          zh: "03号登机口候机区附近",
+        },
+      },
+      {
+        area: {
+          en: "International Arrival",
+          lo: "ຂາເຂົ້າສາຍຕ່າງປະເທດ",
+          zh: "国际到达",
+        },
+        floor: {
+          en: "2nd Floor",
+          lo: "ຊັ້ນ 2",
+          zh: "2楼",
+        },
+        nearBy: {
+          en: "Arrival hall area",
+          lo: "ບໍລິເວນໂຖງຂາເຂົ້າ",
+          zh: "到达大厅区域",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "prayer-room",
+    category: "terminal",
+    name: {
+      en: "Prayer Room",
+      lo: "ຫ້ອງພຣະ",
+      zh: "祈祷室",
+    },
+    icon: GiPrayer,
+    color: "amber",
+    shortDescription: {
+      en: "Buddhist prayer and meditation room",
+      lo: "ຫ້ອງກາບໄຫວ້ພຣະ",
+      zh: "佛教祈祷冥想室",
+    },
+    description: {
+      en: "A peaceful space for departing passengers to pay respects to Buddha and pray for blessings and safe travels before their journey.",
+      lo: "ຫ້ອງສຳລັບຜູ້ໂດຍສານທີ່ເດີນທາງຂາອອກສາມາດເຂົ້າໄປກາບໄຫວ້ພຣະເພື່ອເປັນສິລິມົງຄຸນ ແລະ ຂໍພອນກ່ອນການເດີນທາງ.",
+      zh: "为出发旅客提供的宁静空间，可在旅途前礼佛祈福，祈求平安顺利。",
+    },
+    features: [
+      {
+        en: "Buddha shrine for worship",
+        lo: "ໂຕະບູຊາພຣະພຸດທະຮູບ",
+        zh: "佛像供奉",
+      },
+      {
+        en: "Quiet meditation space",
+        lo: "ພື້ນທີ່ນັ່ງສະມາທິງຽບສະຫງົບ",
+        zh: "安静冥想空间",
+      },
+      {
+        en: "Peaceful atmosphere",
+        lo: "ບັນຍາກາດສະຫງົບ",
+        zh: "宁静氛围",
+      },
+      {
+        en: "Open to all passengers",
+        lo: "ເປີດໃຫ້ບໍລິການແກ່ຜູ້ໂດຍສານທຸກທ່ານ",
+        zh: "向所有乘客开放",
+      },
+    ],
+    location: [
+      {
+        area: {
+          en: "International Departure",
+          lo: "ຂາອອກສາຍຕ່າງປະເທດ",
+          zh: "国际出发",
+        },
+        floor: {
+          en: "2nd Floor",
+          lo: "ຊັ້ນ 2",
+          zh: "2楼",
+        },
+        nearBy: {
+          en: "Near Gate 02 waiting area",
+          lo: "ໂຖງລໍຖ້າຜູ້ໂດຍສານ ປະຕູເກດ 02",
+          zh: "02号登机口候机区附近",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "muslim-prayer-room",
+    category: "terminal",
+    name: {
+      en: "Muslim Prayer Room",
+      lo: "ຫ້ອງລະມາດ",
+      zh: "穆斯林祈祷室",
+    },
+    icon: MdMosque,
+    color: "emerald",
+    shortDescription: {
+      en: "Islamic prayer facilities",
+      lo: "ຫ້ອງໄຫວ້ສັກກາລະສາດສະໜາມຸດສະລິມ",
+      zh: "伊斯兰祈祷设施",
+    },
+    description: {
+      en: "A dedicated prayer room for Muslim passengers to perform their religious prayers and worship in accordance with Islamic practices.",
+      lo: "ຫ້ອງລະມາດແມ່ນມີໄວ້ເພື່ອຮອງຮັບຜູ້ໂດຍສານສາດສະໜາມຸດສະລິມທີ່ຈະນຳໃຊ້ໃນການໄຫວ້ສັກກາລະຕາມຫຼັກສາດສະໜາອິດສະລາມ.",
+      zh: "专为穆斯林乘客提供的祈祷室，可按照伊斯兰教规进行宗教祈祷和礼拜。",
+    },
+    features: [
+      {
+        en: "Qibla direction indicator",
+        lo: "ເຄື່ອງໝາຍທິດກິບລະ",
+        zh: "朝拜方向指示",
+      },
+      {
+        en: "Prayer mats available",
+        lo: "ມີພົມສຳລັບລະມາດ",
+        zh: "提供祈祷垫",
+      },
+      {
+        en: "Ablution facilities",
+        lo: "ສິ່ງອຳນວຍຄວາມສະດວກສຳລັບການອາບນ້ຳລະມາດ",
+        zh: "净身设施",
+      },
+      {
+        en: "Quiet and private space",
+        lo: "ພື້ນທີ່ງຽບສະຫງົບ ແລະ ເປັນສ່ວນຕົວ",
+        zh: "安静私密的空间",
+      },
+      {
+        en: "Separate areas for men and women",
+        lo: "ແຍກພື້ນທີ່ສຳລັບຊາຍ ແລະ ຍິງ",
+        zh: "男女分区",
+      },
+    ],
+    location: [
+      {
+        area: {
+          en: "International Departure",
+          lo: "ຂາອອກສາຍຕ່າງປະເທດ",
+          zh: "国际出发",
+        },
+        floor: {
+          en: "2nd Floor",
+          lo: "ຊັ້ນ 2",
+          zh: "2楼",
+        },
+        nearBy: {
+          en: "Near passenger waiting area",
+          lo: "ໃກ້ໂຖງລໍຖ້າຜູ້ໂດຍສານ",
+          zh: "候机区附近",
         },
       },
     ],

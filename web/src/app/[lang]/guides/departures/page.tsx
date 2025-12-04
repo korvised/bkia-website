@@ -2,10 +2,9 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import { Lang } from "@/types/language";
 import {
+  BaggageContent,
   BoardingContent,
-  BorderContent,
   CheckinContent,
-  CustomsContent,
   DepartureTabNavigation,
   RelatedServices,
   SecurityContent,
@@ -54,19 +53,19 @@ export default async function DepartureGuidePage({
   const { tab = "checkin" } = await searchParams;
 
   return (
-    <div>
+    <div className="bg-gray-50">
       {/* Tab Navigation */}
       <DepartureTabNavigation lang={lang} activeTab={tab} />
 
       {/* Content */}
-      <div className="rounded-lg bg-white p-8 shadow-sm">
+      <div className="container py-8">
         <Suspense fallback={<ContentSkeleton />}>
           <DepartureContent tab={tab} lang={lang} />
         </Suspense>
       </div>
 
       {/* Related Services */}
-      <RelatedServices />
+      <RelatedServices lang={lang} />
     </div>
   );
 }
@@ -75,10 +74,8 @@ function DepartureContent({ tab, lang }: { tab: DepartureTab; lang: Lang }) {
   switch (tab) {
     case "checkin":
       return <CheckinContent lang={lang} />;
-    case "customs":
-      return <CustomsContent />;
-    case "border":
-      return <BorderContent />;
+    case "baggage":
+      return <BaggageContent lang={lang} />;
     case "security":
       return <SecurityContent />;
     case "boarding":

@@ -5,8 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement facilities &amp; services page">
+      <change afterPath="$PROJECT_DIR$/web/public/images/guides/check-in.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/guides/departure/baggage-content.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/baggage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/checkin.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure-nav.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/related-services.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/departures/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/departures/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/feature-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/feature-layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/checkin-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/checkin-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/related-services.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/related-services.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/tab-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/guide-tab.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/guides-layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/index.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/data/guide/facilities-services-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/guide/facilities-services-data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/types/guide.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/types/guide.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,54 +61,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website/admin/public&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.admin.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start:dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.web.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\projects\\bkia-website\\server\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\projects\\bkia-website\\server\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
+    "git-widget-placeholder": "pg",
+    "last_opened_file_path": "D:/projects/bkia-website/web/public/images/guides",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.admin.executor": "Run",
+    "npm.dev.executor": "Run",
+    "npm.server.executor": "Run",
+    "npm.start:dev.executor": "Run",
+    "npm.web.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "D:\\projects\\bkia-website\\server\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "D:\\projects\\bkia-website\\server\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\public\images\guides" />
       <recent name="D:\projects\bkia-website\admin\public" />
       <recent name="D:\projects\bkia-website" />
       <recent name="D:\projects\bkia-website\admin\src\assets\images" />
       <recent name="D:\projects\bkia-website\admin\src\features\flight\utils" />
-      <recent name="D:\projects\bkia-website\admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\src\components\guides\departure" />
+      <recent name="D:\projects\bkia-website\web\src\components\guides" />
       <recent name="D:\projects\bkia-website\admin\src\components\ui\table" />
       <recent name="D:\projects\bkia-website\admin\src\components\ui\form" />
       <recent name="D:\projects\bkia-website\web\src\lib" />
-      <recent name="D:\projects\bkia-website\server\src\common\hrms" />
-      <recent name="D:\projects\bkia-website\admin\src\assets\images" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.admin">
+  <component name="RunManager" selected="npm.web">
     <configuration name="admin" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/admin/package.json" />
       <command value="run" />
@@ -126,16 +146,16 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.web" />
         <item itemvalue="npm.admin" />
         <item itemvalue="npm.server" />
-        <item itemvalue="npm.web" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.27397.92" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-WS-252.28238.10" />
       </set>
     </attachedChunks>
   </component>
@@ -206,15 +226,13 @@
       <workItem from="1763514044243" duration="27110000" />
       <workItem from="1763604799145" duration="1629000" />
       <workItem from="1763623563538" duration="3936000" />
-      <workItem from="1763694573821" duration="12886000" />
-    </task>
-    <task id="LOCAL-00026" summary="refactor project layouts">
-      <option name="closed" value="true" />
-      <created>1761883724548</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1761883724548</updated>
+      <workItem from="1763694573821" duration="13799000" />
+      <workItem from="1764225277073" duration="1194000" />
+      <workItem from="1764292331102" duration="1855000" />
+      <workItem from="1764724454712" duration="4000" />
+      <workItem from="1764732635498" duration="12576000" />
+      <workItem from="1764812315563" duration="19000" />
+      <workItem from="1764812527948" duration="4062000" />
     </task>
     <task id="LOCAL-00027" summary="refactor project layouts">
       <option name="closed" value="true" />
@@ -600,7 +618,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763711292676</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="implement facilities &amp; services page">
+      <option name="closed" value="true" />
+      <created>1763713821663</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1763713821663</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

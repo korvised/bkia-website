@@ -1,4 +1,5 @@
 export { DepartureTabNavigation } from "./tab-navigation";
+export { BaggageContent } from "./baggage-content";
 export { PurchaseContent } from "./purchase-content";
 export { CheckinContent } from "./checkin-content";
 export { CustomsContent } from "./customs-content";

@@ -1,267 +1,193 @@
-import { AlertCircle, Clock, Luggage, TicketCheck, Users } from "lucide-react";
+import Link from "next/link";
+import { MdOutlineAccessTime } from "react-icons/md";
+import { IoPeopleOutline } from "react-icons/io5";
+import { PiAirplaneTiltLight } from "react-icons/pi";
 import { Lang } from "@/types/language";
+import { createPassengerGuideI18n } from "@/data/i18n/guide";
 
-type T = (k: keyof (typeof dict)["en"]) => string;
-
-const dict = {
-  en: {
-    title: "Check-in",
-    heading: "Check-in Procedures",
-    lead1:
-      "Upon arrival at Bokeo International Airport’s departure terminal, proceed to your airline’s check-in counter.",
-    lead2:
-      "Present your ticket (electronic or paper) and valid identification (passport for international flights, Lao ID card for domestic flights).",
-    arriveTimesTitle: "Important Arrival Times",
-    arriveDomestic: "Domestic flights: Arrive 2 hours before departure",
-    arriveIntl: "International flights: Arrive 2.5 hours before departure",
-    countersTitle: "Counter Opening & Closing Times",
-    domestic: "Domestic Flights",
-    international: "International Flights",
-    open: "Opens",
-    close: "Closes",
-    openDomesticVal: "2 hours before departure",
-    closeDomesticVal: "30 minutes before departure",
-    openIntlVal: "2.5 hours before departure",
-    closeIntlVal: "40 minutes before departure",
-    baggageTitle: "Baggage Information",
-    baggageStd: "Standard Allowance",
-    checked: "Checked",
-    cabin: "Cabin",
-    dims: "Dimensions",
-    baggageNote:
-      "Note: Excess baggage fees may apply. Contact your airline for specific rules and rates.",
-    specialTitle: "Special Items & Valuables",
-    specialLead:
-      "Valuable items should be carried in cabin baggage whenever possible:",
-    special1: "Electronics (laptops, cameras, phones)",
-    special2: "Jewelry, cash, and important documents",
-    special3: "Medications and medical devices",
-    special4: "Fragile items (declare at check-in if they must be checked)",
-    liability:
-      "Bokeo International Airport and airlines are not responsible for damage to improperly packed items or valuables in checked baggage.",
-    tip: "💡 Quick Tip: After check-in, proceed directly to security screening. Keep your boarding pass and passport easily accessible.",
-    checkedVal: "20–30 kg (depending on class & airline policy)",
-    cabinVal: "7 kg + 1 personal item",
-    dimsVal: "Max 158 cm (L + W + H)",
-  },
-  lo: {
-    title: "ກວດສອບຂຶ້ນເຮືອບິນ",
-    heading: "ຂັ້ນຕອນການ Check-in",
-    lead1:
-      "ເມື່ອມາຮອດອາຄານຜູ້ໂດຍສານ ກະລຸນາໄປທີ່ເຄາະຕໍ່ Check-in ຂອງສາຍການບິນຂອງທ່ານ.",
-    lead2:
-      "ໃຫ້ສະແດງປີ້ (ໄຟລ໌ ຫຼື ກະດາດ) ແລະ ເອກະສານປະຈໍາຕົວ (ພາສປອດສໍາລັບຕ່າງປະເທດ, ບັດປະຊາຊົນສໍາລັບໃນປະເທດ).",
-    arriveTimesTitle: "ເວລາມາຮອດທີ່ແນະນໍາ",
-    arriveDomestic: "ບິນໃນປະເທດ: ມາຮອດ 2 ຊົ່ວໂມງ ກ່ອນເວລາອອກ",
-    arriveIntl: "ບິນຕ່າງປະເທດ: ມາຮອດ 2.5 ຊົ່ວໂມງ ກ່ອນເວລາອອກ",
-    countersTitle: "ເວລາເປີດ/ປິດເຄາະຕໍ່",
-    domestic: "ບິນໃນປະເທດ",
-    international: "ບິນຕ່າງປະເທດ",
-    open: "ເປີດ",
-    close: "ປິດ",
-    openDomesticVal: "2 ຊົ່ວໂມງ ກ່ອນອອກ",
-    closeDomesticVal: "30 ນາທີ ກ່ອນອອກ",
-    openIntlVal: "2.5 ຊົ່ວໂມງ ກ່ອນອອກ",
-    closeIntlVal: "40 ນາທີ ກ່ອນອ ଭິນ",
-    baggageTitle: "ຂໍ້ມູນສັມພະລະ",
-    baggageStd: "ສິດທິການນໍາຂຶ້ນມາດຕະຖານ",
-    checked: "ສັມພະລະຝາກ",
-    cabin: "ສັມພະລະຖືຂຶ້ນ",
-    dims: "ຂະໜາດ",
-    baggageNote:
-      "ໝາຍເຫດ: ອາດມີຄ່າທໍານຽມເກີນນ້ໍາໜັກ. ກະລຸນາຕິດຕໍ່ສາຍການບິນຂອງທ່ານ.",
-    specialTitle: "ສິ່ງຂອງພິເສດ & ຂອງມີຄ່າ",
-    specialLead: "ຂອງມີຄ່າຄວນພາຂຶ້ນເຮືອບິນໃນກະເປົາຖືຂຶ້ນ:",
-    special1: "ອຸປະກອນໄຟຟ້າ (ແລັບທັອບ, ກ້ອງ, ໂທລະສັບ)",
-    special2: "ເຄື່ອງປະດັບ, ເງິນສົດ, ເອກະສານສໍາຄັນ",
-    special3: "ຢາ ແລະ ອຸປະກອນການແພດ",
-    special4: "ຂອງແຕກຫັກ (ແຈ້ງທີ່ເຄາະຕໍ່ ຖ້າຈໍາເປັນຝາກ)",
-    liability:
-      "ສະໜາມບິນ BKIA ແລະ ສາຍການບິນບໍ່ຮັບຜິດຊອບຄວາມເສຍຫາຍຂອງຂອງມີຄ່າໃນກະເປົາຝາກ.",
-    tip: "💡 ແນະນໍາ: ຫຼັງຈາກ Check-in ແລ້ວ ໃຫ້ໄປທີ່ດ່ານກວດຄວາມປອດໄພທັນທີ.",
-    checkedVal: "20–30 ກິໂລ (ແລ້ວແຕ່ຊັ້ນທີ່ນັ່ງ/ນະໂຍບາຍ)",
-    cabinVal: "7 ກິໂລ + ຂອງສ່ວນຕົວ 1 ຊິ້ນ",
-    dimsVal: "ລວມ 158 ຊມ (ຍ + ກ + ສ)",
-  },
-  zh: {
-    title: "办理登机",
-    heading: "登机办理流程",
-    lead1: "到达波乔国际机场出发大厅后，请前往所属航空公司的值机柜台。",
-    lead2:
-      "出示机票（电子或纸质）及有效证件（国际航班护照，国内航班老挝身份证）。",
-    arriveTimesTitle: "建议到达时间",
-    arriveDomestic: "国内航班：请在起飞前 2 小时到达",
-    arriveIntl: "国际航班：请在起飞前 2.5 小时到达",
-    countersTitle: "柜台开放 / 截止时间",
-    domestic: "国内航班",
-    international: "国际航班",
-    open: "开放",
-    close: "截止",
-    openDomesticVal: "起飞前 2 小时",
-    closeDomesticVal: "起飞前 30 分钟",
-    openIntlVal: "起飞前 2.5 小时",
-    closeIntlVal: "起飞前 40 分钟",
-    baggageTitle: "行李信息",
-    baggageStd: "标准额度",
-    checked: "托运行李",
-    cabin: "随身行李",
-    dims: "尺寸",
-    baggageNote: "提示：可能产生超重费用。请咨询航空公司以获取具体规定与费用。",
-    specialTitle: "贵重物品与特殊物品",
-    specialLead: "尽量将贵重物品放在随身行李中：",
-    special1: "电子产品（笔记本、相机、手机）",
-    special2: "珠宝、现金及重要文件",
-    special3: "药品与医疗器材",
-    special4: "易碎物品（若需托运，请在值机时申报）",
-    liability:
-      "BKIA 与航空公司不对托运行李中包装不当的贵重/易碎物品损坏承担责任。",
-    tip: "💡 小贴士：办理完值机后，请尽快前往安检，并将登机牌与护照随手可取。",
-    checkedVal: "20–30 公斤（依舱位与航空公司政策）",
-    cabinVal: "7 公斤 + 1 件个人物品",
-    dimsVal: "合计 158 厘米（长+宽+高）",
-  },
-} as const;
-
-function createT(lang: Lang): T {
-  const l = (["en", "lo", "zh"] as const).includes(lang as never) ? lang : "en";
-  return (k) => dict[l][k];
+interface CheckinContentProps {
+  lang: Lang;
 }
 
-export function CheckinContent({ lang = "en" as Lang }) {
-  const t = createT(lang);
+export function CheckinContent({ lang }: CheckinContentProps) {
+  const { checkin: t } = createPassengerGuideI18n(lang);
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-start gap-4">
-        <div className="hidden flex-shrink-0 sm:block">
-          <div className="bg-primary-50 flex h-24 w-24 items-center justify-center rounded-lg">
-            <TicketCheck className="text-primary-500 h-12 w-12" />
-          </div>
-        </div>
+    <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
+      {/* Left side - Illustration */}
+      <div className="flex justify-center lg:w-72 lg:shrink-0">
+        <div className="relative flex h-56 w-56 items-center justify-center">
+          {/* Background circle */}
+          <div className="bg-primary-50 absolute h-48 w-48 rounded-full" />
 
-        <div className="flex-1">
-          <div className="mb-2 flex items-center gap-x-2 sm:mb-4">
-            <div className="bg-primary-50 rounded-lg p-2 sm:hidden">
-              <Users className="text-primary-500 h-6 w-6" />
-            </div>
-            <h2 className="text-lg font-bold text-gray-900 sm:text-2xl">
-              {t("heading")}
-            </h2>
-          </div>
+          {/* Main illustration */}
+          <div className="relative p-4">
+            {/* Counter area container */}
+            <div className="relative">
+              {/* Counter desk (larger and more defined) */}
+              <div className="bg-primary-400 border-primary-500 relative h-16 w-48 rounded-lg border-b-4 shadow-md">
+                {/* Desk top surface */}
+                <div className="bg-primary-500 absolute -top-1 left-0 h-3 w-full rounded-t-lg shadow-inner" />
 
-          <div className="space-y-6 text-sm sm:text-base">
-            <div>
-              <p className="mb-2 text-gray-700">{t("lead1")}</p>
-              <p className="mb-4 text-gray-700">{t("lead2")}</p>
+                {/* Screen/Monitor on the counter */}
+                <div className="absolute -top-12 left-8 h-10 w-16 rounded-t-lg border border-gray-900 bg-gray-800 shadow-lg">
+                  {/* Simple flight info display pattern */}
+                  <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-green-400" />
+                  <div className="mx-auto mt-1 h-1 w-8 rounded-full bg-green-400 opacity-75" />
+                </div>
 
-              <div className="border-l-4 border-yellow-400 bg-yellow-50 p-4">
-                <div className="flex gap-2">
-                  <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-yellow-600" />
-                  <div>
-                    <p className="mb-1 text-sm font-medium text-yellow-800">
-                      <strong>{t("arriveTimesTitle")}:</strong>
-                    </p>
-                    <ul className="space-y-1 text-sm text-yellow-800">
-                      <li>
-                        • <strong>{t("arriveDomestic")}</strong>
-                      </li>
-                      <li>
-                        • <strong>{t("arriveIntl")}</strong>
-                      </li>
-                    </ul>
+                {/* Check-in sign/number */}
+                <div className="text-primary-800 absolute -top-10 right-4 flex h-8 w-16 items-center justify-center rounded-sm bg-gray-200 text-xs font-bold shadow-inner">
+                  04
+                </div>
+
+                {/* Person behind counter (Agent) */}
+                <div className="absolute -top-12 left-16 -translate-x-1/2">
+                  {/* Head */}
+                  <div className="bg-primary-600 mx-auto h-8 w-8 rounded-full shadow-sm" />
+                  {/* Body */}
+                  <div className="bg-primary-600 mx-auto -mt-1 h-6 w-10 rounded-t-lg" />
+                </div>
+              </div>
+
+              {/* PASSENGER AREA: ຖືກປັບໃຫ້ຢູ່ກາງຫຼາຍຂຶ້ນ */}
+              <div className="absolute -bottom-8 left-1/2 mt-2 -translate-x-1/2">
+                {/* Passenger with luggage */}
+                <div className="relative flex items-end space-x-2">
+                  {/* Person */}
+                  <div className="relative">
+                    <div className="bg-primary-600 mx-auto h-9 w-9 rounded-full shadow-sm" />
+                    <div className="bg-primary-600 mx-auto -mt-0.5 h-12 w-12 rounded-t-lg" />
+                  </div>
+
+                  {/* Luggage (slightly more detailed) */}
+                  <div className="relative bottom-0">
+                    <div className="bg-primary-200 border-primary-400 h-12 w-8 rounded border-2 shadow-inner">
+                      {/* Handle */}
+                      <div className="bg-primary-400 mx-auto mt-[-4px] h-2 w-3 rounded-sm" />
+                      {/* Wheels (simple) */}
+                      <div className="absolute -bottom-1 left-1 h-1 w-1 rounded-full bg-gray-600" />
+                      <div className="absolute right-1 -bottom-1 h-1 w-1 rounded-full bg-gray-600" />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg border border-gray-200 bg-white p-4">
-                <div className="mb-3 flex items-center gap-2">
-                  <Clock className="text-primary-500 h-5 w-5" />
-                  <h3 className="font-semibold text-gray-900">
-                    {t("countersTitle")}
-                  </h3>
-                </div>
-                <div className="space-y-2 text-sm text-gray-700">
-                  <p className="font-semibold">{t("domestic")}</p>
-                  <ul className="ml-2 list-inside list-disc space-y-1">
-                    <li>
-                      {t("open")}: {t("openDomesticVal")}
-                    </li>
-                    <li>
-                      {t("close")}: {t("closeDomesticVal")}
-                    </li>
-                  </ul>
-                  <p className="mt-3 font-semibold">{t("international")}</p>
-                  <ul className="ml-2 list-inside list-disc space-y-1">
-                    <li>
-                      {t("open")}: {t("openIntlVal")}
-                    </li>
-                    <li>
-                      {t("close")}: {t("closeIntlVal")}
-                    </li>
-                  </ul>
-                </div>
+      {/* Right side - Content */}
+      <div className="flex-1 space-y-6">
+        {/* Title */}
+        <div>
+          <h2 className="mb-3 text-2xl font-bold text-gray-900 lg:text-3xl">
+            {t.title}
+          </h2>
+          <p className="text-base leading-relaxed text-gray-600">{t.intro}</p>
+        </div>
+
+        {/* Counter Check-in */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <IoPeopleOutline className="text-primary-600 h-5 w-5" />
+            <h3 className="text-lg font-semibold text-gray-900">
+              {t.counterCheckinTitle}
+            </h3>
+          </div>
+          <p className="text-sm leading-relaxed text-gray-600">
+            {t.counterCheckinDesc}{" "}
+            <Link
+              href={`/${lang}/flights/airlines`}
+              className="text-primary-600 hover:text-primary-700 underline"
+            >
+              {t.viewAirlineCounters}
+            </Link>
+          </p>
+        </div>
+
+        {/* Arrival Times */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <MdOutlineAccessTime className="h-5 w-5 text-amber-600" />
+            <h3 className="text-lg font-semibold text-gray-900">
+              {t.arrivalTimesTitle}
+            </h3>
+          </div>
+          <p className="text-sm leading-relaxed text-gray-600">
+            {t.arrivalTimesDesc}{" "}
+            <Link
+              href={`/${lang}/flights/airlines`}
+              className="text-primary-600 hover:text-primary-700 underline"
+            >
+              {t.viewAirlineContacts}
+            </Link>
+          </p>
+
+          {/* Time boxes */}
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-lg border border-gray-200 bg-white p-4">
+              <div className="mb-1 flex items-center gap-2">
+                <PiAirplaneTiltLight className="text-primary-500 h-4 w-4" />
+                <p className="text-sm font-medium text-gray-900">
+                  {t.domesticFlights}
+                </p>
               </div>
-
-              <div className="rounded-lg border border-gray-200 bg-white p-4">
-                <div className="mb-3 flex items-center gap-2">
-                  <Luggage className="text-primary-500 h-5 w-5" />
-                  <h3 className="font-semibold text-gray-900">
-                    {t("baggageTitle")}
-                  </h3>
-                </div>
-                <div className="space-y-2 text-sm text-gray-700">
-                  <p className="font-semibold">{t("baggageStd")}:</p>
-                  <ul className="ml-2 list-inside list-disc space-y-1">
-                    <li>
-                      {t("checked")}: {t("checkedVal")}
-                    </li>
-                    <li>
-                      {t("cabin")}: {t("cabinVal")}
-                    </li>
-                    <li>
-                      {t("dims")}: {t("dimsVal")}
-                    </li>
-                  </ul>
-                  <p className="mt-3 text-xs">{t("baggageNote")}</p>
-                </div>
+              <p className="text-sm text-gray-600">{t.domesticArrival}</p>
+            </div>
+            <div className="rounded-lg border border-gray-200 bg-white p-4">
+              <div className="mb-1 flex items-center gap-2">
+                <PiAirplaneTiltLight className="text-primary-500 h-4 w-4" />
+                <p className="text-sm font-medium text-gray-900">
+                  {t.internationalFlights}
+                </p>
               </div>
+              <p className="text-sm text-gray-600">{t.internationalArrival}</p>
             </div>
+          </div>
+        </div>
 
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                {t("specialTitle")}
-              </h3>
-              <div className="rounded-lg bg-gray-50 p-4">
-                <p className="mb-3 text-gray-700">{t("specialLead")}</p>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary-500 font-bold">•</span>
-                    <span>{t("special1")}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary-500 font-bold">•</span>
-                    <span>{t("special2")}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary-500 font-bold">•</span>
-                    <span>{t("special3")}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary-500 font-bold">•</span>
-                    <span>{t("special4")}</span>
-                  </li>
-                </ul>
-                <p className="mt-3 text-xs text-gray-600">{t("liability")}</p>
-              </div>
-            </div>
-
-            <div className="border-primary-500 border-l-4 bg-blue-50 p-4">
-              <p className="text-sm text-gray-800">
-                <strong>{t("tip")}</strong>
-              </p>
-            </div>
+        {/* Counter Hours Table */}
+        <div className="space-y-3">
+          <h3 className="text-lg font-semibold text-gray-900">
+            {t.counterHoursTitle}
+          </h3>
+          <div className="overflow-hidden rounded-lg border border-gray-200">
+            <table className="w-full text-sm">
+              <thead className="bg-white">
+                <tr>
+                  <th className="px-4 py-3 text-left font-medium text-gray-600"></th>
+                  <th className="text-primary-600 px-4 py-3 text-left font-medium">
+                    {t.opens}
+                  </th>
+                  <th className="text-danger-600 px-4 py-3 text-left font-medium">
+                    {t.closes}
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 border-t border-gray-200 bg-white">
+                <tr>
+                  <td className="px-4 py-3 font-medium text-gray-900">
+                    {t.domesticFlights}
+                  </td>
+                  <td className="px-4 py-3 text-gray-600">{t.domesticOpens}</td>
+                  <td className="px-4 py-3 text-gray-600">
+                    {t.domesticCloses}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium text-gray-900">
+                    {t.internationalFlights}
+                  </td>
+                  <td className="px-4 py-3 text-gray-600">
+                    {t.internationalOpens}
+                  </td>
+                  <td className="px-4 py-3 text-gray-600">
+                    {t.internationalCloses}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

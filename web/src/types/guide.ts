@@ -1,9 +1,8 @@
 export type DepartureTab =
-  | "purchase"
   | "checkin"
-  | "customs"
-  | "border"
+  | "baggage"
   | "security"
+  | "immigration"
   | "boarding";
 
 export type ArrivalTab =
