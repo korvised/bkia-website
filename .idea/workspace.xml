@@ -4,29 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="implement facilities &amp; services page">
-      <change afterPath="$PROJECT_DIR$/web/public/images/guides/check-in.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/guides/departure/baggage-content.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/baggage.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/checkin.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure-nav.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/related-services.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor guide feature">
+      <change afterPath="$PROJECT_DIR$/web/public/images/guides/baggage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/public/images/guides/boarding.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/public/images/guides/check-in.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/public/images/guides/immigration.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/public/images/guides/security.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/guides/departure/immigration-content.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/boarding.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/immigration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/security.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/flights/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/public/images/guides/check-in.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/departures/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/departures/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/common/feature-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/feature-layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/baggage-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/baggage-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/boarding-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/boarding-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/border-content.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/checkin-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/checkin-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/customs-content.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/related-services.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/related-services.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/tab-navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/guide-tab.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/guides-layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/guide/facilities-services-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/guide/facilities-services-data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/types/guide.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/types/guide.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/purchase-content.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/baggage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/baggage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,15 +232,7 @@
       <workItem from="1764724454712" duration="4000" />
       <workItem from="1764732635498" duration="12576000" />
       <workItem from="1764812315563" duration="19000" />
-      <workItem from="1764812527948" duration="4062000" />
-    </task>
-    <task id="LOCAL-00027" summary="refactor project layouts">
-      <option name="closed" value="true" />
-      <created>1761886901228</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1761886901228</updated>
+      <workItem from="1764812527948" duration="13345000" />
     </task>
     <task id="LOCAL-00028" summary="refactor guides, transport pages">
       <option name="closed" value="true" />
@@ -626,14 +618,21 @@
       <option name="project" value="LOCAL" />
       <updated>1763713821663</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="refactor guide feature">
+      <option name="closed" value="true" />
+      <created>1764816784645</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1764816784645</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor flight feature entities" />
     <MESSAGE value="implement airport module" />
     <MESSAGE value="implement route module" />
     <MESSAGE value="implement Flight module" />
@@ -658,6 +657,7 @@
     <MESSAGE value="deploy admin website" />
     <MESSAGE value="fix flight form" />
     <MESSAGE value="implement facilities &amp; services page" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement facilities &amp; services page" />
+    <MESSAGE value="refactor guide feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor guide feature" />
   </component>
 </project>

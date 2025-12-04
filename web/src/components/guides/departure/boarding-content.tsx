@@ -1,336 +1,305 @@
+import Image from "next/image";
+import { CheckCircle, Clock, AlertCircle } from "lucide-react";
 import {
-  AlertCircle,
-  CheckCircle,
-  Clock,
-  Plane,
-  Smartphone,
-} from "lucide-react";
+  MdOutlineFlightTakeoff,
+  MdOutlineAirlineSeatReclineNormal,
+} from "react-icons/md";
+import { TbAlertTriangle, TbSpeakerphone } from "react-icons/tb";
+import { BsPersonCheck } from "react-icons/bs";
+import { Lang } from "@/types/language";
+import { createPassengerGuideI18n } from "@/data/i18n/guide";
 
-export function BoardingContent() {
+interface BoardingContentProps {
+  lang: Lang;
+}
+
+export function BoardingContent({ lang }: BoardingContentProps) {
+  const { boarding: t } = createPassengerGuideI18n(lang);
+
   return (
-    <div className="space-y-6">
-      <div className="flex items-start gap-4">
-        <div className="hidden flex-shrink-0 sm:block">
-          <div className="bg-primary-50 flex h-24 w-24 items-center justify-center rounded-lg">
-            <Plane className="text-primary-500 h-12 w-12" />
+    <div className="space-y-8">
+      {/* Title Section - Full Width */}
+      <div>
+        <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
+          {t.title}
+        </h2>
+        <p className="text-lg leading-relaxed text-gray-700">{t.intro}</p>
+      </div>
+
+      {/* Main Content with Image */}
+      <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
+        {/* Left side - Illustration */}
+        <div className="lg:w-96 lg:flex-none">
+          <div className="relative h-72 w-full max-w-lg lg:mt-4 lg:h-[500px] lg:max-w-none">
+            <Image
+              src="/images/guides/boarding.png"
+              alt="boarding at bkia"
+              fill
+              className="object-contain object-top"
+              priority
+              sizes="(max-width: 1024px) 100vw, 400px"
+            />
           </div>
         </div>
-        <div className="flex-1">
-          <div className="mb-2 flex items-center gap-x-2 sm:mb-4">
-            <div className="bg-primary-50 rounded-lg p-2 sm:hidden">
-              <Plane className="text-primary-500 h-6 w-6" />
+
+        {/* Right side - Content */}
+        <div className="flex-1 space-y-8">
+          {/* Boarding Time Section */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <Clock className="text-primary-600 h-6 w-6" />
+              <h3 className="text-xl font-bold text-gray-900">
+                {t.boardingTimeTitle}
+              </h3>
             </div>
-            <h2 className="text-lg font-bold text-gray-900 sm:text-2xl">
-              Boarding & In-Flight Information
-            </h2>
+            <p className="text-base leading-relaxed text-gray-600">
+              {t.boardingTimeDesc}
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="text-sm text-gray-500">
+                    {t.boardingBegins}
+                  </span>
+                  <span className="text-primary-600 bg-primary-50 rounded-lg px-3 py-1 text-sm font-medium">
+                    {t.boardingBeginsTime}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-500">{t.gateCloses}</span>
+                  <span className="rounded-lg bg-red-50 px-3 py-1 text-sm font-medium text-red-600">
+                    {t.gateClosesTime}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <AlertCircle className="mr-3 h-5 w-5 shrink-0 text-amber-600" />
+                <span className="text-sm text-amber-800">
+                  {t.latePassengers}
+                </span>
+              </div>
+            </div>
           </div>
 
-          <div className="space-y-6 text-sm sm:text-base">
-            <div>
-              <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-900">
-                <Clock className="text-primary-500 h-5 w-5" />
-                Boarding Process
-              </h3>
-              <div className="mb-4 border-l-4 border-yellow-400 bg-yellow-50 p-4">
-                <div className="flex gap-2">
-                  <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-yellow-600" />
+          {/* Boarding Groups & Required Documents - Grid */}
+          <div className="grid gap-6 sm:grid-cols-2">
+            {/* Boarding Groups */}
+            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="bg-primary-100 flex h-10 w-10 items-center justify-center rounded-lg">
+                  <BsPersonCheck className="text-primary-600 h-5 w-5" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900">
+                  {t.boardingGroupsTitle}
+                </h3>
+              </div>
+              <ol className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <span className="bg-primary-100 text-primary-700 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium">
+                    1
+                  </span>
                   <div>
-                    <p className="mb-2 text-sm font-medium text-yellow-800">
-                      <strong>⏰ Arrive at Your Gate Early:</strong>
+                    <p className="text-sm font-medium text-gray-900">
+                      {t.priorityBoarding}
                     </p>
-                    <ul className="space-y-1 text-sm text-yellow-800">
-                      <li>
-                        • Boarding typically begins 40-45 minutes before
-                        departure
-                      </li>
-                      <li>
-                        • Gate closes 15 minutes before scheduled departure
-                      </li>
-                      <li>• Late passengers will not be permitted to board</li>
-                    </ul>
+                    <p className="text-xs text-gray-500">
+                      {t.priorityBoardingDesc}
+                    </p>
                   </div>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <h4 className="mb-3 font-medium text-gray-900">
-                    Boarding Groups at Bokeo International Airport
-                  </h4>
-                  <div className="space-y-3 text-sm text-gray-700">
-                    <div className="flex items-start gap-3">
-                      <div className="bg-primary-100 text-primary-700 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full font-bold">
-                        1
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">
-                          Priority Boarding
-                        </p>
-                        <p className="text-xs">
-                          Business class, passengers with disabilities, families
-                          with infants, elderly passengers
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="bg-primary-100 text-primary-700 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full font-bold">
-                        2
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">
-                          Economy Class - Rear Rows
-                        </p>
-                        <p className="text-xs">
-                          Rows 20 and above (typically called first for smaller
-                          aircraft)
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="bg-primary-100 text-primary-700 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full font-bold">
-                        3
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">
-                          Economy Class - Middle/Front Rows
-                        </p>
-                        <p className="text-xs">Remaining passengers</p>
-                      </div>
-                    </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="bg-primary-100 text-primary-700 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium">
+                    2
+                  </span>
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">
+                      {t.economyRear}
+                    </p>
+                    <p className="text-xs text-gray-500">{t.economyRearDesc}</p>
                   </div>
-                </div>
-
-                <div className="border-primary-500 border-l-4 bg-blue-50 p-4">
-                  <p className="text-sm text-gray-800">
-                    <strong>📢 Listen for Announcements:</strong> Boarding calls
-                    are made in Lao, English, and sometimes Thai or Chinese.
-                    Monitor the departure screens for gate changes or delays.
-                    Stay within hearing distance of your gate.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                Required at Boarding Gate
-              </h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" />
-                      <span>
-                        <strong>Boarding Pass:</strong> Paper or mobile (ensure
-                        screen is bright and readable)
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" />
-                      <span>
-                        <strong>Passport/ID:</strong> Must match boarding pass
-                        name exactly
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" />
-                      <span>
-                        <strong>Cabin Baggage:</strong> Within size and weight
-                        limits
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="rounded-lg bg-gray-50 p-4">
-                  <p className="mb-2 text-sm font-medium text-gray-900">
-                    Gate Check May Be Required:
-                  </p>
-                  <p className="mb-2 text-xs text-gray-700">
-                    If the aircraft is full or has limited overhead space, cabin
-                    bags may need to be gate-checked (stored in cargo hold at no
-                    extra charge).
-                  </p>
-                  <p className="text-xs text-gray-600">
-                    Tag will be attached, and bag will be returned to you upon
-                    arrival.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-900">
-                <Smartphone className="text-primary-500 h-5 w-5" />
-                In-Flight Regulations & Safety
-              </h3>
-
-              <div className="space-y-4">
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <h4 className="mb-3 font-medium text-gray-900">
-                    Electronic Devices Policy
-                  </h4>
-                  <div className="space-y-3 text-sm text-gray-700">
-                    <div>
-                      <p className="mb-1 font-medium text-red-700">
-                        ❌ Prohibited During Entire Flight:
-                      </p>
-                      <ul className="ml-4 space-y-1 text-xs">
-                        <li>• Cellular/mobile phone calls</li>
-                        <li>• Portable WiFi hotspots</li>
-                        <li>• Remote control toys</li>
-                        <li>• Transmitting devices</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <p className="mb-1 font-medium text-yellow-700">
-                        ⚠️ Airplane Mode Required:
-                      </p>
-                      <ul className="ml-4 space-y-1 text-xs">
-                        <li>
-                          • Mobile phones (can use for photos, offline content)
-                        </li>
-                        <li>• Tablets and e-readers</li>
-                        <li>• Portable gaming devices</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <p className="mb-1 font-medium text-green-700">
-                        ✅ Allowed (if announced):
-                      </p>
-                      <ul className="ml-4 space-y-1 text-xs">
-                        <li>• Laptops (after reaching cruising altitude)</li>
-                        <li>• Tablets (after reaching cruising altitude)</li>
-                        <li>• Noise-cancelling headphones</li>
-                        <li>• Medical devices</li>
-                      </ul>
-                    </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="bg-primary-100 text-primary-700 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium">
+                    3
+                  </span>
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">
+                      {t.economyFront}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {t.economyFrontDesc}
+                    </p>
                   </div>
-                </div>
-
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <h4 className="mb-3 font-medium text-gray-900">
-                    Safety Requirements
-                  </h4>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <AlertCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
-                      <span>
-                        <strong>Seatbelts:</strong> Must be fastened during
-                        taxi, takeoff, landing, and whenever the seatbelt sign
-                        is illuminated. Keep fastened while seated.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <AlertCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
-                      <span>
-                        <strong>Seat Position:</strong> Upright position during
-                        takeoff and landing. Tray tables stowed and window
-                        shades open.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <AlertCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
-                      <span>
-                        <strong>Overhead Bins:</strong> Ensure bags are properly
-                        stowed and bins are securely closed.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <AlertCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
-                      <span>
-                        <strong>Emergency Exits:</strong> Do not block aisles or
-                        emergency exits. Exit row passengers must be willing and
-                        able to assist in emergencies.
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="border-l-4 border-red-500 bg-red-50 p-4">
-                  <h4 className="mb-2 font-semibold text-red-900">
-                    Strictly Prohibited On Board
-                  </h4>
-                  <ul className="space-y-1 text-sm text-red-800">
-                    <li>
-                      • Smoking (including e-cigarettes and vaping) - Criminal
-                      offense
-                    </li>
-                    <li>• Tampering with smoke detectors</li>
-                    <li>• Consuming personal alcohol</li>
-                    <li>• Interfering with flight crew duties</li>
-                    <li>• Abusive behavior or harassment</li>
-                    <li>• Unauthorized use of emergency equipment</li>
-                  </ul>
-                  <p className="mt-2 text-xs font-medium text-red-800">
-                    ⚖️ Violations may result in arrest, fines up to $25,000 USD,
-                    imprisonment, and lifetime flight bans.
-                  </p>
-                </div>
-              </div>
+                </li>
+              </ol>
             </div>
 
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                In-Flight Services
-              </h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <h4 className="mb-2 font-medium text-gray-900">
-                    Complimentary Services
-                  </h4>
-                  <ul className="space-y-1 text-sm text-gray-700">
-                    <li>• Light refreshments on short flights</li>
-                    <li>• Full meal service on longer routes</li>
-                    <li>• Beverages (water, juice, soft drinks)</li>
-                    <li>• Blankets and pillows (subject to availability)</li>
-                  </ul>
+            {/* Required Documents */}
+            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-100">
+                  <CheckCircle className="h-5 w-5 text-green-600" />
                 </div>
-
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <h4 className="mb-2 font-medium text-gray-900">
-                    Special Requirements
-                  </h4>
-                  <ul className="space-y-1 text-sm text-gray-700">
-                    <li>
-                      • Special meals: Request at booking (24-48 hrs advance)
-                    </li>
-                    <li>• Medical assistance: Inform crew upon boarding</li>
-                    <li>• Prayer facilities: Inform crew if needed</li>
-                    <li>
-                      • Child care: Baby-changing facilities in lavatories
-                    </li>
-                  </ul>
-                </div>
+                <h3 className="text-lg font-bold text-gray-900">
+                  {t.requiredTitle}
+                </h3>
               </div>
-            </div>
-
-            <div className="border-primary-500 border-l-4 bg-blue-50 p-4">
-              <p className="text-sm text-gray-800">
-                <strong>
-                  ✈️ Flight Duration from Bokeo International Airport:
-                </strong>
-              </p>
-              <ul className="mt-2 space-y-1 text-sm text-gray-700">
-                <li>• Vientiane: ~2 hours</li>
-                <li>• Luang Prabang: ~1 hour</li>
-                <li>• Bangkok: ~2 hours</li>
-                <li>• Chiang Mai: ~1.5 hours</li>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.requiredBoardingPass}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.requiredPassport}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.requiredCabinBag}
+                  </span>
+                </li>
               </ul>
-              <p className="mt-3 text-xs text-gray-600">
-                Actual flight times may vary based on weather and air traffic.
-                Cruising altitude for regional flights is typically
-                25,000-35,000 feet (7,600-10,600 meters).
-              </p>
+
+              <div className="mt-4 rounded-lg bg-gray-50 p-3">
+                <p className="mb-1 text-xs font-medium text-gray-900">
+                  {t.gateCheckTitle}
+                </p>
+                <p className="text-xs text-gray-600">{t.gateCheckDesc}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Announcements */}
+          <div className="border-primary-200 bg-primary-50 rounded-xl border p-5">
+            <div className="flex items-start gap-3">
+              <TbSpeakerphone className="text-primary-600 mt-0.5 h-5 w-5 shrink-0" />
+              <div>
+                <h4 className="mb-1 text-sm font-semibold text-gray-900">
+                  {t.announcementsTitle}
+                </h4>
+                <p className="text-sm text-gray-700">{t.announcementsDesc}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* In-Flight Regulations */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <MdOutlineAirlineSeatReclineNormal className="h-6 w-6 text-blue-600" />
+              <h3 className="text-xl font-bold text-gray-900">
+                {t.inFlightTitle}
+              </h3>
             </div>
 
-            <div className="rounded bg-gray-50 p-3 text-xs text-gray-600">
-              <p className="mb-1 font-medium">Need Assistance?</p>
-              <p>
-                Cabin crew are here to help. Don&#39;t hesitate to press the
-                call button for assistance, questions, or emergencies. We wish
-                you a safe and pleasant flight from Bokeo International Airport!
+            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                  <span className="text-sm text-gray-700">{t.seatbelt}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                  <span className="text-sm text-gray-700">{t.electronics}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                  <span className="text-sm text-gray-700">
+                    {t.seatPosition}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                  <span className="text-sm text-gray-700">
+                    {t.overheadBins}
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Prohibited On Board */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <TbAlertTriangle className="h-6 w-6 text-red-600" />
+              <h3 className="text-xl font-bold text-gray-900">
+                {t.prohibitedTitle}
+              </h3>
+            </div>
+
+            <div className="rounded-xl border border-red-200 bg-red-50 p-5">
+              <ul className="mb-4 grid gap-2 sm:grid-cols-2">
+                <li className="flex items-start gap-2">
+                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.prohibitedSmoking}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.prohibitedAlcohol}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.prohibitedInterference}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.prohibitedEmergency}
+                  </span>
+                </li>
+              </ul>
+              <p className="text-xs font-medium text-red-700">
+                {t.prohibitedWarning}
               </p>
+            </div>
+          </div>
+
+          {/* Boarding Tips */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+              <div className="mb-3 flex items-center gap-2">
+                <MdOutlineFlightTakeoff className="text-primary-500 h-5 w-5" />
+                <h4 className="text-base font-semibold text-gray-900">
+                  {t.tipsTitle}
+                </h4>
+              </div>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
+                  <span className="text-sm text-gray-700">{t.tipEarly}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
+                  <span className="text-sm text-gray-700">{t.tipCharge}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+              <ul className="space-y-2 lg:mt-9">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
+                  <span className="text-sm text-gray-700">
+                    {t.tipEssentials}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
+                  <span className="text-sm text-gray-700">{t.tipListen}</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

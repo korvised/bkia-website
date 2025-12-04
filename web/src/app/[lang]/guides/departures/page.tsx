@@ -6,6 +6,7 @@ import {
   BoardingContent,
   CheckinContent,
   DepartureTabNavigation,
+  ImmigrationContent,
   RelatedServices,
   SecurityContent,
 } from "@/components/guides/departure";
@@ -77,9 +78,11 @@ function DepartureContent({ tab, lang }: { tab: DepartureTab; lang: Lang }) {
     case "baggage":
       return <BaggageContent lang={lang} />;
     case "security":
-      return <SecurityContent />;
+      return <SecurityContent lang={lang} />;
+    case "immigration":
+      return <ImmigrationContent lang={lang} />;
     case "boarding":
-      return <BoardingContent />;
+      return <BoardingContent lang={lang} />;
     default:
       return <CheckinContent lang={lang} />;
   }

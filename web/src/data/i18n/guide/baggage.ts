@@ -23,7 +23,7 @@ export const baggage = {
   },
   checkedBaggageDesc: {
     en: "Checked baggage is stored in the aircraft cargo hold during the flight. Weight and size limits vary by airline and ticket class.",
-    lo: "ກະເປົາໂຫຼດໃຕ້ທ້ອງເຮືອຈະຖືກເກັບໄວ້ໃນຫ້ອງສິນຄ້າຂອງເຮືອບິນລະຫວ່າງການບິນ. ນ້ຳໜັກ ແລະ ຂະໜາດແຕກຕ່າງກັນຕາມສາຍການບິນ ແລະ ຊັ້ນປີ້.",
+    lo: "ກະເປົາໂຫຼດໃຕ້ທ້ອງເຮືອຈະຖືກເກັບໄວ້ໃນຫ້ອງສິນຄ້າຂອງເຮືອບິນລະຫວ່າງການບິນ. ນ້ຳໜັກ ແລະ ຂະໜາດແຕກຕ່າງກັນຕາມສາຍການບິນ ແລະ ຊັ້ນບິນ.",
     zh: "托运行李在飞行期间存放在飞机货舱内。重量和尺寸限制因航空公司和票务舱位而异。",
   },
   weightAllowance: {
