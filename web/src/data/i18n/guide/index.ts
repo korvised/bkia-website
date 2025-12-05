@@ -6,6 +6,11 @@ import { security, type SecurityKey, tSecurity } from "./security";
 import { immigration, type ImmigrationKey, tImmigration } from "./immigration";
 import { boarding, type BoardingKey, tBoarding } from "./boarding";
 import {
+  airportSecurity,
+  type AirportSecurityKey,
+  tAirportSecurity,
+} from "./airport-security";
+import {
   relatedServices,
   type RelatedServicesKey,
   tRelatedServices,
@@ -31,6 +36,10 @@ export function createPassengerGuideI18n(lang: Lang) {
     boarding,
     lang,
   );
+  const airportSecurityT = createTranslator<
+    typeof airportSecurity,
+    AirportSecurityKey
+  >(airportSecurity, lang);
   const relatedServicesT = createTranslator<
     typeof relatedServices,
     RelatedServicesKey
@@ -46,6 +55,7 @@ export function createPassengerGuideI18n(lang: Lang) {
     security: securityT,
     immigration: immigrationT,
     boarding: boardingT,
+    airportSecurity: airportSecurityT,
     relatedServices: relatedServicesT,
     departureNav: departureNavT,
   };
@@ -62,6 +72,8 @@ export {
   tImmigration,
   boarding,
   tBoarding,
+  airportSecurity,
+  tAirportSecurity,
   relatedServices,
   tRelatedServices,
   departureNav,
@@ -73,6 +85,7 @@ export type {
   SecurityKey,
   ImmigrationKey,
   BoardingKey,
+  AirportSecurityKey,
   RelatedServicesKey,
   DepartureNavKey,
 };
