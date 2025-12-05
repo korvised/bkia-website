@@ -107,16 +107,11 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
 
   // Prohibited items table data
   const prohibitedItems = [
-    { item: t.itemFirearms, carryOn: false, checked: true },
-    { item: t.itemStunDevices, carryOn: false, checked: true },
-    { item: t.itemSharpTools, carryOn: false, checked: true, note: t.seeNote },
+    { item: t.itemFirearms, carryOn: false, checked: true, note: t.seeNote },
+    { item: t.itemStunDevices, carryOn: false, checked: true, note: t.seeNote },
+    { item: t.itemSharpTools, carryOn: false, checked: true },
     { item: t.itemExplosives, carryOn: false, checked: false },
-    {
-      item: t.itemLiquidsOver100,
-      carryOn: false,
-      checked: true,
-      note: t.seeNote,
-    },
+    { item: t.itemLiquidsOver100, carryOn: false, checked: true },
     { item: t.itemTools, carryOn: false, checked: true },
   ];
 

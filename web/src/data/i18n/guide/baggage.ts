@@ -50,7 +50,7 @@ export const baggage = {
   // Cabin Baggage Section
   cabinBaggageTitle: {
     en: "Cabin Baggage",
-    lo: "ກະເປົາຖືຂຶ້ນເຮືອ",
+    lo: "ກະເປົາຖືຂຶ້ນເຮືອບິນ",
     zh: "随身行李",
   },
   cabinBaggageDesc: {
