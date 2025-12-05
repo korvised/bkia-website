@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { CheckCircle, AlertCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { MdOutlineSecurity } from "react-icons/md";
 import { TbAlertTriangle } from "react-icons/tb";
+import { PiDropHalfBottomFill } from "react-icons/pi";
 import { Lang } from "@/types/language";
 import { createPassengerGuideI18n } from "@/data/i18n/guide";
 
@@ -10,7 +11,18 @@ interface SecurityContentProps {
 }
 
 export function SecurityContent({ lang }: SecurityContentProps) {
+  // Own data for departure guide
   const { security: t } = createPassengerGuideI18n(lang);
+  // Shared authorized data from airport security
+  const { airportSecurity: tAuth } = createPassengerGuideI18n(lang);
+
+  // Liquid rules - use authorized data from airportSecurity
+  const liquidRules = [
+    tAuth.liquids100ml,
+    tAuth.liquidsZiplock,
+    tAuth.liquids1liter,
+    tAuth.liquidsChecked,
+  ];
 
   return (
     <div className="space-y-8">
@@ -25,7 +37,7 @@ export function SecurityContent({ lang }: SecurityContentProps) {
       {/* Main Content with Image */}
       <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
         {/* Left side - Illustration */}
-        <div className="flex justify-center lg:w-96 lg:flex-none">
+        <div className="lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:mt-4 lg:h-[500px] lg:max-w-none">
             <Image
               src="/images/guides/security.png"
@@ -33,6 +45,7 @@ export function SecurityContent({ lang }: SecurityContentProps) {
               fill
               className="object-contain object-top"
               priority
+              sizes="(max-width: 1024px) 100vw, 400px"
             />
           </div>
         </div>
@@ -133,44 +146,23 @@ export function SecurityContent({ lang }: SecurityContentProps) {
             </div>
           </div>
 
-          {/* Liquid Restrictions */}
+          {/* Liquid Restrictions - Use authorized data from airportSecurity */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <AlertCircle className="text-primary-600 h-6 w-6" />
+              <PiDropHalfBottomFill className="text-primary-600 h-6 w-6" />
               <h3 className="text-xl font-bold text-gray-900">
-                {t.liquidTitle}
+                {tAuth.liquidsTitle}
               </h3>
             </div>
-            <p className="text-base leading-relaxed text-gray-600">
-              {t.liquidDesc}
-            </p>
 
             <div className="border-primary-200 bg-primary-50 rounded-xl border p-5">
               <ul className="mb-4 space-y-2">
-                <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                  <span className="text-sm text-gray-700">
-                    {t.liquidMax100ml}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                  <span className="text-sm text-gray-700">
-                    {t.liquidClearBag}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                  <span className="text-sm text-gray-700">
-                    {t.liquidOneBag}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                  <span className="text-sm text-gray-700">
-                    {t.liquidRemoveBag}
-                  </span>
-                </li>
+                {liquidRules.map((rule, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                    <span className="text-sm text-gray-700">{rule}</span>
+                  </li>
+                ))}
               </ul>
 
               <div className="rounded-lg bg-white p-4">

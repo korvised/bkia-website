@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor guide feature">
-      <change afterPath="$PROJECT_DIR$/web/src/components/guides/security/airport-security.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/guides/security/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/airport-security.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor airport security">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/security/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/security/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,15 +213,7 @@
       <workItem from="1764732635498" duration="12576000" />
       <workItem from="1764812315563" duration="19000" />
       <workItem from="1764812527948" duration="18762000" />
-      <workItem from="1764906092429" duration="5179000" />
-    </task>
-    <task id="LOCAL-00030" summary="initial server">
-      <option name="closed" value="true" />
-      <created>1762151919840</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1762151919840</updated>
+      <workItem from="1764906092429" duration="5980000" />
     </task>
     <task id="LOCAL-00031" summary="implement config">
       <option name="closed" value="true" />
@@ -611,14 +599,21 @@
       <option name="project" value="LOCAL" />
       <updated>1764838003194</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="refactor airport security">
+      <option name="closed" value="true" />
+      <created>1764917931634</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1764917931634</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="implement airport module" />
     <MESSAGE value="implement route module" />
     <MESSAGE value="implement Flight module" />
     <MESSAGE value="refactor flight pages for connect api" />
@@ -643,6 +638,7 @@
     <MESSAGE value="fix flight form" />
     <MESSAGE value="implement facilities &amp; services page" />
     <MESSAGE value="refactor guide feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor guide feature" />
+    <MESSAGE value="refactor airport security" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor airport security" />
   </component>
 </project>
