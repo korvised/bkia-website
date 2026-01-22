@@ -57,7 +57,7 @@ export function BoardingContent({ lang }: BoardingContentProps) {
             </p>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+              <div className="rounded-xl border border-gray-200 bg-white p-5">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="text-sm text-gray-500">
                     {t.boardingBegins}
@@ -86,7 +86,7 @@ export function BoardingContent({ lang }: BoardingContentProps) {
           {/* Boarding Groups & Required Documents - Grid */}
           <div className="grid gap-6 sm:grid-cols-2">
             {/* Boarding Groups */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <div className="mb-4 flex items-center gap-3">
                 <div className="bg-primary-100 flex h-10 w-10 items-center justify-center rounded-lg">
                   <BsPersonCheck className="text-primary-600 h-5 w-5" />
@@ -137,7 +137,7 @@ export function BoardingContent({ lang }: BoardingContentProps) {
             </div>
 
             {/* Required Documents */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-100">
                   <CheckCircle className="h-5 w-5 text-green-600" />
@@ -198,24 +198,24 @@ export function BoardingContent({ lang }: BoardingContentProps) {
               </h3>
             </div>
 
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-400" />
                   <span className="text-sm text-gray-700">{t.seatbelt}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-400" />
                   <span className="text-sm text-gray-700">{t.electronics}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-400" />
                   <span className="text-sm text-gray-700">
                     {t.seatPosition}
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-400" />
                   <span className="text-sm text-gray-700">
                     {t.overheadBins}
                   </span>
@@ -234,41 +234,45 @@ export function BoardingContent({ lang }: BoardingContentProps) {
             </div>
 
             <div className="rounded-xl border border-red-200 bg-red-50 p-5">
-              <ul className="mb-4 grid gap-2 sm:grid-cols-2">
-                <li className="flex items-start gap-2">
+              <ul className="mb-4 space-y-4">
+                <li className="flex items-start gap-3">
                   <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.prohibitedSmoking}
+                  <span className="text-sm leading-relaxed text-gray-700">
+                    {t.prohibitedNoSmoking}
                   </span>
                 </li>
-                <li className="flex items-start gap-2">
+                {/* Merged Noise and Disturbance Row */}
+                <li className="flex items-start gap-3">
                   <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.prohibitedAlcohol}
+                  <span className="text-sm leading-relaxed text-gray-700">
+                    {t.prohibitedNoDisturbance}
                   </span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="flex items-start gap-3">
                   <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.prohibitedInterference}
+                  <span className="text-sm leading-relaxed text-gray-700">
+                    {t.prohibitedNoChaos}
                   </span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="flex items-start gap-3">
                   <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm leading-relaxed text-gray-700">
                     {t.prohibitedEmergency}
                   </span>
                 </li>
               </ul>
-              <p className="text-xs font-medium text-red-700">
-                {t.prohibitedWarning}
-              </p>
+
+              <div className="mt-4 border-t border-red-200 pt-3">
+                <p className="text-xs font-bold tracking-wide text-red-700 uppercase">
+                  {t.prohibitedWarning}
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Boarding Tips */}
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <div className="mb-3 flex items-center gap-2">
                 <MdOutlineFlightTakeoff className="text-primary-500 h-5 w-5" />
                 <h4 className="text-base font-semibold text-gray-900">
@@ -287,7 +291,7 @@ export function BoardingContent({ lang }: BoardingContentProps) {
               </ul>
             </div>
 
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <ul className="space-y-2 lg:mt-9">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />

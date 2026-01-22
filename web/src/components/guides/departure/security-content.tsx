@@ -45,7 +45,7 @@ export function SecurityContent({ lang }: SecurityContentProps) {
           {/* Prepare & Screening Methods - Grid */}
           <div className="grid gap-6 sm:grid-cols-2">
             {/* Prepare for Screening */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <div className="mb-4 flex items-center gap-3">
                 <div className="bg-primary-100 flex h-10 w-10 items-center justify-center rounded-lg">
                   <CheckCircle className="text-primary-600 h-5 w-5" />
@@ -90,7 +90,7 @@ export function SecurityContent({ lang }: SecurityContentProps) {
             </div>
 
             {/* Screening Methods */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100">
                   <MdOutlineSecurity className="h-5 w-5 text-blue-600" />
@@ -230,34 +230,34 @@ export function SecurityContent({ lang }: SecurityContentProps) {
               {t.afterSecurityDesc}
             </p>
 
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <CheckCircle className="text-primary mt-0.5 h-4 w-4 shrink-0" />
                   <span className="text-sm text-gray-700">
                     {t.afterVipRoom}
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <CheckCircle className="text-primary mt-0.5 h-4 w-4 shrink-0" />
                   <span className="text-sm text-gray-700">
                     {t.afterHonoraryGuest}
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <CheckCircle className="text-primary mt-0.5 h-4 w-4 shrink-0" />
                   <span className="text-sm text-gray-700">
                     {t.afterRestMonitor}
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <CheckCircle className="text-primary mt-0.5 h-4 w-4 shrink-0" />
                   <span className="text-sm text-gray-700">
                     {t.afterDutyFree}
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <CheckCircle className="text-primary mt-0.5 h-4 w-4 shrink-0" />
                   <span className="text-sm text-gray-700">{t.afterDining}</span>
                 </li>
               </ul>

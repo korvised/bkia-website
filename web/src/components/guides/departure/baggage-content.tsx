@@ -47,7 +47,7 @@ export function BaggageContent({ lang }: BaggageContentProps) {
           {/* Baggage Types - Grid */}
           <div className="grid gap-6 sm:grid-cols-2">
             {/* Checked Baggage */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <div className="mb-4 flex items-center gap-3">
                 <div className="bg-primary-100 flex h-10 w-10 items-center justify-center rounded-lg">
                   <BsBoxSeam className="text-primary-600 h-5 w-5" />
@@ -81,7 +81,7 @@ export function BaggageContent({ lang }: BaggageContentProps) {
             </div>
 
             {/* Cabin Baggage */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100">
                   <MdOutlineLuggage className="h-5 w-5 text-blue-600" />
@@ -208,7 +208,7 @@ export function BaggageContent({ lang }: BaggageContentProps) {
               {t.valuablesDesc}
             </p>
 
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <ul className="grid gap-3 sm:grid-cols-2">
                 <li className="flex items-start gap-2">
                   <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />

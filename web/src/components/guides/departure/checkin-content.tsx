@@ -80,7 +80,7 @@ export function CheckinContent({ lang }: CheckinContentProps) {
 
             {/* Time boxes - Grid */}
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+              <div className="rounded-xl border border-gray-200 bg-white p-5">
                 <div className="mb-2 flex items-center gap-2">
                   <PiAirplaneTiltLight className="text-primary-500 h-5 w-5" />
                   <p className="text-base font-semibold text-gray-900">
@@ -89,7 +89,7 @@ export function CheckinContent({ lang }: CheckinContentProps) {
                 </div>
                 <p className="text-sm text-gray-600">{t.domesticArrival}</p>
               </div>
-              <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+              <div className="rounded-xl border border-gray-200 bg-white p-5">
                 <div className="mb-2 flex items-center gap-2">
                   <PiAirplaneTiltLight className="text-primary-500 h-5 w-5" />
                   <p className="text-base font-semibold text-gray-900">
@@ -110,7 +110,7 @@ export function CheckinContent({ lang }: CheckinContentProps) {
             </h3>
             <div className="grid gap-4 sm:grid-cols-2">
               {/* Domestic Flights Card */}
-              <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+              <div className="rounded-xl border border-gray-200 bg-white p-5">
                 <div className="mb-4 flex items-center gap-2">
                   <PiAirplaneTiltLight className="text-primary-500 h-5 w-5" />
                   <p className="text-base font-semibold text-gray-900">
@@ -134,7 +134,7 @@ export function CheckinContent({ lang }: CheckinContentProps) {
               </div>
 
               {/* International Flights Card */}
-              <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+              <div className="rounded-xl border border-gray-200 bg-white p-5">
                 <div className="mb-4 flex items-center gap-2">
                   <PiAirplaneTiltLight className="text-primary-500 h-5 w-5" />
                   <p className="text-base font-semibold text-gray-900">

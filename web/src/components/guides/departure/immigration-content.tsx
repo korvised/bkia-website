@@ -56,7 +56,7 @@ export function ImmigrationContent({ lang }: ImmigrationContentProps) {
           {/* Lao Nationals & Foreigners - Grid */}
           <div className="grid gap-6 sm:grid-cols-2">
             {/* Lao Nationals */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <div className="mb-4 flex items-center gap-3">
                 <div className="bg-primary-100 flex h-10 w-10 items-center justify-center rounded-lg">
                   <MdOutlineFlag className="text-primary-600 h-5 w-5" />
@@ -96,7 +96,7 @@ export function ImmigrationContent({ lang }: ImmigrationContentProps) {
             </div>
 
             {/* Foreigners */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100">
                   <MdOutlinePublic className="h-5 w-5 text-blue-600" />
@@ -137,7 +137,7 @@ export function ImmigrationContent({ lang }: ImmigrationContentProps) {
               </h3>
             </div>
 
-            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
               <ol className="space-y-3">
                 <li className="flex items-start gap-3">
                   <span className="bg-primary-100 text-primary-700 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium">
@@ -222,7 +222,7 @@ export function ImmigrationContent({ lang }: ImmigrationContentProps) {
 
           {/* Immigration Counters */}
           <div className="grid gap-4 sm:grid-cols-3">
-            <div className="rounded-xl border border-gray-200 bg-white p-4 text-center shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-4 text-center">
               <div className="bg-primary-100 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full">
                 <MdOutlineFlag className="text-primary-600 h-6 w-6" />
               </div>
@@ -230,7 +230,7 @@ export function ImmigrationContent({ lang }: ImmigrationContentProps) {
                 {t.counterLao}
               </p>
             </div>
-            <div className="rounded-xl border border-gray-200 bg-white p-4 text-center shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-4 text-center">
               <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
                 <MdOutlinePublic className="h-6 w-6 text-blue-600" />
               </div>
@@ -238,7 +238,7 @@ export function ImmigrationContent({ lang }: ImmigrationContentProps) {
                 {t.counterForeign}
               </p>
             </div>
-            <div className="rounded-xl border border-gray-200 bg-white p-4 text-center shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-white p-4 text-center">
               <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-purple-100">
                 <FaPassport className="h-5 w-5 text-purple-600" />
               </div>

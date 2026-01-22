@@ -64,9 +64,9 @@ export const boarding = {
     zh: "优先登机",
   },
   priorityBoardingDesc: {
-    en: "Business class, passengers with disabilities, families with infants, elderly passengers",
-    lo: "ຊັ້ນທຸລະກິດ, ຜູ້ໂດຍສານພິການ, ຄອບຄົວທີ່ມີເດັກນ້ອຍ, ຜູ້ສູງອາຍຸ",
-    zh: "商务舱、残障旅客、携带婴儿的家庭、老年旅客",
+    en: "Business class, passengers with disabilities, families with children, elderly passengers, and monks.",
+    lo: "ຊັ້ນທຸລະກິດ, ຜູ້ໂດຍສານພິການ, ຄອບຄົວທີ່ມີເດັກນ້ອຍ, ຜູ້ສູງອາຍຸ ແລະ ພະສົງ",
+    zh: "商务舱、残障人士、有小孩的家庭、老年旅客及僧侣",
   },
   economyRear: {
     en: "Economy Class - Rear Rows",
@@ -96,9 +96,9 @@ export const boarding = {
     zh: "登机口所需证件",
   },
   requiredBoardingPass: {
-    en: "Boarding pass (paper or mobile)",
-    lo: "ບັດຂຶ້ນເຮືອບິນ (ເຈ້ຍ ຫຼື ມືຖື)",
-    zh: "登机牌（纸质或电子）",
+    en: "Boarding pass (Paper)",
+    lo: "ບັດຂຶ້ນເຮືອບິນ (ເຈ້ຍ)",
+    zh: "登机牌（纸质）",
   },
   requiredPassport: {
     en: "Passport or ID (must match boarding pass name)",
@@ -142,56 +142,56 @@ export const boarding = {
     zh: "机上规定",
   },
   seatbelt: {
-    en: "Keep seatbelt fastened when seated and whenever the sign is illuminated",
-    lo: "ຮັດສາຍແອວຕະຫຼອດເວລາທີ່ນັ່ງ ແລະ ເມື່ອປ້າຍໄຟເປີດ",
-    zh: "就座时和安全带指示灯亮起时请系好安全带",
+    en: "Keep seatbelt fastened at all times while seated and when the sign is illuminated.",
+    lo: "ຮັດສາຍແອວຕະຫຼອດເວລາທີ່ນັ່ງ ແລະ ເມື່ອປ້າຍສັນຍານໄຟເປີດ.",
+    zh: "就座时和安全带指示灯亮起时请系好安全带。",
   },
   electronics: {
-    en: "Switch devices to airplane mode during flight",
-    lo: "ປ່ຽນອຸປະກອນເປັນໂໝດເຮືອບິນລະຫວ່າງບິນ",
-    zh: "飞行期间请将设备调至飞行模式",
+    en: "Electronic devices must be switched to airplane mode during the flight.",
+    lo: "ສຳລັບອຸປະກອນເອເລັກໂຕຣນິກ ໃຫ້ປ່ຽນນຳໃຊ້ໃນໂໝດເຮືອບິນ.",
+    zh: "飞行期间请将电子设备调至飞行模式。",
   },
   seatPosition: {
-    en: "Seat upright, tray table stowed during takeoff and landing",
-    lo: "ພັບບ່ອນນັ່ງຊື່, ເກັບໂຕະເຂົ້າລະຫວ່າງຂຶ້ນ ແລະ ລົງ",
-    zh: "起飞和降落时请将座椅调直并收起小桌板",
+    en: "Adjust seats to an upright position and stow tray tables during takeoff and landing.",
+    lo: "ປັບຕັ່ງນັ່ງໃຫ້ຊື່ ແລະ ພັບເກັບໂຕະໃຫ້ຮຽບຮ້ອຍ ໃນລະຫວ່າງເຮືອບິນຂຶ້ນ-ລົງ.",
+    zh: "起飞和降落时请将座椅调直并收起小桌板。",
   },
   overheadBins: {
-    en: "Ensure bags are properly stowed in overhead bins",
-    lo: "ໃຫ້ແນ່ໃຈວ່າກະເປົາຖືກເກັບໄວ້ຢ່າງຖືກຕ້ອງໃນຊ່ອງເກັບຂອງດ້ານເທິງ",
-    zh: "确保行李正确放置在头顶行李舱内",
+    en: "Ensure your baggage is properly stowed in the overhead bins.",
+    lo: "ກວດກາໃຫ້ແນ່ໃຈວ່າ ກະເປົາຂອງທ່ານຖືກເກັບມ້ຽນຢ່າງຖືກຕ້ອງ ໃນຊ່ອງເກັບຂອງດ້ານເທິງ.",
+    zh: "请确保您的行李已正确存放在头顶行李舱内。",
   },
 
   // Prohibited on Board
   prohibitedTitle: {
     en: "Prohibited On Board",
-    lo: "ສິ່ງຕ້ອງຫ້າມໃນເຮືອບິນ",
-    zh: "机上禁止事项",
+    lo: "ຂໍ້ຫ້າມໃນລະຫວ່າງການບິນ",
+    zh: "机上禁令",
   },
-  prohibitedSmoking: {
-    en: "Smoking (including e-cigarettes and vaping)",
-    lo: "ສູບຢາ (ລວມທັງຢາສູບໄຟຟ້າ)",
-    zh: "吸烟（包括电子烟）",
+  prohibitedNoSmoking: {
+    en: "Smoking (including e-cigarettes and vaping) is prohibited except in designated areas.",
+    lo: "ຫ້າມສູບຢາ (ລວມທັງຢາສູບໄຟຟ້າ); ສາມາດສູບໄດ້ສະເພາະຈຸດທີ່ໄດ້ຮັບອະນຸຍາດ ຂຶ້ນກັບປະເພດເຮືອບິນ ແລະ ສາຍການບິນ.",
+    zh: "严禁吸烟（包括电子烟）；仅限在指定区域内吸烟（视机型和航空公司而定）。",
   },
-  prohibitedAlcohol: {
-    en: "Consuming personal alcohol",
-    lo: "ດື່ມເຫຼົ້າສ່ວນຕົວ",
-    zh: "饮用自带酒类",
+  prohibitedNoDisturbance: {
+    en: "Do not make loud noises or behave in a way that disturbs other passengers.",
+    lo: "ຫ້າມສົ່ງສຽງດັງ ຫຼື ມີພຶດຕິກຳທີ່ລົບກວນຜູ້ໂດຍສານທ່ານອື່ນ",
+    zh: "严禁大声喧哗或做出任何干扰其他乘客的行为。",
   },
-  prohibitedInterference: {
-    en: "Interfering with flight crew duties",
-    lo: "ແຊກແຊງໜ້າທີ່ຂອງລູກເຮືອ",
-    zh: "干扰机组人员执行职务",
+  prohibitedNoChaos: {
+    en: "Causing chaos or disorderly conduct on the aircraft.",
+    lo: "ຫ້າມກໍ່ຄວາມວຸ້ນວາຍພາຍໃນເຮືອບິນ.",
+    zh: "严禁在机内寻衅滋事或扰乱秩序。",
   },
   prohibitedEmergency: {
-    en: "Unauthorized use of emergency equipment",
-    lo: "ໃຊ້ອຸປະກອນສຸກເສີນໂດຍບໍ່ໄດ້ຮັບອະນຸຍາດ",
-    zh: "未经授权使用紧急设备",
+    en: "Unauthorized use of emergency equipment.",
+    lo: "ຫ້າມໃຊ້ອຸປະກອນສຸກເສີນໂດຍບໍ່ໄດ້ຮັບອະນຸຍາດ.",
+    zh: "严禁未经授权使用应急设备。",
   },
   prohibitedWarning: {
-    en: "Violations may result in arrest, fines, and flight bans",
-    lo: "ການລະເມີດອາດຖືກຈັບກຸມ, ປັບໃໝ ແລະ ຫ້າມບິນ",
-    zh: "违规可能导致逮捕、罚款和禁飞处罚",
+    en: "Violations may result in legal action, fines, and flight bans.",
+    lo: "ການລະເມີດອາດຖືກດຳເນີນຄະດີຕາມກົດໝາຍ, ປັບໃໝ ແລະ ຫ້າມເດີນທາງດ້ວຍເຮືອບິນ.",
+    zh: "违反者可能面临法律诉讼、罚款或禁飞处罚。",
   },
 
   // Tips
