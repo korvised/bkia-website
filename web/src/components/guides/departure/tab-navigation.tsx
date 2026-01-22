@@ -21,7 +21,7 @@ import { FaPassport } from "react-icons/fa";
 import { cn } from "@/lib";
 import { Lang } from "@/types/language";
 import { DepartureTab } from "@/types/guide";
-import { createPassengerGuideI18n, DepartureNavKey } from "@/data/i18n/guide";
+import { createDepartureGuideI18n, DepartureNavKey } from "@/data/i18n/guide";
 
 type TabStatus = "complete" | "current" | "upcoming";
 
@@ -59,7 +59,7 @@ export function DepartureTabNavigation({
   lang,
   activeTab,
 }: DepartureTabNavigationProps) {
-  const { departureNav: t } = createPassengerGuideI18n(lang);
+  const { departureNav: t } = createDepartureGuideI18n(lang);
 
   const activeTabIndex = useMemo(
     () => TABS.findIndex((tab) => tab.id === activeTab),

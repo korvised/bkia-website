@@ -4,14 +4,14 @@ import { MdOutlineFlag, MdOutlinePublic } from "react-icons/md";
 import { TbAlertTriangle } from "react-icons/tb";
 import { CheckCircle } from "lucide-react";
 import { Lang } from "@/types/language";
-import { createPassengerGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guide";
 
 interface ImmigrationContentProps {
   lang: Lang;
 }
 
 export function ImmigrationContent({ lang }: ImmigrationContentProps) {
-  const { immigration: t } = createPassengerGuideI18n(lang);
+  const { immigration: t } = createDepartureGuideI18n(lang);
 
   return (
     <div className="space-y-8">

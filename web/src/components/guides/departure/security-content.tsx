@@ -4,7 +4,7 @@ import { MdOutlineSecurity } from "react-icons/md";
 import { TbAlertTriangle } from "react-icons/tb";
 import { PiDropHalfBottomFill } from "react-icons/pi";
 import { Lang } from "@/types/language";
-import { createPassengerGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guide";
 
 interface SecurityContentProps {
   lang: Lang;
@@ -12,7 +12,7 @@ interface SecurityContentProps {
 
 export function SecurityContent({ lang }: SecurityContentProps) {
   // Own data for departure guide
-  const { security: t } = createPassengerGuideI18n(lang);
+  const { security: t } = createDepartureGuideI18n(lang);
 
   return (
     <div className="space-y-8">

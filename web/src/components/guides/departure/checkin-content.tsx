@@ -4,14 +4,14 @@ import { MdOutlineAccessTime } from "react-icons/md";
 import { IoPeopleOutline } from "react-icons/io5";
 import { PiAirplaneTiltLight } from "react-icons/pi";
 import { Lang } from "@/types/language";
-import { createPassengerGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guide";
 
 interface CheckinContentProps {
   lang: Lang;
 }
 
 export function CheckinContent({ lang }: CheckinContentProps) {
-  const { checkin: t } = createPassengerGuideI18n(lang);
+  const { checkin: t } = createDepartureGuideI18n(lang);
 
   return (
     <div className="space-y-8">

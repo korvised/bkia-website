@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Lang } from "@/types/language";
-import { createPassengerGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guide";
 import { facilitiesServices, getColorClasses } from "@/data/guide";
 
 // Pick 6 relevant services for departure guide
@@ -18,7 +18,7 @@ interface RelatedServicesProps {
 }
 
 export function RelatedServices({ lang }: RelatedServicesProps) {
-  const { relatedServices: t } = createPassengerGuideI18n(lang);
+  const { relatedServices: t } = createDepartureGuideI18n(lang);
 
   // Filter services based on selected IDs
   const services = facilitiesServices.filter((service) =>

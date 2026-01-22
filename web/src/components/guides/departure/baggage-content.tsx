@@ -7,14 +7,14 @@ import {
 import { BsBoxSeam } from "react-icons/bs";
 import { TbAlertTriangle } from "react-icons/tb";
 import { Lang } from "@/types/language";
-import { createPassengerGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guide";
 
 interface BaggageContentProps {
   lang: Lang;
 }
 
 export function BaggageContent({ lang }: BaggageContentProps) {
-  const { baggage: t } = createPassengerGuideI18n(lang);
+  const { baggage: t } = createDepartureGuideI18n(lang);
 
   return (
     <div className="space-y-8">

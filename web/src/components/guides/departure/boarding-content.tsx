@@ -7,14 +7,14 @@ import {
 import { TbAlertTriangle, TbSpeakerphone } from "react-icons/tb";
 import { BsPersonCheck } from "react-icons/bs";
 import { Lang } from "@/types/language";
-import { createPassengerGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guide";
 
 interface BoardingContentProps {
   lang: Lang;
 }
 
 export function BoardingContent({ lang }: BoardingContentProps) {
-  const { boarding: t } = createPassengerGuideI18n(lang);
+  const { boarding: t } = createDepartureGuideI18n(lang);
 
   return (
     <div className="space-y-8">
