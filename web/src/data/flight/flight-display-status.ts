@@ -6,22 +6,22 @@ export const labelsByCode: Record<
 > = {
   CHECK_IN_OPEN: {
     en: "Check-in open",
-    lo: "ເປີດເຊັກອິນ",
+    lo: "ເປີດແຈ້ງປີ້",
     zh: "办理值机中",
   },
   CHECK_IN_CLOSED: {
     en: "Check-in closed",
-    lo: "ປິດເຊັກອິນ",
+    lo: "ປິດແຈ້ງປີ້",
     zh: "值机已截止",
   },
   BOARDING: {
     en: "Boarding",
-    lo: "ກຳລັງເຂົ້າເຮືອບິນ",
+    lo: "ປ່ອຍໂດຍສານ",
     zh: "登机中",
   },
   FINAL_CALL: {
     en: "Final call",
-    lo: "ເອີ້ນຂຶ້ນເຮືອບິນຮອບສຸດທ້າຍ",
+    lo: "ເອີ້ນຄັ້ງສຸດທ້າຍ",
     zh: "最后召集",
   },
   GATE_CLOSED: {
@@ -36,17 +36,17 @@ export const labelsByCode: Record<
   },
   DELAYED: {
     en: "Delayed",
-    lo: "ລ່າຊ້າ",
+    lo: "ຊັກຊ້າ",
     zh: "延误",
   },
   DEPARTED: {
     en: "Departed",
-    lo: "ອອກແລ້ວ",
+    lo: "ອອກເດີນທາງ",
     zh: "已起飞",
   },
   ARRIVED: {
     en: "Arrived",
-    lo: "ເຖິງແລ້ວ",
+    lo: "ມາຮອດ",
     zh: "已到达",
   },
   EN_ROUTE: {
@@ -61,7 +61,7 @@ export const labelsByCode: Record<
   },
   DIVERTED: {
     en: "Diverted",
-    lo: "ປ່ຽນທິດທາງ",
+    lo: "ປ່ຽນປາຍທາງ",
     zh: "备降",
   },
   SCHEDULED: {

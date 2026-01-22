@@ -4,116 +4,96 @@ export const security = {
   // Page title
   title: {
     en: "Security Screening",
-    lo: "ກວດຄວາມປອດໄພ",
+    lo: "ກວດກາດ້ານການປ້ອງກັນຄວາມປອດໄພ",
     zh: "安全检查",
   },
 
   // Introduction
   intro: {
     en: "All passengers and cabin baggage must pass through security screening before entering the departure area. This is mandatory for your safety and in compliance with international aviation security standards.",
-    lo: "ຜູ້ໂດຍສານ ແລະ ກະເປົາຖືຂຶ້ນເຮືອທັງໝົດຕ້ອງຜ່ານການກວດຄວາມປອດໄພກ່ອນເຂົ້າເຂດຜູ້ໂດຍສານຂາອອກ. ນີ້ແມ່ນຂໍ້ບັງຄັບເພື່ອຄວາມປອດໄພຂອງທ່ານ ແລະ ປະຕິບັດຕາມມາດຕະຖານຄວາມປອດໄພການບິນສາກົນ.",
+    lo: "ຜູ້ໂດຍສານ ແລະ ກະເປົາຖືຂຶ້ນເຮືອບິນທັງໝົດຕ້ອງຜ່ານການກວດກາ ດ້ານການປ້ອງກັນຄວາມປອດໄພກ່ອນ ເຂົ້າຫ້ອງລໍຖ້າຜູ້ໂດຍສານ (ເຂດຫວງຫ້າມຂອງສະໜາມບິນ). ເປັນຂໍ້ບັງຄັບດ້ານມາດຕະການປ້ອງກັນຄວາມປອດໄພສະໜາມບິນ ເພື່ອຄວາມປອດໄພຂອງທ່ານ ແລະ ຜູ້ໂດຍສານທັງໝົດ ເຊິ່ງເປັນມາດຕະຖານດ້ານການປ້ອງກັນຄວາມປອດໄພຂອງການບິນພົນລະເຮືອນສາກົນ.",
     zh: "所有旅客和随身行李在进入出发区前必须通过安全检查。这是强制性规定，旨在保障您的安全并符合国际航空安全标准。",
   },
 
   // Prepare for Screening Section
   prepareTitle: {
     en: "Prepare for Screening",
-    lo: "ກະກຽມສຳລັບການກວດ",
+    lo: "ກະກຽມກ່ອນຜ່ານຈຸດກວດຄົ້ນ",
     zh: "准备接受检查",
   },
   prepareDesc: {
     en: "To speed up the screening process, please prepare the following before reaching the checkpoint:",
-    lo: "ເພື່ອເລັ່ງຂະບວນການກວດ, ກະລຸນາກະກຽມສິ່ງຕໍ່ໄປນີ້ກ່ອນຮອດຈຸດກວດ:",
+    lo: "ເພື່ອຄວາມວ໋ອງໄວໃນການກວດຄົ້ນ ກະລຸນາກະກຽມສິ່ງຕໍ່ໄປນີ້ກ່ອນຮອດຈຸດກວດຄົ້ນ:",
     zh: "为加快检查流程，请在到达检查点前准备好以下物品：",
   },
+  prepareDocs: {
+    en: "Documents: Boarding pass, ID card or Passport.",
+    lo: "ເອກະສານ: ປີ້ຂຶ້ນເຮືອບິນ, ບັດປະຈໍາຕົວ ຫຼື ໜັງສືຜ່ານແດນ.",
+    zh: "证件：登机牌、身份证或护照。",
+  },
+  prepareStaff: {
+    en: "Follow the instructions of security personnel.",
+    lo: "ປະຕິບັດຕາມຄໍາແນະນໍາຂອງ ພະນັກງານປ້ອງກັນຄວາມປອດໄພ.",
+    zh: "请听从安检人员的指示。",
+  },
+  prepareElectronics: {
+    en: "Separate electronic devices (laptops, phones, tablets) and place them in the trays.",
+    lo: "ແຍກສິ່ງຂອງທີ່ເປັນ ອຸປະກອນເຄື່ອງເອເລັກໂຕຣນິກ ເຊັ່ນ: ຄອມພິວເຕີ, ໂທລະສັບ, ແທັບເລັດ... ວາງໃສ່ຖາດທີ່ຈັດກຽມໃຫ້.",
+    zh: "将电子设备（笔记本电脑、手机、平板电脑）分开并放入托盘。",
+  },
   prepareMetalItems: {
-    en: "Remove all metal items (keys, coins, belt)",
-    lo: "ເອົາຂອງໂລຫະທັງໝົດອອກ (ກະແຈ, ຫຼຽນ, ສາຍແອວ)",
-    zh: "取下所有金属物品（钥匙、硬币、皮带）",
+    en: "Separate metal items such as watches, belts, and keys.",
+    lo: "ແຍກສິ່ງຂອງທີ່ເປັນໂລຫະ ເຊັ່ນ: ໂມງ, ສາຍແອວ, ກະແຈ, ...",
+    zh: "将手表、皮带、钥匙等金属物品分开。",
   },
-  prepareLaptops: {
-    en: "Take out laptops and tablets from bags",
-    lo: "ເອົາຄອມພິວເຕີ ແລະ ແທັບເລັດອອກຈາກກະເປົາ",
-    zh: "从包中取出笔记本电脑和平板电脑",
-  },
-  prepareJackets: {
-    en: "Remove jackets and outerwear",
-    lo: "ຖອດເສື້ອກັນໜາວ ແລະ ເສື້ອຄຸມ",
-    zh: "脱下夹克和外套",
-  },
-  prepareTrays: {
-    en: "Place items in trays provided",
-    lo: "ວາງຂອງໃສ່ຖາດທີ່ສະໜອງໃຫ້",
-    zh: "将物品放入提供的托盘中",
-  },
-  prepareBoardingPass: {
-    en: "Have boarding pass and ID ready",
-    lo: "ກະກຽມບັດຂຶ້ນເຮືອບິນ ແລະ ບັດປະຈຳຕົວໃຫ້ພ້ອມ",
-    zh: "准备好登机牌和身份证件",
+  prepareClothing: {
+    en: "Remove jackets, coats, hats, accessories, and wallets.",
+    lo: "ຖອດເສື້ອກັນໜາວ, ເສື້ອຄຸມ, ໝວກ, ເຄື່ອງແຟຣຊັ່ນ, ກະເປົາເງີນ...",
+    zh: "脱下夹克、外套、帽子、配饰和钱包。",
   },
 
   // Screening Methods Section
   screeningMethodsTitle: {
     en: "Screening Methods",
-    lo: "ວິທີການກວດ",
+    lo: "ຂັ້ນຕອນການກວດຄົ້ນ",
     zh: "检查方式",
   },
-  screeningMetalDetector: {
-    en: "Walk through metal detector",
-    lo: "ຍ່າງຜ່ານເຄື່ອງກວດໂລຫະ",
-    zh: "通过金属探测门",
-  },
   screeningXray: {
-    en: "X-ray screening for all baggage",
-    lo: "ກວດ X-ray ກະເປົາທັງໝົດ",
-    zh: "所有行李X光检查",
+    en: "Pass bags and equipment through the X-ray scanner",
+    lo: "ນໍາກະເປົາ ແລະ ອຸປະກອນ ຜ່ານເຄື່ອງກວດສ່ອງລັງສີ",
+    zh: "将行李和设备通过X光扫描机",
   },
-  screeningHandheld: {
-    en: "Hand-held metal detector (if needed)",
-    lo: "ເຄື່ອງກວດໂລຫະແບບມືຖື (ຖ້າຈຳເປັນ)",
-    zh: "手持金属探测器（如需要）",
+  screeningMetalDetector: {
+    en: "Walk through the walk-through metal detector",
+    lo: "ຍ່າງຜ່ານເຄື່ອງກວດຈັບໂລຫະແບບຍ່າງຜ່ານ",
+    zh: "通过步行式金属探测器",
   },
-  screeningPhysical: {
-    en: "Physical bag inspection (random)",
-    lo: "ກວດກະເປົາດ້ວຍມື (ສຸ່ມ)",
-    zh: "行李人工检查（随机）",
-  },
-  screeningBodyScan: {
-    en: "Body scan (secondary screening)",
-    lo: "ສະແກນຮ່າງກາຍ (ກວດເພີ່ມເຕີມ)",
-    zh: "人体扫描（二次检查）",
+  screeningSecondary: {
+    en: "Screening with a hand-held metal detector or manual search",
+    lo: "ກວດຄົ້ນດ້ວຍເຄື່ອງກວດຈັບໂລຫະແບບມືຖື ຫຼື ດ້ວຍມື",
+    zh: "使用手持式金属探测器或进行人工检查",
   },
 
   // Liquid Restrictions Section
   liquidTitle: {
-    en: "Liquid Restrictions (100ml Rule)",
-    lo: "ຂໍ້ຈຳກັດຂອງແຫຼວ (ກຳນົດ 100ml)",
-    zh: "液体限制（100毫升规定）",
+    en: "Liquids, Aerosols, Gels (LAGs)",
+    lo: "ຂອງແຫຼວ, ສະເປຣ, ເຈວ (LAGs)",
+    zh: "液体、气雾剂、凝胶（LAGs）",
   },
-  liquidDesc: {
-    en: "Liquids, Aerosols, and Gels (LAGs) must follow these rules:",
-    lo: "ຂອງແຫຼວ, ສະເປຣ, ແລະ ເຈວ ຕ້ອງປະຕິບັດຕາມກົດເຫຼົ່ານີ້:",
-    zh: "液体、气雾剂和凝胶必须遵守以下规定：",
+  liquids100ml: {
+    en: "Containers must not exceed 100ml (Carry-on)",
+    lo: "ພາຊະນະບັນຈຸທີມີປະລິມານ ບໍ່ເກີນ 100 ມລ (ຖືຂຶ້ນເຮືອບິນ)",
+    zh: "容器容量不得超过 100 毫升（随身携带）",
   },
-  liquidMax100ml: {
-    en: "Maximum 100ml per container",
-    lo: "ສູງສຸດ 100ml ຕໍ່ບັນຈຸພັນ",
-    zh: "每个容器最多100毫升",
+  liquidsZiplock: {
+    en: "Total capacity not exceeding 1 liter, packed in a clear zip-lock bag (20.5cm x 20.5cm or 25cm x 15cm)",
+    lo: "ພາຊະນະທັງໝົດລວມກັນໃນຖົງ ບໍ່ເກີນ 1 ລິດ ແລະ ມີການຫຸ່ມຫໍ່ດ້ວຍຖົງພລາສຕິກໃສແບບ ຊິບລ໋ອກ (zip-lock) ຕາມຂະໜາດທີ່ກໍານົດໄວ້ 20.5cm x 20.5cm ຫຼື 25cm x 15cm",
+    zh: "总容量不超过 1 升，并装入规定尺寸的透明密封袋中（20.5cm x 20.5cm 或 25cm x 15cm）",
   },
-  liquidClearBag: {
-    en: "All containers must fit in ONE clear, resealable plastic bag (1 liter capacity)",
-    lo: "ບັນຈຸພັນທັງໝົດຕ້ອງໃສ່ຖົງພາສຕິກໃສ ປິດໄດ້ 1 ໃບ (ຄວາມຈຸ 1 ລິດ)",
-    zh: "所有容器必须装入一个透明可重封塑料袋（容量1升）",
-  },
-  liquidOneBag: {
-    en: "One bag per passenger",
-    lo: "ຖົງ 1 ໃບຕໍ່ຜູ້ໂດຍສານ",
-    zh: "每位旅客一个袋子",
-  },
-  liquidRemoveBag: {
-    en: "Bag must be removed from carry-on during screening",
-    lo: "ຕ້ອງເອົາຖົງອອກຈາກກະເປົາຖືເວລາກວດ",
-    zh: "检查时必须将袋子从随身行李中取出",
+  liquidsChecked: {
+    en: "Liquids over 100ml must be checked in and securely packed (Load)",
+    lo: "ຂອງແຫຼວທີ່ເກີນ 100 ມລ ຕ້ອງນໍາໂຫຼດເຂົ້າທ້ອງເຮືອບິນ ແລະ ມີການຫຸ່ມຫໍ່ຢ່າງແໜ້ນໜາ (Load)",
+    zh: "超过 100 毫升的液体必须托运并严密包装",
   },
   liquidIncludes: {
     en: "Includes:",
@@ -121,9 +101,9 @@ export const security = {
     zh: "包括：",
   },
   liquidExamples: {
-    en: "Water, beverages, perfume, shampoo, toothpaste, lotion, sunscreen, lip gloss, mascara, gel deodorant, and similar items",
-    lo: "ນ້ຳ, ເຄື່ອງດື່ມ, ນ້ຳຫອມ, ແຊມພູ, ຢາສີຟັນ, ໂລຊັ່ນ, ກັນແດດ, ລິບທາປາກ, ມາສຄາຣ່າ, ເຈວລະງັບກິ່ນ, ແລະ ສິ່ງຂອງທີ່ຄ້າຍຄືກັນ",
-    zh: "水、饮料、香水、洗发水、牙膏、乳液、防晒霜、唇彩、睫毛膏、凝胶除臭剂及类似物品",
+    en: "Water, beverages, perfume, shampoo, toothpaste, lotion, spray, sunscreen, lip gloss, cream, gel deodorant, sauces, soups...",
+    lo: "ນໍ້າ, ເຄື່ອງດື່ມ, ນໍ້າຫອມ, ແຊມພູ, ຢາສີພັນ, ໂລຊັ່ນ, ສະເປ, ກັນແດດ, ລິບທາປາກ, ຄີຣມ, ເຈວດັບກິ່ນ, ນໍ້າແຈ່ວ, ນໍ້າຊຸບ...",
+    zh: "水、饮料、香水、洗发水、牙膏、乳液、喷雾、防晒霜、唇彩、乳霜、除臭凝胶、酱汁、汤类...",
   },
   liquidExceptions: {
     en: "Exceptions:",
@@ -131,93 +111,98 @@ export const security = {
     zh: "例外情况：",
   },
   liquidBabyFormula: {
-    en: "Baby formula, milk (for traveling infants)",
-    lo: "ນົມຜົງເດັກ, ນົມ (ສຳລັບເດັກນ້ອຍເດີນທາງ)",
-    zh: "婴儿配方奶粉、牛奶（随行婴儿用）",
+    en: "Baby formula and milk (for traveling infants)",
+    lo: "ນົມຜົງເດັກນ້ອຍ, ນົມ (ນົມສໍາລັບເດັກນ້ອຍເດີນທາງ)",
+    zh: "婴儿配方奶粉、牛奶（供随行婴儿使用）",
   },
   liquidMedication: {
-    en: "Prescription medications (with prescription/medical certificate)",
-    lo: "ຢາຕາມໃບສັ່ງແພດ (ພ້ອມໃບສັ່ງຢາ/ໃບຢັ້ງຢືນແພດ)",
-    zh: "处方药（需提供处方/医疗证明）",
-  },
-  liquidDutyFree: {
-    en: "Duty-free liquids purchased at airport (sealed bag with receipt)",
-    lo: "ຂອງແຫຼວປອດພາສີທີ່ຊື້ຢູ່ສະໜາມບິນ (ຫຸ້ມຫໍ່ເປັນຢ່າງດີພ້ອມໃບບິນ)",
-    zh: "在机场购买的免税液体（密封袋附收据）",
+    en: "Prescription medications (with prescription or medical certificate)",
+    lo: "ຢາຕາມໃບແພດສັ່ງ (ພ້ອມໃບສັ່ງຢາ ຫຼື ໃບຢັ້ງຢືນຈາກແພດ)",
+    zh: "处方药（需附带处方或医生证明）",
   },
 
-  // Important Reminders Section
+  // Important Security Reminders Section
   remindersTitle: {
     en: "Important Security Reminders",
-    lo: "ຂໍ້ເຕືອນຄວາມປອດໄພທີ່ສຳຄັນ",
+    lo: "ຄໍາແນະນໍາ ແລະ ຂໍ້ເຕືອນຄວາມປອດໄພທີ່ສຳຄັນ",
     zh: "重要安全提示",
   },
-  reminderArriveEarly: {
-    en: "Arrive early - security screening can take 15-30 minutes during peak times",
-    lo: "ມາຮອດລ່ວງໜ້າ - ການກວດຄວາມປອດໄພອາດໃຊ້ເວລາ 15-30 ນາທີໃນຊ່ວງໂມງເລັງດ່ວນ",
-    zh: "请提前到达——高峰时段安检可能需要15-30分钟",
+  reminderCheckIn: {
+    en: "Arrive at the airport 2 hours before departure for domestic flights and 2.5 hours for international flights.",
+    lo: "ກະລຸນາມາຮອດສະໜາມບິນກ່ອນເວລາອອກເດີນທາງ: 2 ຊົ່ວໂມງ ສຳລັບຖ້ຽວບິນພາຍໃນ ແລະ 2.5 ຊົ່ວໂມງ ສຳລັບຖ້ຽວບິນຕ່າງປະເທດ.",
+    zh: "请提前到达机场：国内航班提前 2 小时，国际航班提前 2.5 小时。",
   },
   reminderCooperate: {
-    en: "Cooperate fully with security officers - refusal may result in denied boarding",
-    lo: "ໃຫ້ຄວາມຮ່ວມມືກັບເຈົ້າໜ້າທີ່ຄວາມປອດໄພ - ການປະຕິເສດອາດເຮັດໃຫ້ຖືກປະຕິເສດການຂຶ້ນເຮືອບິນ",
-    zh: "请全力配合安检人员——拒绝配合可能导致无法登机",
+    en: "Follow instructions and cooperate fully with airport staff and security officers.",
+    lo: "ປະຕິບັດຕາມຄໍາແນະນໍາ ແລະ ໃຫ້ການຮ່ວມມືກັບພະນັກງານ ແລະ ເຈົ້າໜ້າທີ່ສະໜາມບິນ.",
+    zh: "请听从指示并全力配合机场工作人员和安检人员。",
   },
-  reminderConfiscated: {
-    en: "Prohibited items will be confiscated and cannot be retrieved",
-    lo: "ສິ່ງຂອງຕ້ອງຫ້າມຈະຖືກຍຶດ ແລະ ບໍ່ສາມາດເອົາຄືນໄດ້",
-    zh: "违禁物品将被没收且无法取回",
+  reminderWeapons: {
+    en: "Firearms and ammunition are strictly prohibited.",
+    lo: "ຫ້າມນໍາອາວຸດປືນ ແລະ ລູກປືນ ເຂົ້າໄປໃນເຂດສະໜາມບິນ ຫຼື ຂຶ້ນເຮືອບິນຢ່າງເດັດຂາດ.",
+    zh: "严禁携带枪支和弹药。",
   },
-  reminderRandomScreening: {
-    en: "Random additional screening may be required - this is standard procedure",
-    lo: "ອາດມີການກວດເພີ່ມເຕີມແບບສຸ່ມ - ນີ້ແມ່ນຂັ້ນຕອນມາດຕະຖານ",
-    zh: "可能需要随机额外检查——这是标准程序",
+  reminderSharpObjects: {
+    en: "Sharp objects (knives, scissors, tools) are prohibited in carry-on baggage.",
+    lo: "ຫ້າມນໍາວັດຖຸມີຄົມຂຶ້ນເຮືອບິນ ເຊັ່ນ: ມີດ, ມີດຕັດ, ເຫຼັກແຫຼມ, ອຸປະກອນເຄື່ອງມີຊ່າງ...",
+    zh: "严禁随身携带利器（刀具、剪刀、工具等）。",
+  },
+  reminderFlammables: {
+    en: "Flammable materials (sprays, lighters, matches, fireworks) are prohibited.",
+    lo: "ຫ້າມນໍາວັດຖຸໄວໄຟຂຶ້ນເຮືອບິນ ເຊັ່ນ: ສະເປໄວໄຟ, ກະໄຟ, ໄມ້ຂີດໄຟ, ພຸດອກໄມ້ໄຟ...",
+    zh: "严禁携带易燃物品（喷雾、打火机、火柴、烟花等）。",
+  },
+  reminderDrugs: {
+    en: "Illegal drugs are strictly prohibited at Bokeo International Airport.",
+    lo: "ຫ້າມນໍາຢາເສບຕິດທີ່ຜິດກົດໝາຍມາຜ່ານສະໜາມບິນສາກົນບໍ່ແກ້ວຢ່າງເດັດຂາດ.",
+    zh: "博胶国际机场严禁携带违禁毒品。",
   },
   reminderNoJokes: {
-    en: "Do not joke about security threats - this is a criminal offense",
-    lo: "ຫ້າມເວົ້າຕະຫຼົກກ່ຽວກັບໄພຂົ່ມຂູ່ຄວາມປອດໄພ - ນີ້ແມ່ນຄວາມຜິດທາງອາຍາ",
-    zh: "请勿开安全威胁相关的玩笑——这是刑事犯罪",
+    en: "Threatening language or jokes about bombs are illegal and carry criminal penalties.",
+    lo: "ຫ້າມໃຊ້ຖ້ອຍຄໍາທີ່ເປັນການຂົ່ມຂູ່ ເຊັ່ນ: ລະເບີດ ຫຼື ຂູ່ວາງລະເບີດ ເຊິ່ງມີໂທດທາງກົດໝາຍອາຍາ.",
+    zh: "严禁使用威胁性语言或开关于炸弹的玩笑，此类行为触犯刑事法律。",
   },
-  reminderNoStrangers: {
-    en: "Do not carry items for strangers or leave baggage unattended",
-    lo: "ຫ້າມຖືຂອງໃຫ້ຄົນແປກໜ້າ ຫຼື ປະກະເປົາໄວ້ໂດຍບໍ່ມີຄົນເບິ່ງ",
-    zh: "请勿为陌生人携带物品或让行李无人看管",
+  reminderLaoLaw: {
+    en: "Any behavior that violates the laws of the Lao PDR is strictly forbidden.",
+    lo: "ຫ້າມມີພຶດຕິກໍາທີ່ເປັນການລະເມີດກົດໝາຍຂອງ ສປປ ລາວ.",
+    zh: "严禁任何违反老挝人民民主共和国法律的行为。",
   },
 
   // After Security Section
   afterSecurityTitle: {
     en: "After Security Clearance",
-    lo: "ຫຼັງຈາກຜ່ານການກວດຄວາມປອດໄພ",
+    lo: "ຫຼັງຈາກຜ່ານຈຸດກວດຄົ້ນປ້ອງກັນຄວາມປອດໄພ",
     zh: "通过安检后",
   },
   afterSecurityDesc: {
-    en: "Once you clear security, you'll enter the departure lounge where you can:",
-    lo: "ເມື່ອທ່ານຜ່ານການກວດຄວາມປອດໄພແລ້ວ, ທ່ານຈະເຂົ້າສູ່ຫ້ອງຮັບຮອງຜູ້ໂດຍສານຂາອອກ ບ່ອນທີ່ທ່ານສາມາດ:",
-    zh: "通过安检后，您将进入出发休息室，在那里您可以：",
+    en: "Once you clear the X-ray screening, you will enter the departure lounge where you can:",
+    lo: "ເມື່ອທ່ານຜ່ານການກວດສ່ອງລັງສີ (X-ray screening) ແລ້ວ, ທ່ານສາມາດ:",
+    zh: "通过X光安检后，您可以：",
+  },
+  afterVipRoom: {
+    en: "Wait in the departure lounge or contact staff to use the VIP room.",
+    lo: "ເຂົ້າໄປລໍຖ້າຢູ່ຫ້ອງລໍຖ້າຜູ້ໂດຍສານຂາອອກ ຫຼື ຕ້ອງການນໍາໃຊ້ຫ້ອງ VIP ສາມາດພົວພັນພະນັກງານທີ່ກ່ຽວຂ້ອງໄດ້.",
+    zh: "在出发候机室候机，或联系工作人员使用 VIP 休息室。",
+  },
+  afterHonoraryGuest: {
+    en: "Honorary guests with bookings may contact staff to access the VIP lounge.",
+    lo: "ສໍາລັບແຂກກຽດຕິຍົດທີ່ຈອງຫ້ອງລ່ວງໜ້າ ສາມາດພົວພັນເຂົ້າໃຊ້ຫ້ອງກຽດຕິຍົດ.",
+    zh: "已预订的贵宾可联系使用贵宾休息室。",
+  },
+  afterRestMonitor: {
+    en: "Rest in the waiting area and monitor the departure information boards.",
+    lo: "ພັກຜ່ອນໃນພື້ນທີ່ລໍຖ້າ ແລະ ຕິດຕາມປ້າຍສະແດງຂໍ້ມູນການອອກເດີນທາງ.",
+    zh: "在候机区休息并关注航班动态显示屏。",
   },
   afterDutyFree: {
-    en: "Visit duty-free shops and restaurants",
-    lo: "ຊື້ເຄື່ອງປອດພາສີ ແລະ ຮ້ານອາຫານ",
-    zh: "前往免税店和餐厅",
+    en: "Shop for duty-free goods and airport souvenirs.",
+    lo: "ຊື້ສິນຄ້າປອດພາສີ ແລະ ເຄື່ອງທີ່ລະນຶກຈາກສະໜາມບິນ.",
+    zh: "购买免税商品及机场纪念品。",
   },
-  afterLounges: {
-    en: "Use airport lounges (if eligible)",
-    lo: "ໃຊ້ຫ້ອງຮັບຮອງສະໜາມບິນ (ຖ້າມີສິດ)",
-    zh: "使用机场贵宾室（如符合条件）",
-  },
-  afterWaiting: {
-    en: "Rest in waiting areas",
-    lo: "ພັກຜ່ອນໃນເຂດລໍຖ້າ",
-    zh: "在候机区休息",
-  },
-  afterMonitor: {
-    en: "Monitor departure boards for gate information",
-    lo: "ຕິດຕາມປ້າຍສະແດງຂໍ້ມູນປະຕູຂຶ້ນເຮືອບິນ",
-    zh: "查看航班信息屏了解登机口信息",
-  },
-  afterNote: {
-    en: "Note: You cannot return to the public area after clearing security without going through the entire process again.",
-    lo: "ໝາຍເຫດ: ທ່ານບໍ່ສາມາດກັບຄືນໄປເຂດສາທາລະນະຫຼັງຈາກຜ່ານການກວດຄວາມປອດໄພໄດ້ ໂດຍບໍ່ຕ້ອງຜ່ານຂະບວນການທັງໝົດອີກຄັ້ງ.",
-    zh: "注意：通过安检后，如需返回公共区域，必须重新接受全部安检程序。",
+  afterDining: {
+    en: "Enjoy a meal at the airport restaurant.",
+    lo: "ຮັບປະທານອາຫານຢູ່ຫ້ອງອາຫານ.",
+    zh: "在餐厅用餐。",
   },
 } as const;
 

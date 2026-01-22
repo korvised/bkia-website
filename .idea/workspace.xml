@@ -5,9 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor airport security">
+      <change afterPath="$PROJECT_DIR$/.idea/bkia-website.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/db-forest-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/633a701b-1ee6-420b-a713-1c9e8ce39080.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/633a701b-1ee6-420b-a713-1c9e8ce39080.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ceffb36a-1d99-42b5-ac55-7833b6b41251.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f3e82b3e-489f-4dcb-bc0f-e6aa5193db85.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f3e82b3e-489f-4dcb-bc0f-e6aa5193db85.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/security/airport-security.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/security/airport-security.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/baggage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/baggage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/arrivals/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/arrivals/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/facilities/[serviceId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/facilities/[serviceId]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/facilities/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/facilities/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/transfer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/transfer/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/related-services.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/related-services.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/tab-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/flight/flight-display-status.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/flight/flight-display-status.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/departure-nav.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure-nav.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/security.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/security.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,37 +60,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/projects/bkia-website/web/public/images/guides",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "npm.admin.executor": "Run",
-    "npm.dev.executor": "Run",
-    "npm.server.executor": "Run",
-    "npm.start:dev.executor": "Run",
-    "npm.web.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "D:\\projects\\bkia-website\\server\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "D:\\projects\\bkia-website\\server\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website/web/public/images/guides&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.admin.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.server.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start:dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.web.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\projects\\bkia-website\\server\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\projects\\bkia-website\\admin\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\web\public\images\guides" />
@@ -89,7 +109,7 @@
       <recent name="D:\projects\bkia-website\web\src\lib" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server">
+  <component name="RunManager" selected="npm.web">
     <configuration name="admin" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/admin/package.json" />
       <command value="run" />
@@ -127,8 +147,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.server" />
         <item itemvalue="npm.web" />
+        <item itemvalue="npm.server" />
         <item itemvalue="npm.admin" />
       </list>
     </recent_temporary>
@@ -136,7 +156,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-WS-252.28238.10" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.29346.242" />
       </set>
     </attachedChunks>
   </component>
@@ -215,6 +235,19 @@
       <workItem from="1764812315563" duration="19000" />
       <workItem from="1764812527948" duration="18762000" />
       <workItem from="1764906092429" duration="5980000" />
+      <workItem from="1765798855715" duration="53000" />
+      <workItem from="1765799055094" duration="3087000" />
+      <workItem from="1765847341201" duration="5092000" />
+      <workItem from="1766038875984" duration="173000" />
+      <workItem from="1766039077396" duration="12000" />
+      <workItem from="1766108056547" duration="18000" />
+      <workItem from="1766241770951" duration="1386000" />
+      <workItem from="1767610803185" duration="141000" />
+      <workItem from="1767661271094" duration="24000" />
+      <workItem from="1767670335632" duration="794000" />
+      <workItem from="1767671628318" duration="149000" />
+      <workItem from="1768977817159" duration="111000" />
+      <workItem from="1769045496341" duration="9708000" />
     </task>
     <task id="LOCAL-00031" summary="implement config">
       <option name="closed" value="true" />

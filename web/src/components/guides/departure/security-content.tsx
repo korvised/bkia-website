@@ -13,16 +13,6 @@ interface SecurityContentProps {
 export function SecurityContent({ lang }: SecurityContentProps) {
   // Own data for departure guide
   const { security: t } = createPassengerGuideI18n(lang);
-  // Shared authorized data from airport security
-  const { airportSecurity: tAuth } = createPassengerGuideI18n(lang);
-
-  // Liquid rules - use authorized data from airportSecurity
-  const liquidRules = [
-    tAuth.liquids100ml,
-    tAuth.liquidsZiplock,
-    tAuth.liquids1liter,
-    tAuth.liquidsChecked,
-  ];
 
   return (
     <div className="space-y-8">
@@ -70,6 +60,22 @@ export function SecurityContent({ lang }: SecurityContentProps) {
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                  <span className="text-sm text-gray-700">{t.prepareDocs}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.prepareStaff}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.prepareElectronics}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
                   <span className="text-sm text-gray-700">
                     {t.prepareMetalItems}
                   </span>
@@ -77,25 +83,7 @@ export function SecurityContent({ lang }: SecurityContentProps) {
                 <li className="flex items-start gap-2">
                   <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
                   <span className="text-sm text-gray-700">
-                    {t.prepareLaptops}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.prepareJackets}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.prepareTrays}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.prepareBoardingPass}
+                    {t.prepareClothing}
                   </span>
                 </li>
               </ul>
@@ -111,72 +99,74 @@ export function SecurityContent({ lang }: SecurityContentProps) {
                   {t.screeningMethodsTitle}
                 </h3>
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                  <span className="text-sm text-gray-700">
-                    {t.screeningMetalDetector}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-500" />
                   <span className="text-sm text-gray-700">
                     {t.screeningXray}
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-500" />
                   <span className="text-sm text-gray-700">
-                    {t.screeningHandheld}
+                    {t.screeningMetalDetector}
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-500" />
                   <span className="text-sm text-gray-700">
-                    {t.screeningPhysical}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                  <span className="text-sm text-gray-700">
-                    {t.screeningBodyScan}
+                    {t.screeningSecondary}
                   </span>
                 </li>
               </ul>
             </div>
           </div>
 
-          {/* Liquid Restrictions - Use authorized data from airportSecurity */}
+          {/* // Liquid Restrictions Section */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <PiDropHalfBottomFill className="text-primary-600 h-6 w-6" />
+              <PiDropHalfBottomFill className="h-6 w-6 text-blue-600" />
               <h3 className="text-xl font-bold text-gray-900">
-                {tAuth.liquidsTitle}
+                {t.liquidTitle}
               </h3>
             </div>
 
-            <div className="border-primary-200 bg-primary-50 rounded-xl border p-5">
-              <ul className="mb-4 space-y-2">
-                {liquidRules.map((rule, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                    <span className="text-sm text-gray-700">{rule}</span>
-                  </li>
-                ))}
+            <div className="rounded-xl border border-blue-200 bg-blue-50 p-5">
+              <ul className="mb-4 space-y-3">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.liquids100ml}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.liquidsZiplock}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-500" />
+                  <span className="text-sm text-gray-700">
+                    {t.liquidsChecked}
+                  </span>
+                </li>
               </ul>
 
               <div className="rounded-lg bg-white p-4">
                 <p className="mb-2 text-sm font-medium text-gray-900">
                   {t.liquidIncludes}
                 </p>
-                <p className="text-xs text-gray-600">{t.liquidExamples}</p>
+                <p className="text-xs leading-relaxed text-gray-600">
+                  {t.liquidExamples}
+                </p>
               </div>
 
               <div className="mt-3 rounded-lg bg-green-50 p-4">
                 <p className="mb-2 text-sm font-medium text-green-900">
                   {t.liquidExceptions}
                 </p>
-                <ul className="space-y-1">
+                <ul className="space-y-2">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="mt-0.5 h-3 w-3 shrink-0 text-green-600" />
                     <span className="text-xs text-green-800">
@@ -187,12 +177,6 @@ export function SecurityContent({ lang }: SecurityContentProps) {
                     <CheckCircle className="mt-0.5 h-3 w-3 shrink-0 text-green-600" />
                     <span className="text-xs text-green-800">
                       {t.liquidMedication}
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="mt-0.5 h-3 w-3 shrink-0 text-green-600" />
-                    <span className="text-xs text-green-800">
-                      {t.liquidDutyFree}
                     </span>
                   </li>
                 </ul>
@@ -210,55 +194,26 @@ export function SecurityContent({ lang }: SecurityContentProps) {
             </div>
 
             <div className="rounded-xl border border-amber-200 bg-amber-50 p-5">
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-200 text-xs font-medium text-amber-800">
-                    1
-                  </span>
-                  <span className="text-sm text-gray-700">
-                    {t.reminderArriveEarly}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-200 text-xs font-medium text-amber-800">
-                    2
-                  </span>
-                  <span className="text-sm text-gray-700">
-                    {t.reminderCooperate}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-200 text-xs font-medium text-amber-800">
-                    3
-                  </span>
-                  <span className="text-sm text-gray-700">
-                    {t.reminderConfiscated}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-200 text-xs font-medium text-amber-800">
-                    4
-                  </span>
-                  <span className="text-sm text-gray-700">
-                    {t.reminderRandomScreening}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-200 text-xs font-medium text-amber-800">
-                    5
-                  </span>
-                  <span className="text-sm text-gray-700">
-                    {t.reminderNoJokes}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-200 text-xs font-medium text-amber-800">
-                    6
-                  </span>
-                  <span className="text-sm text-gray-700">
-                    {t.reminderNoStrangers}
-                  </span>
-                </li>
+              <ul className="space-y-4">
+                {[
+                  t.reminderCheckIn,
+                  t.reminderCooperate,
+                  t.reminderWeapons,
+                  t.reminderSharpObjects,
+                  t.reminderFlammables,
+                  t.reminderDrugs,
+                  t.reminderNoJokes,
+                  t.reminderLaoLaw,
+                ].map((text, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-200 text-[10px] font-bold text-amber-800">
+                      {index + 1}
+                    </span>
+                    <span className="text-sm leading-relaxed text-gray-700">
+                      {text}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -271,38 +226,41 @@ export function SecurityContent({ lang }: SecurityContentProps) {
                 {t.afterSecurityTitle}
               </h3>
             </div>
-            <p className="text-base leading-relaxed text-gray-600">
+            <p className="text-sm leading-relaxed text-gray-600">
               {t.afterSecurityDesc}
             </p>
 
             <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <span className="text-sm text-gray-700">
+                    {t.afterVipRoom}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <span className="text-sm text-gray-700">
+                    {t.afterHonoraryGuest}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <span className="text-sm text-gray-700">
+                    {t.afterRestMonitor}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   <span className="text-sm text-gray-700">
                     {t.afterDutyFree}
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
-                  <span className="text-sm text-gray-700">
-                    {t.afterLounges}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
-                  <span className="text-sm text-gray-700">
-                    {t.afterWaiting}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
-                  <span className="text-sm text-gray-700">
-                    {t.afterMonitor}
-                  </span>
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <span className="text-sm text-gray-700">{t.afterDining}</span>
                 </li>
               </ul>
-              <p className="mt-4 text-xs text-gray-500 italic">{t.afterNote}</p>
             </div>
           </div>
         </div>

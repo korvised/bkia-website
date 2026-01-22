@@ -48,91 +48,96 @@ export function ArrivalTabNavigation({
   activeTab,
 }: ArrivalTabNavigationProps) {
   return (
-    <nav aria-label="Arrival guide progress" className="mb-6">
-      <ol
-        role="list"
-        className="divide-y divide-gray-300 overflow-hidden rounded-lg border border-gray-300 bg-white md:flex md:divide-y-0"
-      >
-        {tabs.map((tab, tabIdx) => {
-          const Icon = tab.icon;
-          const status = getTabStatus(tab, activeTab);
-          const isLast = tabIdx === tabs.length - 1;
+    <div className="bg-white pb-4 lg:pb-6">
+      <nav aria-label="Arrival guide progress" className="container">
+        <ol
+          role="list"
+          className="divide-y divide-gray-300 overflow-hidden rounded-lg border border-gray-300 bg-white md:flex md:divide-y-0"
+        >
+          {tabs.map((tab, tabIdx) => {
+            const Icon = tab.icon;
+            const status = getTabStatus(tab, activeTab);
+            const isLast = tabIdx === tabs.length - 1;
 
-          return (
-            <li key={tab.id} className="relative md:flex md:flex-1">
-              {status === "complete" ? (
-                <Link
-                  href={`/${lang}/guides/arrivals?tab=${tab.id}`}
-                  className="group flex w-full items-center"
-                >
-                  <span className="flex items-center px-4 py-4 text-sm font-medium">
-                    <span className="bg-primary-600 group-hover:bg-primary-700 flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-colors">
-                      <Icon className="h-5 w-5 text-white" aria-hidden="true" />
+            return (
+              <li key={tab.id} className="relative md:flex md:flex-1">
+                {status === "complete" ? (
+                  <Link
+                    href={`/${lang}/guides/arrivals?tab=${tab.id}`}
+                    className="group flex w-full items-center"
+                  >
+                    <span className="flex items-center px-4 py-4 text-sm font-medium">
+                      <span className="bg-primary-600 group-hover:bg-primary-700 flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-colors">
+                        <Icon
+                          className="h-5 w-5 text-white"
+                          aria-hidden="true"
+                        />
+                      </span>
+                      <span className="ml-3 text-sm font-medium text-gray-900 group-hover:text-gray-700">
+                        {tab.label}
+                      </span>
                     </span>
-                    <span className="ml-3 text-sm font-medium text-gray-900 group-hover:text-gray-700">
-                      {tab.label}
-                    </span>
-                  </span>
-                </Link>
-              ) : status === "current" ? (
-                <Link
-                  href={`/${lang}/guides/arrivals?tab=${tab.id}`}
-                  aria-current="step"
-                  className="flex items-center px-4 py-4 text-sm font-medium"
-                >
-                  <span className="border-primary-600 bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2">
-                    <Icon
-                      className="text-primary-600 h-5 w-5"
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <span className="text-primary-600 ml-3 text-sm font-medium">
-                    {tab.label}
-                  </span>
-                </Link>
-              ) : (
-                <Link
-                  href={`/${lang}/guides/arrivals?tab=${tab.id}`}
-                  className="group flex items-center"
-                >
-                  <span className="flex items-center px-4 py-4 text-sm font-medium">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-gray-300 transition-colors group-hover:border-gray-400">
+                  </Link>
+                ) : status === "current" ? (
+                  <Link
+                    href={`/${lang}/guides/arrivals?tab=${tab.id}`}
+                    aria-current="step"
+                    className="flex items-center px-4 py-4 text-sm font-medium"
+                  >
+                    <span className="border-primary-600 bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2">
                       <Icon
-                        className="h-5 w-5 text-gray-500 group-hover:text-gray-700"
+                        className="text-primary-600 h-5 w-5"
                         aria-hidden="true"
                       />
                     </span>
-                    <span className="ml-3 text-sm font-medium text-gray-500 group-hover:text-gray-900">
+                    <span className="text-primary-600 ml-3 text-sm font-medium">
                       {tab.label}
                     </span>
-                  </span>
-                </Link>
-              )}
-
-              {!isLast && (
-                <div
-                  aria-hidden="true"
-                  className="absolute top-0 right-0 hidden h-full w-5 md:block"
-                >
-                  <svg
-                    fill="none"
-                    viewBox="0 0 22 80"
-                    preserveAspectRatio="none"
-                    className="h-full w-full text-gray-300"
+                  </Link>
+                ) : (
+                  <Link
+                    href={`/${lang}/guides/arrivals?tab=${tab.id}`}
+                    className="group flex items-center"
                   >
-                    <path
-                      d="M0 -2L20 40L0 82"
-                      stroke="currentColor"
-                      vectorEffect="non-scaling-stroke"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              )}
-            </li>
-          );
-        })}
-      </ol>
-    </nav>
+                    <span className="flex items-center px-4 py-4 text-sm font-medium">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-gray-300 transition-colors group-hover:border-gray-400">
+                        <Icon
+                          className="h-5 w-5 text-gray-500 group-hover:text-gray-700"
+                          aria-hidden="true"
+                        />
+                      </span>
+                      <span className="ml-3 text-sm font-medium text-gray-500 group-hover:text-gray-900">
+                        {tab.label}
+                      </span>
+                    </span>
+                  </Link>
+                )}
+
+                {!isLast && (
+                  <div
+                    aria-hidden="true"
+                    className="absolute top-0 right-0 hidden h-full w-5 md:block"
+                  >
+                    <svg
+                      fill="none"
+                      viewBox="0 0 22 80"
+                      preserveAspectRatio="none"
+                      className="h-full w-full text-gray-300"
+                    >
+                      <path
+                        d="M0 -2L20 40L0 82"
+                        stroke="currentColor"
+                        vectorEffect="non-scaling-stroke"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </nav>
+    </div>
   );
 }

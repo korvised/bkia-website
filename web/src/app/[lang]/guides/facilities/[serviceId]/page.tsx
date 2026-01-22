@@ -122,16 +122,18 @@ export default async function ServiceDetailPage({
   return (
     <div className="space-y-6 sm:space-y-8">
       {/* Back Navigation */}
-      <Link
-        href={`/${lang}/guides/facilities`}
-        className="text-primary-600 hover:text-primary-700 inline-flex items-center gap-2 text-sm font-medium transition-colors sm:text-base"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        {getLocalizedText(pageContent.backToServices, language)}
-      </Link>
+      <div className="container">
+        <Link
+          href={`/${lang}/guides/facilities`}
+          className="text-primary-600 hover:text-primary-700 inline-flex items-center gap-2 text-sm font-medium transition-colors sm:text-base"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          {getLocalizedText(pageContent.backToServices, language)}
+        </Link>
+      </div>
 
       {/* Service Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+      <div className="container flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
         <div className="flex-shrink-0">
           <div
             className={cn(
@@ -157,7 +159,7 @@ export default async function ServiceDetailPage({
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="container grid gap-6 lg:grid-cols-3">
         {/* Left Column - Main Info */}
         <div className="space-y-6 lg:col-span-2">
           {/* Features */}
@@ -319,29 +321,31 @@ export default async function ServiceDetailPage({
       </div>
 
       {/* Need Help Banner */}
-      <div className="border-primary-200 bg-primary-50 rounded-xl border-2 p-5 sm:p-6">
-        <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-gray-900 sm:text-xl">
-          <HelpCircle className="text-primary-600 h-5 w-5 sm:h-6 sm:w-6" />
-          {getLocalizedText(pageContent.needHelp, language)}
-        </h3>
-        <p className="mb-4 text-sm leading-relaxed text-gray-700 sm:text-base">
-          {getLocalizedText(pageContent.helpDescription, language)}
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="tel:+85684260179"
-            className="bg-primary-600 hover:bg-primary-700 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors sm:px-5 sm:py-2.5"
-          >
-            <Phone className="h-4 w-4" />
-            +856 84 260 179
-          </a>
-          <a
-            href="mailto:bkia@bokeointernationalairport.com"
-            className="border-primary-600 text-primary-600 hover:bg-primary-50 inline-flex items-center gap-2 rounded-lg border-2 px-4 py-2 text-sm font-medium transition-colors sm:px-5 sm:py-2.5"
-          >
-            <Mail className="h-4 w-4" />
-            Email Us
-          </a>
+      <div className="container">
+        <div className="border-primary-200 bg-primary-50 rounded-xl border-2 p-5 sm:p-6">
+          <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-gray-900 sm:text-xl">
+            <HelpCircle className="text-primary-600 h-5 w-5 sm:h-6 sm:w-6" />
+            {getLocalizedText(pageContent.needHelp, language)}
+          </h3>
+          <p className="mb-4 text-sm leading-relaxed text-gray-700 sm:text-base">
+            {getLocalizedText(pageContent.helpDescription, language)}
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="tel:+85684260179"
+              className="bg-primary-600 hover:bg-primary-700 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors sm:px-5 sm:py-2.5"
+            >
+              <Phone className="h-4 w-4" />
+              +856 84 260 179
+            </a>
+            <a
+              href="mailto:bkia@bokeointernationalairport.com"
+              className="border-primary-600 text-primary-600 hover:bg-primary-50 inline-flex items-center gap-2 rounded-lg border-2 px-4 py-2 text-sm font-medium transition-colors sm:px-5 sm:py-2.5"
+            >
+              <Mail className="h-4 w-4" />
+              Email Us
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ export const departureNav = {
   },
   security: {
     en: "Security Check",
-    lo: "ກວດຄວາມປອດໄພ",
+    lo: "ຈຸດກວດຄົ້ນ",
     zh: "安检",
   },
   immigration: {

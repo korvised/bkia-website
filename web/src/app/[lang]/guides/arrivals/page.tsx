@@ -55,12 +55,12 @@ export default async function ArrivalPage({
   const { tab = "airport" } = await searchParams;
 
   return (
-    <div>
+    <div className="bg-gray-50">
       {/* Tab Navigation */}
       <ArrivalTabNavigation lang={lang as Lang} activeTab={tab} />
 
       {/* Content */}
-      <div className="rounded-lg bg-white p-8 shadow-sm">
+      <div className="container py-8">
         <Suspense fallback={<ContentSkeleton />}>
           <ArrivalContent tab={tab} />
         </Suspense>
