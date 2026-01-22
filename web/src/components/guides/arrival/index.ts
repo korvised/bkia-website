@@ -1,5 +1,5 @@
 export { ArrivalTabNavigation } from './tab-navigation';
-export { ArrivalAirportContent } from './airport-content';
+export { ArrivalAirportContent } from './arrival-airport-content';
 export { CustomsInspectionContent } from './customs-inspection-content';
 export { BorderInspectionContent } from './border-inspection-content';
 export { BaggageClaimContent } from './baggage-claim-content';

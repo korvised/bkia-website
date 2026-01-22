@@ -1,234 +1,213 @@
-import { AlertCircle, Clock, FileText, UserCheck } from "lucide-react";
+import Image from "next/image";
+import { AlertCircle, Clock, FileText } from "lucide-react";
+import { Lang } from "@/types/language";
+import { createArrivalGuideI18n } from "@/data/i18n/guide";
 
-export function BorderInspectionContent() {
+interface BorderInspectionContentProps {
+  lang: Lang;
+}
+
+export function BorderInspectionContent({
+  lang,
+}: BorderInspectionContentProps) {
+  const { borderInspection: t } = createArrivalGuideI18n(lang);
+
   return (
-    <div className="space-y-6">
-      <div className="flex items-start gap-4">
-        <div className="hidden flex-shrink-0 sm:block">
-          <div className="bg-primary-50 flex h-24 w-24 items-center justify-center rounded-lg">
-            <UserCheck className="text-primary-500 h-12 w-12" />
+    <div className="space-y-8">
+      {/* Title Section - Full Width */}
+      <div>
+        <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
+          {t.title}
+        </h2>
+        <p className="text-lg leading-relaxed text-gray-700">{t.intro}</p>
+      </div>
+
+      {/* Main Content with Image */}
+      <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
+        {/* Left side - Illustration */}
+        <div className="flex justify-center lg:w-96 lg:flex-none">
+          <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
+            <Image
+              src="/images/guides/border-inspection.png"
+              alt="Immigration Border Control"
+              fill
+              className="object-contain object-top"
+              priority
+              sizes="(max-width: 1024px) 100vw, 400px"
+            />
           </div>
         </div>
-        <div className="flex-1">
-          <div className="mb-2 flex items-center gap-x-2 sm:mb-4">
-            <div className="bg-primary-50 flex items-center justify-center rounded-lg p-2 sm:hidden">
-              <UserCheck className="text-primary-500 h-6 w-6" />
+
+        {/* Right side - Content */}
+        <div className="flex-1 space-y-8">
+          {/* Wait Time */}
+          <div className="border-l-4 border-amber-400 bg-amber-50 p-4">
+            <div className="flex gap-3">
+              <Clock className="h-6 w-6 flex-shrink-0 text-amber-600" />
+              <div>
+                <p className="mb-2 text-sm font-semibold text-amber-900">
+                  {t.waitTimeTitle}
+                </p>
+                <ul className="space-y-1 text-sm text-amber-800">
+                  <li>• {t.waitOffPeak}</li>
+                  <li>• {t.waitPeak}</li>
+                  <li>• {t.waitAdvice}</li>
+                </ul>
+              </div>
             </div>
-            <h2 className="text-lg font-bold text-gray-900 sm:text-2xl">
-              Immigration / Border Control (Arrival)
-            </h2>
           </div>
 
-          <div className="space-y-6 text-sm sm:text-base">
-            <div>
-              <p className="mb-4 text-gray-700">
-                All international passengers must clear immigration control at
-                Bokeo International Airport. Present your passport and completed
-                arrival card at the immigration counter. Lao citizens and
-                foreign nationals use separate queues.
-              </p>
-            </div>
-
-            <div className="border-l-4 border-yellow-400 bg-yellow-50 p-4">
-              <div className="flex gap-3">
-                <Clock className="h-6 w-6 flex-shrink-0 text-yellow-600" />
-                <div>
-                  <p className="mb-2 text-sm font-medium text-yellow-800">
-                    <strong>⏱️ Estimated Wait Time:</strong>
-                  </p>
-                  <ul className="space-y-1 text-sm text-yellow-800">
-                    <li>• Off-peak hours: 5-15 minutes</li>
-                    <li>• Peak hours (multiple arrivals): 15-45 minutes</li>
-                    <li>• Have documents ready to expedite processing</li>
-                  </ul>
+          {/* Required Documents */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-900">
+              {t.documentsTitle}
+            </h3>
+            <div className="grid gap-4 md:grid-cols-2">
+              {/* Lao Citizens */}
+              <div className="rounded-xl border border-gray-200 bg-white p-5">
+                <div className="mb-3 flex items-center gap-2">
+                  <FileText className="text-primary-500 h-5 w-5" />
+                  <h4 className="text-base font-semibold text-gray-900">
+                    {t.laoCitizensTitle}
+                  </h4>
                 </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                Required Documents
-              </h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <div className="mb-3 flex items-center gap-2">
-                    <FileText className="text-primary-500 h-5 w-5" />
-                    <h4 className="font-medium text-gray-900">Lao Citizens</h4>
-                  </div>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary-500">•</span>
-                      <span>Valid Lao passport</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary-500">•</span>
-                      <span>Completed arrival card</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary-500">•</span>
-                      <span>No visa required for Lao nationals</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <div className="mb-3 flex items-center gap-2">
-                    <FileText className="text-primary-500 h-5 w-5" />
-                    <h4 className="font-medium text-gray-900">
-                      Foreign Nationals
-                    </h4>
-                  </div>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary-500">•</span>
-                      <span>Valid passport (6+ months validity)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary-500">•</span>
-                      <span>Valid Lao visa OR visa exemption</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary-500">•</span>
-                      <span>Completed arrival card (white form)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary-500">•</span>
-                      <span>Return/onward ticket (may be checked)</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                Visa on Arrival (VOA)
-              </h3>
-              <div className="border-primary-500 border-l-4 bg-blue-50 p-4">
-                <p className="mb-3 text-sm text-gray-800">
-                  <strong>Available at Bokeo International Airport:</strong>{" "}
-                  Citizens of most countries can obtain a visa on arrival.
-                  Requirements and process:
-                </p>
-                <div className="space-y-2 text-sm text-gray-800">
-                  <p>
-                    <strong>Fee:</strong> USD 30-42 (depending on nationality).
-                    Payment in USD cash only.
-                  </p>
-                  <p>
-                    <strong>Processing Time:</strong> 10-20 minutes
-                  </p>
-                  <p>
-                    <strong>Validity:</strong> 30 days from date of entry
-                  </p>
-                  <p>
-                    <strong>Documents Needed:</strong>
-                  </p>
-                  <ul className="ml-6 space-y-1">
-                    <li>• Passport with 6 months validity and 2 blank pages</li>
-                    <li>
-                      • 1 passport photo (4x6cm) - photo booth available at
-                      airport
-                    </li>
-                    <li>• Completed visa application form</li>
-                    <li>• Cash in USD for visa fee</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                Immigration Interview Questions
-              </h3>
-              <div className="rounded-lg border border-gray-200 bg-white p-4">
-                <p className="mb-3 text-sm text-gray-700">
-                  Immigration officers may ask you the following questions.
-                  Answer honestly and clearly:
-                </p>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>
-                    <strong>Q:</strong> What is the purpose of your visit?
-                    <br />
-                    <span className="text-xs text-gray-600">
-                      A: Tourism / Business / Visiting family / Transit
-                    </span>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary-500">•</span>
+                    <span>{t.laoDoc1}</span>
                   </li>
-                  <li>
-                    <strong>Q:</strong> How long will you stay in Laos?
-                    <br />
-                    <span className="text-xs text-gray-600">
-                      A: State your planned duration (e.g., &#34;5 days,&#34;
-                      &#34;2 weeks&#34;)
-                    </span>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary-500">•</span>
+                    <span>{t.laoDoc2}</span>
                   </li>
-                  <li>
-                    <strong>Q:</strong> Where will you be staying?
-                    <br />
-                    <span className="text-xs text-gray-600">
-                      A: Provide hotel name or address
-                    </span>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary-500">•</span>
+                    <span>{t.laoDoc3}</span>
                   </li>
-                  <li>
-                    <strong>Q:</strong> Do you have sufficient funds for your
-                    stay?
-                    <br />
-                    <span className="text-xs text-gray-600">
-                      A: Yes (officers rarely check but may ask)
-                    </span>
+                </ul>
+              </div>
+
+              {/* Foreign Nationals */}
+              <div className="rounded-xl border border-gray-200 bg-white p-5">
+                <div className="mb-3 flex items-center gap-2">
+                  <FileText className="text-primary-500 h-5 w-5" />
+                  <h4 className="text-base font-semibold text-gray-900">
+                    {t.foreignNationalsTitle}
+                  </h4>
+                </div>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary-500">•</span>
+                    <span>{t.foreignDoc1}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary-500">•</span>
+                    <span>{t.foreignDoc2}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary-500">•</span>
+                    <span>{t.foreignDoc3}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary-500">•</span>
+                    <span>{t.foreignDoc4}</span>
                   </li>
                 </ul>
               </div>
             </div>
+          </div>
 
-            <div className="border-l-4 border-yellow-400 bg-yellow-50 p-4">
-              <div className="flex gap-3">
-                <AlertCircle className="h-6 w-6 flex-shrink-0 text-yellow-600" />
-                <div>
-                  <h4 className="mb-2 font-semibold text-yellow-900">
-                    Important Reminders
-                  </h4>
-                  <ul className="space-y-2 text-sm text-yellow-800">
-                    <li>
-                      • Keep the departure portion of your arrival card -
-                      you&#39;ll need it when leaving Laos
-                    </li>
-                    <li>
-                      • Immigration will stamp your passport with entry date and
-                      permitted stay duration
-                    </li>
-                    <li>
-                      • Check your stamp carefully before leaving the counter
-                    </li>
-                    <li>
-                      • If you lose your arrival card, report to immigration
-                      office for replacement
-                    </li>
-                    <li>
-                      • Do not overstay your visa - fines of USD 10/day apply
-                    </li>
-                  </ul>
-                </div>
+          {/* Visa on Arrival */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-900">{t.voaTitle}</h3>
+            <div className="border-primary-500 border-l-4 bg-blue-50 p-4">
+              <p className="mb-3 text-sm text-gray-800">
+                <strong>{t.voaAvailable}</strong>
+              </p>
+              <div className="space-y-2 text-sm text-gray-800">
+                <p>{t.voaFee}</p>
+                <p>{t.voaProcessing}</p>
+                <p>{t.voaValidity}</p>
+                <p className="font-semibold">{t.voaDocuments}</p>
+                <ul className="ml-6 space-y-1">
+                  <li>• {t.voaDoc1}</li>
+                  <li>• {t.voaDoc2}</li>
+                  <li>• {t.voaDoc3}</li>
+                  <li>• {t.voaDoc4}</li>
+                </ul>
               </div>
             </div>
+          </div>
 
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                After Immigration Clearance
-              </h3>
-              <div className="rounded-lg bg-gray-50 p-4">
-                <p className="text-sm text-gray-700">
-                  Once your passport is stamped, proceed to the baggage claim
-                  area. Follow signs for baggage carousels. Your flight number
-                  will be displayed on screens above the carousel.
-                </p>
+          {/* Interview Questions */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-900">
+              {t.interviewTitle}
+            </h3>
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
+              <p className="mb-3 text-base text-gray-700">{t.interviewDesc}</p>
+              <ul className="space-y-3 text-sm text-gray-700">
+                <li>
+                  <strong>{t.q1}</strong>
+                  <br />
+                  <span className="text-xs text-gray-600">{t.a1}</span>
+                </li>
+                <li>
+                  <strong>{t.q2}</strong>
+                  <br />
+                  <span className="text-xs text-gray-600">{t.a2}</span>
+                </li>
+                <li>
+                  <strong>{t.q3}</strong>
+                  <br />
+                  <span className="text-xs text-gray-600">{t.a3}</span>
+                </li>
+                <li>
+                  <strong>{t.q4}</strong>
+                  <br />
+                  <span className="text-xs text-gray-600">{t.a4}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Important Reminders */}
+          <div className="border-l-4 border-amber-400 bg-amber-50 p-4">
+            <div className="flex gap-3">
+              <AlertCircle className="h-6 w-6 flex-shrink-0 text-amber-600" />
+              <div>
+                <h4 className="mb-2 text-base font-semibold text-amber-900">
+                  {t.remindersTitle}
+                </h4>
+                <ul className="space-y-2 text-sm text-amber-800">
+                  <li>• {t.reminder1}</li>
+                  <li>• {t.reminder2}</li>
+                  <li>• {t.reminder3}</li>
+                  <li>• {t.reminder4}</li>
+                  <li>• {t.reminder5}</li>
+                </ul>
               </div>
             </div>
+          </div>
 
-            <div className="rounded bg-gray-50 p-3 text-xs text-gray-600">
-              <p className="mb-1 font-medium">Need Assistance?</p>
-              <p>Immigration Help Desk: Available at the immigration hall</p>
-              <p>Emergency: Contact airport police or information desk</p>
+          {/* After Clearance */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-900">
+              {t.afterClearanceTitle}
+            </h3>
+            <div className="rounded-xl bg-gray-50 p-4">
+              <p className="text-base text-gray-700">{t.afterClearanceDesc}</p>
+            </div>
+          </div>
+
+          {/* Assistance */}
+          <div className="rounded-xl bg-gray-50 p-4">
+            <p className="mb-2 text-sm font-semibold text-gray-900">
+              {t.assistanceTitle}
+            </p>
+            <div className="space-y-1 text-xs text-gray-600">
+              <p>{t.assistanceDesk}</p>
+              <p>{t.assistanceEmergency}</p>
             </div>
           </div>
         </div>

@@ -5,25 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor airport departure page">
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/guides/common/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/guides/common/stepIndicator.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/arrival-airport.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/arrival-nav.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/baggage-claim.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/border-inspection.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/customs-inspection.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/exit-customs.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/leaving-airport.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/baggage-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/baggage-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/boarding-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/boarding-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/checkin-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/checkin-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/immigration-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/immigration-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/related-services.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/related-services.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/arrivals/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/arrivals/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/arrival-airport-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/baggage-claim-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/baggage-claim-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/border-inspection-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/border-inspection-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/customs-inspection-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/customs-inspection-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/exit-customs-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/exit-customs-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/leaving-airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/leaving-airport-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/tab-navigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/tab-navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/security/airport-security.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/security/airport-security.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/airport-security.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure/airport-security.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/baggage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure/baggage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/boarding.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure/boarding.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/checkin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure/checkin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/departure-nav.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure/departure-nav.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/immigration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure/immigration.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/related-services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure/related-services.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/security.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/departure/security.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="pg" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,7 +70,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "arrival-guide",
     "javascript.preferred.runtime.type.id": "node",
     "last_opened_file_path": "D:/projects/bkia-website/web/src/data/i18n/guide",
     "node.js.detected.package.eslint": "true",
@@ -100,14 +103,14 @@
       <recent name="D:\projects\bkia-website\admin\src\assets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\src\data\i18n\guide\arrival" />
       <recent name="D:\projects\bkia-website\web\src\components\guides\departure" />
       <recent name="D:\projects\bkia-website\web\src\components\guides" />
       <recent name="D:\projects\bkia-website\admin\src\components\ui\table" />
       <recent name="D:\projects\bkia-website\admin\src\components\ui\form" />
-      <recent name="D:\projects\bkia-website\web\src\lib" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web">
+  <component name="RunManager" selected="npm.server">
     <configuration name="admin" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/admin/package.json" />
       <command value="run" />
@@ -145,8 +148,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.web" />
         <item itemvalue="npm.server" />
+        <item itemvalue="npm.web" />
         <item itemvalue="npm.admin" />
       </list>
     </recent_temporary>
@@ -245,15 +248,7 @@
       <workItem from="1767670335632" duration="794000" />
       <workItem from="1767671628318" duration="149000" />
       <workItem from="1768977817159" duration="111000" />
-      <workItem from="1769045496341" duration="12598000" />
-    </task>
-    <task id="LOCAL-00033" summary="refactor time ui">
-      <option name="closed" value="true" />
-      <created>1762220648846</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1762220648846</updated>
+      <workItem from="1769045496341" duration="19176000" />
     </task>
     <task id="LOCAL-00034" summary="implement flight entity &amp; airline module">
       <option name="closed" value="true" />
@@ -639,7 +634,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769068057383</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="refactor airport departure page">
+      <option name="closed" value="true" />
+      <created>1769068822474</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1769068822474</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -14,7 +14,7 @@ import { ArrivalTab } from "@/types/guide";
 import { Metadata } from "next";
 
 interface ArrivalPageProps {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: Lang }>;
   searchParams: Promise<{ tab?: ArrivalTab }>;
 }
 
@@ -62,7 +62,7 @@ export default async function ArrivalPage({
       {/* Content */}
       <div className="container py-8">
         <Suspense fallback={<ContentSkeleton />}>
-          <ArrivalContent tab={tab} />
+          <ArrivalContent tab={tab} lang={lang} />
         </Suspense>
       </div>
 
@@ -72,22 +72,22 @@ export default async function ArrivalPage({
   );
 }
 
-function ArrivalContent({ tab }: { tab: ArrivalTab }) {
+function ArrivalContent({ tab, lang }: { tab: ArrivalTab; lang: Lang }) {
   switch (tab) {
     case "airport":
-      return <ArrivalAirportContent />;
+      return <ArrivalAirportContent lang={lang} />;
     case "customs-inspection":
-      return <CustomsInspectionContent />;
+      return <CustomsInspectionContent lang={lang} />;
     case "border-inspection":
-      return <BorderInspectionContent />;
+      return <BorderInspectionContent lang={lang} />;
     case "baggage-claim":
-      return <BaggageClaimContent />;
+      return <BaggageClaimContent lang={lang} />;
     case "exit-customs":
-      return <ExitCustomsContent />;
+      return <ExitCustomsContent lang={lang} />;
     case "leaving":
-      return <LeavingAirportContent />;
+      return <LeavingAirportContent lang={lang} />;
     default:
-      return <ArrivalAirportContent />;
+      return <ArrivalAirportContent lang={lang} />;
   }
 }
 

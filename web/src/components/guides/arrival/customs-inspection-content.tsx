@@ -1,253 +1,220 @@
-import { Package, CheckCircle, AlertTriangle } from "lucide-react";
+import Image from "next/image";
+import { CheckCircle, AlertTriangle } from "lucide-react";
+import { Lang } from "@/types/language";
+import { createArrivalGuideI18n } from "@/data/i18n/guide";
 
-export function CustomsInspectionContent() {
+interface CustomsInspectionContentProps {
+  lang: Lang;
+}
+
+export function CustomsInspectionContent({
+  lang,
+}: CustomsInspectionContentProps) {
+  const { customsInspection: t } = createArrivalGuideI18n(lang);
+
   return (
-    <div className="space-y-6">
-      <div className="flex items-start gap-4">
-        <div className="hidden flex-shrink-0 sm:block">
-          <div className="bg-primary-50 flex h-24 w-24 items-center justify-center rounded-lg">
-            <Package className="text-primary-500 h-12 w-12" />
+    <div className="space-y-8">
+      {/* Title Section - Full Width */}
+      <div>
+        <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
+          {t.title}
+        </h2>
+        <p className="text-lg leading-relaxed text-gray-700">{t.intro}</p>
+      </div>
+
+      {/* Main Content with Image */}
+      <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
+        {/* Left side - Illustration */}
+        <div className="flex justify-center lg:w-96 lg:flex-none">
+          <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
+            <Image
+              src="/images/guides/customs-inspection.png"
+              alt="Customs Declaration"
+              fill
+              className="object-contain object-top"
+              priority
+              sizes="(max-width: 1024px) 100vw, 400px"
+            />
           </div>
         </div>
-        <div className="flex-1">
-          <div className="mb-2 flex items-center gap-x-2 sm:mb-4">
-            <div className="bg-primary-50 flex items-center justify-center rounded-lg p-2 sm:hidden">
-              <Package className="text-primary-500 h-6 w-6" />
+
+        {/* Right side - Content */}
+        <div className="flex-1 space-y-8">
+          {/* Declaration Requirements */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-900">
+              {t.declarationTitle}
+            </h3>
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="mt-1 h-6 w-6 flex-shrink-0 text-amber-500" />
+                <div>
+                  <p className="mb-3 text-base font-semibold text-gray-900">
+                    {t.mustDeclare}
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
+                      <span>{t.declareCurrency}</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
+                      <span>{t.declareLaoKip}</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
+                      <span>{t.declareGold}</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
+                      <span>{t.declareCommercial}</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
+                      <span>{t.declareRestricted}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <h2 className="text-lg font-bold text-gray-900 sm:text-2xl">
-              Customs Declaration (Arrival)
-            </h2>
           </div>
 
-          <div className="space-y-6 text-sm sm:text-base">
-            <div>
-              <p className="mb-4 text-gray-700">
-                International passengers arriving at Bokeo International Airport
-                must declare goods subject to customs duties and comply with Lao
-                PDR import regulations. Complete your customs declaration card
-                before reaching the inspection counter.
-              </p>
-            </div>
+          {/* Duty-Free Allowances */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-900">
+              {t.dutyFreeTitle}
+            </h3>
+            <div className="grid gap-4 md:grid-cols-3">
+              {/* Tobacco */}
+              <div className="rounded-xl bg-green-50 p-4">
+                <h4 className="mb-3 text-base font-semibold text-gray-900">
+                  {t.tobaccoTitle}
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600">✓</span>
+                    <span>{t.tobacco1}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600">✓</span>
+                    <span>{t.tobacco2}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600">✓</span>
+                    <span>{t.tobacco3}</span>
+                  </li>
+                </ul>
+              </div>
 
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                Declaration Requirements
-              </h3>
-              <div className="mb-4 rounded-lg border border-gray-200 bg-white p-4">
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="mt-1 h-6 w-6 flex-shrink-0 text-yellow-500" />
-                  <div>
-                    <p className="mb-2 font-medium text-gray-900">
-                      You MUST Declare:
-                    </p>
-                    <ul className="space-y-2 text-sm text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
-                        <span>
-                          <strong>Currency:</strong> Foreign currency over USD
-                          10,000 or equivalent
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
-                        <span>
-                          <strong>Lao Kip:</strong> Amounts over 10,000,000 LAK
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
-                        <span>
-                          <strong>Gold & Precious Metals:</strong> All jewelry
-                          and gold bars/bullion
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
-                        <span>
-                          <strong>Commercial Goods:</strong> Items for resale or
-                          business use
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
-                        <span>
-                          <strong>Restricted Items:</strong> Medications,
-                          plants, animal products
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+              {/* Alcohol */}
+              <div className="rounded-xl bg-green-50 p-4">
+                <h4 className="mb-3 text-base font-semibold text-gray-900">
+                  {t.alcoholTitle}
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600">✓</span>
+                    <span>{t.alcohol1}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600">✓</span>
+                    <span>{t.alcohol2}</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Personal Items */}
+              <div className="rounded-xl bg-green-50 p-4">
+                <h4 className="mb-3 text-base font-semibold text-gray-900">
+                  {t.personalTitle}
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600">✓</span>
+                    <span>{t.personal1}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600">✓</span>
+                    <span>{t.personal2}</span>
+                  </li>
+                </ul>
               </div>
             </div>
+          </div>
 
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                Duty-Free Allowances
-              </h3>
-              <div className="grid gap-4 md:grid-cols-3">
-                <div className="rounded-lg bg-green-50 p-4">
-                  <h4 className="mb-3 font-medium text-gray-900">
-                    Tobacco Products
-                  </h4>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600">✓</span>
-                      <span>200 cigarettes, OR</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600">✓</span>
-                      <span>50 cigars, OR</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600">✓</span>
-                      <span>250g of tobacco</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="rounded-lg bg-green-50 p-4">
-                  <h4 className="mb-3 font-medium text-gray-900">Alcohol</h4>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600">✓</span>
-                      <span>1 liter of spirits, OR</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600">✓</span>
-                      <span>2 liters of wine/beer</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="rounded-lg bg-green-50 p-4">
-                  <h4 className="mb-3 font-medium text-gray-900">
-                    Personal Items
-                  </h4>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600">✓</span>
-                      <span>Perfume: 250ml</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600">✓</span>
-                      <span>Gifts: up to USD 500</span>
-                    </li>
-                  </ul>
-                </div>
+          {/* Prohibited Items */}
+          <div className="border-l-4 border-red-500 bg-red-50 p-4">
+            <div className="flex gap-3">
+              <AlertTriangle className="h-6 w-6 flex-shrink-0 text-red-600" />
+              <div>
+                <h4 className="mb-2 text-base font-semibold text-red-900">
+                  {t.prohibitedTitle}
+                </h4>
+                <p className="mb-3 text-sm text-red-800">{t.prohibitedDesc}</p>
+                <ul className="space-y-2 text-sm text-red-800">
+                  <li className="flex items-start gap-2">
+                    <span className="font-bold">×</span>
+                    <span>{t.prohibitedNarcotics}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="font-bold">×</span>
+                    <span>{t.prohibitedWeapons}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="font-bold">×</span>
+                    <span>{t.prohibitedPornographic}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="font-bold">×</span>
+                    <span>{t.prohibitedCounterfeit}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="font-bold">×</span>
+                    <span>{t.prohibitedEndangered}</span>
+                  </li>
+                </ul>
               </div>
             </div>
+          </div>
 
-            <div className="border-l-4 border-red-500 bg-red-50 p-4">
-              <div className="flex gap-3">
-                <AlertTriangle className="h-6 w-6 flex-shrink-0 text-red-600" />
+          {/* Special Import Rules */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-900">
+              {t.specialRulesTitle}
+            </h3>
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
+              <div className="space-y-3 text-sm text-gray-700">
                 <div>
-                  <h4 className="mb-2 font-semibold text-red-900">
-                    Strictly Prohibited Items
-                  </h4>
-                  <p className="mb-3 text-sm text-red-800">
-                    The following items are absolutely forbidden from entering
-                    Lao PDR:
+                  <p className="mb-1 text-base font-semibold text-gray-900">
+                    {t.medicationsTitle}
                   </p>
-                  <ul className="space-y-2 text-sm text-red-800">
-                    <li className="flex items-start gap-2">
-                      <span className="font-bold">×</span>
-                      <span>
-                        <strong>Narcotics:</strong> All illegal drugs - Severe
-                        penalties including death penalty for trafficking
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="font-bold">×</span>
-                      <span>
-                        <strong>Weapons:</strong> Firearms, ammunition,
-                        explosives without special permits
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="font-bold">×</span>
-                      <span>
-                        <strong>Pornographic Materials:</strong> Books, videos,
-                        magazines of obscene nature
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="font-bold">×</span>
-                      <span>
-                        <strong>Counterfeit Goods:</strong> Fake branded
-                        products, pirated media
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="font-bold">×</span>
-                      <span>
-                        <strong>Endangered Species:</strong> Products from
-                        protected animals (ivory, certain plants)
-                      </span>
-                    </li>
-                  </ul>
+                  <p>{t.medicationsDesc}</p>
+                </div>
+                <div>
+                  <p className="mb-1 text-base font-semibold text-gray-900">
+                    {t.foodItemsTitle}
+                  </p>
+                  <p>{t.foodItemsDesc}</p>
+                </div>
+                <div>
+                  <p className="mb-1 text-base font-semibold text-gray-900">
+                    {t.plantsTitle}
+                  </p>
+                  <p>{t.plantsDesc}</p>
+                </div>
+                <div>
+                  <p className="mb-1 text-base font-semibold text-gray-900">
+                    {t.electronicsTitle}
+                  </p>
+                  <p>{t.electronicsDesc}</p>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                Special Import Rules
-              </h3>
-              <div className="rounded-lg border border-gray-200 bg-white p-4">
-                <div className="space-y-3 text-sm text-gray-700">
-                  <div>
-                    <p className="mb-1 font-medium text-gray-900">
-                      Medications:
-                    </p>
-                    <p>
-                      Prescription drugs allowed for personal use (up to 3
-                      months supply). Must have prescription and medical
-                      certificate in English or Lao. Controlled substances
-                      require prior authorization.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="mb-1 font-medium text-gray-900">
-                      Food Items:
-                    </p>
-                    <p>
-                      Packaged, commercially sealed food products generally
-                      allowed. Fresh fruits, vegetables, meat, and dairy
-                      products are restricted. Declare all food items.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="mb-1 font-medium text-gray-900">
-                      Plants & Seeds:
-                    </p>
-                    <p>
-                      Require phytosanitary certificate. Most live plants
-                      prohibited without agricultural department approval.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="mb-1 font-medium text-gray-900">
-                      Electronics:
-                    </p>
-                    <p>
-                      Personal laptops, phones, cameras allowed. Professional
-                      equipment may require temporary import permit. Drones
-                      require special authorization.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-primary-500 border-l-4 bg-blue-50 p-4">
-              <p className="text-sm text-gray-800">
-                <strong>💡 Pro Tip:</strong> Fill out your customs declaration
-                card during the flight. Have your passport and arrival card
-                ready. Declaring items honestly prevents delays and potential
-                fines. When in doubt, declare it!
-              </p>
-            </div>
+          {/* Pro Tip */}
+          <div className="border-primary-500 border-l-4 bg-blue-50 p-4">
+            <p className="text-sm text-gray-800">{t.proTip}</p>
           </div>
         </div>
       </div>

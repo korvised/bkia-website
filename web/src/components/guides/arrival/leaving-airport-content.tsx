@@ -1,304 +1,290 @@
-import {
-  DoorOpen,
-  Car,
-  Smartphone,
-  AlertCircle,
-  ClipboardCheck,
-} from "lucide-react";
+import Image from "next/image";
+import { Car, Smartphone, AlertCircle } from "lucide-react";
+import { Lang } from "@/types/language";
+import { createArrivalGuideI18n } from "@/data/i18n/guide";
 
-export function LeavingAirportContent() {
+interface LeavingAirportContentProps {
+  lang: Lang;
+}
+
+export function LeavingAirportContent({ lang }: LeavingAirportContentProps) {
+  const { leavingAirport: t } = createArrivalGuideI18n(lang);
+
   return (
-    <div className="space-y-6">
-      <div className="flex items-start gap-4">
-        <div className="hidden flex-shrink-0 sm:block">
-          <div className="bg-primary-50 flex h-24 w-24 items-center justify-center rounded-lg">
-            <DoorOpen className="text-primary-500 h-12 w-12" />
+    <div className="space-y-8">
+      {/* Title Section - Full Width */}
+      <div>
+        <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
+          {t.title}
+        </h2>
+        <p className="text-lg leading-relaxed text-gray-700">{t.intro}</p>
+      </div>
+
+      {/* Main Content with Image */}
+      <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
+        {/* Left side - Illustration */}
+        <div className="flex justify-center lg:w-96 lg:flex-none">
+          <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
+            <Image
+              src="/images/guides/leaving-airport.png"
+              alt="Leaving the Airport"
+              fill
+              className="object-contain object-top"
+              priority
+              sizes="(max-width: 1024px) 100vw, 400px"
+            />
           </div>
         </div>
-        <div className="flex-1">
-          <div className="mb-2 flex items-center gap-x-2 sm:mb-4">
-            <div className="bg-primary-50 flex items-center justify-center rounded-lg p-2 sm:hidden">
-              <ClipboardCheck className="text-primary-500 h-6 w-6" />
-            </div>
-            <h2 className="text-lg font-bold text-gray-900 sm:text-2xl">
-              Leaving the Airport
-            </h2>
+
+        {/* Right side - Content */}
+        <div className="flex-1 space-y-8">
+          {/* Location Note */}
+          <div className="border-primary-500 border-l-4 bg-blue-50 p-4">
+            <p className="text-sm text-gray-800">{t.locationNote}</p>
           </div>
 
-          <div className="space-y-6 text-sm sm:text-base">
-            <div>
-              <p className="mb-4 text-gray-700">
-                Welcome to Laos! After completing all arrival procedures,
-                you&#39;ll exit into the main arrivals hall where various
-                transportation options and services are available to help you
-                reach your final destination.
-              </p>
-            </div>
-
-            <div className="border-primary-500 border-l-4 bg-blue-50 p-4">
-              <p className="text-sm text-gray-800">
-                <strong>📍 You are now in Ban Houayxay, Bokeo Province:</strong>{" "}
-                The fourth largest province in northern Laos, bordering Thailand
-                across the Mekong River. The town center is approximately 3km
-                from the airport.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                Transportation Options
-              </h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <div className="mb-3 flex items-center gap-2">
-                    <Car className="text-primary-500 h-5 w-5" />
-                    <h4 className="font-medium text-gray-900">
-                      Official Airport Taxi
-                    </h4>
-                  </div>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li>
-                      <strong>Location:</strong> Taxi rank outside arrivals
-                    </li>
-                    <li>
-                      <strong>Payment:</strong> LAK or USD accepted
-                    </li>
-                    <li>
-                      <strong>Typical Fares:</strong>
-                      <ul className="mt-1 ml-4 space-y-1">
-                        <li>• To Ban Houayxay center: 30,000-50,000 LAK</li>
-                        <li>• To hotels in town: 40,000-60,000 LAK</li>
-                        <li>• To border crossing: 50,000-80,000 LAK</li>
-                      </ul>
-                    </li>
-                    <li>
-                      <strong>Tip:</strong> Agree on fare before departure
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <div className="mb-3 flex items-center gap-2">
-                    <Smartphone className="text-primary-500 h-5 w-5" />
-                    <h4 className="font-medium text-gray-900">
-                      Ride-Hailing Apps
-                    </h4>
-                  </div>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li>
-                      <strong>Available:</strong> LOCA (Lao ride-hailing app)
-                    </li>
-                    <li>
-                      <strong>Requirements:</strong> Local SIM card needed
-                    </li>
-                    <li>
-                      <strong>Benefits:</strong> Fixed prices, cashless payment
-                    </li>
-                    <li>
-                      <strong>Note:</strong> Limited availability in Bokeo
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <div className="mb-3 flex items-center gap-2">
-                    <Car className="text-primary-500 h-5 w-5" />
-                    <h4 className="font-medium text-gray-900">Hotel Shuttle</h4>
-                  </div>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li>
-                      <strong>Pre-arranged:</strong> Many hotels offer free
-                      pickup
-                    </li>
-                    <li>
-                      <strong>Booking:</strong> Arrange when making reservation
-                    </li>
-                    <li>
-                      <strong>Meeting Point:</strong> Arrivals hall with name
-                      sign
-                    </li>
-                    <li>
-                      <strong>Tip:</strong> Confirm pickup time and terminal
-                      with hotel
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="rounded-lg border border-gray-200 bg-white p-4">
-                  <div className="mb-3 flex items-center gap-2">
-                    <Car className="text-primary-500 h-5 w-5" />
-                    <h4 className="font-medium text-gray-900">
-                      Private Car Rental
-                    </h4>
-                  </div>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li>
-                      <strong>Counters:</strong> Located in arrivals hall
-                    </li>
-                    <li>
-                      <strong>Requirements:</strong> International driving
-                      permit + passport
-                    </li>
-                    <li>
-                      <strong>Companies:</strong> Local and regional providers
-                    </li>
-                    <li>
-                      <strong>Note:</strong> Book in advance for better rates
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-l-4 border-yellow-400 bg-yellow-50 p-4">
-              <div className="flex gap-3">
-                <AlertCircle className="h-6 w-6 flex-shrink-0 text-yellow-600" />
-                <div>
-                  <h4 className="mb-2 font-semibold text-yellow-900">
-                    Important Safety Tips
+          {/* Transportation Options */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-900">
+              {t.transportationTitle}
+            </h3>
+            <div className="grid gap-4 md:grid-cols-2">
+              {/* Airport Taxi */}
+              <div className="rounded-xl border border-gray-200 bg-white p-5">
+                <div className="mb-3 flex items-center gap-2">
+                  <Car className="text-primary-500 h-5 w-5" />
+                  <h4 className="text-base font-semibold text-gray-900">
+                    {t.taxiTitle}
                   </h4>
-                  <ul className="space-y-2 text-sm text-yellow-800">
-                    <li>
-                      • Only use official airport taxis or pre-arranged
-                      transportation
-                    </li>
-                    <li>
-                      • Avoid unlicensed touts offering rides inside terminal
-                    </li>
-                    <li>
-                      • Keep valuables secure and luggage in sight at all times
-                    </li>
-                    <li>
-                      • Verify taxi meter is used or agree on fare before
-                      departure
-                    </li>
-                    <li>• Keep small LAK bills for easier payments</li>
+                </div>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li>
+                    <strong>{t.taxiLocation}</strong>
+                  </li>
+                  <li>
+                    <strong>{t.taxiPayment}</strong>
+                  </li>
+                  <li>
+                    <strong>{t.taxiFaresTitle}</strong>
+                    <ul className="mt-1 ml-4 space-y-1">
+                      <li>• {t.taxiFare1}</li>
+                      <li>• {t.taxiFare2}</li>
+                      <li>• {t.taxiFare3}</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>{t.taxiTip}</strong>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Ride-Hailing */}
+              <div className="rounded-xl border border-gray-200 bg-white p-5">
+                <div className="mb-3 flex items-center gap-2">
+                  <Smartphone className="text-primary-500 h-5 w-5" />
+                  <h4 className="text-base font-semibold text-gray-900">
+                    {t.rideHailingTitle}
+                  </h4>
+                </div>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li>
+                    <strong>{t.rideAvailable}</strong>
+                  </li>
+                  <li>
+                    <strong>{t.rideRequirements}</strong>
+                  </li>
+                  <li>
+                    <strong>{t.rideBenefits}</strong>
+                  </li>
+                  <li>
+                    <strong>{t.rideNote}</strong>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Hotel Shuttle */}
+              <div className="rounded-xl border border-gray-200 bg-white p-5">
+                <div className="mb-3 flex items-center gap-2">
+                  <Car className="text-primary-500 h-5 w-5" />
+                  <h4 className="text-base font-semibold text-gray-900">
+                    {t.hotelShuttleTitle}
+                  </h4>
+                </div>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li>
+                    <strong>{t.hotelPreArranged}</strong>
+                  </li>
+                  <li>
+                    <strong>{t.hotelBooking}</strong>
+                  </li>
+                  <li>
+                    <strong>{t.hotelMeeting}</strong>
+                  </li>
+                  <li>
+                    <strong>{t.hotelTip}</strong>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Car Rental */}
+              <div className="rounded-xl border border-gray-200 bg-white p-5">
+                <div className="mb-3 flex items-center gap-2">
+                  <Car className="text-primary-500 h-5 w-5" />
+                  <h4 className="text-base font-semibold text-gray-900">
+                    {t.carRentalTitle}
+                  </h4>
+                </div>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li>
+                    <strong>{t.carCounters}</strong>
+                  </li>
+                  <li>
+                    <strong>{t.carRequirements}</strong>
+                  </li>
+                  <li>
+                    <strong>{t.carCompanies}</strong>
+                  </li>
+                  <li>
+                    <strong>{t.carNote}</strong>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Safety Tips */}
+          <div className="border-l-4 border-amber-400 bg-amber-50 p-4">
+            <div className="flex gap-3">
+              <AlertCircle className="h-6 w-6 flex-shrink-0 text-amber-600" />
+              <div>
+                <h4 className="mb-2 text-base font-semibold text-amber-900">
+                  {t.safetyTipsTitle}
+                </h4>
+                <ul className="space-y-2 text-sm text-amber-800">
+                  <li>• {t.safetyTip1}</li>
+                  <li>• {t.safetyTip2}</li>
+                  <li>• {t.safetyTip3}</li>
+                  <li>• {t.safetyTip4}</li>
+                  <li>• {t.safetyTip5}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Essential Services */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-900">
+              {t.servicesTitle}
+            </h3>
+            <div className="rounded-xl border border-gray-200 bg-white p-5">
+              <div className="grid gap-4 md:grid-cols-2">
+                {/* SIM Cards */}
+                <div>
+                  <h4 className="mb-2 text-base font-semibold text-gray-900">
+                    {t.simCardsTitle}
+                  </h4>
+                  <ul className="space-y-1 text-sm text-gray-700">
+                    <li>• {t.simService1}</li>
+                    <li>• {t.simService2}</li>
+                    <li>• {t.simService3}</li>
+                    <li>• {t.simService4}</li>
+                  </ul>
+                </div>
+
+                {/* Currency */}
+                <div>
+                  <h4 className="mb-2 text-base font-semibold text-gray-900">
+                    {t.currencyTitle}
+                  </h4>
+                  <ul className="space-y-1 text-sm text-gray-700">
+                    <li>• {t.currencyService1}</li>
+                    <li>• {t.currencyService2}</li>
+                    <li>• {t.currencyService3}</li>
+                    <li>• {t.currencyService4}</li>
+                  </ul>
+                </div>
+
+                {/* Tourist Info */}
+                <div>
+                  <h4 className="mb-2 text-base font-semibold text-gray-900">
+                    {t.touristInfoTitle}
+                  </h4>
+                  <ul className="space-y-1 text-sm text-gray-700">
+                    <li>• {t.touristInfo1}</li>
+                    <li>• {t.touristInfo2}</li>
+                    <li>• {t.touristInfo3}</li>
+                    <li>• {t.touristInfo4}</li>
+                  </ul>
+                </div>
+
+                {/* Other Services */}
+                <div>
+                  <h4 className="mb-2 text-base font-semibold text-gray-900">
+                    {t.otherServicesTitle}
+                  </h4>
+                  <ul className="space-y-1 text-sm text-gray-700">
+                    <li>• {t.otherService1}</li>
+                    <li>• {t.otherService2}</li>
+                    <li>• {t.otherService3}</li>
+                    <li>• {t.otherService4}</li>
                   </ul>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                Essential Services in Arrivals Hall
-              </h3>
-              <div className="rounded-lg border border-gray-200 bg-white p-4">
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div>
-                    <h4 className="mb-2 font-medium text-gray-900">
-                      SIM Cards & Mobile Services
-                    </h4>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li>• Lao Telecom booth in arrivals</li>
-                      <li>• Tourist SIM packages available</li>
-                      <li>• Data plans from 50,000 LAK</li>
-                      <li>• Passport required for registration</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="mb-2 font-medium text-gray-900">
-                      Currency Exchange
-                    </h4>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li>• Exchange booth in arrivals hall</li>
-                      <li>• Major currencies accepted (USD, THB, EUR, CNY)</li>
-                      <li>• ATMs available (Visa/Mastercard)</li>
-                      <li>• Operating hours: During flight arrivals</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="mb-2 font-medium text-gray-900">
-                      Tourist Information
-                    </h4>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li>• Information desk in arrivals</li>
-                      <li>• Free maps and brochures</li>
-                      <li>• Hotel booking assistance</li>
-                      <li>• Tour operator contacts</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="mb-2 font-medium text-gray-900">
-                      Other Services
-                    </h4>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li>• Free WiFi throughout terminal</li>
-                      <li>• Restrooms</li>
-                      <li>• Small cafe/snack shop</li>
-                      <li>• Porter services</li>
-                    </ul>
-                  </div>
-                </div>
+          {/* Orientation Guide */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-900">
+              {t.orientationTitle}
+            </h3>
+            <div className="rounded-xl bg-blue-50 p-5">
+              <p className="mb-3 text-base font-semibold text-gray-800">
+                {t.orientationWelcome}
+              </p>
+              <div className="space-y-2 text-sm text-gray-700">
+                <p>{t.orientationTimezone}</p>
+                <p>{t.orientationCurrency}</p>
+                <p>{t.orientationLanguage}</p>
+                <p>{t.orientationWeather}</p>
+                <p>{t.orientationEmergency}</p>
               </div>
             </div>
+          </div>
 
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                Quick Orientation Guide
-              </h3>
-              <div className="rounded-lg bg-blue-50 p-4">
-                <p className="mb-3 text-sm font-medium text-gray-800">
-                  Welcome to Bokeo Province!
-                </p>
-                <div className="space-y-2 text-sm text-gray-700">
-                  <p>
-                    <strong>Time Zone:</strong> ICT (UTC+7) - same as Bangkok,
-                    Vietnam
-                  </p>
-                  <p>
-                    <strong>Currency:</strong> Lao Kip (LAK). USD and Thai Baht
-                    widely accepted
-                  </p>
-                  <p>
-                    <strong>Language:</strong> Lao (primary), Thai understood,
-                    English in tourist areas
-                  </p>
-                  <p>
-                    <strong>Weather:</strong> Tropical - hot season (Mar-May),
-                    rainy (Jun-Oct), cool (Nov-Feb)
-                  </p>
-                  <p>
-                    <strong>Emergency Numbers:</strong> Police 1191, Medical
-                    1195, Fire 1190
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* Helpful Tips */}
+          <div className="border-l-4 border-green-500 bg-green-50 p-4">
+            <h4 className="mb-2 text-base font-semibold text-green-900">
+              {t.helpfulTipsTitle}
+            </h4>
+            <ul className="space-y-2 text-sm text-green-800">
+              <li>• {t.tip1}</li>
+              <li>• {t.tip2}</li>
+              <li>• {t.tip3}</li>
+              <li>• {t.tip4}</li>
+              <li>• {t.tip5}</li>
+              <li>• {t.tip6}</li>
+            </ul>
+          </div>
 
-            <div className="border-l-4 border-green-500 bg-green-50 p-4">
-              <h4 className="mb-2 font-semibold text-green-900">
-                Helpful Tips for Your Visit
-              </h4>
-              <ul className="space-y-2 text-sm text-green-800">
-                <li>
-                  • Dress modestly when visiting temples (cover shoulders and
-                  knees)
-                </li>
-                <li>• Remove shoes before entering homes and temples</li>
-                <li>• Bargaining is common at markets but not in shops</li>
-                <li>
-                  • Tipping not mandatory but appreciated (10% in restaurants)
-                </li>
-                <li>• Tap water not safe to drink - buy bottled water</li>
-                <li>• Respect Buddhist monks - women should not touch monks</li>
-              </ul>
+          {/* Need Help */}
+          <div className="rounded-xl bg-gray-50 p-4">
+            <p className="mb-2 text-sm font-semibold text-gray-900">
+              {t.moreHelpTitle}
+            </p>
+            <div className="space-y-1 text-xs text-gray-600">
+              <p>{t.helpDesk}</p>
+              <p>{t.helpTourism}</p>
+              <p>{t.helpWebsite}</p>
             </div>
+          </div>
 
-            <div className="rounded bg-gray-50 p-3 text-xs text-gray-600">
-              <p className="mb-1 font-medium">Need More Help?</p>
-              <p>Airport Information Desk: Located in arrivals hall</p>
-              <p>Tourism Lao Bokeo Office: +856-84-211-XXX</p>
-              <p>Visit Bokeo Tourism website: www.tourismlaos.org</p>
-            </div>
-
-            <div className="bg-primary-50 rounded-lg p-4 text-center">
-              <p className="mb-2 text-lg font-semibold text-gray-900">
-                Enjoy your stay in Bokeo Province and Lao PDR!
-              </p>
-              <p className="text-sm text-gray-700">
-                ຍິນດີຕ້ອນຮັບ (Yin dee ton hap) - Welcome!
-              </p>
-            </div>
+          {/* Welcome Message */}
+          <div className="bg-primary-50 rounded-xl p-5 text-center">
+            <p className="mb-2 text-lg font-semibold text-gray-900">
+              {t.enjoyStay}
+            </p>
+            <p className="text-base text-gray-700">{t.welcome}</p>
           </div>
         </div>
       </div>
