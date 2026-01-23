@@ -4,28 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor airport departure page">
-      <change afterPath="$PROJECT_DIR$/web/src/components/guides/common/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/guides/common/stepIndicator.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/arrival-airport.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/arrival-nav.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/baggage-claim.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/border-inspection.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/customs-inspection.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/exit-customs.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/arrival/leaving-airport.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor airport arrival page">
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/transfer/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/transfer/transfer-main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/arrivals/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/arrivals/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/arrival-airport-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/baggage-claim-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/baggage-claim-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/border-inspection-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/border-inspection-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/customs-inspection-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/customs-inspection-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/exit-customs-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/exit-customs-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/leaving-airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/leaving-airport-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/tab-navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/tab-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/tab-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/transfer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/transfer/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,39 +44,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
-    "git-widget-placeholder": "arrival-guide",
-    "javascript.preferred.runtime.type.id": "node",
-    "last_opened_file_path": "D:/projects/bkia-website/web/src/data/i18n/guide",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "npm.admin.executor": "Run",
-    "npm.dev.executor": "Run",
-    "npm.server.executor": "Run",
-    "npm.start:dev.executor": "Run",
-    "npm.web.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "D:\\projects\\bkia-website\\server\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "D:\\projects\\bkia-website\\admin\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;arrival-guide&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website/web/src/data/i18n/guide&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.admin.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.server.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start:dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.web.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\projects\\bkia-website\\server\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\projects\\bkia-website\\admin\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projects\bkia-website\web\src\data\i18n\guide" />
@@ -110,7 +93,7 @@
       <recent name="D:\projects\bkia-website\admin\src\components\ui\form" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server">
+  <component name="RunManager" selected="npm.web">
     <configuration name="admin" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/admin/package.json" />
       <command value="run" />
@@ -148,8 +131,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.server" />
         <item itemvalue="npm.web" />
+        <item itemvalue="npm.server" />
         <item itemvalue="npm.admin" />
       </list>
     </recent_temporary>
@@ -248,15 +231,8 @@
       <workItem from="1767670335632" duration="794000" />
       <workItem from="1767671628318" duration="149000" />
       <workItem from="1768977817159" duration="111000" />
-      <workItem from="1769045496341" duration="19176000" />
-    </task>
-    <task id="LOCAL-00034" summary="implement flight entity &amp; airline module">
-      <option name="closed" value="true" />
-      <created>1762239368368</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1762239368368</updated>
+      <workItem from="1769045496341" duration="19224000" />
+      <workItem from="1769131232168" duration="5178000" />
     </task>
     <task id="LOCAL-00035" summary="implement auth module">
       <option name="closed" value="true" />
@@ -642,14 +618,21 @@
       <option name="project" value="LOCAL" />
       <updated>1769068822474</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="refactor airport arrival page">
+      <option name="closed" value="true" />
+      <created>1769075322155</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1769075322155</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor flight pages for connect api" />
     <MESSAGE value="refactor flight pages" />
     <MESSAGE value="implement flight pages metadata" />
     <MESSAGE value="backup db" />
@@ -674,6 +657,7 @@
     <MESSAGE value="refactor airport security" />
     <MESSAGE value="refactor airport security page content" />
     <MESSAGE value="refactor airport departure page" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor airport departure page" />
+    <MESSAGE value="refactor airport arrival page" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor airport arrival page" />
   </component>
 </project>
