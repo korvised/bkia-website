@@ -4,14 +4,12 @@ import { Lang } from "@/types/language";
 import { createTransferGuideI18n } from "@/data/i18n/guide";
 
 interface TransferPageProps {
-  params: {
-    lang: Lang;
-  };
+  params: Promise<{ lang: Lang }>;
 }
 
-export default function TransferPage({ params }: TransferPageProps) {
-  const { lang } = params;
-  const { transferMain: t } = createTransferGuideI18n(lang);
+export default async function TransferPage({ params }: TransferPageProps) {
+  const { lang } = await params;
+  const { transferMain: t } = createTransferGuideI18n(lang as Lang);
 
   return (
     <div className="container py-8 lg:py-12">
