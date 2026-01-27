@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor airport arrival page">
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/transfer/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/transfer/transfer-main.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor transfer/transit page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/transfer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/transfer/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/guide/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,15 +228,10 @@
       <workItem from="1767671628318" duration="149000" />
       <workItem from="1768977817159" duration="111000" />
       <workItem from="1769045496341" duration="19224000" />
-      <workItem from="1769131232168" duration="5178000" />
-    </task>
-    <task id="LOCAL-00035" summary="implement auth module">
-      <option name="closed" value="true" />
-      <created>1762246469850</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1762246469850</updated>
+      <workItem from="1769131232168" duration="5221000" />
+      <workItem from="1769319775234" duration="140000" />
+      <workItem from="1769320203721" duration="608000" />
+      <workItem from="1769392204074" duration="60000" />
     </task>
     <task id="LOCAL-00036" summary="implement counter module">
       <option name="closed" value="true" />
@@ -626,14 +617,21 @@
       <option name="project" value="LOCAL" />
       <updated>1769075322155</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="refactor transfer/transit page">
+      <option name="closed" value="true" />
+      <created>1769159380009</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1769159380009</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor flight pages" />
     <MESSAGE value="implement flight pages metadata" />
     <MESSAGE value="backup db" />
     <MESSAGE value="add test docker-compose.yml" />
@@ -658,6 +656,7 @@
     <MESSAGE value="refactor airport security page content" />
     <MESSAGE value="refactor airport departure page" />
     <MESSAGE value="refactor airport arrival page" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor airport arrival page" />
+    <MESSAGE value="refactor transfer/transit page" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor transfer/transit page" />
   </component>
 </project>
