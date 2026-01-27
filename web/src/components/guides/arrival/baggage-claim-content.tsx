@@ -23,7 +23,7 @@ export function BaggageClaimContent({ lang }: BaggageClaimContentProps) {
       {/* Main Content with Image */}
       <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
         {/* Left side - Illustration */}
-        <div className="flex justify-center lg:w-96 lg:flex-none">
+        <div className="flex justify-center lg:mt-8 lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
             <Image
               src="/images/guides/baggage-claim.png"

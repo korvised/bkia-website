@@ -3,6 +3,10 @@ import { Lang } from "@/types/language";
 import { createDepartureGuideI18n } from "@/data/i18n/guide";
 import { facilitiesServices, getColorClasses } from "@/data/guide";
 
+interface RelatedServicesProps {
+  lang: Lang;
+}
+
 // Pick 6 relevant services for departure guide
 const RELATED_SERVICE_IDS = [
   "baggage-wrapping",
@@ -13,25 +17,21 @@ const RELATED_SERVICE_IDS = [
   "baggage-cart",
 ];
 
-interface RelatedServicesProps {
-  lang: Lang;
-}
+// Filter services based on selected IDs
+const services = facilitiesServices.filter((service) =>
+  RELATED_SERVICE_IDS.includes(service.id),
+);
+
+// Sort services to match the order in RELATED_SERVICE_IDS
+const sortedServices = RELATED_SERVICE_IDS.map((id) =>
+  services.find((s) => s.id === id),
+).filter(Boolean);
 
 export function RelatedServices({ lang }: RelatedServicesProps) {
   const { relatedServices: t } = createDepartureGuideI18n(lang);
 
-  // Filter services based on selected IDs
-  const services = facilitiesServices.filter((service) =>
-    RELATED_SERVICE_IDS.includes(service.id),
-  );
-
-  // Sort services to match the order in RELATED_SERVICE_IDS
-  const sortedServices = RELATED_SERVICE_IDS.map((id) =>
-    services.find((s) => s.id === id),
-  ).filter(Boolean);
-
   return (
-    <div className="pt-8 bg-white">
+    <div className="bg-white pt-8">
       <div className="container">
         <div className="mb-6">
           <h3 className="mb-2 text-xl font-bold text-gray-900">{t.title}</h3>

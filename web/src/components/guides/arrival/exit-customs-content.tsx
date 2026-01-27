@@ -23,7 +23,7 @@ export function ExitCustomsContent({ lang }: ExitCustomsContentProps) {
       {/* Main Content with Image */}
       <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
         {/* Left side - Illustration */}
-        <div className="flex justify-center lg:w-96 lg:flex-none">
+        <div className="flex justify-center lg:mt-8 lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
             <Image
               src="/images/guides/exit-customs.png"
@@ -45,7 +45,7 @@ export function ExitCustomsContent({ lang }: ExitCustomsContentProps) {
             </h3>
             <div className="grid gap-4 md:grid-cols-2">
               {/* Green Channel */}
-              <div className="rounded-xl border-l-4 border-green-500 bg-green-50 p-5">
+              <div className="rounded-xl border border-green-500 bg-white p-5">
                 <h4 className="mb-3 text-base font-semibold text-green-900">
                   {t.greenChannelTitle}
                 </h4>
@@ -64,7 +64,7 @@ export function ExitCustomsContent({ lang }: ExitCustomsContentProps) {
               </div>
 
               {/* Red Channel */}
-              <div className="rounded-xl border-l-4 border-red-500 bg-red-50 p-5">
+              <div className="rounded-xl border border-red-500 bg-white p-5">
                 <h4 className="mb-3 text-base font-semibold text-red-900">
                   {t.redChannelTitle}
                 </h4>

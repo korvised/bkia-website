@@ -67,7 +67,7 @@ export default async function ArrivalPage({
       </div>
 
       {/* Related Services */}
-      <RelatedServices />
+      <RelatedServices lang={lang} />
     </div>
   );
 }

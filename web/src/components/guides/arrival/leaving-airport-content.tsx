@@ -23,7 +23,7 @@ export function LeavingAirportContent({ lang }: LeavingAirportContentProps) {
       {/* Main Content with Image */}
       <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
         {/* Left side - Illustration */}
-        <div className="flex justify-center lg:w-96 lg:flex-none">
+        <div className="flex justify-center lg:mt-8 lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
             <Image
               src="/images/guides/leaving-airport.png"
@@ -57,7 +57,7 @@ export function LeavingAirportContent({ lang }: LeavingAirportContentProps) {
                     {t.taxiTitle}
                   </h4>
                 </div>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <ul className="space-y-2 text-sm text-gray-600">
                   <li>
                     <strong>{t.taxiLocation}</strong>
                   </li>

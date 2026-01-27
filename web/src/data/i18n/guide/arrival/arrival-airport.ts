@@ -47,9 +47,9 @@ export const arrivalAirport = {
     zh: "检查座位区域是否遗留个人物品（手机、眼镜、文件）",
   },
   disembarkStep4: {
-    en: "Follow signs for \"International Arrivals\" (ມາເຖິງສາກົນ / 国际到达)",
-    lo: "ຕິດຕາມປ້າຍ \"ມາເຖິງສາກົນ\" (International Arrivals / 国际到达)",
-    zh: "按照\"国际到达\"（International Arrivals / ມາເຖິງສາກົນ）指示牌前行",
+    en: 'Follow signs for "Arrivals" (ຂາເຂົ້າ)',
+    lo: 'ຕິດຕາມປ້າຍ "ຂາເຂົ້າ" (Arrivals)',
+    zh: '按照"国际到达"（Arrivals）指示牌前行',
   },
   disembarkStep5: {
     en: "Proceed through the jet bridge or down aircraft stairs to terminal",
@@ -74,8 +74,8 @@ export const arrivalAirport = {
     zh: "健康筛查（如需要 - 在健康紧急情况期间）",
   },
   immigrationControl: {
-    en: "Immigration/Passport Control - First checkpoint for all international arrivals",
-    lo: "ການກວດຄົນເຂົ້າ-ອອກເມືອງ/ກວດໜັງສືຜ່ານແດນ - ຈຸດກວດທຳອິດສຳລັບຜູ້ມາຮອດສາກົນທັງໝົດ",
+    en: "Immigration/Passport Control (First checkpoint for all international arrivals)",
+    lo: "ການກວດຄົນເຂົ້າ-ອອກເມືອງ/ກວດໜັງສືຜ່ານແດນ (ຈຸດກວດທຳອິດສຳລັບຜູ້ມາຮອດສາກົນທັງໝົດ)",
     zh: "边检/护照检查 - 所有国际到达旅客的第一个检查站",
   },
   baggageClaim: {
@@ -92,7 +92,7 @@ export const arrivalAirport = {
   // Processing time
   processingTimeTitle: {
     en: "⏱️ Estimated Processing Time:",
-    lo: "⏱️ ເວລາປະມວນຜົນໂດຍປະມານ:",
+    lo: "⏱️ ເວລາການນຳເນີນການໂດຍປະມານ:",
     zh: "⏱️ 预计处理时间：",
   },
   processingTimeDesc: {
