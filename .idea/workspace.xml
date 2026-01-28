@@ -4,97 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="fix bug i18n">
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="remove files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/modules/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/modules/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/airlines/lanexang.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/airlines/lao-airlines.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/airlines/lao-skyway.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/attractions/bokeo-nature-reserve.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/attractions/gibbon-experience.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/attractions/golden-triangle.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/attractions/mekong-river-cruise.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/attractions/wat-jom-khao-manilat.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/dining/bokeo-noodle-house.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/dining/dim-sum-delight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/dining/golden-triangle-restaurant.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/dining/international-bistro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/dining/mekong-coffee-lounge.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/dining/quick-bite-express.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/dining/royal-thai-cuisine.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/dining/sky-view-restaurant.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/dining/vip-lounge-dining.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/featured/airport-facilities.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/featured/customer-support.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/featured/my-hkg-app.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/featured/one-stop-booking.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/featured/valet-parking.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/guides/arrival.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/guides/baggage-claim.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/guides/baggage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/guides/boarding.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/guides/check-in.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/guides/customs-inspection.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/guides/exit-customs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/guides/immigration.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/guides/leaving-airport.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/guides/security.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/homepage/banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/homepage/home_bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/hotels/kapok-star.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/hotels/the-m-bokeo.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/logo/bokeo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/logo/bokeo_white.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/logo/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/logo/logo_white.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/lost-found/backpack-blue.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/lost-found/iphone-17.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/lost-found/jacket-pink.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/lost-found/teddy-bear.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/lost-found/watch-silver.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/news/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/services/passenger_banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/shops/airport-bookshop.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/shops/airport-pharmacy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/shops/bokeo-duty-free.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/shops/kids-corner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/shops/lao-heritage-souvenirs.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/shops/luggage-bags.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/shops/style-fashion-boutique.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/shops/tech-zone.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/shops/travel-essentials.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/transportation/airport-coach.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/transportation/car-rental-counter.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/transportation/parking-entrance.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/transportation/parking-map.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/transportation/taxi-area1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/transportation/van-service.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/wallpaper/001.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/wallpaper/002.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/wallpaper/003.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/images/wallpaper/004.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/bokeo-visit/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/dining-shopping/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/cares/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/hotel/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/guides/transfer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/guides/transfer/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/common/feature-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/feature-layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/arrival-airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/arrival-airport-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/baggage-claim-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/baggage-claim-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/border-inspection-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/border-inspection-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/customs-inspection-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/customs-inspection-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/exit-customs-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/exit-customs-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/arrival/leaving-airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/arrival/leaving-airport-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/baggage-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/baggage-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/boarding-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/boarding-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/checkin-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/checkin-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/immigration-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/immigration-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/guides/departure/security-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/homepage/hero-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/homepage/hero-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/footer/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/layout/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/navigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/notice/lost-found.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/notice/lost-found.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/web/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -322,15 +234,7 @@
       <workItem from="1769320203721" duration="608000" />
       <workItem from="1769392204074" duration="60000" />
       <workItem from="1769484338801" duration="11019000" />
-      <workItem from="1769562940576" duration="6900000" />
-    </task>
-    <task id="LOCAL-00038" summary="implement airport module">
-      <option name="closed" value="true" />
-      <created>1762312267208</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1762312267208</updated>
+      <workItem from="1769562940576" duration="7668000" />
     </task>
     <task id="LOCAL-00039" summary="implement route module">
       <option name="closed" value="true" />
@@ -716,14 +620,21 @@
       <option name="project" value="LOCAL" />
       <updated>1769504776051</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="remove files">
+      <option name="closed" value="true" />
+      <created>1769571667349</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1769571667349</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="backup db" />
     <MESSAGE value="add test docker-compose.yml" />
     <MESSAGE value="refactor flights status" />
     <MESSAGE value="fix ESLint build error" />
@@ -748,6 +659,7 @@
     <MESSAGE value="refactor airport arrival page" />
     <MESSAGE value="refactor transfer/transit page" />
     <MESSAGE value="fix bug i18n" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug i18n" />
+    <MESSAGE value="remove files" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove files" />
   </component>
 </project>
