@@ -119,7 +119,8 @@ export const navigation: NavItem[] = [
       },
     ],
     featuredContent: {
-      image: "/images/featured/my-hkg-app.png",
+      image:
+        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/featured/my-hkg-app.png",
       title: {
         en: '"My Airport" Mobile App',
         lo: 'ແອັບມືຖື "ສະໜາມບິນຂອງຂ້ອຍ"',
@@ -210,7 +211,8 @@ export const navigation: NavItem[] = [
       },
     ],
     featuredContent: {
-      image: "/images/featured/one-stop-booking.png",
+      image:
+        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/featured/one-stop-booking.png",
       title: {
         en: "One-stop Services",
         lo: "ບໍລິການຄັ້ງດຽວ",
@@ -296,7 +298,8 @@ export const navigation: NavItem[] = [
       },
     ],
     featuredContent: {
-      image: "/images/featured/valet-parking.jpg",
+      image:
+        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/featured/valet-parking.jpg",
       title: {
         en: "Valet Parking",
         lo: "ຈອດລົດພິເສດ",
@@ -387,7 +390,8 @@ export const navigation: NavItem[] = [
       },
     ],
     featuredContent: {
-      image: "/images/featured/customer-support.jpeg",
+      image:
+        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/featured/customer-support.jpeg",
       title: {
         en: "24/7 Support",
         lo: "ສະໜັບສະໜູນ 24/7",
@@ -478,7 +482,8 @@ export const navigation: NavItem[] = [
       },
     ],
     featuredContent: {
-      image: "/images/wallpaper/001.jpg",
+      image:
+        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/001.jpg",
       title: {
         en: "Modern Airport",
         lo: "ສະໜາມບິນທັນສະໄໝ",

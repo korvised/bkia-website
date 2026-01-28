@@ -28,7 +28,7 @@ export default async function TransferPage({ params }: TransferPageProps) {
           <div className="flex justify-center lg:w-96 lg:flex-none">
             <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
               <Image
-                src="/images/guides/transfer.png"
+                src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/transfer.png"
                 alt="Airport Transfer"
                 fill
                 className="object-contain object-top"

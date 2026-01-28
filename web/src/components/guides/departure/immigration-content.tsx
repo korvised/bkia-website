@@ -29,7 +29,7 @@ export function ImmigrationContent({ lang }: ImmigrationContentProps) {
         <div className="flex justify-center lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:mt-4 lg:h-[500px] lg:max-w-none">
             <Image
-              src="/images/guides/immigration.png"
+              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/immigration.png"
               alt="immigration control at bkia"
               fill
               className="object-contain object-top"

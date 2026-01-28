@@ -94,8 +94,8 @@ export class AuthService {
     await this.forgotPasswordRepository.save(newResetPassword);
 
     // Send email with reset password link
-    // const logoUrl = this.configService.get('client.url') + '/logo.svg';
-    const logoUrl = 'https://admin.bkia.net/images/BOKEO%20LOGO.png';
+    const logoUrl =
+      'https://bkia-website.s3.ap-southeast-7.amazonaws.com/logo/logo.png';
     const link = `${this.configService.get('igt.clientUrl')}/reset-password?token=${newResetPassword.id}`;
     const mailContent = createResetPasswordEmailContent(logoUrl, link);
 

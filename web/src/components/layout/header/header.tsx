@@ -116,8 +116,8 @@ export function Header() {
                 <Image
                   src={
                     isHeaderWhite
-                      ? "/images/logo/bokeo.png"
-                      : "/images/logo/bokeo_white.png"
+                      ? "https://bkia-website.s3.ap-southeast-7.amazonaws.com/logo/bokeo.png"
+                      : "https://bkia-website.s3.ap-southeast-7.amazonaws.com/logo/bokeo_white.png"
                   }
                   alt="Bokeo Airport"
                   fill

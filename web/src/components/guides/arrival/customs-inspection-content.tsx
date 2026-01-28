@@ -28,7 +28,7 @@ export function CustomsInspectionContent({
         <div className="flex justify-center lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
             <Image
-              src="/images/guides/customs-inspection.png"
+              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/customs-inspection.png"
               alt="Customs Declaration"
               fill
               className="object-contain object-top"

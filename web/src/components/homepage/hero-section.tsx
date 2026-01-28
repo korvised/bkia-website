@@ -32,10 +32,30 @@ interface Announcement {
 }
 
 const heroSlides: HeroSlide[] = [
-  { id: 1, image: "/images/wallpaper/001.jpg", alt: "Airport Terminal" },
-  { id: 2, image: "/images/wallpaper/002.jpg", alt: "Aircraft" },
-  { id: 3, image: "/images/wallpaper/003.jpg", alt: "Runway" },
-  { id: 4, image: "/images/wallpaper/004.jpg", alt: "Facilities" },
+  {
+    id: 1,
+    image:
+      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/001.jpg",
+    alt: "Airport Terminal",
+  },
+  {
+    id: 2,
+    image:
+      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/002.jpg",
+    alt: "Aircraft",
+  },
+  {
+    id: 3,
+    image:
+      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/003.jpg",
+    alt: "Runway",
+  },
+  {
+    id: 4,
+    image:
+      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/004.jpg",
+    alt: "Facilities",
+  },
 ];
 
 const announcements: Announcement[] = [

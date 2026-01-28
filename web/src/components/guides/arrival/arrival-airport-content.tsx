@@ -26,7 +26,7 @@ export function ArrivalAirportContent({ lang }: ArrivalAirportContentProps) {
         <div className="flex justify-center lg:mt-12 lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
             <Image
-              src="/images/guides/arrival.png"
+              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/arrival.png"
               alt="Arrival at Bokeo International Airport"
               fill
               className="object-contain object-top"

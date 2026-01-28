@@ -32,7 +32,7 @@ export function BoardingContent({ lang }: BoardingContentProps) {
         <div className="flex justify-center lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:mt-4 lg:h-[500px] lg:max-w-none">
             <Image
-              src="/images/guides/boarding.png"
+              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/boarding.png"
               alt="boarding at bkia"
               fill
               className="object-contain object-top"

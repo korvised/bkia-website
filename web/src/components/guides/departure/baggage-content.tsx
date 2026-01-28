@@ -32,7 +32,7 @@ export function BaggageContent({ lang }: BaggageContentProps) {
         <div className="flex justify-center lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:h-[500px] lg:max-w-none">
             <Image
-              src="/images/guides/baggage.png"
+              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/baggage.png"
               alt="baggage information at bkia"
               fill
               className="object-contain object-top"

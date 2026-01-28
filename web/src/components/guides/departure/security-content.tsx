@@ -30,7 +30,7 @@ export function SecurityContent({ lang }: SecurityContentProps) {
         <div className="lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:mt-4 lg:h-[500px] lg:max-w-none">
             <Image
-              src="/images/guides/security.png"
+              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/security.png"
               alt="security screening at bkia"
               fill
               className="object-contain object-top"

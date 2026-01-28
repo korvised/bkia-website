@@ -26,7 +26,7 @@ export function ExitCustomsContent({ lang }: ExitCustomsContentProps) {
         <div className="flex justify-center lg:mt-8 lg:w-96 lg:flex-none">
           <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
             <Image
-              src="/images/guides/exit-customs.png"
+              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/exit-customs.png"
               alt="Final Customs Inspection"
               fill
               className="object-contain object-top"

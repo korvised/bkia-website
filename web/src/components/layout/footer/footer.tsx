@@ -48,7 +48,7 @@ export default async function Footer({ lang }: FooterProps) {
               <div className="flex items-center gap-3">
                 <div className="relative h-14 w-14">
                   <Image
-                    src="/images/logo/logo_white.png"
+                    src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/logo/logo_white.png"
                     alt="Bokeo International Airport"
                     fill
                     sizes="56px"

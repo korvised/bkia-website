@@ -31,7 +31,9 @@ export const lostFoundItems: LostFoundItem[] = [
     date: "2025-09-28",
     referenceNumber: "FR20250928001",
     status: "pending",
-    images: ["/images/lost-found/iphone-17.webp"],
+    images: [
+      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/lost-found/iphone-17.webp",
+    ],
   },
   {
     id: "lf-002",
@@ -44,7 +46,9 @@ export const lostFoundItems: LostFoundItem[] = [
     date: "2025-09-27",
     referenceNumber: "FR20250927002",
     status: "pending",
-    images: ["/images/lost-found/backpack-blue.webp"],
+    images: [
+      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/lost-found/backpack-blue.webp",
+    ],
   },
   {
     id: "lf-003",
@@ -69,7 +73,9 @@ export const lostFoundItems: LostFoundItem[] = [
     date: "2025-09-26",
     referenceNumber: "FR20250926004",
     status: "pending",
-    images: ["/images/lost-found/watch-silver.webp"],
+    images: [
+      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/lost-found/watch-silver.webp",
+    ],
   },
   {
     id: "lf-005",
@@ -105,7 +111,9 @@ export const lostFoundItems: LostFoundItem[] = [
     date: "2025-09-25",
     referenceNumber: "FR20250925007",
     status: "pending",
-    images: ["/images/lost-found/jacket-pink.avif"],
+    images: [
+      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/lost-found/jacket-pink.avif",
+    ],
   },
   {
     id: "lf-008",
@@ -163,7 +171,9 @@ export const lostFoundItems: LostFoundItem[] = [
     date: "2025-09-22",
     referenceNumber: "FR20250922012",
     status: "pending",
-    images: ["/images/lost-found/teddy-bear.webp"],
+    images: [
+      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/lost-found/teddy-bear.webp",
+    ],
   },
   {
     id: "lf-013",

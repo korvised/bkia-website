@@ -71,7 +71,8 @@ export function FeatureLayout({
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url(/images/wallpaper/001.jpg)",
+            backgroundImage:
+              "url(https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/001.jpg)",
           }}
         />
 
