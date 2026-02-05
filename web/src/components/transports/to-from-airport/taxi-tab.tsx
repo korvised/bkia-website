@@ -318,7 +318,7 @@ export function TaxiTab({ lang }: TaxiTabProps) {
   const { t } = useApp();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 container">
       {/* Page Title */}
       <div>
         <div className="mb-2 flex items-center gap-3">
@@ -339,7 +339,7 @@ export function TaxiTab({ lang }: TaxiTabProps) {
         <div className="space-y-4">
           <div className="relative h-64 overflow-hidden rounded-lg md:h-full">
             <Image
-              src="/images/transportation/taxi-area1.jpeg"
+              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/transport/taxi-area1.jpeg"
               alt="Taxi Pick-up Area at Bokeo Airport"
               fill
               className="object-cover"

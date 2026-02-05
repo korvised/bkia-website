@@ -361,7 +361,7 @@ export function VanTab({ lang }: VanTabProps) {
   const { t } = useApp();
 
   return (
-    <div className="space-y-6">
+    <div className="container space-y-6">
       {/* Page Title */}
       <div>
         <div className="mb-2 flex items-center gap-3">
@@ -381,7 +381,7 @@ export function VanTab({ lang }: VanTabProps) {
       <div className="grid gap-6 md:grid-cols-2">
         <div className="relative h-64 overflow-hidden rounded-lg md:h-auto">
           <Image
-            src="/images/transportation/van-service.avif"
+            src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/transport/van-service.avif"
             alt="Van Service at Bokeo International Airport"
             fill
             className="object-cover"

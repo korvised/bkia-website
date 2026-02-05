@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="remove files">
+      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/transports/regional/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/transports/transport/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/transports/transport/regional-transport-component.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/regional/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/regional/to-myanmar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/regional/to-thailand.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/web/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transports/parking/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/transports/parking/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/overview-tab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/overview-tab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/taxi-tab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/taxi-tab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/to-from-airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/to-from-airport-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/van-tab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/van-tab.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +61,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;transport&quot;,
     &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/projects/bkia-website/web/public/images/guides&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -83,14 +94,14 @@
       <recent name="D:\projects\bkia-website\admin\src\assets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\bkia-website\web\src\data\i18n\transport\regional" />
+      <recent name="D:\projects\bkia-website\web\src\data\i18n" />
       <recent name="D:\projects\bkia-website\web\src\data\i18n\guide\arrival" />
       <recent name="D:\projects\bkia-website\web\src\components\guides\departure" />
       <recent name="D:\projects\bkia-website\web\src\components\guides" />
-      <recent name="D:\projects\bkia-website\admin\src\components\ui\table" />
-      <recent name="D:\projects\bkia-website\admin\src\components\ui\form" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web">
+  <component name="RunManager" selected="npm.server">
     <configuration name="admin" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/admin/package.json" />
       <command value="run" />
@@ -234,15 +245,9 @@
       <workItem from="1769320203721" duration="608000" />
       <workItem from="1769392204074" duration="60000" />
       <workItem from="1769484338801" duration="11019000" />
-      <workItem from="1769562940576" duration="7668000" />
-    </task>
-    <task id="LOCAL-00039" summary="implement route module">
-      <option name="closed" value="true" />
-      <created>1762315406585</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1762315406585</updated>
+      <workItem from="1769562940576" duration="14284000" />
+      <workItem from="1769648903458" duration="49000" />
+      <workItem from="1770253455849" duration="5140000" />
     </task>
     <task id="LOCAL-00040" summary="implement Flight module">
       <option name="closed" value="true" />
@@ -628,7 +633,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769571667349</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="remove files">
+      <option name="closed" value="true" />
+      <created>1769572321161</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1769572321161</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -46,31 +46,33 @@ export function ToFromAirportContent() {
   return (
     <div className="space-y-6">
       {/* Tab Navigation */}
-      <nav
-        className="horizontal-scroll bg-primary-50/30 flex items-center gap-x-0.5 overflow-x-auto"
-        aria-label="Transport options"
-      >
-        {tabs.map((tab) => {
-          const isActive = activeTab === tab.id;
+      <div className="container">
+        <nav
+          className="horizontal-scroll bg-primary-50/30 flex items-center gap-x-0.5 overflow-x-auto"
+          aria-label="Transport options"
+        >
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
 
-          return (
-            <button
-              key={tab.id}
-              onClick={() => handleTabChange(tab.id)}
-              className={cn(
-                "group relative flex-shrink-0 cursor-pointer px-8 py-4 text-sm font-medium transition-colors duration-200 md:text-base",
-                "focus-visible:ring-primary-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-                isActive
-                  ? "bg-primary text-white"
-                  : "hover:bg-primary text-gray-700 hover:text-white",
-              )}
-              aria-current={isActive ? "page" : undefined}
-            >
-              <span className="relative z-10">{t(tab.label)}</span>
-            </button>
-          );
-        })}
-      </nav>
+            return (
+              <button
+                key={tab.id}
+                onClick={() => handleTabChange(tab.id)}
+                className={cn(
+                  "group relative flex-shrink-0 cursor-pointer px-8 py-4 text-sm font-medium transition-colors duration-200 md:text-base",
+                  "focus-visible:ring-primary-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+                  isActive
+                    ? "bg-primary text-white"
+                    : "hover:bg-primary text-gray-700 hover:text-white",
+                )}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <span className="relative z-10">{t(tab.label)}</span>
+              </button>
+            );
+          })}
+        </nav>
+      </div>
 
       {/* Tab Content */}
       <div className="animate-in fade-in duration-300">

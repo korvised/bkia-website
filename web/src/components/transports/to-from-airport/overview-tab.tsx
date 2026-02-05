@@ -80,23 +80,18 @@ const transportOptions = [
   {
     id: "taxi",
     icon: CarTaxiFront,
-    image: "/images/transportation/taxi-area1.jpeg",
+    image:
+      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/transport/taxi-area1.jpeg",
     tab: "taxi",
     available: true,
   },
   {
     id: "van",
     icon: Truck,
-    image: "/images/transportation/van-service.avif",
+    image:
+      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/transport/van-service.avif",
     tab: "van",
     available: true,
-  },
-  {
-    id: "bus",
-    icon: Bus,
-    image: "/images/transportation/public-bus.jpg",
-    tab: null,
-    available: false,
   },
 ];
 
@@ -112,7 +107,7 @@ export function OverviewTab({ lang }: OverviewTabProps) {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="container space-y-8">
       {/* Page Title & Description */}
       <div className="space-y-4">
         <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">

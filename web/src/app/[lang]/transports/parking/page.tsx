@@ -23,7 +23,7 @@ const parkingRates = [
 
 export default async function ParkingPage() {
   return (
-    <div className="space-y-6">
+    <div className="container space-y-6">
       {/* Page Title */}
       <div>
         <div className="mb-2 flex items-center gap-3">
@@ -39,7 +39,7 @@ export default async function ParkingPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <div className="relative h-64 overflow-hidden rounded-lg md:h-auto">
           <Image
-            src="/images/transportation/parking-entrance.jpg"
+            src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/transport/parking-entrance.jpg"
             alt="Parking Entrance at Bokeo Airport"
             fill
             className="object-cover"
