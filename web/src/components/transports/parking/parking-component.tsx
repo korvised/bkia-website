@@ -1,4 +1,3 @@
-// parking-component.tsx - Zones beside map on large screens
 "use client";
 
 import Image from "next/image";

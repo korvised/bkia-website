@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor to-from airport &amp; regional transport">
-      <change afterPath="$PROJECT_DIR$/web/src/components/transports/parking/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/transports/parking/parking-component.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/parking/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/parking/parking.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor transport feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transports/parking/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/transports/parking/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transports/regional/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/transports/regional/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/transports/transport/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/regional/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/transports/transport/regional-transport-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/regional/regional-component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/transport/regional/to-myanmar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/regional/to-myanmar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/transports/parking/parking-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/parking/parking-component.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/transports/regional/regional-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/regional/regional-component.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,15 +238,7 @@
       <workItem from="1769562940576" duration="14284000" />
       <workItem from="1769648903458" duration="49000" />
       <workItem from="1770253455849" duration="9768000" />
-      <workItem from="1770340566867" duration="5224000" />
-    </task>
-    <task id="LOCAL-00041" summary="refactor flight pages for connect api">
-      <option name="closed" value="true" />
-      <created>1762419523302</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1762419523302</updated>
+      <workItem from="1770340566867" duration="6487000" />
     </task>
     <task id="LOCAL-00042" summary="refactor flight pages for connect api">
       <option name="closed" value="true" />
@@ -639,14 +624,21 @@
       <option name="project" value="LOCAL" />
       <updated>1770265381175</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="refactor transport feature">
+      <option name="closed" value="true" />
+      <created>1770345970796</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1770345970796</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor flights status" />
     <MESSAGE value="fix ESLint build error" />
     <MESSAGE value="create admin by vitejs + ts" />
     <MESSAGE value="setting up admin project" />
@@ -671,6 +663,7 @@
     <MESSAGE value="fix bug i18n" />
     <MESSAGE value="remove files" />
     <MESSAGE value="refactor to-from airport &amp; regional transport" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor to-from airport &amp; regional transport" />
+    <MESSAGE value="refactor transport feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor transport feature" />
   </component>
 </project>
