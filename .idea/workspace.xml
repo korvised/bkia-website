@@ -4,20 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="remove files">
-      <change afterPath="$PROJECT_DIR$/web/src/app/[lang]/transports/regional/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/transports/transport/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/components/transports/transport/regional-transport-component.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/regional/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/regional/to-myanmar.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/regional/to-thailand.ts" afterDir="false" />
+    <list default="true" id="ca34975d-9850-4f86-93e0-d2e2171352e4" name="Changes" comment="refactor to-from airport &amp; regional transport">
+      <change afterPath="$PROJECT_DIR$/web/src/components/transports/parking/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/components/transports/parking/parking-component.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/parking/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/parking/parking.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transports/parking/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/transports/parking/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/overview-tab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/overview-tab.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/taxi-tab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/taxi-tab.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/to-from-airport-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/to-from-airport-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/van-tab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/to-from-airport/van-tab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/app/[lang]/transports/regional/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/[lang]/transports/regional/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/transports/transport/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/regional/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/transports/transport/regional-transport-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/transports/regional/regional-component.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/data/i18n/transport/regional/to-myanmar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/data/i18n/transport/regional/to-myanmar.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +98,7 @@
       <recent name="D:\projects\bkia-website\web\src\components\guides" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server">
+  <component name="RunManager" selected="npm.web">
     <configuration name="admin" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/admin/package.json" />
       <command value="run" />
@@ -247,15 +244,8 @@
       <workItem from="1769484338801" duration="11019000" />
       <workItem from="1769562940576" duration="14284000" />
       <workItem from="1769648903458" duration="49000" />
-      <workItem from="1770253455849" duration="5140000" />
-    </task>
-    <task id="LOCAL-00040" summary="implement Flight module">
-      <option name="closed" value="true" />
-      <created>1762330798612</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1762330798612</updated>
+      <workItem from="1770253455849" duration="9768000" />
+      <workItem from="1770340566867" duration="5224000" />
     </task>
     <task id="LOCAL-00041" summary="refactor flight pages for connect api">
       <option name="closed" value="true" />
@@ -641,14 +631,21 @@
       <option name="project" value="LOCAL" />
       <updated>1769572321161</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="refactor to-from airport &amp; regional transport">
+      <option name="closed" value="true" />
+      <created>1770265381175</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1770265381175</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add test docker-compose.yml" />
     <MESSAGE value="refactor flights status" />
     <MESSAGE value="fix ESLint build error" />
     <MESSAGE value="create admin by vitejs + ts" />
@@ -673,6 +670,7 @@
     <MESSAGE value="refactor transfer/transit page" />
     <MESSAGE value="fix bug i18n" />
     <MESSAGE value="remove files" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove files" />
+    <MESSAGE value="refactor to-from airport &amp; regional transport" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor to-from airport &amp; regional transport" />
   </component>
 </project>

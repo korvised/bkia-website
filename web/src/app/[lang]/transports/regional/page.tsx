@@ -1,5 +1,5 @@
 import { Lang } from "@/types/language";
-import { RegionalTransportComponent } from "@/components/transports/transport";
+import { RegionalComponent } from "@/components/transports/regional";
 
 interface RegionalTransportPageProps {
   params: Promise<{ lang: Lang }>;
@@ -10,5 +10,5 @@ export default async function RegionalTransportPage({
 }: RegionalTransportPageProps) {
   const { lang } = await params;
 
-  return <RegionalTransportComponent lang={lang} />;
+  return <RegionalComponent lang={lang} />;
 }

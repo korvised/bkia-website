@@ -13,9 +13,9 @@ export const toMyanmar = {
   },
 
   warningTitle: {
-    en: "⚠️ Important",
-    lo: "⚠️ ສຳຄັນ",
-    zh: "⚠️ 重要",
+    en: "Important",
+    lo: "ສຳຄັນ",
+    zh: "重要",
   },
   warning: {
     en: "Regulations for foreign tourists change frequently. Check current status with authorities.",
