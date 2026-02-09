@@ -198,9 +198,9 @@ const popularDestinations = [
     },
     price: "80,000 - 100,000 LAK",
     duration: {
-      en: "1 hour",
-      lo: "1 ຊົ່ວໂມງ",
-      zh: "1小时",
+      en: "10 min",
+      lo: "10 ນາທີ",
+      zh: "45分钟",
     },
   },
   {
@@ -224,9 +224,9 @@ const popularDestinations = [
     },
     price: "200,000 - 300,000 LAK",
     duration: {
-      en: "30 min",
-      lo: "30 ນາທີ",
-      zh: "30分钟",
+      en: "1 hour",
+      lo: "1 ຊົ່ວໂມງ",
+      zh: "1小时",
     },
   },
   {
@@ -237,9 +237,9 @@ const popularDestinations = [
     },
     price: "400,000 - 600,000 LAK",
     duration: {
-      en: "3-4 hours",
-      lo: "3-4 ຊົ່ວໂມງ",
-      zh: "3-4小时",
+      en: "4-5 hours",
+      lo: "4-5 ຊົ່ວໂມງ",
+      zh: "4-5小时",
     },
   },
 ];
