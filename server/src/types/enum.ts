@@ -55,3 +55,9 @@ export enum FlightStatus {
   CANCELED = 'CANCELED',
   DIVERTED = 'DIVERTED',
 }
+
+export enum ImportantPriority {
+  URGENT = 'URGENT',
+  HIGH = 'HIGH',
+  NORMAL = 'NORMAL',
+}
