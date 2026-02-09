@@ -6,7 +6,6 @@ import {
   Award,
   Calendar,
   ChevronRight,
-  Download,
   ExternalLink,
   FileText,
   Search,
@@ -174,24 +173,9 @@ export default function NewsPage() {
   };
 
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-8">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/images/pattern.svg')]"></div>
-        </div>
-        <div className="relative mx-auto max-w-7xl text-center">
-          <h1 className="mb-2 text-2xl font-bold sm:text-3xl">
-            News & Press Center
-          </h1>
-          <p className="text-sm opacity-90 sm:text-base">
-            Latest updates and media coverage
-          </p>
-        </div>
-      </div>
-
+    <div className="container space-y-6">
       {/* Search & Filters */}
-      <div className="border-b border-gray-200 bg-white py-3">
+      <div className="border-b border-gray-200 bg-white">
         <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="relative flex-1 sm:max-w-md">
             <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
@@ -203,11 +187,8 @@ export default function NewsPage() {
               className="w-full rounded-lg border border-gray-300 py-2 pr-3 pl-9 text-sm focus:border-[#5CBEC6] focus:ring-1 focus:ring-[#5CBEC6] focus:outline-none"
             />
           </div>
-          <button className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] px-4 py-2 text-sm font-semibold text-white transition-all hover:shadow-md">
-            <Download className="h-4 w-4" />
-            Media Kit
-          </button>
         </div>
+
         <div className="flex gap-2 overflow-x-auto pb-2">
           {categories.map((cat) => (
             <button
@@ -249,7 +230,7 @@ export default function NewsPage() {
                   className={`relative overflow-hidden bg-gray-200 ${idx === 0 ? "h-52" : "h-36"}`}
                 >
                   <Image
-                    src="/images/news/placeholder.jpg"
+                    src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/news/626582350_122154194948825197_706263329032987337_n.jpg"
                     alt={item.title}
                     fill
                     className="object-cover"
@@ -315,7 +296,7 @@ export default function NewsPage() {
               >
                 <div className="relative h-36 overflow-hidden bg-gray-200">
                   <Image
-                    src="/images/news/placeholder.jpg"
+                    src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/news/626582350_122154194948825197_706263329032987337_n.jpg"
                     alt={item.title}
                     fill
                     className="object-cover"

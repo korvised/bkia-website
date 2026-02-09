@@ -122,7 +122,7 @@ export function LostFoundItemDetail({ lang, item }: LostFoundItemDetailProps) {
   const showClaimButton = item.type === "found" && item.status === "pending";
 
   return (
-    <div className="space-y-6">
+    <div className="container space-y-6">
       <Link
         href={`/${lang}/notices/lost-found`}
         className="inline-flex items-center gap-2 text-sm text-gray-600 transition-colors hover:text-gray-900"
@@ -304,8 +304,8 @@ export function LostFoundItemDetail({ lang, item }: LostFoundItemDetailProps) {
                   <div>
                     <p className="font-medium">Submit Online Claim Form</p>
                     <p className="text-gray-600">
-                      Click the &#34;Claim This Item&#34; button above to fill out the
-                      claim form with your details.
+                      Click the &#34;Claim This Item&#34; button above to fill
+                      out the claim form with your details.
                     </p>
                   </div>
                 </div>

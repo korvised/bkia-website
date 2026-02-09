@@ -5,8 +5,8 @@ interface NoticePageProps {
 }
 
 export default async function NoticeAndAnnouncementPage({
-                                                          params
-                                                        }: NoticePageProps) {
+  params,
+}: NoticePageProps) {
   const { lang } = await params;
 
   // Redirect to important notices as the default tab

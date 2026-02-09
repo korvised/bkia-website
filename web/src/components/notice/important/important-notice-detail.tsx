@@ -101,10 +101,10 @@ export function ImportantNoticeDetail({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="container space-y-6">
       {/* Back Button */}
       <Link
-        href={`/${lang}/notices/important`}
+        href={`/${lang}/support/notices/important`}
         className="inline-flex items-center gap-2 text-sm text-gray-600 transition-colors hover:text-gray-900"
       >
         <ArrowLeft className="h-4 w-4" />

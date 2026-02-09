@@ -42,24 +42,17 @@ export function NoticeSearch({ lang, resultsCount }: NoticeSearchProps) {
   return (
     <div className="space-y-4">
       {/* Search Input */}
-      <div className="relative">
-        <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-400" />
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-          placeholder="Search notices..."
-          className="focus:border-primary-500 focus:ring-primary-500 w-full rounded-lg border border-gray-300 py-3 pr-10 pl-10 text-sm focus:ring-2 focus:outline-none"
-        />
-        {searchQuery && (
-          <button
-            onClick={handleClear}
-            className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-            aria-label="Clear search"
-          >
-            <X className="h-5 w-5" />
-          </button>
-        )}
+      <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="relative flex-1 sm:max-w-md">
+          <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search news..."
+            value={searchQuery}
+            onChange={(e) => handleSearch(e.target.value)}
+            className="w-full rounded-lg border border-gray-300 py-2 pr-3 pl-9 text-sm focus:border-[#5CBEC6] focus:ring-1 focus:ring-[#5CBEC6] focus:outline-none"
+          />
+        </div>
       </div>
 
       {/* Search Results Info */}

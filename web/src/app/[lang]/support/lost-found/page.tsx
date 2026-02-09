@@ -74,7 +74,7 @@ export default async function LostFoundPage({
   );
 
   return (
-    <div className="space-y-6">
+    <div className="container space-y-6">
       {/* Info Banner */}
       <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
         <div className="flex gap-3">

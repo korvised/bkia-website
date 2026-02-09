@@ -66,7 +66,7 @@ export function ImportantNoticeList({
         <div className="space-y-4">
           <Link
             key={notice.id}
-            href={`/${lang}/notices/important/${notice.id}`}
+            href={`/${lang}/support/notices/important/${notice.id}`}
             className={cn(
               "block rounded-lg border-2 p-6 transition-all duration-200 hover:shadow-md",
               priorityStyles[notice.priority],

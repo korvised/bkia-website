@@ -63,7 +63,7 @@ export default async function ImportantNoticesPage({
   );
 
   return (
-    <div className="space-y-6">
+    <div className="container space-y-6">
       {/* Search */}
       <NoticeSearch
         lang={lang as Lang}
