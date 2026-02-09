@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { format } from 'date-fns';
 import { Notice } from '@/database';
 import { CreateNoticeDto, QueryNoticeDto, UpdateNoticeDto } from './dtos';
 
@@ -133,6 +134,119 @@ export class NoticeService {
         pages: Math.ceil(total / limit),
       },
     };
+  }
+
+  /**
+   * List active notices for public website (only active, within validity period).
+   */
+  async findPublic(dto: QueryNoticeDto) {
+    const { search, priority, sortBy = 'publishDate', order = 'DESC' } = dto;
+
+    const page = Math.max(Number(dto.page ?? 1), 1);
+    const limit = Math.min(Math.max(Number(dto.limit ?? 10), 1), 100);
+    const skip = (page - 1) * limit;
+
+    const qb = this.noticeRepo.createQueryBuilder('notice');
+
+    // Only active notices
+    qb.andWhere('notice.isActive = :isActive', { isActive: true });
+
+    // Only notices within validity period
+    const today: string = format(new Date(), 'yyyy-MM-dd');
+
+    // Published notices (publishDate <= today)
+    qb.andWhere('notice.publishDate <= :today', { today });
+
+    // Not expired (expiryDate IS NULL OR expiryDate >= today)
+    qb.andWhere('(notice.expiryDate IS NULL OR notice.expiryDate >= :today)', {
+      today,
+    });
+
+    // Search across all multilingual fields
+    if (search?.trim()) {
+      const s = `%${search.trim()}%`;
+
+      qb.andWhere(
+        `(
+        EXISTS (
+          SELECT 1 
+          FROM jsonb_each_text(notice.title) AS t(key, value)
+          WHERE value ILIKE :s
+        )
+        OR EXISTS (
+          SELECT 1 
+          FROM jsonb_each_text(notice.description) AS d(key, value)
+          WHERE value ILIKE :s
+        )
+        OR EXISTS (
+          SELECT 1 
+          FROM jsonb_each_text(notice.content) AS c(key, value)
+          WHERE value ILIKE :s
+        )
+      )`,
+        { s },
+      );
+    }
+
+    // Filter by priority
+    if (priority) {
+      qb.andWhere('notice.priority = :priority', { priority });
+    }
+
+    // Sorting
+    const orderMap: Record<string, string> = {
+      publishDate: 'notice.publishDate',
+      effectiveDate: 'notice.effectiveDate',
+      priority: 'notice.priority',
+      createdAt: 'notice.createdAt',
+    };
+
+    const orderField = orderMap[sortBy] ?? 'notice.publishDate';
+    const orderDirection = order === 'ASC' ? 'ASC' : 'DESC';
+
+    qb.orderBy(orderField, orderDirection);
+
+    if (sortBy !== 'createdAt') {
+      qb.addOrderBy('notice.createdAt', 'DESC');
+    }
+
+    qb.skip(skip).take(limit);
+
+    const [data, total] = await qb.getManyAndCount();
+
+    return {
+      data,
+      meta: {
+        total,
+        page,
+        limit,
+        pages: Math.ceil(total / limit),
+      },
+    };
+  }
+
+  /**
+   * Get highlighted notices for homepage slider (urgent & high priority only).
+   */
+  async findHighlights(limit: number = 5) {
+    const today: string = format(new Date(), 'yyyy-MM-dd');
+
+    const notices = await this.noticeRepo
+      .createQueryBuilder('notice')
+      .where('notice.isActive = :isActive', { isActive: true })
+      .andWhere('notice.publishDate <= :today', { today })
+      .andWhere('(notice.expiryDate IS NULL OR notice.expiryDate >= :today)', {
+        today,
+      })
+      .andWhere('notice.priority IN (:...priorities)', {
+        priorities: ['URGENT', 'HIGH'],
+      })
+      .orderBy('notice.priority', 'ASC') // URGENT first, then HIGH
+      .addOrderBy('notice.publishDate', 'DESC')
+      .take(limit)
+      .getMany();
+
+    return notices;
   }
 
   /**

@@ -89,6 +89,23 @@ export const notices = {
     zh: "请稍后查看更新",
   },
 
+  // Not found page
+  notFoundTitle: {
+    en: "Notice Not Found",
+    lo: "ບໍ່ພົບແຈ້ງການ",
+    zh: "未找到通知",
+  },
+  notFoundMessage: {
+    en: "The notice you're looking for doesn't exist or may have been removed.",
+    lo: "ແຈ້ງການທີ່ທ່ານຊອກຫາບໍ່ມີຢູ່ ຫຼື ອາດຈະຖືກລຶບອອກແລ້ວ.",
+    zh: "您要查找的通知不存在或可能已被删除。",
+  },
+  backToNotices: {
+    en: "Back to Notices",
+    lo: "ກັບໄປຫາແຈ້ງການ",
+    zh: "返回通知",
+  },
+
   // Labels
   publishedOn: {
     en: "Published on",

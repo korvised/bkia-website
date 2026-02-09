@@ -30,6 +30,25 @@ export class NoticeController {
   }
 
   /**
+   * GET /notices/public
+   * List active notices for public website (non-admin).
+   */
+  @Get('public')
+  async findPublic(@Query() query: QueryNoticeDto) {
+    return await this.service.findPublic(query);
+  }
+
+  /**
+   * GET /notices/highlights
+   * Get highlighted notices for homepage slider.
+   */
+  @Get('highlights')
+  async findHighlights(@Query('limit') limit?: string) {
+    const limitNum = limit ? Math.min(Number(limit), 10) : 5;
+    return await this.service.findHighlights(limitNum);
+  }
+
+  /**
    * GET /notices/:id
    * Retrieve a single notice by ID.
    */

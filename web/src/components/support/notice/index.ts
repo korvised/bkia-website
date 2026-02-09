@@ -1,2 +1,4 @@
-export { NoticeFilters } from "./notice-filters";
-export { NoticeList } from "./notice-list";
+export * from "./notice-filters";
+export * from "./notice-list";
+export * from "./notice-detail";
+export * from "./notice-detail-skeleton";

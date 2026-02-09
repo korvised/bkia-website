@@ -24,7 +24,7 @@ export function toNoticeQuery(
 }
 
 export function listNotices(query: QueryNotice) {
-  const url = withQuery("notices", {
+  const url = withQuery("notices/public", {
     search: query.search,
     priority: query.priority,
     publishDate: query.publishDate,
@@ -39,6 +39,10 @@ export function listNotices(query: QueryNotice) {
   return fetchJSON<INoticeResponse>(url);
 }
 
-export function getNoticeById(id: string) {
-  return fetchJSON<INotice>(`notices/${id}`);
+export async function getNoticeById(id: string): Promise<INotice | null> {
+  try {
+    return await fetchJSON<INotice>(`notices/${id}`);
+  } catch (error) {
+    return null;
+  }
 }
