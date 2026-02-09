@@ -347,7 +347,7 @@ export const navigation: NavItem[] = [
           lo: "ແຖງຂ່າວ ແລະ ອັບເດດສື່ມວນຊົນ",
           zh: "新闻稿与媒体更新",
         },
-        href: "/news",
+        href: "/support/news",
       },
       {
         label: {

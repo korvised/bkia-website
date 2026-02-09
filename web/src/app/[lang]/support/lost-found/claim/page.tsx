@@ -1,5 +1,5 @@
 import { Lang } from "@/types/language";
-import { ClaimFoundItemForm } from "@/components/notice";
+import { ClaimFoundItemForm } from "@/components/support";
 
 interface ClaimFoundPageProps {
   params: Promise<{ lang: string }>;

@@ -1,5 +1,5 @@
 import { Lang } from "@/types/language";
-import { ReportItemForm } from "@/components/notice";
+import { ReportItemForm } from "@/components/support";
 
 interface ReportLostPageProps {
   params: Promise<{ lang: string }>;

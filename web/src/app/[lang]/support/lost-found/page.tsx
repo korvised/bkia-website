@@ -3,7 +3,7 @@ import {
   LostFoundList,
   LostFoundSearch,
   ReportItemButton,
-} from "@/components/notice";
+} from "@/components/support";
 import { lostFoundItems } from "@/data/notice/lost-found";
 
 interface LostFoundPageProps {

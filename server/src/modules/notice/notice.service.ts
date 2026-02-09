@@ -71,7 +71,7 @@ export class NoticeService {
     }
 
     // Filter by priority
-    if (priority && priority !== 'all') {
+    if (priority) {
       qb.andWhere('notice.priority = :priority', { priority });
     }
 

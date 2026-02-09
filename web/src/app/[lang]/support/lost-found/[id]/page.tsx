@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Lang } from "@/types/language";
-import { LostFoundItemDetail } from "@/components/notice";
+import { LostFoundItemDetail } from "@/components/support";
 import { lostFoundItems } from "@/data/notice/lost-found";
 
 interface LostFoundDetailPageProps {

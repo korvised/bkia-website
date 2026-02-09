@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Lang } from "@/types/language";
-import { ImportantNoticeDetail } from "@/components/notice/important";
+import { ImportantNoticeDetail } from "@/components/support/notice";
 import { importantNotices } from "@/data/notice/important-notices";
 
 interface NoticeDetailPageProps {

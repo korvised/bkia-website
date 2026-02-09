@@ -4,7 +4,7 @@ import {
   ComplaintTracking,
   ComplaintFAQ,
   ComplaintWorkflow,
-} from "@/components/notice";
+} from "@/components/support";
 import { complaintTranslations } from "@/data/translations/complaint";
 
 interface ComplaintPageProps {
