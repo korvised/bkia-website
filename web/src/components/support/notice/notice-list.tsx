@@ -1,4 +1,4 @@
-import { Bell, Calendar, Clock, ArrowRight } from "lucide-react";
+import { Bell, Calendar, ChevronRight, Clock } from "lucide-react";
 import Link from "next/link";
 import { Lang } from "@/types/language";
 import { ImportantPriority } from "@/types/enum";
@@ -131,7 +131,7 @@ export function NoticeList({ lang, notices, searchQuery }: NoticeListProps) {
 
               {/* Arrow Icon */}
               <div className="flex-shrink-0 self-center">
-                <ArrowRight className="group-hover:text-primary-600 h-5 w-5 text-gray-400 transition-all group-hover:translate-x-1" />
+                <ChevronRight className="group-hover:text-primary-600 h-5 w-5 text-gray-400 transition-all group-hover:translate-x-1" />
               </div>
             </div>
           </Link>
