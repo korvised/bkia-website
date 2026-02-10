@@ -15,7 +15,6 @@ export function toNoticeQuery(
   return {
     search: filters.q,
     priority: priority && priority !== "all" ? priority : undefined,
-    isActive: true,
     page: filters.page ? Number(filters.page) : 1,
     limit: filters.limit ? Number(filters.limit) : 25,
     sortBy: "publishDate",
@@ -23,14 +22,14 @@ export function toNoticeQuery(
   };
 }
 
+/**
+ * List public notices (for website visitors)
+ * Only shows active notices within validity period
+ */
 export function listNotices(query: QueryNotice) {
   const url = withQuery("notices/public", {
     search: query.search,
     priority: query.priority,
-    publishDate: query.publishDate,
-    effectiveFrom: query.effectiveFrom,
-    effectiveTo: query.effectiveTo,
-    isActive: query.isActive ? "true" : undefined,
     sortBy: query.sortBy,
     order: query.order,
     page: query.page,
@@ -39,6 +38,20 @@ export function listNotices(query: QueryNotice) {
   return fetchJSON<INoticeResponse>(url);
 }
 
+/**
+ * Get highlighted notices for homepage slider
+ * Returns urgent and high priority notices only
+ */
+export function listHighlightNotices(limit: number = 5) {
+  const url = withQuery("notices/highlights", {
+    limit: limit.toString(),
+  });
+  return fetchJSON<INotice[]>(url);
+}
+
+/**
+ * Get a single notice by ID
+ */
 export async function getNoticeById(id: string): Promise<INotice | null> {
   try {
     return await fetchJSON<INotice>(`notices/${id}`);
