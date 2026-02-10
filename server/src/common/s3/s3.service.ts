@@ -28,11 +28,14 @@ export class S3Service {
     this.bucketName = this.configService.get('aws.bucket');
     this.region = this.configService.get('aws.region');
 
+    const accessKeyId = this.configService.get('aws.accessKeyId');
+    const secretAccessKey = this.configService.get('aws.secretAccessKey');
+
     this.s3Client = new S3Client({
       region: this.region,
       credentials: {
-        accessKeyId: this.configService.get('aws.accessKeyId'),
-        secretAccessKey: this.configService.get('aws.secretAccessKey'),
+        accessKeyId,
+        secretAccessKey,
       },
     });
   }
@@ -53,13 +56,12 @@ export class S3Service {
         Key: key,
         Body: file.buffer,
         ContentType: file.mimetype,
+        // ACL: 'public-read', // Uncomment if you need public access
+        ContentLength: file.size, // Explicitly defining size prevents some SDK errors
         Metadata: {
-          uploadedAt: new Date().toISOString(),
-          fileCategory,
-          fileSize: file.size.toString(),
-          ...options.metadata,
+          'original-name': encodeURIComponent(file.originalname), // Metadata keys should be simple
+          'file-category': fileCategory,
         },
-        ContentDisposition: 'inline',
       });
 
       const response = await this.s3Client.send(command);
@@ -77,7 +79,7 @@ export class S3Service {
         uploadedAt: new Date(),
       };
     } catch (error) {
-      this.logger.error(`Failed to upload file: ${error.message}`);
+      this.logger.error(`Failed to upload file: ${error?.message}`);
       console.log(error);
 
       if (error instanceof BadRequestException) {
@@ -118,7 +120,7 @@ export class S3Service {
       return await this.uploadFile(file, s3Options);
     } catch (error) {
       this.logger.error(
-        `Failed to upload file with type validation: ${error.message}`,
+        `Failed to upload file with type validation: ${error?.message}`,
       );
       throw error;
     }
@@ -153,7 +155,7 @@ export class S3Service {
       this.logger.log(`File deleted successfully: ${key}`);
       return true;
     } catch (error) {
-      this.logger.error(`Failed to delete file ${key}: ${error.message}`);
+      this.logger.error(`Failed to delete file ${key}: ${error?.message}`);
       throw new InternalServerErrorException('Failed to delete file');
     }
   }
@@ -171,11 +173,11 @@ export class S3Service {
       );
       return true;
     } catch (error) {
-      if (error.name === 'NotFound') {
+      if (error?.name === 'NotFound') {
         return false;
       }
       this.logger.error(
-        `Error checking file existence for ${key}: ${error.message}`,
+        `Error checking file existence for ${key}: ${error?.message}`,
       );
       throw error;
     }
@@ -206,7 +208,7 @@ export class S3Service {
       };
     } catch (error) {
       this.logger.error(
-        `Failed to get file metadata for ${key}: ${error.message}`,
+        `Failed to get file metadata for ${key}: ${error?.message}`,
       );
       throw new InternalServerErrorException('Failed to get file metadata');
     }

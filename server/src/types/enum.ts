@@ -61,3 +61,13 @@ export enum ImportantPriority {
   HIGH = 'HIGH',
   NORMAL = 'NORMAL',
 }
+
+export enum NewsCategory {
+  AIRPORT_UPDATE = 'AIRPORT_UPDATE', // Terminal renovations, new facilities
+  FLIGHT_SERVICE = 'FLIGHT_SERVICE', // New routes, airline partnerships
+  EVENT = 'EVENT', // Airport events, ceremonies
+  ANNOUNCEMENT = 'ANNOUNCEMENT', // General announcements
+  SUSTAINABILITY = 'SUSTAINABILITY', // Environmental initiatives
+  TECHNOLOGY = 'TECHNOLOGY', // New tech implementations
+  COMMUNITY = 'COMMUNITY', // Community programs, CSR
+}
