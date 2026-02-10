@@ -120,6 +120,55 @@ export const news = {
     lo: "ລອງປັບການຄົ້ນຫາ ຫຼື ເບິ່ງຂ່າວທັງໝົດ.",
     zh: "请尝试调整搜索或浏览所有新闻。",
   },
+
+  // Detail page
+  backToNews: {
+    en: "Back to news",
+    lo: "ກັບໄປຫາຂ່າວ",
+    zh: "返回新闻",
+  },
+  viewAllNews: {
+    en: "View all news",
+    lo: "ເບິ່ງຂ່າວທັງໝົດ",
+    zh: "查看所有新闻",
+  },
+  category: {
+    en: "Category",
+    lo: "ໝວດໝູ່",
+    zh: "类别",
+  },
+  published: {
+    en: "Published",
+    lo: "ເຜີຍແຜ່",
+    zh: "发布时间",
+  },
+  author: {
+    en: "Author",
+    lo: "ຜູ້ຂຽນ",
+    zh: "作者",
+  },
+  relatedTopics: {
+    en: "Related Topics",
+    lo: "ຫົວຂໍ້ທີ່ກ່ຽວຂ້ອງ",
+    zh: "相关主题",
+  },
+
+  // Not found page
+  newsNotFoundTitle: {
+    en: "News Article Not Found",
+    lo: "ບໍ່ພົບບົດຄວາມຂ່າວ",
+    zh: "未找到新闻文章",
+  },
+  newsNotFoundMessage: {
+    en: "The news article you're looking for doesn't exist or may have been removed.",
+    lo: "ບົດຄວາມຂ່າວທີ່ທ່ານຊອກຫາບໍ່ມີຢູ່ ຫຼື ອາດຈະຖືກລຶບອອກແລ້ວ.",
+    zh: "您要查找的新闻文章不存在或可能已被删除。",
+  },
+  goToHomepage: {
+    en: "Go to Homepage",
+    lo: "ໄປໜ້າຫຼັກ",
+    zh: "前往首页",
+  },
 } as const;
 
 export type NewsKey = keyof typeof news;

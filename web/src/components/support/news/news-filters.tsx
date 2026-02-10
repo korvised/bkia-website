@@ -82,7 +82,7 @@ export function NewsFilters({
       } else {
         params.set("q", value);
       }
-      router.push(`/${lang}/news?${params.toString()}`, {
+      router.push(`/${lang}/support/news?${params.toString()}`, {
         scroll: false,
       });
     },
@@ -108,7 +108,7 @@ export function NewsFilters({
     setSearchQuery("");
     const params = new URLSearchParams(searchParams.toString());
     params.delete("q");
-    router.push(`/${lang}/news?${params.toString()}`, {
+    router.push(`/${lang}/support/news?${params.toString()}`, {
       scroll: false,
     });
   }, [lang, router, searchParams]);

@@ -58,9 +58,11 @@ function NewsListSkeleton() {
 async function NewsPageContent({
   lang,
   query,
+  searchParams,
 }: {
   lang: Lang;
   query: QueryNews;
+  searchParams: Record<string, string | undefined>;
 }) {
   const { data, meta } = await listNews(query);
   const t = createNewsI18n(lang).news;
@@ -83,8 +85,14 @@ async function NewsPageContent({
         resultsCount={query.search ? meta.total : undefined}
       />
 
-      {/* News Grid */}
-      <NewsList lang={lang} news={data} searchQuery={query.search} />
+      {/* News Grid with Pagination */}
+      <NewsList
+        lang={lang}
+        news={data}
+        searchQuery={query.search}
+        meta={meta}
+        searchParams={searchParams}
+      />
     </div>
   );
 }
@@ -99,7 +107,11 @@ export default async function NewsPage({
 
   return (
     <Suspense fallback={<NewsListSkeleton />}>
-      <NewsPageContent lang={lang as Lang} query={query} />
+      <NewsPageContent
+        lang={lang as Lang}
+        query={query}
+        searchParams={filters}
+      />
     </Suspense>
   );
 }
