@@ -29,7 +29,7 @@ export const NewsSection = ({ lang, news }: NewsSectionProps) => {
             </h2>
           </div>
           <Link
-            href={`/${lang}/support/news`}
+            href={`/${lang}/about/news`}
             className="bg-primary-600 hover:bg-primary-700 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition-colors"
           >
             {t.viewAllNews}
@@ -42,7 +42,7 @@ export const NewsSection = ({ lang, news }: NewsSectionProps) => {
           {news.slice(0, 3).map((article) => (
             <Link
               key={article.id}
-              href={`/${lang}/support/news/${article.slug}`}
+              href={`/${lang}/about/news/${article.slug}`}
               className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
             >
               {/* Image */}
