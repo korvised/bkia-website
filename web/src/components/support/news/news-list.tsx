@@ -5,18 +5,14 @@ import { Lang } from "@/types/language";
 import { INews } from "@/types/news";
 import { asset, fmtDate } from "@/lib";
 import { createNewsI18n } from "@/data/i18n/support";
+import { IPaginationMeta } from "@/types/pagination";
 import { NewsPagination } from "./news-pagination";
 
 interface NewsListProps {
   lang: Lang;
   news: INews[];
   searchQuery?: string;
-  meta: {
-    total: number;
-    page: number;
-    limit: number;
-    pages: number;
-  };
+  meta: IPaginationMeta;
   searchParams: Record<string, string | undefined>;
 }
 
@@ -36,10 +32,10 @@ export function NewsList({
           <Newspaper className="h-8 w-8 text-gray-400" />
         </div>
         <h3 className="mt-4 text-lg font-semibold text-gray-900">
-          {t.noNewsFound}
+          {searchQuery ? t.noNewsFound : t.newsNotFoundMessage}
         </h3>
         <p className="mx-auto mt-2 max-w-sm text-sm text-gray-600">
-          {t.noNewsMessage}
+          {searchQuery ? t.noResultsMessage : t.noNewsMessage}
         </p>
       </div>
     );

@@ -1,5 +1,6 @@
 import { MultilingualText } from "./language";
 import { ImportantPriority } from "@/types/enum";
+import { IPaginationMeta } from "@/types/pagination";
 
 export interface INotice {
   id: string;
@@ -18,12 +19,7 @@ export interface INotice {
 
 export interface INoticeResponse {
   data: INotice[];
-  meta: {
-    total: number;
-    page: number;
-    limit: number;
-    pages: number;
-  };
+  meta: IPaginationMeta;
 }
 
 export interface QueryNotice {

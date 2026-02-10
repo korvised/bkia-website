@@ -23,14 +23,12 @@ interface NewsFiltersProps {
   lang: Lang;
   query?: string;
   selectedCategory?: NewsCategory | "all";
-  resultsCount?: number;
 }
 
 export function NewsFilters({
   lang,
   query = "",
   selectedCategory,
-  resultsCount,
 }: NewsFiltersProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -78,8 +76,10 @@ export function NewsFilters({
       setSearchQuery(value);
       const params = new URLSearchParams(searchParams.toString());
       if (value.trim() === "") {
+        params.delete("page");
         params.delete("q");
       } else {
+        params.set("page", "1");
         params.set("q", value);
       }
       router.push(`/${lang}/support/news?${params.toString()}`, {
@@ -93,8 +93,10 @@ export function NewsFilters({
     (id: string) => {
       const params = new URLSearchParams(searchParams.toString());
       if (id === "all") {
+        params.set("page", "1");
         params.delete("category");
       } else {
+        params.set("page", "1");
         params.set("category", id);
       }
       router.push(`/${lang}/support/news?${params.toString()}`, {
@@ -137,26 +139,6 @@ export function NewsFilters({
           </button>
         )}
       </div>
-
-      {/* Search Results Info */}
-      {searchQuery && resultsCount !== undefined && (
-        <div className="flex items-center justify-between rounded-xl border border-blue-200 bg-blue-50 px-5 py-3.5">
-          <p className="text-sm text-gray-700">
-            <span className="font-semibold text-gray-900">{resultsCount}</span>{" "}
-            {resultsCount !== 1 ? t.searchResultsPlural : t.searchResults}
-            {t.searchResultsFor}
-            <span className="font-medium text-gray-900">
-              &#34;{searchQuery}&#34;
-            </span>
-          </p>
-          <button
-            onClick={handleClear}
-            className="text-primary-600 hover:text-primary-700 text-sm font-medium transition-colors"
-          >
-            {t.clearSearch}
-          </button>
-        </div>
-      )}
 
       {/* Category Filter Tabs */}
       <div className="border-b border-gray-200">

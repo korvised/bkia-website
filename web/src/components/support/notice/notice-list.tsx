@@ -4,15 +4,25 @@ import { Lang } from "@/types/language";
 import { ImportantPriority } from "@/types/enum";
 import { INotice } from "@/types/notice";
 import { cn, fmtDate } from "@/lib";
+import { IPaginationMeta } from "@/types/pagination";
 import { createSupportI18n } from "@/data/i18n/support";
+import { NoticePagination } from "./notice-pagination";
 
 interface NoticeListProps {
   lang: Lang;
   notices: INotice[];
   searchQuery?: string;
+  meta: IPaginationMeta;
+  searchParams: Record<string, string | undefined>;
 }
 
-export function NoticeList({ lang, notices, searchQuery }: NoticeListProps) {
+export function NoticeList({
+  lang,
+  notices,
+  searchQuery,
+  meta,
+  searchParams,
+}: NoticeListProps) {
   const t = createSupportI18n(lang).notices;
 
   const priorityConfig: Record<
@@ -53,90 +63,98 @@ export function NoticeList({ lang, notices, searchQuery }: NoticeListProps) {
   }
 
   return (
-    <div className="space-y-3">
-      {notices.map((notice) => {
-        const config = priorityConfig[notice.priority];
+    <div className="space-y-8">
+      {/* Notice List */}
+      <div className="space-y-3">
+        {notices.map((notice) => {
+          const config = priorityConfig[notice.priority];
 
-        return (
-          <Link
-            key={notice.id}
-            href={`/${lang}/support/notices/${notice.id}`}
-            className="group block rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-gray-300 hover:shadow-md"
-          >
-            <div className="flex items-start gap-4">
-              {/* Content */}
-              <div className="min-w-0 flex-1 space-y-2">
-                {/* Header: Priority Label & Date */}
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <span
-                    className={cn(
-                      "text-xs font-semibold uppercase",
-                      config.badgeText,
+          return (
+            <Link
+              key={notice.id}
+              href={`/${lang}/support/notices/${notice.id}`}
+              className="group block rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-gray-300 hover:shadow-md"
+            >
+              <div className="flex items-start gap-4">
+                {/* Content */}
+                <div className="min-w-0 flex-1 space-y-2">
+                  {/* Header: Priority Label & Date */}
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span
+                      className={cn(
+                        "text-xs font-semibold uppercase",
+                        config.badgeText,
+                      )}
+                    >
+                      {notice.priority}
+                    </span>
+                    <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                      <Clock className="h-3.5 w-3.5" />
+                      <time dateTime={notice.publishDate}>
+                        {fmtDate(new Date(notice.publishDate), lang)}
+                      </time>
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="group-hover:text-primary-600 line-clamp-1 text-base font-semibold text-gray-900 transition-colors">
+                    {notice.title[lang]}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="line-clamp-2 text-sm text-gray-600">
+                    {notice.description[lang]}
+                  </p>
+
+                  {/* Footer: Tags & Effective Date */}
+                  <div className="flex flex-wrap items-center gap-2 pt-1">
+                    {notice.effectiveDate && (
+                      <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                        <Calendar className="h-3.5 w-3.5" />
+                        <span>
+                          {t.effectiveFrom}:{" "}
+                          {fmtDate(new Date(notice.effectiveDate), lang)}
+                        </span>
+                      </div>
                     )}
-                  >
-                    {notice.priority}
-                  </span>
-                  <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                    <Clock className="h-3.5 w-3.5" />
-                    <time dateTime={notice.publishDate}>
-                      {fmtDate(new Date(notice.publishDate), lang)}
-                    </time>
+
+                    {notice.tags && notice.tags.length > 0 && (
+                      <>
+                        {notice.effectiveDate && (
+                          <span className="text-gray-300">•</span>
+                        )}
+                        {notice.tags.slice(0, 3).map((tag, index) => (
+                          <span
+                            key={index}
+                            className="inline-flex items-center rounded-md bg-gray-100 px-2 py-0.5 text-xs text-gray-700"
+                          >
+                            {tag[lang]}
+                          </span>
+                        ))}
+                        {notice.tags.length > 3 && (
+                          <span className="text-xs text-gray-500">
+                            +{notice.tags.length - 3}
+                          </span>
+                        )}
+                      </>
+                    )}
                   </div>
                 </div>
 
-                {/* Title */}
-                <h3 className="group-hover:text-primary-600 line-clamp-1 text-base font-semibold text-gray-900 transition-colors">
-                  {notice.title[lang]}
-                </h3>
-
-                {/* Description */}
-                <p className="line-clamp-2 text-sm text-gray-600">
-                  {notice.description[lang]}
-                </p>
-
-                {/* Footer: Tags & Effective Date */}
-                <div className="flex flex-wrap items-center gap-2 pt-1">
-                  {notice.effectiveDate && (
-                    <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                      <Calendar className="h-3.5 w-3.5" />
-                      <span>
-                        {t.effectiveFrom}:{" "}
-                        {fmtDate(new Date(notice.effectiveDate), lang)}
-                      </span>
-                    </div>
-                  )}
-
-                  {notice.tags && notice.tags.length > 0 && (
-                    <>
-                      {notice.effectiveDate && (
-                        <span className="text-gray-300">•</span>
-                      )}
-                      {notice.tags.slice(0, 3).map((tag, index) => (
-                        <span
-                          key={index}
-                          className="inline-flex items-center rounded-md bg-gray-100 px-2 py-0.5 text-xs text-gray-700"
-                        >
-                          {tag[lang]}
-                        </span>
-                      ))}
-                      {notice.tags.length > 3 && (
-                        <span className="text-xs text-gray-500">
-                          +{notice.tags.length - 3}
-                        </span>
-                      )}
-                    </>
-                  )}
+                {/* Arrow Icon */}
+                <div className="flex-shrink-0 self-center">
+                  <ChevronRight className="group-hover:text-primary-600 h-5 w-5 text-gray-400 transition-all group-hover:translate-x-1" />
                 </div>
               </div>
+            </Link>
+          );
+        })}
+      </div>
 
-              {/* Arrow Icon */}
-              <div className="flex-shrink-0 self-center">
-                <ChevronRight className="group-hover:text-primary-600 h-5 w-5 text-gray-400 transition-all group-hover:translate-x-1" />
-              </div>
-            </div>
-          </Link>
-        );
-      })}
+      {/* Pagination */}
+      {meta.pages > 1 && (
+        <NoticePagination lang={lang} meta={meta} searchParams={searchParams} />
+      )}
     </div>
   );
 }

@@ -115,6 +115,11 @@ export const news = {
     lo: "ບໍ່ພົບຂ່າວ",
     zh: "未找到新闻",
   },
+  noResultsMessage: {
+    en: "Try adjusting your search terms or browse all notices.",
+    lo: "ລອງປັບຄຳຄົ້ນຫາຂອງທ່ານ ຫຼື ເບິ່ງແຈ້ງການທັງໝົດ.",
+    zh: "请尝试调整搜索词或浏览所有通知。",
+  },
   noNewsMessage: {
     en: "Try adjusting your search or browse all news.",
     lo: "ລອງປັບການຄົ້ນຫາ ຫຼື ເບິ່ງຂ່າວທັງໝົດ.",

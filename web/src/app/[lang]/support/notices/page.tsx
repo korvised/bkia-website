@@ -56,15 +56,17 @@ function NoticeListSkeleton() {
 async function NoticesPageContent({
   lang,
   query,
+  searchParams,
 }: {
   lang: Lang;
   query: QueryNotice;
+  searchParams: Record<string, string | undefined>;
 }) {
   const { data, meta } = await listNotices(query);
   const t = createSupportI18n(lang).notices;
 
   return (
-    <div className="container space-y-8">
+    <div className="container space-y-8 py-8">
       {/* Page Header */}
       <div className="space-y-2">
         <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">
@@ -81,8 +83,14 @@ async function NoticesPageContent({
         resultsCount={query.search ? meta.total : undefined}
       />
 
-      {/* Notice List */}
-      <NoticeList lang={lang} notices={data} searchQuery={query.search} />
+      {/* Notice List with Pagination */}
+      <NoticeList
+        lang={lang}
+        notices={data}
+        searchQuery={query.search}
+        meta={meta}
+        searchParams={searchParams}
+      />
     </div>
   );
 }
@@ -97,7 +105,11 @@ export default async function NoticesPage({
 
   return (
     <Suspense fallback={<NoticeListSkeleton />}>
-      <NoticesPageContent lang={lang as Lang} query={query} />
+      <NoticesPageContent
+        lang={lang as Lang}
+        query={query}
+        searchParams={filters}
+      />
     </Suspense>
   );
 }

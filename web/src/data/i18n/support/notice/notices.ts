@@ -36,7 +36,7 @@ export const notices = {
   },
   searchResultsFor: {
     en: "for",
-    lo: "สຳລັບ",
+    lo: "ສຳລັບ",
     zh: "关于",
   },
   clearSearch: {

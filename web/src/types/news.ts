@@ -1,5 +1,6 @@
 import { MultilingualText } from "./language";
 import { IFile } from "@/types/file";
+import { IPaginationMeta } from "@/types/pagination";
 
 export enum NewsCategory {
   AIRPORT_UPDATE = "AIRPORT_UPDATE",
@@ -32,12 +33,7 @@ export interface INews {
 
 export interface INewsResponse {
   data: INews[];
-  meta: {
-    total: number;
-    page: number;
-    limit: number;
-    pages: number;
-  };
+  meta: IPaginationMeta;
 }
 
 export interface QueryNews {

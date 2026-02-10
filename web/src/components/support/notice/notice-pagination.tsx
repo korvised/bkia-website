@@ -1,9 +1,10 @@
+// /components/notice/notice-pagination.tsx - Use common i18n
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Lang } from "@/types/language";
 import { createCommonI18n } from "@/data/i18n/common";
 
-interface NewsPaginationProps {
+interface NoticePaginationProps {
   lang: Lang;
   meta: {
     total: number;
@@ -14,11 +15,11 @@ interface NewsPaginationProps {
   searchParams: Record<string, string | undefined>;
 }
 
-export function NewsPagination({
+export function NoticePagination({
   lang,
   meta,
   searchParams,
-}: NewsPaginationProps) {
+}: NoticePaginationProps) {
   const t = createCommonI18n(lang).pagination;
 
   const createPageUrl = (page: number) => {
@@ -32,7 +33,7 @@ export function NewsPagination({
 
     params.set("page", page.toString());
 
-    return `/${lang}/support/news?${params.toString()}`;
+    return `/${lang}/support/notices?${params.toString()}`;
   };
 
   const startResult = (meta.page - 1) * meta.limit + 1;
@@ -44,8 +45,7 @@ export function NewsPagination({
       <div className="text-sm text-gray-600">
         {t.showing}
         <span className="font-semibold text-gray-900">{startResult}</span>-
-        <span className="font-semibold text-gray-900">{endResult}</span>
-        {t.of}
+        <span className="font-semibold text-gray-900">{endResult}</span> {t.of}
         <span className="font-semibold text-gray-900">{meta.total}</span>
       </div>
 

@@ -16,7 +16,7 @@ export function toNoticeQuery(
     search: filters.q,
     priority: priority && priority !== "all" ? priority : undefined,
     page: filters.page ? Number(filters.page) : 1,
-    limit: filters.limit ? Number(filters.limit) : 25,
+    limit: filters.limit ? Number(filters.limit) : 5,
     sortBy: "publishDate",
     order: "DESC",
   };
