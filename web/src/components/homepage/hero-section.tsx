@@ -53,7 +53,10 @@ interface HeroSectionProps {
   className?: string;
 }
 
-export default function HeroSection({ notices, className }: HeroSectionProps) {
+export const HeroSection: React.FC<HeroSectionProps> = ({
+  notices,
+  className,
+}: HeroSectionProps) => {
   const { lang } = useLanguage();
   const [heroSwiper, setHeroSwiper] = useState<SwiperType | null>(null);
   const [announcementSwiper, setAnnouncementSwiper] =
@@ -211,4 +214,4 @@ export default function HeroSection({ notices, className }: HeroSectionProps) {
       </div>
     </div>
   );
-}
+};

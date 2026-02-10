@@ -7,9 +7,9 @@ import { PlaneLanding, PlaneTakeoff, Search } from "lucide-react";
 import { PiAirplaneInFlightBold } from "react-icons/pi";
 import { useLanguage } from "@/context";
 import { cn } from "@/lib";
-import { WeatherWidget } from "@/components/homepage";
 import { createFlightI18n } from "@/data/i18n/flights";
 import DatePicker from "./date-picker";
+import WeatherWidget from "./weather-widget";
 
 type Tab = "departures" | "arrivals";
 
@@ -17,7 +17,9 @@ interface FlightSearchProps {
   className?: string;
 }
 
-export default function FlightSearch({ className }: FlightSearchProps) {
+export const FlightSearch: React.FC<FlightSearchProps> = ({
+  className,
+}: FlightSearchProps) => {
   const { lang } = useLanguage();
   const [tab, setTab] = useState<Tab>("departures");
   const [date, setDate] = useState<Date>(new Date());
@@ -174,4 +176,4 @@ export default function FlightSearch({ className }: FlightSearchProps) {
       </div>
     </section>
   );
-}
+};

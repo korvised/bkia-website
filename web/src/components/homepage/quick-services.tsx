@@ -150,7 +150,9 @@ interface QuickServicesProps {
   lang: Lang;
 }
 
-export default function QuickServices({ lang }: QuickServicesProps) {
+export const QuickServices: React.FC<QuickServicesProps> = ({
+  lang,
+}: QuickServicesProps) => {
   return (
     <div className="flex flex-1 flex-col justify-center py-16">
       <div className="mx-auto max-w-7xl px-6">
@@ -235,4 +237,4 @@ export default function QuickServices({ lang }: QuickServicesProps) {
       </div>
     </div>
   );
-}
+};

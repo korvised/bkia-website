@@ -8,10 +8,6 @@ import {
 import Link from "next/link";
 import { Lang, MultilingualText } from "@/types/language";
 
-interface ServiceCardComponentProps {
-  lang: Lang;
-}
-
 interface ServiceCard {
   id: string;
   title: MultilingualText;
@@ -102,13 +98,12 @@ const servicesData: ServiceCard[] = [
   },
 ];
 
-function ServiceCardComponent({
-  lang,
-  service,
-}: {
+interface Props {
   lang: Lang;
   service: ServiceCard;
-}) {
+}
+
+const ServiceCardComponent: React.FC<Props> = ({ lang, service }) => {
   return (
     <div
       className={`${service.bgColor} ${service.textColor} rounded-2xl p-8 shadow-lg`}
@@ -138,11 +133,13 @@ function ServiceCardComponent({
       </Link>
     </div>
   );
+};
+
+interface ServiceCardComponentProps {
+  lang: Lang;
 }
 
-export default function UsefulServicesSection({
-  lang,
-}: ServiceCardComponentProps) {
+export const UsefulServicesSection = ({ lang }: ServiceCardComponentProps) => {
   const sectionTitle: MultilingualText = {
     en: "Useful services and information",
     lo: "ບໍລິການ ແລະ ຂໍ້ມູນທີ່ເປັນປະໂຫຍດ",
@@ -172,4 +169,4 @@ export default function UsefulServicesSection({
       </div>
     </section>
   );
-}
+};
