@@ -249,25 +249,27 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen">
       {/* Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-8">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/images/pattern.svg')]"></div>
-        </div>
-        <div className="relative mx-auto max-w-7xl text-center">
-          <h1 className="mb-2 text-2xl font-bold sm:text-3xl lg:text-4xl">
-            Join Our Team
-          </h1>
-          <p className="text-sm opacity-90 sm:text-base">
-            Build your aviation career at Northern Laos&#39; premier
-            international airport
-          </p>
+      <div className="container">
+        <div className="relative overflow-hidden bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-8">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-[url('/images/pattern.svg')]"></div>
+          </div>
+          <div className="relative mx-auto max-w-7xl text-center">
+            <h1 className="mb-2 text-2xl font-bold sm:text-3xl lg:text-4xl">
+              Join Our Team
+            </h1>
+            <p className="text-sm opacity-90 sm:text-base">
+              Build your aviation career at Northern Laos&#39; premier
+              international airport
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Company Values */}
-      <div className="bg-white py-6 sm:py-8">
+      <div className="container bg-white py-6 sm:py-8">
         <div className="rounded-lg bg-gradient-to-br from-blue-50 to-purple-50 p-5">
           <h2 className="mb-3 text-lg font-bold text-gray-900 sm:text-xl">
             Our Values
@@ -295,34 +297,36 @@ export default function CareersPage() {
 
       {/* Benefits */}
       <div className="bg-gray-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-        <h2 className="mb-4 text-center text-xl font-bold text-gray-900 sm:text-2xl">
-          Benefits & Perks
-        </h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div
-                key={index}
-                className="rounded-lg bg-white p-4 shadow-md transition-all hover:shadow-lg"
-              >
-                <div className="mb-3 inline-flex rounded-lg bg-gradient-to-br from-[#5CBEC6] to-[#00AAAC] p-2.5">
-                  <Icon className="h-5 w-5 text-white" />
+        <div className="container">
+          <h2 className="mb-4 text-center text-xl font-bold text-gray-900 sm:text-2xl">
+            Benefits & Perks
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {benefits.map((benefit, index) => {
+              const Icon = benefit.icon;
+              return (
+                <div
+                  key={index}
+                  className="rounded-lg bg-white p-4 shadow-md transition-all hover:shadow-lg"
+                >
+                  <div className="mb-3 inline-flex rounded-lg bg-gradient-to-br from-[#5CBEC6] to-[#00AAAC] p-2.5">
+                    <Icon className="h-5 w-5 text-white" />
+                  </div>
+                  <h3 className="mb-2 text-base font-bold text-gray-900">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-gray-600">
+                    {benefit.description}
+                  </p>
                 </div>
-                <h3 className="mb-2 text-base font-bold text-gray-900">
-                  {benefit.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-gray-600">
-                  {benefit.description}
-                </p>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
 
       {/* Job Search */}
-      <div className="bg-white py-6 sm:py-8">
+      <div className="container bg-white py-6 sm:py-8">
         <h2 className="mb-4 text-center text-xl font-bold text-gray-900 sm:text-2xl">
           Open Positions
         </h2>
@@ -467,61 +471,65 @@ export default function CareersPage() {
 
       {/* Hiring Process */}
       <div className="bg-gray-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-        <h2 className="mb-4 text-center text-xl font-bold text-gray-900 sm:text-2xl">
-          Our Hiring Process
-        </h2>
-        <p className="mb-6 text-center text-sm text-gray-600">
-          A transparent and efficient recruitment journey
-        </p>
+        <div className="container">
+          <h2 className="mb-4 text-center text-xl font-bold text-gray-900 sm:text-2xl">
+            Our Hiring Process
+          </h2>
+          <p className="mb-6 text-center text-sm text-gray-600">
+            A transparent and efficient recruitment journey
+          </p>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {hiringProcess.map((step, index) => (
-            <div
-              key={index}
-              className="rounded-lg bg-white p-5 shadow-md transition-all hover:shadow-lg"
-            >
-              <div className="mb-3 flex items-center gap-3">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] shadow-md">
-                  <span className="text-lg font-bold text-white">
-                    {step.step}
-                  </span>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {hiringProcess.map((step, index) => (
+              <div
+                key={index}
+                className="rounded-lg bg-white p-5 shadow-md transition-all hover:shadow-lg"
+              >
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] shadow-md">
+                    <span className="text-lg font-bold text-white">
+                      {step.step}
+                    </span>
+                  </div>
+                  <h3 className="text-base font-bold text-gray-900">
+                    {step.title}
+                  </h3>
                 </div>
-                <h3 className="text-base font-bold text-gray-900">
-                  {step.title}
-                </h3>
+                <p className="text-sm leading-relaxed text-gray-600">
+                  {step.description}
+                </p>
               </div>
-              <p className="text-sm leading-relaxed text-gray-600">
-                {step.description}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/* CTA Section */}
-      <div className="bg-primary px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-3 text-xl font-bold sm:text-2xl">
-            Ready to Take Off?
-          </h2>
-          <p className="mb-6 text-sm opacity-90 sm:text-base">
-            Don&#39;t see the right position? Submit your resume for future
-            opportunities
-          </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
-            <button className="rounded-lg bg-white px-6 py-2.5 text-sm font-semibold text-[#00AAAC] transition-all hover:bg-gray-100 hover:shadow-lg">
-              Submit General Application
-            </button>
-            <button className="rounded-lg border-2 border-white px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-white hover:text-[#00AAAC]">
-              Contact HR Team
-            </button>
+      <div className="container pt-6 sm:pt-8">
+        <div className="bg-primary px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="mb-3 text-xl font-bold sm:text-2xl">
+              Ready to Take Off?
+            </h2>
+            <p className="mb-6 text-sm opacity-90 sm:text-base">
+              Don&#39;t see the right position? Submit your resume for future
+              opportunities
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
+              <button className="rounded-lg bg-white px-6 py-2.5 text-sm font-semibold text-[#00AAAC] transition-all hover:bg-gray-100 hover:shadow-lg">
+                Submit General Application
+              </button>
+              <button className="rounded-lg border-2 border-white px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-white hover:text-[#00AAAC]">
+                Contact HR Team
+              </button>
+            </div>
+            <p className="mt-4 text-xs opacity-80">
+              Questions? Email us at{" "}
+              <a href="mailto:careers@bokeoairport.la" className="underline">
+                careers@bokeoairport.la
+              </a>
+            </p>
           </div>
-          <p className="mt-4 text-xs opacity-80">
-            Questions? Email us at{" "}
-            <a href="mailto:careers@bokeoairport.la" className="underline">
-              careers@bokeoairport.la
-            </a>
-          </p>
         </div>
       </div>
     </div>

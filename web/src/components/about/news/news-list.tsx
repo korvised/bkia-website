@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Lang } from "@/types/language";
 import { INews } from "@/types/news";
 import { asset, fmtDate } from "@/lib";
-import { createNewsI18n } from "@/data/i18n/support";
+import { createNewsI18n } from "@/data/i18n/about";
 import { IPaginationMeta } from "@/types/pagination";
 import { NewsPagination } from "./news-pagination";
 
@@ -48,7 +48,7 @@ export function NewsList({
         {news.map((article) => (
           <Link
             key={article.id}
-            href={`/${lang}/support/news/${article.slug}`}
+            href={`/${lang}/about/news/${article.slug}`}
             className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:shadow-lg"
           >
             {/* Cover Image */}

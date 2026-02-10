@@ -107,24 +107,27 @@ export default function BiddingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen">
       {/* Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-8">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/images/pattern.svg')]"></div>
-        </div>
-        <div className="relative mx-auto max-w-7xl text-center">
-          <h1 className="mb-2 text-2xl font-bold sm:text-3xl lg:text-4xl">
-            Bidding & Procurement
-          </h1>
-          <p className="text-sm opacity-90 sm:text-base">
-            Transparent procurement opportunities at Bokeo International Airport
-          </p>
+      <div className="container">
+        <div className="relative overflow-hidden bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-8">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-[url('/images/pattern.svg')]"></div>
+          </div>
+          <div className="relative mx-auto max-w-7xl text-center">
+            <h1 className="mb-2 text-2xl font-bold sm:text-3xl lg:text-4xl">
+              Bidding & Procurement
+            </h1>
+            <p className="text-sm opacity-90 sm:text-base">
+              Transparent procurement opportunities at Bokeo International
+              Airport
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Principles */}
-      <div className="bg-white py-6 sm:py-8">
+      <div className="container bg-white py-6 sm:py-8">
         <div className="rounded-lg bg-gradient-to-br from-blue-50 to-purple-50 p-5">
           <h2 className="mb-3 text-lg font-bold text-gray-900 sm:text-xl">
             Procurement Principles
@@ -174,33 +177,35 @@ export default function BiddingPage() {
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-gray-200 bg-white">
-        <div className="flex gap-3 overflow-x-auto">
-          <button
-            onClick={() => setActiveTab("active")}
-            className={`border-b-2 px-3 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors ${
-              activeTab === "active"
-                ? "border-[#00AAAC] text-[#00AAAC]"
-                : "border-transparent text-gray-600 hover:text-gray-900"
-            }`}
-          >
-            Active Tenders ({activeTenders.length})
-          </button>
-          <button
-            onClick={() => setActiveTab("awarded")}
-            className={`border-b-2 px-3 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors ${
-              activeTab === "awarded"
-                ? "border-[#00AAAC] text-[#00AAAC]"
-                : "border-transparent text-gray-600 hover:text-gray-900"
-            }`}
-          >
-            Contract Awards ({awardedContracts.length})
-          </button>
+      <div className="container">
+        <div className="border-b border-gray-200 bg-white">
+          <div className="flex gap-3 overflow-x-auto">
+            <button
+              onClick={() => setActiveTab("active")}
+              className={`border-b-2 px-3 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors ${
+                activeTab === "active"
+                  ? "border-[#00AAAC] text-[#00AAAC]"
+                  : "border-transparent text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              Active Tenders ({activeTenders.length})
+            </button>
+            <button
+              onClick={() => setActiveTab("awarded")}
+              className={`border-b-2 px-3 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors ${
+                activeTab === "awarded"
+                  ? "border-[#00AAAC] text-[#00AAAC]"
+                  : "border-transparent text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              Contract Awards ({awardedContracts.length})
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white py-3">
+      <div className="container bg-white py-3">
         <div className="flex gap-2 overflow-x-auto pb-2">
           {categories.map((cat) => {
             const Icon = cat.icon;
@@ -218,7 +223,7 @@ export default function BiddingPage() {
       </div>
 
       {/* Content */}
-      <div className="py-6">
+      <div className="container py-6">
         {activeTab === "active" && (
           <div className="space-y-4">
             {activeTenders.map((tender) => (
@@ -229,14 +234,14 @@ export default function BiddingPage() {
                 <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
                   <div className="flex-1">
                     <div className="mb-2 flex items-center gap-2">
-                        <span
-                          className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${getCategoryColor(tender.category)}`}
-                        >
-                          {tender.category.toUpperCase()}
-                        </span>
+                      <span
+                        className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${getCategoryColor(tender.category)}`}
+                      >
+                        {tender.category.toUpperCase()}
+                      </span>
                       <span className="rounded-lg bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700">
-                          {tender.status}
-                        </span>
+                        {tender.status}
+                      </span>
                     </div>
                     <h3 className="mb-2 text-lg font-bold text-gray-900 group-hover:text-[#00AAAC]">
                       {tender.title}
@@ -261,22 +266,22 @@ export default function BiddingPage() {
                   <div className="flex items-center gap-2 text-xs text-gray-600">
                     <Calendar className="h-3.5 w-3.5 text-[#00AAAC]" />
                     <span>
-                        Published:{" "}
+                      Published:{" "}
                       {new Date(tender.publishDate).toLocaleDateString(
                         "en-US",
                         { month: "short", day: "numeric", year: "numeric" },
                       )}
-                      </span>
+                    </span>
                   </div>
                   <div className="flex items-center gap-2 text-xs font-semibold text-red-600">
                     <Calendar className="h-3.5 w-3.5" />
                     <span>
-                        Closing:{" "}
+                      Closing:{" "}
                       {new Date(tender.closingDate).toLocaleDateString(
                         "en-US",
                         { month: "short", day: "numeric", year: "numeric" },
                       )}
-                      </span>
+                    </span>
                   </div>
                 </div>
 
@@ -335,14 +340,14 @@ export default function BiddingPage() {
                 <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
                   <div className="flex-1">
                     <div className="mb-2 flex items-center gap-2">
-                        <span
-                          className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${getCategoryColor(contract.category)}`}
-                        >
-                          {contract.category.toUpperCase()}
-                        </span>
+                      <span
+                        className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${getCategoryColor(contract.category)}`}
+                      >
+                        {contract.category.toUpperCase()}
+                      </span>
                       <span className="rounded-lg bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-700">
-                          AWARDED
-                        </span>
+                        AWARDED
+                      </span>
                     </div>
                     <h3 className="mb-2 text-lg font-bold text-gray-900">
                       {contract.title}

@@ -32,7 +32,7 @@ export function NewsPagination({
 
     params.set("page", page.toString());
 
-    return `/${lang}/support/news?${params.toString()}`;
+    return `/${lang}/about/news?${params.toString()}`;
   };
 
   const startResult = (meta.page - 1) * meta.limit + 1;

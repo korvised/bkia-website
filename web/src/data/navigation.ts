@@ -66,11 +66,7 @@ export const navigation: NavItem[] = [
     hasDropdown: true,
     menuItems: [
       {
-        label: {
-          en: "Departures",
-          lo: "ຖ້ຽວບິນອອກ",
-          zh: "出发航班",
-        },
+        label: { en: "Departures", lo: "ຖ້ຽວບິນອອກ", zh: "出发航班" },
         description: {
           en: "Check departing flights status",
           lo: "ກວດສອບສະຖານະຖ້ຽວບິນອອກ",
@@ -79,11 +75,7 @@ export const navigation: NavItem[] = [
         href: "/flights/departures",
       },
       {
-        label: {
-          en: "Arrivals",
-          lo: "ຖ້ຽວບິນຂາເຂົ້າ",
-          zh: "到达航班",
-        },
+        label: { en: "Arrivals", lo: "ຖ້ຽວບິນຂາເຂົ້າ", zh: "到达航班" },
         description: {
           en: "Check arriving flights status",
           lo: "ກວດສອບສະຖານະຖ້ຽວບິນຂາເຂົ້າ",
@@ -92,11 +84,7 @@ export const navigation: NavItem[] = [
         href: "/flights/arrivals",
       },
       {
-        label: {
-          en: "Schedules",
-          lo: "ຕາຕະລາງຖ້ຽວບິນ",
-          zh: "航班时刻表",
-        },
+        label: { en: "Schedules", lo: "ຕາຕະລາງຖ້ຽວບິນ", zh: "航班时刻表" },
         description: {
           en: "View all flight schedules",
           lo: "ເບິ່ງຕາຕະລາງຖ້ຽວບິນທັງໝົດ",
@@ -105,11 +93,7 @@ export const navigation: NavItem[] = [
         href: "/flights/schedules",
       },
       {
-        label: {
-          en: "Airlines",
-          lo: "ສາຍການບິນ",
-          zh: "航空公司",
-        },
+        label: { en: "Airlines", lo: "ສາຍການບິນ", zh: "航空公司" },
         description: {
           en: "View airline information",
           lo: "ເບິ່ງຂໍ້ມູນສາຍການບິນ",
@@ -122,13 +106,13 @@ export const navigation: NavItem[] = [
       image:
         "https://bkia-website.s3.ap-southeast-7.amazonaws.com/featured/my-hkg-app.png",
       title: {
-        en: '"My Airport" Mobile App',
-        lo: 'ແອັບມືຖື "ສະໜາມບິນຂອງຂ້ອຍ"',
-        zh: '"我的机场" 移动应用',
+        en: '"My Airport" App',
+        lo: 'ແອັບ "ສະໜາມບິນຂອງຂ້ອຍ"',
+        zh: '"我的机场" 应用',
       },
       description: {
-        en: "Search all airport information at your fingertips",
-        lo: "ຄົ້ນຫາຂໍ້ມູນສະໜາມບິນທັງໝົດ",
+        en: "Search airport info at your fingertips",
+        lo: "ຄົ້ນຫາຂໍ້ມູນສະໜາມບິນໄດ້ງ່າຍໆ",
         zh: "随时搜索机场信息",
       },
     },
@@ -145,27 +129,19 @@ export const navigation: NavItem[] = [
     hasDropdown: true,
     menuItems: [
       {
-        label: {
-          en: "Departures",
-          lo: "ຂາອອກ",
-          zh: "出发指南",
-        },
+        label: { en: "Departures", lo: "ຂາອອກ", zh: "出发指南" },
         description: {
           en: "Check-in and boarding process",
-          lo: "ຂັ້ນຕອນການແຈ້ງ ແລະ ການຂຶ້ນເຄື່ອງ",
+          lo: "ຂັ້ນຕອນການແຈ້ງເຂົ້າ ແລະ ຂຶ້ນເຄື່ອງ",
           zh: "值机和登机流程",
         },
         href: "/guides/departures",
       },
       {
-        label: {
-          en: "Arrivals",
-          lo: "ຂາເຂົ້າ",
-          zh: "到达指南",
-        },
+        label: { en: "Arrivals", lo: "ຂາເຂົ້າ", zh: "到达指南" },
         description: {
           en: "Arrival procedures and customs",
-          lo: "ຄຳແນະນຳຜູ້ໂດຍສານຂາເຂົ້າ ແລະ ພາສີສຸນລະກອນ",
+          lo: "ຄຳແນະນຳຂາເຂົ້າ ແລະ ພາສີ",
           zh: "到达流程和海关",
         },
         href: "/guides/arrivals",
@@ -173,7 +149,7 @@ export const navigation: NavItem[] = [
       {
         label: {
           en: "Transfer / Transit",
-          lo: "ການຖ່າຍໂອນ / ຜ່ານແດນ",
+          lo: "ການຕໍ່ຖ້ຽວບິນ",
           zh: "中转/过境",
         },
         description: {
@@ -184,11 +160,7 @@ export const navigation: NavItem[] = [
         href: "/guides/transfer",
       },
       {
-        label: {
-          en: "Airport Security",
-          lo: "ຄວາມປອດໄພ",
-          zh: "安检须知",
-        },
+        label: { en: "Airport Security", lo: "ຄວາມປອດໄພ", zh: "安检须知" },
         description: {
           en: "Security guidelines and tips",
           lo: "ຄຳແນະນຳດ້ານຄວາມປອດໄພ",
@@ -204,7 +176,7 @@ export const navigation: NavItem[] = [
         },
         description: {
           en: "Airport amenities for passengers",
-          lo: "ສິ່ງອຳນວຍຄວາມສະດວກສຳລັບຜູ້ໂດຍສານ",
+          lo: "ສິ່ງອຳນວຍຄວາມສະດວກຕ່າງໆ",
           zh: "机场旅客设施",
         },
         href: "/guides/facilities",
@@ -219,17 +191,9 @@ export const navigation: NavItem[] = [
         zh: "一站式服务",
       },
       description: {
-        en: "Book all airport essentials in one place",
+        en: "Book airport essentials in one place",
         lo: "ຈອງບໍລິການທັງໝົດໃນບ່ອນດຽວ",
         zh: "一处预订所有服务",
-      },
-      link: {
-        label: {
-          en: "Explore More",
-          lo: "ສຳຫຼວດເພີ່ມ",
-          zh: "了解更多",
-        },
-        href: "/services/booking",
       },
     },
   },
@@ -238,18 +202,14 @@ export const navigation: NavItem[] = [
     label: { en: "Transport", lo: "ການຂົນສົ່ງ", zh: "交通" },
     description: {
       en: "Ground transportation and parking",
-      lo: "ການຂົນສົ່ງພື້ນດິນ ແລະ ບ່ອນຈອດລົດ",
+      lo: "ການຂົນສົ່ງ ແລະ ບ່ອນຈອດລົດ",
       zh: "地面交通和停车",
     },
     href: "/transports",
     hasDropdown: true,
     menuItems: [
       {
-        label: {
-          en: "To & From Airport",
-          lo: "ໄປ-ມາສະໜາມບິນ",
-          zh: "往返机场",
-        },
+        label: { en: "To & From Airport", lo: "ໄປ-ມາສະໜາມບິນ", zh: "往返机场" },
         description: {
           en: "Bus, taxi and shuttle services",
           lo: "ລົດເມ, ແທັກຊີ ແລະ ລົດຮັບສົ່ງ",
@@ -258,11 +218,7 @@ export const navigation: NavItem[] = [
         href: "/transports/to-from-airport",
       },
       {
-        label: {
-          en: "Parking",
-          lo: "ບ່ອນຈອດລົດ",
-          zh: "停车场",
-        },
+        label: { en: "Parking", lo: "ບ່ອນຈອດລົດ", zh: "停车场" },
         description: {
           en: "Parking rates and reservations",
           lo: "ອັດຕາຄ່າຈອດລົດ ແລະ ການຈອງ",
@@ -284,14 +240,10 @@ export const navigation: NavItem[] = [
         href: "/transports/regional",
       },
       {
-        label: {
-          en: "Useful Contacts",
-          lo: "ຕິດຕໍ່ທີ່ເປັນປະໂຫຍດ",
-          zh: "实用联系",
-        },
+        label: { en: "Useful Contacts", lo: "ຕິດຕໍ່ສອບຖາມ", zh: "实用联系" },
         description: {
           en: "Transport service contacts",
-          lo: "ຕິດຕໍ່ບໍລິການຂົນສົ່ງ",
+          lo: "ເບີຕິດຕໍ່ບໍລິການຂົນສົ່ງ",
           zh: "交通服务联系",
         },
         href: "/transports/contacts",
@@ -300,11 +252,7 @@ export const navigation: NavItem[] = [
     featuredContent: {
       image:
         "https://bkia-website.s3.ap-southeast-7.amazonaws.com/featured/valet-parking.jpg",
-      title: {
-        en: "Valet Parking",
-        lo: "ຈອດລົດພິເສດ",
-        zh: "代客泊车",
-      },
+      title: { en: "Valet Parking", lo: "ຈອດລົດພິເສດ", zh: "代客泊车" },
       description: {
         en: "Hassle-free parking experience",
         lo: "ປະສົບການຈອດລົດທີ່ສະດວກ",
@@ -314,47 +262,26 @@ export const navigation: NavItem[] = [
   },
   {
     id: "support",
-    label: { en: "Support", lo: "ສະໜັບສະໜູນ", zh: "客户支持" },
+    label: { en: "Support", lo: "ຊ່ວຍເຫຼືອ", zh: "客户支持" },
     description: {
-      en: "Help center and customer service",
-      lo: "ສູນຊ່ວຍເຫຼືອ ແລະ ບໍລິການລູກຄ້າ",
-      zh: "帮助中心和客服",
+      en: "Help center and passenger services",
+      lo: "ສູນຊ່ວຍເຫຼືອຜູ້ໂດຍສານ",
+      zh: "帮助中心和旅客服务",
     },
     href: "/support",
     hasDropdown: true,
     menuItems: [
       {
-        label: {
-          en: "Notices",
-          lo: "ແຈ້ງການ",
-          zh: "机场公告",
-        },
+        label: { en: "Notices", lo: "ແຈ້ງການ", zh: "机场公告" },
         description: {
-          en: "changes, advisories and alerts",
-          lo: "ການປ່ຽນແປງການດຳເນີນງານ ແລະ ຄຳແນະນຳ/ເຕືອນ",
-          zh: "运营变更、提示与警报",
+          en: "Operational changes and advisories",
+          lo: "ການປ່ຽນແປງ ແລະ ຄຳແນະນຳ",
+          zh: "运营变更与提示",
         },
         href: "/support/notices",
       },
       {
-        label: {
-          en: "News",
-          lo: "ຂ່າວສານ",
-          zh: "新闻中心",
-        },
-        description: {
-          en: "Press releases and media updates",
-          lo: "ແຖງຂ່າວ ແລະ ອັບເດດສື່ມວນຊົນ",
-          zh: "新闻稿与媒体更新",
-        },
-        href: "/support/news",
-      },
-      {
-        label: {
-          en: "FAQs",
-          lo: "ຄຳຖາມທີ່ພົບເລື້ອຍ",
-          zh: "常见问题",
-        },
+        label: { en: "FAQs", lo: "ຄຳຖາມທີ່ພົບເລື້ອຍ", zh: "常见问题" },
         description: {
           en: "Frequently asked questions",
           lo: "ຄຳຖາມທີ່ຖືກຖາມເລື້ອຍໆ",
@@ -365,22 +292,18 @@ export const navigation: NavItem[] = [
       {
         label: {
           en: "Lost & Found",
-          lo: "ເສຍຫາຍ & ພົບເຫັນ",
+          lo: "ເຄື່ອງເສຍ & ພົບເຫັນ",
           zh: "失物招领",
         },
         description: {
           en: "Report or claim lost items",
-          lo: "ລາຍງານຫຼືຮັບເຄື່ອງເສຍຫາຍ",
+          lo: "ລາຍງານຫຼືຮັບເຄື່ອງເສຍ",
           zh: "报告或认领失物",
         },
         href: "/support/lost-found",
       },
       {
-        label: {
-          en: "Feedback",
-          lo: "ຄຳຄິດເຫັນ",
-          zh: "意见反馈",
-        },
+        label: { en: "Feedback", lo: "ຄຳຄິດເຫັນ", zh: "意见反馈" },
         description: {
           en: "Share your experience",
           lo: "ແບ່ງປັນປະສົບການຂອງທ່ານ",
@@ -392,11 +315,7 @@ export const navigation: NavItem[] = [
     featuredContent: {
       image:
         "https://bkia-website.s3.ap-southeast-7.amazonaws.com/featured/customer-support.jpeg",
-      title: {
-        en: "24/7 Support",
-        lo: "ສະໜັບສະໜູນ 24/7",
-        zh: "24/7客服",
-      },
+      title: { en: "24/7 Support", lo: "ຊ່ວຍເຫຼືອ 24/7", zh: "24/7客服" },
       description: {
         en: "We're here to help anytime",
         lo: "ພວກເຮົາພ້ອມຊ່ວຍເຫຼືອທຸກເວລາ",
@@ -406,92 +325,63 @@ export const navigation: NavItem[] = [
   },
   {
     id: "about",
-    label: { en: "About Us", lo: "ກ່ຽວກັບພວກເຮົາ", zh: "关于我们" },
+    label: {
+      en: "About",
+      lo: "ກ່ຽວກັບ",
+      zh: "关于我们",
+    },
     description: {
-      en: "Learn about our airport",
-      lo: "ຮຽນຮູ້ກ່ຽວກັບສະໜາມບິນຂອງພວກເຮົາ",
-      zh: "了解我们的机场",
+      en: "Airport profile, news, and business",
+      lo: "ຂໍ້ມູນສະໜາມບິນ, ຂ່າວສານ ແລະ ທຸລະກິດ",
+      zh: "机场概况、新闻与商务",
     },
     href: "/about",
     hasDropdown: true,
     menuItems: [
       {
-        label: {
-          en: "Overview",
-          lo: "ພາບລວມ",
-          zh: "机场概览",
-        },
+        label: { en: "Airport Profile", lo: "ຂໍ້ມູນສະໜາມບິນ", zh: "机场简介" },
         description: {
-          en: "Airport introduction",
-          lo: "ແນະນຳສະໜາມບິນ",
-          zh: "机场简介",
+          en: "Our history, vision, and mission",
+          lo: "ປະຫວັດ, ວິໄສທັດ ແລະ ພາລະກິດ",
+          zh: "历史、愿景与使命",
         },
-        href: "/about/overview",
+        href: "/about/profile",
       },
       {
-        label: {
-          en: "Vision & Mission",
-          lo: "ວິໄສທັດ ແລະ ພາລະກິດ",
-          zh: "愿景使命",
-        },
+        label: { en: "News", lo: "ຂ່າວສານ", zh: "新闻中心" },
         description: {
-          en: "Our goals and values",
-          lo: "ເປົ້າໝາຍ ແລະ ຄຸນຄ່າຂອງພວກເຮົາ",
-          zh: "我们的目标和价值",
+          en: "Latest airport updates and stories",
+          lo: "ການອັບເດດ ແລະ ຂ່າວສານລ່າສຸດ",
+          zh: "最新动态与新闻",
         },
-        href: "/about/vision-mission",
+        href: "/about/news",
       },
       {
-        label: {
-          en: "Our History",
-          lo: "ປະຫວັດຂອງພວກເຮົາ",
-          zh: "发展历史",
-        },
+        label: { en: "Careers", lo: "ຮ່ວມງານກັບພວກເຮົາ", zh: "人才招聘" },
         description: {
-          en: "Airport development timeline",
-          lo: "ໄລຍະເວລາພັດທະນາສະໜາມບິນ",
-          zh: "机场发展历程",
+          en: "Job opportunities and recruitment",
+          lo: "ໂອກາດການຈ້າງງານ ແລະ ການຮັບສະໝັກ",
+          zh: "工作机会与人才招聘",
         },
-        href: "/about/history",
+        href: "/about/careers",
       },
       {
-        label: {
-          en: "Bidding & Procurement",
-          lo: "ການປະມູນ & ຈັດຊື້",
-          zh: "招标与采购",
-        },
+        label: { en: "Bidding", lo: "ການປະມູນ", zh: "招标采购" },
         description: {
-          en: "Open tenders, procurement notices",
-          lo: "ການປະມູນເປີດ, ແຈ້ງການຈັດຊື້ ແລະ ຜົນປະມູນ",
-          zh: "公开招标、采购公告与结果",
+          en: "Tenders and business opportunities",
+          lo: "ການປະມູນ ແລະ ໂອກາດທາງທຸລະກິດ",
+          zh: "招标项目与商业机会",
         },
-        href: "/bidding",
-      },
-      {
-        label: {
-          en: "Careers",
-          lo: "ຮ່ວມງານກັບພວກເຮົາ",
-          zh: "招聘信息",
-        },
-        description: {
-          en: "Job opportunities",
-          lo: "ໂອກາດການຈ້າງງານ",
-          zh: "工作机会",
-        },
-        href: "/careers",
+        href: "/about/procurement",
       },
     ],
     featuredContent: {
       image:
         "https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/001.jpg",
-      title: {
-        en: "Modern Airport",
-        lo: "ສະໜາມບິນທັນສະໄໝ",
-        zh: "现代化机场",
-      },
+      title: { en: "Modern Hub", lo: "ສູນກາງທັນສະໄໝ", zh: "现代化枢纽" },
       description: {
         en: "Connecting Laos to the world",
-        lo: "ເຊື່ອມຕໍ່ລາວກັບໂລກ",
+        lo: "ເຊື່ອມຕໍ່ລາວສູ່ສາກົນ",
         zh: "连接老挝与世界",
       },
     },
