@@ -43,9 +43,9 @@ export function NoticePagination({
     <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
       {/* Results info */}
       <div className="text-sm text-gray-600">
-        {t.showing}
+        {t.showing} {" "}
         <span className="font-semibold text-gray-900">{startResult}</span>-
-        <span className="font-semibold text-gray-900">{endResult}</span> {t.of}
+        <span className="font-semibold text-gray-900">{endResult}</span> {t.of} {" "}
         <span className="font-semibold text-gray-900">{meta.total}</span>
       </div>
 

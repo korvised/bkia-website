@@ -19,7 +19,6 @@ interface NoticeFiltersProps {
   lang: Lang;
   query?: string;
   selectedPriority?: ImportantPriority | "all";
-  resultsCount?: number;
 }
 
 export function NoticeFilters({

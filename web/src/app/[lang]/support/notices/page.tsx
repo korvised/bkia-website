@@ -20,7 +20,7 @@ export async function generateMetadata({
 
 function NoticeListSkeleton() {
   return (
-    <div className="container space-y-6 py-8">
+    <div className="container space-y-6">
       {/* Header skeleton */}
       <div className="space-y-2">
         <div className="h-10 w-64 animate-pulse rounded-lg bg-gray-200" />
@@ -66,13 +66,13 @@ async function NoticesPageContent({
   const t = createSupportI18n(lang).notices;
 
   return (
-    <div className="container space-y-8 py-8">
+    <div className="container space-y-8">
       {/* Page Header */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">
+        <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
           {t.pageTitle}
         </h1>
-        <p className="text-lg text-gray-600">{t.pageDescription}</p>
+        <p className="text-base text-gray-600">{t.pageDescription}</p>
       </div>
 
       {/* Filters */}
@@ -80,7 +80,6 @@ async function NoticesPageContent({
         lang={lang}
         query={query.search}
         selectedPriority={query.priority}
-        resultsCount={query.search ? meta.total : undefined}
       />
 
       {/* Notice List with Pagination */}

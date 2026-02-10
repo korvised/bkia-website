@@ -9,7 +9,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { ChevronLeft, ChevronRight, Volume2 } from "lucide-react";
 import { useLanguage } from "@/context";
 import { cn, formatDate } from "@/lib";
-import { createHomepageI18n } from "@/data/i18n/homepage";
+import { createCommonI18n } from "@/data/i18n/common";
 import { INotice } from "@/types/notice";
 
 import "swiper/css";
@@ -62,7 +62,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const [announcementSwiper, setAnnouncementSwiper] =
     useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const { hero: t } = createHomepageI18n(lang);
+  const { homepage: t } = createCommonI18n(lang);
 
   return (
     <div className={cn("relative h-full w-full", className)}>

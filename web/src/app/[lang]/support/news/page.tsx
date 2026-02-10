@@ -20,7 +20,7 @@ export async function generateMetadata({
 
 function NewsListSkeleton() {
   return (
-    <div className="container space-y-8 py-8">
+    <div className="container space-y-8">
       {/* Header skeleton */}
       <div className="space-y-2">
         <div className="h-10 w-64 animate-pulse rounded-lg bg-gray-200" />
@@ -71,10 +71,10 @@ async function NewsPageContent({
     <div className="container space-y-8">
       {/* Page Header */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">
+        <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
           {t.pageTitle}
         </h1>
-        <p className="text-lg text-gray-600">{t.pageDescription}</p>
+        <p className="text-base text-gray-600">{t.pageDescription}</p>
       </div>
 
       {/* Filters */}
@@ -82,7 +82,6 @@ async function NewsPageContent({
         lang={lang}
         query={query.search}
         selectedCategory={query.category}
-        resultsCount={query.search ? meta.total : undefined}
       />
 
       {/* News Grid with Pagination */}

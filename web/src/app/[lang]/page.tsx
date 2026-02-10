@@ -2,9 +2,11 @@ import { Lang } from "@/types/language";
 import {
   FlightSearch,
   HeroSection,
+  NewsSection,
   UsefulServicesSection,
 } from "@/components/homepage";
 import { listHighlightNotices } from "@/services/notice";
+import { listFeaturedNews } from "@/services/news";
 
 interface HomePageProps {
   params: Promise<{ lang: string }>;
@@ -13,6 +15,7 @@ interface HomePageProps {
 export default async function HomePage({ params }: HomePageProps) {
   const { lang } = await params;
   const notices = await listHighlightNotices();
+  const news = await listFeaturedNews(3);
 
   return (
     <div className="w-full">
@@ -31,6 +34,9 @@ export default async function HomePage({ params }: HomePageProps) {
 
       {/* Useful Services Section */}
       <UsefulServicesSection lang={lang as Lang} />
+
+      {/* News Section */}
+      <NewsSection lang={lang as Lang} news={news} />
     </div>
   );
 }

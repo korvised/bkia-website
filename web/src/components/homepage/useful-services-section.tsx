@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Lang, MultilingualText } from "@/types/language";
+import { createCommonI18n } from "@/data/i18n/common";
 
 interface ServiceCard {
   id: string;
@@ -140,11 +141,7 @@ interface ServiceCardComponentProps {
 }
 
 export const UsefulServicesSection = ({ lang }: ServiceCardComponentProps) => {
-  const sectionTitle: MultilingualText = {
-    en: "Useful services and information",
-    lo: "ບໍລິການ ແລະ ຂໍ້ມູນທີ່ເປັນປະໂຫຍດ",
-    zh: "有用的服务和信息",
-  };
+  const { homepage: t } = createCommonI18n(lang);
 
   return (
     <section className="relative w-full bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 py-16 md:py-24">
@@ -152,7 +149,7 @@ export const UsefulServicesSection = ({ lang }: ServiceCardComponentProps) => {
         {/* Section Title */}
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-            {sectionTitle[lang]}
+            {t.usefulServicesTitle}
           </h2>
         </div>
 

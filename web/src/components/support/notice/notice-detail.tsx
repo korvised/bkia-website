@@ -57,7 +57,7 @@ export function NoticeDetail({ lang, notice }: NoticeDetailProps) {
   const Icon = config.icon;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen">
       <div className="container max-w-4xl">
         {/* Back Button */}
         <Link
@@ -69,7 +69,7 @@ export function NoticeDetail({ lang, notice }: NoticeDetailProps) {
         </Link>
 
         {/* Main Card */}
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xs">
           {/* Header Section */}
           <div className={cn("border-l-8 p-8 lg:p-10", config.accent)}>
             {/* Priority Badge */}
@@ -165,17 +165,6 @@ export function NoticeDetail({ lang, notice }: NoticeDetailProps) {
               </ReactMarkdown>
             </article>
           </div>
-        </div>
-
-        {/* Footer Navigation */}
-        <div className="mt-8 flex justify-center">
-          <Link
-            href={`/${lang}/support/notices`}
-            className="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            View all notices
-          </Link>
         </div>
       </div>
     </div>

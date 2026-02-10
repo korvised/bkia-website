@@ -10,7 +10,7 @@ import {
   getWeatherIconElement,
 } from "@/services/homepage";
 import type { Lang } from "@/types/language";
-import { createHomepageI18n } from "@/data/i18n/homepage";
+import { createCommonI18n } from "@/data/i18n/common";
 import { getWeatherDescription } from "@/data/weather-description";
 
 interface WeatherWidgetProps {
@@ -21,7 +21,7 @@ interface WeatherWidgetProps {
 export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
   const { weather, loading, error } = useWeather();
   const [currentTime, setCurrentTime] = useState<string>("");
-  const { weather: t } = createHomepageI18n(lang);
+  const { homepage: t } = createCommonI18n(lang);
 
   // Update current time
   useEffect(() => {
