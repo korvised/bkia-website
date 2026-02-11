@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Lang } from "@/types/language";
-import { NewsDetail, NewsDetailSkeleton } from "@/components/support";
+import { NewsDetail, NewsDetailSkeleton } from "@/components/about";
 import { getNewsBySlug } from "@/services/news";
 
 interface NewsDetailPageProps {

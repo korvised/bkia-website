@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, Newspaper } from "lucide-react";
 import { cookies } from "next/headers";
-import { createNewsI18n } from "@/data/i18n/support";
+import { createNewsI18n } from "@/data/i18n/about";
 import { Lang } from "@/types/language";
 import { defaultLanguage } from "@/lib";
 
@@ -9,7 +9,7 @@ export default async function NewsNotFound() {
   const c = await cookies();
   const lang = (c.get("lang")?.value as Lang) ?? defaultLanguage;
 
-  const t = createNewsI18n(lang).news;
+  const { news: t } = createNewsI18n(lang);
 
   return (
     <div className="container flex min-h-[60vh] flex-col items-center justify-center px-4 py-16">
