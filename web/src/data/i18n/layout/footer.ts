@@ -16,11 +16,17 @@ export const footer = {
     lo: "ຖ້ຽວບິນອອກ",
     zh: "出发航班",
   },
+  schedules: {
+    en: "Flight Schedules",
+    lo: "ຕາຕະລາງຖ້ຽວບິນ",
+    zh: "航班时刻表",
+  },
   airlines: {
     en: "Airlines",
     lo: "ສາຍການບິນ",
     zh: "航空公司",
   },
+
   passengerGuide: {
     en: "Passenger Guide",
     lo: "ຄູ່ມືຜູ້ໂດຍສານ",
@@ -46,55 +52,56 @@ export const footer = {
     lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
     zh: "机场设施",
   },
-  services: {
-    en: "Airport Services",
-    lo: "ບໍລິການສະໜາມບິນ",
-    zh: "机场服务",
-  },
-  dining: {
-    en: "Dining & Shopping",
-    lo: "ຮ້ານອາຫານ ແລະ ຮ້ານຄ້າ",
-    zh: "餐饮购物",
-  },
-  lounges: {
-    en: "Lounges",
-    lo: "ຫ້ອງຮັບຮອງ",
-    zh: "贵宾室",
-  },
-  transportation: {
-    en: "Transportation",
-    lo: "ການຂົນສົ່ງ",
-    zh: "交通",
+
+  servicesSupport: {
+    en: "Services & Support",
+    lo: "ບໍລິການ ແລະ ຊ່ວຍເຫຼືອ",
+    zh: "服务与支持",
   },
   parking: {
     en: "Parking",
     lo: "ບ່ອນຈອດລົດ",
     zh: "停车场",
   },
+  notices: {
+    en: "Notices",
+    lo: "ແຈ້ງການ",
+    zh: "机场公告",
+  },
+  faq: {
+    en: "FAQs",
+    lo: "ຄຳຖາມທີ່ພົບເລື້ອຍ",
+    zh: "常见问题",
+  },
+  feedback: {
+    en: "Feedback",
+    lo: "ຄຳຄິດເຫັນ",
+    zh: "意见反馈",
+  },
   aboutUs: {
     en: "About Airport",
     lo: "ກ່ຽວກັບສະໜາມບິນ",
     zh: "关于机场",
   },
-  overview: {
-    en: "Overview",
-    lo: "ພາບລວມ",
-    zh: "概况",
+  airportProfile: {
+    en: "Airport Profile",
+    lo: "ຂໍ້ມູນສະໜາມບິນ",
+    zh: "机场简介",
   },
-  visionMission: {
-    en: "Vision & Mission",
-    lo: "ວິໄສທັດ ແລະ ພາລະກິດ",
-    zh: "愿景使命",
+  newsroom: {
+    en: "News",
+    lo: "ຂ່າວສານ",
+    zh: "新闻中心",
   },
   careers: {
     en: "Careers",
     lo: "ຮ່ວມງານກັບພວກເຮົາ",
     zh: "招聘",
   },
-  newsroom: {
-    en: "Newsroom",
-    lo: "ຂ່າວສານ",
-    zh: "新闻中心",
+  lostFound: {
+    en: "Lost & Found",
+    lo: "ເຄື່ອງເສຍ & ພົບເຫັນ",
+    zh: "失物招领",
   },
   contactUs: {
     en: "Contact Us",
@@ -120,16 +127,6 @@ export const footer = {
     en: "Follow Us",
     lo: "ຕິດຕາມພວກເຮົາ",
     zh: "关注我们",
-  },
-  quickLinks: {
-    en: "Quick Links",
-    lo: "ລິ້ງດ່ວນ",
-    zh: "快速链接",
-  },
-  legal: {
-    en: "Legal",
-    lo: "ກົດໝາຍ",
-    zh: "法律",
   },
   privacyPolicy: {
     en: "Privacy Policy",

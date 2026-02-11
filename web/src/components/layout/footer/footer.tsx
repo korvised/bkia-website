@@ -130,6 +130,14 @@ export default async function Footer({ lang }: FooterProps) {
             <ul className="space-y-2.5">
               <li>
                 <Link
+                  href={`/${lang}/flights/departures`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {t.departures}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={`/${lang}/flights/arrivals`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
@@ -138,10 +146,10 @@ export default async function Footer({ lang }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/flights/departures`}
+                  href={`/${lang}/flights/schedules`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {t.departures}
+                  {t.schedules}
                 </Link>
               </li>
               <li>
@@ -163,18 +171,18 @@ export default async function Footer({ lang }: FooterProps) {
             <ul className="space-y-2.5">
               <li>
                 <Link
-                  href={`/${lang}/guides/arrivals`}
-                  className="text-sm transition-colors hover:text-white/80"
-                >
-                  {t.arrivalGuide}
-                </Link>
-              </li>
-              <li>
-                <Link
                   href={`/${lang}/guides/departures`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
                   {t.departureGuide}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/guides/arrivals`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {t.arrivalGuide}
                 </Link>
               </li>
               <li>
@@ -196,36 +204,12 @@ export default async function Footer({ lang }: FooterProps) {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Services & Support */}
           <div className="lg:col-span-2">
             <h3 className="mb-4 text-sm font-bold tracking-wide uppercase">
-              {t.services}
+              {t.servicesSupport}
             </h3>
             <ul className="space-y-2.5">
-              <li>
-                <Link
-                  href={`/${lang}/services/dining-shopping`}
-                  className="text-sm transition-colors hover:text-white/80"
-                >
-                  {t.dining}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${lang}/services/lounges`}
-                  className="text-sm transition-colors hover:text-white/80"
-                >
-                  {t.lounges}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${lang}/transports`}
-                  className="text-sm transition-colors hover:text-white/80"
-                >
-                  {t.transportation}
-                </Link>
-              </li>
               <li>
                 <Link
                   href={`/${lang}/transports/parking`}
@@ -234,10 +218,34 @@ export default async function Footer({ lang }: FooterProps) {
                   {t.parking}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href={`/${lang}/support/notices`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {t.notices}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/support/faq`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {t.faq}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/support/feedback`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {t.feedback}
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* About */}
+          {/* About Airport */}
           <div className="lg:col-span-2">
             <h3 className="mb-4 text-sm font-bold tracking-wide uppercase">
               {t.aboutUs}
@@ -245,18 +253,18 @@ export default async function Footer({ lang }: FooterProps) {
             <ul className="space-y-2.5">
               <li>
                 <Link
-                  href={`/${lang}/about/overview`}
+                  href={`/${lang}/about/profile`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {t.overview}
+                  {t.airportProfile}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/${lang}/about/vision-mission`}
+                  href={`/${lang}/about/news`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {t.visionMission}
+                  {t.newsroom}
                 </Link>
               </li>
               <li>
@@ -269,10 +277,10 @@ export default async function Footer({ lang }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/news`}
+                  href={`/${lang}/support/lost-found`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {t.newsroom}
+                  {t.lostFound}
                 </Link>
               </li>
             </ul>
