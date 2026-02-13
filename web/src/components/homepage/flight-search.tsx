@@ -44,7 +44,7 @@ export const FlightSearch: React.FC<FlightSearchProps> = ({ className }) => {
   };
 
   return (
-    <section className={cn("relative bg-white shadow-sm", className)}>
+    <section className={cn("relative bg-white", className)}>
       <div className="container flex h-full w-full items-center py-4 sm:py-6 lg:py-8">
         <div className="grid w-full gap-4 sm:gap-6 lg:grid-cols-[260px_1fr] lg:gap-8">
           {/* Left: Title + Weather */}

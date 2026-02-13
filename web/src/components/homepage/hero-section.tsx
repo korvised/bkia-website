@@ -136,7 +136,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Announcement Bar */}
       <div className="absolute inset-x-0 bottom-0 z-30">
         {/* Curved wave - desktop only */}
-        <div className="hidden sm:block">
+        <div className="hidden lg:block">
           <div className="relative h-16 w-full overflow-hidden sm:h-20">
             <svg
               className="absolute inset-x-0 bottom-0 h-full w-full"
@@ -170,7 +170,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
 
         {/* Mobile: blur bar */}
-        <div className="block bg-black/20 backdrop-blur-md sm:hidden">
+        <div className="block bg-black/20 backdrop-blur-md lg:hidden">
           {notices && notices.length > 0 && (
             <div className="mx-auto flex items-center gap-3 px-3 py-1">
               <div className="bg-primary-500/90 flex flex-shrink-0 items-center gap-2 rounded-full p-1">
@@ -199,6 +199,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                         <span className="line-clamp-1 text-xs text-white/90 transition-all group-hover:text-white group-hover:underline">
                           {notice.title[lang]}
                         </span>
+
+                        <span className="hidden rounded-full bg-gray-300/50 px-3 py-0.5 text-xs whitespace-nowrap text-gray-50 sm:inline">
+                          {formatDate(notice.createdAt)}
+                        </span>
                       </Link>
                     </SwiperSlide>
                   ))}
@@ -210,7 +214,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Desktop: announcement over wave */}
         {notices && notices.length > 0 && (
-          <div className="absolute bottom-0 hidden w-full sm:block">
+          <div className="absolute bottom-0 hidden w-full lg:block">
             <div className="container mx-auto flex items-center gap-3 pb-3 sm:gap-4 sm:pb-4">
               <div className="bg-primary-500/90 flex flex-shrink-0 items-center gap-2.5 rounded-full p-1 xl:px-2 xl:py-1">
                 <Volume2 className="h-4.5 w-4.5 text-white sm:h-5 sm:w-5" />
