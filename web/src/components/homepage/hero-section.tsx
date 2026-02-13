@@ -133,130 +133,78 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </button>
       </div>
 
-      {/* Announcement Bar */}
-      <div className="absolute inset-x-0 bottom-0 z-30">
-        {/* Curved wave - desktop only */}
-        <div className="hidden lg:block">
-          <div className="relative h-16 w-full overflow-hidden sm:h-20">
-            <svg
-              className="absolute inset-x-0 bottom-0 h-full w-full"
-              viewBox="0 0 1440 100"
-              preserveAspectRatio="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <filter
-                  id="shadow"
-                  x="-50%"
-                  y="-50%"
-                  width="200%"
-                  height="200%"
-                >
-                  <feDropShadow
-                    dx="0"
-                    dy="-2"
-                    stdDeviation="4"
-                    floodOpacity="0.15"
-                  />
-                </filter>
-              </defs>
-              <path
-                d="M0,50 C240,20 480,20 720,50 C960,80 1200,80 1440,50 L1440,100 L0,100 Z"
-                fill="#FFFFFF"
-                filter="url(#shadow)"
-              />
-            </svg>
+      {/* Announcement Bar - Absolute at Bottom */}
+      {notices && notices.length > 0 && (
+        <div className="absolute bottom-0 z-30 h-11 w-full overflow-hidden">
+          {/* 1. Background Layer: ແຍກສີອອກເປັນ 3 ສ່ວນເພື່ອບໍ່ໃຫ້ສີເຫຼື້ອມກັນ */}
+          <div className="absolute inset-0 flex">
+            {/* ສ່ວນທີ 1: ສີ primary-500 ເລີ່ມຈາກຂອບຈໍດ້ານຊ້າຍ ມາຫາຂອບ Container */}
+            <div className="bg-primary w-[calc(50%-768px)] min-w-0" />
+
+            {/* ສ່ວນທີ 2: ສີ primary-800 ສຳລັບ Label (ຕ້ອງໃຫ້ກວ້າງເທົ່າກັບ Label Area ດ້ານລຸ່ມ) */}
+            <div className="bg-primary-500 w-48 sm:w-56 lg:w-64 xl:w-72" />
+
+            {/* ສ່ວນທີ 3: ສີພື້ນຫຼັງສຳລັບສ່ວນ Notice Swiper (ສີເຂັ້ມ/Blur) */}
+            <div className="flex-1 bg-black/15 backdrop-blur-md" />
           </div>
-        </div>
 
-        {/* Mobile: blur bar */}
-        <div className="block bg-black/20 backdrop-blur-md lg:hidden">
-          {notices && notices.length > 0 && (
-            <div className="mx-auto flex items-center gap-3 px-3 py-1">
-              <div className="bg-primary-500/90 flex flex-shrink-0 items-center gap-2 rounded-full p-1">
-                <Volume2 className="h-4 w-4 text-white" />
-              </div>
-              <div className="flex-1 overflow-hidden">
-                <Swiper
-                  modules={[Autoplay]}
-                  direction="vertical"
-                  speed={800}
-                  autoplay={{ delay: 5000, disableOnInteraction: false }}
-                  loop
-                  onSwiper={setAnnouncementSwiper}
-                  className="h-7"
-                >
-                  {notices.map((notice) => (
-                    <SwiperSlide key={notice.id}>
-                      <Link
-                        href={`/${lang}/support/notices/${notice.id}`}
-                        className="group flex h-full w-fit items-center gap-3"
-                        onMouseEnter={() => announcementSwiper?.autoplay.stop()}
-                        onMouseLeave={() =>
-                          announcementSwiper?.autoplay.start()
-                        }
-                      >
-                        <span className="line-clamp-1 text-xs text-white/90 transition-all group-hover:text-white group-hover:underline">
-                          {notice.title[lang]}
-                        </span>
-
-                        <span className="hidden rounded-full bg-gray-300/50 px-3 py-0.5 text-xs whitespace-nowrap text-gray-50 sm:inline">
-                          {formatDate(notice.createdAt)}
-                        </span>
-                      </Link>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
+          {/* 2. Content Layer: ໃຊ້ class .container ເພື່ອໃຫ້ຂໍ້ຄວາມ Align ກັບ Search Bar */}
+          <div className="relative container flex h-full items-stretch !p-0">
+            {/* Label Area (ສີ primary-800) */}
+            <div className="flex w-48 flex-shrink-0 items-center justify-start gap-2 px-4 sm:w-56 sm:px-6 lg:w-64 lg:px-8 xl:w-72 xl:px-12">
+              <Volume2 className="h-4 w-4 text-white sm:h-5 sm:w-5" />
+              <span className="text-xs font-bold tracking-wide text-white uppercase sm:text-sm">
+                {t.announcements}
+              </span>
             </div>
-          )}
-        </div>
 
-        {/* Desktop: announcement over wave */}
-        {notices && notices.length > 0 && (
-          <div className="absolute bottom-0 hidden w-full lg:block">
-            <div className="container mx-auto flex items-center gap-3 pb-3 sm:gap-4 sm:pb-4">
-              <div className="bg-primary-500/90 flex flex-shrink-0 items-center gap-2.5 rounded-full p-1 xl:px-2 xl:py-1">
-                <Volume2 className="h-4.5 w-4.5 text-white sm:h-5 sm:w-5" />
-                <span className="hidden text-sm font-semibold text-white/90 xl:inline">
-                  {t.announcements}
-                </span>
-              </div>
-              <div className="flex-1 overflow-hidden">
-                <Swiper
-                  modules={[Autoplay]}
-                  direction="vertical"
-                  speed={800}
-                  autoplay={{ delay: 5000, disableOnInteraction: false }}
-                  loop
-                  onSwiper={setAnnouncementSwiper}
-                  className="h-7"
-                >
-                  {notices.map((notice) => (
-                    <SwiperSlide key={notice.id}>
-                      <Link
-                        href={`/${lang}/support/notices/${notice.id}`}
-                        className="group flex h-full w-fit items-center gap-3 sm:gap-4"
-                        onMouseEnter={() => announcementSwiper?.autoplay.stop()}
-                        onMouseLeave={() =>
-                          announcementSwiper?.autoplay.start()
-                        }
-                      >
-                        <span className="group-hover:text-primary-600 line-clamp-1 text-xs text-gray-600 transition-all group-hover:underline sm:text-sm">
-                          {notice.title[lang]}
-                        </span>
-                        <span className="hidden rounded-full bg-gray-100 px-3 py-0.5 text-xs whitespace-nowrap text-gray-500 lg:inline">
-                          {formatDate(notice.createdAt)}
-                        </span>
-                      </Link>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
+            {/* Notice Swiper Area (ພື້ນຫຼັງຈະເປັນສີຈາກ Background Layer ສ່ວນທີ 3) */}
+            <div className="flex min-w-0 flex-1 items-center px-4 sm:px-6">
+              <Swiper
+                modules={[Autoplay]}
+                direction="vertical"
+                speed={800}
+                autoplay={{ delay: 5000, disableOnInteraction: false }}
+                loop
+                onSwiper={setAnnouncementSwiper}
+                className="h-11 w-full"
+              >
+                {notices.map((notice) => (
+                  <SwiperSlide key={notice.id}>
+                    <Link
+                      href={`/${lang}/support/notices/${notice.id}`}
+                      className="group flex h-full w-full items-center gap-4"
+                    >
+                      <span className="line-clamp-1 text-xs font-medium text-white/90 transition-all group-hover:text-white group-hover:underline sm:text-sm">
+                        {notice.title[lang]}
+                      </span>
+                      <span className="hidden flex-shrink-0 rounded-full bg-white/20 px-2 py-0.5 text-[10px] whitespace-nowrap text-white/70 md:inline">
+                        {formatDate(notice.createdAt)}
+                      </span>
+                    </Link>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            {/* Announcement Controls */}
+            <div className="flex items-center gap-1 sm:px-6 lg:px-8 xl:px-12">
+              <button
+                onClick={() => announcementSwiper?.slidePrev()}
+                className="p-1 text-white/60 transition-all hover:text-white active:scale-95"
+              >
+                <ChevronLeft className="h-3.5 w-3.5" />
+              </button>
+              <button
+                onClick={() => announcementSwiper?.slideNext()}
+                className="p-1 text-white/60 transition-all hover:text-white active:scale-95"
+              >
+                <ChevronRight className="h-3.5 w-3.5" />
+              </button>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
