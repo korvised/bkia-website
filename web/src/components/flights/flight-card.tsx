@@ -80,7 +80,7 @@ export const FlightCard: React.FC<FlightCardProps> = ({
         <div className="flex justify-end">
           <span
             className={cn(
-              "truncate rounded-full border px-2 py-1 text-xs font-semibold",
+              "rounded-full border px-2 py-1 text-center text-xs font-semibold",
               statusStyle.bg,
               statusStyle.text,
               statusStyle.border,
