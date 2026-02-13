@@ -5,7 +5,11 @@ import { createFlightI18n } from "@/data/i18n/flights";
 import { IFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
 import { FlightDirection } from "@/types/enum";
-import { getBorderColor, getStatusStyle } from "@/services/flight";
+import {
+  getBorderColor,
+  getFlightDisplayStatus,
+  getStatusStyle,
+} from "@/services/flight";
 import { FlightTypeBadge } from "./flight-type-badge";
 
 interface FlightCardProps {
@@ -20,9 +24,12 @@ export const FlightCard: React.FC<FlightCardProps> = ({
   lang,
 }) => {
   const { table: t } = createFlightI18n(lang);
-  const statusStyle = getStatusStyle(flight.status);
-  const borderColor = getBorderColor(flight.status);
+  const { code, labels } = getFlightDisplayStatus(flight);
+  const statusStyle = getStatusStyle(code);
+  const borderColor = getBorderColor(code);
   const AIRPORT_CODE = "BOR";
+
+  console.log(labels);
 
   // Get the relevant airport based on direction
   const airport =
@@ -73,13 +80,14 @@ export const FlightCard: React.FC<FlightCardProps> = ({
         <div className="flex justify-end">
           <span
             className={cn(
-              "inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold tracking-wide uppercase",
+              "truncate rounded-full border px-2 py-1 text-xs font-semibold",
               statusStyle.bg,
               statusStyle.text,
               statusStyle.border,
             )}
+            title={labels[lang] ?? labels.en}
           >
-            {flight.status}
+            {labels[lang] ?? labels.en}
           </span>
         </div>
       </div>

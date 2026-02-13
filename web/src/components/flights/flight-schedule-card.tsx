@@ -4,7 +4,11 @@ import { createFlightI18n } from "@/data/i18n/flights";
 import { asset, cn, formatTime } from "@/lib";
 import { IFlight } from "@/types/flight";
 import { Lang } from "@/types/language";
-import { getBorderColor, getStatusStyle } from "@/services/flight";
+import {
+  getBorderColor,
+  getFlightDisplayStatus,
+  getStatusStyle,
+} from "@/services/flight";
 import { FlightTypeBadge } from "./flight-type-badge";
 
 interface FlightScheduleCardProps {
@@ -17,8 +21,9 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
   lang,
 }) => {
   const { table: t } = createFlightI18n(lang);
-  const statusStyle = getStatusStyle(flight.status);
-  const borderColor = getBorderColor(flight.status);
+  const { code, labels } = getFlightDisplayStatus(flight);
+  const statusStyle = getStatusStyle(code);
+  const borderColor = getBorderColor(code);
   const AIRPORT_CODE = "BOR";
 
   // Determine if origin or destination is BOR for color coding
@@ -65,16 +70,17 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
 
         {/* Status */}
         <div className="flex justify-end">
-          <span
+          <p
             className={cn(
-              "inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold tracking-wide uppercase",
+              "truncate rounded-full border px-2 py-1 text-xs font-semibold",
               statusStyle.bg,
               statusStyle.text,
               statusStyle.border,
             )}
+            title={labels[lang] ?? labels.en}
           >
-            {flight.status}
-          </span>
+            {labels[lang] ?? labels.en}
+          </p>
         </div>
       </div>
 
