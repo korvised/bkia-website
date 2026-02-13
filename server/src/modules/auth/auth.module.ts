@@ -3,7 +3,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigService as NestConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ForgotPassword } from '@/database';
-import { ConfigModule, ConfigService } from '@/common/config';
+import { ConfigService } from '@/common/config';
 import { MailModule } from '@/common/mail';
 import { HrmsModule } from '@/common/hrms';
 import { UserModule } from '@/modules/user';
@@ -24,7 +24,6 @@ import { AuthController } from './auth.controller';
       }),
     }),
     TypeOrmModule.forFeature([ForgotPassword]),
-    ConfigModule,
     MailModule,
     HrmsModule,
     RoleModule,

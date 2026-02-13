@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '@/database';
 import { ConfigModule } from '@/common/config';
+import { S3Module } from '@/common/s3';
 import { AirlineModule } from '@/modules/airline';
 import { AirportModule } from '@/modules/airport';
 import { AuthModule } from '@/modules/auth';
@@ -20,6 +21,7 @@ import { AppService } from './app.service';
     // Utility Module,
     DatabaseModule,
     ConfigModule,
+    S3Module,
 
     // Main Module,
     AirlineModule,

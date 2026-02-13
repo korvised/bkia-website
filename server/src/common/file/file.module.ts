@@ -5,7 +5,7 @@ import { S3Module } from '@/common/s3';
 import { FileService } from './file.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([File]), S3Module],
+  imports: [TypeOrmModule.forFeature([File])],
   providers: [FileService],
   exports: [FileService],
 })
