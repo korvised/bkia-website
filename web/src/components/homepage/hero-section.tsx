@@ -133,84 +133,125 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </button>
       </div>
 
-      {/* Announcement Bar Curved */}
+      {/* Announcement Bar */}
       <div className="absolute inset-x-0 bottom-0 z-30">
-        <div className="relative h-16 w-full overflow-hidden sm:h-20">
-          {/* Pure White Wave SVG  */}
-          <svg
-            className="absolute inset-x-0 bottom-0 h-full w-full"
-            viewBox="0 0 1440 100"
-            preserveAspectRatio="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Smooth elegant wave with shadow */}
-            <defs>
-              <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-                <feDropShadow
-                  dx="0"
-                  dy="-2"
-                  stdDeviation="4"
-                  floodOpacity="0.15"
-                />
-              </filter>
-            </defs>
-            <path
-              d="M0,50 C240,20 480,20 720,50 C960,80 1200,80 1440,50 L1440,100 L0,100 Z"
-              fill="#FFFFFF"
-              filter="url(#shadow)"
-            />
-          </svg>
+        {/* Curved wave - desktop only */}
+        <div className="hidden sm:block">
+          <div className="relative h-16 w-full overflow-hidden sm:h-20">
+            <svg
+              className="absolute inset-x-0 bottom-0 h-full w-full"
+              viewBox="0 0 1440 100"
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <filter
+                  id="shadow"
+                  x="-50%"
+                  y="-50%"
+                  width="200%"
+                  height="200%"
+                >
+                  <feDropShadow
+                    dx="0"
+                    dy="-2"
+                    stdDeviation="4"
+                    floodOpacity="0.15"
+                  />
+                </filter>
+              </defs>
+              <path
+                d="M0,50 C240,20 480,20 720,50 C960,80 1200,80 1440,50 L1440,100 L0,100 Z"
+                fill="#FFFFFF"
+                filter="url(#shadow)"
+              />
+            </svg>
+          </div>
+        </div>
 
-          {/* Announcement Container */}
+        {/* Mobile: blur bar */}
+        <div className="block bg-black/20 backdrop-blur-md sm:hidden">
           {notices && notices.length > 0 && (
-            <div className="absolute -bottom-5 left-0 w-full sm:-bottom-7">
-              <div className="container mx-auto flex h-full w-full items-center gap-3 pb-4 sm:gap-4 sm:pb-6">
-                {/* LEFT: Icon & Label */}
-                <div className="from-primary-500/90 to-primary-500 flex flex-shrink-0 items-center gap-2.5 rounded-full bg-gradient-to-br p-1 text-transparent xl:rounded-l-full xl:rounded-r-none xl:px-2 xl:py-1">
-                  <Volume2 className="h-4.5 w-4.5 text-white sm:h-5 sm:w-5" />
-                  <span className="hidden text-sm font-semibold text-white/90 xl:inline">
-                    {t.announcements}
-                  </span>
-                </div>
-
-                {/*  Announcement Content */}
-                <div className="flex-1 overflow-hidden">
-                  <Swiper
-                    modules={[Autoplay]}
-                    direction="vertical"
-                    speed={800}
-                    autoplay={{ delay: 5000, disableOnInteraction: false }}
-                    loop
-                    onSwiper={setAnnouncementSwiper}
-                    className="h-12 sm:h-14"
-                  >
-                    {notices.map((notice) => (
-                      <SwiperSlide key={notice.id}>
-                        <Link
-                          href={`/${lang}/support/notices/${notice.id}`}
-                          className="group flex h-full w-fit items-center gap-3 sm:gap-4"
-                          onMouseEnter={() =>
-                            announcementSwiper?.autoplay.stop()
-                          }
-                          onMouseLeave={() =>
-                            announcementSwiper?.autoplay.start()
-                          }
-                        >
-                          <span className="group-hover:text-primary-600 line-clamp-1 text-xs text-gray-600 transition-all group-hover:underline sm:text-sm">
-                            {notice.title[lang]}
-                          </span>
-                          <span className="hidden rounded-full bg-gray-100 px-3 py-1 text-xs whitespace-nowrap text-gray-500 lg:inline">
-                            {formatDate(notice.createdAt)}
-                          </span>
-                        </Link>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
+            <div className="px-4 mx-auto flex items-center gap-3 py-2.5">
+              <div className="bg-primary-500/90 flex flex-shrink-0 items-center gap-2 rounded-full p-1">
+                <Volume2 className="h-4.5 w-4.5 text-white" />
+              </div>
+              <div className="flex-1 overflow-hidden">
+                <Swiper
+                  modules={[Autoplay]}
+                  direction="vertical"
+                  speed={800}
+                  autoplay={{ delay: 5000, disableOnInteraction: false }}
+                  loop
+                  onSwiper={setAnnouncementSwiper}
+                  className="h-7"
+                >
+                  {notices.map((notice) => (
+                    <SwiperSlide key={notice.id}>
+                      <Link
+                        href={`/${lang}/support/notices/${notice.id}`}
+                        className="group flex h-full w-fit items-center gap-3"
+                        onMouseEnter={() => announcementSwiper?.autoplay.stop()}
+                        onMouseLeave={() =>
+                          announcementSwiper?.autoplay.start()
+                        }
+                      >
+                        <span className="line-clamp-1 text-xs text-white/90 transition-all group-hover:text-white group-hover:underline">
+                          {notice.title[lang]}
+                        </span>
+                      </Link>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
             </div>
           )}
         </div>
+
+        {/* Desktop: announcement over wave */}
+        {notices && notices.length > 0 && (
+          <div className="absolute bottom-0 hidden w-full sm:block">
+            <div className="container mx-auto flex items-center gap-3 pb-3 sm:gap-4 sm:pb-4">
+              <div className="bg-primary-500/90 flex flex-shrink-0 items-center gap-2.5 rounded-full p-1 xl:px-2 xl:py-1">
+                <Volume2 className="h-4.5 w-4.5 text-white sm:h-5 sm:w-5" />
+                <span className="hidden text-sm font-semibold text-white/90 xl:inline">
+                  {t.announcements}
+                </span>
+              </div>
+              <div className="flex-1 overflow-hidden">
+                <Swiper
+                  modules={[Autoplay]}
+                  direction="vertical"
+                  speed={800}
+                  autoplay={{ delay: 5000, disableOnInteraction: false }}
+                  loop
+                  onSwiper={setAnnouncementSwiper}
+                  className="h-7"
+                >
+                  {notices.map((notice) => (
+                    <SwiperSlide key={notice.id}>
+                      <Link
+                        href={`/${lang}/support/notices/${notice.id}`}
+                        className="group flex h-full w-fit items-center gap-3 sm:gap-4"
+                        onMouseEnter={() => announcementSwiper?.autoplay.stop()}
+                        onMouseLeave={() =>
+                          announcementSwiper?.autoplay.start()
+                        }
+                      >
+                        <span className="group-hover:text-primary-600 line-clamp-1 text-xs text-gray-600 transition-all group-hover:underline sm:text-sm">
+                          {notice.title[lang]}
+                        </span>
+                        <span className="hidden rounded-full bg-gray-100 px-3 py-0.5 text-xs whitespace-nowrap text-gray-500 lg:inline">
+                          {formatDate(notice.createdAt)}
+                        </span>
+                      </Link>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

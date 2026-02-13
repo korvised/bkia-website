@@ -72,13 +72,13 @@ export const FlightSearch: React.FC<FlightSearchProps> = ({
               <button
                 onClick={() => setTab("departures")}
                 className={cn(
-                  "group relative flex items-center gap-2.5 pb-4 text-base font-semibold transition-colors sm:text-lg",
+                  "group relative flex items-center gap-2.5 pb-4 text-sm font-semibold transition-colors sm:text-lg",
                   tab === "departures"
                     ? "text-primary-600"
                     : "text-gray-500 hover:text-gray-700",
                 )}
               >
-                <PlaneTakeoff className="h-5 w-5 sm:h-6 sm:w-6" />
+                <PlaneTakeoff className="h-4 w-4 sm:h-6 sm:w-6" />
                 {tCommon.departure}
                 {/* Bottom indicator */}
                 {tab === "departures" && (
@@ -89,7 +89,7 @@ export const FlightSearch: React.FC<FlightSearchProps> = ({
               <button
                 onClick={() => setTab("arrivals")}
                 className={cn(
-                  "group relative flex items-center gap-2.5 pb-4 text-base font-semibold transition-colors sm:text-lg",
+                  "group relative flex items-center gap-2.5 pb-4 text-sm font-semibold transition-colors sm:text-lg",
                   tab === "arrivals"
                     ? "text-primary-600"
                     : "text-gray-500 hover:text-gray-700",
@@ -155,7 +155,7 @@ export const FlightSearch: React.FC<FlightSearchProps> = ({
                     onFocus={() => setFocusSearchInput(true)}
                     onBlur={() => setFocusSearchInput(false)}
                     placeholder={tSearch.searchPlaceholder}
-                    className="w-full bg-transparent text-base font-medium text-gray-900 outline-none placeholder:text-sm placeholder:font-normal placeholder:text-gray-400"
+                    className="w-full bg-transparent text-sm font-medium text-gray-900 outline-none placeholder:text-sm placeholder:font-normal placeholder:text-gray-400 sm:text-base"
                   />
                 </div>
               </div>
