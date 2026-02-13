@@ -6,5 +6,5 @@ ssh -i bkia-website.pem ubuntu@43.209.12.40
 git config --global credential.helper store
 
 # Check disk space usage
-df -h
+df -h 
 ```
