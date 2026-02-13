@@ -42,8 +42,12 @@ export function FlightBoard({
         </h1>
       </div>
 
+      <FilterForm lang={lang} filters={filters} lastUpdated={lastUpdated} />
+
+      {table}
+
       {/* Information Tip Box */}
-      <div className="mb-6 rounded-lg bg-blue-50 p-4">
+      <div className="mt-6 rounded-lg bg-blue-50 p-4">
         <ul className="space-y-2 text-sm text-gray-700">
           {tips.map((tip, index) => (
             <li key={index} className="flex gap-2">
@@ -53,10 +57,6 @@ export function FlightBoard({
           ))}
         </ul>
       </div>
-
-      <FilterForm lang={lang} filters={filters} lastUpdated={lastUpdated} />
-
-      {table}
     </div>
   );
 }

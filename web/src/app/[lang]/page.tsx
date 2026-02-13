@@ -19,16 +19,15 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div className="w-full">
-      {/* Above-the-fold: exactly 100vh, split by flex */}
       <section className="flex h-[100svh] min-h-0 flex-col md:h-screen">
-        {/* hero ~70% desktop, ~65% tablet, ~60% mobile */}
+        {/* hero */}
         <div className="min-h-0 basis-[58%] sm:basis-[60%] md:basis-[65%] lg:basis-[73%]">
           <HeroSection notices={notices} className="h-full min-h-0" />
         </div>
 
-        {/* search fills the rest */}
-        <div className="min-h-0 flex-1">
-          <FlightSearch className="h-full" />
+        {/* search — auto height on mobile, fills rest on md+ */}
+        <div className="flex-shrink-0 md:min-h-0 md:flex-1">
+          <FlightSearch />
         </div>
       </section>
 

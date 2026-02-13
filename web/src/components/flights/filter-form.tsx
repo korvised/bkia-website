@@ -59,32 +59,35 @@ export function FilterForm({ lang, filters, lastUpdated }: FilterFormProps) {
         </button>
       </div>
 
-      <div className="flex items-center justify-end gap-3">
-        {/* Date Picker */}
-        <DatePicker value={date} onChange={setDate} lang={lang} />
-
-        {/* Flight Number Input */}
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder={tFilter.searchPlaceholder}
-          className="focus:border-primary-500 focus:ring-primary-500/20 h-11 min-w-[200px] rounded-sm border border-gray-300 bg-white px-4 text-sm focus:ring-2 focus:outline-none"
-        />
+      <div className="flex w-full items-end justify-between gap-3 sm:w-fit">
+        <div className="flex flex-1 flex-col gap-y-2.5 sm:flex-initial sm:flex-row sm:gap-x-3">
+          {/* Date Picker */}
+          <DatePicker value={date} onChange={setDate} lang={lang} />
+          {/* Flight Number Input */}
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={tFilter.searchPlaceholder}
+            className="focus:border-primary-500 focus:ring-primary-500/20 h-11 w-full min-w-[200px] rounded-sm border border-gray-300 bg-white px-4 text-sm focus:ring-2 focus:outline-none lg:min-w-[250px]"
+          />
+        </div>
 
         {/* Search Button */}
-        <button
-          type="submit"
-          disabled={isPending}
-          className={cn(
-            "group sm:bg-primary-500 flex items-center gap-2 rounded-sm px-2 text-sm font-medium text-gray-600 transition-colors sm:h-11 sm:px-6 sm:text-white",
-            "sm:hover:bg-primary-600 sm:hover:text-gray-50",
-            "focus:ring-primary-500 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:opacity-50",
-          )}
-        >
-          <Search className="h-6 w-6 sm:group-hover:text-gray-50 md:h-4 md:w-4" />
-          <span className="hidden lg:inline">{tCommon.searchButton}</span>
-        </button>
+        <div className="pb-2 sm:pb-0">
+          <button
+            type="submit"
+            disabled={isPending}
+            className={cn(
+              "group sm:bg-primary-500 flex items-center gap-2 rounded-sm px-2 text-sm font-medium text-gray-600 transition-colors sm:h-11 sm:px-6 sm:text-white",
+              "sm:hover:bg-primary-600 sm:hover:text-gray-50",
+              "focus:ring-primary-500 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:opacity-50",
+            )}
+          >
+            <Search className="h-6 w-6 sm:group-hover:text-gray-50 md:h-4 md:w-4" />
+            <span className="hidden lg:inline">{tCommon.searchButton}</span>
+          </button>
+        </div>
       </div>
     </form>
   );
