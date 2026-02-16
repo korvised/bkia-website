@@ -148,6 +148,19 @@ export const navigation: NavItem[] = [
       },
       {
         label: {
+          en: "Custom Services",
+          lo: "ບໍລິການພິເສດ",
+          zh: "定制服务",
+        },
+        description: {
+          en: "Special assistance and pet travel guide",
+          lo: "ບໍລິການຊ່ວຍເຫຼືອພິເສດ ແລະ ຄຳແນະນຳສັດລ້ຽງ",
+          zh: "特殊协助及宠物飞行指南",
+        },
+        href: "/guides/custom-services",
+      },
+      /*{
+        label: {
           en: "Transfer / Transit",
           lo: "ການຕໍ່ຖ້ຽວບິນ",
           zh: "中转/过境",
@@ -158,7 +171,7 @@ export const navigation: NavItem[] = [
           zh: "转机航班信息",
         },
         href: "/guides/transfer",
-      },
+      },*/
       {
         label: { en: "Airport Security", lo: "ຄວາມປອດໄພ", zh: "安检须知" },
         description: {
