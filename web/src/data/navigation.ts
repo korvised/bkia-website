@@ -209,11 +209,15 @@ export const navigation: NavItem[] = [
     hasDropdown: true,
     menuItems: [
       {
-        label: { en: "To & From Airport", lo: "ໄປ-ມາສະໜາມບິນ", zh: "往返机场" },
+        label: {
+          en: "To & From Airport",
+          lo: "ຮັບ-ສົ່ງ ສະໜາມບິນ",
+          zh: "往返机场",
+        },
         description: {
-          en: "Bus, taxi and shuttle services",
-          lo: "ລົດເມ, ແທັກຊີ ແລະ ລົດຮັບສົ່ງ",
-          zh: "巴士、出租车和班车",
+          en: "Taxi and van shuttle services",
+          lo: "ບໍລິການລົດແທັກຊີ ແລະ ລົດຕູ້ຮັບສົ່ງ",
+          zh: "出租车和面包车接送服务",
         },
         href: "/transports/to-from-airport",
       },

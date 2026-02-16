@@ -3,7 +3,7 @@ import type { Lang } from "@/types/language";
 export const toFromAirport = {
   title: {
     en: "To / From Airport",
-    lo: "ໄປ-ມາສະໜາມບິນ",
+    lo: "ຮັບ-ສົ່ງ ສະໜາມບິນ",
     zh: "往返机场交通",
   },
   intro: {
@@ -21,7 +21,7 @@ export const toFromAirport = {
   counterLocation: {
     en: "Counter: Located at Exit 04",
     lo: "ເຄົາເຕີບໍລິການ: ຕັ້ງຢູ່ບໍລິເວນ ປະຕູທາງອອກ 04",
-    zh: "服务台：位于04号出口处",
+    zh: "服务台：位于 04 号出口处",
   },
   counterBuilding: {
     en: "Location: Domestic Terminal",
@@ -33,39 +33,39 @@ export const toFromAirport = {
   vehiclesTitle: {
     en: "Vehicle Options",
     lo: "ປະເພດລົດໃຫ້ບໍລິການ",
-    zh: "车辆选项",
+    zh: "车型选择",
   },
   taxiName: {
     en: "Taxi (Sedan)",
     lo: "ລົດເກັງ (Taxi)",
-    zh: "出租车（轿车）",
+    zh: "出租车 (轿车)",
   },
   taxiDesc: {
-    en: "For 1–4 passengers",
-    lo: "ສຳລັບຜູ້ໂດຍສານ 1–4 ທ່ານ",
+    en: "Ideal for 1–4 passengers",
+    lo: "ເໝາະສຳລັບຜູ້ໂດຍສານ 1–4 ທ່ານ",
     zh: "适合 1–4 名乘客",
   },
   vanName: {
     en: "Van",
     lo: "ລົດຕູ້ (Van)",
-    zh: "面包车",
+    zh: "商务面包车 (Van)",
   },
   vanDesc: {
     en: "For families or groups needing extra comfort and luggage space",
     lo: "ສຳລັບຄອບຄົວ ຫຼື ກຸ່ມຄະນະທີ່ຕ້ອງການຄວາມສະດວກສະບາຍ ແລະ ພື້ນທີ່ໃສ່ເຄື່ອງຂອງ",
-    zh: "适合家庭或需要更多舒适空间和行李空间的团体",
+    zh: "适合家庭或团体，提供更宽敞的空间与行李位",
   },
 
   // Rates
   ratesTitle: {
-    en: "Rates",
-    lo: "ອັດຕາຄ່າໂດຍສານ",
-    zh: "收费标准",
+    en: "Fares & Destinations",
+    lo: "ອັດຕາຄ່າໂດຍສານ ແລະ ຈຸດໝາຍປາຍທາງ",
+    zh: "票价与目的地",
   },
   ratesNote: {
-    en: "Fares are set by destination — please inquire at the service counter before travel.",
+    en: "Fares are fixed by destination. Please inquire at the service counter before departure.",
     lo: "ລາຄາກຳນົດຕາມສະຖານທີ່ປາຍທາງ: ກະລຸນາສອບຖາມລາຄາໂດຍກົງຢູ່ເຄົາເຕີບໍລິການ ກ່ອນການເດີນທາງ.",
-    zh: "费用按目的地收取，出发前请在服务台咨询。",
+    zh: "票价按目的地固定。请在出发前咨询服务台。",
   },
   destCityCenter: {
     en: "Houayxay City Center",
@@ -80,7 +80,7 @@ export const toFromAirport = {
   destHotel: {
     en: "Hotels / Guesthouses",
     lo: "ໂຮງແຮມ / ເຮືອນພັກ",
-    zh: "酒店 / 民宿",
+    zh: "酒店 / 旅馆",
   },
   destOther: {
     en: "Other destinations",
@@ -88,9 +88,9 @@ export const toFromAirport = {
     zh: "其他目的地",
   },
   inquire: {
-    en: "Inquire",
-    lo: "ສອບຖາມ",
-    zh: "询价",
+    en: "Inquire at Counter",
+    lo: "ສອບຖາມທີ່ເຄົາເຕີ",
+    zh: "柜台查询",
   },
 
   // Payment
@@ -102,29 +102,29 @@ export const toFromAirport = {
   cashPayment: {
     en: "Cash: Lao Kip (LAK), Chinese Yuan (CNY)",
     lo: "ເງິນສົດ: ກີບລາວ (LAK), ຢວນ (CNY)",
-    zh: "现金：老挝基普（LAK）、人民币（CNY）",
+    zh: "现金支付：老挝基普 (LAK)、人民币 (CNY)",
   },
   transferPayment: {
-    en: "Bank Transfer via banking apps",
+    en: "Bank Transfer via mobile banking",
     lo: "ໂອນເງິນຜ່ານແອັບທະນາຄານ",
-    zh: "通过银行应用进行银行转账",
+    zh: "银行转账：支持各大银行手机应用",
   },
 
   // Advance booking
   bookingTitle: {
     en: "Advance Booking",
     lo: "ການຈອງລວງໜ້າ",
-    zh: "预约预订",
+    zh: "提前预约",
   },
   bookingDesc: {
-    en: "Book in advance by phone or WhatsApp for scheduled pick-up or drop-off at your requested time.",
-    lo: "ທ່ານສາມາດໂທຈອງລົດລວງໜ້າ ຫຼື WhatsApp ເພື່ອໃຫ້ໄປຮັບ ຫຼື ໄປສົ່ງໄດ້ຕາມເວລານັດໝາຍ.",
-    zh: "可提前致电或通过 WhatsApp 预约，按约定时间接送。",
+    en: "Book in advance via phone or WhatsApp for scheduled pick-up or drop-off.",
+    lo: "ທ່ານສາມາດໂທຈອງລົດລວງໜ້າ ຫຼື ຕິດຕໍ່ທາງ WhatsApp ເພື່ອນັດໝາຍເວລາຮັບ-ສົ່ງ.",
+    zh: "可通过电话或 WhatsApp 提前预约，安排特定时间的接送服务。",
   },
   phone: {
-    en: "Phone",
+    en: "Call Us",
     lo: "ເບີໂທລະສັບ",
-    zh: "电话",
+    zh: "致电我们",
   },
   whatsapp: {
     en: "WhatsApp",
@@ -132,31 +132,31 @@ export const toFromAirport = {
     zh: "WhatsApp",
   },
 
-  // Features
+  // Service Highlights
   featuresTitle: {
-    en: "Service Highlights",
-    lo: "ຈຸດເດັ່ນຂອງບໍລິການ",
+    en: "Why Choose Our Service",
+    lo: "ເປັນຫຍັງຈຶ່ງເລືອກໃຊ້ບໍລິການຂອງພວກເຮົາ",
     zh: "服务亮点",
   },
   feature1: {
     en: "Licensed and safety-certified drivers",
-    lo: "ຄົນຂັບທີ່ໄດ້ຮັບໃບອະນຸຍາດ ແລະ ໃບຢັ້ງຢືນຄວາມປອດໄພ",
-    zh: "持牌且经安全认证的司机",
+    lo: "ຄົນຂັບທີ່ໄດ້ຮັບໃບອະນຸຍາດ ແລະ ຜ່ານການກວດສອບຄວາມປອດໄພ",
+    zh: "持证上岗，安全认证司机",
   },
   feature2: {
-    en: "Door-to-door service to city center, hotels, and border crossings",
-    lo: "ບໍລິການຮອດໜ້າປະຕູ ໄປ ໃຈກາງເມືອງ, ໂຮງແຮມ ແລະ ຈຸດຜ່ານດ່ານ",
-    zh: "提供到市中心、酒店及口岸的门到门服务",
+    en: "Direct door-to-door service",
+    lo: "ບໍລິການຮັບ-ສົ່ງ ເຖິງຈຸດໝາຍປາຍທາງໂດຍກົງ",
+    zh: "提供门到门直达服务",
   },
   feature3: {
-    en: "Flexible vehicle sizes for any group",
-    lo: "ລົດທີ່ຫຼາກຫຼາຍຂະໜາດ ເໝາະສົມທຸກກຸ່ມ",
-    zh: "多种车型，适合各类团体",
+    en: "Flexible vehicle sizes for all groups",
+    lo: "ມີລົດຫຼາກຫຼາຍຂະໜາດ ເໝາະສົມສຳລັບທຸກກຸ່ມເດີນທາງ",
+    zh: "车型丰富，满足不同人数需求",
   },
   feature4: {
-    en: "Advance booking available by phone or WhatsApp",
-    lo: "ຈອງລ່ວງໜ້າໄດ້ທາງໂທລະສັບ ຫຼື WhatsApp",
-    zh: "可通过电话或 WhatsApp 提前预约",
+    en: "Available for advance reservation",
+    lo: "ເປີດໃຫ້ຈອງລ່ວງໜ້າໄດ້ຕະຫຼອດເວລາ",
+    zh: "支持随时提前预约",
   },
 } as const;
 
