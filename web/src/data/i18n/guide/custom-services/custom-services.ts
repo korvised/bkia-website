@@ -8,39 +8,47 @@ export const customServices = {
   },
   subtitle: {
     en: "Dedicated services to ensure every passenger travels comfortably and safely, regardless of their individual needs.",
-    lo: "ບໍລິການພິເສດເພື່ອຮັບປະກັນວ່າຜູ້ໂດຍສານທຸກທ່ານ ເດີນທາງຢ່າງສະດວກສະບາຍ ແລະ ປອດໄພ ບໍ່ວ່າຈະມີຄວາມຕ້ອງການສ່ວນຕົວໃດກໍ່ຕາມ.",
+    lo: "ບໍລິການທີ່ຕອບໂຈດທຸກຄວາມຕ້ອງການ ເພື່ອໃຫ້ຜູ້ໂດຍສານທຸກທ່ານເດີນທາງຢ່າງສະດວກສະບາຍ ແລະ ປອດໄພ.",
     zh: "专属服务确保每位旅客无论个人需求如何，都能舒适、安全地出行。",
   },
+
+  // Card 1: Pregnancy & Children
   pregnancyTitle: {
-    en: "Accompanied by Pregnant Women and Infants or Children",
-    lo: "ການບໍລິການສຳລັບແມ່ຍິງຖືພາ, ເດັກອ່ອນ ຫຼື ເດັກນ້ອຍ",
-    zh: "孕妇、婴儿或儿童陪同服务",
+    en: "Pregnant Women, Infants and Children",
+    lo: "ແມ່ຍິງຖືພາ ແລະ ເດັກນ້ອຍ",
+    zh: "孕妇、婴儿及儿童服务",
   },
   pregnancyDesc: {
-    en: "An overview of airport services tailored for passengers traveling with pregnant women, infants, and young children.",
-    lo: "ລວມຂໍ້ມູນການບໍລິການພາຍໃນສະໜາມບິນ ທີ່ອອກແບບມາເພື່ອອຳນວຍຄວາມສະດວກໃຫ້ແກ່ຜູ້ໂດຍສານທີ່ເດີນທາງກັບແມ່ຍິງຖືພາ ແລະ ເດັກນ້ອຍ.",
+    en: "Airport services and facilities designed to assist families traveling with infants and young children.",
+    lo: "ສິ່ງອຳນວຍຄວາມສະດວກ ແລະ ການບໍລິການທີ່ອອກແບບມາເພື່ອຊ່ວຍເຫຼືອຄອບຄົວທີ່ເດີນທາງກັບເດັກນ້ອຍ.",
     zh: "为您提供专为孕妇、婴儿和幼儿乘客量身定制的机场服务概览。",
   },
+
+  // Card 2: Mobility Assistance (REFACTORED LAO)
   mobilityTitle: {
-    en: "Accompanied by Persons with Mobility Challenges (Persons with Disabilities and Elderly)",
-    lo: "ການບໍລິການສຳລັບຜູ້ທີ່ມີຄວາມລຳບາກໃນການເຄື່ອນໄຫວ (ຜູ້ພິການ ແລະ ຜູ້ສູງອາຍຸ)",
-    zh: "行动不便者（残疾人和老年人）陪同服务",
+    en: "Mobility Assistance",
+    lo: "ບໍລິການຊ່ວຍເຫຼືອຜູ້ສູງອາຍຸ ແລະ ຜູ້ພິການ", // ປັບໃຫ້ສັ້ນ ແລະ ເປັນທາງການຂຶ້ນ
+    zh: "无障碍特殊助残服务",
   },
   mobilityDesc: {
-    en: "Information on in-airport services designed to assist persons with disabilities and elderly travelers.",
-    lo: "ຂໍ້ມູນກ່ຽວກັບການບໍລິການພາຍໃນສະໜາມບິນ ທີ່ອອກແບບມາເພື່ອຊ່ວຍເຫຼືອຜູ້ພິການ ແລະ ຜູ້ໂດຍສານສູງອາຍຸ.",
-    zh: "有关旨在协助残疾人和老年旅客的机场服务信息。",
+    en: "Dedicated assistance and facilities for elderly passengers and travelers with physical disabilities.",
+    lo: "ການບໍລິການຊ່ວຍເຫຼືອພິເສດ ແລະ ສິ່ງອຳນວຍຄວາມສະດວກ ສຳລັບຜູ້ສູງອາຍຸ ແລະ ຜູ້ພິການ.",
+    zh: "为老年旅客和残疾旅客提供的专用协助及设施。",
   },
+
+  // Card 3: Pets
   petsTitle: {
     en: "Traveling with Pets",
     lo: "ການເດີນທາງກັບສັດລ້ຽງ",
     zh: "携带宠物旅行",
   },
   petsDesc: {
-    en: "Guide to the necessary documents and procedures when traveling with pets.",
+    en: "Important guidelines, documentation, and procedures for passengers traveling with pets.",
     lo: "ຄຳແນະນຳກ່ຽວກັບເອກະສານທີ່ຈໍາເປັນ ແລະ ຂັ້ນຕອນຕ່າງໆ ເມື່ອທ່ານຕ້ອງການເດີນທາງກັບສັດລ້ຽງ.",
     zh: "携带宠物旅行时所需文件和程序的指南。",
   },
+
+  // UI Components
   viewDetails: {
     en: "View Details",
     lo: "ເບິ່ງລາຍລະອຽດ",
