@@ -4,7 +4,7 @@ import { CustomServicesNav } from "@/components/guides/custom-services";
 
 interface Props {
   children: ReactNode;
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
 }
 
 export default async function CustomServicesLayout({
@@ -15,7 +15,7 @@ export default async function CustomServicesLayout({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <CustomServicesNav lang={lang} />
+      <CustomServicesNav lang={lang as Lang} />
       {children}
     </div>
   );
