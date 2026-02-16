@@ -96,7 +96,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </Swiper>
 
       {/* Hero Navigation Controls */}
-      <div className="absolute bottom-16 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1 rounded-full bg-white/10 px-1.5 py-1.5 backdrop-blur-sm">
+      <div className="absolute bottom-12 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1 rounded-full bg-white/25 px-0.5 sm:bottom-16 sm:bg-white/10 sm:px-1.5 sm:py-1.5 sm:backdrop-blur-xs">
         <button
           onClick={() => heroSwiper?.slidePrev()}
           className="group rounded-full p-1 transition-colors hover:bg-white/20"
@@ -127,7 +127,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       {/* Announcement Bar - Absolute at Bottom */}
       {notices && notices.length > 0 && (
-        <div className="absolute bottom-0 z-30 h-11 w-full overflow-hidden">
+        <div className="absolute bottom-0 z-30 h-8 w-full overflow-hidden sm:h-11">
           <div className="relative container flex h-full items-stretch !p-0">
             {/* 1. Label Area: w-auto fits text content on all devices */}
             <div className="bg-primary-600 relative flex w-auto min-w-max flex-shrink-0 items-center justify-start gap-2 px-4 sm:px-6 lg:px-8 xl:px-12">
