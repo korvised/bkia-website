@@ -78,13 +78,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                           <LiaMapMarkedAltSolid className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
 
-                        <button
+                        <Link
                           className="rounded-lg p-2 text-white transition-all duration-200 hover:bg-white/10"
-                          title="Accessibility"
-                          aria-label="Accessibility"
+                          href={`/${lang}/guides/custom-services`}
+                          title="Custom Services"
+                          aria-label="Custom Services"
+                          onClick={onClose}
                         >
                           <PiWheelchairDuotone className="h-5 w-5 sm:h-6 sm:w-6" />
-                        </button>
+                        </Link>
                       </div>
                       <button
                         onClick={onClose}

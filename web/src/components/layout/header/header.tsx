@@ -188,18 +188,19 @@ export function Header() {
                 <LiaMapMarkedAltSolid className="h-5 w-5 sm:h-6 sm:w-6" />
               </button>
 
-              <button
+              <Link
                 className={cn(
                   "hidden rounded-lg p-2 transition-all duration-200 sm:block",
                   isHeaderWhite
                     ? "text-gray-700 hover:bg-gray-100"
                     : "text-white hover:bg-white/10",
                 )}
-                title="Accessibility"
-                aria-label="Accessibility"
+                href={`/${lang}/guides/custom-services`}
+                title="Custom Services"
+                aria-label="Custom Services"
               >
                 <PiWheelchairDuotone className="h-5 w-5 sm:h-6 sm:w-6" />
-              </button>
+              </Link>
 
               <button
                 onClick={openSearch}

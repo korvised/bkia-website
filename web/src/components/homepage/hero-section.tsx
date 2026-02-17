@@ -96,7 +96,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </Swiper>
 
       {/* Hero Navigation Controls */}
-      <div className="absolute bottom-12 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1 rounded-full bg-white/25 px-0.5 sm:bottom-16 sm:bg-white/10 sm:px-1.5 sm:py-1.5 sm:backdrop-blur-xs">
+      <div className="absolute bottom-12 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1 rounded-full bg-white/25 px-0.5 sm:bottom-16 sm:bg-white/10 sm:px-1.5 sm:py-1 sm:backdrop-blur-xs">
         <button
           onClick={() => heroSwiper?.slidePrev()}
           className="group rounded-full p-1 transition-colors hover:bg-white/20"
