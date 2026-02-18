@@ -12,14 +12,14 @@ export const petsGuideline = {
     zh: "定制服务",
   },
   title: {
-    en: "Traveling with Pets",
-    lo: "ການເດີນທາງກັບສັດລ້ຽງ",
-    zh: "携带宠物旅行",
+    en: "Traveling with Pets (AVIH)",
+    lo: "ການເດີນທາງກັບສັດລ້ຽງ (AVIH)",
+    zh: "携带宠物旅行 (AVIH)",
   },
   subtitle: {
-    en: "Guide to necessary documents and procedures for traveling with pets.",
-    lo: "ຄຳແນະນຳກ່ຽວກັບເອກະສານ ແລະ ຂັ້ນຕອນຕ່າງໆ ໃນການເດີນທາງກັບສັດລ້ຽງ.",
-    zh: "携带宠物旅行时所需文件和程序的指南。",
+    en: "Guide to necessary documents and procedures for traveling with pets in the cargo hold.",
+    lo: "ຄຳແນະນຳກ່ຽວກັບເອກະສານ ແລະ ຂັ້ນຕອນຕ່າງໆ ໃນການເດີນທາງກັບສັດລ້ຽງຜ່ານຫ້ອງສິນຄ້າ.",
+    zh: "携带宠物（货舱托运）所需文件和程序的指南。",
   },
   disclaimer: {
     en: "The information on this page is for reference only. Please inquire with your airline or ticket agent for accurate information.",
@@ -34,24 +34,46 @@ export const petsGuideline = {
     zh: "一般规定",
   },
   general1: {
-    en: "Pets must be declared at the time of booking. Please check with your airline in advance.",
-    lo: "ຕ້ອງແຈ້ງສັດລ້ຽງໃນເວລາຈອງຖ້ຽວບິນ. ກະລຸນາກວດສອບກັບສາຍການບິນລ່ວງໜ້າ.",
-    zh: "必须在订票时申报宠物客。请提前与航空公司确认。",
+    en: "Pets must be at least 10 weeks old. Accepted pets include dogs, cats, and small animals like shrimp, snails, crabs, and fish.",
+    lo: "ສັດລ້ຽງຕ້ອງມີອາຍຸ 10 ອາທິດຂຶ້ນໄປ. ປະເພດທີ່ອະນຸຍາດມີ: ໝາ, ແມວ, ກຸ້ງ, ຫອຍ, ປູ ແລະ ປາ.",
+    zh: "宠物必须至少 10 周大。接受的宠物包括狗、猫以及虾、螺、蟹、鱼等小动物。",
   },
   general2: {
-    en: "Each airline has specific weight and carrier size limits. Confirm before arriving at the airport.",
-    lo: "ແຕ່ລະສາຍການບິນມີຂໍ້ກຳນົດນ້ຳໜັກ ແລະ ຂະໜາດກົງສັດທີ່ຕ່າງກັນ. ກະລຸນາຢັ້ງຢືນກ່ອນມາຮອດສະໜາມບິນ.",
-    zh: "各航空公司有不同的重量和宠物箱尺寸限制。请在抵达机场前确认。",
+    en: "The combined weight of the pet and carrier must not exceed 30 kg per unit.",
+    lo: "ນ້ຳໜັກລວມຂອງສັດລ້ຽງ ແລະ ກົງໃສ່ ຕ້ອງບໍ່ເກີນ 30 ກິໂລ/ໂຕ.",
+    zh: "宠物及其航空箱的总重量每单位不得超过 30 公斤。",
   },
   general3: {
-    en: "Passengers are responsible for preparing all necessary documents and permits for the destination.",
-    lo: "ຜູ້ໂດຍສານມີໜ້າທີ່ຮັບຜິດຊອບໃນການກຽມເອກະສານ ແລະ ໃບອະນຸຍາດຕ່າງໆ ໃຫ້ຄົບຖ້ວນຕາມລະບຽບຂອງປາຍທາງ.",
-    zh: "旅客负责准备目的地所需的所有必要文件和许可证。",
+    en: "A maximum of 2 pets of the same species can share a carrier if they live together and their combined weight is under 15 kg.",
+    lo: "ສັດຊະນິດດຽວກັນ 2 ໂຕ ສາມາດຢູ່ໃນກົງດຽວກັນໄດ້ ຖ້າອາໄສຢູ່ນຳກັນ ແລະ ນ້ຳໜັກລວມບໍ່ເກີນ 15 ກິໂລ.",
+    zh: "同种类的两只宠物如果共同生活且总重量不超过 15 公斤，可以共用一个航空箱。",
   },
   general4: {
-    en: "Additional fees apply for pet transportation and vary by airline and weight.",
-    lo: "ມີຄ່າທຳນຽມເພີ່ມເຕີມສຳລັບການຂົນສົ່ງສັດລ້ຽງ ເຊິ່ງຂຶ້ນກັບລະບຽບສາຍການບິນ ແລະ ນ້ຳໜັກ.",
-    zh: "宠物运输需支付额外费用，具体取决于航空公司和重量。",
+    en: "Airlines reserve the right to unload or refuse pets that exhibit strong odors or health issues.",
+    lo: "ສາຍການບິນມີສິດປະຕິເສດ ຫຼື ໃຫ້ເອົາສັດລ້ຽງອອກ ຫາກພົບວ່າມີກິ່ນເໝັນແຮງ ຫຼື ມີບັນຫາສຸຂະພາບ.",
+    zh: "如果发现宠物有强烈异味或健康问题，航空公司保留卸载或拒绝承运的权利。",
+  },
+
+  // AVIH Specifics (New section from image)
+  avihTitle: {
+    en: "AVIH Special Requirements",
+    lo: "ຂໍ້ກຳນົດພິເສດ AVIH",
+    zh: "AVIH 特殊要求",
+  },
+  avih1: {
+    en: "Passengers must provide their own sedatives if needed; staff are not permitted to administer medication to pets.",
+    lo: "ຜູ້ໂດຍສານຕ້ອງຈັດຫາຢານອນຫຼັບໃຫ້ສັດລ້ຽງດ້ວຍຕົນເອງ, ພະນັກງານບໍ່ມີສິດໃສ່ຢາໃຫ້ສັດລ້ຽງ.",
+    zh: "如需镇静剂，旅客必须自行准备；工作人员不得为宠物喂药。",
+  },
+  avih2: {
+    en: "For fish, multiple layers of plastic bags inside a foam box are required to prevent leaks or damage to the aircraft systems.",
+    lo: "ສຳລັບປາ ຕ້ອງໃສ່ຖົງຢາງຫຼາຍຊັ້ນ ແລະ ໃສ່ກ່ອງໂຟມ ເພື່ອປ້ອງກັນການຮົ່ວໄຫຼໃສ່ລະບົບໄຟເຮືອບິນ.",
+    zh: "运输鱼类时，须使用多层塑料袋并放入泡沫箱中，以防漏水损坏飞机系统。",
+  },
+  avih3: {
+    en: "Pets under 6 months old may share a carrier with their mother.",
+    lo: "ສັດທີ່ມີອາຍຸບໍ່ເກີນ 6 ເດືອນ ສາມາດຢູ່ໃນກົງດຽວກັນກັບແມ່ຂອງມັນໄດ້.",
+    zh: "6 个月以下的宠物可以与母亲共用一个航空箱。",
   },
 
   // Required Documents
@@ -61,44 +83,24 @@ export const petsGuideline = {
     zh: "所需文件",
   },
   doc1Title: {
-    en: "Health Certificate",
-    lo: "ໃບຢັ້ງຢືນສຸຂະພາບ",
-    zh: "健康证明",
+    en: "Health & Vaccination Records",
+    lo: "ປຶ້ມຕິດຕາມການສັກຢາ ແລະ ໃບຢັ້ງຢືນສຸຂະພາບ",
+    zh: "健康及疫苗接种记录",
   },
   doc1Desc: {
-    en: "Issued by a licensed veterinarian within 10 days before travel.",
-    lo: "ຕ້ອງອອກໂດຍສັດຕະວະແພດທີ່ໄດ້ຮັບອະນຸຍາດ ພາຍໃນ 10 ວັນ ກ່ອນການເດີນທາງ.",
-    zh: "由执业兽医在旅行前 10 天内出具。",
+    en: "A vaccination book and a general health certificate from a vet are mandatory.",
+    lo: "ຕ້ອງມີປຶ້ມຕິດຕາມການສັກຢາວັກຊີນ ແລະ ໃບຢັ້ງຢືນສຸຂະພາບສັດຈາກສັດຕະວະແພດ.",
+    zh: "必须提供疫苗接种簿和兽医出具的普通健康证明。",
   },
   doc2Title: {
-    en: "Vaccination Records",
-    lo: "ປະຫວັດການສັກຢາວັກຊີນ",
-    zh: "疫苗接种记录",
-  },
-  doc2Desc: {
-    en: "Up-to-date records, including rabies vaccination, are required for all pets.",
-    lo: "ຕ້ອງມີປະຫວັດການສັກຢາທີ່ຄົບຖ້ວນ ລວມທັງວັກຊີນປ້ອງກັນພະຍາດກະລອກ.",
-    zh: "须提供最新的接种记录，包括狂犬病疫苗。",
-  },
-  doc3Title: {
     en: "Import / Export Permit",
     lo: "ໃບອະນຸຍາດນຳເຂົ້າ-ສົ່ງອອກ",
     zh: "进出口许可证",
   },
-  doc3Desc: {
-    en: "Required for international travel. Check specific requirements of the destination country.",
-    lo: "ຈຳເປັນສຳລັບການເດີນທາງຕ່າງປະເທດ. ກະລຸນາກວດສອບຂໍ້ກຳນົດຂອງປະເທດປາຍທາງ.",
-    zh: "国际旅行必备。请确认目的地国家的具体要求。",
-  },
-  doc4Title: {
-    en: "Microchip Documentation",
-    lo: "ເອກະສານຝັງໄມໂຄຊິບ",
-    zh: "芯片证明文件",
-  },
-  doc4Desc: {
-    en: "Many countries require microchips for identification. Ensure documents match the chip ID.",
-    lo: "ຫຼາຍປະເທດຮຽກຮ້ອງໃຫ້ມີການຝັງໄມໂຄຊິບ. ໃຫ້ຮັບປະກັນວ່າເອກະສານກົງກັບໝາຍເລກຊິບ.",
-    zh: "许多国家要求植入芯片。请确保文件与芯片编号一致。",
+  doc2Desc: {
+    en: "Passengers must arrange all necessary transport permits personally before boarding.",
+    lo: "ຜູ້ໂດຍສານຕ້ອງຈັດຫາໃບຂົນສົ່ງສັດລ້ຽງ (Permit) ໃຫ້ຮຽບຮ້ອຍກ່ອນຂຶ້ນເຮືອບິນດ້ວຍຕົນເອງ.",
+    zh: "旅客必须在登机前自行办理所有必要的运输许可。",
   },
 
   // Pet Carrier Requirements
@@ -108,14 +110,14 @@ export const petsGuideline = {
     zh: "宠物箱要求",
   },
   carrier1: {
-    en: "The carrier must be well-ventilated and large enough for the pet to move comfortably.",
-    lo: "ກົງສັດຕ້ອງມີການລະບາຍອາກາດດີ ແລະ ກວ້າງພໍໃຫ້ສັດປ່ຽນທ່າທາງໄດ້ສະດວກ.",
-    zh: "宠物箱必须通风良好，且空间充足，方便宠物活动。",
+    en: "The carrier must be sturdy, leak-proof, and include food and water containers.",
+    lo: "ກົງສັດຕ້ອງມີຄວາມທົນທານ, ກັນຮົ່ວໄຫຼ, ພ້ອມທັງມີຖ້ວຍອາຫານ ຫຼື ນ້ຳດື່ມ.",
+    zh: "航空箱必须坚固、防漏，并配备食盆或水槽。",
   },
   carrier2: {
-    en: "The carrier must be leak-proof and contain absorbent bedding.",
-    lo: "ກົງສັດຕ້ອງມີລະບົບກັນຮົ່ວໄຫຼ ແລະ ມີວັດສະດຸດູດຊຶມຮອງພື້ນ.",
-    zh: "宠物箱必须防漏，并铺有吸水垫料。",
+    en: "Carriers must be labeled with the owner's name, baggage tag, and an AVIH tag for staff identification.",
+    lo: "ກົງສັດຕ້ອງຕິດປ້າຍຊື່ຜູ້ໂດຍສານ, ປ້າຍກະເປົ໋າ ແລະ ປ້າຍ AVIH ເພື່ອແຈ້ງໃຫ້ພະນັກງານຊາບ.",
+    zh: "航空箱必须贴有旅客姓名标签、行李牌和 AVIH 标签，以便工作人员识别。",
   },
 
   // Tips
@@ -125,19 +127,14 @@ export const petsGuideline = {
     zh: "旅行建议",
   },
   tip1: {
-    en: "Visit your vet at least 2 weeks before travel for a health check and vaccinations.",
-    lo: "ຄວນພາສັດລ້ຽງໄປພົບສັດຕະວະແພດຢ່າງໜ້ອຍ 2 ອາທິດລ່ວງໜ້າ ເພື່ອກວດສຸຂະພາບ ແລະ ສັກຢາ.",
-    zh: "出行前至少 2 周拜访兽医，完成健康检查和疫苗接种。",
-  },
-  tip2: {
     en: "Avoid feeding your pet 4–6 hours before the flight to prevent discomfort.",
     lo: "ງົດໃຫ້ອາຫານສັດລ້ຽງ 4-6 ຊົ່ວໂມງກ່ອນຂຶ້ນເຄື່ອງ ເພື່ອຫຼຸດຜ່ອນອາການບໍ່ສະບາຍ.",
     zh: "起飞前 4-6 小时避免喂食，以防止宠物不适。",
   },
-  tip3: {
+  tip2: {
     en: "Let your pet get used to the carrier weeks before travel to reduce anxiety.",
     lo: "ຝຶກໃຫ້ສັດລ້ຽງຄຸ້ນເຄີຍກັບກົງລ່ວງໜ້າຫຼາຍອາທິດ ເພື່ອຫຼຸດຜ່ອນຄວາມຕື່ນຕົກໃຈ.",
-    zh: "提前几周让宠物熟悉宠物箱，以减轻焦虑。",
+    zh: "提前几周让宠物熟悉航空箱，以减轻焦虑。",
   },
 } as const;
 
