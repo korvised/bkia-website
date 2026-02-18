@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Lang } from "@/types/language";
-import { PregnancyAndChildrenComponent } from "@/components/guides/custom-services";
+import { PregnancyAndInfantComponent } from "@/components/guides/custom-services";
 import { createCustomServicesI18n } from "@/data/i18n/guide";
 
 interface Props {
@@ -74,7 +74,7 @@ function PregnancyAndChildrenSkeleton() {
 }
 
 async function PregnancyAndChildrenContent({ lang }: { lang: Lang }) {
-  return <PregnancyAndChildrenComponent lang={lang} />;
+  return <PregnancyAndInfantComponent lang={lang} />;
 }
 
 export default async function PregnancyAndChildrenPage({ params }: Props) {

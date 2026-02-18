@@ -22,9 +22,9 @@ export const petsGuideline = {
     zh: "携带宠物旅行时所需文件和程序的指南。",
   },
   disclaimer: {
-    en: "The information on this page is for reference only. Please verify with the relevant airline or agency for accurate information.",
-    lo: "ຂໍ້ມູນໃນໜ້ານີ້ແມ່ນເພື່ອເປັນການອ້າງອີງເທົ່ານັ້ນ. ກະລຸນາກວດສອບກັບສາຍການບິນ ຫຼື ຕົວແທນຈຳໜ່າຍສຳລັບຂໍ້ມູນທີ່ຖືກຕ້ອງ.",
-    zh: "本页信息仅供参考。请与相关航空公司或机构核实准确信息。",
+    en: "The information on this page is for reference only. Please inquire with your airline or ticket agent for accurate information.",
+    lo: "ຂໍ້ມູນໃນໜ້ານີ້ແມ່ນເພື່ອເປັນການອ້າງອີງເທົ່ານັ້ນ ກະລຸນາສອບຖາມກັບສາຍການບິນ ຫຼື ຕົວແທນຈໍາໜ່າຍປີ້ສຳລັບຂໍ້ມູນທີ່ຖືກຕ້ອງ",
+    zh: "本页信息仅供参考。请向航空公司或购票代理咨询以获取准确信息。",
   },
 
   // General Rules
@@ -36,22 +36,22 @@ export const petsGuideline = {
   general1: {
     en: "Pets must be declared at the time of booking. Please check with your airline in advance.",
     lo: "ຕ້ອງແຈ້ງສັດລ້ຽງໃນເວລາຈອງຖ້ຽວບິນ. ກະລຸນາກວດສອບກັບສາຍການບິນລ່ວງໜ້າ.",
-    zh: "必须在订票时申报宠物。请提前与航空公司确认。",
+    zh: "必须在订票时申报宠物客。请提前与航空公司确认。",
   },
   general2: {
-    en: "Small pets may be allowed in the cabin; larger animals must travel in the cargo hold.",
-    lo: "ສັດລ້ຽງຂະໜາດນ້ອຍອາດໄດ້ຮັບອະນຸຍາດໃຫ້ນຳຂຶ້ນຫ້ອງໂດຍສານ; ສັດຂະໜາດໃຫຍ່ຕ້ອງຂົນສົ່ງໃນຫ້ອງສິນຄ້າ.",
-    zh: "小型宠物可能允许进入客舱；较大的动物必须在货舱运输。",
-  },
-  general3: {
-    en: "Service animals are generally permitted in the cabin, subject to airline policy.",
-    lo: "ສັດຊ່ວຍເຫຼືອ (Service animals) ສາມາດນຳຂຶ້ນຫ້ອງໂດຍສານໄດ້ ຕາມນະໂຍບາຍຂອງສາຍການບິນ.",
-    zh: "服务性动物通常允许进入客舱，具体视航空公司政策而定。",
-  },
-  general4: {
     en: "Each airline has specific weight and carrier size limits. Confirm before arriving at the airport.",
     lo: "ແຕ່ລະສາຍການບິນມີຂໍ້ກຳນົດນ້ຳໜັກ ແລະ ຂະໜາດກົງສັດທີ່ຕ່າງກັນ. ກະລຸນາຢັ້ງຢືນກ່ອນມາຮອດສະໜາມບິນ.",
     zh: "各航空公司有不同的重量和宠物箱尺寸限制。请在抵达机场前确认。",
+  },
+  general3: {
+    en: "Passengers are responsible for preparing all necessary documents and permits for the destination.",
+    lo: "ຜູ້ໂດຍສານມີໜ້າທີ່ຮັບຜິດຊອບໃນການກຽມເອກະສານ ແລະ ໃບອະນຸຍາດຕ່າງໆ ໃຫ້ຄົບຖ້ວນຕາມລະບຽບຂອງປາຍທາງ.",
+    zh: "旅客负责准备目的地所需的所有必要文件和许可证。",
+  },
+  general4: {
+    en: "Additional fees apply for pet transportation and vary by airline and weight.",
+    lo: "ມີຄ່າທຳນຽມເພີ່ມເຕີມສຳລັບການຂົນສົ່ງສັດລ້ຽງ ເຊິ່ງຂຶ້ນກັບລະບຽບສາຍການບິນ ແລະ ນ້ຳໜັກ.",
+    zh: "宠物运输需支付额外费用，具体取决于航空公司和重量。",
   },
 
   // Required Documents
@@ -117,16 +117,6 @@ export const petsGuideline = {
     lo: "ກົງສັດຕ້ອງມີລະບົບກັນຮົ່ວໄຫຼ ແລະ ມີວັດສະດຸດູດຊຶມຮອງພື້ນ.",
     zh: "宠物箱必须防漏，并铺有吸水垫料。",
   },
-  carrier3: {
-    en: "Hard-sided carriers are required for cargo; soft-sided may be allowed in the cabin.",
-    lo: "ຕ້ອງໃຊ້ກົງແບບແຂງສຳລັບການສົ່ງໃນຫ້ອງສິນຄ້າ; ສ່ວນໃນຫ້ອງໂດຍສານອາດໃຊ້ແບບອ່ອນໄດ້.",
-    zh: "货舱运输须使用硬壳箱；客舱可接受软式宠物箱。",
-  },
-  carrier4: {
-    en: "Attach a label with the pet's name, owner's contact, and feeding instructions.",
-    lo: "ຕິດປ້າຍຊື່ສັດ, ຂໍ້ມູນຕິດຕໍ່ເຈົ້າຂອງ ແລະ ຄຳແນະນຳການໃຫ້ອາຫານໄວ້ທີ່ກົງສັດ.",
-    zh: "在宠物箱上贴上宠物姓名、联系方式和喂食说明标签。",
-  },
 
   // Tips
   tipsTitle: {
@@ -136,7 +126,7 @@ export const petsGuideline = {
   },
   tip1: {
     en: "Visit your vet at least 2 weeks before travel for a health check and vaccinations.",
-    lo: "ຄວນພັດສັດຕະວະແພດຢ່າງໜ້ອຍ 2 ອາທິດລ່ວງໜ້າ ເພື່ອກວດສຸຂະພາບ ແລະ ສັກຢາ.",
+    lo: "ຄວນພາສັດລ້ຽງໄປພົບສັດຕະວະແພດຢ່າງໜ້ອຍ 2 ອາທິດລ່ວງໜ້າ ເພື່ອກວດສຸຂະພາບ ແລະ ສັກຢາ.",
     zh: "出行前至少 2 周拜访兽医，完成健康检查和疫苗接种。",
   },
   tip2: {
@@ -148,11 +138,6 @@ export const petsGuideline = {
     en: "Let your pet get used to the carrier weeks before travel to reduce anxiety.",
     lo: "ຝຶກໃຫ້ສັດລ້ຽງຄຸ້ນເຄີຍກັບກົງລ່ວງໜ້າຫຼາຍອາທິດ ເພື່ອຫຼຸດຜ່ອນຄວາມຕື່ນຕົກໃຈ.",
     zh: "提前几周让宠物熟悉宠物箱，以减轻焦虑。",
-  },
-  tip4: {
-    en: "Carry sufficient food, water, and necessary medications for the entire journey.",
-    lo: "ກຽມອາຫານ, ນ້ຳ ແລະ ຢາທີ່ຈຳເປັນໃຫ້ພຽງພໍຕະຫຼອດການເດີນທາງ.",
-    zh: "备足整个旅程所需的食物、水和药物。",
   },
 } as const;
 

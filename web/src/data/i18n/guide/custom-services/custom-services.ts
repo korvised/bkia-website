@@ -12,16 +12,16 @@ export const customServices = {
     zh: "专属服务确保每位旅客无论个人需求如何，都能舒适、安全地出行。",
   },
 
-  // Card 1: Pregnancy & Children
+  // Card 1: Pregnancy & Infants
   pregnancyTitle: {
-    en: "Pregnant Women, Infants and Children",
-    lo: "ແມ່ຍິງຖືພາ ແລະ ເດັກນ້ອຍ",
-    zh: "孕妇、婴儿及儿童服务",
+    en: "Pregnant Women and Infants",
+    lo: "ແມ່ຍິງຖືພາ ແລະ ແອນ້ອຍ",
+    zh: "孕妇及婴儿服务",
   },
   pregnancyDesc: {
-    en: "Airport services and facilities designed to assist families traveling with infants and young children.",
-    lo: "ສິ່ງອຳນວຍຄວາມສະດວກ ແລະ ການບໍລິການທີ່ອອກແບບມາເພື່ອຊ່ວຍເຫຼືອຄອບຄົວທີ່ເດີນທາງກັບເດັກນ້ອຍ.",
-    zh: "为您提供专为孕妇、婴儿和幼儿乘客量身定制的机场服务概览。",
+    en: "Airport services and facilities designed to assist pregnant women and families traveling with infants.",
+    lo: "ສິ່ງອຳນວຍຄວາມສະດວກ ແລະ ການບໍລິການທີ່ອອກແບບມາເພື່ອຊ່ວຍເຫຼືອແມ່ຍິງຖືພາ ແລະ ຄອບຄົວທີ່ເດີນທາງກັບແອນ້ອຍ.",
+    zh: "为您提供专为孕妇及婴儿乘客量身定制的机场服务与设施概览。",
   },
 
   // Card 2: Mobility Assistance (REFACTORED LAO)

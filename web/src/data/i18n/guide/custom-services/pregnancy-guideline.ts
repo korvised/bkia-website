@@ -13,9 +13,9 @@ export const pregnancyGuideline = {
     zh: "孕妇及婴儿乘机指南",
   },
   subtitle: {
-    en: "Travel requirements and facilities for families",
-    lo: "ຂໍ້ກຳນົດ ແລະ ສິ່ງອຳນວຍຄວາມສະດວກສຳລັບຄອບຄົວ",
-    zh: "家庭旅客出行要求及设施",
+    en: "Travel requirements and facilities",
+    lo: "ຂໍ້ກຳນົດ ແລະ ສິ່ງອຳນວຍຄວາມສະດວກ",
+    zh: "出行要求及设施",
   },
   disclaimer: {
     en: "The information on this page is for reference only. Please verify with the relevant airline or agency for accurate information.",
@@ -25,38 +25,56 @@ export const pregnancyGuideline = {
 
   // Pregnant Women Sections
   catPregnant: { en: "Pregnant Women", lo: "ແມ່ຍິງຖືພາ", zh: "孕妇" },
-  pregUnder32: {
-    en: "Under 32 weeks pregnant",
-    lo: "ອາຍຸການຖືພາໜ້ອຍກວ່າ 32 ສັບປະດາ",
-    zh: "怀孕未满 32 周",
+
+  // 28 Weeks and below
+  pregUpTo28: {
+    en: "Up to 28 weeks pregnant",
+    lo: "ໄລຍະການຖືພາ 28 ອາທິດລົງມາ",
+    zh: "怀孕 28 周或以下",
   },
-  pregUnder32Info: {
-    en: "Travel is generally allowed unless advised against air travel by a physician.",
-    lo: "ໂດຍທົ່ວໄປແມ່ນສາມາດເດີນທາງໄດ້ ຍົກເວັ້ນມີຄຳສັ່ງຫ້າມຈາກທ່ານໝໍ.",
-    zh: "通常允许旅行，除非医生建议不宜飞行。",
-  },
-  preg32to36: {
-    en: "Between 32 and 36 weeks",
-    lo: "ອາຍຸການຖືພາລະຫວ່າງ 32 ຫາ 36 ສັບປະດາ",
-    zh: "怀孕 32 至 36 周之间",
-  },
-  preg32to36Info: {
-    en: "A medical certificate issued within 7 days before the flight must be submitted.",
-    lo: "ຕ້ອງຍື່ນໃບຢັ້ງຢືນການແພດ ທີ່ອອກໃຫ້ພາຍໃນ 7 ວັນ ກ່ອນມື້ເດີນທາງ.",
-    zh: "必须提交航前 7 天内签发的医疗证明。",
-  },
-  pregOver36: {
-    en: "36 weeks or more",
-    lo: "ອາຍຸການຖືພາ 36 ສັບປະດາຂຶ້ນໄປ",
-    zh: "怀孕 36 周或以上",
-  },
-  pregOver36Info: {
-    en: "Travel is generally not allowed for full-term pregnancies to ensure safety.",
-    lo: "ໂດຍທົ່ວໄປແມ່ນບໍ່ອະນຸຍາດໃຫ້ເດີນທາງ ເພື່ອຄວາມປອດໄພຂອງແມ່ ແລະ ເດັກ.",
-    zh: "为了母婴安全，通常不允许旅行。",
+  pregUpTo28Info: {
+    en: "A medical certificate from a doctor is required.",
+    lo: "ຕ້ອງມີໃບຢັ້ງຢືນຈາກທາງໝໍ.",
+    zh: "须出具医生证明。",
   },
 
-  // Infants Sections
+  // 29 to 32 Weeks
+  preg29To32: {
+    en: "Between 29 and 32 weeks",
+    lo: "ໄລຍະການຖືພາ 29 ຫາ 32 ອາທິດ",
+    zh: "怀孕 29 至 32 周之间",
+  },
+  preg29To32Info: {
+    en: "Single pregnancy is accepted with a medical certificate. Multiple pregnancy (twins) is also accepted but must have a doctor's certificate confirming fitness to fly.",
+    lo: "ກໍລະນີລູກຄົນດຽວແມ່ນສາມາດເດີນທາງໄດ້ແຕ່ຕ້ອງມີໃບຢັ້ງຢືນຈາກທ່ານໝໍ. ສຳລັບລູກແຝດກໍສາມາດເດີນທາງໄດ້ເຊັ່ນກັນ ແຕ່ຕ້ອງມີໃບຮັບຮອງແພດຢັ້ງຢືນວ່າສາມາດເດີນທາງດ້ວຍເຮືອບິນໄດ້.",
+    zh: "单胎凭医生证明可乘机。多胎（双胞胎）亦可乘机，ແຕ່须凭医生出具的适宜乘机医疗证明。",
+  },
+
+  // 33 to 35 Weeks
+  preg33To35: {
+    en: "Between 33 and 35 weeks",
+    lo: "ໄລຍະການຖືພາ 33 ຫາ 35 ອາທິດ",
+    zh: "怀孕 33 至 35 周之间",
+  },
+  preg33To35Info: {
+    en: "Single pregnancy is accepted with a doctor's certificate confirming fitness to fly. Multiple pregnancy (twins) is not allowed to fly and the airline reserves the right to refuse carriage.",
+    lo: "ກໍລະນີລູກຄົນດຽວສາມາດເດີນທາງໄດ້ແຕ່ຕ້ອງມີໃບຮັບຮອງແພດຢັ້ງຢືນວ່າສາມາດເດີນທາງດ້ວຍເຮືອບິນໄດ້. ສ່ວນລູກແຝດແມ່ນບໍ່ສາມາດຂຶ້ນເຮືອບິນໄດ້ ເຊິ່ງສາຍການບິນມີສິດປະຕິເສດການເດີນທາງ.",
+    zh: "单胎须凭医生出具的适宜乘机医疗证明。多胎（双胞胎）不允许乘机，航空公司有权拒绝承运。",
+  },
+
+  // Additional Requirements
+  additionalReqTitle: {
+    en: "Additional Conditions",
+    lo: "ເງື່ອນໄຂເພີ່ມເຕີມ",
+    zh: "其他条件",
+  },
+  additionalReqList: {
+    en: "• Confirmation of normal pregnancy with no complications\n• Must specify Expected Date of Delivery (EDD)\n• Medical certificate must include date, official stamp, and doctor's contact details.",
+    lo: "• ມີການຢັນຢືນການຖືພາວ່າເປັນການຖືພາຕາມປົກກະຕິ ບໍ່ມີພາວະແຊກຊ້ອນ\n• ຕ້ອງມີການກຳນົດເກີດ (EDD)\n• ໃບຮັບຮອງທາງການແພດປະກອບມີ: ວັນທີ, ກາຈ້ຳ ແລະ ລາຍລະອຽດການຕິດຕໍ່ທີ່ເໝາະສົມຈາກທ່ານໝໍ",
+    zh: "• 确认怀孕正常且无并发症\n• 必须注明预产期 (EDD)\n• 医疗证明必须包含日期、官方公章及医生的详细联系方式。",
+  },
+
+  // Infants Sections (Kept consistent with previous update)
   catInfants: { en: "Infants", lo: "ແອນ້ອຍ (Infants)", zh: "婴儿" },
   infantGeneral: {
     en: "Infants are generally allowed to travel after 7 days of birth.",
@@ -75,7 +93,7 @@ export const pregnancyGuideline = {
   },
   infantDoc: {
     en: "Birth certificate or passport may be required by the airline.",
-    lo: "ຄວນກຽມໃບສູດ ຫຼື ໜັງສືເດີນທາງ ເພື່ອສະແດງຕໍ່ສາຍການບິນ.",
+    lo: "ຄວນກຽມໃບແຈ້ງເກີດ ຫຼື ໜັງສືເດີນທາງ ເພື່ອສະແດງຕໍ່ສາຍການບິນ.",
     zh: "航空公司可能要求出示出生证明或护照。",
   },
 

@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import {
   AlertCircle,
@@ -64,7 +62,7 @@ export const MobilityChallengesComponent = ({ lang }: Props) => {
 
   return (
     <div className="bg-gray-50 py-8">
-      <div className="container space-y-6">
+      <div className="container space-y-4">
         {/* Back + Header */}
         <div className="space-y-5">
           <Link
@@ -83,8 +81,8 @@ export const MobilityChallengesComponent = ({ lang }: Props) => {
         </div>
 
         {/* Disclaimer */}
-        <div className="flex gap-3 rounded-xl border border-amber-100 bg-amber-50 px-5 py-4">
-          <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-amber-400" />
+        <div className="flex gap-3 rounded-xl border border-amber-100 bg-amber-50 px-4 py-3">
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
           <p className="text-sm leading-relaxed text-amber-700">
             {t.disclaimer}
           </p>

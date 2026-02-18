@@ -22,9 +22,9 @@ export const mobilityGuideline = {
     zh: "行动不便者（残疾人和老年人）服务指南",
   },
   disclaimer: {
-    en: "The information on this page is for reference only. Please verify with the relevant airline, agency, or facility for accurate information.",
-    lo: "ຂໍ້ມູນໃນໜ້ານີ້ແມ່ນເພື່ອເປັນການອ້າງອີງເທົ່ານັ້ນ. ກະລຸນາກວດສອບກັບສາຍການບິນ ຫຼື ຕົວແທນຈຳໜ່າຍສຳລັບຂໍ້ມູນທີ່ຖືກຕ້ອງ.",
-    zh: "本页信息仅供参考。请与相关航空公司/机构/设施核实准确信息。",
+    en: "The information on this page is for reference only. Please verify with the relevant airline or ticket agent for accurate information or if you require special services beyond those mentioned above.",
+    lo: "ຂໍ້ມູນໃນໜ້ານີ້ແມ່ນເພື່ອເປັນການອ້າງອີງເທົ່ານັ້ນ ກະລຸນາກວດສອບກັບສາຍການບິນ ຫຼື ຕົວແທນຈໍາໜ່າຍປີ້ສໍາລັບຂໍ້ມູນທີ່ຖືກຕ້ອງ ຫຼື ຕ້ອງການບໍລິການພິເສດນອກເໜືອຈາກທີ່ກ່າວມາຂ້າງເທິງນີ້",
+    zh: "本页信息仅供参考。欲了解准确信息或申请上述以外的特殊服务，请务必联系航空公司或购票代理。",
   },
 
   // Airport Services
@@ -35,12 +35,12 @@ export const mobilityGuideline = {
   },
   service1Title: {
     en: "Wheelchair Service",
-    lo: "ບໍລິການລົດເຂັນ (Wheelchair)",
+    lo: "ບໍລິການລໍ້ຍູ້ (Wheelchair)",
     zh: "轮椅服务",
   },
   service1Desc: {
     en: "Complimentary wheelchair assistance is available throughout the terminal. Request at the check-in counter or service desk.",
-    lo: "ບໍລິການລົດເຂັນຟຣີພາຍໃນອາຄານຜູ້ໂດຍສານ. ທ່ານສາມາດແຈ້ງຂໍຮັບບໍລິການໄດ້ທີ່ເຄົາເຕີເຊັກອິນ ຫຼື ໂຕະບໍລິການສອບຖາມ.",
+    lo: "ບໍລິການລໍ້ຍູ້ຟຣີພາຍໃນອາຄານຜູ້ໂດຍສານ. ທ່ານສາມາດແຈ້ງຂໍຮັບບໍລິການໄດ້ທີ່ເຄົາເຕີເຊັກອິນ ຫຼື ໂຕະບໍລິການສອບຖາມ.",
     zh: "为需要行动辅助的乘客提供全航站楼免费轮椅服务。请在值机柜台或服务台提出申请。",
   },
   service2Title: {
@@ -97,7 +97,7 @@ export const mobilityGuideline = {
   },
   req4: {
     en: "Mobility aids such as wheelchairs can be checked in as special baggage free of charge.",
-    lo: "ອຸປະກອນຊ່ວຍເຄື່ອນໄຫວ ເຊັ່ນ ລົດເຂັນ ສາມາດເຊັກອິນເປັນສຳພາລະພິເສດໄດ້ໂດຍບໍ່ເສຍຄ່າທຳນຽມ.",
+    lo: "ອຸປະກອນຊ່ວຍເຄື່ອນໄຫວ ເຊັ່ນ ລໍ້ຍູ້ ສາມາດເຊັກອິນເປັນສຳພາລະພິເສດໄດ້ໂດຍບໍ່ເສຍຄ່າທຳນຽມ.",
     zh: "轮椅等行动辅助工具可免费作为特殊行李托运。",
   },
 
@@ -109,12 +109,12 @@ export const mobilityGuideline = {
   },
   facility1: {
     en: "Ramps and elevators throughout the terminal",
-    lo: "ທາງຄ້ອຍສຳລັບລົດເຂັນ ແລະ ລິຟໂດຍສານທົ່ວອາຄານ",
+    lo: "ທາງຄ້ອຍສຳລັບລໍ້ຍູ້ ແລະ ລິຟໂດຍສານທົ່ວອາຄານ",
     zh: "航站楼内设有坡道和电梯",
   },
   facility2: {
     en: "Accessible check-in counters at a lower height",
-    lo: "ເຄົາເຕີເຊັກອິນແບບພິເສດ (ຄວາມສູງເໝາະສຳລັບລົດເຂັນ)",
+    lo: "ເຄົາເຕີເຊັກອິນແບບພິເສດ (ຄວາມສູງເໝາະສຳລັບລໍ້ຍູ້)",
     zh: "设有低台面无障碍值机柜台",
   },
   facility3: {
@@ -134,7 +134,7 @@ export const mobilityGuideline = {
   },
   facility6: {
     en: "Accessible boarding gates with jet bridges",
-    lo: "ປະຕູທາງອອກຂຶ້ນເຄື່ອງທີ່ຮອງຮັບລົດເຂັນ ພ້ອມຂົວຕໍ່ຍົນ",
+    lo: "ປະຕູທາງອອກຂຶ້ນເຄື່ອງທີ່ຮອງຮັບລໍ້ຍູ້ ພ້ອມຂົວທ້ຽບເຮຶອບິນ",
     zh: "无障碍登机口及廊桥设施",
   },
 
@@ -146,7 +146,7 @@ export const mobilityGuideline = {
   },
   tip1: {
     en: "Contact the airline in advance to request aisle wheelchairs or meet-and-assist services.",
-    lo: "ຕິດຕໍ່ສາຍການບິນລ່ວງໜ້າເພື່ອຂໍລົດເຂັນພິເສດໃນຫ້ອງໂດຍສານ ຫຼື ບໍລິການພະນັກງານຮັບ-ສົ່ງ.",
+    lo: "ຕິດຕໍ່ສາຍການບິນລ່ວງໜ້າເພື່ອຂໍລໍ້ຍູ້ພິເສດໃນຫ້ອງໂດຍສານ ຫຼື ບໍລິການພະນັກງານຮັບ-ສົ່ງ.",
     zh: "提前联系航空公司申请机舱轮椅或迎接辅助服务。",
   },
   tip2: {
