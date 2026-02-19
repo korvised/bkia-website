@@ -9,7 +9,7 @@ export const departureNav = {
   },
   subtitle: {
     en: "Please follow our step-by-step navigation guide below to ensure a smooth check-in and boarding process for your departure flight.",
-    lo: "ກະລຸນາປະຕິບັດຕາມຂັ້ນຕອນການແນະນຳລຸ່ມນີ້ ເພື່ອຊ່ວຍໃຫ້ທ່ານຜ່ານຂັ້ນຕອນການເຊັກອິນ ແລະ ການຂຶ້ນເຄື່ອງໄດ້ຢ່າງສະດວກ ແລະ ວ່ອງໄວ.",
+    lo: "ກະລຸນາປະຕິບັດຕາມຂັ້ນຕອນການແນະນຳລຸ່ມນີ້ ເພື່ອຊ່ວຍໃຫ້ທ່ານຜ່ານຂັ້ນຕອນການແຈ້ງປີ້ ແລະ ການຂຶ້ນເຮືອບິນໄດ້ຢ່າງສະດວກ ແລະ ວ່ອງໄວ.",
     zh: "请参考以下分步指引，以确保您的值机与登机流程顺畅高效。",
   },
 
