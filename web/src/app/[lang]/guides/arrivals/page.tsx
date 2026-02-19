@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { Metadata } from "next";
 import { Lang } from "@/types/language";
 import {
   ArrivalAirportContent,
@@ -11,7 +12,7 @@ import {
   RelatedServices,
 } from "@/components/guides/arrival";
 import { ArrivalTab } from "@/types/guide";
-import { Metadata } from "next";
+import { createArrivalGuideI18n } from "@/data/i18n/guide";
 
 interface ArrivalPageProps {
   params: Promise<{ lang: Lang }>;
@@ -22,28 +23,11 @@ export async function generateMetadata({
   params,
 }: ArrivalPageProps): Promise<Metadata> {
   const { lang } = await params;
-
-  const metadata = {
-    en: {
-      title: "Arrival Guide",
-      description:
-        "Complete arrival guide for Bokeo International Airport. Information about immigration, baggage claim, customs clearance, and airport exit procedures.",
-    },
-    lo: {
-      title: "ຄູ່ມືຜູ້ໂດຍສານຂາເຂົ້າ",
-      description:
-        "ຄູ່ມືການມາເຖິງສົມບູນສຳລັບສະໜາມບິນສາກົນບໍ່ແກ້ວ. ຂໍ້ມູນກ່ຽວກັບການເຂົ້າເມືອງ, ການຮັບກະເປົາ, ການຜ່ານພາສີ ແລະ ຂະບວນການອອກຈາກສະໜາມບິນ.",
-    },
-    zh: {
-      title: "到达指南",
-      description:
-        "博胶国际机场完整到达指南。了解入境、行李提取、海关清关和机场出口流程的信息。",
-    },
-  };
+  const { arrivalNav: t } = createArrivalGuideI18n(lang);
 
   return {
-    title: metadata[lang as Lang].title,
-    description: metadata[lang as Lang].description,
+    title: t.title,
+    description: t.subtitle,
   };
 }
 
@@ -53,9 +37,20 @@ export default async function ArrivalPage({
 }: ArrivalPageProps) {
   const { lang } = await params;
   const { tab = "airport" } = await searchParams;
+  const { arrivalNav: t } = createArrivalGuideI18n(lang);
 
   return (
     <div className="bg-gray-50">
+      {/* Header */}
+      <div className="bg-white pb-8">
+        <div className="container space-y-3">
+          <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">
+            {t.title}
+          </h1>
+          <p className="text-gray-600 lg:text-lg">{t.subtitle}</p>
+        </div>
+      </div>
+
       {/* Tab Navigation */}
       <ArrivalTabNavigation lang={lang as Lang} activeTab={tab} />
 

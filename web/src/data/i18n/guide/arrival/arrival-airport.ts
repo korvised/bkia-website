@@ -33,27 +33,22 @@ export const arrivalAirport = {
   },
   disembarkStep1: {
     en: "Follow cabin crew instructions for orderly disembarkation",
-    lo: "ປະຕິບັດຕາມຄຳແນະນຳຂອງລູກເຮືອສຳລັບການລົງຈາກເຮືອບິນຢ່າງເປັນລະບຽບ",
+    lo: "ປະຕິບັດຕາມຄຳແນະນຳຂອງຈຸບິນສຳລັບການລົງຈາກເຮືອບິນຢ່າງເປັນລະບຽບ",
     zh: "听从机组人员的指示有序下机",
   },
   disembarkStep2: {
     en: "Collect all cabin baggage from overhead bins",
-    lo: "ເກັບກະເປົາຖືຂຶ້ນເຮືອບິນທັງໝົດຈາກຊ່ອງເກັບຂອງດ້ານເທິງ",
+    lo: "ເກັບກະເປົ໋າຖືຂື້ນເຮຶອບິນຂອງທ່ານທັງໝົດຈາກຊ່ອງເກັບເຄື່ອງດ້ານເທິງ",
     zh: "从头顶行李舱取出所有随身行李",
   },
   disembarkStep3: {
-    en: "Check your seat area for personal items (phones, glasses, documents)",
-    lo: "ກວດເບິ່ງບໍລິເວນບ່ອນນັ່ງຂອງທ່ານວ່າມີສິ່ງຂອງສ່ວນຕົວ (ໂທລະສັບ, ແວ່ນຕາ, ເອກະສານ)",
-    zh: "检查座位区域是否遗留个人物品（手机、眼镜、文件）",
+    en: "Check your seat area for personal items before leaving the aircraft.",
+    lo: "ກວດຄືນເບິ່ງບໍລິເວນບ່ອນນັ່ງຂອງທ່ານວ່າມີສິ່ງຂອງສ່ວນຕົວຫຼົງເຫຼືອບໍ່ ກ່ອນລົງຈາກເຮືອບິນ",
+    zh: "下机前请检查座位区域，确保没有遗留个人物品。",
   },
   disembarkStep4: {
-    en: 'Follow signs for "Arrivals" (ຂາເຂົ້າ)',
-    lo: 'ຕິດຕາມປ້າຍ "ຂາເຂົ້າ" (Arrivals)',
-    zh: '按照"国际到达"（Arrivals）指示牌前行',
-  },
-  disembarkStep5: {
     en: "Proceed through the jet bridge or down aircraft stairs to terminal",
-    lo: "ຍ່າງຜ່ານທາງສະພານເຊື່ອມ ຫຼື ລົງບັນໄດເຮືອບິນໄປຫາອາຄານຜູ້ໂດຍສານ",
+    lo: "ຢ່າງຜ່ານທາງ ຂົວທ້ຽບເຮຶອບິນ ຫຼື ລົງຂັ້ນໃດເຮຶອບິນໄປຫາອາຄານຜູ້ໂດຍສານ",
     zh: "通过登机桥或飞机舷梯前往航站楼",
   },
 

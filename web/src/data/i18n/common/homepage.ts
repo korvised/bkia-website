@@ -1,6 +1,17 @@
 import type { Lang } from "@/types/language";
 
 export const homepage = {
+  title: {
+    en: "Bokeo International Airport - Gateway to Laos",
+    lo: "ສະໜາມບິນສາກົນບໍ່ແກ້ວ - ປະຕູສູ່ ສປປ ລາວ",
+    zh: "博胶国际机场 - 通往老挝的门户",
+  },
+  description: {
+    en: "Experience seamless travel and premium facilities at Bokeo International Airport, your modern gateway to Northern Laos.",
+    lo: "ສຳຜັດກັບປະສົບການການເດີນທາງທີ່ສະດວກສະບາຍ ແລະ ສິ່ງອຳນວຍຄວາມສະດວກທີ່ທັນສະໄໝ ທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ, ປະຕູສູ່ພາກເໜືອຂອງລາວ.",
+    zh: "在博胶国际机场体验顺畅的旅行和现代化的设施，这里是您进入老挝北部的现代门户。",
+  },
+
   // Hero Session
   announcements: {
     en: "Announcements",

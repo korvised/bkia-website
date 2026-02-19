@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Baby, Accessibility, PawPrint, ArrowRight } from "lucide-react";
 import { Lang } from "@/types/language";

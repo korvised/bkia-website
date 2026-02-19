@@ -7,9 +7,23 @@ import {
 } from "@/components/homepage";
 import { listHighlightNotices } from "@/services/notice";
 import { listFeaturedNews } from "@/services/news";
+import { Metadata } from "next";
+import { createCommonI18n } from "@/data/i18n/common";
 
 interface HomePageProps {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: Lang }>;
+}
+
+export async function generateMetadata({
+  params,
+}: HomePageProps): Promise<Metadata> {
+  const { lang } = await params;
+  const { homepage: t } = createCommonI18n(lang);
+
+  return {
+    title: t.title,
+    description: t.description,
+  };
 }
 
 export default async function HomePage({ params }: HomePageProps) {

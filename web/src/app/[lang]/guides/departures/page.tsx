@@ -11,6 +11,7 @@ import {
   SecurityContent,
 } from "@/components/guides/departure";
 import { DepartureTab } from "@/types/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guide";
 
 interface DeparturePageProps {
   params: Promise<{ lang: Lang }>;
@@ -21,28 +22,11 @@ export async function generateMetadata({
   params,
 }: DeparturePageProps): Promise<Metadata> {
   const { lang } = await params;
-
-  const metadata = {
-    en: {
-      title: "Departure Guide",
-      description:
-        "Step-by-step guide for departure procedures at Bokeo International Airport. Learn about check-in, security, customs, and boarding processes.",
-    },
-    lo: {
-      title: "ຄູ່ມືຜູ້ໂດຍສານຂາອອກ",
-      description:
-        "ຄູ່ມືຂັ້ນຕອນການເດີນທາງອອກທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ. ຮຽນຮູ້ກ່ຽວກັບການເຊັກອິນ, ການກວດຄວາມປອດໄພ, ພາສີ ແລະ ຂະບວນການຂຶ້ນເຮືອບິນ.",
-    },
-    zh: {
-      title: "出发指南",
-      description:
-        "博胶国际机场出发流程分步指南。了解值机、安检、海关和登机流程。",
-    },
-  };
+  const { departureNav: t } = createDepartureGuideI18n(lang);
 
   return {
-    title: metadata[lang].title,
-    description: metadata[lang].description,
+    title: t.title,
+    description: t.subtitle,
   };
 }
 
@@ -52,9 +36,20 @@ export default async function DepartureGuidePage({
 }: DeparturePageProps) {
   const { lang } = await params;
   const { tab = "checkin" } = await searchParams;
+  const { departureNav: t } = createDepartureGuideI18n(lang);
 
   return (
     <div className="bg-gray-50">
+      {/* Header */}
+      <div className="bg-white pb-8">
+        <div className="container space-y-3">
+          <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">
+            {t.title}
+          </h1>
+          <p className="text-gray-600 lg:text-lg">{t.subtitle}</p>
+        </div>
+      </div>
+
       {/* Tab Navigation */}
       <DepartureTabNavigation lang={lang} activeTab={tab} />
 

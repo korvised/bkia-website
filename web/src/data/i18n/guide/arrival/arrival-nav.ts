@@ -1,6 +1,18 @@
 import type { Lang } from "@/types/language";
 
 export const arrivalNav = {
+  // Page Header
+  title: {
+    en: "Arriving at Bokeo International Airport",
+    lo: "ຖ້ຽວບິນຂາເຂົ້າສະໜາມບິນສາກົນບໍ່ແກ້ວ",
+    zh: "抵达博胶国际机场",
+  },
+  subtitle: {
+    en: "Please follow our step-by-step navigation guide below to ensure a smooth and convenient arrival process at our airport.",
+    lo: "ກະລຸນາປະຕິບັດຕາມຂັ້ນຕອນການແນະນຳລຸ່ມນີ້ ເພື່ອຊ່ວຍໃຫ້ທ່ານຜ່ານຂັ້ນຕອນການເດີນທາງຂາເຂົ້າສະໜາມບິນໄດ້ຢ່າງສະດວກ ແລະ ວ່ອງໄວ.",
+    zh: "请参考以下分步指引，以确保您在抵达本机场时的入境流程顺畅且高效。",
+  },
+
   // Tab labels
   airport: {
     en: "Arrival Airport",

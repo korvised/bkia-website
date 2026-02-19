@@ -4,36 +4,21 @@ import Link from "next/link";
 import { Lang } from "@/types/language";
 import { facilitiesServices, getColorClasses } from "@/data/guide";
 import { cn, getLocalizedText } from "@/lib";
+import { createDepartureGuideI18n } from "@/data/i18n/guide";
 
 interface FacilityServicePageProps {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: Lang }>;
 }
 
 export async function generateMetadata({
   params,
 }: FacilityServicePageProps): Promise<Metadata> {
   const { lang } = await params;
-
-  const metadata = {
-    en: {
-      title: "Airport Facilities & Services | Bokeo International Airport",
-      description:
-        "Discover all facilities and services available at Bokeo International Airport.",
-    },
-    lo: {
-      title: "ສິ່ງອຳນວຍຄວາມສະດວກ ແລະ ບໍລິການຂອງສະໜາມບິນ | ສະໜາມບິນສາກົນບໍ່ແກ້ວ",
-      description:
-        "ຄົ້ນພົບສິ່ງອຳນວຍຄວາມສະດວກ ແລະ ບໍລິການທັງໝົດທີ່ມີຢູ່ທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ.",
-    },
-    zh: {
-      title: "机场设施与服务 | 博胶国际机场",
-      description: "探索博胶国际机场的所有设施和服务。",
-    },
-  };
+  const { facilities: t } = createDepartureGuideI18n(lang);
 
   return {
-    title: metadata[lang as Lang].title,
-    description: metadata[lang as Lang].description,
+    title: t.title,
+    description: t.subtitle,
   };
 }
 
@@ -43,18 +28,7 @@ export default async function AirportFacilitiesPage({
   const { lang } = await params;
   const language = lang as Lang;
 
-  const pageContent = {
-    title: {
-      en: "Airport Facilities & Services",
-      lo: "ສິ່ງອຳນວຍຄວາມສະດວກ ແລະ ບໍລິການ",
-      zh: "机场设施与服务",
-    },
-    subtitle: {
-      en: "Comprehensive range of facilities and services to ensure your comfort and convenience throughout your journey.",
-      lo: "ສິ່ງອຳນວຍຄວາມສະດວກ ແລະ ບໍລິການຄົບຄົບຄົງເພື່ອຮັບປະກັນຄວາມສະດວກສະບາຍຂອງທ່ານຕະຫຼອດການເດີນທາງ.",
-      zh: "全面的设施和服务，确保您在整个旅程中的舒适和便利。",
-    },
-  };
+  const { facilities: t } = createDepartureGuideI18n(lang);
 
   return (
     <div className="space-y-8 lg:space-y-16">
@@ -67,10 +41,10 @@ export default async function AirportFacilitiesPage({
         </div>
         <div className="flex-grow">
           <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:mb-3 sm:text-3xl">
-            {getLocalizedText(pageContent.title, language)}
+            {t.title}
           </h1>
           <p className="text-sm leading-relaxed text-gray-700 sm:text-base">
-            {getLocalizedText(pageContent.subtitle, language)}
+            {t.subtitle}
           </p>
         </div>
       </div>

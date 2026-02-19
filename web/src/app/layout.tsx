@@ -1,16 +1,7 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import { cookies } from "next/headers";
 import type { Lang } from "@/types/language";
 import { defaultLanguage } from "@/lib";
-
-export const metadata: Metadata = {
-  title: {
-    template: "%s | Bokeo International Airport",
-    default: "Bokeo International Airport - Gateway to Laos",
-  },
-  description: "Experience seamless travel at Bokeo International Airport",
-};
 
 interface RootLayoutProps {
   children: React.ReactNode;

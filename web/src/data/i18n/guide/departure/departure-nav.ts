@@ -1,6 +1,18 @@
 import type { Lang } from "@/types/language";
 
 export const departureNav = {
+  // Page Header
+  title: {
+    en: "Departing from Bokeo International Airport",
+    lo: "ຖ້ຽວບິນຂາອອກສະໜາມບິນສາກົນບໍ່ແກ້ວ",
+    zh: "离境博胶国际机场",
+  },
+  subtitle: {
+    en: "Please follow our step-by-step navigation guide below to ensure a smooth check-in and boarding process for your departure flight.",
+    lo: "ກະລຸນາປະຕິບັດຕາມຂັ້ນຕອນການແນະນຳລຸ່ມນີ້ ເພື່ອຊ່ວຍໃຫ້ທ່ານຜ່ານຂັ້ນຕອນການເຊັກອິນ ແລະ ການຂຶ້ນເຄື່ອງໄດ້ຢ່າງສະດວກ ແລະ ວ່ອງໄວ.",
+    zh: "请参考以下分步指引，以确保您的值机与登机流程顺畅高效。",
+  },
+
   // Tab labels
   checkin: {
     en: "Check-in",

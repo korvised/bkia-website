@@ -3,6 +3,7 @@ import { Lang } from "@/types/language";
 import { checkin, type CheckinKey, tCheckin } from "./checkin";
 import { baggage, type BaggageKey, tBaggage } from "./baggage";
 import { security, type SecurityKey, tSecurity } from "./security";
+import { facilities, type FacilitiesKey, tFacilities } from "./facility";
 import { immigration, type ImmigrationKey, tImmigration } from "./immigration";
 import { boarding, type BoardingKey, tBoarding } from "./boarding";
 import {
@@ -26,6 +27,10 @@ export function createDepartureGuideI18n(lang: Lang) {
   const baggageT = createTranslator<typeof baggage, BaggageKey>(baggage, lang);
   const securityT = createTranslator<typeof security, SecurityKey>(
     security,
+    lang,
+  );
+  const facilitiesT = createTranslator<typeof facilities, FacilitiesKey>(
+    facilities,
     lang,
   );
   const immigrationT = createTranslator<typeof immigration, ImmigrationKey>(
@@ -53,6 +58,7 @@ export function createDepartureGuideI18n(lang: Lang) {
     checkin: checkinT,
     baggage: baggageT,
     security: securityT,
+    facilities: facilitiesT,
     immigration: immigrationT,
     boarding: boardingT,
     airportSecurity: airportSecurityT,
@@ -68,6 +74,8 @@ export {
   tBaggage,
   security,
   tSecurity,
+  facilities,
+  tFacilities,
   immigration,
   tImmigration,
   boarding,
@@ -83,6 +91,7 @@ export type {
   CheckinKey,
   BaggageKey,
   SecurityKey,
+  FacilitiesKey,
   ImmigrationKey,
   BoardingKey,
   AirportSecurityKey,

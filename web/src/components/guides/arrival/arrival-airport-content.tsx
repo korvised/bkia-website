@@ -61,7 +61,6 @@ export function ArrivalAirportContent({ lang }: ArrivalAirportContentProps) {
               <li>{t.disembarkStep2}</li>
               <li>{t.disembarkStep3}</li>
               <li>{t.disembarkStep4}</li>
-              <li>{t.disembarkStep5}</li>
             </ol>
           </div>
 
