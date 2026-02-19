@@ -74,16 +74,16 @@ const servicesData: ServiceCard[] = [
     buttonTextColor: "text-danger-600",
   },
   {
-    id: "services",
+    id: "custom-services",
     title: {
-      en: "Airport Services",
-      lo: "ບໍລິການສະໜາມບິນ",
-      zh: "机场服务",
+      en: "Custom Services",
+      lo: "ບໍລິການພິເສດ",
+      zh: "定制服务",
     },
     description: {
-      en: "Facilities, special assistance, dining and shopping",
-      lo: "ສິ່ງອຳນວຍຄວາມສະດວກ, ການຊ່ວຍເຫຼືອພິເສດ, ຮ້ານອາຫານ",
-      zh: "设施、特殊协助、餐饮和购物",
+      en: "Dedicated services for pregnancy, mobility assistance, and pets",
+      lo: "ບໍລິການພິເສດສຳລັບແມ່ຍິງຖືພາ, ຜູ້ພິການ ແລະ ສັດລ້ຽງ",
+      zh: "为孕妇、残障人士和宠物提供的专属服务",
     },
     icon: Accessibility,
     buttonText: {
@@ -91,7 +91,7 @@ const servicesData: ServiceCard[] = [
       lo: "ສຳຫຼວດບໍລິການ",
       zh: "探索服务",
     },
-    buttonLink: "guides/facilities",
+    buttonLink: "guides/custom-services",
     bgColor: "bg-white",
     textColor: "text-gray-900",
     buttonBg: "bg-primary-600",
