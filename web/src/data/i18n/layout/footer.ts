@@ -100,7 +100,7 @@ export const footer = {
   },
   lostFound: {
     en: "Lost & Found",
-    lo: "ເຄື່ອງເສຍ & ພົບເຫັນ",
+    lo: "ເຄື່ອງເສຍ ແລະ ເຄື່ອງຕົກຄ້າງ",
     zh: "失物招领",
   },
   contactUs: {

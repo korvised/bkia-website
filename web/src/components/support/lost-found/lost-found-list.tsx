@@ -1,161 +1,155 @@
-import {
-  Briefcase,
-  Calendar,
-  CheckCircle,
-  Clock,
-  FileText,
-  Hash,
-  MapPin,
-  Package,
-  SearchCheck,
-  Shirt,
-  Smartphone,
-  Watch,
-  XCircle,
-} from "lucide-react";
+import { Calendar, MapPin, Package, Plane } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Lang } from "@/types/language";
-import { LostFoundItem } from "@/data/notice/lost-found";
-import { cn, fmtDate } from "@/lib";
+import { ILostFoundItem } from "@/types/lost-found";
+import { LostFoundStatus, LostFoundType } from "@/types/enum";
+import { asset, cn, fmtDate } from "@/lib";
+import { createSupportI18n } from "@/data/i18n/support";
+import { IPaginationMeta } from "@/types/pagination";
+import { LostFoundPagination } from "./lost-found-pagination";
 
 interface LostFoundListProps {
   lang: Lang;
-  items: LostFoundItem[];
-  searchQuery?: string;
+  items: ILostFoundItem[];
+  meta: IPaginationMeta;
+  searchParams: Record<string, string | undefined>;
 }
+
+const TYPE_STYLE: Record<LostFoundType, string> = {
+  [LostFoundType.LOST]: "bg-red-50 text-red-700 border-red-200",
+  [LostFoundType.FOUND]: "bg-green-50 text-green-700 border-green-200",
+};
+
+const STATUS_STYLE: Record<LostFoundStatus, string> = {
+  [LostFoundStatus.OPEN]: "bg-blue-50 text-blue-700",
+  [LostFoundStatus.MATCHED]: "bg-yellow-50 text-yellow-700",
+  [LostFoundStatus.RETURNED]: "bg-gray-100 text-gray-500",
+  [LostFoundStatus.DONATED]: "bg-gray-100 text-gray-500",
+  [LostFoundStatus.DISPOSED]: "bg-gray-100 text-gray-500",
+};
 
 export function LostFoundList({
   lang,
   items,
-  searchQuery,
+  meta,
+  searchParams,
 }: LostFoundListProps) {
-  const categoryIcons = {
-    electronics: Smartphone,
-    bags: Briefcase,
-    documents: FileText,
-    clothing: Shirt,
-    accessories: Watch,
-    other: Package,
+  const t = createSupportI18n(lang).lostFound;
+
+  const statusLabel: Record<LostFoundStatus, string> = {
+    [LostFoundStatus.OPEN]: t.statusOpen,
+    [LostFoundStatus.MATCHED]: t.statusMatched,
+    [LostFoundStatus.RETURNED]: t.statusReturned,
+    [LostFoundStatus.DONATED]: t.statusDonated,
+    [LostFoundStatus.DISPOSED]: t.statusDisposed,
   };
 
-  const statusConfig = {
-    pending: {
-      label: "Available to Claim",
-      icon: Clock,
-      color: "bg-green-100 text-green-700 border-green-200",
-    },
-    claimed: {
-      label: "Claimed",
-      icon: CheckCircle,
-      color: "bg-blue-100 text-blue-700 border-blue-200",
-    },
-    returned: {
-      label: "Returned",
-      icon: CheckCircle,
-      color: "bg-gray-100 text-gray-700 border-gray-200",
-    },
-    disposed: {
-      label: "Disposed",
-      icon: XCircle,
-      color: "bg-red-100 text-red-700 border-red-200",
-    },
+  const typeLabel: Record<LostFoundType, string> = {
+    [LostFoundType.LOST]: t.typeLost,
+    [LostFoundType.FOUND]: t.typeFound,
   };
 
-  const renderItemCard = (item: LostFoundItem) => {
-    const CategoryIcon = categoryIcons[item.category];
-    const statusInfo = statusConfig[item.status];
-    const StatusIcon = statusInfo.icon;
-
-    return (
-      <Link
-        key={item.id}
-        href={`/${lang}/notices/lost-found/${item.id}`}
-        className="hover:border-primary-300 block rounded-lg border-2 border-gray-200 bg-white p-6 transition-all duration-200 hover:shadow-md"
-      >
-        <div className="space-y-4">
-          {/* Header */}
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-start gap-3">
-              <div className="bg-primary-100 flex-shrink-0 rounded-lg p-2">
-                <CategoryIcon className="text-primary-600 h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900">
-                  {item.itemName}
-                </h3>
-                <div className="mt-1 flex items-center gap-2">
-                  <span
-                    className={cn(
-                      "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium",
-                      statusInfo.color,
-                    )}
-                  >
-                    <StatusIcon className="h-3 w-3" />
-                    {statusInfo.label}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Description */}
-          <p className="line-clamp-2 text-sm text-gray-600">
-            {item.description}
-          </p>
-
-          {/* Meta Information */}
-          <div className="grid grid-cols-1 gap-3 border-t border-gray-100 pt-2 sm:grid-cols-2">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <MapPin className="h-4 w-4 text-gray-400" />
-              <span className="truncate">{item.location}</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Calendar className="h-4 w-4 text-gray-400" />
-              <time dateTime={item.date}>
-                {fmtDate(new Date(item.date), lang)}
-              </time>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Hash className="h-4 w-4 text-gray-400" />
-              <span className="font-mono">{item.referenceNumber}</span>
-            </div>
-          </div>
-        </div>
-      </Link>
-    );
-  };
-
-  // Empty state
   if (items.length === 0) {
     return (
-      <div className="py-12 text-center">
-        <SearchCheck className="mx-auto h-12 w-12 text-gray-400" />
-        <h3 className="mt-4 text-lg font-medium text-gray-900">
-          {searchQuery ? "No items found" : "No items available"}
+      <div className="rounded-xl border border-gray-200 bg-white py-16 text-center">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+          <Package className="h-8 w-8 text-gray-400" />
+        </div>
+        <h3 className="mt-4 text-lg font-semibold text-gray-900">
+          {t.noItemsFound}
         </h3>
-        <p className="mt-2 text-sm text-gray-500">
-          {searchQuery
-            ? `Try adjusting your search terms or filters.`
-            : "Check back later for updates"}
-        </p>
+        <p className="mt-2 text-sm text-gray-500">{t.noItemsMessage}</p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
-      {/* Items Grid */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {items.map(renderItemCard)}
+    <div className="space-y-8">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((item) => (
+          <Link
+            key={item.id}
+            href={`/${lang}/support/lost-found/${item.id}`}
+            className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300 hover:shadow-md"
+          >
+            {/* Cover image */}
+            <div className="relative h-44 w-full bg-gray-100">
+              {item.coverImage ? (
+                <Image
+                  src={asset(item.coverImage.path)}
+                  alt={item.itemName}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              ) : (
+                <div className="flex h-full items-center justify-center">
+                  <Package className="h-12 w-12 text-gray-300" />
+                </div>
+              )}
+              {/* Type badge overlay */}
+              <span
+                className={cn(
+                  "absolute top-3 left-3 rounded-full border px-2.5 py-0.5 text-xs font-semibold",
+                  TYPE_STYLE[item.type],
+                )}
+              >
+                {typeLabel[item.type]}
+              </span>
+            </div>
+
+            {/* Content */}
+            <div className="flex flex-1 flex-col gap-2 p-4">
+              <div className="flex items-start justify-between gap-2">
+                <h3 className="group-hover:text-primary-600 line-clamp-1 text-sm font-semibold text-gray-900 transition-colors">
+                  {item.itemName}
+                </h3>
+                <span
+                  className={cn(
+                    "shrink-0 rounded-md px-2 py-0.5 text-xs font-medium",
+                    STATUS_STYLE[item.status],
+                  )}
+                >
+                  {statusLabel[item.status]}
+                </span>
+              </div>
+
+              {item.description && (
+                <p className="line-clamp-2 text-xs text-gray-500">
+                  {item.description}
+                </p>
+              )}
+
+              <div className="mt-auto space-y-1 pt-2 text-xs text-gray-500">
+                {item.location && (
+                  <div className="flex items-center gap-1.5">
+                    <MapPin className="h-3.5 w-3.5 shrink-0" />
+                    <span className="line-clamp-1">{item.location}</span>
+                  </div>
+                )}
+                <div className="flex items-center gap-1.5">
+                  <Calendar className="h-3.5 w-3.5 shrink-0" />
+                  <span>{fmtDate(new Date(item.incidentDate), lang)}</span>
+                </div>
+                {item.flightNumber && (
+                  <div className="flex items-center gap-1.5">
+                    <Plane className="h-3.5 w-3.5 shrink-0" />
+                    <span>{item.flightNumber}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
 
-      {/* Summary */}
-      <div className="rounded-lg bg-gray-50 p-4 text-center">
-        <p className="text-sm text-gray-600">
-          Showing <span className="font-semibold">{items.length}</span> item
-          {items.length !== 1 ? "s" : ""}
-        </p>
-      </div>
+      {meta.pages > 1 && (
+        <LostFoundPagination
+          lang={lang}
+          meta={meta}
+          searchParams={searchParams}
+        />
+      )}
     </div>
   );
 }

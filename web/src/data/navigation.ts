@@ -309,13 +309,13 @@ export const navigation: NavItem[] = [
       {
         label: {
           en: "Lost & Found",
-          lo: "ເຄື່ອງເສຍ & ພົບເຫັນ",
+          lo: "ເຄື່ອງເສຍ ແລະ ເຄື່ອງຕົກຄ້າງ",
           zh: "失物招领",
         },
         description: {
-          en: "Report or claim lost items",
-          lo: "ລາຍງານຫຼືຮັບເຄື່ອງເສຍ",
-          zh: "报告或认领失物",
+          en: "Report or claim lost items at the airport",
+          lo: "ແຈ້ງເຄື່ອງເສຍ ຫຼື ຢືນຢັນການຮັບເຄື່ອງຄືນ",
+          zh: "报告或认领丢失物品",
         },
         href: "/support/lost-found",
       },

@@ -13,7 +13,7 @@ export async function generateMetadata({
   const t = createSupportI18n(lang as Lang).notices;
 
   return {
-    title: `${t.pageTitle} | Bokeo International Airport`,
+    title: t.pageTitle,
     description: t.pageDescription,
   };
 }

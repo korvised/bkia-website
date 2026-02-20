@@ -4,53 +4,43 @@ import { Lang } from "@/types/language";
 import { createCommonI18n } from "@/data/i18n/common";
 import { IPaginationMeta } from "@/types/pagination";
 
-interface NoticePaginationProps {
+interface LostFoundPaginationProps {
   lang: Lang;
   meta: IPaginationMeta;
   searchParams: Record<string, string | undefined>;
 }
 
-export function NoticePagination({
+export function LostFoundPagination({
   lang,
   meta,
   searchParams,
-}: NoticePaginationProps) {
+}: LostFoundPaginationProps) {
   const t = createCommonI18n(lang).pagination;
 
   const createPageUrl = (page: number) => {
     const params = new URLSearchParams();
-
-    Object.entries(searchParams).forEach(([key, value]) => {
-      if (value && key !== "page") {
-        params.set(key, value);
-      }
+    Object.entries(searchParams).forEach(([k, v]) => {
+      if (v && k !== "page") params.set(k, v);
     });
-
     params.set("page", page.toString());
-
-    return `/${lang}/support/notices?${params.toString()}`;
+    return `/${lang}/support/lost-found?${params.toString()}`;
   };
 
-  const startResult = (meta.page - 1) * meta.limit + 1;
-  const endResult = Math.min(meta.page * meta.limit, meta.total);
+  const start = (meta.page - 1) * meta.limit + 1;
+  const end = Math.min(meta.page * meta.limit, meta.total);
 
   return (
     <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-      {/* Results info */}
       <div className="text-sm text-gray-600">
-        {t.showing} {" "}
-        <span className="font-semibold text-gray-900">{startResult}</span>-
-        <span className="font-semibold text-gray-900">{endResult}</span> {t.of} {" "}
+        {t.showing} <span className="font-semibold text-gray-900">{start}</span>
+        -<span className="font-semibold text-gray-900">{end}</span> {t.of}{" "}
         <span className="font-semibold text-gray-900">{meta.total}</span>
       </div>
-
-      {/* Pagination controls */}
       <div className="flex items-center gap-2">
-        {/* Previous */}
         {meta.page > 1 ? (
           <Link
             href={createPageUrl(meta.page - 1)}
-            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             <ChevronLeft className="h-4 w-4" />
             <span className="hidden sm:inline">{t.previous}</span>
@@ -61,21 +51,15 @@ export function NoticePagination({
             <span className="hidden sm:inline">{t.previous}</span>
           </div>
         )}
-
-        {/* Page info */}
-        <div className="flex items-center gap-1 rounded-lg border border-gray-200 bg-white px-4 py-2">
-          <span className="text-sm font-medium text-gray-900">{meta.page}</span>
-          <span className="text-sm text-gray-500">{t.of}</span>
-          <span className="text-sm font-medium text-gray-900">
-            {meta.pages}
-          </span>
+        <div className="flex items-center gap-1 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm">
+          <span className="font-medium text-gray-900">{meta.page}</span>
+          <span className="text-gray-500">{t.of}</span>
+          <span className="font-medium text-gray-900">{meta.pages}</span>
         </div>
-
-        {/* Next */}
         {meta.page < meta.pages ? (
           <Link
             href={createPageUrl(meta.page + 1)}
-            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             <span className="hidden sm:inline">{t.next}</span>
             <ChevronRight className="h-4 w-4" />
