@@ -1,6 +1,19 @@
 "use client";
 
-import { Search, X, Package } from "lucide-react";
+import {
+  Smartphone,
+  Briefcase,
+  Shirt,
+  FileText,
+  Gem,
+  KeyRound,
+  Banknote,
+  Puzzle,
+  Package,
+  LayoutGrid,
+  Search,
+  X,
+} from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 import { Lang } from "@/types/language";
@@ -75,16 +88,28 @@ export function LostFoundFilters({
   ];
 
   const categories = [
-    { id: "all", label: t.categoryAll },
-    { id: LostFoundCategory.ELECTRONICS, label: t.categoryElectronics },
-    { id: LostFoundCategory.BAGGAGE, label: t.categoryBaggage },
-    { id: LostFoundCategory.DOCUMENTS, label: t.categoryDocuments },
-    { id: LostFoundCategory.CLOTHING, label: t.categoryClothing },
-    { id: LostFoundCategory.JEWELRY, label: t.categoryJewelry },
-    { id: LostFoundCategory.KEYS, label: t.categoryKeys },
-    { id: LostFoundCategory.CASH, label: t.categoryCash },
-    { id: LostFoundCategory.TOYS, label: t.categoryToys },
-    { id: LostFoundCategory.OTHER, label: t.categoryOther },
+    { id: "all", label: t.categoryAll, icon: LayoutGrid },
+    {
+      id: LostFoundCategory.ELECTRONICS,
+      label: t.categoryElectronics,
+      icon: Smartphone,
+    },
+    {
+      id: LostFoundCategory.BAGGAGE,
+      label: t.categoryBaggage,
+      icon: Briefcase,
+    },
+    {
+      id: LostFoundCategory.DOCUMENTS,
+      label: t.categoryDocuments,
+      icon: FileText,
+    },
+    { id: LostFoundCategory.CLOTHING, label: t.categoryClothing, icon: Shirt },
+    { id: LostFoundCategory.JEWELRY, label: t.categoryJewelry, icon: Gem },
+    { id: LostFoundCategory.KEYS, label: t.categoryKeys, icon: KeyRound },
+    { id: LostFoundCategory.CASH, label: t.categoryCash, icon: Banknote },
+    { id: LostFoundCategory.TOYS, label: t.categoryToys, icon: Puzzle },
+    { id: LostFoundCategory.OTHER, label: t.categoryOther, icon: Package },
   ];
 
   const activeType = selectedType || "all";
@@ -145,7 +170,7 @@ export function LostFoundFilters({
                 : "border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50",
             )}
           >
-            <Package className="h-3.5 w-3.5" />
+            <cat.icon className="h-3.5 w-3.5" />
             {cat.label}
           </button>
         ))}
