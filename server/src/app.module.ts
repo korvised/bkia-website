@@ -7,6 +7,7 @@ import { AirportModule } from '@/modules/airport';
 import { AuthModule } from '@/modules/auth';
 import { CounterModule } from '@/modules/counter';
 import { FlightModule } from '@/modules/flight';
+import { LostFoundModule } from '@/modules/lost-found';
 import { NewsModule } from '@/modules/news';
 import { NoticeModule } from '@/modules/notice';
 import { RoleModule } from '@/modules/role';
@@ -29,6 +30,7 @@ import { AppService } from './app.service';
     AuthModule,
     CounterModule,
     FlightModule,
+    LostFoundModule,
     NewsModule,
     NoticeModule,
     RoleModule,

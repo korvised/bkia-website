@@ -4,6 +4,8 @@ export { Counter } from './Counter.entity';
 export { File } from './File.entity';
 export { Flight } from './Flight.entity';
 export { ForgotPassword } from './ForgotPassword.entity';
+export { LostFound } from './LostFound.entity';
+export { LostFoundClaim } from './LostFoundClaim.entity';
 export { News } from './News.entity';
 export { Notice } from './Notice.entity';
 export { Role } from './Role.entity';
