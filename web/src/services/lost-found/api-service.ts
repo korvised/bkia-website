@@ -1,4 +1,4 @@
-import { fetchJSON, withQuery } from "@/lib";
+import { fetchJSON, postForm, withQuery } from "@/lib";
 import type {
   ILostFoundItem,
   LostFoundPageProps,
@@ -44,4 +44,17 @@ export async function getLostFound(
   } catch {
     return null;
   }
+}
+
+export function submitLostFound(
+  data: FormData,
+): Promise<{ referenceCode: string }> {
+  return postForm("lost-found", data);
+}
+
+export function submitClaim(
+  itemId: string,
+  data: FormData,
+): Promise<{ claimId: string; message: string }> {
+  return postForm(`lost-found/${itemId}/claims`, data);
 }

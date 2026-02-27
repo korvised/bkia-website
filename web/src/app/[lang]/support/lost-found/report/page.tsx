@@ -1,55 +1,72 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { Lang } from "@/types/language";
-import { ReportItemForm } from "@/components/support";
+import { cn } from "@/lib";
+import { createSupportI18n } from "@/data/i18n/support";
+import { LostFoundReportForm } from "@/components/support/lost-found";
 
-interface ReportLostPageProps {
+interface Props {
   params: Promise<{ lang: string }>;
 }
 
-export default async function ReportLostPage({ params }: ReportLostPageProps) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
+  const t = createSupportI18n(lang as Lang).lostFound;
+  return { title: t.reportFormTitle };
+}
+
+export default async function LostFoundReportPage({ params }: Props) {
+  const { lang } = await params;
+  const t = createSupportI18n(lang as Lang).lostFound;
+
+  const tabs = [
+    { id: "browse", label: t.tabAll, href: `/${lang}/support/lost-found` },
+    {
+      id: "report",
+      label: t.tabReport,
+      href: `/${lang}/support/lost-found/report`,
+    },
+  ];
 
   return (
-    <div className="container space-y-6">
-      {/* Header */}
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900">Report Lost Item</h1>
-        <p className="mt-2 text-gray-600">
-          Please provide as much detail as possible to help us locate your item.
-        </p>
+    <div className="container space-y-8">
+      {/* Page Header */}
+      <div className="space-y-2">
+        <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
+          {t.pageTitle}
+        </h1>
+        <p className="text-base text-gray-600">{t.pageDescription}</p>
       </div>
 
-      {/* Info Box */}
-      <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
-        <div className="flex gap-3">
-          <div className="flex-shrink-0">
-            <svg
-              className="h-5 w-5 text-blue-600"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
-          <div className="flex-1">
-            <h3 className="text-sm font-medium text-blue-900">
-              Important Information
-            </h3>
-            <ul className="mt-2 space-y-1 text-sm text-blue-700">
-              <li>• Reports are kept on file for 90 days</li>
-              <li>• We will contact you if your item is found</li>
-              <li>• Check our Found Items page regularly</li>
-              <li>• For immediate assistance, call +856-84-211-2000</li>
-            </ul>
-          </div>
-        </div>
+      {/* Top tabs */}
+      <div className="border-b border-gray-200">
+        <nav className="-mb-px flex gap-1">
+          {tabs.map((tab) => {
+            const isActive = tab.id === "report";
+            return (
+              <Link
+                key={tab.id}
+                href={tab.href}
+                className={cn(
+                  "inline-flex items-center gap-2 border-b-2 px-6 py-3 text-sm font-medium whitespace-nowrap transition-all",
+                  isActive
+                    ? "border-primary-600 text-primary-600"
+                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                )}
+              >
+                {tab.label}
+              </Link>
+            );
+          })}
+        </nav>
       </div>
 
       {/* Form */}
-      <ReportItemForm lang={lang as Lang} />
+      <div className="max-w-2xl">
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs lg:p-8">
+          <LostFoundReportForm lang={lang as Lang} />
+        </div>
+      </div>
     </div>
   );
 }

@@ -16,6 +16,7 @@ export const lostFound = {
   tabAll: { en: "All Items", lo: "ທັງໝົດ", zh: "全部物品" },
   tabLost: { en: "Lost", lo: "ເຄື່ອງເສຍ", zh: "失物" },
   tabFound: { en: "Found", lo: "ເຄື່ອງທີ່ເກັບໄດ້", zh: "招领" },
+  tabReport: { en: "Report Item", lo: "ລາຍງານສິ່ງຂອງ", zh: "上报物品" },
 
   // Categories
   categoryAll: { en: "All Categories", lo: "ທຸກໝວດໝູ່", zh: "全部类别" },

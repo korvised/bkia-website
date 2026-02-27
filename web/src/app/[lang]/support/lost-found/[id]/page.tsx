@@ -1,24 +1,40 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { Lang } from "@/types/language";
-import { LostFoundItemDetail } from "@/components/support";
-import { lostFoundItems } from "@/data/notice/lost-found";
+import { getLostFound } from "@/services/lost-found";
+import { LostFoundDetail } from "@/components/support";
 
-interface LostFoundDetailPageProps {
+interface Props {
   params: Promise<{ lang: string; id: string }>;
 }
 
-export default async function LostFoundDetailPage({
-  params,
-}: LostFoundDetailPageProps) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, id } = await params;
+  const item = await getLostFound(id, lang as Lang);
+  if (!item) return {};
+  return { title: item.itemName };
+}
 
-  // Find the item by ID
-  const item = lostFoundItems.find((i) => i.id === id);
+function DetailSkeleton() {
+  return (
+    <div className="container max-w-5xl space-y-6">
+      <div className="h-5 w-32 animate-pulse rounded-lg bg-gray-200" />
+      <div className="grid gap-6 lg:grid-cols-3">
+        <div className="space-y-4 lg:col-span-2">
+          <div className="h-96 animate-pulse rounded-2xl bg-gray-200" />
+          <div className="h-48 animate-pulse rounded-2xl bg-gray-200" />
+        </div>
+        <div className="h-96 animate-pulse rounded-2xl bg-gray-200" />
+      </div>
+    </div>
+  );
+}
 
-  // If item not found, show 404
-  if (!item) {
-    notFound();
-  }
+export default async function LostFoundDetailPage({ params }: Props) {
+  const { lang, id } = await params;
+  const item = await getLostFound(id, lang as Lang);
 
-  return <LostFoundItemDetail lang={lang as Lang} item={item} />;
+  if (!item) notFound();
+
+  return <LostFoundDetail lang={lang as Lang} item={item} />;
 }

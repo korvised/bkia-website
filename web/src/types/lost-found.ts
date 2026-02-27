@@ -1,9 +1,5 @@
 import { LostFoundCategory, LostFoundStatus, LostFoundType } from "./enum";
-
-export interface ILostFoundFile {
-  id: string;
-  path: string;
-}
+import { IFile } from "@/types/file";
 
 export interface ILostFoundItem {
   id: string;
@@ -15,8 +11,8 @@ export interface ILostFoundItem {
   location: string;
   incidentDate: string;
   flightNumber: string | null;
-  coverImage: ILostFoundFile | null;
-  images?: ILostFoundFile[];
+  coverImage: IFile | null;
+  images?: IFile[];
   referenceCode?: string;
   createdAt: string;
 }
