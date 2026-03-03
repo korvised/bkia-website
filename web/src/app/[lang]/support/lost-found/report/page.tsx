@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Lang } from "@/types/language";
-import { cn } from "@/lib";
 import { createSupportI18n } from "@/data/i18n/support";
 import { LostFoundReportForm } from "@/components/support/lost-found";
+import { ArrowLeft } from "lucide-react";
 
 interface Props {
   params: Promise<{ lang: string }>;
@@ -19,46 +19,23 @@ export default async function LostFoundReportPage({ params }: Props) {
   const { lang } = await params;
   const t = createSupportI18n(lang as Lang).lostFound;
 
-  const tabs = [
-    { id: "browse", label: t.tabAll, href: `/${lang}/support/lost-found` },
-    {
-      id: "report",
-      label: t.tabReport,
-      href: `/${lang}/support/lost-found/report`,
-    },
-  ];
-
   return (
     <div className="container space-y-8">
+      {/* Back Button */}
+      <Link
+        href={`/${lang}/support/lost-found`}
+        className="group mb-6 inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
+      >
+        <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+        {t.backToList}
+      </Link>
+
       {/* Page Header */}
       <div className="space-y-2">
         <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
-          {t.pageTitle}
+          {t.reportFormTitle}
         </h1>
-        <p className="text-base text-gray-600">{t.pageDescription}</p>
-      </div>
-
-      {/* Top tabs */}
-      <div className="border-b border-gray-200">
-        <nav className="-mb-px flex gap-1">
-          {tabs.map((tab) => {
-            const isActive = tab.id === "report";
-            return (
-              <Link
-                key={tab.id}
-                href={tab.href}
-                className={cn(
-                  "inline-flex items-center gap-2 border-b-2 px-6 py-3 text-sm font-medium whitespace-nowrap transition-all",
-                  isActive
-                    ? "border-primary-600 text-primary-600"
-                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                )}
-              >
-                {tab.label}
-              </Link>
-            );
-          })}
-        </nav>
+        <p className="text-base text-gray-600">{t.reportFormSubtitle}</p>
       </div>
 
       {/* Form */}

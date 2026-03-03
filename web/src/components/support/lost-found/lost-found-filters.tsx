@@ -20,6 +20,7 @@ import { Lang } from "@/types/language";
 import { cn } from "@/lib";
 import { createSupportI18n } from "@/data/i18n/support";
 import { LostFoundCategory } from "@/types/enum";
+import Link from "next/link";
 
 interface LostFoundFiltersProps {
   lang: Lang;
@@ -117,24 +118,33 @@ export function LostFoundFilters({
 
   return (
     <div className="space-y-4">
-      {/* Search */}
-      <div className="relative max-w-2xl">
-        <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-gray-400" />
-        <input
-          type="text"
-          placeholder={t.searchPlaceholder}
-          value={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-          className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-xl border border-gray-300 py-3 pr-12 pl-12 text-sm shadow-sm transition-all focus:ring-4 focus:outline-none"
-        />
-        {searchQuery && (
-          <button
-            onClick={() => handleSearch("")}
-            className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
-          >
-            <X className="h-4 w-4" />
-          </button>
-        )}
+      <div className="flex items-center justify-between gap-x-4">
+        {/* Search */}
+        <div className="relative max-w-2xl flex-1">
+          <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-gray-400" />
+          <input
+            type="text"
+            placeholder={t.searchPlaceholder}
+            value={searchQuery}
+            onChange={(e) => handleSearch(e.target.value)}
+            className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-xl border border-gray-300 py-3 pr-12 pl-12 text-sm shadow-sm transition-all focus:ring-4 focus:outline-none"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => handleSearch("")}
+              className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
+        </div>
+
+        <Link
+          href={`/${lang}/support/lost-found/report`}
+          className="bg-primary-600 hover:bg-primary-700 inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-white transition-colors"
+        >
+          {t.reportLost}
+        </Link>
       </div>
 
       {/* Type tabs */}

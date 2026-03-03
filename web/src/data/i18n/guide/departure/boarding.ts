@@ -217,7 +217,7 @@ export const boarding = {
   },
   tipListen: {
     en: "Listen carefully to crew safety instructions",
-    lo: "ຟັງຄຳແນະນຳຄວາມປອດໄພຈາກລູກເຮືອຢ່າງຕັ້ງໃຈ",
+    lo: "ຟັງຄຳແນະນຳຄວາມປອດໄພຈາກຈຸບິນຢ່າງຕັ້ງໃຈ",
     zh: "请认真听取机组人员的安全须知",
   },
 } as const;

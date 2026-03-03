@@ -158,7 +158,7 @@ export const immigration = {
   },
   counterDiplomatic: {
     en: "Diplomatic / Crew",
-    lo: "ນັກການທູດ / ລູກເຮືອ",
+    lo: "ນັກການທູດ / ຈຸບິນ",
     zh: "外交人员/机组人员",
   },
 } as const;

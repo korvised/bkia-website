@@ -133,6 +133,11 @@ export const lostFound = {
     lo: "ແຈ້ງຂໍ້ມູນສິ່ງຂອງ",
     zh: "上报物品",
   },
+  reportFormSubtitle: {
+    en: "Please provide as much detail as possible Our team will review your report and contact you shortly.",
+    lo: "ກະລຸນາໃຫ້ລາຍລະອຽດຫຼາຍທີ່ສຸດເທົ່າທີ່ຈະເປັນໄປໄດ້ ທີມງານຂອງພວກເຮົາຈະກວດສອບລາຍງານ ແລະ ຕິດຕໍ່ຫາທ່ານໂດຍໄວ.",
+    zh: "请提供尽可能详尽的信息 我们的团队将审核您的申请并尽快与您联系。",
+  },
   reportType: { en: "Report Type", lo: "ປະເພດການແຈ້ງ", zh: "上报类型" },
   itemName: { en: "Item Name", lo: "ຊື່ສິ່ງຂອງ", zh: "物品名称" },
   itemCategory: { en: "Category", lo: "ໝວດໝູ່", zh: "类别" },
