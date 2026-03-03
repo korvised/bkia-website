@@ -94,7 +94,7 @@ export const immigration = {
   },
   processStep2: {
     en: "Present your passport and boarding pass to the officer",
-    lo: "ສະແດງໜັງສືຜ່ານແດນ ແລະ ບັດຂຶ້ນເຮືອບິນໃຫ້ເຈົ້າໜ້າທີ່",
+    lo: "ສະແດງໜັງສືຜ່ານແດນ ແລະ ປີ້ຂຶ້ນເຮືອບິນໃຫ້ເຈົ້າໜ້າທີ່",
     zh: "向边检人员出示护照和登机牌",
   },
   processStep3: {

@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Lang } from "@/types/language";
 import { createSupportI18n } from "@/data/i18n/support";
-import { LostFoundReportForm } from "@/components/support/lost-found";
+import {
+  LostFoundReportForm,
+  LostFoundReportGuide,
+} from "@/components/support/lost-found";
 import { ArrowLeft } from "lucide-react";
 
 interface Props {
@@ -39,9 +42,17 @@ export default async function LostFoundReportPage({ params }: Props) {
       </div>
 
       {/* Form */}
-      <div className="max-w-2xl">
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs lg:p-8">
-          <LostFoundReportForm lang={lang as Lang} />
+      <div className="grid gap-6 lg:grid-cols-3 2xl:grid-cols-6">
+        {/* Form */}
+        <div className="lg:col-span-2 2xl:col-span-3">
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs lg:p-8">
+            <LostFoundReportForm lang={lang as Lang} />
+          </div>
+        </div>
+
+        {/* Guide */}
+        <div className="lg:col-span-1 2xl:col-span-2">
+          <LostFoundReportGuide lang={lang as Lang} />
         </div>
       </div>
     </div>

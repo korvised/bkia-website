@@ -173,6 +173,73 @@ export const lostFound = {
   },
   copyCode: { en: "Copy", lo: "ຄັດລອກ", zh: "复制" },
   codeCopied: { en: "Copied!", lo: "ຄັດລອກແລ້ວ!", zh: "已复制！" },
+
+  // Guide
+  guideTitle: {
+    en: "How it works",
+    lo: "ຂັ້ນຕອນການດຳເນີນການ",
+    zh: "操作流程",
+  },
+  guideStep1Title: {
+    en: "Submit your report",
+    lo: "ສົ່ງຟອມລາຍງານ",
+    zh: "提交申请",
+  },
+  guideStep1Desc: {
+    en: "Fill in the form with as much detail as possible about the item.",
+    lo: "ຕື່ມຂໍ້ມູນລາຍລະອຽດກ່ຽວກັບເຄື່ອງຂອງໃຫ້ຄົບຖ້ວນທີ່ສຸດ.",
+    zh: "请尽可能详细地填写物品的相关信息。",
+  },
+  guideStep2Title: {
+    en: "Get your reference code",
+    lo: "ຮັບລະຫັດອ້າງອີງ",
+    zh: "获取参考编号",
+  },
+  guideStep2Desc: {
+    en: "After submission you will receive a unique reference code. Keep it safe.",
+    lo: "ຫຼັງຈາກສົ່ງຟອມແລ້ວ ທ່ານຈະໄດ້ຮັບລະຫັດອ້າງອີງສະເພາະ. ກະລຸນາເກັບຮັກສາໄວ້ໃຫ້ດີ.",
+    zh: "提交后您将收到一个唯一的参考编号，请妥善保管。",
+  },
+  guideStep3Title: {
+    en: "Staff review",
+    lo: "ພະນັກງານກວດສອບຂໍ້ມູນ",
+    zh: "人工审核",
+  },
+  guideStep3Desc: {
+    en: "Our team will review your report and match it with found items in our system.",
+    lo: "ທີມງານຂອງພວກເຮົາຈະກວດສອບລາຍງານ ແລະ ທຽບເຄືອງກັບເຄື່ອງທີ່ເກັບໄດ້ໃນລະບົບ.",
+    zh: "我们的团队将审核您的申请，并将其与系统中找到的物品进行比对。",
+  },
+  guideStep4Title: {
+    en: "We contact you",
+    lo: "ພວກເຮົາຈະຕິດຕໍ່ຫາທ່ານ",
+    zh: "与您取得联系",
+  },
+  guideStep4Desc: {
+    en: "If a match is found, we will contact you using the contact details provided in your report.",
+    lo: "ຖ້າຂໍ້ມູນກົງກັນ, ພວກເຮົາຈະຕິດຕໍ່ຫາທ່ານຕາມຂໍ້ມູນຕິດຕໍ່ທີ່ທ່ານໄດ້ໃຫ້ໄວ້ໃນລາຍງານ.",
+    zh: "如果发现匹配项，我们将按照您在申请表中提供的联系方式与您联系。",
+  },
+  guideTipTitle: {
+    en: "Helpful tips",
+    lo: "ຂໍ້ແນະນຳເພີ່ມເຕີມ",
+    zh: "温馨提示",
+  },
+  guideTip1: {
+    en: "Include brand, color, and any unique marks in your description.",
+    lo: "ຄວນລະບຸຍີ່ຫໍ້, ສີ ແລະ ສັນຍາລັກພິເສດຕ່າງໆໃນຄຳອະທິບາຍ.",
+    zh: "描述中请包含品牌、颜色以及任何独特的特征。",
+  },
+  guideTip2: {
+    en: "Upload clear photos if you have them — it speeds up matching.",
+    lo: "ການອັບໂຫລດຮູບພາບທີ່ຊັດເຈນຈະຊ່ວຍໃຫ້ການກວດສອບໄວຂຶ້ນ.",
+    zh: "如有清晰的照片请上传，这将有助于加快比对进度。",
+  },
+  guideTip3: {
+    en: "Reports are reviewed within 1–2 business days.",
+    lo: "ລາຍງານຈະຖືກກວດສອບພາຍໃນ 1-2 ວັນ.",
+    zh: "申请通常会在1-2个工作日内完成审核。",
+  },
 } as const;
 
 export type LostFoundKey = keyof typeof lostFound;

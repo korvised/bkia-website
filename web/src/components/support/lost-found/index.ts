@@ -4,3 +4,5 @@ export { LostFoundPagination } from "./lost-found-pagination";
 export { LostFoundDetail } from "./lost-found-detail";
 export { LostFoundClaimForm } from "./lost-found-claim-form";
 export { LostFoundReportForm } from "./lost-found-report-form";
+export { LostFoundReportGuide } from "./lost-found-report-guide";
+
