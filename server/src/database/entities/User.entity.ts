@@ -10,7 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { UserStatus } from '@/types/enum';
-import { Role, ForgotPassword } from '@/database';
+import { Role, ForgotPassword, Permission } from '@/database';
 
 @Entity('user')
 @Index(['email'], { unique: true })
@@ -56,6 +56,14 @@ export class User {
     inverseJoinColumn: { name: 'roleId', referencedColumnName: 'id' },
   })
   roles: Role[];
+
+  @ManyToMany(() => Permission)
+  @JoinTable({
+    name: 'user_permissions',
+    joinColumn: { name: 'userId', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'permissionId', referencedColumnName: 'id' },
+  })
+  permissions: Permission[];
 
   @OneToMany(() => ForgotPassword, (fp) => fp.user)
   forgotPasswords: ForgotPassword[];

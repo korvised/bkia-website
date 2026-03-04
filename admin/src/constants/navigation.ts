@@ -111,6 +111,43 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
     ],
   },
   {
+    groupName: "Support",
+    icon: LuNewspaper,
+    allowRoles: [
+      ...new Set([
+        ...CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
+        ...CONTENT_ACCESS_ROLES.CAREERS_MANAGEMENT,
+        ...CONTENT_ACCESS_ROLES.BIDDING_MANAGEMENT,
+      ]),
+    ],
+    items: [
+      {
+        name: "News",
+        path: "/content/news",
+        icon: LuNewspaper,
+        allowRoles: CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
+      },
+      {
+        name: "Notices",
+        path: "/content/notices",
+        icon: LuBell,
+        allowRoles: CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
+      },
+      {
+        name: "Careers",
+        path: "/content/careers",
+        icon: LuBriefcase,
+        allowRoles: CONTENT_ACCESS_ROLES.CAREERS_MANAGEMENT,
+      },
+      {
+        name: "Bidding",
+        path: "/content/bidding",
+        icon: LuFileText,
+        allowRoles: CONTENT_ACCESS_ROLES.BIDDING_MANAGEMENT,
+      },
+    ],
+  },
+  {
     groupName: "Settings",
     icon: LuSettings,
     allowRoles: SETTINGS_ACCESS_ROLES.SYSTEM_SETTINGS,

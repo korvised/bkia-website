@@ -7,6 +7,7 @@ import {
 import { Reflector } from '@nestjs/core';
 import { Request } from 'express';
 import { User } from '@/database';
+import { UserRole } from '@/types/enum';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
@@ -23,6 +24,11 @@ export class RolesGuard implements CanActivate {
 
     const user: User = request.user as User;
     if (!user) throw new ForbiddenException('No user found in request');
+
+    const isSuperAdmin = user.roles?.some(
+      (r) => r.role === UserRole.SUPER_ADMIN,
+    );
+    if (isSuperAdmin) return true;
 
     const hasRole = user.roles.some(r => requiredRoles.includes(r.role));
     if (!hasRole) throw new ForbiddenException('Insufficient role');

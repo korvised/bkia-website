@@ -10,14 +10,18 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { Roles } from '@/common/decorators';
-import { JwtAuthGuard, RolesGuard } from '@/common/guards';
+import { Permissions, Roles } from '@/common/decorators';
+import { JwtAuthGuard, PermissionsGuard, RolesGuard } from '@/common/guards';
 import { UserRole } from '@/types/enum';
 import { CreateAirportDto, QueryAirportDto, UpdateAirportDto } from './dtos';
 import { AirportService } from './airport.service';
+import { PERMISSIONS } from '@/constants';
 
-@UseGuards(JwtAuthGuard, RolesGuard)
-@Roles(UserRole.ADMIN, UserRole.PASSENGER)
+const { AIRLINE } = PERMISSIONS;
+
+@UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+@Roles(UserRole.ADMIN, UserRole.STAFF)
+@Permissions(AIRLINE.UPDATE)
 @Controller('airports')
 export class AirportController {
   constructor(private readonly service: AirportService) {}

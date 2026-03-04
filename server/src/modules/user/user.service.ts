@@ -44,7 +44,7 @@ export class UserService {
   async findOneById(id: string): Promise<User | null> {
     return this.repository.findOne({
       where: { id },
-      relations: ['roles'],
+      relations: ['roles', 'permissions'],
     });
   }
 

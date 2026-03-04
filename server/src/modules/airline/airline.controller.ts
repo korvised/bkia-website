@@ -17,16 +17,20 @@ import { imageFileFilter } from '@/common/filters';
 import { FILE_SIZES } from '@/constants/file';
 import { CreateAirlineDto, QueryAirlineDto, UpdateAirlineDto } from './dtos';
 import { AirlineService } from './airline.service';
-import { JwtAuthGuard, RolesGuard } from '@/common/guards';
-import { Roles } from '@/common/decorators';
+import { JwtAuthGuard, PermissionsGuard, RolesGuard } from '@/common/guards';
+import { Permissions, Roles } from '@/common/decorators';
 import { UserRole } from '@/types/enum';
+import { PERMISSIONS } from '@/constants';
+
+const { AIRLINE } = PERMISSIONS;
 
 @Controller('airlines')
 export class AirlineController {
   constructor(private readonly service: AirlineService) {}
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(AIRLINE.CREATE)
   @Post()
   @UseInterceptors(
     FileInterceptor('logo', {
@@ -51,8 +55,9 @@ export class AirlineController {
     return this.service.findOne(id);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(AIRLINE.UPDATE)
   @Patch(':id')
   @UseInterceptors(
     FileInterceptor('logo', {
@@ -68,22 +73,25 @@ export class AirlineController {
     return this.service.update(id, dto, logo);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(AIRLINE.DELETE)
   @Delete(':id')
   remove(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.service.remove(id);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(AIRLINE.UPDATE)
   @Patch(':id/activate')
   activate(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.service.setActive(id, true);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(AIRLINE.UPDATE)
   @Patch(':id/deactivate')
   deactivate(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.service.setActive(id, false);

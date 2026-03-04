@@ -8,6 +8,7 @@ export { LostFound } from './LostFound.entity';
 export { LostFoundClaim } from './LostFoundClaim.entity';
 export { News } from './News.entity';
 export { Notice } from './Notice.entity';
+export { Permission } from './Permission.entity';
 export { Role } from './Role.entity';
 export { Route } from './Route.entity';
 export { User } from './User.entity';
