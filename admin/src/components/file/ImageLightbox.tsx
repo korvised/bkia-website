@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import clsx from "clsx";
 import {
@@ -54,14 +54,16 @@ export const ImageLightbox: React.FC<Props> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [zoom, setZoom] = useState(1);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false); // cursor class only
   const [slideDirection, setSlideDirection] = useState<"left" | "right" | null>(null);
 
   const lightboxRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+
+  // Live pan position & zoom mirror — updated imperatively, never cause re-renders
+  const positionRef = useRef({ x: 0, y: 0 });
+  const zoomRef = useRef(1);
 
   const currentImage = images[currentIndex];
 
@@ -69,20 +71,43 @@ export const ImageLightbox: React.FC<Props> = ({
   const MAX_ZOOM = 5;
   const ZOOM_STEP = 0.25;
 
+  // Keep zoomRef in sync with zoom state
+  useEffect(() => { zoomRef.current = zoom; }, [zoom]);
+
   // ── Prevent body scroll ────────────────────────────────────────────────────
   useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
+    return () => { document.body.style.overflow = prev; };
   }, []);
 
-  // ── Reset zoom when image changes ──────────────────────────────────────────
+  // ── Reset zoom & position when image changes ───────────────────────────────
   useEffect(() => {
-    setZoom(1);
-    setPosition({ x: 0, y: 0 });
+    positionRef.current = { x: 0, y: 0 };
+    zoomRef.current = MIN_ZOOM;
+    setZoom(MIN_ZOOM);
   }, [currentIndex]);
+
+  // ── Apply transform to DOM directly ───────────────────────────────────────
+  // Called imperatively during drag (zero re-renders) and from useLayoutEffect.
+  const applyTransform = useCallback(() => {
+    if (!imageRef.current) return;
+    const z = zoomRef.current;
+    const { x, y } = positionRef.current;
+    imageRef.current.style.transform = `scale(${z}) translate(${x / z}px, ${y / z}px)`;
+  }, []);
+
+  // Re-sync DOM transform after every React render.
+  // During drag there are NO renders, so this never conflicts with applyTransform().
+  useLayoutEffect(() => {
+    if (!imageRef.current) return;
+    if (slideDirection) {
+      // Let CSS slide classes (translate-x / opacity) control the transform
+      imageRef.current.style.transform = "";
+    } else {
+      applyTransform();
+    }
+  });
 
   // ── Fullscreen ─────────────────────────────────────────────────────────────
   const toggleFullScreen = useCallback(async () => {
@@ -93,56 +118,60 @@ export const ImageLightbox: React.FC<Props> = ({
     }
   }, []);
 
-  // ── Pan bounds ─────────────────────────────────────────────────────────────
+  // ── Pan bounds (reads zoomRef, stable — no deps) ───────────────────────────
   const calculateBounds = useCallback(() => {
     if (!containerRef.current || !imageRef.current) return { maxX: 0, maxY: 0 };
     const container = containerRef.current.getBoundingClientRect();
     const img = imageRef.current;
-    const maxX = Math.max(0, (img.naturalWidth * zoom - container.width) / 2);
-    const maxY = Math.max(0, (img.naturalHeight * zoom - container.height) / 2);
+    const z = zoomRef.current;
+    const maxX = Math.max(0, (img.naturalWidth * z - container.width) / 2);
+    const maxY = Math.max(0, (img.naturalHeight * z - container.height) / 2);
     return { maxX, maxY };
-  }, [zoom]);
+  }, []);
 
-  const clampPosition = useCallback(
-    (x: number, y: number) => {
-      const { maxX, maxY } = calculateBounds();
-      return {
-        x: Math.max(-maxX, Math.min(maxX, x)),
-        y: Math.max(-maxY, Math.min(maxY, y)),
-      };
-    },
-    [calculateBounds],
-  );
+  const clampXY = useCallback((x: number, y: number) => {
+    const { maxX, maxY } = calculateBounds();
+    return {
+      x: Math.max(-maxX, Math.min(maxX, x)),
+      y: Math.max(-maxY, Math.min(maxY, y)),
+    };
+  }, [calculateBounds]);
 
   // ── Zoom ───────────────────────────────────────────────────────────────────
   const handleZoomChange = useCallback(
     (newZoom: number, centerX?: number, centerY?: number) => {
       const clamped = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, newZoom));
+
       if (clamped === MIN_ZOOM) {
+        positionRef.current = { x: 0, y: 0 };
+        zoomRef.current = clamped;
         setZoom(clamped);
-        setPosition({ x: 0, y: 0 });
         return;
       }
+
       if (centerX !== undefined && centerY !== undefined && containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
         const ox = centerX - rect.width / 2;
         const oy = centerY - rect.height / 2;
-        const ratio = clamped / zoom;
-        const nx = position.x * ratio - ox * (ratio - 1);
-        const ny = position.y * ratio - oy * (ratio - 1);
-        setZoom(clamped);
-        requestAnimationFrame(() => setPosition(clampPosition(nx, ny)));
+        const ratio = clamped / zoomRef.current;
+        const nx = positionRef.current.x * ratio - ox * (ratio - 1);
+        const ny = positionRef.current.y * ratio - oy * (ratio - 1);
+        zoomRef.current = clamped;
+        positionRef.current = clampXY(nx, ny);
       } else {
-        setZoom(clamped);
-        setPosition((p) => clampPosition(p.x, p.y));
+        zoomRef.current = clamped;
+        positionRef.current = clampXY(positionRef.current.x, positionRef.current.y);
       }
+
+      setZoom(clamped); // triggers render → useLayoutEffect applies new transform
     },
-    [zoom, position, clampPosition],
+    [clampXY],
   );
 
   const handleResetZoom = useCallback(() => {
-    setZoom(1);
-    setPosition({ x: 0, y: 0 });
+    positionRef.current = { x: 0, y: 0 };
+    zoomRef.current = MIN_ZOOM;
+    setZoom(MIN_ZOOM);
   }, []);
 
   // ── Mouse wheel zoom ───────────────────────────────────────────────────────
@@ -153,41 +182,52 @@ export const ImageLightbox: React.FC<Props> = ({
       const rect = containerRef.current?.getBoundingClientRect();
       if (!rect) return;
       handleZoomChange(
-        zoom + (e.deltaY > 0 ? -ZOOM_STEP : ZOOM_STEP),
+        zoomRef.current + (e.deltaY > 0 ? -ZOOM_STEP : ZOOM_STEP),
         e.clientX - rect.left,
         e.clientY - rect.top,
       );
     },
-    [zoom, handleZoomChange],
+    [handleZoomChange],
   );
 
   // ── Pan drag ───────────────────────────────────────────────────────────────
+  // Key fix: attach mousemove + mouseup to WINDOW (not React container div).
+  // This avoids the bug where setIsDragging(true) triggers a React re-render,
+  // which causes the browser to fire a spurious `mouseleave` on the container
+  // and immediately cancel the drag via onMouseLeave.
   const handleMouseDown = useCallback(
     (e: React.MouseEvent) => {
-      if (zoom <= 1) return;
+      if (zoomRef.current <= 1) return;
       e.preventDefault();
-      setIsDragging(true);
-      setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+
+      // Capture drag origin relative to current pan position
+      const startX = e.clientX - positionRef.current.x;
+      const startY = e.clientY - positionRef.current.y;
+
+      setIsDragging(true); // re-render for cursor class only
+
+      const onMove = (ev: MouseEvent) => {
+        const { maxX, maxY } = calculateBounds();
+        positionRef.current = {
+          x: Math.max(-maxX, Math.min(maxX, ev.clientX - startX)),
+          y: Math.max(-maxY, Math.min(maxY, ev.clientY - startY)),
+        };
+        applyTransform(); // direct DOM write — zero React re-renders
+      };
+
+      const onUp = () => {
+        setIsDragging(false);
+        window.removeEventListener("mousemove", onMove);
+        window.removeEventListener("mouseup", onUp);
+      };
+
+      // Native window listeners — survive React re-renders and work even when
+      // the cursor moves outside the container element
+      window.addEventListener("mousemove", onMove);
+      window.addEventListener("mouseup", onUp);
     },
-    [zoom, position],
+    [calculateBounds, applyTransform],
   );
-
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (!isDragging || zoom <= 1) return;
-      setPosition(clampPosition(e.clientX - dragStart.x, e.clientY - dragStart.y));
-    },
-    [isDragging, zoom, dragStart, clampPosition],
-  );
-
-  const handleMouseUp = useCallback(() => setIsDragging(false), []);
-
-  useEffect(() => {
-    if (!isDragging) return;
-    const up = () => setIsDragging(false);
-    window.addEventListener("mouseup", up);
-    return () => window.removeEventListener("mouseup", up);
-  }, [isDragging]);
 
   // ── Double-click toggle zoom ───────────────────────────────────────────────
   const handleDoubleClick = useCallback(
@@ -195,13 +235,13 @@ export const ImageLightbox: React.FC<Props> = ({
       e.stopPropagation();
       const rect = containerRef.current?.getBoundingClientRect();
       if (!rect) return;
-      if (zoom > 1) {
+      if (zoomRef.current > 1) {
         handleResetZoom();
       } else {
         handleZoomChange(2, e.clientX - rect.left, e.clientY - rect.top);
       }
     },
-    [zoom, handleZoomChange, handleResetZoom],
+    [handleZoomChange, handleResetZoom],
   );
 
   // ── Navigation ─────────────────────────────────────────────────────────────
@@ -241,13 +281,13 @@ export const ImageLightbox: React.FC<Props> = ({
       if (e.key === "Escape") onClose();
       else if (e.key === "ArrowLeft") handlePrev();
       else if (e.key === "ArrowRight") handleNext();
-      else if (e.key === "+" || e.key === "=") handleZoomChange(zoom + ZOOM_STEP);
-      else if (e.key === "-") handleZoomChange(zoom - ZOOM_STEP);
+      else if (e.key === "+" || e.key === "=") handleZoomChange(zoomRef.current + ZOOM_STEP);
+      else if (e.key === "-") handleZoomChange(zoomRef.current - ZOOM_STEP);
       else if (e.key === "0") handleResetZoom();
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [onClose, handlePrev, handleNext, zoom, handleZoomChange, handleResetZoom]);
+  }, [onClose, handlePrev, handleNext, handleZoomChange, handleResetZoom]);
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return createPortal(
@@ -327,15 +367,13 @@ export const ImageLightbox: React.FC<Props> = ({
           className={clsx(
             "flex h-full w-full items-center justify-center overflow-hidden",
             zoom > 1 ? "cursor-grab" : "cursor-zoom-in",
-            isDragging && "cursor-grabbing",
+            isDragging && "!cursor-grabbing",
           )}
           onWheel={handleWheel}
           onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
           onDoubleClick={handleDoubleClick}
         >
+          {/* Transform applied imperatively — no React style prop needed */}
           <img
             ref={imageRef}
             key={getImageId(currentImage, currentIndex)}
@@ -347,13 +385,6 @@ export const ImageLightbox: React.FC<Props> = ({
               slideDirection === "left" && "translate-x-[-100px] opacity-0",
               slideDirection === "right" && "translate-x-[100px] opacity-0",
             )}
-            style={
-              !slideDirection
-                ? {
-                    transform: `scale(${zoom}) translate(${position.x / zoom}px, ${position.y / zoom}px)`,
-                  }
-                : undefined
-            }
             draggable={false}
           />
         </div>
