@@ -14,13 +14,16 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Roles } from '@/common/decorators';
-import { JwtAuthGuard, RolesGuard } from '@/common/guards';
+import { Permissions, Roles } from '@/common/decorators';
+import { JwtAuthGuard, PermissionsGuard, RolesGuard } from '@/common/guards';
 import { imageFileFilter } from '@/common/filters';
 import { FILE_SIZES } from '@/constants';
 import { UserRole } from '@/types/enum';
 import { NewsService } from './news.service';
 import { CreateNewsDto, QueryNewsDto, UpdateNewsDto } from './dtos';
+import { PERMISSIONS } from '@/constants';
+
+const { NEWS } = PERMISSIONS;
 
 @Controller('news')
 export class NewsController {
@@ -28,10 +31,11 @@ export class NewsController {
 
   /**
    * GET /news
-   * List all news (admin only - includes drafts).
+   * List all news (includes drafts) - admin/staff only.
    */
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(NEWS.VIEW)
   @Get()
   async findAll(@Query() query: QueryNewsDto) {
     return await this.service.findAll(query);
@@ -81,8 +85,9 @@ export class NewsController {
    * POST /news
    * Create a new news article with cover image upload.
    */
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(NEWS.CREATE)
   @Post()
   @UseInterceptors(
     FileInterceptor('coverImage', {
@@ -105,8 +110,9 @@ export class NewsController {
    * PATCH /news/:id
    * Update existing news article (optionally update cover image).
    */
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(NEWS.UPDATE)
   @Patch(':id')
   @UseInterceptors(
     FileInterceptor('coverImage', {
@@ -126,8 +132,9 @@ export class NewsController {
    * DELETE /news/:id
    * Delete existing news article.
    */
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(NEWS.DELETE)
   @Delete(':id')
   async delete(@Param('id', ParseUUIDPipe) id: string) {
     return await this.service.delete(id);

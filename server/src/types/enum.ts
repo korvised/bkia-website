@@ -98,3 +98,71 @@ export enum ClaimStatus {
   REJECTED = 'REJECTED', // staff rejected (wrong person)
   COMPLETED = 'COMPLETED', // physically returned to claimant
 }
+
+export enum PermissionSlug {
+  // Flight
+  FLIGHT_READ = 'flight:read',
+  FLIGHT_CREATE = 'flight:create',
+  FLIGHT_UPDATE = 'flight:update',
+  FLIGHT_DELETE = 'flight:delete',
+
+  // Airline
+  AIRLINE_READ = 'airline:read',
+  AIRLINE_CREATE = 'airline:create',
+  AIRLINE_UPDATE = 'airline:update',
+  AIRLINE_DELETE = 'airline:delete',
+
+  // Airport
+  AIRPORT_READ = 'airport:read',
+  AIRPORT_CREATE = 'airport:create',
+  AIRPORT_UPDATE = 'airport:update',
+  AIRPORT_DELETE = 'airport:delete',
+
+  // Counter
+  COUNTER_READ = 'counter:read',
+  COUNTER_CREATE = 'counter:create',
+  COUNTER_UPDATE = 'counter:update',
+  COUNTER_DELETE = 'counter:delete',
+
+  // Route
+  ROUTE_READ = 'route:read',
+  ROUTE_CREATE = 'route:create',
+  ROUTE_UPDATE = 'route:update',
+  ROUTE_DELETE = 'route:delete',
+
+  // News
+  NEWS_READ = 'news:read',
+  NEWS_CREATE = 'news:create',
+  NEWS_UPDATE = 'news:update',
+  NEWS_DELETE = 'news:delete',
+
+  // Notice
+  NOTICE_READ = 'notice:read',
+  NOTICE_CREATE = 'notice:create',
+  NOTICE_UPDATE = 'notice:update',
+  NOTICE_DELETE = 'notice:delete',
+
+  // Lost & Found
+  LOST_FOUND_READ = 'lost-found:read',
+  LOST_FOUND_CREATE = 'lost-found:create',
+  LOST_FOUND_UPDATE = 'lost-found:update',
+  LOST_FOUND_DELETE = 'lost-found:delete',
+
+  // User
+  USER_READ = 'user:read',
+  USER_CREATE = 'user:create',
+  USER_UPDATE = 'user:update',
+  USER_DELETE = 'user:delete',
+
+  // Role
+  ROLE_READ = 'role:read',
+  ROLE_CREATE = 'role:create',
+  ROLE_UPDATE = 'role:update',
+  ROLE_DELETE = 'role:delete',
+
+  // Permission
+  PERMISSION_READ = 'permission:read',
+  PERMISSION_CREATE = 'permission:create',
+  PERMISSION_UPDATE = 'permission:update',
+  PERMISSION_DELETE = 'permission:delete',
+}

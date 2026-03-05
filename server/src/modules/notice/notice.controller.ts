@@ -10,11 +10,14 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { Roles } from '@/common/decorators';
-import { JwtAuthGuard, RolesGuard } from '@/common/guards';
+import { Permissions, Roles } from '@/common/decorators';
+import { JwtAuthGuard, PermissionsGuard, RolesGuard } from '@/common/guards';
 import { UserRole } from '@/types/enum';
 import { NoticeService } from './notice.service';
 import { CreateNoticeDto, QueryNoticeDto, UpdateNoticeDto } from './dtos';
+import { PERMISSIONS } from '@/constants';
+
+const { NOTICE } = PERMISSIONS;
 
 @Controller('notices')
 export class NoticeController {
@@ -22,8 +25,11 @@ export class NoticeController {
 
   /**
    * GET /notices
-   * List all notices with filters and pagination.
+   * List all notices (includes inactive) - admin/staff only.
    */
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(NOTICE.VIEW)
   @Get()
   async findAll(@Query() query: QueryNoticeDto) {
     return await this.service.findAll(query);
@@ -61,8 +67,9 @@ export class NoticeController {
    * POST /notices
    * Create a new notice.
    */
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(NOTICE.CREATE)
   @Post()
   async create(@Body() dto: CreateNoticeDto) {
     return await this.service.create(dto);
@@ -72,8 +79,9 @@ export class NoticeController {
    * PATCH /notices/:id
    * Update existing notice.
    */
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(NOTICE.UPDATE)
   @Patch(':id')
   async update(
     @Param('id', ParseUUIDPipe) id: string,
@@ -86,8 +94,9 @@ export class NoticeController {
    * DELETE /notices/:id
    * Delete existing notice.
    */
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(NOTICE.DELETE)
   @Delete(':id')
   async delete(@Param('id', ParseUUIDPipe) id: string) {
     return await this.service.delete(id);

@@ -1,64 +1,39 @@
 import { UserRole } from "@/types";
 
+/** All authenticated users */
+const ALL_ROLES = [UserRole.SUPER_ADMIN, UserRole.ADMIN, UserRole.STAFF];
+
+/** Admin-level and above only */
+const ADMIN_ROLES = [UserRole.SUPER_ADMIN, UserRole.ADMIN];
+
 /**
  * Flight Management Access Control
  */
 export const FLIGHT_ACCESS_ROLES = {
-  // Full flight management access
-  FULL_ACCESS: [UserRole.ADMIN, UserRole.MANAGER],
-
-  // Flight operations and monitoring
-  FLIGHT_OPERATIONS: [
-    UserRole.ADMIN,
-    UserRole.MANAGER,
-    UserRole.AIR_TRAFFIC,
-    UserRole.RAMP,
-    UserRole.PASSENGER,
-  ],
-
-  // Airline management
-  AIRLINE_MANAGEMENT: [UserRole.ADMIN, UserRole.MANAGER, UserRole.AIR_TRAFFIC],
-
-  // Airport management
-  AIRPORT_MANAGEMENT: [UserRole.ADMIN, UserRole.MANAGER, UserRole.AIR_TRAFFIC],
-
-  // Counter management
-  COUNTER_MANAGEMENT: [UserRole.ADMIN, UserRole.MANAGER, UserRole.PASSENGER],
-
-  // Route management
-  ROUTE_MANAGEMENT: [UserRole.ADMIN, UserRole.MANAGER, UserRole.AIR_TRAFFIC],
-
-  // Ramp operations
-  RAMP_OPERATIONS: [UserRole.ADMIN, UserRole.MANAGER, UserRole.RAMP],
+  FULL_ACCESS: ALL_ROLES,
+  FLIGHT_OPERATIONS: ALL_ROLES,
+  AIRLINE_MANAGEMENT: ALL_ROLES,
+  AIRPORT_MANAGEMENT: ALL_ROLES,
+  COUNTER_MANAGEMENT: ALL_ROLES,
+  ROUTE_MANAGEMENT: ALL_ROLES,
 };
 
 /**
  * Content Management Access Control
  */
 export const CONTENT_ACCESS_ROLES = {
-  // Full content management
-  FULL_ACCESS: [UserRole.ADMIN, UserRole.MANAGER],
-
-  // News and notices
-  NEWS_MANAGEMENT: [UserRole.ADMIN, UserRole.MANAGER, UserRole.INFORMATION],
-
-  // Careers management
-  CAREERS_MANAGEMENT: [UserRole.ADMIN, UserRole.MANAGER, UserRole.HR],
-
-  // Bidding management
-  BIDDING_MANAGEMENT: [UserRole.ADMIN, UserRole.MANAGER, UserRole.FINANCE],
+  FULL_ACCESS: ALL_ROLES,
+  NEWS_MANAGEMENT: ALL_ROLES,
+  CAREERS_MANAGEMENT: ADMIN_ROLES,
+  BIDDING_MANAGEMENT: ADMIN_ROLES,
 };
 
 /**
- * Settings Access Control
+ * Settings Access Control — Admin & Super Admin only
  */
 export const SETTINGS_ACCESS_ROLES = {
-  // System settings
-  SYSTEM_SETTINGS: [UserRole.ADMIN],
-
-  // Role management
-  ROLE_MANAGEMENT: [UserRole.ADMIN],
-
-  // User management
-  USER_MANAGEMENT: [UserRole.ADMIN],
+  SYSTEM_SETTINGS: ADMIN_ROLES,
+  ROLE_MANAGEMENT: ADMIN_ROLES,
+  USER_MANAGEMENT: ADMIN_ROLES,
+  PERMISSION_MANAGEMENT: ADMIN_ROLES,
 };

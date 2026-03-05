@@ -1,0 +1,9 @@
+{
+  "worktrees": false,
+  "permissions": {
+    "allow": [
+      "Bash(xargs grep -l \"permission\\\\|PERMISSION\")",
+      "Bash(xargs grep -l \"flight:create\\\\|:read\\\\|:write\\\\|:delete\\\\|:update\")"
+    ]
+  }
+}

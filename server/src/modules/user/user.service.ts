@@ -5,7 +5,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Role, User } from '@/database';
+import { Permission, Role, User } from '@/database';
 import { Repository } from 'typeorm';
 import { ResetPasswordDto } from '@/common/dtos';
 import { CreateUserDto, QueryUserDto, UpdateUserDto } from './dtos';
@@ -17,12 +17,15 @@ export class UserService {
     private readonly repository: Repository<User>,
     @InjectRepository(Role)
     private readonly roleRepository: Repository<Role>,
+    @InjectRepository(Permission)
+    private readonly permissionRepository: Repository<Permission>,
   ) {}
 
   async findAll(query: QueryUserDto): Promise<User[]> {
     const queryBuilder = this.repository
       .createQueryBuilder('user')
-      .leftJoinAndSelect('user.roles', 'roles');
+      .leftJoinAndSelect('user.roles', 'roles')
+      .leftJoinAndSelect('user.permissions', 'permissions');
 
     if (query.email) {
       queryBuilder.andWhere('user.email LIKE :email', {
@@ -228,6 +231,41 @@ export class UserService {
     );
 
     await this.repository.save(exitedUser);
+
+    return this.findOneById(userId);
+  }
+
+  async addUserPermissions(userId: string, permissionIds: string[]) {
+    const user = await this.findOneById(userId);
+    if (!user) {
+      throw new BadRequestException(`User with id ${userId} not found`);
+    }
+
+    for (const permId of permissionIds) {
+      if (user.permissions.find((p) => p.id === permId)) continue;
+
+      const perm = await this.permissionRepository.findOneBy({ id: permId });
+      if (!perm) continue;
+
+      user.permissions.push(perm);
+    }
+
+    await this.repository.save(user);
+
+    return this.findOneById(userId);
+  }
+
+  async removeUserPermissions(userId: string, permissionIds: string[]) {
+    const user = await this.findOneById(userId);
+    if (!user) {
+      throw new BadRequestException(`User with id ${userId} not found`);
+    }
+
+    user.permissions = user.permissions.filter(
+      (p) => !permissionIds.includes(p.id),
+    );
+
+    await this.repository.save(user);
 
     return this.findOneById(userId);
   }

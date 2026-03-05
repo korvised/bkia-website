@@ -16,8 +16,6 @@ import { UserRole } from '@/types/enum';
 import { CreateRouteDto, QueryRouteDto, UpdateRouteDto } from './dtos';
 import { RouteService } from './route.service';
 
-@UseGuards(JwtAuthGuard, RolesGuard)
-@Roles(UserRole.ADMIN, UserRole.PASSENGER)
 @Controller('routes')
 export class RouteController {
   constructor(private readonly service: RouteService) {}
@@ -32,11 +30,15 @@ export class RouteController {
     return this.service.findOne(id);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Post()
   create(@Body() body: CreateRouteDto) {
     return this.service.create(body);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Patch(':id')
   update(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -45,6 +47,8 @@ export class RouteController {
     return this.service.update(id, body);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Delete(':id')
   delete(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.service.delete(id);

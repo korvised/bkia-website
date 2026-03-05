@@ -10,8 +10,8 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { Roles } from '@/common/decorators';
-import { JwtAuthGuard, RolesGuard } from '@/common/guards';
+import { Permissions, Roles } from '@/common/decorators';
+import { JwtAuthGuard, PermissionsGuard, RolesGuard } from '@/common/guards';
 import { UserRole } from '@/types/enum';
 import { FlightService } from './flight.service';
 import {
@@ -20,6 +20,9 @@ import {
   QueryFlightDto,
   UpdateFlightDto,
 } from './dtos';
+import { PERMISSIONS } from '@/constants';
+
+const { FLIGHT } = PERMISSIONS;
 
 @Controller('flights')
 export class FlightController {
@@ -47,8 +50,9 @@ export class FlightController {
    * POST /flights
    * Create a new flight.
    */
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(FLIGHT.CREATE)
   @Post()
   async create(@Body() dto: CreateFlightDto) {
     return await this.service.create(dto);
@@ -58,8 +62,9 @@ export class FlightController {
    * POST /flights/bulk
    * Create muti flights.
    */
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(FLIGHT.CREATE)
   @Post('bulk')
   bulkCreate(@Body() dto: BulkCreateFlightDto) {
     return this.service.bulkCreate(dto);
@@ -69,8 +74,9 @@ export class FlightController {
    * PATCH /flights/:id
    * Update existing flight.
    */
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(FLIGHT.UPDATE)
   @Patch(':id')
   async update(
     @Param('id', ParseUUIDPipe) id: string,
@@ -83,8 +89,9 @@ export class FlightController {
    * DELETE /flights/:id
    * Delete existing flight.
    */
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(FLIGHT.DELETE)
   @Delete(':id')
   async delete(@Param('id', ParseUUIDPipe) id: string) {
     return await this.service.delete(id);

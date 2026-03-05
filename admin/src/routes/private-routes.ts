@@ -4,6 +4,9 @@ import { airlineRoutes } from "@/features/airline/routes.ts";
 import { airportRoutes } from "@/features/airport/routes.ts";
 import { counterRoutes } from "@/features/counter/routes.ts";
 import { routeRoutes } from "@/features/route/routes.ts";
+import { userRoutes } from "@/features/user/routes.ts";
+import { roleRoutes } from "@/features/role/routes.ts";
+import { permissionRoutes } from "@/features/permission/routes.ts";
 
 export const privateRoutes: IRoute[] = [
   ...new Set([
@@ -12,5 +15,8 @@ export const privateRoutes: IRoute[] = [
     ...airportRoutes,
     ...counterRoutes,
     ...routeRoutes,
+    ...userRoutes,
+    ...roleRoutes,
+    ...permissionRoutes,
   ]),
 ];

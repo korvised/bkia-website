@@ -16,8 +16,8 @@ import {
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { imageFileFilter } from '@/common/filters';
 import { FILE_SIZES } from '@/constants/file';
-import { JwtAuthGuard, RolesGuard } from '@/common/guards';
-import { Roles } from '@/common/decorators';
+import { JwtAuthGuard, PermissionsGuard, RolesGuard } from '@/common/guards';
+import { Permissions, Roles } from '@/common/decorators';
 import { UserRole } from '@/types/enum';
 import { LostFoundService } from './lost-found.service';
 import {
@@ -30,6 +30,9 @@ import {
   CreateClaimDto,
   ReviewClaimDto,
 } from './dtos';
+import { PERMISSIONS } from '@/constants';
+
+const { LOST_FOUND } = PERMISSIONS;
 
 const imageUpload = () =>
   UseInterceptors(
@@ -79,22 +82,25 @@ export class LostFoundController {
 
   // ─── STAFF ─────────────────────────────────────────────────
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.VIEW)
   @Get('admin/all')
   findAllAdmin(@Query() query: QueryLostFoundAdminDto) {
     return this.service.findAllAdmin(query);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.VIEW)
   @Get('admin/:id')
   findOneAdmin(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.service.findOneAdmin(id);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.UPDATE)
   @Patch(':id/display')
   updateDisplay(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -103,8 +109,9 @@ export class LostFoundController {
     return this.service.updateDisplay(id, dto);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.UPDATE)
   @Patch(':id/visibility')
   updateVisibility(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -114,8 +121,9 @@ export class LostFoundController {
     return this.service.updateVisibility(id, dto, req.user);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.UPDATE)
   @Patch(':id/cover')
   setCover(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -124,8 +132,9 @@ export class LostFoundController {
     return this.service.setCover(id, dto);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.UPDATE)
   @Post(':id/images')
   @imageUpload()
   uploadImages(
@@ -135,8 +144,9 @@ export class LostFoundController {
     return this.service.uploadImages(id, files);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.UPDATE)
   @Delete(':id/images/:fileId')
   removeImage(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -145,15 +155,17 @@ export class LostFoundController {
     return this.service.removeImage(id, fileId);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.VIEW)
   @Get(':id/claims')
   findClaims(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.service.findClaims(id);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.PASSENGER)
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.RESOLVE)
   @Patch('claims/:claimId/review')
   reviewClaim(
     @Param('claimId', new ParseUUIDPipe()) claimId: string,

@@ -11,6 +11,7 @@ import {
   LuRailSymbol,
   LuRoute,
   LuSettings,
+  LuKey,
   LuShield,
   LuUsers,
 } from "react-icons/lu";
@@ -163,6 +164,12 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
         path: "/settings/users",
         icon: LuUsers,
         allowRoles: SETTINGS_ACCESS_ROLES.USER_MANAGEMENT,
+      },
+      {
+        name: "Permissions",
+        path: "/settings/permissions",
+        icon: LuKey,
+        allowRoles: SETTINGS_ACCESS_ROLES.PERMISSION_MANAGEMENT,
       },
     ],
   },

@@ -19,6 +19,7 @@ import {
   CreateUserDto,
   QueryUserDto,
   UpdateUserDto,
+  UserPermissionsDto,
   UserRolesDto,
 } from './dtos';
 import { validateDtoArrayOrReject } from '@/utils';
@@ -81,6 +82,38 @@ export class UserController {
     return this.userService.removeUserRoles(
       employeeId,
       dtos.flatMap((item) => item.role),
+    );
+  }
+
+  @Patch('add-permissions/:id')
+  async addPermissions(@Param('id') employeeId: string, @Body() body: any) {
+    if (!Array.isArray(body)) {
+      throw new BadRequestException('Body must be an array');
+    }
+
+    const dtos = await validateDtoArrayOrReject<UserPermissionsDto>(
+      plainToInstance(UserPermissionsDto, body),
+    );
+
+    return this.userService.addUserPermissions(
+      employeeId,
+      dtos.flatMap((item) => item.permission),
+    );
+  }
+
+  @Patch('remove-permissions/:id')
+  async removePermissions(@Param('id') employeeId: string, @Body() body: any) {
+    if (!Array.isArray(body)) {
+      throw new BadRequestException('Body must be an array');
+    }
+
+    const dtos = await validateDtoArrayOrReject<UserPermissionsDto>(
+      plainToInstance(UserPermissionsDto, body),
+    );
+
+    return this.userService.removeUserPermissions(
+      employeeId,
+      dtos.flatMap((item) => item.permission),
     );
   }
 }

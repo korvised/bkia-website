@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindManyOptions, In, Not, Repository } from 'typeorm';
+import { FindManyOptions, Not, Repository } from 'typeorm';
 import { Role } from '@/database';
 import { CreateRoleDto, QueryRoleDto, UpdateRoleDto } from './dtos';
 import { UserRole } from '@/types/enum';
@@ -17,7 +17,7 @@ export class RoleService {
 
     const options: FindManyOptions<Role> = {
       where: {
-        role: Not(In([UserRole.ADMIN])),
+        role: Not(UserRole.SUPER_ADMIN),
       },
     };
 

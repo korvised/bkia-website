@@ -10,6 +10,7 @@ import { FlightModule } from '@/modules/flight';
 import { LostFoundModule } from '@/modules/lost-found';
 import { NewsModule } from '@/modules/news';
 import { NoticeModule } from '@/modules/notice';
+import { PermissionModule } from '@/modules/permission';
 import { RoleModule } from '@/modules/role';
 import { RouteModule } from '@/modules/route';
 import { UserModule } from '@/modules/user';
@@ -33,6 +34,7 @@ import { AppService } from './app.service';
     LostFoundModule,
     NewsModule,
     NoticeModule,
+    PermissionModule,
     RoleModule,
     RouteModule,
     UserModule,
