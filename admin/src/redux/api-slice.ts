@@ -4,6 +4,7 @@ import {
   AIRLINE_TAG,
   COUNTER_TAG,
   FLIGHT_TAG,
+  LOST_FOUND_TAG,
   PERMISSION_TAG,
   ROLE_TAG,
   ROUTE_TAG,
@@ -14,5 +15,5 @@ export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: axiosBaseQuery(),
   endpoints: () => ({}),
-  tagTypes: [AIRLINE_TAG, COUNTER_TAG, FLIGHT_TAG, ROUTE_TAG, USER_TAG, ROLE_TAG, PERMISSION_TAG],
+  tagTypes: [AIRLINE_TAG, COUNTER_TAG, FLIGHT_TAG, LOST_FOUND_TAG, ROUTE_TAG, USER_TAG, ROLE_TAG, PERMISSION_TAG],
 });

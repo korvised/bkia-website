@@ -29,6 +29,14 @@ export const CONTENT_ACCESS_ROLES = {
 };
 
 /**
+ * Support Access Control
+ */
+export const SUPPORT_ACCESS_ROLES = {
+  FULL_ACCESS: ALL_ROLES,
+  LOST_FOUND_MANAGEMENT: ALL_ROLES,
+};
+
+/**
  * Settings Access Control — Admin & Super Admin only
  */
 export const SETTINGS_ACCESS_ROLES = {

@@ -44,3 +44,41 @@ export enum FlightStatus {
   CANCELED = 'CANCELED',
   DIVERTED = 'DIVERTED'
 }
+
+export enum LostFoundType {
+  LOST = 'LOST',
+  FOUND = 'FOUND',
+}
+
+export enum LostFoundStatus {
+  OPEN = 'OPEN',
+  MATCHED = 'MATCHED',
+  RETURNED = 'RETURNED',
+  DONATED = 'DONATED',
+  DISPOSED = 'DISPOSED',
+}
+
+export enum LostFoundCategory {
+  ELECTRONICS = 'ELECTRONICS',
+  BAGGAGE = 'BAGGAGE',
+  CLOTHING = 'CLOTHING',
+  DOCUMENTS = 'DOCUMENTS',
+  JEWELRY = 'JEWELRY',
+  KEYS = 'KEYS',
+  CASH = 'CASH',
+  TOYS = 'TOYS',
+  OTHER = 'OTHER',
+}
+
+export enum LostFoundVisibility {
+  PENDING_REVIEW = 'PENDING_REVIEW',
+  VISIBLE = 'VISIBLE',
+  HIDDEN = 'HIDDEN',
+}
+
+export enum ClaimStatus {
+  PENDING = 'PENDING',
+  APPROVED = 'APPROVED',
+  REJECTED = 'REJECTED',
+  COMPLETED = 'COMPLETED',
+}

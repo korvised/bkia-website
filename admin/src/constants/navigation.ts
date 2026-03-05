@@ -14,11 +14,14 @@ import {
   LuKey,
   LuShield,
   LuUsers,
+  LuPackageSearch,
+  LuHeadphones,
 } from "react-icons/lu";
 import {
   CONTENT_ACCESS_ROLES,
   FLIGHT_ACCESS_ROLES,
   SETTINGS_ACCESS_ROLES,
+  SUPPORT_ACCESS_ROLES,
 } from "@/constants";
 import { UserRole } from "@/types";
 
@@ -113,38 +116,14 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
   },
   {
     groupName: "Support",
-    icon: LuNewspaper,
-    allowRoles: [
-      ...new Set([
-        ...CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
-        ...CONTENT_ACCESS_ROLES.CAREERS_MANAGEMENT,
-        ...CONTENT_ACCESS_ROLES.BIDDING_MANAGEMENT,
-      ]),
-    ],
+    icon: LuHeadphones,
+    allowRoles: SUPPORT_ACCESS_ROLES.FULL_ACCESS,
     items: [
       {
-        name: "News",
-        path: "/content/news",
-        icon: LuNewspaper,
-        allowRoles: CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
-      },
-      {
-        name: "Notices",
-        path: "/content/notices",
-        icon: LuBell,
-        allowRoles: CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
-      },
-      {
-        name: "Careers",
-        path: "/content/careers",
-        icon: LuBriefcase,
-        allowRoles: CONTENT_ACCESS_ROLES.CAREERS_MANAGEMENT,
-      },
-      {
-        name: "Bidding",
-        path: "/content/bidding",
-        icon: LuFileText,
-        allowRoles: CONTENT_ACCESS_ROLES.BIDDING_MANAGEMENT,
+        name: "Lost & Found",
+        path: "/support/lost-found",
+        icon: LuPackageSearch,
+        allowRoles: SUPPORT_ACCESS_ROLES.LOST_FOUND_MANAGEMENT,
       },
     ],
   },

@@ -7,6 +7,7 @@ import { routeRoutes } from "@/features/route/routes.ts";
 import { userRoutes } from "@/features/user/routes.ts";
 import { roleRoutes } from "@/features/role/routes.ts";
 import { permissionRoutes } from "@/features/permission/routes.ts";
+import { lostFoundRoutes } from "@/features/lost-found/routes.ts";
 
 export const privateRoutes: IRoute[] = [
   ...new Set([
@@ -18,5 +19,6 @@ export const privateRoutes: IRoute[] = [
     ...userRoutes,
     ...roleRoutes,
     ...permissionRoutes,
+    ...lostFoundRoutes,
   ]),
 ];

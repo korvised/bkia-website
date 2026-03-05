@@ -5,3 +5,4 @@ export const ROUTE_TAG = "route" as const;
 export const FLIGHT_TAG = "flight" as const;
 export const ROLE_TAG = "role" as const;
 export const PERMISSION_TAG = "permission" as const;
+export const LOST_FOUND_TAG = "lost-found" as const;
