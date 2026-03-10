@@ -40,6 +40,8 @@ export function AirportModal({ isOpen, onClose, editAirport }: Props) {
   const [nameLang, setNameLang] = useState<"en" | "lo" | "zh">("en");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  const langFont = nameLang === "en" ? "font-en" : nameLang === "lo" ? "font-lo" : "font-zh";
+
   const isEdit = !!editAirport;
 
   const [addAirport, { isLoading: isAdding }] = useAddAirportMutation();
@@ -198,7 +200,7 @@ export function AirportModal({ isOpen, onClose, editAirport }: Props) {
                       </button>
                     ))}
                   </div>
-                  <div className="p-3">
+                  <div className={`p-3 ${langFont}`}>
                     <Input
                       placeholder={`Airport name in ${LANG_TABS.find((t) => t.key === nameLang)?.label}...`}
                       value={form.names[nameLang]}

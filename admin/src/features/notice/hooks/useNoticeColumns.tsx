@@ -32,7 +32,7 @@ export function useNoticeColumns({ onView, onEdit, onDelete, canEdit = true, can
           <div>
             <p className="font-medium text-gray-900">{getTitle(item)}</p>
             {item.title.lo && item.title.en && (
-              <p className="text-xs text-gray-500">{item.title.lo}</p>
+              <p className="text-xs text-gray-500">{item.title.en}</p>
             )}
           </div>
         ),

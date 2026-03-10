@@ -14,7 +14,9 @@ interface Options {
 }
 
 function getLocalizedName(airline: IAirline): string {
-  return airline.names?.en || airline.names?.lo || airline.names?.zh || airline.name;
+  return (
+    airline.names?.en || airline.names?.lo || airline.names?.zh || airline.name
+  );
 }
 
 export function useAirlineColumns({
@@ -35,7 +37,7 @@ export function useAirlineColumns({
             <img
               src={asset(item.logoFile.path)}
               alt={item.name}
-              className="h-9 w-9 rounded-full object-contain border border-gray-100 bg-white p-0.5"
+              className="h-9 w-9 rounded-full border border-gray-100 bg-white object-contain p-0.5"
             />
           ) : (
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-xs font-bold text-gray-500">
@@ -57,9 +59,11 @@ export function useAirlineColumns({
         header: "Name",
         render: (item) => (
           <div>
-            <p className="font-medium text-gray-900">{getLocalizedName(item)}</p>
+            <p className="font-medium text-gray-900">
+              {getLocalizedName(item)}
+            </p>
             {item.names?.lo && (
-              <p className="text-xs text-gray-400">{item.names.lo}</p>
+              <p className="font-lao text-xs text-gray-400">{item.names.lo}</p>
             )}
           </div>
         ),
@@ -93,7 +97,11 @@ export function useAirlineColumns({
         render: (item) =>
           item.website ? (
             <a
-              href={item.website.startsWith("http") ? item.website : `https://${item.website}`}
+              href={
+                item.website.startsWith("http")
+                  ? item.website
+                  : `https://${item.website}`
+              }
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}

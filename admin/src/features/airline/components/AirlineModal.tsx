@@ -64,6 +64,8 @@ export function AirlineModal({ isOpen, onClose, editAirline }: Props) {
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
   const [nameLang, setNameLang] = useState<"en" | "lo" | "zh">("en");
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const langFont = nameLang === "en" ? "font-en" : nameLang === "lo" ? "font-lo" : "font-zh";
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const isEdit = !!editAirline;
@@ -288,7 +290,7 @@ export function AirlineModal({ isOpen, onClose, editAirline }: Props) {
                       </button>
                     ))}
                   </div>
-                  <div className="p-3">
+                  <div className={`p-3 ${langFont}`}>
                     <Input
                       placeholder={`Airline name in ${LANG_TABS.find((t) => t.key === nameLang)?.label}...`}
                       value={form.names[nameLang]}
@@ -354,8 +356,8 @@ export function AirlineModal({ isOpen, onClose, editAirline }: Props) {
                     setForm((prev) => ({ ...prev, isActive: !prev.isActive }))
                   }
                   className={cn(
-                    "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-                    form.isActive ? "bg-green-500" : "bg-gray-300",
+                    "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                    form.isActive ? "bg-primary" : "bg-gray-300",
                   )}
                 >
                   <span
@@ -386,8 +388,8 @@ export function AirlineModal({ isOpen, onClose, editAirline }: Props) {
                 className={cn(
                   "flex items-center gap-2 rounded-lg px-5 py-2 text-sm font-medium text-white transition-colors",
                   isLoading
-                    ? "cursor-not-allowed bg-blue-400"
-                    : "bg-blue-600 hover:bg-blue-700",
+                    ? "cursor-not-allowed bg-primary/60"
+                    : "bg-primary hover:bg-primary-600",
                 )}
               >
                 {isLoading ? (

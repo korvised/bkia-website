@@ -113,6 +113,8 @@ export function NoticeDetailPage() {
   const priority = PRIORITY_CONFIG[notice.priority] ?? PRIORITY_CONFIG[ImportantPriority.NORMAL];
   const PriorityIcon = priority.icon;
 
+  const langFont = activeLang === "en" ? "font-en" : activeLang === "lo" ? "font-lo" : "font-zh";
+
   const title =
     notice.title[activeLang] || notice.title.en || notice.title.lo || notice.title.zh || "—";
   const description =
@@ -175,7 +177,7 @@ export function NoticeDetailPage() {
         className={`overflow-hidden rounded-lg border border-gray-200 bg-white border-l-8 ${priority.border}`}
       >
         {/* Header Section */}
-        <div className="p-6 sm:p-8">
+        <div className={`p-6 sm:p-8 ${langFont}`}>
           {/* Language Tabs */}
           <div className="mb-6 flex gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1 w-fit">
             {LANGS.map(({ key, label }) => (
@@ -284,7 +286,7 @@ export function NoticeDetailPage() {
         <div className="h-px bg-gray-100" />
 
         {/* Content — Markdown */}
-        <div className="p-6 sm:p-8">
+        <div className={`p-6 sm:p-8 ${langFont}`}>
           {content ? (
             <div className="markdown-preview">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>

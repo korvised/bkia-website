@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
-import { LuCheck } from "react-icons/lu";
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
+import { LuCheck, LuChevronDown } from "react-icons/lu";
 import { Modal } from "@/components/ui/modal";
+import { cn } from "@/lib";
 import { alertService } from "@/services/alert.service";
 import { useCreateRoleMutation, useUpdateRoleMutation } from "@/features/role/api";
 import type { IRole, ICreateRolePayload } from "@/features/role/types";
@@ -75,20 +82,35 @@ export function RoleFormModal({ isOpen, onClose, editRole }: RoleFormModalProps)
               <span className="text-xs text-gray-400">(cannot be changed)</span>
             </div>
           ) : (
-            <select
-              value={roleEnum}
-              onChange={(e) => setRoleEnum(e.target.value as UserRole)}
-              required
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-            >
-              {Object.values(UserRole)
-                .filter((r) => r !== UserRole.SUPER_ADMIN)
-                .map((r) => (
-                  <option key={r} value={r}>
-                    {r}
-                  </option>
-                ))}
-            </select>
+            <Listbox value={roleEnum} onChange={setRoleEnum}>
+              <div className="relative">
+                <ListboxButton className="flex w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-3 py-2 text-left text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+                  <RoleBadge role={roleEnum} />
+                  <LuChevronDown className="h-4 w-4 shrink-0 text-gray-400" />
+                </ListboxButton>
+                <ListboxOptions className="absolute z-10 mt-1 w-full rounded-lg border border-gray-200 bg-white py-1 shadow-lg outline-none">
+                  {Object.values(UserRole)
+                    .filter((r) => r !== UserRole.SUPER_ADMIN)
+                    .map((r) => (
+                      <ListboxOption
+                        key={r}
+                        value={r}
+                        className={({ focus }) =>
+                          cn(
+                            "flex cursor-pointer items-center justify-between px-3 py-2 text-sm",
+                            focus && "bg-gray-50",
+                          )
+                        }
+                      >
+                        <RoleBadge role={r} />
+                        {roleEnum === r && (
+                          <LuCheck className="h-4 w-4 shrink-0 text-primary" />
+                        )}
+                      </ListboxOption>
+                    ))}
+                </ListboxOptions>
+              </div>
+            </Listbox>
           )}
         </div>
 

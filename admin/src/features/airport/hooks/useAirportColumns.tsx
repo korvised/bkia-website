@@ -14,7 +14,9 @@ interface Options {
 }
 
 function getLocalizedName(airport: IAirport): string {
-  return airport.names?.en || airport.names?.lo || airport.names?.zh || airport.name;
+  return (
+    airport.names?.en || airport.names?.lo || airport.names?.zh || airport.name
+  );
 }
 
 export function useAirportColumns({
@@ -41,9 +43,11 @@ export function useAirportColumns({
         header: "Name",
         render: (item) => (
           <div>
-            <p className="font-medium text-gray-900">{getLocalizedName(item)}</p>
+            <p className="font-medium text-gray-900">
+              {getLocalizedName(item)}
+            </p>
             {item.names?.lo && item.names.lo !== item.name && (
-              <p className="text-xs text-gray-400">{item.names.lo}</p>
+              <p className="font-lao text-xs text-gray-400">{item.names.lo}</p>
             )}
           </div>
         ),

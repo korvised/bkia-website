@@ -151,6 +151,8 @@ export function NoticeForm({
     await onSubmit(payload);
   };
 
+  const langFont = activeLang === "en" ? "font-en" : activeLang === "lo" ? "font-lo" : "font-zh";
+
   // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
@@ -176,7 +178,7 @@ export function NoticeForm({
           ))}
         </div>
 
-        <div className="space-y-4 p-6">
+        <div className={`space-y-4 p-6 ${langFont}`}>
           {/* Title */}
           <div>
             <label className="mb-1.5 block text-sm font-medium text-gray-700">

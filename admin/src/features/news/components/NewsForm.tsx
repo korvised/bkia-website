@@ -197,6 +197,7 @@ export function NewsForm({
   };
 
   const activeLangLabel = LANG_TABS.find((t) => t.key === activeLang)?.label;
+  const langFont = activeLang === "en" ? "font-en" : activeLang === "lo" ? "font-lo" : "font-zh";
 
   // ── Render ──────────────────────────────────────────────────────────────
 
@@ -314,7 +315,7 @@ export function NewsForm({
           ))}
         </div>
 
-        <div className="space-y-4 p-6">
+        <div className={`space-y-4 p-6 ${langFont}`}>
           {/* Title */}
           <div>
             <label className="mb-1.5 block text-sm font-medium text-gray-700">

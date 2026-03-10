@@ -80,6 +80,8 @@ export function NewsDetailPage() {
   const excerpt = news.excerpt[activeLang] || news.excerpt.en || news.excerpt.lo || news.excerpt.zh || "";
   const content = news.content[activeLang] || news.content.en || news.content.lo || news.content.zh || "";
 
+  const langFont = activeLang === "en" ? "font-en" : activeLang === "lo" ? "font-lo" : "font-zh";
+
   return (
     <div className="space-y-6">
       <Breadcrumb
@@ -155,7 +157,7 @@ export function NewsDetailPage() {
           </div>
         )}
 
-        <div className="p-6 sm:p-8">
+        <div className={`p-6 sm:p-8 ${langFont}`}>
           {/* Meta badges (when no cover image) */}
           {!news.coverImage?.path && (
             <div className="mb-4 flex flex-wrap items-center gap-2">

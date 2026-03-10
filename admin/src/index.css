@@ -66,6 +66,11 @@
     --w-ut: 1920px;
 }
 
+/* Global default font */
+body {
+    font-family: var(--font-en);
+}
+
 /* Font utility classes */
 .font-en {
     font-family: var(--font-en) !important;
