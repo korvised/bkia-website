@@ -1,4 +1,4 @@
-import { IsOptional, IsString, Length } from 'class-validator';
+import { IsBoolean, IsOptional, IsString, Length } from 'class-validator';
 import { Transform } from 'class-transformer';
 import { IsLocalizedObject } from '@/common/decorators';
 import { stringToJsonObject } from '@/utils/transformers';
@@ -16,4 +16,8 @@ export class CreateAirportDto {
   @Transform(({ value }) => stringToJsonObject(value))
   @IsLocalizedObject(['en', 'lo', 'zh'], { message: 'Invalid names' })
   names?: Record<string, string>;
+
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }

@@ -89,4 +89,31 @@ export class CurrentUserService {
   hasProfileImage(): boolean {
     return this.getProfileImageUrl() !== null;
   }
+
+  // --------------------------------------------------------
+  // Permissions
+  // --------------------------------------------------------
+
+  /** Get all permission slugs assigned to the user */
+  getPermissionSlugs(): string[] {
+    return (this.getUser()?.permissions ?? []).map((p) => p.slug);
+  }
+
+  /** Check if user has a specific permission slug */
+  hasPermission(slug: string): boolean {
+    return this.getPermissionSlugs().includes(slug);
+  }
+
+  /** Check if user has any of the given permission slugs */
+  hasAnyPermission(slugs: string[]): boolean {
+    const userSlugs = this.getPermissionSlugs();
+    return slugs.some((s) => userSlugs.includes(s));
+  }
+
+  /** SUPER_ADMIN and ADMIN always pass; STAFF needs the permission */
+  canAccess(slug: string): boolean {
+    const roles = (this.getUser()?.roles ?? []).map((r) => r.role);
+    if (roles.includes('SUPER_ADMIN') || roles.includes('ADMIN')) return true;
+    return this.hasPermission(slug);
+  }
 }

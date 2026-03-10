@@ -62,8 +62,7 @@ export class AirportService {
   }
 
   async delete(id: string) {
-    const airport = await this.findOne(id);
-    airport.isActive = false;
-    return this.airportRepo.save(airport);
+    await this.findOne(id);
+    await this.airportRepo.delete(id);
   }
 }

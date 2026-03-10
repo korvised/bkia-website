@@ -2,10 +2,14 @@ import { Link } from "react-router-dom";
 import { LuPackageSearch, LuPlus } from "react-icons/lu";
 import { Breadcrumb, Pagination, Table } from "@/components/ui";
 import { cn } from "@/lib";
+import { usePermissions } from "@/hooks";
+import { PermissionSlug } from "@/types/enum.type";
 import { LostFoundFilters } from "../components";
 import { useGetLostFoundItems, useLostFoundColumns } from "../hooks";
 
 export function LostFoundPage() {
+  const { can } = usePermissions();
+
   const {
     data,
     filters,
@@ -39,17 +43,19 @@ export function LostFoundPage() {
             </p>
           </div>
         </div>
-        <Link
-          to="/support/lost-found/create"
-          className={cn(
-            "bg-primary flex items-center gap-2 rounded-lg px-4 py-2 text-white",
-            "hover:bg-primary-600 transition-colors",
-            "focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none",
-          )}
-        >
-          <LuPlus className="h-4 w-4" />
-          Add Report
-        </Link>
+        {can(PermissionSlug.LOST_FOUND_CREATE) && (
+          <Link
+            to="/support/lost-found/create"
+            className={cn(
+              "bg-primary flex items-center gap-2 rounded-lg px-4 py-2 text-white",
+              "hover:bg-primary-600 transition-colors",
+              "focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none",
+            )}
+          >
+            <LuPlus className="h-4 w-4" />
+            Add Report
+          </Link>
+        )}
       </div>
 
       {/* Filters */}

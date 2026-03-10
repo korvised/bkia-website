@@ -64,12 +64,12 @@ export class RouteService {
       route.destination = destination;
     }
     if (dto.durationMin) route.durationMin = dto.durationMin;
+    if (dto.isActive !== undefined) route.isActive = dto.isActive;
     return this.routeRepo.save(route);
   }
 
   async delete(id: string) {
-    const route = await this.findOne(id);
-    route.isActive = false;
-    return this.routeRepo.save(route);
+    await this.findOne(id);
+    await this.routeRepo.delete(id);
   }
 }

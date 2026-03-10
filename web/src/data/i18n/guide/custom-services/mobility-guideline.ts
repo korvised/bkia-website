@@ -22,9 +22,9 @@ export const mobilityGuideline = {
     zh: "行动不便者（残疾人和老年人）服务指南",
   },
   disclaimer: {
-    en: "The information on this page is for reference only. Please verify with the relevant airline or ticket agent for accurate information or if you require special services beyond those mentioned above.",
-    lo: "ຂໍ້ມູນໃນໜ້ານີ້ແມ່ນເພື່ອເປັນການອ້າງອີງເທົ່ານັ້ນ ກະລຸນາກວດສອບກັບສາຍການບິນ ຫຼື ຕົວແທນຈໍາໜ່າຍປີ້ສໍາລັບຂໍ້ມູນທີ່ຖືກຕ້ອງ ຫຼື ຕ້ອງການບໍລິການພິເສດນອກເໜືອຈາກທີ່ກ່າວມາຂ້າງເທິງນີ້",
-    zh: "本页信息仅供参考。欲了解准确信息或申请上述以外的特殊服务，请务必联系航空公司或购票代理。",
+    en: "The information on this page is for reference only. Please verify with the relevant airline or ticket agent for accurate information or if you require special services beyond those mentioned below.",
+    lo: "ຂໍ້ມູນໃນໜ້ານີ້ແມ່ນເພື່ອເປັນການອ້າງອີງເທົ່ານັ້ນ ກະລຸນາກວດສອບກັບສາຍການບິນ ຫຼື ຕົວແທນຈໍາໜ່າຍປີ້ສໍາລັບຂໍ້ມູນທີ່ຖືກຕ້ອງ ຫຼື ຕ້ອງການບໍລິການພິເສດນອກເໜືອຈາກທີ່ກ່າວມາຂ້າງລຸ່ມນີ້",
+    zh: "本页信息仅供参考。欲了解准确信息或申请下述以外的特殊服务，请务必联系航空公司或购票代理。",
   },
 
   // Airport Services
@@ -40,17 +40,17 @@ export const mobilityGuideline = {
   },
   service1Desc: {
     en: "Complimentary wheelchair assistance is available throughout the terminal. Request at the check-in counter or service desk.",
-    lo: "ບໍລິການລໍ້ຍູ້ຟຣີພາຍໃນອາຄານຜູ້ໂດຍສານ. ທ່ານສາມາດແຈ້ງຂໍຮັບບໍລິການໄດ້ທີ່ເຄົາເຕີເຊັກອິນ ຫຼື ໂຕະບໍລິການສອບຖາມ.",
+    lo: "ບໍລິການລໍ້ຍູ້ຟຣີພາຍໃນອາຄານຜູ້ໂດຍສານ. ທ່ານສາມາດແຈ້ງຂໍຮັບບໍລິການໄດ້ທີ່ເຄົາເຕີແຈ້ງປີ້ ຫຼື ໂຕະບໍລິການສອບຖາມ.",
     zh: "为需要行动辅助的乘客提供全航站楼免费轮椅服务。请在值机柜台或服务台提出申请。",
   },
   service2Title: {
     en: "Priority Check-in & Boarding",
-    lo: "ສິດທິເຊັກອິນ ແລະ ຂຶ້ນເຄື່ອງກ່ອນ",
+    lo: "ສິດທິການແຈ້ງປີ້ ແລະ ຂຶ້ນເຮືອບິນກ່ອນ",
     zh: "优先值机及登机",
   },
   service2Desc: {
     en: "Elderly travelers and passengers with disabilities are entitled to priority services. Please inform airline staff upon arrival.",
-    lo: "ຜູ້ສູງອາຍຸ ແລະ ຜູ້ພິການ ມີສິດໄດ້ຮັບການບໍລິການເຊັກອິນ ແລະ ຂຶ້ນເຄື່ອງກ່ອນ. ກະລຸນາແຈ້ງພະນັກງານສາຍການບິນເມື່ອມາຮອດສະໜາມບິນ.",
+    lo: "ຜູ້ສູງອາຍຸ ແລະ ຜູ້ພິການ ມີສິດໄດ້ຮັບການບໍລິການແຈ້ງປີ້ ແລະ ຂຶ້ນເຮືອບິນກ່ອນ. ກະລຸນາແຈ້ງພະນັກງານສາຍການບິນເມື່ອມາຮອດສະໜາມບິນ.",
     zh: "残疾乘客和老年旅客享有优先值机和登机权利。请在抵达机场时告知航空公司工作人员。",
   },
   service3Title: {
@@ -97,7 +97,7 @@ export const mobilityGuideline = {
   },
   req4: {
     en: "Mobility aids such as wheelchairs can be checked in as special baggage free of charge.",
-    lo: "ອຸປະກອນຊ່ວຍເຄື່ອນໄຫວ ເຊັ່ນ ລໍ້ຍູ້ ສາມາດເຊັກອິນເປັນສຳພາລະພິເສດໄດ້ໂດຍບໍ່ເສຍຄ່າທຳນຽມ.",
+    lo: "ອຸປະກອນຊ່ວຍເຄື່ອນໄຫວ ເຊັ່ນ ລໍ້ຍູ້ ສາມາດແຈ້ງປີ້ເປັນສຳພາລະພິເສດໄດ້ໂດຍບໍ່ເສຍຄ່າທຳນຽມ.",
     zh: "轮椅等行动辅助工具可免费作为特殊行李托运。",
   },
 
@@ -114,7 +114,7 @@ export const mobilityGuideline = {
   },
   facility2: {
     en: "Accessible check-in counters at a lower height",
-    lo: "ເຄົາເຕີເຊັກອິນແບບພິເສດ (ຄວາມສູງເໝາະສຳລັບລໍ້ຍູ້)",
+    lo: "ເຄົາເຕີແຈ້ງປີ້ແບບພິເສດ (ຄວາມສູງເໝາະສຳລັບລໍ້ຍູ້)",
     zh: "设有低台面无障碍值机柜台",
   },
   facility3: {

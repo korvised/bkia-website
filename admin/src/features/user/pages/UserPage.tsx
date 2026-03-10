@@ -6,10 +6,14 @@ import {
   LuShield,
   LuSearch,
   LuRefreshCw,
+  LuLockKeyhole,
+  LuEllipsisVertical,
 } from "react-icons/lu";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Breadcrumb } from "@/components/ui";
 import { Table, type Column } from "@/components/ui/table/table.tsx";
 import { Pagination } from "@/components/ui/table/pagination.tsx";
+import { cn } from "@/lib";
 import { usePagination } from "@/hooks";
 import { useFetchUsersQuery } from "@/features/user/api";
 import type { IUser } from "@/features/user/types";
@@ -19,6 +23,7 @@ import {
   UserFormModal,
   ManageRolesModal,
   ManagePermissionsModal,
+  ResetPasswordModal,
 } from "@/features/user/components";
 import { Select } from "@/components/ui/form";
 import { UserStatus } from "@/types";
@@ -31,6 +36,7 @@ export function UserPage() {
   const [editUser, setEditUser] = useState<IUser | null>(null);
   const [rolesUser, setRolesUser] = useState<IUser | null>(null);
   const [permissionsUser, setPermissionsUser] = useState<IUser | null>(null);
+  const [resetPasswordUser, setResetPasswordUser] = useState<IUser | null>(null);
 
   const {
     data: users = [],
@@ -97,31 +103,94 @@ export function UserPage() {
     },
     {
       key: "actions",
-      header: "Actions",
-      className: "w-32",
+      header: "",
+      className: "w-12",
       render: (u) => (
-        <div className="flex items-center gap-1">
-          <button
-            onClick={() => setEditUser(u)}
-            title="Edit user"
-            className="hover:bg-primary-50 hover:text-primary rounded-lg p-2 text-gray-400 transition-colors"
-          >
-            <LuPencil className="h-4 w-4" />
-          </button>
-          <button
-            onClick={() => setRolesUser(u)}
-            title="Manage roles"
-            className="hover:bg-secondary-50 hover:text-secondary rounded-lg p-2 text-gray-400 transition-colors"
-          >
-            <LuShield className="h-4 w-4" />
-          </button>
-          <button
-            onClick={() => setPermissionsUser(u)}
-            title="Manage permissions"
-            className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-amber-50 hover:text-amber-600"
-          >
-            <LuKey className="h-4 w-4" />
-          </button>
+        <div className="flex justify-end">
+          <Menu as="div" className="relative">
+            <MenuButton
+              onClick={(e) => e.stopPropagation()}
+              className="rounded-lg p-1.5 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 focus:outline-none"
+            >
+              <LuEllipsisVertical className="h-4 w-4" />
+            </MenuButton>
+
+            <MenuItems
+              transition
+              anchor="bottom end"
+              className={cn(
+                "z-50 w-52 origin-top-right rounded-lg bg-white py-1 shadow-lg ring-1 ring-black/5 outline-none",
+                "transition duration-100 ease-out [--anchor-gap:4px]",
+                "data-[closed]:scale-95 data-[closed]:opacity-0",
+              )}
+            >
+              {/* Edit */}
+              <MenuItem>
+                {({ focus }) => (
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setEditUser(u); }}
+                    className={cn(
+                      "flex w-full items-center gap-3 px-3 py-2 text-sm text-gray-700",
+                      focus && "bg-gray-50",
+                    )}
+                  >
+                    <LuPencil className="h-4 w-4 text-gray-400" />
+                    Edit User
+                  </button>
+                )}
+              </MenuItem>
+
+              {/* Manage Roles */}
+              <MenuItem>
+                {({ focus }) => (
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setRolesUser(u); }}
+                    className={cn(
+                      "flex w-full items-center gap-3 px-3 py-2 text-sm text-gray-700",
+                      focus && "bg-gray-50",
+                    )}
+                  >
+                    <LuShield className="h-4 w-4 text-gray-400" />
+                    Manage Roles
+                  </button>
+                )}
+              </MenuItem>
+
+              {/* Manage Permissions */}
+              <MenuItem>
+                {({ focus }) => (
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setPermissionsUser(u); }}
+                    className={cn(
+                      "flex w-full items-center gap-3 px-3 py-2 text-sm text-gray-700",
+                      focus && "bg-gray-50",
+                    )}
+                  >
+                    <LuKey className="h-4 w-4 text-gray-400" />
+                    Manage Permissions
+                  </button>
+                )}
+              </MenuItem>
+
+              <div className="my-1 h-px bg-gray-100" />
+
+              {/* Reset Password */}
+              <MenuItem>
+                {({ focus }) => (
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setResetPasswordUser(u); }}
+                    className={cn(
+                      "flex w-full items-center gap-3 px-3 py-2 text-sm text-red-600",
+                      focus && "bg-red-50",
+                    )}
+                  >
+                    <LuLockKeyhole className="h-4 w-4" />
+                    Reset Password
+                  </button>
+                )}
+              </MenuItem>
+            </MenuItems>
+          </Menu>
         </div>
       ),
     },
@@ -217,6 +286,11 @@ export function UserPage() {
         isOpen={!!permissionsUser}
         onClose={() => setPermissionsUser(null)}
         user={permissionsUser}
+      />
+      <ResetPasswordModal
+        isOpen={!!resetPasswordUser}
+        onClose={() => setResetPasswordUser(null)}
+        user={resetPasswordUser}
       />
     </div>
   );

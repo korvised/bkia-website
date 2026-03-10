@@ -65,7 +65,7 @@ export const airportSecurity = {
   },
   liquidsChecked: {
     en: "Liquids over 100ml must be checked in",
-    lo: "ຂອງແຫຼວທີ່ເກີນ 100 ມລ ຕ້ອງໂຫຼດກ້ອງທ້ອງເຮືອບິນ (ເຊັກອິນ)",
+    lo: "ຂອງແຫຼວທີ່ເກີນ 100 ມລ ຕ້ອງໂຫຼດກ້ອງທ້ອງເຮືອບິນ (ແຈ້ງຕອນແຈ້ງປີ້)",
     zh: "超过100毫升的液体必须托运",
   },
 
@@ -89,7 +89,7 @@ export const airportSecurity = {
   },
   firearmsDesc: {
     en: "Must declare to airline staff at check-in counter for document verification",
-    lo: "ຕ້ອງແຈ້ງໃຫ້ພະນັກງານສາຍການບິນຊາບ ຢູ່ເຄົາເຕີເຊັກອິນ ເພື່ອກວດກາເອກະສານ",
+    lo: "ຕ້ອງແຈ້ງໃຫ້ພະນັກງານສາຍການບິນຊາບ ຢູ່ເຄົາເຕີແຈ້ງປີ້ ເພື່ອກວດກາເອກະສານ",
     zh: "必须在值机柜台向航空公司工作人员申报以核验文件",
   },
 

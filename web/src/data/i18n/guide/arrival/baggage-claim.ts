@@ -75,7 +75,7 @@ export const baggageClaim = {
   },
   reminder1: {
     en: "Keep your baggage claim tag (from check-in) until you've collected all luggage",
-    lo: "ກະລຸນາເກັບບັດຮັບກະເປົາ (ທີ່ໄດ້ຈາກຕອນເຊັກອິນ) ໄວ້ໃຫ້ດີ ຈົນກວ່າຈະໄດ້ຮັບກະເປົາຄົບທຸກໜ່ວຍ",
+    lo: "ກະລຸນາເກັບບັດຮັບກະເປົາ (ທີ່ໄດ້ຈາກຕອນແຈ້ງປີ້) ໄວ້ໃຫ້ດີ ຈົນກວ່າຈະໄດ້ຮັບກະເປົາຄົບທຸກໜ່ວຍ",
     zh: "保管好行李票（值机时的）直到取完所有行李",
   },
   reminder2: {

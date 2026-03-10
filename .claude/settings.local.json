@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\(''scripts'',{}\\), indent=2\\)\\)\")"
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\(''scripts'',{}\\), indent=2\\)\\)\")",
+      "Bash(pnpm add react-markdown remark-gfm)",
+      "Bash(find \"D:/projects/bkia-website/server/src\" -name \"*.ts\" -type f -exec grep -l \"PERMISSIONS.*COUNTER\" {} ;)",
+      "Bash(grep -n \"ROUTE_TAG\" \"D:/projects/bkia-website/admin/src/constants\"/*.ts)",
+      "Bash(xargs grep -l \"ICurrentUser\")",
+      "Bash(xargs grep -l \"Permission\")",
+      "Bash(xargs ls -1)",
+      "Bash(\"D:/projects/bkia-website/admin/src/types/enum.type.ts\":*)",
+      "Bash(xargs grep -l \"ProtectedRoute\")"
     ]
   }
 }

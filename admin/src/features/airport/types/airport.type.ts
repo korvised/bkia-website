@@ -9,3 +9,15 @@ export interface IAirport {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface IAirportFilter {
+  search?: string;
+  isActive?: string | boolean | "";
+}
+
+export interface IAirportForm {
+  code: string;
+  name: string;
+  names: { en: string; lo: string; zh: string };
+  isActive: boolean;
+}

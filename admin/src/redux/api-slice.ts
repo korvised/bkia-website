@@ -2,9 +2,12 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { axiosBaseQuery } from "./axios-base-query.ts";
 import {
   AIRLINE_TAG,
+  AIRPORT_TAG,
   COUNTER_TAG,
   FLIGHT_TAG,
   LOST_FOUND_TAG,
+  NEWS_TAG,
+  NOTICE_TAG,
   PERMISSION_TAG,
   ROLE_TAG,
   ROUTE_TAG,
@@ -15,5 +18,5 @@ export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: axiosBaseQuery(),
   endpoints: () => ({}),
-  tagTypes: [AIRLINE_TAG, COUNTER_TAG, FLIGHT_TAG, LOST_FOUND_TAG, ROUTE_TAG, USER_TAG, ROLE_TAG, PERMISSION_TAG],
+  tagTypes: [AIRLINE_TAG, AIRPORT_TAG, COUNTER_TAG, FLIGHT_TAG, LOST_FOUND_TAG, NEWS_TAG, NOTICE_TAG, ROUTE_TAG, USER_TAG, ROLE_TAG, PERMISSION_TAG],
 });

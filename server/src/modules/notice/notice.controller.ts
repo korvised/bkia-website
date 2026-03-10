@@ -29,7 +29,7 @@ export class NoticeController {
    */
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
   @Roles(UserRole.ADMIN, UserRole.STAFF)
-  @Permissions(NOTICE.VIEW)
+  @Permissions(NOTICE.READ)
   @Get()
   async findAll(@Query() query: QueryNoticeDto) {
     return await this.service.findAll(query);

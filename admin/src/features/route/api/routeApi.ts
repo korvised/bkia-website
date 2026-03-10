@@ -1,7 +1,7 @@
 import { apiSlice } from "@/redux";
 import { ROUTE_TAG } from "@/constants";
 import { cleanParams } from "@/lib";
-import type { IRoute, IRouteFilter } from "@/features/route/types";
+import type { IRoute, IRouteFilter, IRouteForm } from "@/features/route/types";
 
 const routeApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -9,20 +9,54 @@ const routeApi = apiSlice.injectEndpoints({
       query: (params) => ({
         url: "/routes",
         method: "GET",
-        params: cleanParams({ isActive: true, ...params }),
+        params: cleanParams(params),
       }),
-      providesTags: (routes) =>
-        routes?.length
+      providesTags: (result) =>
+        result?.length
           ? [
-              ...routes.map((route) => ({
-                type: ROUTE_TAG,
-                id: route.id,
-              })),
+              ...result.map((route) => ({ type: ROUTE_TAG, id: route.id })),
               { type: ROUTE_TAG, id: "LIST" },
             ]
           : [{ type: ROUTE_TAG, id: "LIST" }],
     }),
+
+    addRoute: builder.mutation<IRoute, Omit<IRouteForm, "isActive">>({
+      query: (body) => ({
+        url: "/routes",
+        method: "POST",
+        data: body,
+      }),
+      invalidatesTags: [{ type: ROUTE_TAG, id: "LIST" }],
+    }),
+
+    updateRoute: builder.mutation<IRoute, { id: string; body: Partial<IRouteForm> }>({
+      query: ({ id, body }) => ({
+        url: `/routes/${id}`,
+        method: "PATCH",
+        data: body,
+      }),
+      invalidatesTags: (_result, _error, { id }) => [
+        { type: ROUTE_TAG, id },
+        { type: ROUTE_TAG, id: "LIST" },
+      ],
+    }),
+
+    deleteRoute: builder.mutation<void, string>({
+      query: (id) => ({
+        url: `/routes/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (_result, _error, id) => [
+        { type: ROUTE_TAG, id },
+        { type: ROUTE_TAG, id: "LIST" },
+      ],
+    }),
   }),
 });
 
-export const { useFetchRoutesQuery } = routeApi;
+export const {
+  useFetchRoutesQuery,
+  useAddRouteMutation,
+  useUpdateRouteMutation,
+  useDeleteRouteMutation,
+} = routeApi;

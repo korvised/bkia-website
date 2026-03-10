@@ -35,10 +35,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
     [currentUser?.user.roles],
   );
 
-  // Get filtered navigation groups based on user roles
+  const currentUserPermissions = useMemo(
+    () => currentUser?.user.permissions?.map((p) => p.slug),
+    [currentUser?.user.permissions],
+  );
+
+  // Get filtered navigation groups based on user roles and permissions
   const navigationGroups = useMemo(
-    () => getFilteredNavigationGroups(currentUserRoles),
-    [currentUserRoles],
+    () => getFilteredNavigationGroups(currentUserRoles, currentUserPermissions),
+    [currentUserRoles, currentUserPermissions],
   );
 
   // Collect all navigation paths for best match calculation

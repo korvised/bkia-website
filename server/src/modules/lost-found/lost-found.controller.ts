@@ -84,7 +84,7 @@ export class LostFoundController {
 
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
   @Roles(UserRole.ADMIN, UserRole.STAFF)
-  @Permissions(LOST_FOUND.VIEW)
+  @Permissions(LOST_FOUND.READ)
   @Get('admin/all')
   findAllAdmin(@Query() query: QueryLostFoundAdminDto) {
     return this.service.findAllAdmin(query);
@@ -92,7 +92,7 @@ export class LostFoundController {
 
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
   @Roles(UserRole.ADMIN, UserRole.STAFF)
-  @Permissions(LOST_FOUND.VIEW)
+  @Permissions(LOST_FOUND.READ)
   @Get('admin/:id')
   findOneAdmin(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.service.findOneAdmin(id);
@@ -157,7 +157,7 @@ export class LostFoundController {
 
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
   @Roles(UserRole.ADMIN, UserRole.STAFF)
-  @Permissions(LOST_FOUND.VIEW)
+  @Permissions(LOST_FOUND.READ)
   @Get(':id/claims')
   findClaims(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.service.findClaims(id);
@@ -165,7 +165,7 @@ export class LostFoundController {
 
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
   @Roles(UserRole.ADMIN, UserRole.STAFF)
-  @Permissions(LOST_FOUND.RESOLVE)
+  @Permissions(LOST_FOUND.UPDATE)
   @Patch('claims/:claimId/review')
   reviewClaim(
     @Param('claimId', new ParseUUIDPipe()) claimId: string,

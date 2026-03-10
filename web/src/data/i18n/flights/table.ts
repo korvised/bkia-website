@@ -38,12 +38,12 @@ export const table = {
   },
   checkInCounter: {
     en: "Check-in Counter",
-    lo: "ເຄົາເຕີເຊັກອິນ",
+    lo: "ເຄົາເຕີແຈ້ງປີ້",
     zh: "值机柜台",
   },
   checkInTime: {
     en: "Check-in Time",
-    lo: "ເວລາເຊັກອິນ",
+    lo: "ເວລາແຈ້ງປີ້",
     zh: "值机时间",
   },
   operationDate: {

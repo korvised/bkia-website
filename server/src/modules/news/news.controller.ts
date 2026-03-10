@@ -35,7 +35,7 @@ export class NewsController {
    */
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
   @Roles(UserRole.ADMIN, UserRole.STAFF)
-  @Permissions(NEWS.VIEW)
+  @Permissions(NEWS.READ)
   @Get()
   async findAll(@Query() query: QueryNewsDto) {
     return await this.service.findAll(query);

@@ -24,12 +24,14 @@ import {
   SUPPORT_ACCESS_ROLES,
 } from "@/constants";
 import { UserRole } from "@/types";
+import { PermissionSlug } from "@/types/enum.type";
 
 export interface INavigationItem {
   name: string;
   path: string;
   icon?: IconType;
   allowRoles?: UserRole[];
+  allowPermissions?: PermissionSlug[];
 }
 
 export interface INavigationGroup {
@@ -50,30 +52,60 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
         path: "/flights/airlines",
         icon: LuPlaneTakeoff,
         allowRoles: FLIGHT_ACCESS_ROLES.AIRLINE_MANAGEMENT,
+        allowPermissions: [
+          PermissionSlug.AIRLINE_READ,
+          PermissionSlug.AIRLINE_CREATE,
+          PermissionSlug.AIRLINE_UPDATE,
+          PermissionSlug.AIRLINE_DELETE,
+        ],
       },
       {
         name: "Airports",
         path: "/flights/airports",
         icon: LuMapPin,
         allowRoles: FLIGHT_ACCESS_ROLES.AIRPORT_MANAGEMENT,
+        allowPermissions: [
+          PermissionSlug.AIRPORT_READ,
+          PermissionSlug.AIRPORT_CREATE,
+          PermissionSlug.AIRPORT_UPDATE,
+          PermissionSlug.AIRPORT_DELETE,
+        ],
       },
       {
         name: "Counters",
         path: "/flights/counters",
         icon: LuNetwork,
         allowRoles: FLIGHT_ACCESS_ROLES.COUNTER_MANAGEMENT,
+        allowPermissions: [
+          PermissionSlug.COUNTER_READ,
+          PermissionSlug.COUNTER_CREATE,
+          PermissionSlug.COUNTER_UPDATE,
+          PermissionSlug.COUNTER_DELETE,
+        ],
       },
       {
         name: "Routes",
         path: "/flights/routes",
         icon: LuRoute,
         allowRoles: FLIGHT_ACCESS_ROLES.ROUTE_MANAGEMENT,
+        allowPermissions: [
+          PermissionSlug.ROUTE_READ,
+          PermissionSlug.ROUTE_CREATE,
+          PermissionSlug.ROUTE_UPDATE,
+          PermissionSlug.ROUTE_DELETE,
+        ],
       },
       {
         name: "Flights",
         path: "/flights",
         icon: LuRailSymbol,
         allowRoles: FLIGHT_ACCESS_ROLES.FLIGHT_OPERATIONS,
+        allowPermissions: [
+          PermissionSlug.FLIGHT_READ,
+          PermissionSlug.FLIGHT_CREATE,
+          PermissionSlug.FLIGHT_UPDATE,
+          PermissionSlug.FLIGHT_DELETE,
+        ],
       },
     ],
   },
@@ -93,20 +125,34 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
         path: "/content/news",
         icon: LuNewspaper,
         allowRoles: CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
+        allowPermissions: [
+          PermissionSlug.NEWS_READ,
+          PermissionSlug.NEWS_CREATE,
+          PermissionSlug.NEWS_UPDATE,
+          PermissionSlug.NEWS_DELETE,
+        ],
       },
       {
         name: "Notices",
         path: "/content/notices",
         icon: LuBell,
-        allowRoles: CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
+        allowRoles: CONTENT_ACCESS_ROLES.NOTICE_MANAGEMENT,
+        allowPermissions: [
+          PermissionSlug.NOTICE_READ,
+          PermissionSlug.NOTICE_CREATE,
+          PermissionSlug.NOTICE_UPDATE,
+          PermissionSlug.NOTICE_DELETE,
+        ],
       },
       {
+        // ADMIN_ROLES only — no STAFF access, no permissions needed
         name: "Careers",
         path: "/content/careers",
         icon: LuBriefcase,
         allowRoles: CONTENT_ACCESS_ROLES.CAREERS_MANAGEMENT,
       },
       {
+        // ADMIN_ROLES only — no STAFF access, no permissions needed
         name: "Bidding",
         path: "/content/bidding",
         icon: LuFileText,
@@ -124,10 +170,17 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
         path: "/support/lost-found",
         icon: LuPackageSearch,
         allowRoles: SUPPORT_ACCESS_ROLES.LOST_FOUND_MANAGEMENT,
+        allowPermissions: [
+          PermissionSlug.LOST_FOUND_READ,
+          PermissionSlug.LOST_FOUND_CREATE,
+          PermissionSlug.LOST_FOUND_UPDATE,
+          PermissionSlug.LOST_FOUND_DELETE,
+        ],
       },
     ],
   },
   {
+    // ADMIN_ROLES only — no STAFF access, no permissions needed
     groupName: "Settings",
     icon: LuSettings,
     allowRoles: SETTINGS_ACCESS_ROLES.SYSTEM_SETTINGS,
@@ -171,23 +224,40 @@ export const isGroupActive = (
 export const hasAccessToItem = (
   allowRoles: UserRole[] | undefined,
   userRoles: UserRole[] | undefined,
+  allowPermissions?: PermissionSlug[],
+  userPermissions?: string[],
 ): boolean => {
+  // Role check
   if (!allowRoles || allowRoles.length === 0) return true;
   if (!userRoles || userRoles.length === 0) return false;
-  return allowRoles.some((role) => userRoles.includes(role));
+  if (!allowRoles.some((role) => userRoles.includes(role))) return false;
+
+  // No permissions defined for this item — role check is sufficient
+  if (!allowPermissions || allowPermissions.length === 0) return true;
+
+  // ADMIN / SUPER_ADMIN bypass permission check
+  if (
+    userRoles.includes(UserRole.ADMIN) ||
+    userRoles.includes(UserRole.SUPER_ADMIN)
+  ) return true;
+
+  // STAFF must have at least one matching permission
+  if (!userPermissions || userPermissions.length === 0) return false;
+  return allowPermissions.some((slug) => userPermissions.includes(slug));
 };
 
-// Helper function to filter navigation groups based on user role
+// Helper function to filter navigation groups based on user roles and permissions
 export const getFilteredNavigationGroups = (
   userRoles: UserRole[] | undefined,
+  userPermissions?: string[],
 ): INavigationGroup[] => {
   return NAVIGATION_GROUPS.filter((group) => {
-    // Check if user has access to the group
+    // Check if user has access to the group (role-only check at group level)
     if (!hasAccessToItem(group.allowRoles, userRoles)) return false;
 
-    // Filter items within the group
+    // Filter items within the group (role + permission check)
     const accessibleItems = group.items.filter((item) =>
-      hasAccessToItem(item.allowRoles, userRoles),
+      hasAccessToItem(item.allowRoles, userRoles, item.allowPermissions, userPermissions),
     );
 
     // Only include group if it has at least one accessible item
@@ -195,7 +265,7 @@ export const getFilteredNavigationGroups = (
   }).map((group) => ({
     ...group,
     items: group.items.filter((item) =>
-      hasAccessToItem(item.allowRoles, userRoles),
+      hasAccessToItem(item.allowRoles, userRoles, item.allowPermissions, userPermissions),
     ),
   }));
 };

@@ -20,7 +20,10 @@ const mapRoutes = (routes: IRoute[]): RouteObject => ({
   children: routes.map((route) => ({
     path: route.path,
     element: (
-      <ProtectedRoute allowRoles={route.allowRoles}>
+      <ProtectedRoute
+        allowRoles={route.allowRoles}
+        allowPermissions={route.allowPermissions}
+      >
         {createElement(route.element)}
       </ProtectedRoute>
     ),

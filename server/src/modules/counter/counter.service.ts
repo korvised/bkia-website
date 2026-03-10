@@ -55,8 +55,7 @@ export class CounterService {
   }
 
   async delete(id: string) {
-    const counter = await this.findOne(id);
-    counter.isActive = false;
-    return this.counterRepo.save(counter);
+    await this.findOne(id);
+    await this.counterRepo.delete(id);
   }
 }

@@ -110,7 +110,7 @@ export const pregnancyGuideline = {
   },
   nurseryDesc: {
     en: "Private and comfortable spaces are available for mothers to breastfeed or change diapers.",
-    lo: "ພວກເຮົາມີພື້ນທີ່ສ່ວນຕົວ ແລະ ສະດວກສະບາຍ ໄວ້ບໍລິການສຳລັບຄຸນແມ່ທີ່ຕ້ອງການໃຫ້ນົມລູກ ຫຼື ປ່ຽນຜ້າອ້ອມ.",
+    lo: "ພວກເຮົາມີພື້ນທີ່ສ່ວນຕົວ ແລະ ສະດວກສະບາຍ ໄວ້ບໍລິການສຳລັບແມ່ທີ່ຕ້ອງການໃຫ້ນົມລູກ ຫຼື ປ່ຽນຜ້າອ້ອມ.",
     zh: "为母亲提供私密且舒适的哺乳或更换尿布的空间。",
   },
 
@@ -128,7 +128,7 @@ export const pregnancyGuideline = {
   },
   tip3: {
     en: "Arrive early for check-in and security procedures.",
-    lo: "ຄວນມາຮອດສະໜາມບິນໄວຂຶ້ນ ເພື່ອຄວາມສະດວກໃນການເຊັກອິນ.",
+    lo: "ຄວນມາຮອດສະໜາມບິນໄວຂຶ້ນ ເພື່ອຄວາມສະດວກໃນການແຈ້ງປີ້.",
     zh: "提前到达以便办理值机和安检。",
   },
   tip4: {

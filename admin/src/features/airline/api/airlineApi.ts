@@ -1,13 +1,15 @@
 import { apiSlice } from "@/redux";
-import type { IAirline, IAirlineResponse } from "@/features/airline/types";
 import { AIRLINE_TAG } from "@/constants";
+import { cleanParams } from "@/lib";
+import type { IAirline, IAirlineFilter, IAirlineResponse } from "@/features/airline/types";
 
 const airlineApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    fetchAirlines: builder.query<IAirlineResponse, void>({
-      query: () => ({
+    fetchAirlines: builder.query<IAirlineResponse, IAirlineFilter>({
+      query: (params) => ({
         url: "/airlines",
         method: "GET",
+        params: cleanParams(params),
       }),
       providesTags: (result) =>
         result?.data?.length
@@ -21,7 +23,15 @@ const airlineApi = apiSlice.injectEndpoints({
           : [{ type: AIRLINE_TAG, id: "LIST" }],
     }),
 
-    addAirline: builder.mutation<IAirline, Record<string, string>>({
+    fetchAirlineById: builder.query<IAirline, string>({
+      query: (id) => ({
+        url: `/airlines/${id}`,
+        method: "GET",
+      }),
+      providesTags: (_result, _error, id) => [{ type: AIRLINE_TAG, id }],
+    }),
+
+    addAirline: builder.mutation<IAirline, FormData>({
       query: (body) => ({
         url: "/airlines",
         method: "POST",
@@ -30,16 +40,16 @@ const airlineApi = apiSlice.injectEndpoints({
       invalidatesTags: [{ type: AIRLINE_TAG, id: "LIST" }],
     }),
 
-    updateAirline: builder.mutation<
-      IAirline,
-      { id: string; body: Record<string, string> }
-    >({
+    updateAirline: builder.mutation<IAirline, { id: string; body: FormData }>({
       query: ({ id, body }) => ({
         url: `/airlines/${id}`,
         method: "PATCH",
         data: body,
       }),
-      invalidatesTags: (_result, _error, { id }) => [{ type: AIRLINE_TAG, id }],
+      invalidatesTags: (_result, _error, { id }) => [
+        { type: AIRLINE_TAG, id },
+        { type: AIRLINE_TAG, id: "LIST" },
+      ],
     }),
 
     deleteAirline: builder.mutation<void, string>({
@@ -52,12 +62,37 @@ const airlineApi = apiSlice.injectEndpoints({
         { type: AIRLINE_TAG, id: "LIST" },
       ],
     }),
+
+    activateAirline: builder.mutation<IAirline, string>({
+      query: (id) => ({
+        url: `/airlines/${id}/activate`,
+        method: "PATCH",
+      }),
+      invalidatesTags: (_result, _error, id) => [
+        { type: AIRLINE_TAG, id },
+        { type: AIRLINE_TAG, id: "LIST" },
+      ],
+    }),
+
+    deactivateAirline: builder.mutation<IAirline, string>({
+      query: (id) => ({
+        url: `/airlines/${id}/deactivate`,
+        method: "PATCH",
+      }),
+      invalidatesTags: (_result, _error, id) => [
+        { type: AIRLINE_TAG, id },
+        { type: AIRLINE_TAG, id: "LIST" },
+      ],
+    }),
   }),
 });
 
 export const {
   useFetchAirlinesQuery,
+  useFetchAirlineByIdQuery,
   useAddAirlineMutation,
   useUpdateAirlineMutation,
   useDeleteAirlineMutation,
+  useActivateAirlineMutation,
+  useDeactivateAirlineMutation,
 } = airlineApi;

@@ -1,11 +1,15 @@
 import { LuPlane, LuPlus } from "react-icons/lu";
+import { Link } from "react-router-dom";
 import { Breadcrumb, Pagination, Table } from "@/components/ui";
 import { cn } from "@/lib";
+import { usePermissions } from "@/hooks";
+import { PermissionSlug } from "@/types/enum.type";
 import { FlightFilters } from "../components";
 import { useFlightColumns, useGetFlights } from "../hooks";
-import { Link } from "react-router-dom";
 
 export function FlightPage() {
+  const { can } = usePermissions();
+
   const {
     data,
     airlines,
@@ -26,7 +30,12 @@ export function FlightPage() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumb items={[{ label: "Flights", icon: LuPlane }]} />
+      <Breadcrumb
+        items={[
+          { label: "Flight Management" },
+          { label: "Flights", icon: LuPlane },
+        ]}
+      />
 
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -41,17 +50,19 @@ export function FlightPage() {
             </p>
           </div>
         </div>
-        <Link
-          to="/flights/create"
-          className={cn(
-            "bg-primary flex items-center gap-2 rounded-lg px-4 py-2 text-white",
-            "hover:bg-primary-600 transition-colors",
-            "focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none",
-          )}
-        >
-          <LuPlus className="h-4 w-4" />
-          Add Flight
-        </Link>
+        {can(PermissionSlug.FLIGHT_CREATE) && (
+          <Link
+            to="/flights/create"
+            className={cn(
+              "bg-primary flex items-center gap-2 rounded-lg px-4 py-2 text-white",
+              "hover:bg-primary-600 transition-colors",
+              "focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none",
+            )}
+          >
+            <LuPlus className="h-4 w-4" />
+            Add Flight
+          </Link>
+        )}
       </div>
 
       {/* Filters */}

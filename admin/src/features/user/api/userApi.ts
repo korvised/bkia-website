@@ -89,6 +89,14 @@ const userApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: (_result, _error, { id }) => [{ type: USER_TAG, id }],
     }),
+
+    resetUserPassword: builder.mutation<IUser, { id: string; newPassword: string }>({
+      query: ({ id, newPassword }) => ({
+        url: `/users/reset-password/${id}`,
+        method: "PATCH",
+        data: { newPassword },
+      }),
+    }),
   }),
 });
 
@@ -101,4 +109,5 @@ export const {
   useRemoveUserRolesMutation,
   useAddUserPermissionsMutation,
   useRemoveUserPermissionsMutation,
+  useResetUserPasswordMutation,
 } = userApi;

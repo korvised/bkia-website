@@ -43,6 +43,7 @@ export function FlightDetailPage() {
     () => (
       <Breadcrumb
         items={[
+          { label: "Flight Management" },
           { label: "Flights", path: "/flights", icon: LuPlane },
           { label: flight?.flightNo || "..." },
         ]}

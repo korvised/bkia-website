@@ -11,3 +11,11 @@ export interface IRoute {
   origin: IAirport;
   destination: IAirport;
 }
+
+export interface IRouteForm {
+  routeType: RouteType;
+  durationMin: number;
+  originId: string;
+  destinationId: string;
+  isActive: boolean;
+}

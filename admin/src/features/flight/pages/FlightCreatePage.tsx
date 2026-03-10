@@ -21,6 +21,7 @@ export function FlightCreatePage() {
     <div className="space-y-6">
       <Breadcrumb
         items={[
+          { label: "Flight Management" },
           { label: "Flights", path: "/flights", icon: LuPlane },
           { label: "Create Flight" },
         ]}

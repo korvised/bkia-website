@@ -82,3 +82,62 @@ export enum ClaimStatus {
   REJECTED = 'REJECTED',
   COMPLETED = 'COMPLETED',
 }
+
+export enum ImportantPriority {
+  URGENT = 'URGENT',
+  HIGH = 'HIGH',
+  NORMAL = 'NORMAL',
+}
+
+export enum NewsCategory {
+  AIRPORT_UPDATE = 'AIRPORT_UPDATE',
+  FLIGHT_SERVICE = 'FLIGHT_SERVICE',
+  EVENT = 'EVENT',
+  ANNOUNCEMENT = 'ANNOUNCEMENT',
+  SUSTAINABILITY = 'SUSTAINABILITY',
+  TECHNOLOGY = 'TECHNOLOGY',
+  COMMUNITY = 'COMMUNITY',
+}
+
+export enum PermissionSlug {
+  // Airline
+  AIRLINE_READ = 'airline:read',
+  AIRLINE_CREATE = 'airline:create',
+  AIRLINE_UPDATE = 'airline:update',
+  AIRLINE_DELETE = 'airline:delete',
+  // Airport
+  AIRPORT_READ = 'airport:read',
+  AIRPORT_CREATE = 'airport:create',
+  AIRPORT_UPDATE = 'airport:update',
+  AIRPORT_DELETE = 'airport:delete',
+  // Counter
+  COUNTER_READ = 'counter:read',
+  COUNTER_CREATE = 'counter:create',
+  COUNTER_UPDATE = 'counter:update',
+  COUNTER_DELETE = 'counter:delete',
+  // Route
+  ROUTE_READ = 'route:read',
+  ROUTE_CREATE = 'route:create',
+  ROUTE_UPDATE = 'route:update',
+  ROUTE_DELETE = 'route:delete',
+  // Flight
+  FLIGHT_READ = 'flight:read',
+  FLIGHT_CREATE = 'flight:create',
+  FLIGHT_UPDATE = 'flight:update',
+  FLIGHT_DELETE = 'flight:delete',
+  // Lost & Found
+  LOST_FOUND_READ = 'lost-found:read',
+  LOST_FOUND_CREATE = 'lost-found:create',
+  LOST_FOUND_UPDATE = 'lost-found:update',
+  LOST_FOUND_DELETE = 'lost-found:delete',
+  // News
+  NEWS_READ = 'news:read',
+  NEWS_CREATE = 'news:create',
+  NEWS_UPDATE = 'news:update',
+  NEWS_DELETE = 'news:delete',
+  // Notice
+  NOTICE_READ = 'notice:read',
+  NOTICE_CREATE = 'notice:create',
+  NOTICE_UPDATE = 'notice:update',
+  NOTICE_DELETE = 'notice:delete',
+}

@@ -1,6 +1,8 @@
 import {
+  IsBoolean,
   IsDefined,
   IsEnum,
+  IsOptional,
   IsString,
   MaxLength,
   MinLength,
@@ -17,4 +19,8 @@ export class CreateCounterDto {
   @MinLength(2)
   @MaxLength(100)
   name: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }

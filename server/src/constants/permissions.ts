@@ -1,48 +1,51 @@
 export const PERMISSIONS = {
   AIRLINE: {
+    READ: 'airline:read',
     CREATE: 'airline:create',
     UPDATE: 'airline:update',
     DELETE: 'airline:delete',
-    VIEW: 'airline:view',
   },
   AIRPORT: {
+    READ: 'airport:read',
     CREATE: 'airport:create',
     UPDATE: 'airport:update',
     DELETE: 'airport:delete',
-    VIEW: 'airport:view',
   },
   COUNTER: {
+    READ: 'counter:read',
     CREATE: 'counter:create',
     UPDATE: 'counter:update',
     DELETE: 'counter:delete',
-    VIEW: 'counter:view',
-    ASSIGN: 'counter:assign', // Specific to airport counters
+  },
+  ROUTE: {
+    READ: 'route:read',
+    CREATE: 'route:create',
+    UPDATE: 'route:update',
+    DELETE: 'route:delete',
   },
   FLIGHT: {
+    READ: 'flight:read',
     CREATE: 'flight:create',
     UPDATE: 'flight:update',
     DELETE: 'flight:delete',
-    VIEW: 'flight:view',
-    UPDATE_STATUS: 'flight:update-status', // e.g., Delayed, Boarding
   },
   LOST_FOUND: {
+    READ: 'lost-found:read',
     CREATE: 'lost-found:create',
     UPDATE: 'lost-found:update',
-    RESOLVE: 'lost-found:resolve',
-    VIEW: 'lost-found:view',
+    DELETE: 'lost-found:delete',
   },
   NEWS: {
+    READ: 'news:read',
     CREATE: 'news:create',
     UPDATE: 'news:update',
     DELETE: 'news:delete',
-    PUBLISH: 'news:publish',
-    VIEW: 'news:view',
   },
   NOTICE: {
+    READ: 'notice:read',
     CREATE: 'notice:create',
     UPDATE: 'notice:update',
     DELETE: 'notice:delete',
-    VIEW: 'notice:view',
   },
 } as const;
 

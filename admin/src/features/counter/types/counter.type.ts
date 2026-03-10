@@ -6,3 +6,9 @@ export interface ICounter {
   name: string;
   isActive: boolean;
 }
+
+export interface ICounterForm {
+  terminal: Terminal;
+  name: string;
+  isActive: boolean;
+}

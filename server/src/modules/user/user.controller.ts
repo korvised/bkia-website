@@ -23,6 +23,7 @@ import {
   UserRolesDto,
 } from './dtos';
 import { validateDtoArrayOrReject } from '@/utils';
+import { ResetPasswordDto } from '@/common/dtos';
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(UserRole.ADMIN)
@@ -115,5 +116,13 @@ export class UserController {
       employeeId,
       dtos.flatMap((item) => item.permission),
     );
+  }
+
+  @Patch('reset-password/:id')
+  async resetPassword(
+    @Param('id') id: string,
+    @Body() dto: ResetPasswordDto,
+  ) {
+    return this.userService.changePassword(id, dto);
   }
 }
