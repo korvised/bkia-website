@@ -1,6 +1,6 @@
 import { CONTENT_ACCESS_ROLES } from "@/constants";
 import { PermissionSlug } from "@/types/enum.type";
-import { NewsCreatePage, NewsEditPage, NewsListPage } from "./pages";
+import { NewsCreatePage, NewsDetailPage, NewsEditPage, NewsListPage } from "./pages";
 
 const NEWS_PERMISSIONS = [
   PermissionSlug.NEWS_READ,
@@ -19,6 +19,12 @@ export const newsRoutes = [
   {
     path: "/content/news/create",
     element: NewsCreatePage,
+    allowRoles: CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
+    allowPermissions: NEWS_PERMISSIONS,
+  },
+  {
+    path: "/content/news/:id",
+    element: NewsDetailPage,
     allowRoles: CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
     allowPermissions: NEWS_PERMISSIONS,
   },

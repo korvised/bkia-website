@@ -32,6 +32,8 @@ export function useGetNotices() {
 
   const handleCreate = () => navigate("/content/notices/create");
 
+  const handleView = (id: string) => navigate(`/content/notices/${id}`);
+
   const handleEdit = (id: string) => navigate(`/content/notices/${id}/edit`);
 
   const handleDelete = async (id: string) => {
@@ -59,6 +61,7 @@ export function useGetNotices() {
     handlePageChange,
     handlePageSizeChange,
     handleCreate,
+    handleView,
     handleEdit,
     handleDelete,
   };

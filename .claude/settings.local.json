@@ -9,7 +9,8 @@
       "Bash(xargs grep -l \"Permission\")",
       "Bash(xargs ls -1)",
       "Bash(\"D:/projects/bkia-website/admin/src/types/enum.type.ts\":*)",
-      "Bash(xargs grep -l \"ProtectedRoute\")"
+      "Bash(xargs grep -l \"ProtectedRoute\")",
+      "Bash(grep -n \"fmtDate\" \"D:\\\\projects\\\\bkia-website\\\\web\\\\src\\\\lib\"*.ts)"
     ]
   }
 }

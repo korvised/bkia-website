@@ -19,11 +19,13 @@ export function NewsListPage() {
     handlePageChange,
     handlePageSizeChange,
     handleCreate,
+    handleView,
     handleEdit,
     handleDelete,
   } = useGetNews();
 
   const columns = useNewsColumns({
+    onView: handleView,
     onEdit: handleEdit,
     onDelete: handleDelete,
     canEdit: can(PermissionSlug.NEWS_UPDATE),

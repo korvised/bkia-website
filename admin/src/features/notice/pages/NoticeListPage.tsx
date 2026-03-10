@@ -19,11 +19,13 @@ export function NoticeListPage() {
     handlePageChange,
     handlePageSizeChange,
     handleCreate,
+    handleView,
     handleEdit,
     handleDelete,
   } = useGetNotices();
 
   const columns = useNoticeColumns({
+    onView: handleView,
     onEdit: handleEdit,
     onDelete: handleDelete,
     canEdit: can(PermissionSlug.NOTICE_UPDATE),

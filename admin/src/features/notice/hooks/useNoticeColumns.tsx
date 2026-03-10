@@ -1,11 +1,12 @@
 import { useMemo } from "react";
-import { LuPencil, LuTrash2 } from "react-icons/lu";
+import { LuEye, LuPencil, LuTrash2 } from "react-icons/lu";
 import type { Column } from "@/components/ui/table/table";
 import { formatDate } from "@/lib";
 import type { INotice } from "@/features/notice/types";
 import { NoticePriorityBadge } from "@/features/notice/components";
 
 interface Options {
+  onView: (id: string) => void;
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
   canEdit?: boolean;
@@ -16,7 +17,7 @@ function getTitle(notice: INotice): string {
   return notice.title.en || notice.title.lo || notice.title.zh || "—";
 }
 
-export function useNoticeColumns({ onEdit, onDelete, canEdit = true, canDelete = true }: Options) {
+export function useNoticeColumns({ onView, onEdit, onDelete, canEdit = true, canDelete = true }: Options) {
   return useMemo(
     (): Column<INotice>[] => [
       {
@@ -89,6 +90,17 @@ export function useNoticeColumns({ onEdit, onDelete, canEdit = true, canDelete =
         header: "",
         render: (item) => (
           <div className="flex items-center justify-end gap-2">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onView(item.id);
+              }}
+              className="rounded p-1.5 text-gray-400 transition-colors hover:bg-gray-50 hover:text-gray-700"
+              title="View"
+            >
+              <LuEye className="h-4 w-4" />
+            </button>
             {canEdit && (
               <button
                 type="button"
@@ -119,6 +131,6 @@ export function useNoticeColumns({ onEdit, onDelete, canEdit = true, canDelete =
         ),
       },
     ],
-    [onEdit, onDelete, canEdit, canDelete],
+    [onView, onEdit, onDelete, canEdit, canDelete],
   );
 }

@@ -6,6 +6,7 @@ import type { INews } from "@/features/news/types";
 import { NewsCategoryBadge } from "@/features/news/components";
 
 interface Options {
+  onView: (id: string) => void;
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
   canEdit?: boolean;
@@ -16,7 +17,7 @@ function getTitle(news: INews): string {
   return news.title.en || news.title.lo || news.title.zh || "—";
 }
 
-export function useNewsColumns({ onEdit, onDelete, canEdit = true, canDelete = true }: Options) {
+export function useNewsColumns({ onView, onEdit, onDelete, canEdit = true, canDelete = true }: Options) {
   return useMemo(
     (): Column<INews>[] => [
       {
@@ -102,6 +103,17 @@ export function useNewsColumns({ onEdit, onDelete, canEdit = true, canDelete = t
         header: "",
         render: (item) => (
           <div className="flex items-center justify-end gap-2">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onView(item.id);
+              }}
+              className="rounded p-1.5 text-gray-400 transition-colors hover:bg-gray-50 hover:text-gray-700"
+              title="View"
+            >
+              <LuEye className="h-4 w-4" />
+            </button>
             {canEdit && (
               <button
                 type="button"
@@ -132,6 +144,6 @@ export function useNewsColumns({ onEdit, onDelete, canEdit = true, canDelete = t
         ),
       },
     ],
-    [onEdit, onDelete, canEdit, canDelete],
+    [onView, onEdit, onDelete, canEdit, canDelete],
   );
 }

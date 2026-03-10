@@ -35,6 +35,8 @@ export function useGetNews() {
 
   const handleCreate = () => navigate("/content/news/create");
 
+  const handleView = (id: string) => navigate(`/content/news/${id}`);
+
   const handleEdit = (id: string) => navigate(`/content/news/${id}/edit`);
 
   const handleDelete = async (id: string) => {
@@ -62,6 +64,7 @@ export function useGetNews() {
     handlePageChange,
     handlePageSizeChange,
     handleCreate,
+    handleView,
     handleEdit,
     handleDelete,
   };
