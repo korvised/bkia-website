@@ -7,6 +7,7 @@ import {
 } from "@/components/homepage";
 import { listHighlightNotices } from "@/services/notice";
 import { listFeaturedNews } from "@/services/news";
+import { listPublicBanners } from "@/services/banner";
 import { Metadata } from "next";
 import { createCommonI18n } from "@/data/i18n/common";
 
@@ -30,13 +31,14 @@ export default async function HomePage({ params }: HomePageProps) {
   const { lang } = await params;
   const notices = await listHighlightNotices();
   const news = await listFeaturedNews(3);
+  const banners = await listPublicBanners();
 
   return (
     <div className="w-full">
       <section className="flex h-[100svh] min-h-0 flex-col md:h-screen">
         {/* hero */}
         <div className="min-h-0 basis-[58%] sm:basis-[60%] md:basis-[65%] lg:basis-[73%]">
-          <HeroSection notices={notices} className="h-full min-h-0" />
+          <HeroSection banners={banners} notices={notices} className="h-full min-h-0" />
         </div>
 
         {/* search — auto height on mobile, fills rest on md+ */}

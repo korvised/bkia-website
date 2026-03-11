@@ -76,6 +76,12 @@ const DEFAULT_PERMISSIONS: PermissionSeed[] = [
   { name: 'Create Permission', slug: PermissionSlug.PERMISSION_CREATE, description: 'Create permissions' },
   { name: 'Update Permission', slug: PermissionSlug.PERMISSION_UPDATE, description: 'Update permissions' },
   { name: 'Delete Permission', slug: PermissionSlug.PERMISSION_DELETE, description: 'Delete permissions' },
+
+  // Banner
+  { name: 'View Banners', slug: PermissionSlug.BANNER_READ, description: 'View homepage banner slides' },
+  { name: 'Create Banner', slug: PermissionSlug.BANNER_CREATE, description: 'Create homepage banner slides' },
+  { name: 'Update Banner', slug: PermissionSlug.BANNER_UPDATE, description: 'Update homepage banner slides' },
+  { name: 'Delete Banner', slug: PermissionSlug.BANNER_DELETE, description: 'Delete homepage banner slides' },
 ];
 
 @Injectable()

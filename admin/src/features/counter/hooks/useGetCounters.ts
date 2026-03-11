@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import {
-  useAddCounterMutation,
   useDeleteCounterMutation,
   useFetchCountersQuery,
   useUpdateCounterMutation,
@@ -19,7 +18,11 @@ export function useGetCounters() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editCounter, setEditCounter] = useState<ICounter | null>(null);
 
-  const { data: rawData, isLoading, isFetching } = useFetchCountersQuery(filters);
+  const {
+    data: rawData,
+    isLoading,
+    isFetching,
+  } = useFetchCountersQuery(filters);
   const [deleteCounter] = useDeleteCounterMutation();
   const [updateCounter] = useUpdateCounterMutation();
 

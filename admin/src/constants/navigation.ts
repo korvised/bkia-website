@@ -3,6 +3,7 @@ import {
   LuBell,
   LuBriefcase,
   LuFileText,
+  LuImage,
   LuMapPin,
   LuNetwork,
   LuNewspaper,
@@ -115,6 +116,8 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
     allowRoles: [
       ...new Set([
         ...CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
+        ...CONTENT_ACCESS_ROLES.NOTICE_MANAGEMENT,
+        ...CONTENT_ACCESS_ROLES.BANNER_MANAGEMENT,
         ...CONTENT_ACCESS_ROLES.CAREERS_MANAGEMENT,
         ...CONTENT_ACCESS_ROLES.BIDDING_MANAGEMENT,
       ]),
@@ -142,6 +145,18 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
           PermissionSlug.NOTICE_CREATE,
           PermissionSlug.NOTICE_UPDATE,
           PermissionSlug.NOTICE_DELETE,
+        ],
+      },
+      {
+        name: "Banners",
+        path: "/content/banners",
+        icon: LuImage,
+        allowRoles: CONTENT_ACCESS_ROLES.BANNER_MANAGEMENT,
+        allowPermissions: [
+          PermissionSlug.BANNER_READ,
+          PermissionSlug.BANNER_CREATE,
+          PermissionSlug.BANNER_UPDATE,
+          PermissionSlug.BANNER_DELETE,
         ],
       },
       {

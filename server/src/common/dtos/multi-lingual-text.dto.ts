@@ -27,3 +27,21 @@ export class MultilingualFieldDto {
   @IsOptional()
   zh?: string;
 }
+
+/**
+ * All fields optional — used for optional multilingual fields
+ * (e.g. banner title) where none of en/lo/zh are required.
+ */
+export class OptionalMultilingualTextDto {
+  @IsString()
+  @IsOptional()
+  en?: string;
+
+  @IsString()
+  @IsOptional()
+  lo?: string;
+
+  @IsString()
+  @IsOptional()
+  zh?: string;
+}

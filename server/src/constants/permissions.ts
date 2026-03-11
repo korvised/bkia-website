@@ -47,6 +47,12 @@ export const PERMISSIONS = {
     UPDATE: 'notice:update',
     DELETE: 'notice:delete',
   },
+  BANNER: {
+    READ: 'banner:read',
+    CREATE: 'banner:create',
+    UPDATE: 'banner:update',
+    DELETE: 'banner:delete',
+  },
 } as const;
 
 // This type allows you to use the values in your code safely

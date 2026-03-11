@@ -21,7 +21,7 @@ export const useCreateFlight = () => {
     useBulkCreateFlightsMutation();
 
   const { data: airlinesData, isLoading: isLoadingAirlines } =
-    useFetchAirlinesQuery();
+    useFetchAirlinesQuery({ page: 1, limit: 100 });
   const { data: routes = [], isLoading: isLoadingRoutes } = useFetchRoutesQuery(
     {},
   );

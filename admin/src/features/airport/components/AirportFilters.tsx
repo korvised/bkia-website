@@ -29,7 +29,7 @@ export function AirportFilters({ filters, onFilterChange, onReset }: Props) {
         <div className="w-36 shrink-0">
           <Select
             placeholder="All Statuses"
-            value={filters.isActive ?? ""}
+            value={filters.isActive?.toString() ?? ""}
             onChange={(value) => onFilterChange("isActive", value)}
             options={STATUS_OPTIONS}
           />

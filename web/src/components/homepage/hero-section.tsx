@@ -12,49 +12,30 @@ import { useLanguage } from "@/context";
 import { cn, formatDate } from "@/lib";
 import { createCommonI18n } from "@/data/i18n/common";
 import { INotice } from "@/types/notice";
+import { IBanner } from "@/types/banner";
+import { asset } from "@/lib";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
 
-interface HeroSlide {
-  id: number;
-  image: string;
-  alt: string;
-}
-
-const heroSlides: HeroSlide[] = [
+// Fallback slides shown when no banners are configured in the CMS
+const FALLBACK_SLIDES = [
   {
-    id: 1,
+    id: "fallback-1",
     image:
       "https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/001.jpg",
     alt: "Airport Terminal",
   },
-  {
-    id: 2,
-    image:
-      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/002.jpg",
-    alt: "Aircraft",
-  },
-  {
-    id: 3,
-    image:
-      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/003.jpg",
-    alt: "Runway",
-  },
-  {
-    id: 4,
-    image:
-      "https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/004.jpg",
-    alt: "Facilities",
-  },
 ];
 
 interface HeroSectionProps {
+  banners?: IBanner[];
   notices?: INotice[];
   className?: string;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
+  banners,
   notices,
   className,
 }) => {
@@ -64,6 +45,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const { homepage: t } = createCommonI18n(lang);
+
+  // Use API banners if available, otherwise fall back to hardcoded slides
+  const slides =
+    banners && banners.length > 0
+      ? banners.map((b) => ({
+          id: b.id,
+          image: asset(b.image.path),
+          alt: b.altText[lang] || b.altText.en || "",
+        }))
+      : FALLBACK_SLIDES;
 
   return (
     <div className={cn("relative h-full w-full", className)}>
@@ -78,7 +69,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         className="h-full w-full"
       >
-        {heroSlides.map((slide) => (
+        {slides.map((slide, index) => (
           <SwiperSlide key={slide.id}>
             <div className="relative h-full w-full">
               <Image
@@ -86,7 +77,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 alt={slide.alt}
                 fill
                 className="object-cover"
-                priority={slide.id === 1}
+                priority={index === 0}
                 quality={90}
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/50" />
@@ -104,7 +95,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <ChevronLeft className="h-4 w-4 text-white/70 transition-colors group-hover:text-white sm:h-4.5 sm:w-4.5" />
         </button>
         <div className="flex items-center gap-1.5 px-1">
-          {heroSlides.map((_, index) => (
+          {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => heroSwiper?.slideToLoop(index)}

@@ -165,4 +165,10 @@ export enum PermissionSlug {
   PERMISSION_CREATE = 'permission:create',
   PERMISSION_UPDATE = 'permission:update',
   PERMISSION_DELETE = 'permission:delete',
+
+  // Banner
+  BANNER_READ = 'banner:read',
+  BANNER_CREATE = 'banner:create',
+  BANNER_UPDATE = 'banner:update',
+  BANNER_DELETE = 'banner:delete',
 }

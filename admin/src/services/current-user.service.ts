@@ -1,4 +1,9 @@
-import type { ICurrentUser, IUser, IEmployee } from "@/types";
+import {
+  type ICurrentUser,
+  type IEmployee,
+  type IUser,
+  UserRole,
+} from "@/types";
 
 export class CurrentUserService {
   private currentUser: ICurrentUser | null;
@@ -113,7 +118,8 @@ export class CurrentUserService {
   /** SUPER_ADMIN and ADMIN always pass; STAFF needs the permission */
   canAccess(slug: string): boolean {
     const roles = (this.getUser()?.roles ?? []).map((r) => r.role);
-    if (roles.includes('SUPER_ADMIN') || roles.includes('ADMIN')) return true;
+    if (roles.includes(UserRole.SUPER_ADMIN) || roles.includes(UserRole.ADMIN))
+      return true;
     return this.hasPermission(slug);
   }
 }

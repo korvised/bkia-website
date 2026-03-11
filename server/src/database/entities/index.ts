@@ -1,5 +1,6 @@
 export { Airline } from './Airline.entity';
 export { Airport } from './Airport.entity';
+export { Banner } from './Banner.entity';
 export { Counter } from './Counter.entity';
 export { File } from './File.entity';
 export { Flight } from './Flight.entity';

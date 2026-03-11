@@ -33,7 +33,7 @@ export const useUpdateFlight = (id: string) => {
   const [updateFlight, { isLoading: isUpdating }] = useUpdateFlightMutation();
 
   const { data: airlinesData, isLoading: isLoadingAirlines } =
-    useFetchAirlinesQuery();
+    useFetchAirlinesQuery({ page: 1, limit: 100 });
   const { data: routes = [], isLoading: isLoadingRoutes } = useFetchRoutesQuery(
     {},
   );

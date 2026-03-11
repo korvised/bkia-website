@@ -21,25 +21,18 @@ export const useGetFlights = () => {
   // Get filters from Redux store
   const filters = useAppSelector((state) => state.flight.filters);
 
-  const {
-    data,
-    isLoading,
-    isUninitialized,
-    isFetching,
-    refetch,
-  } = useFetchFlightsQuery(filters);
+  const { data, isLoading, isUninitialized, isFetching, refetch } =
+    useFetchFlightsQuery(filters);
 
-  const {
-    data: airlinesData,
-    isLoading: isLoadingAirlines,
-  } = useFetchAirlinesQuery();
+  const { data: airlinesData, isLoading: isLoadingAirlines } =
+    useFetchAirlinesQuery({ page: 1, limit: 100, isActive: "true" });
 
   // Filter handlers
   const handleFilterChange = useCallback(
     (newFilters: Partial<IFlightFilter>) => {
       dispatch(setFilters(newFilters));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleResetFilters = useCallback(() => {
@@ -50,14 +43,14 @@ export const useGetFlights = () => {
     (page: number) => {
       dispatch(setPage(page));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handlePageSizeChange = useCallback(
     (limit: number) => {
       dispatch(setPageSize(limit));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleSort = useCallback(
@@ -66,7 +59,7 @@ export const useGetFlights = () => {
         filters.sortBy === key && filters.order === "ASC" ? "DESC" : "ASC";
       dispatch(setSort({ sortBy: key, order: newOrder }));
     },
-    [dispatch, filters.sortBy, filters.order]
+    [dispatch, filters.sortBy, filters.order],
   );
 
   // Row click handler - navigate to detail page
@@ -74,7 +67,7 @@ export const useGetFlights = () => {
     (flight: IFlight) => {
       navigate(`/flights/${flight.id}`);
     },
-    [navigate]
+    [navigate],
   );
 
   // Computed values

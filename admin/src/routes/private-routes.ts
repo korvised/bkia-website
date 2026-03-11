@@ -1,4 +1,5 @@
 import { type IRoute } from "@/types";
+import { bannerRoutes } from "@/features/banner/routes.ts";
 import { flightRoutes } from "@/features/flight/routes.ts";
 import { airlineRoutes } from "@/features/airline/routes.ts";
 import { airportRoutes } from "@/features/airport/routes.ts";
@@ -24,5 +25,6 @@ export const privateRoutes: IRoute[] = [
     ...lostFoundRoutes,
     ...noticeRoutes,
     ...newsRoutes,
+    ...bannerRoutes,
   ]),
 ];
