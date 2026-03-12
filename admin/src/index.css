@@ -68,7 +68,7 @@
 
 /* Global default font */
 body {
-    font-family: var(--font-en);
+    font-family: var(--font-lao), sans-serif;
 }
 
 /* Font utility classes */

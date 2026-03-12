@@ -3,4 +3,5 @@ import { Terminal } from "@/types";
 export interface ICounterFilter {
   terminal?: Terminal | "";
   isActive?: string | "";
+  search?: string;
 }

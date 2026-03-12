@@ -4,6 +4,7 @@ export { Auction } from './Auction.entity';
 export { AuctionDocument } from './AuctionDocument.entity';
 export { Banner } from './Banner.entity';
 export { Counter } from './Counter.entity';
+export { Feedback } from './Feedback.entity';
 export { File } from './File.entity';
 export { Flight } from './Flight.entity';
 export { ForgotPassword } from './ForgotPassword.entity';

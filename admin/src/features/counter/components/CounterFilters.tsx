@@ -1,5 +1,5 @@
-import { LuRotateCcw } from "react-icons/lu";
-import { Select } from "@/components/ui";
+import { LuSearch, LuRotateCcw } from "react-icons/lu";
+import { Input, Select } from "@/components/ui";
 import { Terminal } from "@/types";
 import type { ICounterFilter } from "@/features/counter/types";
 
@@ -23,6 +23,15 @@ export function CounterFilters({ filters, onFilterChange, onReset }: Props) {
   return (
     <div className="rounded-xl border border-gray-200 bg-white p-4">
       <div className="flex flex-wrap gap-3">
+        <div className="min-w-[200px] flex-1">
+          <Input
+            placeholder="Search by name..."
+            value={filters.search ?? ""}
+            onChange={(e) => onFilterChange("search", e.target.value)}
+            leftIcon={<LuSearch className="h-4 w-4" />}
+          />
+        </div>
+
         <div className="w-56 shrink-0">
           <Select
             placeholder="All Terminals"

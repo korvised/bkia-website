@@ -177,6 +177,12 @@ export enum PermissionSlug {
   AUCTION_CREATE = 'auction:create',
   AUCTION_UPDATE = 'auction:update',
   AUCTION_DELETE = 'auction:delete',
+
+  // Feedback
+  FEEDBACK_READ = 'feedback:read',
+  FEEDBACK_CREATE = 'feedback:create',
+  FEEDBACK_UPDATE = 'feedback:update',
+  FEEDBACK_DELETE = 'feedback:delete',
 }
 
 export enum AuctionCategory {
@@ -193,4 +199,20 @@ export enum AuctionStatus {
   UPCOMING = 'UPCOMING',
   OPEN = 'OPEN',
   CLOSED = 'CLOSED',
+}
+
+export enum FeedbackCategory {
+  CLEANLINESS = 'CLEANLINESS',
+  SECURITY = 'SECURITY',
+  WIFI = 'WIFI',
+  FOOD_BEVERAGE = 'FOOD_BEVERAGE',
+  STAFF_SERVICE = 'STAFF_SERVICE',
+  FACILITIES = 'FACILITIES',
+  OTHER = 'OTHER',
+}
+
+export enum FeedbackStatus {
+  NEW = 'NEW',
+  IN_PROGRESS = 'IN_PROGRESS',
+  RESOLVED = 'RESOLVED',
 }

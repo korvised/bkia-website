@@ -8,6 +8,7 @@ import { BannerModule } from '@/modules/banner';
 import { AirportModule } from '@/modules/airport';
 import { AuthModule } from '@/modules/auth';
 import { CounterModule } from '@/modules/counter';
+import { FeedbackModule } from '@/modules/feedback';
 import { FlightModule } from '@/modules/flight';
 import { LostFoundModule } from '@/modules/lost-found';
 import { NewsModule } from '@/modules/news';
@@ -34,6 +35,7 @@ import { AppService } from './app.service';
     BannerModule,
     AuthModule,
     CounterModule,
+    FeedbackModule,
     FlightModule,
     LostFoundModule,
     NewsModule,

@@ -4,14 +4,17 @@ import { Table } from "@/components/ui/table/table";
 import { Pagination } from "@/components/ui/table/pagination";
 import { usePermissions } from "@/hooks";
 import { PermissionSlug } from "@/types/enum.type";
-import { useGetAuctions } from "@/features/auction/hooks";
-import { useAuctionColumns } from "@/features/auction/hooks";
+import { useGetAuctions, useAuctionColumns } from "@/features/auction/hooks";
+import { AuctionFilters } from "@/features/auction/components";
 
 export function AuctionListPage() {
   const {
     data,
+    filters,
     isLoading,
     isFetching,
+    handleFilterChange,
+    handleResetFilters,
     handlePageChange,
     handlePageSizeChange,
     handleCreate,
@@ -58,6 +61,13 @@ export function AuctionListPage() {
         )}
       </div>
 
+      {/* Filters */}
+      <AuctionFilters
+        filters={filters}
+        onFilterChange={handleFilterChange}
+        onReset={handleResetFilters}
+      />
+
       {/* Table */}
       <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
         <Table
@@ -65,7 +75,7 @@ export function AuctionListPage() {
           data={data?.data ?? []}
           isLoading={isLoading || isFetching}
           rowKey={(item) => item.id}
-          emptyMessage="No auctions yet. Create your first procurement auction."
+          emptyMessage="No auctions found. Try adjusting your filters or create a new auction."
         />
         {data && data.meta.total > 0 && (
           <Pagination

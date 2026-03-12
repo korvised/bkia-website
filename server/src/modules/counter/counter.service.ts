@@ -16,13 +16,19 @@ export class CounterService {
   ) {}
 
   async findAll(query: QueryCounterDto) {
-    const { terminal, isActive = '' } = query;
+    const { terminal, isActive = '', search } = query;
     const qb = this.counterRepo.createQueryBuilder('c');
 
     if (terminal) qb.andWhere('c.terminal = :terminal', { terminal });
 
     if (isActive === 'true') qb.andWhere('c.isActive = true');
     if (isActive === 'false') qb.andWhere('c.isActive = false');
+
+    if (search) {
+      qb.andWhere('LOWER(c.name) LIKE :term', {
+        term: `%${search.toLowerCase()}%`,
+      });
+    }
 
     qb.orderBy('c.name', 'ASC');
 

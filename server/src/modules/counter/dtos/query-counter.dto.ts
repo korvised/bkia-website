@@ -1,4 +1,4 @@
-import { IsBooleanString, IsEnum, IsOptional } from 'class-validator';
+import { IsBooleanString, IsEnum, IsOptional, IsString } from 'class-validator';
 import { Terminal } from '@/types/enum';
 
 export class QueryCounterDto {
@@ -9,4 +9,8 @@ export class QueryCounterDto {
   @IsOptional()
   @IsBooleanString()
   isActive?: string;
+
+  @IsOptional()
+  @IsString()
+  search?: string;
 }

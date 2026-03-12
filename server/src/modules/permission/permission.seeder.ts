@@ -88,6 +88,12 @@ const DEFAULT_PERMISSIONS: PermissionSeed[] = [
   { name: 'Create Auction', slug: PermissionSlug.AUCTION_CREATE, description: 'Create procurement auctions' },
   { name: 'Update Auction', slug: PermissionSlug.AUCTION_UPDATE, description: 'Update procurement auctions' },
   { name: 'Delete Auction', slug: PermissionSlug.AUCTION_DELETE, description: 'Delete procurement auctions' },
+
+  // Feedback
+  { name: 'View Feedback', slug: PermissionSlug.FEEDBACK_READ, description: 'View passenger feedback submissions' },
+  { name: 'Create Feedback', slug: PermissionSlug.FEEDBACK_CREATE, description: 'Create feedback entries' },
+  { name: 'Update Feedback', slug: PermissionSlug.FEEDBACK_UPDATE, description: 'Update feedback status' },
+  { name: 'Delete Feedback', slug: PermissionSlug.FEEDBACK_DELETE, description: 'Delete feedback submissions' },
 ];
 
 @Injectable()

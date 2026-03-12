@@ -11,6 +11,7 @@ import type { ICounter, ICounterFilter } from "@/features/counter/types";
 const defaultFilters: ICounterFilter = {
   terminal: "",
   isActive: "",
+  search: "",
 };
 
 export function useGetCounters() {
