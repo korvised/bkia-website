@@ -49,7 +49,8 @@ function toDateInput(iso: string): string {
 }
 
 function newDocRow(): INewDocumentRow {
-  return { id: crypto.randomUUID(), file: null, fileName: { en: "", lo: "", zh: "" } };
+  const id = Math.random().toString(36).slice(2) + Date.now().toString(36);
+  return { id, file: null, fileName: { en: "", lo: "", zh: "" } };
 }
 
 // ─── Props ───────────────────────────────────────────────────────────────────
