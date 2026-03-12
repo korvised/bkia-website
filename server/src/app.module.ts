@@ -3,6 +3,7 @@ import { DatabaseModule } from '@/database';
 import { ConfigModule } from '@/common/config';
 import { S3Module } from '@/common/s3';
 import { AirlineModule } from '@/modules/airline';
+import { AuctionModule } from '@/modules/auction';
 import { BannerModule } from '@/modules/banner';
 import { AirportModule } from '@/modules/airport';
 import { AuthModule } from '@/modules/auth';
@@ -29,6 +30,7 @@ import { AppService } from './app.service';
     // Main Module,
     AirlineModule,
     AirportModule,
+    AuctionModule,
     BannerModule,
     AuthModule,
     CounterModule,

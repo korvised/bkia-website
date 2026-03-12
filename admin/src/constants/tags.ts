@@ -10,3 +10,4 @@ export const LOST_FOUND_TAG = "lost-found" as const;
 export const NOTICE_TAG = "notice" as const;
 export const NEWS_TAG = "news" as const;
 export const BANNER_TAG = "banner" as const;
+export const AUCTION_TAG = "auction" as const;

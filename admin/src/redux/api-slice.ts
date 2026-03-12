@@ -3,6 +3,7 @@ import { axiosBaseQuery } from "./axios-base-query.ts";
 import {
   AIRLINE_TAG,
   AIRPORT_TAG,
+  AUCTION_TAG,
   BANNER_TAG,
   COUNTER_TAG,
   FLIGHT_TAG,
@@ -19,5 +20,5 @@ export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: axiosBaseQuery(),
   endpoints: () => ({}),
-  tagTypes: [AIRLINE_TAG, AIRPORT_TAG, BANNER_TAG, COUNTER_TAG, FLIGHT_TAG, LOST_FOUND_TAG, NEWS_TAG, NOTICE_TAG, ROUTE_TAG, USER_TAG, ROLE_TAG, PERMISSION_TAG],
+  tagTypes: [AIRLINE_TAG, AIRPORT_TAG, AUCTION_TAG, BANNER_TAG, COUNTER_TAG, FLIGHT_TAG, LOST_FOUND_TAG, NEWS_TAG, NOTICE_TAG, ROUTE_TAG, USER_TAG, ROLE_TAG, PERMISSION_TAG],
 });

@@ -29,6 +29,7 @@ export class RoleSeeder implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
+    if (process.env.SEED_ROLES !== 'true') return;
     await this.seedRoles();
   }
 

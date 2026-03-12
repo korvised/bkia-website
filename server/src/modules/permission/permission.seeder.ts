@@ -82,6 +82,12 @@ const DEFAULT_PERMISSIONS: PermissionSeed[] = [
   { name: 'Create Banner', slug: PermissionSlug.BANNER_CREATE, description: 'Create homepage banner slides' },
   { name: 'Update Banner', slug: PermissionSlug.BANNER_UPDATE, description: 'Update homepage banner slides' },
   { name: 'Delete Banner', slug: PermissionSlug.BANNER_DELETE, description: 'Delete homepage banner slides' },
+
+  // Auction
+  { name: 'View Auctions', slug: PermissionSlug.AUCTION_READ, description: 'View procurement auctions' },
+  { name: 'Create Auction', slug: PermissionSlug.AUCTION_CREATE, description: 'Create procurement auctions' },
+  { name: 'Update Auction', slug: PermissionSlug.AUCTION_UPDATE, description: 'Update procurement auctions' },
+  { name: 'Delete Auction', slug: PermissionSlug.AUCTION_DELETE, description: 'Delete procurement auctions' },
 ];
 
 @Injectable()

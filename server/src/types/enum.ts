@@ -171,4 +171,26 @@ export enum PermissionSlug {
   BANNER_CREATE = 'banner:create',
   BANNER_UPDATE = 'banner:update',
   BANNER_DELETE = 'banner:delete',
+
+  // Auction
+  AUCTION_READ = 'auction:read',
+  AUCTION_CREATE = 'auction:create',
+  AUCTION_UPDATE = 'auction:update',
+  AUCTION_DELETE = 'auction:delete',
+}
+
+export enum AuctionCategory {
+  EQUIPMENT = 'EQUIPMENT',
+  CONSTRUCTION = 'CONSTRUCTION',
+  SERVICE = 'SERVICE',
+  IT = 'IT',
+  CONSULTING = 'CONSULTING',
+  MAINTENANCE = 'MAINTENANCE',
+  OTHER = 'OTHER',
+}
+
+export enum AuctionStatus {
+  UPCOMING = 'UPCOMING',
+  OPEN = 'OPEN',
+  CLOSED = 'CLOSED',
 }

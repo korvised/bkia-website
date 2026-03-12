@@ -2,21 +2,21 @@ import type { IconType } from "react-icons";
 import {
   LuBell,
   LuBriefcase,
-  LuFileText,
+  LuGavel,
+  LuHeadphones,
   LuImage,
+  LuKey,
   LuMapPin,
   LuNetwork,
   LuNewspaper,
+  LuPackageSearch,
   LuPlane,
   LuPlaneTakeoff,
   LuRailSymbol,
   LuRoute,
   LuSettings,
-  LuKey,
   LuShield,
   LuUsers,
-  LuPackageSearch,
-  LuHeadphones,
 } from "react-icons/lu";
 import {
   CONTENT_ACCESS_ROLES,
@@ -118,6 +118,7 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
         ...CONTENT_ACCESS_ROLES.NEWS_MANAGEMENT,
         ...CONTENT_ACCESS_ROLES.NOTICE_MANAGEMENT,
         ...CONTENT_ACCESS_ROLES.BANNER_MANAGEMENT,
+        ...CONTENT_ACCESS_ROLES.AUCTION_MANAGEMENT,
         ...CONTENT_ACCESS_ROLES.CAREERS_MANAGEMENT,
         ...CONTENT_ACCESS_ROLES.BIDDING_MANAGEMENT,
       ]),
@@ -160,18 +161,23 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
         ],
       },
       {
+        name: "Auctions",
+        path: "/content/auctions",
+        icon: LuGavel,
+        allowRoles: CONTENT_ACCESS_ROLES.AUCTION_MANAGEMENT,
+        allowPermissions: [
+          PermissionSlug.AUCTION_READ,
+          PermissionSlug.AUCTION_CREATE,
+          PermissionSlug.AUCTION_UPDATE,
+          PermissionSlug.AUCTION_DELETE,
+        ],
+      },
+      {
         // ADMIN_ROLES only — no STAFF access, no permissions needed
         name: "Careers",
         path: "/content/careers",
         icon: LuBriefcase,
         allowRoles: CONTENT_ACCESS_ROLES.CAREERS_MANAGEMENT,
-      },
-      {
-        // ADMIN_ROLES only — no STAFF access, no permissions needed
-        name: "Bidding",
-        path: "/content/bidding",
-        icon: LuFileText,
-        allowRoles: CONTENT_ACCESS_ROLES.BIDDING_MANAGEMENT,
       },
     ],
   },
@@ -254,7 +260,8 @@ export const hasAccessToItem = (
   if (
     userRoles.includes(UserRole.ADMIN) ||
     userRoles.includes(UserRole.SUPER_ADMIN)
-  ) return true;
+  )
+    return true;
 
   // STAFF must have at least one matching permission
   if (!userPermissions || userPermissions.length === 0) return false;
@@ -272,7 +279,12 @@ export const getFilteredNavigationGroups = (
 
     // Filter items within the group (role + permission check)
     const accessibleItems = group.items.filter((item) =>
-      hasAccessToItem(item.allowRoles, userRoles, item.allowPermissions, userPermissions),
+      hasAccessToItem(
+        item.allowRoles,
+        userRoles,
+        item.allowPermissions,
+        userPermissions,
+      ),
     );
 
     // Only include group if it has at least one accessible item
@@ -280,7 +292,12 @@ export const getFilteredNavigationGroups = (
   }).map((group) => ({
     ...group,
     items: group.items.filter((item) =>
-      hasAccessToItem(item.allowRoles, userRoles, item.allowPermissions, userPermissions),
+      hasAccessToItem(
+        item.allowRoles,
+        userRoles,
+        item.allowPermissions,
+        userPermissions,
+      ),
     ),
   }));
 };

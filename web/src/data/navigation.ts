@@ -383,13 +383,17 @@ export const navigation: NavItem[] = [
         href: "/about/careers",
       },
       {
-        label: { en: "Bidding", lo: "ການປະມູນ", zh: "招标采购" },
-        description: {
-          en: "Tenders and business opportunities",
-          lo: "ການປະມູນ ແລະ ໂອກາດທາງທຸລະກິດ",
-          zh: "招标项目与商业机会",
+        label: {
+          en: "Auctions",
+          lo: "ການປະມູນ",
+          zh: "拍卖招标",
         },
-        href: "/about/procurement",
+        description: {
+          en: "Explore bidding documents and procurement opportunities",
+          lo: "ຄົ້ນຫາເອກະສານການປະມູນ ແລະ ໂອກາດການຈັດຊື້",
+          zh: "查看招标文件与采购机会",
+        },
+        href: "/about/auctions",
       },
     ],
     featuredContent: {
