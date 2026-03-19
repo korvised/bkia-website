@@ -1,6 +1,6 @@
 ```shell
 # Remote to EC2 ubuntu server
-ssh -i bkia-website.pem ubuntu@43.209.12.40
+ssh -i bkia-website.pem ubuntu@43.208.237.238
 
 # HTTPS with Credential Caching (Not recommended for EC2)
 git config --global credential.helper store
