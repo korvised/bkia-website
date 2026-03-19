@@ -6,8 +6,8 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { tProfile } from "@/data/i18n/about/profile";
 
 export function HistorySection({ lang }: { lang: Lang }) {
-  const textAnim = useScrollAnimation({ threshold: 0.1 });
-  const imgAnim = useScrollAnimation({ threshold: 0.1 });
+  const { animRef: textRef, isVisible: textVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { animRef: imgRef, isVisible: imgVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
     <section className="bg-white py-16 sm:py-20">
@@ -15,9 +15,9 @@ export function HistorySection({ lang }: { lang: Lang }) {
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Text */}
           <div
-            ref={textAnim.ref}
+            ref={textRef}
             className={`transition-all duration-700 ${
-              textAnim.isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+              textVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             }`}
           >
             <div className="mb-3 flex items-center gap-3">
@@ -47,9 +47,9 @@ export function HistorySection({ lang }: { lang: Lang }) {
            * Photo: front exterior of terminal, daytime, clear sky, from the arrival road.
            */}
           <div
-            ref={imgAnim.ref}
+            ref={imgRef}
             className={`relative overflow-hidden rounded-2xl shadow-xl transition-all duration-700 delay-200 ${
-              imgAnim.isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+              imgVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
             }`}
           >
             <div className="flex aspect-[4/3] w-full flex-col items-center justify-center bg-gradient-to-br from-[#d0f1f2] to-[#b2e8ea]">

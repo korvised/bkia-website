@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 interface UseScrollAnimationOptions {
   threshold?: number;
@@ -16,37 +16,35 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   } = options;
 
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
+  const animRef = useCallback(
+    (element: HTMLDivElement | null) => {
+      if (!element) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (triggerOnce) {
-            observer.unobserve(element);
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            if (triggerOnce) {
+              observer.unobserve(element);
+            }
+          } else if (!triggerOnce) {
+            setIsVisible(false);
           }
-        } else if (!triggerOnce) {
-          setIsVisible(false);
-        }
-      },
-      {
-        threshold,
-        rootMargin,
-      },
-    );
+        },
+        { threshold, rootMargin },
+      );
 
-    observer.observe(element);
+      observer.observe(element);
 
-    return () => {
-      observer.disconnect();
-    };
-  }, [threshold, rootMargin, triggerOnce]);
+      return () => {
+        observer.disconnect();
+      };
+    },
+    [threshold, rootMargin, triggerOnce],
+  );
 
-  return { ref, isVisible };
+  return { animRef, isVisible };
 }
 
 // Hook for batch animations
@@ -57,39 +55,33 @@ export function useScrollAnimationBatch(
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+  const setRef = useCallback(
+    (index: number) =>
+      (el: HTMLDivElement | null) => {
+        const prev = refs.current[index];
+        refs.current[index] = el;
 
-    refs.current.forEach((element, index) => {
-      if (!element) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setVisibleItems((prev) => new Set(prev).add(index));
-            if (options.triggerOnce !== false) {
-              observer.unobserve(element);
-            }
-          }
-        },
-        {
-          threshold: options.threshold || 0.1,
-          rootMargin: options.rootMargin || "0px 0px -50px 0px",
-        },
-      );
-
-      observer.observe(element);
-      observers.push(observer);
-    });
-
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
-    };
-  }, [count, options.threshold, options.rootMargin, options.triggerOnce]);
-
-  const setRef = (index: number) => (el: HTMLDivElement | null) => {
-    refs.current[index] = el;
-  };
+        if (el && !prev) {
+          const observer = new IntersectionObserver(
+            ([entry]) => {
+              if (entry.isIntersecting) {
+                setVisibleItems((s) => new Set(s).add(index));
+                if (options.triggerOnce !== false) {
+                  observer.unobserve(el);
+                }
+              }
+            },
+            {
+              threshold: options.threshold ?? 0.1,
+              rootMargin: options.rootMargin ?? "0px 0px -50px 0px",
+            },
+          );
+          observer.observe(el);
+        }
+      },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [count, options.threshold, options.rootMargin, options.triggerOnce],
+  );
 
   return { setRef, visibleItems };
 }

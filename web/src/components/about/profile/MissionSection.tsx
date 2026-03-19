@@ -38,16 +38,16 @@ const MISSIONS = (lang: Lang) => [
 
 export function MissionSection({ lang }: { lang: Lang }) {
   const missions = MISSIONS(lang);
-  const titleAnim = useScrollAnimation({ threshold: 0.2 });
+  const { animRef: titleRef, isVisible: titleVisible } = useScrollAnimation({ threshold: 0.2 });
   const { setRef, visibleItems } = useScrollAnimationBatch(missions.length, { threshold: 0.15 });
 
   return (
     <section className="bg-[#f5fbfc] py-16 sm:py-20">
       <div className="container">
         <div
-          ref={titleAnim.ref}
+          ref={titleRef}
           className={`mb-12 text-center transition-all duration-700 ${
-            titleAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
           <span className="mb-2 inline-block text-sm font-bold uppercase tracking-widest text-[#00AAAC]">

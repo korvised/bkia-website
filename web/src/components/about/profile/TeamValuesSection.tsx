@@ -48,7 +48,7 @@ const TEAM_VALUES = (lang: Lang) => [
 
 export function TeamValuesSection({ lang }: { lang: Lang }) {
   const values = TEAM_VALUES(lang);
-  const titleAnim = useScrollAnimation({ threshold: 0.2 });
+  const { animRef: titleRef, isVisible: titleVisible } = useScrollAnimation({ threshold: 0.2 });
   const { setRef, visibleItems } = useScrollAnimationBatch(values.length, { threshold: 0.1 });
 
   return (
@@ -56,9 +56,9 @@ export function TeamValuesSection({ lang }: { lang: Lang }) {
       <div className="container">
         {/* Section title */}
         <div
-          ref={titleAnim.ref}
+          ref={titleRef}
           className={`mb-12 text-center transition-all duration-700 ${
-            titleAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
           <span className="mb-2 inline-block text-sm font-bold uppercase tracking-widest text-[#00AAAC]">
@@ -69,7 +69,7 @@ export function TeamValuesSection({ lang }: { lang: Lang }) {
           </h2>
           {/* T·E·A·M decorative tiles */}
           <div className="mt-5 flex justify-center gap-1.5">
-            {values.map(({ letter, bg }, i) => (
+            {values.map(({ letter, bg }) => (
               <span
                 key={letter}
                 className={`inline-flex h-12 w-12 items-center justify-center rounded-xl text-2xl font-black text-white shadow-sm ${bg}`}
@@ -82,7 +82,7 @@ export function TeamValuesSection({ lang }: { lang: Lang }) {
 
         {/* Cards */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {values.map(({ letter, word, text, color, bg, textColor, bgLight }, i) => (
+          {values.map(({ letter, word, text, color, textColor, bgLight }, i) => (
             <div
               key={letter + word}
               ref={setRef(i)}

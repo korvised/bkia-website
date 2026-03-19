@@ -30,7 +30,7 @@ function AnimatedDiv({
   delay?: number;
   animation?: "up" | "left" | "right" | "scale";
 }) {
-  const { ref, isVisible } = useScrollAnimation({
+  const { animRef, isVisible } = useScrollAnimation({
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
   });
@@ -44,7 +44,7 @@ function AnimatedDiv({
 
   return (
     <div
-      ref={ref}
+      ref={animRef}
       className={`${animationClass} ${isVisible ? "visible" : ""} ${className}`}
       style={{ transitionDelay: `${delay}s` }}
     >

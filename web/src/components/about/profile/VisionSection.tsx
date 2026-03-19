@@ -15,7 +15,7 @@ import { tProfile } from "@/data/i18n/about/profile";
  * Suggested photo: runway/apron at golden hour OR terminal interior with high ceilings.
  */
 export function VisionSection({ lang }: { lang: Lang }) {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 });
+  const { animRef, isVisible } = useScrollAnimation({ threshold: 0.15 });
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#f0fbfc] via-[#e6f7f8] to-[#d4f2f3] py-20 sm:py-28">
@@ -24,7 +24,7 @@ export function VisionSection({ lang }: { lang: Lang }) {
 
       <div className="container relative">
         <div
-          ref={ref}
+          ref={animRef}
           className={`mx-auto max-w-4xl transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
