@@ -101,6 +101,17 @@ export function FeedbackDetailPage() {
     index: number;
   } | null>(null);
 
+  const openLightbox = useCallback(
+    (file: IFile) => {
+      const imageFiles = (feedback?.files ?? []).filter((f) =>
+        f.mimeType.startsWith("image/"),
+      );
+      const idx = imageFiles.findIndex((f) => f.id === file.id);
+      setLightbox({ images: imageFiles, index: idx });
+    },
+    [feedback?.files],
+  );
+
   const canUpdate = can(PermissionSlug.FEEDBACK_UPDATE);
   const canDelete = can(PermissionSlug.FEEDBACK_DELETE);
 
@@ -165,17 +176,8 @@ export function FeedbackDetailPage() {
     STATUS_OPTIONS.find((o) => o.value === selectedStatus) ?? null;
 
   const isImageFile = (file: IFile) => file.mimeType.startsWith("image/");
-
   const imageFiles = (feedback.files ?? []).filter(isImageFile);
   const otherFiles = (feedback.files ?? []).filter((f) => !isImageFile(f));
-
-  const openLightbox = useCallback(
-    (file: IFile) => {
-      const idx = imageFiles.findIndex((f) => f.id === file.id);
-      setLightbox({ images: imageFiles, index: idx });
-    },
-    [imageFiles],
-  );
 
   return (
     <div className="space-y-6">
