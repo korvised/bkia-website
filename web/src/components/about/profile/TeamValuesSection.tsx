@@ -1,10 +1,10 @@
 "use client";
 
+import { motion } from "motion/react";
 import type { Lang } from "@/types/language";
-import { useScrollAnimation, useScrollAnimationBatch } from "@/hooks/useScrollAnimation";
 import { tProfile } from "@/data/i18n/about/profile";
 
-// English words are fixed — they spell TEAM
+// English words spell T·E·A·M
 const EN_WORDS = ["Trust", "Excellence", "Accountability", "Mindfulness"] as const;
 
 const TEAM_VALUES = (lang: Lang) => [
@@ -48,18 +48,18 @@ const TEAM_VALUES = (lang: Lang) => [
 
 export function TeamValuesSection({ lang }: { lang: Lang }) {
   const values = TEAM_VALUES(lang);
-  const { animRef: titleRef, isVisible: titleVisible } = useScrollAnimation({ threshold: 0.2 });
-  const { setRef, visibleItems } = useScrollAnimationBatch(values.length, { threshold: 0.1 });
 
   return (
     <section className="bg-white py-16 sm:py-20">
       <div className="container">
-        {/* Section title */}
-        <div
-          ref={titleRef}
-          className={`mb-12 text-center transition-all duration-700 ${
-            titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
+
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+          className="mb-12 text-center"
         >
           <span className="mb-2 inline-block text-sm font-bold uppercase tracking-widest text-[#00AAAC]">
             {tProfile("valuesLabel", lang)}
@@ -67,31 +67,42 @@ export function TeamValuesSection({ lang }: { lang: Lang }) {
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
             {tProfile("valuesSubtitle", lang)}
           </h2>
-          {/* T·E·A·M decorative tiles */}
+
+          {/* T·E·A·M letter tiles — staggered pop-in */}
           <div className="mt-5 flex justify-center gap-1.5">
-            {values.map(({ letter, bg }) => (
-              <span
+            {values.map(({ letter, bg }, i) => (
+              <motion.span
                 key={letter}
+                initial={{ opacity: 0, scale: 0.5, y: 12 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.4,
+                  delay: 0.2 + i * 0.08,
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 18,
+                }}
                 className={`inline-flex h-12 w-12 items-center justify-center rounded-xl text-2xl font-black text-white shadow-sm ${bg}`}
               >
                 {letter}
-              </span>
+              </motion.span>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Cards */}
+        {/* Value cards — staggered reveal */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {values.map(({ letter, word, text, color, textColor, bgLight }, i) => (
-            <div
+            <motion.div
               key={letter + word}
-              ref={setRef(i)}
-              className={`group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200/80 transition-all duration-700 hover:-translate-y-1 hover:shadow-xl ${
-                visibleItems.has(i) ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
-              style={{ transitionDelay: visibleItems.has(i) ? `${i * 120}ms` : "0ms" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.55, delay: i * 0.1, ease: [0.25, 1, 0.5, 1] }}
+              className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200/80"
             >
-              {/* Bold top strip */}
+              {/* Colored top strip */}
               <div className={`h-2 w-full bg-gradient-to-r ${color}`} />
 
               <div className="p-6">
@@ -114,9 +125,10 @@ export function TeamValuesSection({ lang }: { lang: Lang }) {
 
                 <p className="text-sm leading-relaxed text-gray-500">{text}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

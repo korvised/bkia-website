@@ -38,7 +38,7 @@ export const profile = {
     zh: "博胶国际机场有限公司是大湾区投资发展有限公司持股100%的全资子公司。",
   },
   historyPara2: {
-    en: "The company was established in 2021 and officially registered under Investment License No. 01/MIPP.BES dated 26 February 2021 and Enterprise Registration No. 102/MOIC.BKG dated 23 April 2021. Headquarters is located at Bokeo International Airport, Golden Triangle Special Economic Zone, Ban Nyai Simuangngang, Tonpheung District, Bokeo Province, Lao PDR.",
+    en: "The company was established in 2021 and officially registered under Investment License No. 01/MIPP.BES dated 26 February 2021 and Enterprise Registration No. 102/MOIC.BKG dated 23 April 2021. Headquarters is located at Bokeo International Airport, Golden Triangle Special Economic Zone, Ban Ngai Simuangngang, Tonpheung District, Bokeo Province, Lao PDR.",
     lo: "ບໍລິສັດໄດ້ກໍ່ຕັ້ງຂຶ້ນໃນປີ 2021 ແລະ ໄດ້ຈົດທະບຽນຢ່າງເປັນທາງການຕາມໃບອະນຸຍາດການລົງທຶນ ໝາຍເລກ 01/ກຜທ.ຫຂສພ ລົງວັນທີ 26 ກຸມພາ 2021 ແລະ ໃບທະບຽນວິສາຫະກິດ ໝາຍເລກ 102/ຄຂພສ.ບກ ລົງວັນທີ 23 ເມສາ 2021. ສຳນັກງານໃຫຍ່ຕັ້ງຢູ່ທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ, ເຂດເສດຖະກິດພິເສດສາມຫຼ່ຽມຄໍາ, ບ້ານໃຫຍ່ສີເມືອງງາມ, ເມືອງຕົ້ນເຜິ້ງ, ແຂວງບໍ່ແກ້ວ, ສປປ ລາວ.",
     zh: "公司于2021年成立，依据2021年2月26日颁发的投资许可证01/MIPP.BES号及2021年4月23日颁发的企业注册证102/MOIC.BKG号正式登记注册。总部位于老挝人民民主共和国博胶省敦评县大湾区金三角经济特区博胶国际机场。",
   },

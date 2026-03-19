@@ -62,7 +62,7 @@ export const navigation: NavItem[] = [
       lo: "ຕາລາງຖ້ຽວບິນ ແລະ ຂໍ້ມູນປັດຈຸບັນ",
       zh: "航班时刻表和实时更新",
     },
-    href: "/flights",
+    href: "/flights/departures",
     hasDropdown: true,
     menuItems: [
       {
@@ -125,7 +125,7 @@ export const navigation: NavItem[] = [
       lo: "ທຸກສິ່ງທີ່ທ່ານຕ້ອງການສຳລັບການເດີນທາງ",
       zh: "您旅程所需的一切信息",
     },
-    href: "/guides",
+    href: "/guides/departures",
     hasDropdown: true,
     menuItems: [
       {
@@ -218,7 +218,7 @@ export const navigation: NavItem[] = [
       lo: "ການຂົນສົ່ງ ແລະ ບ່ອນຈອດລົດ",
       zh: "地面交通和停车",
     },
-    href: "/transports",
+    href: "/transports/to-from-airport",
     hasDropdown: true,
     menuItems: [
       {
@@ -285,7 +285,7 @@ export const navigation: NavItem[] = [
       lo: "ສູນຊ່ວຍເຫຼືອຜູ້ໂດຍສານ",
       zh: "帮助中心和旅客服务",
     },
-    href: "/support",
+    href: "/support/notices",
     hasDropdown: true,
     menuItems: [
       {
@@ -352,7 +352,7 @@ export const navigation: NavItem[] = [
       lo: "ຂໍ້ມູນສະໜາມບິນ, ຂ່າວສານ ແລະ ທຸລະກິດ",
       zh: "机场概况、新闻与商务",
     },
-    href: "/about",
+    href: "/about/profile",
     hasDropdown: true,
     menuItems: [
       {
