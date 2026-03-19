@@ -31,12 +31,12 @@ export function RelatedServices({ lang }: RelatedServicesProps) {
   const { relatedServices: t } = createDepartureGuideI18n(lang);
 
   return (
-    <div className="bg-white pt-8">
+    <section className="bg-gray-50 py-10">
       <div className="container">
-        <div className="mb-6">
-          <h3 className="mb-2 text-xl font-bold text-gray-900">{t.title}</h3>
-          <p className="text-sm text-gray-600">{t.subtitle}</p>
-        </div>
+        <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+          {t.title}
+        </p>
+        <p className="mb-6 text-sm text-gray-500">{t.subtitle}</p>
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
           {sortedServices.map((service) => {
@@ -50,7 +50,7 @@ export function RelatedServices({ lang }: RelatedServicesProps) {
               <Link
                 key={service.id}
                 href={href}
-                className={`group flex flex-col items-center gap-3 rounded-lg border p-4 transition-all ${colorClasses.border} ${colorClasses.hover}`}
+                className={`group flex flex-col items-center gap-3 rounded-xl border bg-white p-4 transition-all ${colorClasses.border} ${colorClasses.hover}`}
               >
                 <div
                   className={`flex h-14 w-14 items-center justify-center rounded-full transition-colors ${colorClasses.bg}`}
@@ -71,15 +71,13 @@ export function RelatedServices({ lang }: RelatedServicesProps) {
           })}
         </div>
 
-        <div className="mt-6 border-t border-gray-200 pt-6">
-          <div className="rounded-lg bg-blue-50 p-4">
-            <p className="text-sm text-gray-800">
-              <strong>ℹ️ {t.needHelp}</strong> {t.helpText}{" "}
-              <strong>+856 84 260 179</strong> {t.forAssistance}
-            </p>
-          </div>
+        <div className="mt-6 flex items-center gap-2 border-t border-gray-200 pt-5 text-sm text-gray-500">
+          <span className="font-medium text-gray-700">{t.needHelp}</span>
+          {t.helpText}{" "}
+          <span className="font-semibold text-[#00AAAC]">+856 84 260 179</span>{" "}
+          {t.forAssistance}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

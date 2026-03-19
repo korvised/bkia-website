@@ -1,9 +1,5 @@
 import Image from "next/image";
-import {
-  MdOutlineLuggage,
-  MdOutlineWarning,
-  MdOutlineDiamond,
-} from "react-icons/md";
+import { MdOutlineLuggage, MdOutlineDiamond } from "react-icons/md";
 import { BsBoxSeam } from "react-icons/bs";
 import { TbAlertTriangle } from "react-icons/tb";
 import { Lang } from "@/types/language";
@@ -17,247 +13,199 @@ export function BaggageContent({ lang }: BaggageContentProps) {
   const { baggage: t } = createDepartureGuideI18n(lang);
 
   return (
-    <div className="space-y-8">
-      {/* Title Section - Full Width */}
-      <div>
-        <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
-          {t.title}
-        </h2>
-        <p className="text-lg leading-relaxed text-gray-700">{t.intro}</p>
-      </div>
-
-      {/* Main Content with Image */}
-      <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
-        {/* Left side - Illustration (aligned to start, not centered) */}
-        <div className="flex justify-center lg:w-96 lg:flex-none">
-          <div className="relative h-72 w-full max-w-lg lg:h-[500px] lg:max-w-none">
-            <Image
-              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/baggage.png"
-              alt="baggage information at bkia"
-              fill
-              className="object-contain object-top"
-              priority
-              sizes="(max-width: 1024px) 100vw, 400px"
-            />
+    <>
+      {/* ── Hero + Baggage Types ─────────────────────────────── */}
+      <section className="bg-[#f0fbfc] py-12">
+        <div className="container">
+          {/* Title */}
+          <div className="mb-10 space-y-2">
+            <h2 className="text-3xl font-bold text-gray-900 lg:text-4xl">
+              {t.title}
+            </h2>
+            <p className="max-w-2xl text-gray-500 lg:text-lg">{t.intro}</p>
           </div>
-        </div>
 
-        {/* Right side - Content */}
-        <div className="flex-1 space-y-8">
-          {/* Baggage Types - Grid */}
-          <div className="grid gap-6 sm:grid-cols-2">
-            {/* Checked Baggage */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="bg-primary-100 flex h-10 w-10 items-center justify-center rounded-lg">
-                  <BsBoxSeam className="text-primary-600 h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900">
-                  {t.checkedBaggageTitle}
-                </h3>
-              </div>
-              <p className="mb-4 text-sm leading-relaxed text-gray-600">
-                {t.checkedBaggageDesc}
-              </p>
-
-              <div className="space-y-3 rounded-lg bg-gray-50 p-4">
-                <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">
-                    {t.weightAllowance}
-                  </span>
-                  <span className="text-sm font-medium text-gray-900">
-                    {t.weightAllowanceVal}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">
-                    {t.maxDimensions}
-                  </span>
-                  <span className="text-sm font-medium text-gray-900">
-                    {t.maxDimensionsVal}
-                  </span>
-                </div>
-              </div>
+          {/* Image + Specs */}
+          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="relative h-72 w-full lg:h-[500px]">
+              <Image
+                src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/baggage.png"
+                alt="baggage information at bkia"
+                fill
+                className="object-contain object-top"
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
 
-            {/* Cabin Baggage */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100">
-                  <MdOutlineLuggage className="h-5 w-5 text-blue-600" />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900">
-                  {t.cabinBaggageTitle}
-                </h3>
-              </div>
-              <p className="mb-4 text-sm leading-relaxed text-gray-600">
-                {t.cabinBaggageDesc}
-              </p>
-
-              <div className="space-y-3 rounded-lg bg-gray-50 p-4">
-                <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">
-                    {t.weightAllowance}
-                  </span>
-                  <span className="text-sm font-medium text-gray-900">
-                    {t.cabinWeightVal}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">
-                    {t.maxDimensions}
-                  </span>
-                  <span className="text-sm font-medium text-gray-900">
-                    {t.cabinDimensionsVal}
-                  </span>
-                </div>
-                <div className="border-t border-gray-200 pt-3">
-                  <p className="text-sm text-gray-600">
-                    <span className="font-medium">{t.personalItem}:</span>{" "}
-                    {t.personalItemDesc}
+            <div className="space-y-10">
+              {/* Checked baggage */}
+              <div>
+                <div className="mb-2 flex items-center gap-2">
+                  <BsBoxSeam className="h-4 w-4 text-[#00AAAC]" />
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+                    {t.checkedBaggageTitle}
                   </p>
                 </div>
+                <p className="mb-3 text-sm text-gray-600">
+                  {t.checkedBaggageDesc}
+                </p>
+                <div className="divide-y divide-[#c8ecee]">
+                  <div className="flex items-center justify-between py-3">
+                    <span className="text-sm text-gray-500">
+                      {t.weightAllowance}
+                    </span>
+                    <span className="text-sm font-semibold text-gray-900">
+                      {t.weightAllowanceVal}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between py-3">
+                    <span className="text-sm text-gray-500">
+                      {t.maxDimensions}
+                    </span>
+                    <span className="text-sm font-semibold text-gray-900">
+                      {t.maxDimensionsVal}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Cabin baggage */}
+              <div>
+                <div className="mb-2 flex items-center gap-2">
+                  <MdOutlineLuggage className="h-4 w-4 text-sky-500" />
+                  <p className="text-xs font-bold uppercase tracking-widest text-sky-600">
+                    {t.cabinBaggageTitle}
+                  </p>
+                </div>
+                <p className="mb-3 text-sm text-gray-600">
+                  {t.cabinBaggageDesc}
+                </p>
+                <div className="divide-y divide-[#c8ecee]">
+                  <div className="flex items-center justify-between py-3">
+                    <span className="text-sm text-gray-500">
+                      {t.weightAllowance}
+                    </span>
+                    <span className="text-sm font-semibold text-gray-900">
+                      {t.cabinWeightVal}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between py-3">
+                    <span className="text-sm text-gray-500">
+                      {t.maxDimensions}
+                    </span>
+                    <span className="text-sm font-semibold text-gray-900">
+                      {t.cabinDimensionsVal}
+                    </span>
+                  </div>
+                  <div className="py-3">
+                    <span className="text-sm text-gray-500">
+                      <span className="font-medium text-gray-700">
+                        {t.personalItem}:{" "}
+                      </span>
+                      {t.personalItemDesc}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Prohibited Items */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <MdOutlineWarning className="h-6 w-6 text-red-600" />
-              <h3 className="text-xl font-bold text-gray-900">
-                {t.prohibitedTitle}
-              </h3>
+      {/* ── Prohibited + Cabin Restrictions + Valuables ──────── */}
+      <section className="bg-white py-12">
+        <div className="container space-y-14">
+          {/* Prohibited items */}
+          <div>
+            <div className="mb-5 flex items-start gap-3 border-l-2 border-red-400 pl-4">
+              <div>
+                <p className="mb-1 text-xs font-bold uppercase tracking-widest text-red-600">
+                  {t.prohibitedTitle}
+                </p>
+                <p className="text-sm text-gray-600">{t.prohibitedDesc}</p>
+              </div>
             </div>
-            <p className="text-base leading-relaxed text-gray-600">
-              {t.prohibitedDesc}
-            </p>
-
-            <div className="rounded-xl border border-red-200 bg-red-50 p-5">
-              <ul className="grid gap-3 sm:grid-cols-2">
-                <li className="flex items-start gap-2">
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                t.prohibitedExplosives,
+                t.prohibitedWeapons,
+                t.prohibitedChemicals,
+                t.prohibitedBatteries,
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-2">
                   <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.prohibitedExplosives}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.prohibitedWeapons}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.prohibitedChemicals}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.prohibitedBatteries}
-                  </span>
-                </li>
-              </ul>
+                  <span className="text-sm text-gray-700">{item}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Cabin Restrictions */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <TbAlertTriangle className="h-6 w-6 text-amber-600" />
-              <h3 className="text-xl font-bold text-gray-900">
+          {/* Cabin restrictions + Valuables */}
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div>
+              <p className="mb-4 text-xs font-bold uppercase tracking-widest text-amber-600">
                 {t.cabinRestrictedTitle}
-              </h3>
-            </div>
-
-            <div className="rounded-xl border border-amber-200 bg-amber-50 p-5">
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-amber-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.cabinRestrictedLiquids}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-amber-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.cabinRestrictedSharp}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-amber-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.cabinRestrictedSports}
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Valuables */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <MdOutlineDiamond className="h-6 w-6 text-purple-600" />
-              <h3 className="text-xl font-bold text-gray-900">
-                {t.valuablesTitle}
-              </h3>
-            </div>
-            <p className="text-base leading-relaxed text-gray-600">
-              {t.valuablesDesc}
-            </p>
-
-            <div className="rounded-xl border border-gray-200 bg-white p-5">
-              <ul className="grid gap-3 sm:grid-cols-2">
-                <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                  <span className="text-sm text-gray-700">
-                    {t.valuableElectronics}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                  <span className="text-sm text-gray-700">
-                    {t.valuableJewelry}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                  <span className="text-sm text-gray-700">
-                    {t.valuableMedication}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="bg-primary-500 mt-1.5 h-2 w-2 shrink-0 rounded-full" />
-                  <span className="text-sm text-gray-700">
-                    {t.valuableKeys}
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Excess Baggage & Liability */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border border-gray-200 bg-blue-50 p-5">
-              <h3 className="mb-2 text-base font-semibold text-gray-900">
-                {t.excessTitle}
-              </h3>
-              <p className="mb-3 text-sm text-gray-700">{t.excessDesc}</p>
-              <p className="text-primary-600 text-sm font-medium">
-                {t.excessContact}
               </p>
+              <div className="space-y-3 border-l-2 border-amber-300 pl-4">
+                {[
+                  t.cabinRestrictedLiquids,
+                  t.cabinRestrictedSharp,
+                  t.cabinRestrictedSports,
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-amber-400" />
+                    <span className="text-sm text-gray-700">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="rounded-xl border border-gray-200 bg-gray-100 p-5">
-              <p className="text-xs leading-relaxed text-gray-600">
-                {t.liabilityNote}
-              </p>
+            <div>
+              <div className="mb-3 flex items-center gap-2">
+                <MdOutlineDiamond className="h-4 w-4 text-violet-500" />
+                <p className="text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+                  {t.valuablesTitle}
+                </p>
+              </div>
+              <p className="mb-4 text-sm text-gray-600">{t.valuablesDesc}</p>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {[
+                  t.valuableElectronics,
+                  t.valuableJewelry,
+                  t.valuableMedication,
+                  t.valuableKeys,
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#00AAAC]" />
+                    <span className="text-sm text-gray-700">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* ── Excess + Liability ───────────────────────────────── */}
+      <section className="bg-gray-50 py-10">
+        <div className="container grid gap-10 lg:grid-cols-2">
+          <div>
+            <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+              {t.excessTitle}
+            </p>
+            <p className="mb-2 text-sm text-gray-600">{t.excessDesc}</p>
+            <p className="text-sm font-medium text-[#00AAAC]">
+              {t.excessContact}
+            </p>
+          </div>
+          <div className="flex items-start gap-3 border-l-2 border-gray-300 pl-4">
+            <p className="text-xs leading-relaxed text-gray-500">
+              {t.liabilityNote}
+            </p>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

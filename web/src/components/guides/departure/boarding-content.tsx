@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CheckCircle, Clock, AlertCircle } from "lucide-react";
+import { CheckCircle, Clock } from "lucide-react";
 import {
   MdOutlineFlightTakeoff,
   MdOutlineAirlineSeatReclineNormal,
@@ -16,298 +16,226 @@ interface BoardingContentProps {
 export function BoardingContent({ lang }: BoardingContentProps) {
   const { boarding: t } = createDepartureGuideI18n(lang);
 
+  const boardingGroups = [
+    { label: t.priorityBoarding, desc: t.priorityBoardingDesc },
+    { label: t.economyRear, desc: t.economyRearDesc },
+    { label: t.economyFront, desc: t.economyFrontDesc },
+  ];
+
   return (
-    <div className="space-y-8">
-      {/* Title Section - Full Width */}
-      <div>
-        <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
-          {t.title}
-        </h2>
-        <p className="text-lg leading-relaxed text-gray-700">{t.intro}</p>
-      </div>
-
-      {/* Main Content with Image */}
-      <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
-        {/* Left side - Illustration */}
-        <div className="flex justify-center lg:w-96 lg:flex-none">
-          <div className="relative h-72 w-full max-w-lg lg:mt-4 lg:h-[500px] lg:max-w-none">
-            <Image
-              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/boarding.png"
-              alt="boarding at bkia"
-              fill
-              className="object-contain object-top"
-              priority
-              sizes="(max-width: 1024px) 100vw, 400px"
-            />
+    <>
+      {/* ── Hero + Boarding Time ─────────────────────────────── */}
+      <section className="bg-[#f0fbfc] py-12">
+        <div className="container">
+          {/* Title */}
+          <div className="mb-10 space-y-2">
+            <h2 className="text-3xl font-bold text-gray-900 lg:text-4xl">
+              {t.title}
+            </h2>
+            <p className="max-w-2xl text-gray-500 lg:text-lg">{t.intro}</p>
           </div>
-        </div>
 
-        {/* Right side - Content */}
-        <div className="flex-1 space-y-8">
-          {/* Boarding Time Section */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <Clock className="text-primary-600 h-6 w-6" />
-              <h3 className="text-xl font-bold text-gray-900">
-                {t.boardingTimeTitle}
-              </h3>
+          {/* Image + Boarding time */}
+          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="relative h-72 w-full lg:h-[500px]">
+              <Image
+                src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/boarding.png"
+                alt="boarding at bkia"
+                fill
+                className="object-contain object-top"
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
-            <p className="text-base leading-relaxed text-gray-600">
-              {t.boardingTimeDesc}
-            </p>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-gray-200 bg-white p-5">
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="text-sm text-gray-500">
-                    {t.boardingBegins}
-                  </span>
-                  <span className="text-primary-600 bg-primary-50 rounded-lg px-3 py-1 text-sm font-medium">
-                    {t.boardingBeginsTime}
-                  </span>
+            <div className="space-y-8">
+              <div>
+                <div className="mb-2 flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-[#00AAAC]" />
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+                    {t.boardingTimeTitle}
+                  </p>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">{t.gateCloses}</span>
-                  <span className="rounded-lg bg-red-50 px-3 py-1 text-sm font-medium text-red-600">
-                    {t.gateClosesTime}
-                  </span>
+                <p className="mb-4 text-sm text-gray-600">
+                  {t.boardingTimeDesc}
+                </p>
+                <div className="divide-y divide-[#c8ecee]">
+                  <div className="flex items-center justify-between py-3">
+                    <span className="text-sm text-gray-500">
+                      {t.boardingBegins}
+                    </span>
+                    <span className="rounded-lg bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">
+                      {t.boardingBeginsTime}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between py-3">
+                    <span className="text-sm text-gray-500">
+                      {t.gateCloses}
+                    </span>
+                    <span className="rounded-lg bg-red-50 px-3 py-1 text-sm font-medium text-red-600">
+                      {t.gateClosesTime}
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex items-center rounded-xl border border-amber-200 bg-amber-50 p-5">
-                <AlertCircle className="mr-3 h-5 w-5 shrink-0 text-amber-600" />
+              {/* Late passengers warning */}
+              <div className="flex items-start gap-3 border-l-2 border-amber-400 pl-4">
+                <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
                 <span className="text-sm text-amber-800">
                   {t.latePassengers}
                 </span>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Boarding Groups & Required Documents - Grid */}
-          <div className="grid gap-6 sm:grid-cols-2">
-            {/* Boarding Groups */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="bg-primary-100 flex h-10 w-10 items-center justify-center rounded-lg">
-                  <BsPersonCheck className="text-primary-600 h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900">
+      {/* ── Groups + Docs + Announcements ────────────────────── */}
+      <section className="bg-white py-12">
+        <div className="container space-y-14">
+          <div className="grid gap-12 lg:grid-cols-2">
+            {/* Boarding groups */}
+            <div>
+              <div className="mb-5 flex items-center gap-2">
+                <BsPersonCheck className="h-4 w-4 text-[#00AAAC]" />
+                <p className="text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
                   {t.boardingGroupsTitle}
-                </h3>
+                </p>
               </div>
-              <ol className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <span className="bg-primary-100 text-primary-700 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium">
-                    1
-                  </span>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">
-                      {t.priorityBoarding}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {t.priorityBoardingDesc}
-                    </p>
+              <div className="space-y-0 divide-y divide-gray-100">
+                {boardingGroups.map((group, i) => (
+                  <div key={i} className="flex items-start gap-4 py-4">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#00AAAC] text-xs font-bold text-white">
+                      {i + 1}
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900">
+                        {group.label}
+                      </p>
+                      <p className="text-xs text-gray-500">{group.desc}</p>
+                    </div>
                   </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="bg-primary-100 text-primary-700 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium">
-                    2
-                  </span>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">
-                      {t.economyRear}
-                    </p>
-                    <p className="text-xs text-gray-500">{t.economyRearDesc}</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="bg-primary-100 text-primary-700 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium">
-                    3
-                  </span>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">
-                      {t.economyFront}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {t.economyFrontDesc}
-                    </p>
-                  </div>
-                </li>
-              </ol>
+                ))}
+              </div>
             </div>
 
-            {/* Required Documents */}
-            <div className="rounded-xl border border-gray-200 bg-white p-5">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-100">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900">
+            {/* Required documents */}
+            <div>
+              <div className="mb-5 flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 text-emerald-500" />
+                <p className="text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
                   {t.requiredTitle}
-                </h3>
+                </p>
               </div>
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.requiredBoardingPass}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.requiredPassport}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
-                  <span className="text-sm text-gray-700">
-                    {t.requiredCabinBag}
-                  </span>
-                </li>
-              </ul>
-
-              <div className="mt-4 rounded-lg bg-gray-50 p-3">
-                <p className="mb-1 text-xs font-medium text-gray-900">
+              <div className="space-y-3">
+                {[
+                  t.requiredBoardingPass,
+                  t.requiredPassport,
+                  t.requiredCabinBag,
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                    <span className="text-sm text-gray-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 border-l-2 border-gray-200 pl-4">
+                <p className="mb-1 text-xs font-bold text-gray-600">
                   {t.gateCheckTitle}
                 </p>
-                <p className="text-xs text-gray-600">{t.gateCheckDesc}</p>
+                <p className="text-xs text-gray-500">{t.gateCheckDesc}</p>
               </div>
             </div>
           </div>
 
           {/* Announcements */}
-          <div className="border-primary-200 bg-primary-50 rounded-xl border p-5">
-            <div className="flex items-start gap-3">
-              <TbSpeakerphone className="text-primary-600 mt-0.5 h-5 w-5 shrink-0" />
-              <div>
-                <h4 className="mb-1 text-sm font-semibold text-gray-900">
-                  {t.announcementsTitle}
-                </h4>
-                <p className="text-sm text-gray-700">{t.announcementsDesc}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* In-Flight Regulations */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <MdOutlineAirlineSeatReclineNormal className="h-6 w-6 text-blue-600" />
-              <h3 className="text-xl font-bold text-gray-900">
-                {t.inFlightTitle}
-              </h3>
-            </div>
-
-            <div className="rounded-xl border border-gray-200 bg-white p-5">
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-400" />
-                  <span className="text-sm text-gray-700">{t.seatbelt}</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-400" />
-                  <span className="text-sm text-gray-700">{t.electronics}</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-400" />
-                  <span className="text-sm text-gray-700">
-                    {t.seatPosition}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-400" />
-                  <span className="text-sm text-gray-700">
-                    {t.overheadBins}
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Prohibited On Board */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <TbAlertTriangle className="h-6 w-6 text-red-600" />
-              <h3 className="text-xl font-bold text-gray-900">
-                {t.prohibitedTitle}
-              </h3>
-            </div>
-
-            <div className="rounded-xl border border-red-200 bg-red-50 p-5">
-              <ul className="mb-4 space-y-4">
-                <li className="flex items-start gap-3">
-                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm leading-relaxed text-gray-700">
-                    {t.prohibitedNoSmoking}
-                  </span>
-                </li>
-                {/* Merged Noise and Disturbance Row */}
-                <li className="flex items-start gap-3">
-                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm leading-relaxed text-gray-700">
-                    {t.prohibitedNoDisturbance}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm leading-relaxed text-gray-700">
-                    {t.prohibitedNoChaos}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                  <span className="text-sm leading-relaxed text-gray-700">
-                    {t.prohibitedEmergency}
-                  </span>
-                </li>
-              </ul>
-
-              <div className="mt-4 border-t border-red-200 pt-3">
-                <p className="text-xs font-bold tracking-wide text-red-700 uppercase">
-                  {t.prohibitedWarning}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Boarding Tips */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border border-gray-200 bg-white p-5">
-              <div className="mb-3 flex items-center gap-2">
-                <MdOutlineFlightTakeoff className="text-primary-500 h-5 w-5" />
-                <h4 className="text-base font-semibold text-gray-900">
-                  {t.tipsTitle}
-                </h4>
-              </div>
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
-                  <span className="text-sm text-gray-700">{t.tipEarly}</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
-                  <span className="text-sm text-gray-700">{t.tipCharge}</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="rounded-xl border border-gray-200 bg-white p-5">
-              <ul className="space-y-2 lg:mt-9">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
-                  <span className="text-sm text-gray-700">
-                    {t.tipEssentials}
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 h-4 w-4 shrink-0" />
-                  <span className="text-sm text-gray-700">{t.tipListen}</span>
-                </li>
-              </ul>
+          <div className="flex items-start gap-3">
+            <TbSpeakerphone className="mt-0.5 h-5 w-5 shrink-0 text-[#00AAAC]" />
+            <div>
+              <p className="mb-1 text-sm font-semibold text-gray-900">
+                {t.announcementsTitle}
+              </p>
+              <p className="text-sm text-gray-600">{t.announcementsDesc}</p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* ── In-Flight + Prohibited + Tips ────────────────────── */}
+      <section className="bg-gray-50 py-12">
+        <div className="container space-y-14">
+          {/* In-flight regulations */}
+          <div>
+            <div className="mb-5 flex items-center gap-2">
+              <MdOutlineAirlineSeatReclineNormal className="h-4 w-4 text-sky-500" />
+              <p className="text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+                {t.inFlightTitle}
+              </p>
+            </div>
+            <div className="space-y-3">
+              {[
+                t.seatbelt,
+                t.electronics,
+                t.seatPosition,
+                t.overheadBins,
+              ].map((rule, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-sky-400" />
+                  <span className="text-sm text-gray-700">{rule}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Prohibited on board */}
+          <div>
+            <div className="mb-5 border-l-2 border-red-400 pl-4">
+              <p className="text-xs font-bold uppercase tracking-widest text-red-600">
+                {t.prohibitedTitle}
+              </p>
+            </div>
+            <div className="space-y-3">
+              {[
+                t.prohibitedNoSmoking,
+                t.prohibitedNoDisturbance,
+                t.prohibitedNoChaos,
+                t.prohibitedEmergency,
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
+                  <span className="text-sm leading-relaxed text-gray-700">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-5 text-xs font-bold uppercase tracking-wide text-red-700">
+              {t.prohibitedWarning}
+            </p>
+          </div>
+
+          {/* Tips */}
+          <div>
+            <div className="mb-5 flex items-center gap-2">
+              <MdOutlineFlightTakeoff className="h-4 w-4 text-[#00AAAC]" />
+              <p className="text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+                {t.tipsTitle}
+              </p>
+            </div>
+            <div className="space-y-3">
+              {[t.tipEarly, t.tipCharge, t.tipEssentials, t.tipListen].map(
+                (tip, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#00AAAC]" />
+                    <span className="text-sm text-gray-700">{tip}</span>
+                  </div>
+                ),
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
