@@ -27,7 +27,7 @@ export function NewsList({
 
   if (news.length === 0) {
     return (
-      <div className="rounded-xl border border-gray-200 bg-white py-16 text-center">
+      <div className="py-16 text-center">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
           <Newspaper className="h-8 w-8 text-gray-400" />
         </div>
@@ -49,10 +49,10 @@ export function NewsList({
           <Link
             key={article.id}
             href={`/${lang}/about/news/${article.slug}`}
-            className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:shadow-lg"
+            className="group flex flex-col overflow-hidden rounded-xl bg-white transition-all hover:bg-[#f0fbfc]"
           >
             {/* Cover Image */}
-            <div className="relative aspect-video w-full overflow-hidden bg-gray-100">
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-gray-100">
               <Image
                 src={asset(article.coverImage.path)}
                 alt={article.title[lang]}
@@ -61,7 +61,7 @@ export function NewsList({
               />
               {article.isFeatured && (
                 <div className="absolute top-3 left-3">
-                  <span className="bg-primary-600 inline-flex items-center rounded-lg px-3 py-1 text-xs font-semibold text-white">
+                  <span className="inline-flex items-center rounded-full bg-[#00AAAC] px-3 py-1 text-xs font-semibold text-white">
                     {t.featuredNews}
                   </span>
                 </div>
@@ -69,7 +69,7 @@ export function NewsList({
             </div>
 
             {/* Content */}
-            <div className="flex flex-1 flex-col p-5">
+            <div className="flex flex-1 flex-col p-4">
               {/* Meta */}
               <div className="mb-3 flex items-center gap-4 text-xs text-gray-500">
                 <div className="flex items-center gap-1.5">
@@ -87,7 +87,7 @@ export function NewsList({
               </div>
 
               {/* Title */}
-              <h3 className="group-hover:text-primary-600 mb-2 line-clamp-2 text-lg font-bold text-gray-900 transition-colors">
+              <h3 className="mb-2 line-clamp-2 text-lg font-bold text-gray-900 transition-colors group-hover:text-[#00AAAC]">
                 {article.title[lang]}
               </h3>
 
@@ -97,7 +97,7 @@ export function NewsList({
               </p>
 
               {/* Read More */}
-              <div className="text-primary-600 flex items-center gap-2 text-sm font-medium transition-all group-hover:gap-3">
+              <div className="flex items-center gap-2 text-sm font-medium text-[#00AAAC] transition-all group-hover:gap-3">
                 <span>{t.readMore}</span>
                 <ArrowRight className="h-4 w-4" />
               </div>

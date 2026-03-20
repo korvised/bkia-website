@@ -31,7 +31,7 @@ export async function AuctionList({
     <div className="space-y-6">
       {/* List */}
       {auctions.length === 0 ? (
-        <div className="rounded-xl border border-gray-200 bg-white py-16 text-center">
+        <div className="py-16 text-center">
           <FileText className="mx-auto mb-3 h-10 w-10 text-gray-300" />
           <p className="text-sm font-medium text-gray-500">{t.noAuctions}</p>
           <p className="mt-1 text-xs text-gray-400">{t.checkBackSoon}</p>
@@ -51,10 +51,10 @@ export async function AuctionList({
             <Link
               key={p}
               href={`?page=${p}`}
-              className={`inline-flex h-9 w-9 items-center justify-center rounded-lg border text-sm font-medium transition-colors ${
+              className={`inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-medium transition-colors ${
                 p === page
-                  ? "border-[#00AAAC] bg-[#00AAAC] text-white"
-                  : "border-gray-200 text-gray-600 hover:border-[#5CBEC6]"
+                  ? "bg-[#00AAAC] text-white"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
               {p}

@@ -37,9 +37,9 @@ export function AuctionDownloadButton({ href, fileName }: AuctionDownloadButtonP
       type="button"
       onClick={handleDownload}
       disabled={loading}
-      className="group flex w-full items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 p-3.5 text-left transition-all hover:border-[#5CBEC6] hover:bg-blue-50 disabled:cursor-wait disabled:opacity-70"
+      className="group flex w-full items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 p-3.5 text-left transition-all hover:border-[#00AAAC] hover:bg-[#f0fbfc] disabled:cursor-wait disabled:opacity-70"
     >
-      <div className="rounded-lg bg-white p-2 shadow-sm">
+      <div className="rounded-lg bg-white p-2">
         <FileText className="h-5 w-5 text-[#00AAAC]" />
       </div>
       <div className="min-w-0 flex-1">

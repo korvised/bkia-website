@@ -30,8 +30,8 @@ export const CATEGORY_COLORS: Record<AuctionCategory, string> = {
 };
 
 export const STATUS_CLASS: Record<AuctionStatus, string> = {
-  [AuctionStatus.UPCOMING]: "bg-yellow-100 text-yellow-700",
-  [AuctionStatus.OPEN]: "bg-green-100 text-green-700",
+  [AuctionStatus.UPCOMING]: "bg-amber-50 text-amber-700",
+  [AuctionStatus.OPEN]: "bg-[#f0fbfc] text-[#008e90]",
   [AuctionStatus.CLOSED]: "bg-gray-100 text-gray-500",
 };
 

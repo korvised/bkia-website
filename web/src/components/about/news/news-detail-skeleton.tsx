@@ -1,38 +1,56 @@
 export function NewsDetailSkeleton() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Skeleton */}
-      <div className="relative h-[400px] w-full animate-pulse bg-gray-300 lg:h-[500px]" />
+    <>
+      {/* Hero skeleton */}
+      <section className="bg-[#f0fbfc] py-10">
+        <div className="container">
+          {/* Back link skeleton */}
+          <div className="mb-6 h-5 w-28 animate-pulse rounded-full bg-[#00AAAC]/20" />
 
-      {/* Content Section */}
-      <div className="container py-8">
-        <div className="mx-auto max-w-4xl space-y-8">
-          {/* Meta Card Skeleton */}
-          <div className="rounded-2xl border border-gray-200 bg-white p-6">
-            <div className="flex gap-6">
-              <div className="h-16 w-32 animate-pulse rounded-lg bg-gray-200" />
-              <div className="h-16 w-32 animate-pulse rounded-lg bg-gray-200" />
-              <div className="h-16 w-32 animate-pulse rounded-lg bg-gray-200" />
-            </div>
-          </div>
+          {/* Cover image skeleton */}
+          <div className="aspect-video w-full animate-pulse rounded-2xl bg-gray-200 lg:aspect-[21/9]" />
 
-          {/* Excerpt Skeleton */}
-          <div className="space-y-2 rounded-2xl border border-gray-200 bg-white p-8">
-            <div className="h-6 w-full animate-pulse rounded-lg bg-gray-200" />
-            <div className="h-6 w-full animate-pulse rounded-lg bg-gray-200" />
-            <div className="h-6 w-3/4 animate-pulse rounded-lg bg-gray-200" />
-          </div>
-
-          {/* Content Skeleton */}
-          <div className="space-y-4 rounded-2xl border border-gray-200 bg-white p-8">
-            <div className="h-6 w-full animate-pulse rounded-lg bg-gray-200" />
-            <div className="h-6 w-full animate-pulse rounded-lg bg-gray-200" />
-            <div className="h-6 w-2/3 animate-pulse rounded-lg bg-gray-200" />
-            <div className="h-6 w-full animate-pulse rounded-lg bg-gray-200" />
-            <div className="h-6 w-5/6 animate-pulse rounded-lg bg-gray-200" />
+          {/* Meta chips skeleton */}
+          <div className="mt-5 flex flex-wrap gap-3">
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="h-8 w-28 animate-pulse rounded-full bg-gray-200"
+              />
+            ))}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* Content skeleton */}
+      <section className="bg-white py-10">
+        <div className="container">
+          <div className="mx-auto max-w-3xl space-y-6">
+            {/* Title */}
+            <div className="space-y-2">
+              <div className="h-9 w-3/4 animate-pulse rounded-lg bg-gray-200" />
+              <div className="h-9 w-1/2 animate-pulse rounded-lg bg-gray-200" />
+            </div>
+
+            {/* Excerpt callout */}
+            <div className="rounded-r-lg border-l-4 border-[#00AAAC]/30 bg-[#f0fbfc] px-6 py-4 space-y-2">
+              <div className="h-5 w-full animate-pulse rounded bg-gray-200" />
+              <div className="h-5 w-5/6 animate-pulse rounded bg-gray-200" />
+              <div className="h-5 w-2/3 animate-pulse rounded bg-gray-200" />
+            </div>
+
+            {/* Body */}
+            <div className="space-y-3">
+              {[1, 2, 3, 4, 5, 6, 7].map((i) => (
+                <div
+                  key={i}
+                  className={`h-4 animate-pulse rounded bg-gray-100 ${i % 3 === 0 ? "w-2/3" : "w-full"}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

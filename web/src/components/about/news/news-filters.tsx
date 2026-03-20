@@ -118,21 +118,21 @@ export function NewsFilters({
   const active = selectedCategory || "all";
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Search Input */}
       <div className="relative max-w-2xl">
-        <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-gray-400" />
+        <Search className="absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-gray-400" />
         <input
           type="text"
           placeholder={t.searchPlaceholder}
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
-          className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-xl border border-gray-300 py-3.5 pr-12 pl-12 text-sm shadow-sm transition-all focus:ring-4 focus:outline-none"
+          className="w-full rounded-full border border-gray-200 bg-white py-3 pr-12 pl-11 text-sm transition-all focus:border-[#00AAAC] focus:ring-4 focus:ring-[#00AAAC]/10 focus:outline-none"
         />
         {searchQuery && (
           <button
             onClick={handleClear}
-            className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+            className="absolute top-1/2 right-3 -translate-y-1/2 rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-600"
             aria-label="Clear search"
           >
             <X className="h-4 w-4" />
@@ -140,29 +140,27 @@ export function NewsFilters({
         )}
       </div>
 
-      {/* Category Filter Tabs */}
-      <div className="border-b border-gray-200">
-        <nav className="horizontal-scroll -mb-px flex gap-1 overflow-x-auto">
-          {categories.map((c) => {
-            const Icon = c.icon;
-            const isActive = active === c.id;
-            return (
-              <button
-                key={c.id}
-                onClick={() => handleCategoryChange(c.id)}
-                className={cn(
-                  "flex items-center gap-2 border-b-2 px-5 py-3 text-sm font-medium whitespace-nowrap transition-all",
-                  isActive
-                    ? "border-primary-600 text-primary-600"
-                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                )}
-              >
-                <Icon className="h-4 w-4" />
-                {c.label}
-              </button>
-            );
-          })}
-        </nav>
+      {/* Category Filter Pills */}
+      <div className="flex flex-wrap gap-2">
+        {categories.map((c) => {
+          const Icon = c.icon;
+          const isActive = active === c.id;
+          return (
+            <button
+              key={c.id}
+              onClick={() => handleCategoryChange(c.id)}
+              className={cn(
+                "flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all",
+                isActive
+                  ? "bg-[#00AAAC] text-white"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200",
+              )}
+            >
+              <Icon className="h-3.5 w-3.5" />
+              {c.label}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

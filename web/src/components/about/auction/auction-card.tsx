@@ -37,7 +37,7 @@ export function AuctionCard({ auction, lang }: AuctionCardProps) {
   const docs = auction.documents ?? [];
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-5">
+    <div className="rounded-xl bg-white p-5">
       {/* Badges */}
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <span

@@ -137,6 +137,14 @@ export const feedback = {
     zh: "您的反馈已成功提交。感谢您抽出宝贵时间，我们将根据您的建议持续改进服务。",
   },
 
+  // ── UI strings ───────────────────────────────────────────────────────────
+  addFile: { en: "Attach a file", lo: "ແນບໄຟລ໌", zh: "添加文件" },
+  errorGeneric: {
+    en: "Failed to submit. Please try again.",
+    lo: "ເກີດຂໍ້ຜິດພາດ. ກະລຸນາລອງໃໝ່.",
+    zh: "提交失败，请重试。",
+  },
+
   // ── Validation ───────────────────────────────────────────────────────────
   required: {
     en: "This field is required",

@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import { ClipboardList, Mail, Phone } from "lucide-react";
 import { Lang } from "@/types/language";
 import { AuctionCategory, AuctionStatus, type AuctionPageProps } from "@/types/auction";
 import { createAuctionI18n } from "@/data/i18n/about";
@@ -31,103 +31,115 @@ export default async function AuctionsPage({
   const category = filters.category as AuctionCategory | undefined;
   const page = Number(filters.page ?? 1);
 
+  const tabs = [
+    { value: "", label: t.tabAll },
+    { value: AuctionStatus.OPEN, label: t.tabOpen },
+    { value: AuctionStatus.UPCOMING, label: t.tabUpcoming },
+    { value: AuctionStatus.CLOSED, label: t.tabClosed },
+  ] as const;
+
   return (
-    <div className="min-h-screen">
+    <>
       {/* Hero */}
-      <div className="container">
-        <div className="relative overflow-hidden bg-gradient-to-r from-[#5CBEC6] to-[#00AAAC] px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-8">
-          <div className="relative mx-auto max-w-7xl text-center">
-            <h1 className="mb-2 text-2xl font-bold sm:text-3xl lg:text-4xl">
-              {t.heroTitle}
-            </h1>
-            <p className="text-sm opacity-90 sm:text-base">{t.heroSubtitle}</p>
+      <section className="bg-[#f0fbfc] py-10">
+        <div className="container">
+          <div className="flex items-start gap-5">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#00AAAC]">
+              <ClipboardList className="h-7 w-7 text-white" />
+            </div>
+            <div>
+              <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+                About
+              </p>
+              <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
+                {t.heroTitle}
+              </h1>
+              <p className="mt-2 max-w-xl text-sm text-gray-500 lg:text-base">
+                {t.heroSubtitle}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Status filter tabs */}
-      <div className="container bg-white">
-        <div className="flex gap-1 overflow-x-auto border-b border-gray-200 px-1">
-          {(
-            [
-              { value: "", label: t.tabAll },
-              { value: AuctionStatus.OPEN, label: t.tabOpen },
-              { value: AuctionStatus.UPCOMING, label: t.tabUpcoming },
-              { value: AuctionStatus.CLOSED, label: t.tabClosed },
-            ] as const
-          ).map(({ value, label }) => (
-            <Link
-              key={value}
-              href={value ? `?status=${value}&page=1` : `?page=1`}
-              className={`border-b-2 px-4 py-3 text-sm font-semibold whitespace-nowrap transition-colors ${
-                (status ?? "") === value
-                  ? "border-[#00AAAC] text-[#00AAAC]"
-                  : "border-transparent text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
+      {/* Status filter pills */}
+      <section className="bg-white py-4">
+        <div className="container">
+          <div className="flex flex-wrap gap-2">
+            {tabs.map(({ value, label }) => (
+              <Link
+                key={value}
+                href={value ? `?status=${value}&page=1` : `?page=1`}
+                className={`rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
+                  (status ?? "") === value
+                    ? "bg-[#00AAAC] text-white"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Content */}
-      <div className="container py-6">
-        <Suspense fallback={<AuctionListSkeleton />}>
-          <AuctionList
-            lang={lang as Lang}
-            status={status}
-            category={category}
-            page={page}
-          />
-        </Suspense>
-      </div>
+      {/* Auction list */}
+      <section className="bg-gray-50 py-10">
+        <div className="container">
+          <Suspense fallback={<AuctionListSkeleton />}>
+            <AuctionList
+              lang={lang as Lang}
+              status={status}
+              category={category}
+              page={page}
+            />
+          </Suspense>
+        </div>
+      </section>
 
       {/* Contact */}
-      <div className="bg-gray-50 px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">
-            {t.contactTitle}
-          </h2>
-          <p className="mb-6 text-sm text-gray-600">{t.contactSubtitle}</p>
-          <div className="mx-auto grid max-w-2xl gap-4 sm:grid-cols-2">
-            <div className="flex items-start gap-3 rounded-xl bg-white p-5 shadow-sm">
-              <div className="rounded-lg bg-[#e6f7f8] p-2.5">
-                <Mail className="h-5 w-5 text-[#00AAAC]" />
-              </div>
-              <div className="text-left">
-                <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500">
-                  {t.submitBidLabel}
-                </p>
+      <section className="bg-white py-10">
+        <div className="container">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">
+              {t.contactTitle}
+            </h2>
+            <p className="mb-8 text-sm text-gray-500">{t.contactSubtitle}</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-r-lg border-l-4 border-[#00AAAC] bg-[#f0fbfc] px-5 py-4 text-left">
+                <div className="mb-2 flex items-center gap-2">
+                  <Mail className="h-4 w-4 text-[#00AAAC]" />
+                  <p className="text-xs font-bold uppercase tracking-wide text-[#00AAAC]">
+                    {t.submitBidLabel}
+                  </p>
+                </div>
                 <a
                   href="mailto:sambidding@laosam.net"
-                  className="text-sm font-medium text-[#00AAAC] hover:underline"
+                  className="text-sm font-medium text-gray-900 hover:text-[#00AAAC] hover:underline"
                 >
                   sambidding@laosam.net
                 </a>
-                <p className="mt-0.5 text-xs text-gray-400">{t.submitBidHint}</p>
+                <p className="mt-1 text-xs text-gray-500">{t.submitBidHint}</p>
               </div>
-            </div>
-            <div className="flex items-start gap-3 rounded-xl bg-white p-5 shadow-sm">
-              <div className="rounded-lg bg-[#e6f7f8] p-2.5">
-                <Phone className="h-5 w-5 text-[#00AAAC]" />
-              </div>
-              <div className="text-left">
-                <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500">
-                  {t.inquiriesLabel}
-                </p>
+              <div className="rounded-r-lg border-l-4 border-[#00AAAC] bg-[#f0fbfc] px-5 py-4 text-left">
+                <div className="mb-2 flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-[#00AAAC]" />
+                  <p className="text-xs font-bold uppercase tracking-wide text-[#00AAAC]">
+                    {t.inquiriesLabel}
+                  </p>
+                </div>
                 <a
                   href="tel:+8562099982986"
-                  className="text-sm font-medium text-[#00AAAC] hover:underline"
+                  className="text-sm font-medium text-gray-900 hover:text-[#00AAAC] hover:underline"
                 >
                   +856 20 99 982 986
                 </a>
-                <p className="mt-0.5 text-xs text-gray-400">{t.businessHours}</p>
+                <p className="mt-1 text-xs text-gray-500">{t.businessHours}</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
