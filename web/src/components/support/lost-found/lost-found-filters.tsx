@@ -20,7 +20,6 @@ import { Lang } from "@/types/language";
 import { cn } from "@/lib";
 import { createSupportI18n } from "@/data/i18n/support";
 import { LostFoundCategory } from "@/types/enum";
-import Link from "next/link";
 
 interface LostFoundFiltersProps {
   lang: Lang;
@@ -83,28 +82,16 @@ export function LostFoundFilters({
   );
 
   const types = [
-    { id: "all", label: t.tabAll },
-    { id: "LOST", label: t.tabLost },
-    { id: "FOUND", label: t.tabFound },
+    { id: "all", label: t.tabAll, activeBg: "bg-gray-800" },
+    { id: "LOST", label: t.tabLost, activeBg: "bg-red-600" },
+    { id: "FOUND", label: t.tabFound, activeBg: "bg-emerald-600" },
   ];
 
   const categories = [
     { id: "all", label: t.categoryAll, icon: LayoutGrid },
-    {
-      id: LostFoundCategory.ELECTRONICS,
-      label: t.categoryElectronics,
-      icon: Smartphone,
-    },
-    {
-      id: LostFoundCategory.BAGGAGE,
-      label: t.categoryBaggage,
-      icon: Briefcase,
-    },
-    {
-      id: LostFoundCategory.DOCUMENTS,
-      label: t.categoryDocuments,
-      icon: FileText,
-    },
+    { id: LostFoundCategory.ELECTRONICS, label: t.categoryElectronics, icon: Smartphone },
+    { id: LostFoundCategory.BAGGAGE, label: t.categoryBaggage, icon: Briefcase },
+    { id: LostFoundCategory.DOCUMENTS, label: t.categoryDocuments, icon: FileText },
     { id: LostFoundCategory.CLOTHING, label: t.categoryClothing, icon: Shirt },
     { id: LostFoundCategory.JEWELRY, label: t.categoryJewelry, icon: Gem },
     { id: LostFoundCategory.KEYS, label: t.categoryKeys, icon: KeyRound },
@@ -117,73 +104,70 @@ export function LostFoundFilters({
   const activeCategory = selectedCategory || "all";
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between gap-x-4">
-        {/* Search */}
-        <div className="relative max-w-2xl flex-1">
-          <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-gray-400" />
-          <input
-            type="text"
-            placeholder={t.searchPlaceholder}
-            value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
-            className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-xl border border-gray-300 py-3 pr-12 pl-12 text-sm shadow-sm transition-all focus:ring-4 focus:outline-none"
-          />
-          {searchQuery && (
-            <button
-              onClick={() => handleSearch("")}
-              className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          )}
-        </div>
-
-        <Link
-          href={`/${lang}/support/lost-found/report`}
-          className="bg-primary-600 hover:bg-primary-700 inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-white transition-colors"
-        >
-          {t.reportLost}
-        </Link>
+    <div className="space-y-5">
+      {/* Search */}
+      <div className="relative max-w-lg">
+        <Search className="absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-gray-400" />
+        <input
+          type="text"
+          placeholder={t.searchPlaceholder}
+          value={searchQuery}
+          onChange={(e) => handleSearch(e.target.value)}
+          className="focus:border-[#00AAAC] focus:ring-[#00AAAC]/10 w-full rounded-full border border-gray-200 bg-gray-50 py-3 pr-10 pl-11 text-sm transition-all focus:ring-4 focus:outline-none"
+        />
+        {searchQuery && (
+          <button
+            onClick={() => handleSearch("")}
+            className="absolute top-1/2 right-3 -translate-y-1/2 rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-600"
+            aria-label="Clear search"
+          >
+            <X className="h-3.5 w-3.5" />
+          </button>
+        )}
       </div>
 
-      {/* Type tabs */}
-      <div className="border-b border-gray-200">
-        <nav className="horizontal-scroll -mb-px flex gap-1 overflow-x-auto">
-          {types.map((tab) => (
+      {/* Type pills */}
+      <div className="flex flex-wrap gap-2">
+        {types.map((tab) => {
+          const isActive = activeType === tab.id;
+          return (
             <button
               key={tab.id}
               onClick={() => handleType(tab.id)}
               className={cn(
-                "border-b-2 px-5 py-3 text-sm font-medium whitespace-nowrap transition-all",
-                activeType === tab.id
-                  ? "border-primary-600 text-primary-600"
-                  : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                "flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors",
+                isActive
+                  ? `${tab.activeBg} text-white`
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800",
               )}
             >
               {tab.label}
             </button>
-          ))}
-        </nav>
+          );
+        })}
       </div>
 
       {/* Category chips */}
-      <div className="horizontal-scroll flex gap-2 overflow-x-auto pb-1">
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => handleCategory(cat.id)}
-            className={cn(
-              "flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm whitespace-nowrap transition-all",
-              activeCategory === cat.id
-                ? "border-primary-600 bg-primary-50 text-primary-700 font-medium"
-                : "border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50",
-            )}
-          >
-            <cat.icon className="h-3.5 w-3.5" />
-            {cat.label}
-          </button>
-        ))}
+      <div className="horizontal-scroll flex flex-wrap gap-2 overflow-x-auto pb-1">
+        {categories.map((cat) => {
+          const Icon = cat.icon;
+          const isActive = activeCategory === cat.id;
+          return (
+            <button
+              key={cat.id}
+              onClick={() => handleCategory(cat.id)}
+              className={cn(
+                "flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-medium whitespace-nowrap transition-colors",
+                isActive
+                  ? "bg-[#00AAAC] text-white"
+                  : "bg-white text-gray-600 ring-1 ring-gray-200 hover:bg-gray-50 hover:text-gray-800",
+              )}
+            >
+              <Icon className="h-3 w-3" />
+              {cat.label}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

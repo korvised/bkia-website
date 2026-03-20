@@ -1,5 +1,7 @@
-import { Fragment, Suspense } from "react";
+import { Suspense } from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { PackageSearch, Plus } from "lucide-react";
 import { Lang } from "@/types/language";
 import {
   LostFoundFilters,
@@ -20,23 +22,22 @@ export async function generateMetadata({
 function LostFoundSkeleton() {
   return (
     <div className="space-y-6">
-      <div className="space-y-4">
-        <div className="flex items-center justify-between gap-x-4">
-          <div className="h-12 w-full max-w-2xl animate-pulse rounded-lg bg-gray-200" />
-          <div className="h-12 w-28 animate-pulse rounded-lg bg-gray-200" />
-        </div>
-        <div className="flex gap-2">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="h-9 w-24 animate-pulse rounded-full bg-gray-200"
-            />
-          ))}
-        </div>
+      <div className="flex items-center justify-between gap-4">
+        <div className="h-10 w-full max-w-lg animate-pulse rounded-full bg-gray-200" />
+      </div>
+      <div className="flex gap-2">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="h-9 w-20 animate-pulse rounded-full bg-gray-200" />
+        ))}
+      </div>
+      <div className="flex gap-2">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className="h-8 w-24 animate-pulse rounded-full bg-gray-200" />
+        ))}
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} className="h-64 animate-pulse rounded-xl bg-gray-200" />
+          <div key={i} className="h-64 animate-pulse rounded bg-gray-200" />
         ))}
       </div>
     </div>
@@ -54,7 +55,7 @@ async function LostFoundContent({
   const { data, meta } = await listLostFound(query, lang);
 
   return (
-    <Fragment>
+    <>
       <LostFoundFilters
         lang={lang}
         query={searchParams.q}
@@ -67,7 +68,7 @@ async function LostFoundContent({
         meta={meta}
         searchParams={searchParams}
       />
-    </Fragment>
+    </>
   );
 }
 
@@ -80,19 +81,45 @@ export default async function LostFoundPage({
   const t = createSupportI18n(lang as Lang).lostFound;
 
   return (
-    <div className="container space-y-8">
-      {/* Page Header */}
-      <div className="space-y-2">
-        <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
-          {t.pageTitle}
-        </h1>
-        <p className="text-base text-gray-600">{t.pageDescription}</p>
-      </div>
+    <>
+      {/* Header */}
+      <section className="bg-[#f0fbfc] py-10">
+        <div className="container flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex items-start gap-5">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#00AAAC]">
+              <PackageSearch className="h-7 w-7 text-white" />
+            </div>
+            <div>
+              <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+                Support
+              </p>
+              <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
+                {t.pageTitle}
+              </h1>
+              <p className="mt-2 max-w-xl text-sm text-gray-500 lg:text-base">
+                {t.pageDescription}
+              </p>
+            </div>
+          </div>
 
-      {/* Content */}
-      <Suspense fallback={<LostFoundSkeleton />}>
-        <LostFoundContent lang={lang as Lang} searchParams={filters} />
-      </Suspense>
-    </div>
+          <Link
+            href={`/${lang}/support/lost-found/report`}
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#00AAAC] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#008e90]"
+          >
+            <Plus className="h-4 w-4" />
+            {t.reportLost}
+          </Link>
+        </div>
+      </section>
+
+      {/* Filters + Grid */}
+      <section className="bg-gray-50 py-10">
+        <div className="container space-y-6">
+          <Suspense fallback={<LostFoundSkeleton />}>
+            <LostFoundContent lang={lang as Lang} searchParams={filters} />
+          </Suspense>
+        </div>
+      </section>
+    </>
   );
 }

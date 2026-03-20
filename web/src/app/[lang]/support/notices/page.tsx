@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import { Bell } from "lucide-react";
 import { Lang } from "@/types/language";
 import { NoticeFilters, NoticeList } from "@/components/support/notice";
 import { listNotices, toNoticeQuery } from "@/services/notice";
@@ -11,45 +12,35 @@ export async function generateMetadata({
 }: NoticePageProps): Promise<Metadata> {
   const { lang } = await params;
   const t = createSupportI18n(lang as Lang).notices;
-
-  return {
-    title: t.pageTitle,
-    description: t.pageDescription,
-  };
+  return { title: t.pageTitle, description: t.pageDescription };
 }
 
 function NoticeListSkeleton() {
   return (
-    <div className="container space-y-6">
-      {/* Header skeleton */}
-      <div className="space-y-2">
-        <div className="h-10 w-64 animate-pulse rounded-lg bg-gray-200" />
-        <div className="h-6 w-96 animate-pulse rounded-lg bg-gray-200" />
-      </div>
-
-      {/* Filters skeleton */}
-      <div className="space-y-4">
-        <div className="h-12 w-full max-w-md animate-pulse rounded-lg bg-gray-200" />
-        <div className="flex gap-3">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="h-10 w-32 animate-pulse rounded-lg bg-gray-200"
-            />
-          ))}
+    <>
+      <section className="bg-[#f0fbfc] py-10">
+        <div className="container space-y-3">
+          <div className="h-4 w-24 animate-pulse rounded bg-gray-200" />
+          <div className="h-10 w-64 animate-pulse rounded bg-gray-200" />
+          <div className="h-5 w-96 animate-pulse rounded bg-gray-200" />
         </div>
-      </div>
-
-      {/* List skeleton */}
-      <div className="space-y-4">
-        {[1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="h-40 w-full animate-pulse rounded-lg bg-gray-200"
-          />
-        ))}
-      </div>
-    </div>
+      </section>
+      <section className="bg-white py-10">
+        <div className="container space-y-6">
+          <div className="h-12 w-full max-w-lg animate-pulse rounded bg-gray-200" />
+          <div className="flex gap-2">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="h-9 w-28 animate-pulse rounded-full bg-gray-200" />
+            ))}
+          </div>
+          <div className="space-y-3">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="h-28 w-full animate-pulse rounded bg-gray-200" />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -66,31 +57,45 @@ async function NoticesPageContent({
   const t = createSupportI18n(lang).notices;
 
   return (
-    <div className="container space-y-8">
-      {/* Page Header */}
-      <div className="space-y-2">
-        <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
-          {t.pageTitle}
-        </h1>
-        <p className="text-base text-gray-600">{t.pageDescription}</p>
-      </div>
+    <>
+      {/* Header */}
+      <section className="bg-[#f0fbfc] py-10">
+        <div className="container flex items-start gap-5">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#00AAAC]">
+            <Bell className="h-7 w-7 text-white" />
+          </div>
+          <div>
+            <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+              Announcements
+            </p>
+            <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
+              {t.pageTitle}
+            </h1>
+            <p className="mt-2 max-w-xl text-sm text-gray-500 lg:text-base">
+              {t.pageDescription}
+            </p>
+          </div>
+        </div>
+      </section>
 
-      {/* Filters */}
-      <NoticeFilters
-        lang={lang}
-        query={query.search}
-        selectedPriority={query.priority}
-      />
-
-      {/* Notice List with Pagination */}
-      <NoticeList
-        lang={lang}
-        notices={data}
-        searchQuery={query.search}
-        meta={meta}
-        searchParams={searchParams}
-      />
-    </div>
+      {/* Filters + List */}
+      <section className="bg-white py-10">
+        <div className="container space-y-8">
+          <NoticeFilters
+            lang={lang}
+            query={query.search}
+            selectedPriority={query.priority}
+          />
+          <NoticeList
+            lang={lang}
+            notices={data}
+            searchQuery={query.search}
+            meta={meta}
+            searchParams={searchParams}
+          />
+        </div>
+      </section>
+    </>
   );
 }
 

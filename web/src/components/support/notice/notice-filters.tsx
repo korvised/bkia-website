@@ -29,25 +29,32 @@ export function NoticeFilters({
   const router = useRouter();
   const searchParams = useSearchParams();
   const t = createSupportI18n(lang).notices;
-
   const [searchQuery, setSearchQuery] = useState(query);
 
   const categories = [
-    { id: "all", label: t.categoryAll, icon: Bell },
+    {
+      id: "all",
+      label: t.categoryAll,
+      icon: Bell,
+      activeBg: "bg-gray-800",
+    },
     {
       id: ImportantPriority.URGENT,
       label: t.categoryUrgent,
       icon: AlertCircle,
+      activeBg: "bg-red-600",
     },
     {
       id: ImportantPriority.HIGH,
       label: t.categoryHigh,
       icon: AlertTriangle,
+      activeBg: "bg-orange-500",
     },
     {
       id: ImportantPriority.NORMAL,
       label: t.categoryNormal,
       icon: Info,
+      activeBg: "bg-[#00AAAC]",
     },
   ];
 
@@ -96,51 +103,49 @@ export function NoticeFilters({
   const active = selectedPriority || "all";
 
   return (
-    <div className="space-y-6">
-      {/* Search Input */}
-      <div className="relative max-w-2xl">
-        <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-gray-400" />
+    <div className="space-y-5">
+      {/* Search */}
+      <div className="relative max-w-lg">
+        <Search className="absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-gray-400" />
         <input
           type="text"
           placeholder={t.searchPlaceholder}
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
-          className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-xl border border-gray-300 py-3.5 pr-12 pl-12 text-sm shadow-sm transition-all focus:ring-4 focus:outline-none"
+          className="focus:border-[#00AAAC] focus:ring-[#00AAAC]/10 w-full rounded-full border border-gray-200 bg-gray-50 py-3 pr-10 pl-11 text-sm transition-all focus:ring-4 focus:outline-none"
         />
         {searchQuery && (
           <button
             onClick={handleClear}
-            className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+            className="absolute top-1/2 right-3 -translate-y-1/2 rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-600"
             aria-label="Clear search"
           >
-            <X className="h-4 w-4" />
+            <X className="h-3.5 w-3.5" />
           </button>
         )}
       </div>
 
-      {/* Priority Filter Tabs */}
-      <div className="border-b border-gray-200">
-        <nav className="horizontal-scroll -mb-px flex gap-1 overflow-x-auto">
-          {categories.map((c) => {
-            const Icon = c.icon;
-            const isActive = active === c.id;
-            return (
-              <button
-                key={c.id}
-                onClick={() => handlePriorityChange(c.id)}
-                className={cn(
-                  "flex items-center gap-2 border-b-2 px-5 py-3 text-sm font-medium whitespace-nowrap transition-all",
-                  isActive
-                    ? "border-primary-600 text-primary-600"
-                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                )}
-              >
-                <Icon className="h-4 w-4" />
-                {c.label}
-              </button>
-            );
-          })}
-        </nav>
+      {/* Priority pills */}
+      <div className="flex flex-wrap gap-2">
+        {categories.map((c) => {
+          const Icon = c.icon;
+          const isActive = active === c.id;
+          return (
+            <button
+              key={c.id}
+              onClick={() => handlePriorityChange(c.id)}
+              className={cn(
+                "flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors",
+                isActive
+                  ? `${c.activeBg} text-white`
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800",
+              )}
+            >
+              <Icon className="h-3.5 w-3.5" />
+              {c.label}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

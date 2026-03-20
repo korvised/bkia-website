@@ -240,6 +240,33 @@ export const lostFound = {
     lo: "ລາຍງານຈະຖືກກວດສອບພາຍໃນ 1-2 ວັນ.",
     zh: "申请通常会在1-2个工作日内完成审核。",
   },
+
+  // Form / UI strings
+  contactInfo: { en: "Contact Information", lo: "ຂໍ້ມູນຕິດຕໍ່", zh: "联系方式" },
+  submitting: { en: "Submitting...", lo: "ກຳລັງສົ່ງ...", zh: "正在提交..." },
+  errorGeneric: {
+    en: "Something went wrong. Please try again.",
+    lo: "ມີຂໍ້ຜິດພາດ. ກະລຸນາລອງໃໝ່.",
+    zh: "发生错误，请重试。",
+  },
+
+  // Detail page
+  referenceLabel: { en: "Reference", lo: "ລະຫັດ", zh: "编号" },
+  lostItemNote: {
+    en: "This is a lost item report.",
+    lo: "ນີ້ແມ່ນລາຍງານເຄື່ອງເສຍ.",
+    zh: "这是失物申报。",
+  },
+  notAvailableNote: {
+    en: "This item is no longer available for claim.",
+    lo: "ສິ່ງຂອງນີ້ບໍ່ສາມາດຮ້ອງຂໍຮັບຄືນໄດ້ອີກ.",
+    zh: "此物品已不再开放申领。",
+  },
+  lostSomething: {
+    en: "Lost something at the airport?",
+    lo: "ທ່ານໄດ້ເສຍສິ່ງຂອງຢູ່ສະໜາມບິນ?",
+    zh: "在机场丢失了东西？",
+  },
 } as const;
 
 export type LostFoundKey = keyof typeof lostFound;

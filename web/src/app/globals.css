@@ -5,6 +5,11 @@
 /* Import Tailwind CSS */
 @import "tailwindcss";
 
+/* Forms plugin — class strategy (opt-in: form-input, form-select, form-textarea) */
+@plugin "@tailwindcss/forms" {
+  strategy: "class";
+}
+
 @theme {
     /* Font families with proper fallbacks */
     --font-en: "Roboto", sans-serif;

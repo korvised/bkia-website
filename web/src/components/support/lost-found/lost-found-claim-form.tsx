@@ -21,6 +21,9 @@ interface FormState {
 
 type Status = "idle" | "loading" | "success" | "error";
 
+const INPUT_BASE =
+  "form-input focus:border-[#00AAAC] focus:ring-[#00AAAC]/10 w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm transition-all placeholder:text-gray-400 focus:ring-4 focus:outline-none";
+
 export function LostFoundClaimForm({ lang, itemId }: LostFoundClaimFormProps) {
   const t = createSupportI18n(lang).lostFound;
   const fileRef = useRef<HTMLInputElement>(null);
@@ -66,85 +69,103 @@ export function LostFoundClaimForm({ lang, itemId }: LostFoundClaimFormProps) {
       await submitClaim(itemId, body);
       setStatus("success");
     } catch {
-      setError("Something went wrong. Please try again.");
+      setError(t.errorGeneric);
       setStatus("error");
     }
   };
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-green-200 bg-green-50 p-6 text-center">
-        <CheckCircle className="mx-auto mb-3 h-12 w-12 text-green-500" />
-        <p className="text-sm font-medium text-green-800">{t.claimSuccess}</p>
+      <div className="rounded-r-lg border-l-4 border-emerald-500 bg-emerald-50 px-5 py-5">
+        <div className="flex items-start gap-3">
+          <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-emerald-500" />
+          <p className="text-sm font-medium text-emerald-800">
+            {t.claimSuccess}
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white shadow-xs">
-      <div className="border-b border-gray-100 px-6 py-4">
-        <h2 className="text-base font-semibold text-gray-900">
-          {t.claimFormTitle}
-        </h2>
-      </div>
+    <div>
+      <p className="mb-5 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+        {t.claimFormTitle}
+      </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4 p-6">
+      <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name */}
         <div>
-          <label className="mb-1.5 block text-xs font-medium text-gray-700">
+          <label
+            htmlFor="claimantName"
+            className="mb-1.5 block text-xs font-medium text-gray-700"
+          >
             {t.claimantName} <span className="text-red-500">*</span>
           </label>
           <input
+            id="claimantName"
             name="claimantName"
             required
             value={form.claimantName}
             onChange={handleChange}
-            className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-4 focus:outline-none"
+            className={INPUT_BASE}
           />
         </div>
 
         {/* Email */}
         <div>
-          <label className="mb-1.5 block text-xs font-medium text-gray-700">
+          <label
+            htmlFor="claimantEmail"
+            className="mb-1.5 block text-xs font-medium text-gray-700"
+          >
             {t.claimantEmail} <span className="text-red-500">*</span>
           </label>
           <input
+            id="claimantEmail"
             name="claimantEmail"
             type="email"
             required
             value={form.claimantEmail}
             onChange={handleChange}
-            className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-4 focus:outline-none"
+            className={INPUT_BASE}
           />
         </div>
 
         {/* Phone */}
         <div>
-          <label className="mb-1.5 block text-xs font-medium text-gray-700">
+          <label
+            htmlFor="claimantPhone"
+            className="mb-1.5 block text-xs font-medium text-gray-700"
+          >
             {t.claimantPhone}
           </label>
           <input
+            id="claimantPhone"
             name="claimantPhone"
             type="tel"
             value={form.claimantPhone}
             onChange={handleChange}
-            className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-4 focus:outline-none"
+            className={INPUT_BASE}
           />
         </div>
 
         {/* Ownership proof */}
         <div>
-          <label className="mb-1.5 block text-xs font-medium text-gray-700">
+          <label
+            htmlFor="ownershipProof"
+            className="mb-1.5 block text-xs font-medium text-gray-700"
+          >
             {t.ownershipProof} <span className="text-red-500">*</span>
           </label>
           <textarea
+            id="ownershipProof"
             name="ownershipProof"
             required
             rows={4}
             value={form.ownershipProof}
             onChange={handleChange}
             placeholder={t.ownershipProofHint}
-            className="focus:border-primary-500 focus:ring-primary-500/10 w-full resize-none rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-4 focus:outline-none"
+            className="form-textarea focus:border-[#00AAAC] focus:ring-[#00AAAC]/10 w-full resize-none rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm transition-all placeholder:text-gray-400 focus:ring-4 focus:outline-none"
           />
         </div>
 
@@ -156,10 +177,10 @@ export function LostFoundClaimForm({ lang, itemId }: LostFoundClaimFormProps) {
           <button
             type="button"
             onClick={() => fileRef.current?.click()}
-            className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-gray-300 bg-gray-50 py-3 text-sm text-gray-500 transition-colors hover:bg-gray-100"
+            className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-lg border border-dashed border-gray-300 bg-gray-50 py-3 text-sm text-gray-500 transition-colors hover:border-[#00AAAC] hover:bg-[#f0fbfc] hover:text-[#00AAAC]"
           >
             <Upload className="h-4 w-4" />
-            Upload files (max 5)
+            {t.proofFiles}
           </button>
           <input
             ref={fileRef}
@@ -170,7 +191,6 @@ export function LostFoundClaimForm({ lang, itemId }: LostFoundClaimFormProps) {
             className="hidden"
           />
 
-          {/* File previews */}
           {files.length > 0 && (
             <div className="mt-2 space-y-1.5">
               {files.map((file, i) => (
@@ -184,7 +204,8 @@ export function LostFoundClaimForm({ lang, itemId }: LostFoundClaimFormProps) {
                   <button
                     type="button"
                     onClick={() => removeFile(i)}
-                    className="text-gray-400 hover:text-red-500"
+                    className="rounded-md p-2 text-gray-400 transition-colors hover:bg-red-50 hover:text-red-500"
+                    aria-label="Remove file"
                   >
                     <X className="h-3.5 w-3.5" />
                   </button>
@@ -196,9 +217,9 @@ export function LostFoundClaimForm({ lang, itemId }: LostFoundClaimFormProps) {
 
         {/* Error */}
         {status === "error" && (
-          <p className="rounded-lg bg-red-50 px-3 py-2 text-xs text-red-600">
-            {error}
-          </p>
+          <div className="rounded-r-lg border-l-4 border-red-500 bg-red-50 px-4 py-3">
+            <p className="text-xs text-red-700">{error}</p>
+          </div>
         )}
 
         {/* Submit */}
@@ -206,11 +227,11 @@ export function LostFoundClaimForm({ lang, itemId }: LostFoundClaimFormProps) {
           type="submit"
           disabled={status === "loading"}
           className={cn(
-            "bg-primary-600 hover:bg-primary-700 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white transition-colors disabled:opacity-60",
+            "flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-[#00AAAC] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#008e90] disabled:opacity-60",
           )}
         >
           {status === "loading" && <Loader2 className="h-4 w-4 animate-spin" />}
-          {status === "loading" ? t.submitClaim : t.submitClaim}
+          {status === "loading" ? t.submitting : t.submitClaim}
         </button>
       </form>
     </div>

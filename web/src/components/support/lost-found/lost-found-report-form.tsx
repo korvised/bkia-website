@@ -27,6 +27,9 @@ interface FormState {
 
 type Status = "idle" | "loading" | "success" | "error";
 
+const INPUT_BASE =
+  "form-input focus:border-[#00AAAC] focus:ring-[#00AAAC]/10 w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm transition-all placeholder:text-gray-400 focus:ring-4 focus:outline-none";
+
 export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
   const t = createSupportI18n(lang).lostFound;
   const fileRef = useRef<HTMLInputElement>(null);
@@ -95,7 +98,7 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
       setReferenceCode(res.referenceCode);
       setStatus("success");
     } catch {
-      setError("Something went wrong. Please try again.");
+      setError(t.errorGeneric);
       setStatus("error");
     }
   };
@@ -114,27 +117,30 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-green-200 bg-green-50 p-8 text-center">
-        <CheckCircle className="mx-auto mb-4 h-14 w-14 text-green-500" />
-        <p className="mb-4 text-sm font-medium text-green-800">
-          {t.reportSuccess}
-        </p>
-        <div className="mx-auto flex max-w-xs items-center justify-between gap-2 rounded-xl border border-green-300 bg-white px-4 py-3">
-          <span className="text-base font-bold tracking-widest text-gray-900">
+      <div className="rounded-r-lg border-l-4 border-emerald-500 bg-emerald-50 px-5 py-6">
+        <div className="mb-4 flex items-center gap-3">
+          <CheckCircle className="h-6 w-6 shrink-0 text-emerald-500" />
+          <p className="text-sm font-semibold text-emerald-800">
+            {t.reportSuccess}
+          </p>
+        </div>
+        <div className="flex items-center justify-between gap-3 rounded-lg bg-white px-4 py-3 ring-1 ring-emerald-200">
+          <span className="font-mono text-base font-bold tracking-widest text-gray-900">
             {referenceCode}
           </span>
           <button
             onClick={handleCopy}
-            className="text-gray-400 transition-colors hover:text-green-600"
+            className="rounded-md p-2 text-gray-400 transition-colors hover:bg-emerald-50 hover:text-emerald-600"
+            aria-label={t.copyCode}
           >
             {copied ? (
-              <Check className="h-4 w-4 text-green-500" />
+              <Check className="h-4 w-4 text-emerald-500" />
             ) : (
               <Copy className="h-4 w-4" />
             )}
           </button>
         </div>
-        <p className="mt-3 text-xs text-green-700">
+        <p className="mt-2 text-xs text-emerald-700">
           {copied ? t.codeCopied : t.copyCode}
         </p>
       </div>
@@ -143,27 +149,33 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Report type toggle */}
+      {/* Report type — pill toggle */}
       <div>
         <label className="mb-2 block text-sm font-medium text-gray-700">
           {t.reportType} <span className="text-red-500">*</span>
         </label>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="flex gap-2">
           {[
-            { value: LostFoundType.LOST, label: t.tabLost },
-            { value: LostFoundType.FOUND, label: t.tabFound },
+            {
+              value: LostFoundType.LOST,
+              label: t.tabLost,
+              activeBg: "bg-red-600 text-white border-red-600",
+            },
+            {
+              value: LostFoundType.FOUND,
+              label: t.tabFound,
+              activeBg: "bg-emerald-600 text-white border-emerald-600",
+            },
           ].map((opt) => (
             <button
               key={opt.value}
               type="button"
               onClick={() => setForm((prev) => ({ ...prev, type: opt.value }))}
               className={cn(
-                "rounded-xl border-2 py-3 text-sm font-semibold transition-all",
+                "flex-1 rounded-full border-2 py-2.5 text-sm font-semibold transition-all",
                 form.type === opt.value
-                  ? opt.value === LostFoundType.LOST
-                    ? "border-red-500 bg-red-50 text-red-700"
-                    : "border-green-500 bg-green-50 text-green-700"
-                  : "border-gray-200 bg-white text-gray-500 hover:border-gray-300",
+                  ? opt.activeBg
+                  : "border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:bg-gray-50",
               )}
             >
               {opt.label}
@@ -174,15 +186,19 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
 
       {/* Category */}
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="category"
+          className="mb-1.5 block text-sm font-medium text-gray-700"
+        >
           {t.itemCategory} <span className="text-red-500">*</span>
         </label>
         <select
+          id="category"
           name="category"
           required
           value={form.category}
           onChange={handleChange}
-          className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:ring-4 focus:outline-none"
+          className="form-select focus:border-[#00AAAC] focus:ring-[#00AAAC]/10 w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm transition-all focus:ring-4 focus:outline-none"
         >
           {categories.map((c) => (
             <option key={c.id} value={c.id}>
@@ -194,118 +210,153 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
 
       {/* Item name */}
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="itemName"
+          className="mb-1.5 block text-sm font-medium text-gray-700"
+        >
           {t.itemName} <span className="text-red-500">*</span>
         </label>
         <input
+          id="itemName"
           name="itemName"
           required
           value={form.itemName}
           onChange={handleChange}
-          className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:ring-4 focus:outline-none"
+          placeholder="e.g. Black leather wallet, iPhone 14 Pro"
+          className={INPUT_BASE}
         />
       </div>
 
       {/* Description */}
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="description"
+          className="mb-1.5 block text-sm font-medium text-gray-700"
+        >
           {t.itemDescription}
         </label>
         <textarea
+          id="description"
           name="description"
           rows={3}
           value={form.description}
           onChange={handleChange}
-          className="focus:border-primary-500 focus:ring-primary-500/10 w-full resize-none rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:ring-4 focus:outline-none"
+          placeholder="Brand, color, distinguishing marks, contents…"
+          className="form-textarea focus:border-[#00AAAC] focus:ring-[#00AAAC]/10 w-full resize-none rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm transition-all placeholder:text-gray-400 focus:ring-4 focus:outline-none"
         />
       </div>
 
-      {/* Location + Date (2 cols) */}
+      {/* Location + Date */}
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="location"
+            className="mb-1.5 block text-sm font-medium text-gray-700"
+          >
             {t.itemLocation}
           </label>
           <input
+            id="location"
             name="location"
             value={form.location}
             onChange={handleChange}
-            className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:ring-4 focus:outline-none"
+            placeholder="e.g. Gate 3, Arrivals Hall"
+            className={INPUT_BASE}
           />
         </div>
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="incidentDate"
+            className="mb-1.5 block text-sm font-medium text-gray-700"
+          >
             {t.itemIncidentDate} <span className="text-red-500">*</span>
           </label>
           <input
+            id="incidentDate"
             name="incidentDate"
             type="datetime-local"
             required
             value={form.incidentDate}
             onChange={handleChange}
-            className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:ring-4 focus:outline-none"
+            className={INPUT_BASE}
           />
         </div>
       </div>
 
       {/* Flight number */}
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="flightNumber"
+          className="mb-1.5 block text-sm font-medium text-gray-700"
+        >
           {t.itemFlightNumber}
         </label>
         <input
+          id="flightNumber"
           name="flightNumber"
           value={form.flightNumber}
           onChange={handleChange}
-          className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:ring-4 focus:outline-none"
+          placeholder="e.g. QV201"
+          className={INPUT_BASE}
         />
       </div>
 
-      <div className="border-t border-gray-100 pt-2">
-        <p className="mb-4 text-sm font-semibold text-gray-700">
-          Contact Information
+      {/* Contact information */}
+      <div className="space-y-4 border-t border-gray-100 pt-5">
+        <p className="text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+          {t.contactInfo}
         </p>
 
-        {/* Reporter name + email (2 cols) */}
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="reporterName"
+              className="mb-1.5 block text-sm font-medium text-gray-700"
+            >
               {t.reporterName} <span className="text-red-500">*</span>
             </label>
             <input
+              id="reporterName"
               name="reporterName"
               required
               value={form.reporterName}
               onChange={handleChange}
-              className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:ring-4 focus:outline-none"
+              className={INPUT_BASE}
             />
           </div>
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="reporterEmail"
+              className="mb-1.5 block text-sm font-medium text-gray-700"
+            >
               {t.reporterEmail} <span className="text-red-500">*</span>
             </label>
             <input
+              id="reporterEmail"
               name="reporterEmail"
               type="email"
               required
               value={form.reporterEmail}
               onChange={handleChange}
-              className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:ring-4 focus:outline-none"
+              className={INPUT_BASE}
             />
           </div>
         </div>
 
-        {/* Phone */}
-        <div className="mt-4">
-          <label className="mb-1.5 block text-sm font-medium text-gray-700">
+        <div>
+          <label
+            htmlFor="reporterPhone"
+            className="mb-1.5 block text-sm font-medium text-gray-700"
+          >
             {t.reporterPhone}
           </label>
           <input
+            id="reporterPhone"
             name="reporterPhone"
             type="tel"
             value={form.reporterPhone}
             onChange={handleChange}
-            className="focus:border-primary-500 focus:ring-primary-500/10 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:ring-4 focus:outline-none"
+            className={INPUT_BASE}
           />
         </div>
       </div>
@@ -318,10 +369,10 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
         <button
           type="button"
           onClick={() => fileRef.current?.click()}
-          className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-gray-300 bg-gray-50 py-3 text-sm text-gray-500 transition-colors hover:bg-gray-100"
+          className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-lg border border-dashed border-gray-300 bg-gray-50 py-3 text-sm text-gray-500 transition-colors hover:border-[#00AAAC] hover:bg-[#f0fbfc] hover:text-[#00AAAC]"
         >
           <Upload className="h-4 w-4" />
-          Upload images (max 5)
+          {t.itemImages}
         </button>
         <input
           ref={fileRef}
@@ -344,7 +395,8 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
                 <button
                   type="button"
                   onClick={() => removeFile(i)}
-                  className="text-gray-400 hover:text-red-500"
+                  className="rounded-md p-2 text-gray-400 transition-colors hover:bg-red-50 hover:text-red-500"
+                  aria-label="Remove file"
                 >
                   <X className="h-3.5 w-3.5" />
                 </button>
@@ -356,19 +408,19 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
 
       {/* Error */}
       {status === "error" && (
-        <p className="rounded-lg bg-red-50 px-3 py-2 text-xs text-red-600">
-          {error}
-        </p>
+        <div className="rounded-r-lg border-l-4 border-red-500 bg-red-50 px-4 py-3">
+          <p className="text-xs text-red-700">{error}</p>
+        </div>
       )}
 
       {/* Submit */}
       <button
         type="submit"
         disabled={status === "loading"}
-        className="bg-primary-600 hover:bg-primary-700 flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-white transition-colors disabled:opacity-60"
+        className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-[#00AAAC] py-3 text-sm font-semibold text-white transition-colors hover:bg-[#008e90] disabled:opacity-60"
       >
         {status === "loading" && <Loader2 className="h-4 w-4 animate-spin" />}
-        {t.submitReport}
+        {status === "loading" ? t.submitting : t.submitReport}
       </button>
     </form>
   );

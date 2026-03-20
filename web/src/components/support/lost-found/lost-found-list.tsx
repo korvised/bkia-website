@@ -17,13 +17,13 @@ interface LostFoundListProps {
 }
 
 const TYPE_STYLE: Record<LostFoundType, string> = {
-  [LostFoundType.LOST]: "bg-red-50 text-red-700 border-red-200",
-  [LostFoundType.FOUND]: "bg-green-50 text-green-700 border-green-200",
+  [LostFoundType.LOST]: "bg-red-600 text-white",
+  [LostFoundType.FOUND]: "bg-emerald-600 text-white",
 };
 
 const STATUS_STYLE: Record<LostFoundStatus, string> = {
-  [LostFoundStatus.OPEN]: "bg-blue-50 text-blue-700",
-  [LostFoundStatus.MATCHED]: "bg-yellow-50 text-yellow-700",
+  [LostFoundStatus.OPEN]: "bg-[#f0fbfc] text-[#008e90]",
+  [LostFoundStatus.MATCHED]: "bg-amber-50 text-amber-700",
   [LostFoundStatus.RETURNED]: "bg-gray-100 text-gray-500",
   [LostFoundStatus.DONATED]: "bg-gray-100 text-gray-500",
   [LostFoundStatus.DISPOSED]: "bg-gray-100 text-gray-500",
@@ -52,14 +52,16 @@ export function LostFoundList({
 
   if (items.length === 0) {
     return (
-      <div className="rounded-xl border border-gray-200 bg-white py-16 text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+      <div className="py-16 text-center">
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
           <Package className="h-8 w-8 text-gray-400" />
         </div>
-        <h3 className="mt-4 text-lg font-semibold text-gray-900">
+        <h3 className="text-lg font-semibold text-gray-900">
           {t.noItemsFound}
         </h3>
-        <p className="mt-2 text-sm text-gray-500">{t.noItemsMessage}</p>
+        <p className="mx-auto mt-2 max-w-sm text-sm text-gray-500">
+          {t.noItemsMessage}
+        </p>
       </div>
     );
   }
@@ -71,7 +73,7 @@ export function LostFoundList({
           <Link
             key={item.id}
             href={`/${lang}/support/lost-found/${item.id}`}
-            className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300 hover:shadow-md"
+            className="group flex flex-col overflow-hidden rounded-xl bg-white transition-colors hover:bg-[#f0fbfc]"
           >
             {/* Cover image */}
             <div className="relative h-44 w-full bg-gray-100">
@@ -90,7 +92,7 @@ export function LostFoundList({
               {/* Type badge overlay */}
               <span
                 className={cn(
-                  "absolute top-3 left-3 rounded-full border px-2.5 py-0.5 text-xs font-semibold",
+                  "absolute top-3 left-3 rounded-full px-2.5 py-0.5 text-xs font-bold tracking-wide",
                   TYPE_STYLE[item.type],
                 )}
               >
@@ -101,12 +103,12 @@ export function LostFoundList({
             {/* Content */}
             <div className="flex flex-1 flex-col gap-2 p-4">
               <div className="flex items-start justify-between gap-2">
-                <h3 className="group-hover:text-primary-600 line-clamp-1 text-sm font-semibold text-gray-900 transition-colors">
+                <h3 className="line-clamp-1 text-sm font-semibold text-gray-900 transition-colors group-hover:text-[#00AAAC]">
                   {item.itemName}
                 </h3>
                 <span
                   className={cn(
-                    "shrink-0 rounded-md px-2 py-0.5 text-xs font-medium",
+                    "shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium",
                     STATUS_STYLE[item.status],
                   )}
                 >
@@ -120,7 +122,7 @@ export function LostFoundList({
                 </p>
               )}
 
-              <div className="mt-auto space-y-1 pt-2 text-xs text-gray-500">
+              <div className="mt-auto space-y-1 pt-2 text-xs text-gray-400">
                 {item.location && (
                   <div className="flex items-center gap-1.5">
                     <MapPin className="h-3.5 w-3.5 shrink-0" />
