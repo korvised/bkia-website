@@ -47,11 +47,11 @@ export function FlightBoard({
       {table}
 
       {/* Information Tip Box */}
-      <div className="mt-6 rounded-lg bg-blue-50 p-4">
-        <ul className="space-y-2 text-sm text-gray-700">
+      <div className="mt-6 rounded-r-lg border-l-4 border-[#00AAAC] bg-[#f0fbfc] px-4 py-3">
+        <ul className="space-y-1.5 text-sm text-gray-600">
           {tips.map((tip, index) => (
             <li key={index} className="flex gap-2">
-              <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-700" />
+              <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#00AAAC]" />
               <span>{tip}</span>
             </li>
           ))}

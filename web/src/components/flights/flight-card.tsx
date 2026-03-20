@@ -29,8 +29,6 @@ export const FlightCard: React.FC<FlightCardProps> = ({
   const borderColor = getBorderColor(code);
   const AIRPORT_CODE = "BOR";
 
-  console.log(labels);
-
   // Get the relevant airport based on direction
   const airport =
     direction === "departure" ? flight.route.destination : flight.route.origin;
@@ -41,7 +39,7 @@ export const FlightCard: React.FC<FlightCardProps> = ({
   return (
     <div
       className={cn(
-        "grid gap-y-3 rounded-lg border-l-4 bg-white p-4 shadow-sm transition-all duration-200 hover:shadow-md",
+        "grid gap-y-3 rounded-lg border-l-4 bg-white p-4",
         borderColor,
       )}
     >
@@ -97,9 +95,9 @@ export const FlightCard: React.FC<FlightCardProps> = ({
         {/* Time */}
         <div className="flex items-center gap-2 border-r border-gray-200 pr-4">
           {direction === "departure" ? (
-            <PlaneTakeoff className="text-primary-600 h-5 w-5 flex-shrink-0" />
+            <PlaneTakeoff className="h-5 w-5 flex-shrink-0 text-[#00AAAC]" />
           ) : (
-            <PlaneLanding className="text-primary-600 h-5 w-5 flex-shrink-0" />
+            <PlaneLanding className="h-5 w-5 flex-shrink-0 text-[#00AAAC]" />
           )}
           <div className="flex flex-col">
             <span className="text-lg font-bold text-gray-900">
@@ -132,7 +130,7 @@ export const FlightCard: React.FC<FlightCardProps> = ({
             <span
               className={cn(
                 "font-mono text-xs font-semibold",
-                isBOR ? "text-primary-600" : "text-gray-500",
+                isBOR ? "text-[#00AAAC]" : "text-gray-500",
               )}
             >
               {airport.code}
@@ -144,7 +142,7 @@ export const FlightCard: React.FC<FlightCardProps> = ({
       {/* Terminal, Gate, and Check-in Counter Row */}
       <div className="flex items-center gap-3">
         {/* Terminal */}
-        <div className="flex items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2">
+        <div className="flex items-center gap-2 rounded-md bg-gray-50 px-3 py-2">
           <div className="flex flex-col gap-y-1">
             <span className="text-xs font-medium text-gray-500">
               {t.terminal}
@@ -156,7 +154,7 @@ export const FlightCard: React.FC<FlightCardProps> = ({
         </div>
 
         {/* Gate */}
-        <div className="flex items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2">
+        <div className="flex items-center gap-2 rounded-md bg-gray-50 px-3 py-2">
           <div className="flex flex-col gap-y-1">
             <span className="text-xs font-medium text-gray-500">{t.gate}</span>
             <span className="text-center text-sm font-bold text-gray-900">
@@ -167,7 +165,7 @@ export const FlightCard: React.FC<FlightCardProps> = ({
 
         {/* Check-in Counter (Departure only) */}
         {direction === "departure" && (
-          <div className="flex flex-1 items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2">
+          <div className="flex flex-1 items-center gap-2 rounded-md bg-gray-50 px-3 py-2">
             <div className="flex flex-col gap-1">
               <span className="text-xs font-medium text-gray-500">
                 {t.checkInCounter}
@@ -177,7 +175,7 @@ export const FlightCard: React.FC<FlightCardProps> = ({
                   {flight.checkInCounters.map((counter) => (
                     <span
                       key={counter.id}
-                      className="bg-primary-100 text-primary-800 rounded-md px-1.5 py-0.5 text-xs font-semibold"
+                      className="rounded-full bg-[#f0fbfc] px-2 py-0.5 text-xs font-semibold text-[#008e90]"
                     >
                       {counter.name}
                     </span>
@@ -195,7 +193,7 @@ export const FlightCard: React.FC<FlightCardProps> = ({
       {direction === "departure" &&
         flight.checkInStartTime &&
         flight.checkInEndTime && (
-          <div className="flex items-center justify-center gap-1.5 rounded-md bg-blue-50 px-3 py-2 text-xs text-gray-600">
+          <div className="flex items-center justify-center gap-1.5 rounded-md bg-[#f0fbfc] px-3 py-2 text-xs text-gray-600">
             <Clock className="h-3.5 w-3.5 text-gray-500" />
             <span className="font-medium">
               {t.checkInTime}:{" "}

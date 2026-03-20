@@ -29,7 +29,7 @@ export default async function FlightsLayout({
       preserveQuery={["date"]}
       menuItems={menuItems}
     >
-      <div className="container">{children}</div>
+      <div className="container py-8">{children}</div>
     </FeatureLayout>
   );
 }

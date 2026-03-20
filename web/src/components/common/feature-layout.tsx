@@ -4,7 +4,7 @@ import { Fragment, useMemo } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown, Home } from "lucide-react";
-import { HiOutlineChevronRight } from "react-icons/hi2";
+import { ChevronRight } from "lucide-react";
 import { MenuItem } from "@headlessui/react";
 import { useApp } from "@/context";
 import { cn } from "@/lib";
@@ -103,7 +103,7 @@ export function FeatureLayout({
                 <Home className="h-5 w-5 sm:h-6 sm:w-6" />
               </Link>
 
-              <HiOutlineChevronRight className="h-4 w-4 text-white/60 sm:h-4.5 sm:w-4.5" />
+              <ChevronRight className="h-4 w-4 text-white/60" />
 
               {/* Guides Dropdown */}
               <BreadcrumbDropdown
@@ -124,10 +124,10 @@ export function FeatureLayout({
                       href={buildUrl(`/${lang}${item.href}`)}
                       className={cn(
                         "flex w-full items-center rounded-md px-3 py-2.5 text-sm transition-colors",
-                        "hover:bg-primary-50 hover:text-primary-700",
-                        "focus:bg-primary-50 focus:text-primary-700 active:bg-primary-100",
+                        "hover:bg-[#f0fbfc] hover:text-[#00AAAC]",
+                        "focus:bg-[#f0fbfc] focus:text-[#00AAAC] active:bg-[#e0f5f6]",
                         pathname.includes(item.href)
-                          ? "bg-primary-50 text-primary-700 font-medium"
+                          ? "bg-[#f0fbfc] text-[#00AAAC] font-medium"
                           : "text-gray-900",
                       )}
                     >
@@ -137,7 +137,7 @@ export function FeatureLayout({
                 ))}
               />
 
-              <HiOutlineChevronRight className="h-4 w-4 text-white/60 sm:h-4.5 sm:w-4.5" />
+              <ChevronRight className="h-4 w-4 text-white/60" />
 
               {/* Guides Section Dropdown */}
               <BreadcrumbDropdown
@@ -162,10 +162,10 @@ export function FeatureLayout({
                       href={buildUrl(`/${lang}${item.href}`)}
                       className={cn(
                         "flex w-full items-center rounded-md px-3 py-2.5 text-sm transition-colors",
-                        "hover:bg-primary-50 hover:text-primary-700",
-                        "focus:bg-primary-50 focus:text-primary-700 active:bg-primary-100",
+                        "hover:bg-[#f0fbfc] hover:text-[#00AAAC]",
+                        "focus:bg-[#f0fbfc] focus:text-[#00AAAC] active:bg-[#e0f5f6]",
                         pathname.includes(item.href)
-                          ? "bg-primary-50 text-primary-700 font-medium"
+                          ? "bg-[#f0fbfc] text-[#00AAAC] font-medium"
                           : "text-gray-900",
                       )}
                     >
@@ -191,8 +191,8 @@ export function FeatureLayout({
                 href={buildUrl(`/${lang}${item.href}`)}
                 className={cn(
                   "group relative flex-shrink-0 py-2 text-sm font-semibold transition-colors duration-200 md:py-4 md:text-base",
-                  "hover:text-primary-600",
-                  isActive ? "text-primary-600" : "text-gray-700",
+                  "hover:text-[#00AAAC]",
+                  isActive ? "text-[#00AAAC]" : "text-gray-700",
                 )}
               >
                 {/* Menu Item Text */}
@@ -200,12 +200,12 @@ export function FeatureLayout({
 
                 {/* Active Bottom Border */}
                 {isActive && (
-                  <span className="bg-primary-600 absolute right-0 bottom-0 left-0 hidden h-0.5 md:block" />
+                  <span className="absolute right-0 bottom-0 left-0 hidden h-0.5 bg-[#00AAAC] md:block" />
                 )}
 
                 {/* Hover Animation Border - Slides from left to right */}
                 {!isActive && (
-                  <span className="bg-primary-600 absolute bottom-0 left-0 hidden h-0.5 w-0 transition-all duration-300 ease-out group-hover:w-full md:block" />
+                  <span className="absolute bottom-0 left-0 hidden h-0.5 w-0 bg-[#00AAAC] transition-all duration-300 ease-out group-hover:w-full md:block" />
                 )}
               </Link>
             );
@@ -214,7 +214,7 @@ export function FeatureLayout({
       </div>
 
       {/* Main Content */}
-      <div className="py-8">{children}</div>
+      <div className="bg-gray-50">{children}</div>
     </div>
   );
 }

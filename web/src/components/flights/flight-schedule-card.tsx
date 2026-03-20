@@ -33,7 +33,7 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
   return (
     <div
       className={cn(
-        "grid gap-y-3 rounded-sm border-l-4 bg-white p-4 shadow-sm transition-all duration-200 hover:shadow-md",
+        "grid gap-y-3 rounded-lg border-l-4 bg-white p-4",
         borderColor,
       )}
     >
@@ -85,14 +85,14 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
       </div>
 
       {/* Combined Time and Route Section - Single Row */}
-      <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 p-3">
+      <div className="flex items-center gap-3 rounded-lg bg-gray-50 p-3">
         {/* Departure Time & Location */}
         <div className="flex flex-1 flex-col gap-1">
           <div className="flex items-center gap-2">
             <PlaneTakeoff
               className={cn(
                 "h-4 w-4 flex-shrink-0",
-                isDepartureBOR ? "text-primary-600" : "text-gray-400",
+                isDepartureBOR ? "text-[#00AAAC]" : "text-gray-400",
               )}
             />
             <div className="flex flex-col">
@@ -113,7 +113,7 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
             <div
               className={cn(
                 "font-mono text-xs font-semibold",
-                isDepartureBOR ? "text-primary-600" : "text-gray-500",
+                isDepartureBOR ? "text-[#00AAAC]" : "text-gray-500",
               )}
             >
               {flight.route.origin.code}
@@ -142,7 +142,7 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
             <PlaneLanding
               className={cn(
                 "h-4 w-4 flex-shrink-0",
-                isArrivalBOR ? "text-primary-600" : "text-gray-400",
+                isArrivalBOR ? "text-[#00AAAC]" : "text-gray-400",
               )}
             />
           </div>
@@ -154,7 +154,7 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
             <div
               className={cn(
                 "font-mono text-xs font-semibold",
-                isArrivalBOR ? "text-primary-600" : "text-gray-500",
+                isArrivalBOR ? "text-[#00AAAC]" : "text-gray-500",
               )}
             >
               {flight.route.destination.code}
@@ -166,7 +166,7 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
       {/* Terminal, Gate, and Check-in Counter Row */}
       <div className="flex items-stretch gap-3">
         {/* Terminal */}
-        <div className="flex gap-2 rounded-md border border-gray-200 bg-white px-3 py-2">
+        <div className="flex gap-2 rounded-md bg-gray-50 px-3 py-2">
           <div className="flex flex-col gap-y-1.5">
             <span className="text-xs font-medium text-gray-500">
               {t.terminal}
@@ -178,7 +178,7 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
         </div>
 
         {/* Gate */}
-        <div className="flex gap-2 rounded-md border border-gray-200 bg-white px-3 py-2">
+        <div className="flex gap-2 rounded-md bg-gray-50 px-3 py-2">
           <div className="flex flex-col gap-y-1.5">
             <span className="text-xs font-medium text-gray-500">{t.gate}</span>
             <span className="text-center text-sm font-bold text-gray-900">
@@ -189,7 +189,7 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
 
         {/* Check-in Counter */}
         {flight.checkInCounters.length > 0 && (
-          <div className="flex flex-1 rounded-md border border-gray-200 bg-white px-3 py-2">
+          <div className="flex flex-1 rounded-md bg-gray-50 px-3 py-2">
             <div className="flex w-full flex-col gap-1.5">
               <span className="text-xs font-medium text-gray-500">
                 {t.checkInCounter}
@@ -198,7 +198,7 @@ export const FlightScheduleCard: React.FC<FlightScheduleCardProps> = ({
                 {flight.checkInCounters.map((counter) => (
                   <span
                     key={counter.id}
-                    className="bg-primary-100 text-primary-800 rounded-md px-2 py-0.5 text-xs font-semibold"
+                    className="rounded-full bg-[#f0fbfc] px-2 py-0.5 text-xs font-semibold text-[#008e90]"
                   >
                     {counter.name}
                   </span>

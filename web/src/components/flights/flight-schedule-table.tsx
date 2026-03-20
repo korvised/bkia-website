@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import Image from "next/image";
-import { ArrowRight, Plane, PlaneLanding, PlaneTakeoff } from "lucide-react";
-import { LuMoveRight } from "react-icons/lu";
+import { ArrowRight, MoveRight, Plane, PlaneLanding, PlaneTakeoff } from "lucide-react";
 import { asset, cn, formatTime } from "@/lib";
 import { createFlightI18n } from "@/data/i18n/flights";
 import {
@@ -29,10 +28,10 @@ export function FlightScheduleTable({
   return (
     <Fragment>
       {/* Desktop Table - Hidden on mobile */}
-      <div className="horizontal-scroll hidden overflow-x-auto rounded-lg border border-gray-200 shadow-sm lg:block">
+      <div className="horizontal-scroll hidden overflow-x-auto rounded-lg lg:block">
         <table className="w-full">
-          <thead className="from-primary-50 to-secondary-50 bg-gradient-to-r">
-            <tr className="border-l-primary-50 border-l-4">
+          <thead className="bg-[#f0fbfc]">
+            <tr>
               <th className="px-4 py-3 text-left text-sm font-semibold tracking-wide whitespace-nowrap text-gray-700 uppercase">
                 {t.time}
               </th>
@@ -80,7 +79,7 @@ export function FlightScheduleTable({
                             className={cn(
                               "h-4 w-4 flex-shrink-0",
                               isDepartureBOR
-                                ? "text-primary-600"
+                                ? "text-[#00AAAC]"
                                 : "text-gray-400",
                             )}
                           />
@@ -107,7 +106,7 @@ export function FlightScheduleTable({
                             className={cn(
                               "h-4 w-4 flex-shrink-0",
                               isArrivalBOR
-                                ? "text-primary-600"
+                                ? "text-[#00AAAC]"
                                 : "text-gray-400",
                             )}
                           />
@@ -139,14 +138,14 @@ export function FlightScheduleTable({
                             className={cn(
                               "font-mono text-xs font-semibold",
                               isDepartureBOR
-                                ? "text-primary-600"
+                                ? "text-[#00AAAC]"
                                 : "text-gray-500",
                             )}
                           >
                             {flight.route.origin.code}
                           </div>
                         </div>
-                        <LuMoveRight className="h-5 w-5 flex-shrink-0 text-gray-400" />
+                        <MoveRight className="h-5 w-5 flex-shrink-0 text-gray-400" />
                         <div className="min-w-[80px] text-right">
                           <div className="font-lo text-sm font-medium text-gray-900">
                             {flight.route.destination.names[lang] ??
@@ -156,7 +155,7 @@ export function FlightScheduleTable({
                             className={cn(
                               "font-mono text-xs font-semibold",
                               isArrivalBOR
-                                ? "text-primary-600"
+                                ? "text-[#00AAAC]"
                                 : "text-gray-500",
                             )}
                           >
@@ -221,7 +220,7 @@ export function FlightScheduleTable({
                               {flight.checkInCounters.map((counter) => (
                                 <span
                                   key={counter.id}
-                                  className="bg-primary-100 text-primary-800 inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold"
+                                  className="inline-flex items-center rounded-full bg-[#f0fbfc] px-2.5 py-1 text-xs font-semibold text-[#008e90]"
                                 >
                                   {counter.name}
                                 </span>
@@ -283,7 +282,7 @@ export function FlightScheduleTable({
             <FlightScheduleCard key={flight.id} flight={flight} lang={lang} />
           ))
         ) : (
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-gray-200 bg-white py-12">
+          <div className="flex flex-col items-center gap-3 py-12">
             <Plane className="h-12 w-12 text-gray-300" />
             <span className="text-sm font-medium text-gray-500">
               {t.noFlights}
