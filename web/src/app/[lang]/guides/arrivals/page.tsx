@@ -1,5 +1,5 @@
-import { Suspense } from "react";
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { Lang } from "@/types/language";
 import {
   ArrivalAirportContent,
@@ -40,30 +40,28 @@ export default async function ArrivalPage({
   const { arrivalNav: t } = createArrivalGuideI18n(lang);
 
   return (
-    <div className="bg-gray-50">
-      {/* Header */}
-      <div className="bg-white pb-8">
-        <div className="container space-y-3">
+    <>
+      {/* ── Header ──────────────────────────────────────────── */}
+      <section className="bg-white py-10">
+        <div className="container space-y-2">
           <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">
             {t.title}
           </h1>
-          <p className="text-gray-600 lg:text-lg">{t.subtitle}</p>
+          <p className="max-w-2xl text-gray-500 lg:text-lg">{t.subtitle}</p>
         </div>
-      </div>
+      </section>
 
-      {/* Tab Navigation */}
-      <ArrivalTabNavigation lang={lang as Lang} activeTab={tab} />
+      {/* ── Tab Navigation ──────────────────────────────────── */}
+      <ArrivalTabNavigation lang={lang} activeTab={tab} />
 
-      {/* Content */}
-      <div className="container py-8">
-        <Suspense fallback={<ContentSkeleton />}>
-          <ArrivalContent tab={tab} lang={lang} />
-        </Suspense>
-      </div>
+      {/* ── Content ─────────────────────────────────────────── */}
+      <Suspense fallback={<ContentSkeleton />}>
+        <ArrivalContent tab={tab} lang={lang} />
+      </Suspense>
 
-      {/* Related Services */}
+      {/* ── Related Services ────────────────────────────────── */}
       <RelatedServices lang={lang} />
-    </div>
+    </>
   );
 }
 
@@ -88,22 +86,31 @@ function ArrivalContent({ tab, lang }: { tab: ArrivalTab; lang: Lang }) {
 
 function ContentSkeleton() {
   return (
-    <div className="animate-pulse space-y-6">
-      <div className="flex items-start gap-4">
-        <div className="h-24 w-24 rounded-lg bg-gray-200" />
-        <div className="flex-1 space-y-4">
-          <div className="h-8 w-1/4 rounded bg-gray-200" />
-          <div className="space-y-3">
-            <div className="h-4 w-full rounded bg-gray-200" />
-            <div className="h-4 w-11/12 rounded bg-gray-200" />
-            <div className="h-4 w-full rounded bg-gray-200" />
-            <div className="h-4 w-10/12 rounded bg-gray-200" />
+    <>
+      <section className="bg-[#f0fbfc] py-10">
+        <div className="container animate-pulse">
+          <div className="mb-8 space-y-3">
+            <div className="h-8 w-1/3 rounded bg-[#d4f2f3]" />
+            <div className="h-4 w-2/3 rounded bg-[#d4f2f3]" />
           </div>
-          <div className="border-l-4 border-gray-300 bg-gray-100 p-4">
-            <div className="h-4 w-3/4 rounded bg-gray-200" />
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div className="h-72 rounded-xl bg-[#d4f2f3] lg:h-[420px]" />
+            <div className="space-y-4">
+              <div className="h-3 w-1/4 rounded bg-[#d4f2f3]" />
+              <div className="h-3 w-full rounded bg-[#d4f2f3]" />
+              <div className="h-3 w-5/6 rounded bg-[#d4f2f3]" />
+              <div className="h-3 w-full rounded bg-[#d4f2f3]" />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+      <section className="bg-white py-10">
+        <div className="container animate-pulse space-y-4">
+          <div className="h-3 w-1/4 rounded bg-gray-200" />
+          <div className="h-3 w-full rounded bg-gray-200" />
+          <div className="h-3 w-5/6 rounded bg-gray-200" />
+        </div>
+      </section>
+    </>
   );
 }

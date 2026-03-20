@@ -189,9 +189,9 @@ export const customsInspection = {
   },
 
   proTip: {
-    en: "💡 Pro Tip: Fill out your customs declaration card during the flight. Have your passport and arrival card ready. Declaring items honestly prevents delays and potential fines. When in doubt, declare it!",
-    lo: "💡 ຄຳແນະນຳ: ຄວນຕື່ມໃບແຈ້ງພາສີໃຫ້ສຳເລັດໃນລະຫວ່າງການບິນ. ກຽມໜັງສືຜ່ານແດນ ແລະ ໃບແຈ້ງເຂົ້າ-ອອກໃຫ້ພ້ອມ. ການແຈ້ງລາຍການຢ່າງຊື່ສັດຈະຊ່ວຍຫຼຸດຜ່ອນຄວາມລ່າຊ້າ ແລະ ຄ່າປັບໃໝ. ຫາກທ່ານບໍ່ໝັ້ນໃຈ, ແນະນຳໃຫ້ແຈ້ງໄວ້ກ່ອນ!",
-    zh: "💡 小贴士：请在飞行途中填写海关申报卡。准备好护照和入境卡。如实申报可避免延误和罚款。如有疑问，请申报！",
+    en: "Pro Tip: Fill out your customs declaration card during the flight. Have your passport and arrival card ready. Declaring items honestly prevents delays and potential fines. When in doubt, declare it!",
+    lo: "ຄຳແນະນຳ: ຄວນຕື່ມໃບແຈ້ງພາສີໃຫ້ສຳເລັດໃນລະຫວ່າງການບິນ. ກຽມໜັງສືຜ່ານແດນ ແລະ ໃບແຈ້ງເຂົ້າ-ອອກໃຫ້ພ້ອມ. ການແຈ້ງລາຍການຢ່າງຊື່ສັດຈະຊ່ວຍຫຼຸດຜ່ອນຄວາມລ່າຊ້າ ແລະ ຄ່າປັບໃໝ. ຫາກທ່ານບໍ່ໝັ້ນໃຈ, ແນະນຳໃຫ້ແຈ້ງໄວ້ກ່ອນ!",
+    zh: "小贴士：请在飞行途中填写海关申报卡。准备好护照和入境卡。如实申报可避免延误和罚款。如有疑问，请申报！",
   },
 } as const;
 

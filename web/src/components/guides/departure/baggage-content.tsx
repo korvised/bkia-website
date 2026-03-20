@@ -118,7 +118,7 @@ export function BaggageContent({ lang }: BaggageContentProps) {
         <div className="container space-y-14">
           {/* Prohibited items */}
           <div>
-            <div className="mb-5 flex items-start gap-3 border-l-2 border-red-400 pl-4">
+            <div className="mb-5 flex items-start gap-3 border-l-4 border-red-500 bg-red-50 px-4 py-3 rounded-r-lg">
               <div>
                 <p className="mb-1 text-xs font-bold uppercase tracking-widest text-red-600">
                   {t.prohibitedTitle}
@@ -147,7 +147,7 @@ export function BaggageContent({ lang }: BaggageContentProps) {
               <p className="mb-4 text-xs font-bold uppercase tracking-widest text-amber-600">
                 {t.cabinRestrictedTitle}
               </p>
-              <div className="space-y-3 border-l-2 border-amber-300 pl-4">
+              <div className="space-y-3 border-l-4 border-amber-500 bg-amber-50 px-4 py-3 rounded-r-lg">
                 {[
                   t.cabinRestrictedLiquids,
                   t.cabinRestrictedSharp,

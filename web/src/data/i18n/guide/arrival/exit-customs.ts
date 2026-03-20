@@ -84,9 +84,9 @@ export const exitCustoms = {
     zh: "需要许可的限制物品",
   },
   redNote: {
-    en: "⚠️ Declare to avoid penalties",
-    lo: "⚠️ ກະລຸນາແຈ້ງຕາມຄວາມຈິງເພື່ອຫຼີກເວັ້ນຄ່າປັບໃໝ",
-    zh: "⚠️ 申报以避免处罚",
+    en: "Declare to avoid penalties",
+    lo: "ກະລຸນາແຈ້ງຕາມຄວາມຈິງເພື່ອຫຼີກເວັ້ນຄ່າປັບໃໝ",
+    zh: "申报以避免处罚",
   },
 
   randomInspectionTitle: {
@@ -182,9 +182,9 @@ export const exitCustoms = {
     zh: "旅行禁令：未来访问可能被拒绝入境",
   },
   penaltyNote: {
-    en: "⚖️ When in doubt, use the Red Channel and declare. It's always better to declare and pay duty than face penalties.",
-    lo: "⚖️ ຫາກທ່ານບໍ່ໝັ້ນໃຈ, ແນະນຳໃຫ້ເຂົ້າຊ່ອງທາງສີແດງເພື່ອແຈ້ງເຈົ້າໜ້າທີ່. ການແຈ້ງ ແລະ ເສຍພາສີໃຫ້ຖືກຕ້ອງ ແມ່ນດີກວ່າການຖືກປັບໃໝ ຫຼື ດຳເນີນຄະດີ.",
-    zh: "⚖️ 如有疑问，请使用红色通道并申报。申报并缴税总比面临处罚好。",
+    en: "When in doubt, use the Red Channel and declare. It's always better to declare and pay duty than face penalties.",
+    lo: "ຫາກທ່ານບໍ່ໝັ້ນໃຈ, ແນະນຳໃຫ້ເຂົ້າຊ່ອງທາງສີແດງເພື່ອແຈ້ງເຈົ້າໜ້າທີ່. ການແຈ້ງ ແລະ ເສຍພາສີໃຫ້ຖືກຕ້ອງ ແມ່ນດີກວ່າການຖືກປັບໃໝ ຫຼື ດຳເນີນຄະດີ.",
+    zh: "如有疑问，请使用红色通道并申报。申报并缴税总比面临处罚好。",
   },
 
   afterClearanceTitle: {
@@ -224,9 +224,9 @@ export const exitCustoms = {
   },
 
   proTip: {
-    en: "💡 Pro Tip: Keep all receipts from duty-free purchases and customs declaration forms. You may need them when departing Laos or for insurance claims.",
-    lo: "💡 ຄຳແນະນຳ: ກະລຸນາເກັບໃບຮັບເງິນຈາກການຊື້ເຄື່ອງປອດພາສີ ແລະ ສຳເນົາໃບແຈ້ງພາສີໄວ້ໃຫ້ດີ. ທ່ານອາດຈະຕ້ອງໄດ້ໃຊ້ໃນເວລາກັບອອກຈາກລາວ ຫຼື ໃຊ້ເພື່ອຢັ້ງຢືນການປະກັນໄພ.",
-    zh: "💡 小贴士：请保留所有免税购物收据和海关申报表。离开老挝或保险理赔时可能需要。",
+    en: "Pro Tip: Keep all receipts from duty-free purchases and customs declaration forms. You may need them when departing Laos or for insurance claims.",
+    lo: "ຄຳແນະນຳ: ກະລຸນາເກັບໃບຮັບເງິນຈາກການຊື້ເຄື່ອງປອດພາສີ ແລະ ສຳເນົາໃບແຈ້ງພາສີໄວ້ໃຫ້ດີ. ທ່ານອາດຈະຕ້ອງໄດ້ໃຊ້ໃນເວລາກັບອອກຈາກລາວ ຫຼື ໃຊ້ເພື່ອຢັ້ງຢືນການປະກັນໄພ.",
+    zh: "小贴士：请保留所有免税购物收据和海关申报表。离开老挝或保险理赔时可能需要。",
   },
 
   assistanceTitle: {
@@ -240,9 +240,9 @@ export const exitCustoms = {
     zh: "海关办公室：位于行李提取/出口区域",
   },
   assistancePhone: {
-    en: "Phone: +856-84-211-XXX",
-    lo: "ໂທລະສັບ: +856-84-211-XXX",
-    zh: "电话：+856-84-211-XXX",
+    en: "Phone: +856 84 260 179",
+    lo: "ໂທລະສັບ: +856 84 260 179",
+    zh: "电话：+856 84 260 179",
   },
   assistanceAvailability: {
     en: "Available during all flight operations",

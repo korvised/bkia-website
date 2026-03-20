@@ -23,29 +23,29 @@ export const MobilityChallengesComponent = ({ lang }: Props) => {
       icon: Accessibility,
       title: t.service1Title,
       desc: t.service1Desc,
-      color: "text-primary-500",
-      bg: "bg-primary-50",
+      iconColor: "text-[#00AAAC]",
+      iconBg: "bg-[#f0fbfc]",
     },
     {
       icon: ClipboardList,
       title: t.service2Title,
       desc: t.service2Desc,
-      color: "text-secondary-500",
-      bg: "bg-secondary-50",
+      iconColor: "text-blue-500",
+      iconBg: "bg-blue-50",
     },
     {
       icon: Building2,
       title: t.service3Title,
       desc: t.service3Desc,
-      color: "text-emerald-500",
-      bg: "bg-emerald-50",
+      iconColor: "text-emerald-500",
+      iconBg: "bg-emerald-50",
     },
     {
       icon: Car,
       title: t.service4Title,
       desc: t.service4Desc,
-      color: "text-amber-500",
-      bg: "bg-amber-50",
+      iconColor: "text-amber-500",
+      iconBg: "bg-amber-50",
     },
   ];
 
@@ -61,49 +61,54 @@ export const MobilityChallengesComponent = ({ lang }: Props) => {
   const tips = [t.tip1, t.tip2, t.tip3, t.tip4];
 
   return (
-    <div className="bg-gray-50 py-8">
-      <div className="container space-y-4">
-        {/* Back + Header */}
-        <div className="space-y-5">
+    <>
+      {/* Header */}
+      <section className="bg-[#f0fbfc] py-10">
+        <div className="container">
           <Link
             href={`/${lang}/guides/custom-services`}
-            className="group hover:text-primary-600 inline-flex items-center gap-1.5 text-sm text-gray-400 transition-colors"
+            className="group mb-6 inline-flex items-center gap-1.5 text-sm text-gray-400 transition-colors hover:text-[#00AAAC]"
           >
             <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
             {t.backButton}
           </Link>
-          <div className="space-y-3">
-            <h1 className="text-3xl leading-tight font-bold text-gray-900 lg:text-4xl">
-              {t.title}
-            </h1>
-            <p className="max-w-xl text-base text-gray-500">{t.subtitle}</p>
+          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            Custom Services
+          </p>
+          <h1 className="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
+            {t.title}
+          </h1>
+          <p className="mt-3 max-w-xl text-gray-500">{t.subtitle}</p>
+          {/* Disclaimer */}
+          <div className="mt-6 flex gap-3 border-l-4 border-amber-500 bg-amber-50 px-4 py-3 rounded-r-lg">
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
+            <p className="text-sm leading-relaxed text-gray-600">
+              {t.disclaimer}
+            </p>
           </div>
         </div>
+      </section>
 
-        {/* Disclaimer */}
-        <div className="flex gap-3 rounded-xl border border-amber-100 bg-amber-50 px-4 py-3">
-          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
-          <p className="text-sm leading-relaxed text-amber-700">
-            {t.disclaimer}
+      {/* Airport Assistance Services */}
+      <section className="bg-white py-10">
+        <div className="container">
+          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            Services
           </p>
-        </div>
-
-        {/* Airport Assistance Services */}
-        <div className="rounded-2xl bg-white p-6 lg:p-8">
-          <h2 className="mb-5 text-lg font-bold text-gray-900">
+          <h2 className="mb-6 text-xl font-bold text-gray-900">
             {t.airportServicesTitle}
           </h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {services.map(({ icon: Icon, title, desc, color, bg }, i) => (
-              <div key={i} className="flex gap-4 rounded-xl bg-gray-50 p-4">
+          <div className="grid gap-6 sm:grid-cols-2">
+            {services.map(({ icon: Icon, title, desc, iconColor, iconBg }, i) => (
+              <div key={i} className="flex gap-4">
                 <div
-                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${bg}`}
+                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${iconBg}`}
                 >
-                  <Icon className={`h-5 w-5 ${color}`} />
+                  <Icon className={`h-5 w-5 ${iconColor}`} />
                 </div>
-                <div className="space-y-1">
-                  <p className="text-sm font-semibold text-gray-800">{title}</p>
-                  <p className="text-sm leading-relaxed text-gray-500">
+                <div>
+                  <p className="font-semibold text-gray-800">{title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-gray-500">
                     {desc}
                   </p>
                 </div>
@@ -111,19 +116,21 @@ export const MobilityChallengesComponent = ({ lang }: Props) => {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Requirements */}
-        <div className="rounded-2xl bg-white p-6 lg:p-8">
-          <h2 className="mb-5 text-lg font-bold text-gray-900">
+      {/* Requirements */}
+      <section className="bg-gray-50 py-10">
+        <div className="container">
+          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            Requirements
+          </p>
+          <h2 className="mb-6 text-xl font-bold text-gray-900">
             {t.requirementsTitle}
           </h2>
           <div className="space-y-3">
             {requirements.map((req, i) => (
-              <div
-                key={i}
-                className="border-primary-300 flex gap-4 border-l-4 bg-gray-50 px-5 py-4"
-              >
-                <span className="bg-primary-100 text-primary-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-xs font-bold">
+              <div key={i} className="flex gap-3 border-l-4 border-[#00AAAC] bg-[#f0fbfc] px-4 py-3 rounded-r-lg">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#00AAAC] text-[10px] font-bold text-white">
                   {i + 1}
                 </span>
                 <p className="text-sm leading-relaxed text-gray-600">{req}</p>
@@ -131,16 +138,21 @@ export const MobilityChallengesComponent = ({ lang }: Props) => {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Accessible Facilities */}
-        <div className="rounded-2xl bg-white p-6 lg:p-8">
-          <h2 className="mb-5 text-lg font-bold text-gray-900">
+      {/* Accessible Facilities */}
+      <section className="bg-white py-10">
+        <div className="container">
+          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            Facilities
+          </p>
+          <h2 className="mb-6 text-xl font-bold text-gray-900">
             {t.facilitiesTitle}
           </h2>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {facilities.map((facility, i) => (
-              <div key={i} className="flex gap-3 rounded-xl bg-gray-50 p-4">
-                <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+              <div key={i} className="flex gap-3">
+                <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
                 <p className="text-sm leading-relaxed text-gray-600">
                   {facility}
                 </p>
@@ -148,24 +160,29 @@ export const MobilityChallengesComponent = ({ lang }: Props) => {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Travel Tips */}
-        <div className="rounded-2xl bg-white p-6 lg:p-8">
-          <h2 className="mb-5 text-lg font-bold text-gray-900">
+      {/* Travel Tips */}
+      <section className="bg-gray-50 py-10">
+        <div className="container">
+          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            Tips
+          </p>
+          <h2 className="mb-6 text-xl font-bold text-gray-900">
             {t.tipsTitle}
           </h2>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             {tips.map((tip, i) => (
-              <div key={i} className="flex gap-3 rounded-xl bg-gray-50 p-4">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-500">
+              <div key={i} className="flex gap-3">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-100 text-[10px] font-bold text-amber-600">
                   {i + 1}
                 </span>
-                <p className="text-sm leading-relaxed text-gray-500">{tip}</p>
+                <p className="text-sm leading-relaxed text-gray-600">{tip}</p>
               </div>
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };

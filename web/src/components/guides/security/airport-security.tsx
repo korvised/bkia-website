@@ -27,52 +27,45 @@ interface AirportSecurityProps {
 export function AirportSecurity({ lang }: AirportSecurityProps) {
   const { airportSecurity: t } = createDepartureGuideI18n(lang);
 
-  // Preparation items data
   const preparationItems = [
     {
       icon: PiDropHalfBottomFill,
       title: t.liquidsTitle,
-      color: "text-blue-600",
-      items: [
-        t.liquids100ml,
-        t.liquidsZiplock,
-        t.liquids1liter,
-        t.liquidsChecked,
-      ],
+      color: "text-blue-500",
+      items: [t.liquids100ml, t.liquidsZiplock, t.liquids1liter, t.liquidsChecked],
     },
     {
       icon: PiKnifeFill,
       title: t.sharpObjectsTitle,
-      color: "text-red-600",
+      color: "text-red-500",
       items: [t.sharpObjectsDesc],
     },
     {
       icon: GiPistolGun,
       title: t.firearmsTitle,
-      color: "text-gray-700",
+      color: "text-gray-600",
       items: [t.firearmsDesc],
     },
     {
       icon: PiWarningCircleFill,
       title: t.dangerousTitle,
-      color: "text-orange-600",
+      color: "text-orange-500",
       items: [t.dangerousDesc],
     },
     {
       icon: PiDeviceMobileFill,
       title: t.electronicsTitle,
-      color: "text-purple-600",
+      color: "text-purple-500",
       items: [t.electronicsDesc],
     },
     {
       icon: PiCigaretteFill,
       title: t.tobaccoTitle,
-      color: "text-amber-600",
+      color: "text-amber-500",
       items: [t.tobaccoCheckpoint, t.tobaccoChecked],
     },
   ];
 
-  // Screening steps data
   const screeningSteps = [
     {
       step: 1,
@@ -103,7 +96,6 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
     },
   ];
 
-  // Prohibited items table data
   const prohibitedItems = [
     { item: t.itemFirearms, carryOn: false, checked: true, note: t.seeNote },
     { item: t.itemStunDevices, carryOn: false, checked: true, note: t.seeNote },
@@ -113,12 +105,8 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
     { item: t.itemTools, carryOn: false, checked: true },
   ];
 
-  // Airport prohibitions data
   const airportProhibitions = [
-    {
-      title: t.prohibitRestrictedArea,
-      description: t.prohibitRestrictedAreaDesc,
-    },
+    { title: t.prohibitRestrictedArea, description: t.prohibitRestrictedAreaDesc },
     { title: t.prohibitDrugsWeapons, description: t.prohibitDrugsWeaponsDesc },
     { title: t.prohibitDisturbance, description: t.prohibitDisturbanceDesc },
     { title: t.prohibitParking, description: t.prohibitParkingDesc },
@@ -127,22 +115,23 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
 
   return (
     <div>
-      {/* Section 1: Hero / Intro - White background */}
-      <section className="bg-white pb-10 lg:pb-12">
+      {/* Section 1: Intro */}
+      <section className="bg-[#f0fbfc] py-10 lg:py-12">
         <div className="container">
-          <div>
-            <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
-              {t.title}
-            </h2>
-            <p className="text-lg leading-relaxed text-gray-600">{t.intro}</p>
-          </div>
+          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            Airport Security
+          </p>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 lg:text-4xl">
+            {t.title}
+          </h2>
+          <p className="max-w-2xl text-lg leading-relaxed text-gray-600">
+            {t.intro}
+          </p>
 
           {/* Key objectives */}
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:max-w-4xl">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:max-w-3xl">
             <div className="flex items-start gap-4">
-              <div className="bg-primary-100 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl">
-                <LuShield className="text-primary-600 h-6 w-6" />
-              </div>
+              <LuShield className="mt-1 h-5 w-5 shrink-0 text-[#00AAAC]" />
               <div>
                 <h3 className="font-bold text-gray-900">{t.objectiveTitle}</h3>
                 <p className="mt-1 text-sm leading-relaxed text-gray-600">
@@ -151,9 +140,7 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="bg-secondary-100 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl">
-                <MdOutlineSecurity className="text-secondary-600 h-6 w-6" />
-              </div>
+              <MdOutlineSecurity className="mt-1 h-5 w-5 shrink-0 text-[#00AAAC]" />
               <div>
                 <h3 className="font-bold text-gray-900">
                   {t.aircraftSafetyTitle}
@@ -167,25 +154,23 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
         </div>
       </section>
 
-      {/* Section 2: Preparation - Gray background */}
-      <section className="bg-gray-50 py-10 lg:py-12">
+      {/* Section 2: Preparation */}
+      <section className="bg-white py-10 lg:py-12">
         <div className="container">
-          <div className="mb-8 flex items-center gap-3">
-            <div className="bg-primary-500 flex h-10 w-10 items-center justify-center rounded-full">
-              <MdOutlineInfo className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900">
-              {t.preparationTitle}
-            </h3>
-          </div>
+          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            Preparation
+          </p>
+          <h3 className="mb-8 text-2xl font-bold text-gray-900">
+            {t.preparationTitle}
+          </h3>
 
-          <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
             {preparationItems.map((item, index) => {
               const Icon = item.icon;
               return (
                 <div key={index} className="flex gap-4">
                   <div
-                    className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-white shadow-sm ${item.color}`}
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-50 ${item.color}`}
                   >
                     <Icon className="h-5 w-5" />
                   </div>
@@ -197,7 +182,7 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
                           key={idx}
                           className="flex items-start gap-2 text-sm text-gray-600"
                         >
-                          <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-gray-400" />
+                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gray-400" />
                           {text}
                         </li>
                       ))}
@@ -210,46 +195,37 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
         </div>
       </section>
 
-      {/* Section 3: Screening Steps - White background */}
-      <section className="bg-white py-10 lg:py-12">
+      {/* Section 3: Screening Steps */}
+      <section className="bg-gray-50 py-10 lg:py-12">
         <div className="container">
-          <div className="mb-8 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-500">
-              <LuScanLine className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900">
-              {t.screeningStepsTitle}
-            </h3>
-          </div>
+          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            Process
+          </p>
+          <h3 className="mb-8 text-2xl font-bold text-gray-900">
+            {t.screeningStepsTitle}
+          </h3>
 
           {/* Timeline */}
           <div className="relative">
-            {/* Vertical line */}
             <div className="absolute top-0 left-5 hidden h-full w-0.5 bg-gray-200 lg:left-6 lg:block" />
-
             <div className="space-y-6 lg:space-y-8">
               {screeningSteps.map((step, index) => {
                 const Icon = step.icon;
                 return (
                   <div key={index} className="relative flex gap-4 lg:gap-6">
-                    {/* Step number */}
-                    <div className="bg-primary-500 relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-lg font-bold text-white lg:h-12 lg:w-12">
+                    <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#00AAAC] text-lg font-bold text-white lg:h-12 lg:w-12">
                       {step.step}
                     </div>
-
-                    {/* Content */}
                     <div className="flex-1 pb-2">
                       <div className="mb-1 flex items-center gap-2">
-                        <Icon className="text-primary-600 h-5 w-5" />
+                        <Icon className="h-5 w-5 text-[#00AAAC]" />
                         <h4 className="text-lg font-bold text-gray-900">
                           {step.title}
                         </h4>
                       </div>
-
                       {step.description && (
                         <p className="text-gray-600">{step.description}</p>
                       )}
-
                       {step.subItems && (
                         <ul className="mt-2 space-y-1.5">
                           {step.subItems.map((subItem, subIdx) => (
@@ -257,7 +233,7 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
                               key={subIdx}
                               className="flex items-start gap-2 text-sm text-gray-600"
                             >
-                              <MdOutlineCheckCircle className="text-primary-500 mt-0.5 h-4 w-4 flex-shrink-0" />
+                              <MdOutlineCheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#00AAAC]" />
                               {subItem}
                             </li>
                           ))}
@@ -270,48 +246,46 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
             </div>
           </div>
 
-          {/* Refusal of Screening Notice */}
-          <div className="mt-8 flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4">
-            <PiProhibitFill className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
+          {/* Refusal notice */}
+          <div className="mt-8 flex gap-3 border-l-4 border-amber-500 bg-amber-50 px-4 py-3 rounded-r-lg">
+            <PiProhibitFill className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
             <div>
-              <p className="font-semibold text-amber-900">{t.step5Title}</p>
-              <p className="mt-1 text-sm text-amber-800">{t.step5Desc}</p>
+              <p className="font-semibold text-gray-800">{t.step5Title}</p>
+              <p className="mt-1 text-sm text-gray-600">{t.step5Desc}</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 4: Prohibited Items Table - Gray background */}
-      <section className="bg-gray-50 py-10 lg:py-12">
+      {/* Section 4: Prohibited Items Table */}
+      <section className="bg-white py-10 lg:py-12">
         <div className="container">
-          <div className="mb-8 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-500">
-              <MdOutlineWarning className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900">
-              {t.prohibitedTableTitle}
-            </h3>
-          </div>
+          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            Restrictions
+          </p>
+          <h3 className="mb-8 text-2xl font-bold text-gray-900">
+            {t.prohibitedTableTitle}
+          </h3>
 
-          <div className="overflow-x-auto rounded-xl bg-white shadow-sm">
+          <div className="overflow-x-auto">
             <table className="min-w-full">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="px-5 py-4 text-left text-sm font-semibold text-gray-900">
+                <tr className="border-b-2 border-gray-200">
+                  <th className="pb-3 text-left text-sm font-semibold text-gray-900">
                     {t.itemType}
                   </th>
-                  <th className="px-5 py-4 text-center text-sm font-semibold text-gray-900">
+                  <th className="pb-3 text-center text-sm font-semibold text-gray-900">
                     {t.carryOn}
                   </th>
-                  <th className="px-5 py-4 text-center text-sm font-semibold text-gray-900">
+                  <th className="pb-3 text-center text-sm font-semibold text-gray-900">
                     {t.checked}
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {prohibitedItems.map((item, index) => (
-                  <tr key={index} className="hover:bg-gray-50/50">
-                    <td className="px-5 py-4 text-sm text-gray-700">
+                  <tr key={index}>
+                    <td className="py-4 pr-4 text-sm text-gray-700">
                       {item.item}
                       {item.note && (
                         <span className="ml-2 text-xs text-amber-600">
@@ -319,16 +293,16 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
                         </span>
                       )}
                     </td>
-                    <td className="px-5 py-4 text-center">
+                    <td className="py-4 text-center">
                       {item.carryOn ? (
-                        <MdOutlineCheckCircle className="mx-auto h-6 w-6 text-green-500" />
+                        <MdOutlineCheckCircle className="mx-auto h-6 w-6 text-emerald-500" />
                       ) : (
                         <MdOutlineCancel className="mx-auto h-6 w-6 text-red-500" />
                       )}
                     </td>
-                    <td className="px-5 py-4 text-center">
+                    <td className="py-4 text-center">
                       {item.checked ? (
-                        <MdOutlineCheckCircle className="mx-auto h-6 w-6 text-green-500" />
+                        <MdOutlineCheckCircle className="mx-auto h-6 w-6 text-emerald-500" />
                       ) : (
                         <MdOutlineCancel className="mx-auto h-6 w-6 text-red-500" />
                       )}
@@ -340,52 +314,46 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
           </div>
 
           {/* Important note */}
-          <div className="mt-6 flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4">
-            <MdOutlineInfo className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
-            <p className="text-sm text-amber-800">
-              <strong>{t.importantNote}</strong> {t.importantNoteDesc}
+          <div className="mt-6 flex gap-3 border-l-4 border-amber-500 bg-amber-50 px-4 py-3 rounded-r-lg">
+            <MdOutlineInfo className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
+            <p className="text-sm text-gray-600">
+              <strong className="text-gray-800">{t.importantNote}</strong>{" "}
+              {t.importantNoteDesc}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Section 5: Airport Prohibitions - White background */}
-      <section className="bg-white py-10 lg:py-12">
+      {/* Section 5: Airport Prohibitions */}
+      <section className="bg-gray-50 py-10 lg:py-12">
         <div className="container">
-          <div className="mb-8 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700">
-              <PiProhibitFill className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900">
-              {t.airportProhibitionsTitle}
-            </h3>
-          </div>
+          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            Prohibitions
+          </p>
+          <h3 className="mb-8 text-2xl font-bold text-gray-900">
+            {t.airportProhibitionsTitle}
+          </h3>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="space-y-5">
             {airportProhibitions.map((item, index) => (
-              <div
-                key={index}
-                className="rounded-xl border border-gray-200 bg-gray-50 p-5"
-              >
-                <div className="mb-2 flex items-center gap-2">
-                  <MdOutlineCancel className="h-5 w-5 text-red-500" />
+              <div key={index} className="flex gap-4">
+                <MdOutlineCancel className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
+                <div>
                   <h4 className="font-bold text-gray-900">{item.title}</h4>
+                  <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                    {item.description}
+                  </p>
                 </div>
-                <p className="text-sm leading-relaxed text-gray-600">
-                  {item.description}
-                </p>
               </div>
             ))}
           </div>
 
-          {/* Measures Against Violators Notice */}
-          <div className="mt-8 flex items-start gap-4 rounded-xl border border-red-200 bg-red-50 p-5">
-            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-red-100">
-              <MdOutlineWarning className="h-5 w-5 text-red-600" />
-            </div>
+          {/* Violation notice */}
+          <div className="mt-8 flex gap-3 border-l-4 border-red-500 bg-red-50 px-4 py-3 rounded-r-lg">
+            <MdOutlineWarning className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
             <div>
-              <h4 className="font-bold text-red-900">{t.violationTitle}</h4>
-              <p className="mt-1 text-sm leading-relaxed text-red-800">
+              <h4 className="font-bold text-gray-800">{t.violationTitle}</h4>
+              <p className="mt-1 text-sm leading-relaxed text-gray-600">
                 {t.violationDesc}
               </p>
             </div>
@@ -394,23 +362,20 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
       </section>
 
       {/* Section 6: Additional Information */}
-      <section className="bg-gray-50 py-10 lg:py-12">
+      <section className="bg-white py-10 lg:py-12">
         <div className="container">
-          <h3 className="mb-6 text-xl font-semibold text-gray-900">
+          <h3 className="mb-4 text-lg font-semibold text-gray-900">
             {t.additionalInfoTitle}
           </h3>
-
-          <div className="space-y-3">
-            <a
-              href={`/${lang}/support/faqs`}
-              className="group hover:text-primary-600 flex items-center gap-2 text-gray-700 transition-colors"
-            >
-              <span>{t.faqsLink}</span>
-              <span className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </a>
-          </div>
+          <a
+            href={`/${lang}/support/faqs`}
+            className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#00AAAC] transition-colors hover:text-[#008e90]"
+          >
+            {t.faqsLink}
+            <span className="transition-transform group-hover:translate-x-1">
+              →
+            </span>
+          </a>
         </div>
       </section>
     </div>

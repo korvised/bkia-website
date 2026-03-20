@@ -75,7 +75,7 @@ export const pregnancyGuideline = {
   },
 
   // Infants Sections (Kept consistent with previous update)
-  catInfants: { en: "Infants", lo: "ແອນ້ອຍ (Infants)", zh: "婴儿" },
+  catInfants: { en: "Infants", lo: "ແອນ້ອຍ", zh: "婴儿" },
   infantGeneral: {
     en: "Infants are generally allowed to travel after 7 days of birth.",
     lo: "ອະນຸຍາດໃຫ້ເດີນທາງໄດ້ ຫຼັງຈາກເກີດໄດ້ 7 ວັນຂຶ້ນໄປ.",

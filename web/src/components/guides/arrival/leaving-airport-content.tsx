@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Car, Smartphone, AlertCircle } from "lucide-react";
+import { Car, Smartphone, AlertCircle, Info } from "lucide-react";
 import { Lang } from "@/types/language";
 import { createArrivalGuideI18n } from "@/data/i18n/guide";
 
@@ -11,238 +11,179 @@ export function LeavingAirportContent({ lang }: LeavingAirportContentProps) {
   const { leavingAirport: t } = createArrivalGuideI18n(lang);
 
   return (
-    <div className="space-y-8">
-      {/* Title Section - Full Width */}
-      <div>
-        <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
-          {t.title}
-        </h2>
-        <p className="text-lg leading-relaxed text-gray-700">{t.intro}</p>
-      </div>
+    <>
+      {/* ── Header + Image + Transport Options ──────────────── */}
+      <section className="bg-[#f0fbfc] py-10">
+        <div className="container space-y-8">
+          <div className="space-y-2">
+            <h2 className="text-3xl font-bold text-gray-900 lg:text-4xl">{t.title}</h2>
+            <p className="max-w-2xl text-gray-500 lg:text-lg">{t.intro}</p>
+          </div>
 
-      {/* Main Content with Image */}
-      <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
-        {/* Left side - Illustration */}
-        <div className="flex justify-center lg:mt-8 lg:w-96 lg:flex-none">
-          <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
-            <Image
-              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/leaving-airport.png"
-              alt="Leaving the Airport"
-              fill
-              className="object-contain object-top"
-              priority
-              sizes="(max-width: 1024px) 100vw, 400px"
-            />
+          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+            {/* Image */}
+            <div className="overflow-hidden rounded-2xl bg-white">
+              <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[420px]">
+                <Image
+                  src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/leaving-airport.png"
+                  alt="Leaving the Airport"
+                  fill
+                  className="object-contain object-top"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+
+            {/* Location note + transport */}
+            <div className="space-y-6">
+              <div className="flex items-start gap-3 border-l-4 border-[#00AAAC] bg-[#f0fbfc] px-4 py-3 rounded-r-lg">
+                <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#00AAAC]" />
+                <p className="text-sm text-gray-600">{t.locationNote}</p>
+              </div>
+
+              <div>
+                <p className="mb-5 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.transportationTitle}</p>
+                <div className="space-y-6">
+                  {/* Taxi */}
+                  <div>
+                    <div className="mb-2 flex items-center gap-2">
+                      <Car className="h-4 w-4 text-[#00AAAC]" />
+                      <p className="text-sm font-bold text-gray-800">{t.taxiTitle}</p>
+                    </div>
+                    <div className="space-y-1 text-sm text-gray-600">
+                      <p>{t.taxiLocation}</p>
+                      <p>{t.taxiPayment}</p>
+                      <p className="font-medium text-gray-700">{t.taxiFaresTitle}</p>
+                      <div className="space-y-0.5 pl-3">
+                        {[t.taxiFare1, t.taxiFare2, t.taxiFare3].map((f, i) => (
+                          <p key={i}>{f}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Ride-hailing */}
+                  <div className="border-t border-[#d4f2f3] pt-5">
+                    <div className="mb-2 flex items-center gap-2">
+                      <Smartphone className="h-4 w-4 text-[#00AAAC]" />
+                      <p className="text-sm font-bold text-gray-800">{t.rideHailingTitle}</p>
+                    </div>
+                    <div className="space-y-1 text-sm text-gray-600">
+                      <p>{t.rideAvailable}</p>
+                      <p>{t.rideRequirements}</p>
+                      <p>{t.rideBenefits}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Right side - Content */}
-        <div className="flex-1 space-y-8">
-          {/* Location Note */}
-          <div className="border-primary-500 border-l-4 bg-blue-50 p-4">
-            <p className="text-sm text-gray-800">{t.locationNote}</p>
-          </div>
-
-          {/* Transportation Options */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-gray-900">
-              {t.transportationTitle}
-            </h3>
-            <div className="grid gap-4 md:grid-cols-2">
-              {/* Airport Taxi */}
-              <div className="rounded-xl border border-gray-200 bg-white p-5">
-                <div className="mb-3 flex items-center gap-2">
-                  <Car className="text-primary-500 h-5 w-5" />
-                  <h4 className="text-base font-semibold text-gray-900">
-                    {t.taxiTitle}
-                  </h4>
-                </div>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li>
-                    <strong>{t.taxiLocation}</strong>
-                  </li>
-                  <li>
-                    <strong>{t.taxiPayment}</strong>
-                  </li>
-                  <li>
-                    <strong>{t.taxiFaresTitle}</strong>
-                    <ul className="mt-1 ml-4 space-y-1">
-                      <li>• {t.taxiFare1}</li>
-                      <li>• {t.taxiFare2}</li>
-                      <li>• {t.taxiFare3}</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <strong>{t.taxiTip}</strong>
-                  </li>
-                </ul>
+      {/* ── Hotel Shuttle + Car Rental + Safety ─────────────── */}
+      <section className="bg-white py-10">
+        <div className="container space-y-10">
+          {/* Hotel shuttle + car rental */}
+          <div className="grid gap-10 sm:grid-cols-2">
+            <div>
+              <div className="mb-3 flex items-center gap-2">
+                <Car className="h-4 w-4 text-[#00AAAC]" />
+                <p className="text-sm font-bold text-gray-800">{t.hotelShuttleTitle}</p>
               </div>
-
-              {/* Ride-Hailing */}
-              <div className="rounded-xl border border-gray-200 bg-white p-5">
-                <div className="mb-3 flex items-center gap-2">
-                  <Smartphone className="text-primary-500 h-5 w-5" />
-                  <h4 className="text-base font-semibold text-gray-900">
-                    {t.rideHailingTitle}
-                  </h4>
-                </div>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>
-                    <strong>{t.rideAvailable}</strong>
-                  </li>
-                  <li>
-                    <strong>{t.rideRequirements}</strong>
-                  </li>
-                  <li>
-                    <strong>{t.rideBenefits}</strong>
-                  </li>
-                  <li>
-                    <strong>{t.rideNote}</strong>
-                  </li>
-                </ul>
+              <div className="space-y-1 text-sm text-gray-600">
+                <p>{t.hotelPreArranged}</p>
+                <p>{t.hotelBooking}</p>
+                <p>{t.hotelMeeting}</p>
+                <p>{t.hotelTip}</p>
               </div>
-
-              {/* Hotel Shuttle */}
-              <div className="rounded-xl border border-gray-200 bg-white p-5">
-                <div className="mb-3 flex items-center gap-2">
-                  <Car className="text-primary-500 h-5 w-5" />
-                  <h4 className="text-base font-semibold text-gray-900">
-                    {t.hotelShuttleTitle}
-                  </h4>
-                </div>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>
-                    <strong>{t.hotelPreArranged}</strong>
-                  </li>
-                  <li>
-                    <strong>{t.hotelBooking}</strong>
-                  </li>
-                  <li>
-                    <strong>{t.hotelMeeting}</strong>
-                  </li>
-                  <li>
-                    <strong>{t.hotelTip}</strong>
-                  </li>
-                </ul>
+            </div>
+            <div>
+              <div className="mb-3 flex items-center gap-2">
+                <Car className="h-4 w-4 text-[#00AAAC]" />
+                <p className="text-sm font-bold text-gray-800">{t.carRentalTitle}</p>
               </div>
-
-              {/* Car Rental */}
-              <div className="rounded-xl border border-gray-200 bg-white p-5">
-                <div className="mb-3 flex items-center gap-2">
-                  <Car className="text-primary-500 h-5 w-5" />
-                  <h4 className="text-base font-semibold text-gray-900">
-                    {t.carRentalTitle}
-                  </h4>
-                </div>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>
-                    <strong>{t.carCounters}</strong>
-                  </li>
-                  <li>
-                    <strong>{t.carRequirements}</strong>
-                  </li>
-                  <li>
-                    <strong>{t.carCompanies}</strong>
-                  </li>
-                  <li>
-                    <strong>{t.carNote}</strong>
-                  </li>
-                </ul>
+              <div className="space-y-1 text-sm text-gray-600">
+                <p>{t.carCounters}</p>
+                <p>{t.carRequirements}</p>
+                <p>{t.carCompanies}</p>
+                <p>{t.carNote}</p>
               </div>
             </div>
           </div>
 
-          {/* Safety Tips */}
-          <div className="border-l-4 border-amber-400 bg-amber-50 p-4">
-            <div className="flex gap-3">
-              <AlertCircle className="h-6 w-6 flex-shrink-0 text-amber-600" />
+          {/* Safety tips */}
+          <div>
+            <div className="mb-3 flex items-center gap-2">
+              <AlertCircle className="h-4 w-4 text-amber-500" />
+              <p className="text-xs font-bold uppercase tracking-widest text-amber-600">{t.safetyTipsTitle}</p>
+            </div>
+            <div className="space-y-2 border-l-4 border-amber-500 bg-amber-50 px-4 py-3 rounded-r-lg">
+              {[t.safetyTip1, t.safetyTip2, t.safetyTip3, t.safetyTip4, t.safetyTip5].map((tip, i) => (
+                <p key={i} className="text-sm text-gray-600">{tip}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Essential Services + Orientation + Welcome ─────── */}
+      <section className="bg-gray-50 py-10">
+        <div className="container space-y-10">
+          {/* Essential services */}
+          <div>
+            <p className="mb-6 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.servicesTitle}</p>
+            <div className="grid gap-8 sm:grid-cols-2">
               <div>
-                <h4 className="mb-2 text-base font-semibold text-amber-900">
-                  {t.safetyTipsTitle}
-                </h4>
-                <ul className="space-y-2 text-sm text-amber-800">
-                  <li>• {t.safetyTip1}</li>
-                  <li>• {t.safetyTip2}</li>
-                  <li>• {t.safetyTip3}</li>
-                  <li>• {t.safetyTip4}</li>
-                  <li>• {t.safetyTip5}</li>
-                </ul>
+                <p className="mb-3 text-sm font-bold text-gray-700">{t.simCardsTitle}</p>
+                <div className="space-y-1">
+                  {[t.simService1, t.simService2, t.simService3, t.simService4].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                      <span className="mt-0.5 shrink-0 font-bold text-[#00AAAC]">✓</span>{item}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </div>
-
-          {/* Essential Services */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-gray-900">
-              {t.servicesTitle}
-            </h3>
-            <div className="rounded-xl border border-gray-200 bg-white p-5">
-              <div className="grid gap-4 md:grid-cols-2">
-                {/* SIM Cards */}
-                <div>
-                  <h4 className="mb-2 text-base font-semibold text-gray-900">
-                    {t.simCardsTitle}
-                  </h4>
-                  <ul className="space-y-1 text-sm text-gray-700">
-                    <li>• {t.simService1}</li>
-                    <li>• {t.simService2}</li>
-                    <li>• {t.simService3}</li>
-                    <li>• {t.simService4}</li>
-                  </ul>
+              <div>
+                <p className="mb-3 text-sm font-bold text-gray-700">{t.currencyTitle}</p>
+                <div className="space-y-1">
+                  {[t.currencyService1, t.currencyService2, t.currencyService3, t.currencyService4].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                      <span className="mt-0.5 shrink-0 font-bold text-[#00AAAC]">✓</span>{item}
+                    </div>
+                  ))}
                 </div>
-
-                {/* Currency */}
-                <div>
-                  <h4 className="mb-2 text-base font-semibold text-gray-900">
-                    {t.currencyTitle}
-                  </h4>
-                  <ul className="space-y-1 text-sm text-gray-700">
-                    <li>• {t.currencyService1}</li>
-                    <li>• {t.currencyService2}</li>
-                    <li>• {t.currencyService3}</li>
-                    <li>• {t.currencyService4}</li>
-                  </ul>
+              </div>
+              <div>
+                <p className="mb-3 text-sm font-bold text-gray-700">{t.touristInfoTitle}</p>
+                <div className="space-y-1">
+                  {[t.touristInfo1, t.touristInfo2, t.touristInfo3, t.touristInfo4].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                      <span className="mt-0.5 shrink-0 font-bold text-[#00AAAC]">✓</span>{item}
+                    </div>
+                  ))}
                 </div>
-
-                {/* Tourist Info */}
-                <div>
-                  <h4 className="mb-2 text-base font-semibold text-gray-900">
-                    {t.touristInfoTitle}
-                  </h4>
-                  <ul className="space-y-1 text-sm text-gray-700">
-                    <li>• {t.touristInfo1}</li>
-                    <li>• {t.touristInfo2}</li>
-                    <li>• {t.touristInfo3}</li>
-                    <li>• {t.touristInfo4}</li>
-                  </ul>
-                </div>
-
-                {/* Other Services */}
-                <div>
-                  <h4 className="mb-2 text-base font-semibold text-gray-900">
-                    {t.otherServicesTitle}
-                  </h4>
-                  <ul className="space-y-1 text-sm text-gray-700">
-                    <li>• {t.otherService1}</li>
-                    <li>• {t.otherService2}</li>
-                    <li>• {t.otherService3}</li>
-                    <li>• {t.otherService4}</li>
-                  </ul>
+              </div>
+              <div>
+                <p className="mb-3 text-sm font-bold text-gray-700">{t.otherServicesTitle}</p>
+                <div className="space-y-1">
+                  {[t.otherService1, t.otherService2, t.otherService3, t.otherService4].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                      <span className="mt-0.5 shrink-0 font-bold text-[#00AAAC]">✓</span>{item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Orientation Guide */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-gray-900">
-              {t.orientationTitle}
-            </h3>
-            <div className="rounded-xl bg-blue-50 p-5">
-              <p className="mb-3 text-base font-semibold text-gray-800">
-                {t.orientationWelcome}
-              </p>
-              <div className="space-y-2 text-sm text-gray-700">
+          {/* Orientation + helpful tips + need help */}
+          <div className="grid gap-8 sm:grid-cols-2 border-t border-gray-200 pt-6">
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.orientationTitle}</p>
+              <p className="mb-3 text-sm font-semibold text-gray-800">{t.orientationWelcome}</p>
+              <div className="space-y-1 text-sm text-gray-600">
                 <p>{t.orientationTimezone}</p>
                 <p>{t.orientationCurrency}</p>
                 <p>{t.orientationLanguage}</p>
@@ -250,44 +191,31 @@ export function LeavingAirportContent({ lang }: LeavingAirportContentProps) {
                 <p>{t.orientationEmergency}</p>
               </div>
             </div>
-          </div>
-
-          {/* Helpful Tips */}
-          <div className="border-l-4 border-green-500 bg-green-50 p-4">
-            <h4 className="mb-2 text-base font-semibold text-green-900">
-              {t.helpfulTipsTitle}
-            </h4>
-            <ul className="space-y-2 text-sm text-green-800">
-              <li>• {t.tip1}</li>
-              <li>• {t.tip2}</li>
-              <li>• {t.tip3}</li>
-              <li>• {t.tip4}</li>
-              <li>• {t.tip5}</li>
-              <li>• {t.tip6}</li>
-            </ul>
-          </div>
-
-          {/* Need Help */}
-          <div className="rounded-xl bg-gray-50 p-4">
-            <p className="mb-2 text-sm font-semibold text-gray-900">
-              {t.moreHelpTitle}
-            </p>
-            <div className="space-y-1 text-xs text-gray-600">
-              <p>{t.helpDesk}</p>
-              <p>{t.helpTourism}</p>
-              <p>{t.helpWebsite}</p>
+            <div className="space-y-6">
+              <div>
+                <p className="mb-3 text-xs font-bold uppercase tracking-widest text-emerald-600">{t.helpfulTipsTitle}</p>
+                <div className="space-y-2 border-l-4 border-emerald-500 bg-emerald-50 px-4 py-3 rounded-r-lg">
+                  {[t.tip1, t.tip2, t.tip3, t.tip4, t.tip5, t.tip6].map((tip, i) => (
+                    <p key={i} className="text-sm text-gray-600">{tip}</p>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="mb-2 text-xs font-bold uppercase tracking-widest text-gray-400">{t.moreHelpTitle}</p>
+                <div className="space-y-1 text-sm text-gray-600">
+                  <p>{t.helpDesk}</p>
+                  <p>{t.helpTourism}</p>
+                  <p>{t.helpWebsite}</p>
+                </div>
+              </div>
+              <div className="border-t border-gray-200 pt-4 text-center">
+                <p className="text-sm font-semibold text-gray-800">{t.enjoyStay}</p>
+                <p className="mt-1 text-sm text-gray-500">{t.welcome}</p>
+              </div>
             </div>
           </div>
-
-          {/* Welcome Message */}
-          <div className="bg-primary-50 rounded-xl p-5 text-center">
-            <p className="mb-2 text-lg font-semibold text-gray-900">
-              {t.enjoyStay}
-            </p>
-            <p className="text-base text-gray-700">{t.welcome}</p>
-          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

@@ -86,9 +86,9 @@ export const arrivalAirport = {
 
   // Processing time
   processingTimeTitle: {
-    en: "⏱️ Estimated Processing Time:",
-    lo: "⏱️ ເວລາການນຳເນີນການໂດຍປະມານ:",
-    zh: "⏱️ 预计处理时间：",
+    en: "Estimated Processing Time:",
+    lo: "ເວລາການນຳເນີນການໂດຍປະມານ:",
+    zh: "预计处理时间：",
   },
   processingTimeDesc: {
     en: "Allow 30-60 minutes for the complete arrival process during normal hours, longer during peak times (multiple flight arrivals). Be patient and follow staff directions.",
@@ -175,9 +175,9 @@ export const arrivalAirport = {
     zh: "紧急联系方式：",
   },
   airportInfo: {
-    en: "Airport Information: +856-84-211-XXX (Available during operating hours)",
-    lo: "ຂໍ້ມູນສະໜາມບິນ: +856-84-211-XXX (ເປີດໃນເວລາດຳເນີນການ)",
-    zh: "机场信息：+856-84-211-XXX（运营时间内可用）",
+    en: "Airport Information: +856 84 260 179 (Available during operating hours)",
+    lo: "ຂໍ້ມູນສະໜາມບິນ: +856 84 260 179 (ເປີດໃນເວລາດຳເນີນການ)",
+    zh: "机场信息：+856 84 260 179（运营时间内可用）",
   },
   emergencyServices: {
     en: "Emergency Services: Dial 1191 (Police), 1195 (Medical Emergency)",

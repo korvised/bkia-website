@@ -13,9 +13,9 @@ export const leavingAirport = {
   },
 
   locationNote: {
-    en: "📍 You are now in Ban Houayxay, Bokeo Province: The fourth largest province in northern Laos, bordering Thailand across the Mekong River. The town center is approximately 3km from the airport.",
-    lo: "📍 ປະຈຸບັນທ່ານຢູ່ທີ່ ເມືອງຫ້ວຍຊາຍ, ແຂວງບໍ່ແກ້ວ: ເປັນແຂວງທີ່ມີຄວາມສຳຄັນໃນພາກເໜືອຂອງລາວ, ມີຊາຍແດນຕິດກັບປະເທດໄທ ໂດຍມີແມ່ນ້ຳຂອງຂັ້ນກາງ. ຕົວເມືອງແມ່ນຫ່າງຈາກສະໜາມບິນປະມານ 3 ກິໂລແມັດ.",
-    zh: "📍 您现在位于博胶省会晒县：老挝北部第四大省，隔湄公河与泰国相望。市中心距离机场约3公里。",
+    en: "You are now in Ban Houayxay, Bokeo Province: The fourth largest province in northern Laos, bordering Thailand across the Mekong River. The town center is approximately 3km from the airport.",
+    lo: "ປະຈຸບັນທ່ານຢູ່ທີ່ ເມືອງຫ້ວຍຊາຍ, ແຂວງບໍ່ແກ້ວ: ເປັນແຂວງທີ່ມີຄວາມສຳຄັນໃນພາກເໜືອຂອງລາວ, ມີຊາຍແດນຕິດກັບປະເທດໄທ ໂດຍມີແມ່ນ້ຳຂອງຂັ້ນກາງ. ຕົວເມືອງແມ່ນຫ່າງຈາກສະໜາມບິນປະມານ 3 ກິໂລແມັດ.",
+    zh: "您现在位于博胶省会晒县：老挝北部第四大省，隔湄公河与泰国相望。市中心距离机场约3公里。",
   },
 
   transportationTitle: {
@@ -371,9 +371,9 @@ export const leavingAirport = {
     zh: "机场问询台：位于到达大厅",
   },
   helpTourism: {
-    en: "Tourism Lao Bokeo Office: +856-84-211-XXX",
-    lo: "ຫ້ອງການທ່ອງທ່ຽວແຂວງບໍ່ແກ້ວ: +856-84-211-XXX",
-    zh: "博胶旅游局：+856-84-211-XXX",
+    en: "Tourism Lao Bokeo Office: +856 84 260 179",
+    lo: "ຫ້ອງການທ່ອງທ່ຽວແຂວງບໍ່ແກ້ວ: +856 84 260 179",
+    zh: "博胶旅游局：+856 84 260 179",
   },
   helpWebsite: {
     en: "Visit Bokeo Tourism website: www.tourismlaos.org",

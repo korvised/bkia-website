@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, AlertTriangle } from "lucide-react";
 import { Lang } from "@/types/language";
 import { createArrivalGuideI18n } from "@/data/i18n/guide";
 
@@ -11,183 +11,147 @@ export function ExitCustomsContent({ lang }: ExitCustomsContentProps) {
   const { exitCustoms: t } = createArrivalGuideI18n(lang);
 
   return (
-    <div className="space-y-8">
-      {/* Title Section - Full Width */}
-      <div>
-        <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
-          {t.title}
-        </h2>
-        <p className="text-lg leading-relaxed text-gray-700">{t.intro}</p>
-      </div>
+    <>
+      {/* ── Header + Image + Channels ───────────────────────── */}
+      <section className="bg-[#f0fbfc] py-10">
+        <div className="container space-y-8">
+          <div className="space-y-2">
+            <h2 className="text-3xl font-bold text-gray-900 lg:text-4xl">{t.title}</h2>
+            <p className="max-w-2xl text-gray-500 lg:text-lg">{t.intro}</p>
+          </div>
 
-      {/* Main Content with Image */}
-      <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
-        {/* Left side - Illustration */}
-        <div className="flex justify-center lg:mt-8 lg:w-96 lg:flex-none">
-          <div className="relative h-72 w-full max-w-lg lg:h-[400px] lg:max-w-none">
-            <Image
-              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/exit-customs.png"
-              alt="Final Customs Inspection"
-              fill
-              className="object-contain object-top"
-              priority
-              sizes="(max-width: 1024px) 100vw, 400px"
-            />
+          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+            {/* Image */}
+            <div className="overflow-hidden rounded-2xl bg-white">
+              <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[420px]">
+                <Image
+                  src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/exit-customs.png"
+                  alt="Final Customs Inspection"
+                  fill
+                  className="object-contain object-top"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+
+            {/* Exit channels */}
+            <div className="space-y-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.channelsTitle}</p>
+
+              {/* Green channel */}
+              <div className="space-y-2">
+                <p className="text-sm font-bold text-green-700">{t.greenChannelTitle}</p>
+                <p className="text-sm text-gray-500">{t.greenChannelDesc}</p>
+                <div className="space-y-1.5 border-l-4 border-emerald-500 bg-emerald-50 px-4 py-3 rounded-r-lg">
+                  {[t.greenItem1, t.greenItem2, t.greenItem3, t.greenItem4].map((item, i) => (
+                    <p key={i} className="text-sm text-gray-600">{item}</p>
+                  ))}
+                  <p className="text-xs font-semibold text-green-700">{t.greenNote}</p>
+                </div>
+              </div>
+
+              {/* Red channel */}
+              <div className="space-y-2">
+                <p className="text-sm font-bold text-red-700">{t.redChannelTitle}</p>
+                <p className="text-sm text-gray-500">{t.redChannelDesc}</p>
+                <div className="space-y-1.5 border-l-4 border-red-500 bg-red-50 px-4 py-3 rounded-r-lg">
+                  {[t.redItem1, t.redItem2, t.redItem3, t.redItem4].map((item, i) => (
+                    <p key={i} className="text-sm text-gray-600">{item}</p>
+                  ))}
+                  <p className="text-xs font-semibold text-red-700">{t.redNote}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Right side - Content */}
-        <div className="flex-1 space-y-8">
-          {/* Two Exit Channels */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-gray-900">
-              {t.channelsTitle}
-            </h3>
-            <div className="grid gap-4 md:grid-cols-2">
-              {/* Green Channel */}
-              <div className="rounded-xl border border-green-500 bg-white p-5">
-                <h4 className="mb-3 text-base font-semibold text-green-900">
-                  {t.greenChannelTitle}
-                </h4>
-                <p className="mb-3 text-sm text-green-800">
-                  {t.greenChannelDesc}
-                </p>
-                <ul className="space-y-2 text-sm text-green-800">
-                  <li>• {t.greenItem1}</li>
-                  <li>• {t.greenItem2}</li>
-                  <li>• {t.greenItem3}</li>
-                  <li>• {t.greenItem4}</li>
-                </ul>
-                <p className="mt-3 text-xs font-semibold text-green-700">
-                  {t.greenNote}
-                </p>
-              </div>
-
-              {/* Red Channel */}
-              <div className="rounded-xl border border-red-500 bg-white p-5">
-                <h4 className="mb-3 text-base font-semibold text-red-900">
-                  {t.redChannelTitle}
-                </h4>
-                <p className="mb-3 text-sm text-red-800">{t.redChannelDesc}</p>
-                <ul className="space-y-2 text-sm text-red-800">
-                  <li>• {t.redItem1}</li>
-                  <li>• {t.redItem2}</li>
-                  <li>• {t.redItem3}</li>
-                  <li>• {t.redItem4}</li>
-                </ul>
-                <p className="mt-3 text-xs font-semibold text-red-700">
-                  {t.redNote}
-                </p>
-              </div>
+      {/* ── Random Inspections + What Officers Look For ─────── */}
+      <section className="bg-white py-10">
+        <div className="container space-y-10">
+          {/* Random inspections */}
+          <div>
+            <div className="mb-3 flex items-center gap-2">
+              <AlertCircle className="h-4 w-4 text-amber-500" />
+              <p className="text-xs font-bold uppercase tracking-widest text-amber-600">{t.randomInspectionTitle}</p>
+            </div>
+            <p className="mb-4 text-sm text-gray-500">{t.randomInspectionDesc}</p>
+            <div className="space-y-2 border-l-4 border-amber-500 bg-amber-50 px-4 py-3 rounded-r-lg">
+              {[t.randomItem1, t.randomItem2, t.randomItem3, t.randomItem4].map((item, i) => (
+                <p key={i} className="text-sm text-gray-600">{item}</p>
+              ))}
             </div>
           </div>
 
-          {/* Random Inspections */}
-          <div className="border-l-4 border-amber-400 bg-amber-50 p-4">
-            <div className="flex gap-3">
-              <AlertCircle className="h-6 w-6 flex-shrink-0 text-amber-600" />
-              <div>
-                <h4 className="mb-2 text-base font-semibold text-amber-900">
-                  {t.randomInspectionTitle}
-                </h4>
-                <p className="mb-2 text-sm text-amber-800">
-                  {t.randomInspectionDesc}
-                </p>
-                <ul className="space-y-1 text-sm text-amber-800">
-                  <li>• {t.randomItem1}</li>
-                  <li>• {t.randomItem2}</li>
-                  <li>• {t.randomItem3}</li>
-                  <li>• {t.randomItem4}</li>
-                </ul>
-              </div>
+          {/* What officers look for */}
+          <div>
+            <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.officersLookTitle}</p>
+            <div className="space-y-3">
+              {[
+                { color: "text-red-600", text: t.lookNarcotics },
+                { color: "text-orange-600", text: t.lookCurrency },
+                { color: "text-orange-600", text: t.lookTobaccoAlcohol },
+                { color: "text-orange-600", text: t.lookCommercial },
+                { color: "text-orange-600", text: t.lookProhibited },
+              ].map(({ color, text }, i) => (
+                <div key={i} className="flex items-start gap-3 text-sm text-gray-700">
+                  <span className={`mt-0.5 shrink-0 font-bold ${color}`}>!</span>
+                  {text}
+                </div>
+              ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* What Officers Look For */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-gray-900">
-              {t.officersLookTitle}
-            </h3>
-            <div className="rounded-xl border border-gray-200 bg-white p-5">
-              <ul className="space-y-3 text-sm text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="mt-0.5 font-bold text-red-600">!</span>
-                  <span>{t.lookNarcotics}</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-0.5 font-bold text-orange-600">!</span>
-                  <span>{t.lookCurrency}</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-0.5 font-bold text-orange-600">!</span>
-                  <span>{t.lookTobaccoAlcohol}</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-0.5 font-bold text-orange-600">!</span>
-                  <span>{t.lookCommercial}</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-0.5 font-bold text-orange-600">!</span>
-                  <span>{t.lookProhibited}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
+      {/* ── Penalties + After Clearance + Assistance ─────────── */}
+      <section className="bg-gray-50 py-10">
+        <div className="container space-y-10">
           {/* Penalties */}
-          <div className="border-l-4 border-red-500 bg-red-50 p-4">
-            <h4 className="mb-2 text-base font-semibold text-red-900">
-              {t.penaltiesTitle}
-            </h4>
-            <ul className="space-y-2 text-sm text-red-800">
-              <li>• {t.penaltyFines}</li>
-              <li>• {t.penaltyConfiscation}</li>
-              <li>• {t.penaltyCriminal}</li>
-              <li>• {t.penaltyDeportation}</li>
-              <li>• {t.penaltyBan}</li>
-            </ul>
-            <p className="mt-3 text-xs font-semibold text-red-800">
-              {t.penaltyNote}
-            </p>
-          </div>
-
-          {/* After Clearance */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-gray-900">
-              {t.afterClearanceTitle}
-            </h3>
-            <div className="rounded-xl bg-blue-50 p-5">
-              <p className="mb-2 text-base text-gray-800">
-                {t.afterClearanceDesc}
-              </p>
-              <ul className="ml-4 space-y-1 text-sm text-gray-700">
-                <li>• {t.afterItem1}</li>
-                <li>• {t.afterItem2}</li>
-                <li>• {t.afterItem3}</li>
-                <li>• {t.afterItem4}</li>
-                <li>• {t.afterItem5}</li>
-              </ul>
+          <div>
+            <div className="mb-3 flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4 text-red-500" />
+              <p className="text-xs font-bold uppercase tracking-widest text-red-600">{t.penaltiesTitle}</p>
+            </div>
+            <div className="space-y-2 border-l-4 border-red-500 bg-red-50 px-4 py-3 rounded-r-lg">
+              {[t.penaltyFines, t.penaltyConfiscation, t.penaltyCriminal, t.penaltyDeportation, t.penaltyBan].map((item, i) => (
+                <p key={i} className="text-sm text-gray-600">{item}</p>
+              ))}
+              <p className="text-xs font-semibold text-red-700">{t.penaltyNote}</p>
             </div>
           </div>
 
-          {/* Pro Tip */}
-          <div className="border-primary-500 border-l-4 bg-blue-50 p-4">
-            <p className="text-sm text-gray-800">{t.proTip}</p>
-          </div>
-
-          {/* Assistance */}
-          <div className="rounded-xl bg-gray-50 p-4">
-            <p className="mb-2 text-sm font-semibold text-gray-900">
-              {t.assistanceTitle}
-            </p>
-            <div className="space-y-1 text-xs text-gray-600">
-              <p>{t.assistanceOffice}</p>
-              <p>{t.assistancePhone}</p>
-              <p>{t.assistanceAvailability}</p>
+          {/* After clearance + pro tip + assistance */}
+          <div className="grid gap-8 sm:grid-cols-2 border-t border-gray-200 pt-6">
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.afterClearanceTitle}</p>
+              <p className="mb-3 text-sm text-gray-600">{t.afterClearanceDesc}</p>
+              <div className="space-y-1.5">
+                {[t.afterItem1, t.afterItem2, t.afterItem3, t.afterItem4, t.afterItem5].map((item, i) => (
+                  <div key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                    <span className="mt-0.5 shrink-0 font-bold text-[#00AAAC]">✓</span>
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-6">
+              <div className="border-l-4 border-[#00AAAC] bg-[#f0fbfc] px-4 py-3 rounded-r-lg">
+                <p className="text-sm text-gray-600">{t.proTip}</p>
+              </div>
+              <div>
+                <p className="mb-2 text-xs font-bold uppercase tracking-widest text-gray-400">{t.assistanceTitle}</p>
+                <div className="space-y-1 text-sm text-gray-600">
+                  <p>{t.assistanceOffice}</p>
+                  <p>{t.assistancePhone}</p>
+                  <p>{t.assistanceAvailability}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

@@ -15,9 +15,9 @@ export const borderInspection = {
 
   // Wait time
   waitTimeTitle: {
-    en: "⏱️ Estimated Wait Time:",
-    lo: "⏱️ ເວລາລໍຖ້າໂດຍປະມານ:",
-    zh: "⏱️ 预计等待时间：",
+    en: "Estimated Wait Time:",
+    lo: "ເວລາລໍຖ້າໂດຍປະມານ:",
+    zh: "预计等待时间：",
   },
   waitOffPeak: {
     en: "Off-peak hours: 5-15 minutes",

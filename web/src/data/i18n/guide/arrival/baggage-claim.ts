@@ -226,9 +226,9 @@ export const baggageClaim = {
 
   // Pro tip
   proTip: {
-    en: "💡 Pro Tip: Most delayed bags arrive on the next available flight (usually within 24-48 hours). The airline will deliver to your accommodation free of charge. Keep your PIR number and check status online using airline baggage tracking systems.",
-    lo: "💡 ຄຳແນະນຳ: ກະເປົາທີ່ຊັກຊ້າສ່ວນໃຫຍ່ ຈະມາຮອດນຳຖ້ຽວບິນຖັດໄປ (ພາຍໃນ 24-48 ຊົ່ວໂມງ). ສາຍການບິນຈະຈັດສົ່ງໃຫ້ຮອດທີ່ພັກຂອງທ່ານໂດຍບໍ່ເສຍຄ່າ. ກະລຸນາເກັບເລກ PIR ໄວ້ ແລະ ສາມາດກວດສອບສະຖານະທາງອອນໄລນ໌ໄດ້.",
-    zh: "💡 小贴士：大多数延误行李会在下一班可用航班送达（通常在24-48小时内）。航空公司会免费送到您的住宿地。请保留PIR编号并使用航空公司行李追踪系统在线查询状态。",
+    en: "Pro Tip: Most delayed bags arrive on the next available flight (usually within 24-48 hours). The airline will deliver to your accommodation free of charge. Keep your PIR number and check status online using airline baggage tracking systems.",
+    lo: "ຄຳແນະນຳ: ກະເປົາທີ່ຊັກຊ້າສ່ວນໃຫຍ່ ຈະມາຮອດນຳຖ້ຽວບິນຖັດໄປ (ພາຍໃນ 24-48 ຊົ່ວໂມງ). ສາຍການບິນຈະຈັດສົ່ງໃຫ້ຮອດທີ່ພັກຂອງທ່ານໂດຍບໍ່ເສຍຄ່າ. ກະລຸນາເກັບເລກ PIR ໄວ້ ແລະ ສາມາດກວດສອບສະຖານະທາງອອນໄລນ໌ໄດ້.",
+    zh: "小贴士：大多数延误行李会在下一班可用航班送达（通常在24-48小时内）。航空公司会免费送到您的住宿地。请保留PIR编号并使用航空公司行李追踪系统在线查询状态。",
   },
 
   // Contact
@@ -238,9 +238,9 @@ export const baggageClaim = {
     zh: "行李服务联系方式：",
   },
   contactPhone: {
-    en: "Phone: +856-84-211-XXX",
-    lo: "ໂທລະສັບ: +856-84-211-XXX",
-    zh: "电话：+856-84-211-XXX",
+    en: "Phone: +856 84 260 179",
+    lo: "ໂທລະສັບ: +856 84 260 179",
+    zh: "电话：+856 84 260 179",
   },
   contactEmail: {
     en: "Email: baggage@bokeoairport.la",

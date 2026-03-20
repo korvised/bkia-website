@@ -146,7 +146,7 @@ export function ImmigrationContent({ lang }: ImmigrationContentProps) {
 
           {/* Important notes */}
           <div>
-            <div className="mb-5 border-l-2 border-amber-400 pl-4">
+            <div className="mb-5 border-l-4 border-amber-500 bg-amber-50 px-4 py-3 rounded-r-lg">
               <p className="text-xs font-bold uppercase tracking-widest text-amber-600">
                 {t.notesTitle}
               </p>

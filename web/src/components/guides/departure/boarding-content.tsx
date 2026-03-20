@@ -80,7 +80,7 @@ export function BoardingContent({ lang }: BoardingContentProps) {
               </div>
 
               {/* Late passengers warning */}
-              <div className="flex items-start gap-3 border-l-2 border-amber-400 pl-4">
+              <div className="flex items-start gap-3 border-l-4 border-amber-500 bg-amber-50 px-4 py-3 rounded-r-lg">
                 <TbAlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
                 <span className="text-sm text-amber-800">
                   {t.latePassengers}
@@ -190,7 +190,7 @@ export function BoardingContent({ lang }: BoardingContentProps) {
 
           {/* Prohibited on board */}
           <div>
-            <div className="mb-5 border-l-2 border-red-400 pl-4">
+            <div className="mb-5 border-l-4 border-red-500 bg-red-50 px-4 py-3 rounded-r-lg">
               <p className="text-xs font-bold uppercase tracking-widest text-red-600">
                 {t.prohibitedTitle}
               </p>

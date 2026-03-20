@@ -1,31 +1,23 @@
 "use client";
 
-import { Fragment, useCallback, useMemo } from "react";
-import { Menu, MenuButton, MenuItems, Transition } from "@headlessui/react";
+import Link from "next/link";
 import {
-  ChevronDown,
+  PlaneLanding,
+  Package,
+  UserCheck,
+  Luggage,
   ClipboardCheck,
   DoorOpen,
-  LucideIcon,
-  Luggage,
-  Package,
-  PlaneLanding,
-  UserCheck,
 } from "lucide-react";
 import { Lang } from "@/types/language";
 import { ArrivalTab } from "@/types/guide";
 import { ArrivalNavKey, createArrivalGuideI18n } from "@/data/i18n/guide";
-import {
-  DesktopStepItem,
-  MobileMenuItem,
-  TabStatus,
-  TabWithStatus,
-} from "@/components/guides/common";
+import { cn } from "@/lib";
 
 interface Tab {
   id: ArrivalTab;
   labelKey: ArrivalNavKey;
-  icon: LucideIcon;
+  icon: React.ElementType;
 }
 
 const TABS: readonly Tab[] = [
@@ -48,108 +40,47 @@ export function ArrivalTabNavigation({
 }: ArrivalTabNavigationProps) {
   const { arrivalNav: t } = createArrivalGuideI18n(lang);
 
-  const activeTabIndex = useMemo(
-    () => TABS.findIndex((tab) => tab.id === activeTab),
-    [activeTab],
-  );
-
-  const currentTab = useMemo(
-    () => TABS[activeTabIndex] || TABS[0],
-    [activeTabIndex],
-  );
-
-  const stepOfText = useMemo(
-    () =>
-      t.stepOf
-        .replace("{current}", String(activeTabIndex + 1))
-        .replace("{total}", String(TABS.length)),
-    [t.stepOf, activeTabIndex],
-  );
-
-  const getTabStatus = useCallback(
-    (tabIndex: number): TabStatus => {
-      if (tabIndex < activeTabIndex) return "complete";
-      if (tabIndex === activeTabIndex) return "current";
-      return "upcoming";
-    },
-    [activeTabIndex],
-  );
-
-  const getTabHref = useCallback(
-    (tabId: ArrivalTab) => `/${lang}/guides/arrivals?tab=${tabId}`,
-    [lang],
-  );
-
-  const tabsWithStatus = useMemo<TabWithStatus[]>(
-    () =>
-      TABS.map((tab, index) => ({
-        ...tab,
-        status: getTabStatus(index),
-        href: getTabHref(tab.id),
-        label: t[tab.labelKey],
-        stepNumber: index + 1,
-        isLast: index === TABS.length - 1,
-      })),
-    [getTabStatus, getTabHref, t],
-  );
-
-  const CurrentIcon = currentTab.icon;
-
   return (
-    <div className="bg-white pb-4 lg:pb-6">
-      <nav aria-label="Arrival guide progress" className="container">
-        {/* Mobile: Dropdown (< lg) */}
-        <div className="lg:hidden">
-          <Menu as="div" className="relative">
-            <MenuButton className="flex w-full items-center justify-between gap-2 rounded-lg border border-gray-300 bg-white px-4 py-3 text-left shadow-sm">
-              <div className="flex items-center gap-3">
-                <span className="border-primary-600 bg-primary-50 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2">
-                  <CurrentIcon className="text-primary-600 h-4 w-4" />
-                </span>
-                <div>
-                  <span className="text-primary-600 block text-sm font-medium">
-                    {t[currentTab.labelKey]}
-                  </span>
-                  <span className="block text-xs text-gray-500">
-                    {stepOfText}
-                  </span>
-                </div>
-              </div>
-              <ChevronDown className="ui-open:rotate-180 h-5 w-5 text-gray-400 transition-transform" />
-            </MenuButton>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <MenuItems className="absolute left-0 z-50 mt-2 w-full origin-top-left rounded-lg bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
-                {tabsWithStatus.map((tab) => (
-                  <MobileMenuItem
-                    key={tab.id}
-                    tab={tab}
-                    totalSteps={TABS.length}
-                  />
-                ))}
-              </MenuItems>
-            </Transition>
-          </Menu>
-        </div>
-
-        {/* Desktop: Horizontal steps (>= lg) */}
-        <ol
-          role="list"
-          className="hidden divide-y divide-gray-300 overflow-hidden rounded-lg border border-gray-300 bg-white lg:flex lg:divide-y-0"
+    <div className="sticky top-0 z-20 bg-white">
+      <div className="container">
+        <nav
+          aria-label="Arrival guide sections"
+          className="flex gap-2 overflow-x-auto py-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {tabsWithStatus.map((tab) => (
-            <DesktopStepItem key={tab.id} tab={tab} />
-          ))}
-        </ol>
-      </nav>
+          {TABS.map((tab, i) => {
+            const isActive = tab.id === activeTab;
+            const Icon = tab.icon;
+            return (
+              <Link
+                key={tab.id}
+                href={`/${lang}/guides/arrivals?tab=${tab.id}`}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "flex shrink-0 items-center gap-2 rounded-full px-3 py-2.5 text-sm transition-colors md:px-5",
+                  isActive
+                    ? "bg-[#00AAAC] font-semibold text-white"
+                    : "bg-gray-100 font-medium text-gray-600 hover:bg-gray-200 hover:text-gray-800",
+                )}
+              >
+                <span
+                  className={cn(
+                    "flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold",
+                    isActive
+                      ? "bg-white/25 text-white"
+                      : "bg-white text-gray-500",
+                  )}
+                >
+                  {i + 1}
+                </span>
+                <Icon className="h-4 w-4 shrink-0" />
+                <span className="hidden whitespace-nowrap md:inline">
+                  {t[tab.labelKey]}
+                </span>
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
     </div>
   );
 }

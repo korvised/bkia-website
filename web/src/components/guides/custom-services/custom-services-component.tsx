@@ -13,24 +13,24 @@ const cards = [
     icon: Baby,
     titleKey: "pregnancyTitle" as const,
     descKey: "pregnancyDesc" as const,
-    iconBg: "bg-pink-100",
     iconColor: "text-pink-500",
+    iconBg: "bg-pink-50",
   },
   {
     slug: "mobility-challenges",
     icon: Accessibility,
     titleKey: "mobilityTitle" as const,
     descKey: "mobilityDesc" as const,
-    iconBg: "bg-blue-100",
-    iconColor: "text-blue-500",
+    iconColor: "text-[#00AAAC]",
+    iconBg: "bg-[#f0fbfc]",
   },
   {
     slug: "traveling-with-pets",
     icon: PawPrint,
     titleKey: "petsTitle" as const,
     descKey: "petsDesc" as const,
-    iconBg: "bg-amber-100",
     iconColor: "text-amber-500",
+    iconBg: "bg-amber-50",
   },
 ];
 
@@ -38,55 +38,54 @@ export const CustomServicesComponent = ({ lang }: Props) => {
   const { customServices: t } = createCustomServicesI18n(lang);
 
   return (
-    <div className="container space-y-8">
+    <>
       {/* Header */}
-      <div className="space-y-3">
-        <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">
-          {t.title}
-        </h1>
-        <p className="text-gray-600 lg:text-lg">{t.subtitle}</p>
-      </div>
+      <section className="bg-white py-10">
+        <div className="container">
+          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            {t.categoryLabel}
+          </p>
+          <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">
+            {t.title}
+          </h1>
+          <p className="mt-3 max-w-xl text-gray-500 lg:text-lg">{t.subtitle}</p>
+        </div>
+      </section>
 
-      {/* Cards */}
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {cards.map(
-          ({ slug, icon: Icon, titleKey, descKey, iconBg, iconColor }) => (
-            <div
-              key={slug}
-              className="flex flex-col gap-4 rounded-lg border border-gray-200 bg-white p-5"
-            >
-              {/* Card top */}
-              <div className="flex items-start justify-between gap-3">
-                <div className="space-y-1">
-                  <p className="text-primary-600 text-xs font-medium">
-                    {t.categoryLabel}
-                  </p>
-                  <h2 className="leading-snug font-semibold text-gray-900">
-                    {t[titleKey]}
-                  </h2>
-                </div>
-                <div
-                  className={`${iconBg} flex h-14 w-14 shrink-0 items-center justify-center rounded-full`}
+      {/* Service cards */}
+      <section className="bg-gray-50 py-10">
+        <div className="container">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {cards.map(
+              ({ slug, icon: Icon, titleKey, descKey, iconColor, iconBg }) => (
+                <Link
+                  key={slug}
+                  href={`/${lang}/guides/custom-services/${slug}`}
+                  className="group flex flex-col gap-5 bg-white px-6 py-6 transition-colors hover:bg-[#f0fbfc]"
                 >
-                  <Icon className={`${iconColor} h-7 w-7`} />
-                </div>
-              </div>
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center rounded-xl ${iconBg}`}
+                  >
+                    <Icon className={`h-6 w-6 ${iconColor}`} />
+                  </div>
 
-              {/* Description */}
-              <p className="flex-1 text-sm text-gray-600">{t[descKey]}</p>
+                  <div className="flex-1 space-y-1.5">
+                    <h2 className="font-bold text-gray-900">{t[titleKey]}</h2>
+                    <p className="text-sm leading-relaxed text-gray-500">
+                      {t[descKey]}
+                    </p>
+                  </div>
 
-              {/* View Details button */}
-              <Link
-                href={`/${lang}/guides/custom-services/${slug}`}
-                className="hover:border-primary-400 hover:text-primary-600 flex items-center justify-center gap-2 rounded-lg border border-gray-200 px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors"
-              >
-                {t.viewDetails}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          ),
-        )}
-      </div>
-    </div>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[#00AAAC] transition-gap group-hover:gap-2.5">
+                    {t.viewDetails}
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </Link>
+              ),
+            )}
+          </div>
+        </div>
+      </section>
+    </>
   );
 };

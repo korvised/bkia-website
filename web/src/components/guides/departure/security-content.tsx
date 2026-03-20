@@ -114,7 +114,7 @@ export function SecurityContent({ lang }: SecurityContentProps) {
             </div>
 
             <div className="grid gap-8 lg:grid-cols-2">
-              <div className="space-y-2 border-l-2 border-sky-300 pl-4">
+              <div className="space-y-2 border-l-4 border-sky-500 bg-sky-50 px-4 py-3 rounded-r-lg">
                 {[t.liquids100ml, t.liquidsZiplock, t.liquidsChecked].map(
                   (item, i) => (
                     <div key={i} className="flex items-start gap-2">
@@ -157,7 +157,7 @@ export function SecurityContent({ lang }: SecurityContentProps) {
 
           {/* Reminders */}
           <div>
-            <div className="mb-5 border-l-2 border-amber-400 pl-4">
+            <div className="mb-5 border-l-4 border-amber-500 bg-amber-50 px-4 py-3 rounded-r-lg">
               <p className="text-xs font-bold uppercase tracking-widest text-amber-600">
                 {t.remindersTitle}
               </p>
