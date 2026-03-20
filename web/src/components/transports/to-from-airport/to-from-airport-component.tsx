@@ -14,20 +14,17 @@ export const ToFromAirportComponent = ({ lang }: Props) => {
 
   return (
     <>
-      {/* ── Header ─────────────────────────────────────────── */}
-      <section className="bg-white py-10">
-        <div className="container space-y-2">
-          <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">{t.title}</h1>
-          <p className="max-w-2xl text-gray-500 lg:text-lg">{t.intro}</p>
-        </div>
-      </section>
-
-      {/* ── Counter + Vehicles ─────────────────────────────── */}
+      {/* ── Header + Counter + Vehicles ─────────────────────── */}
       <section className="bg-[#f0fbfc] py-10">
-        <div className="container">
+        <div className="container space-y-8">
+          <div className="space-y-2">
+            <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">{t.title}</h1>
+            <p className="max-w-2xl text-gray-500 lg:text-lg">{t.intro}</p>
+          </div>
+
           <div className="grid items-center gap-10 lg:grid-cols-2">
             {/* Image */}
-            <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
+            <div className="overflow-hidden rounded-2xl bg-white">
               <div className="relative aspect-video">
                 <Image
                   src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/parking/Picture1.png"
@@ -59,7 +56,7 @@ export const ToFromAirportComponent = ({ lang }: Props) => {
                 <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.vehiclesTitle}</p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white">
                       <Car className="h-5 w-5 text-[#00AAAC]" />
                     </div>
                     <div>
@@ -68,7 +65,7 @@ export const ToFromAirportComponent = ({ lang }: Props) => {
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white">
                       <Bus className="h-5 w-5 text-amber-500" />
                     </div>
                     <div>

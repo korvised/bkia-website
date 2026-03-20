@@ -59,18 +59,16 @@ export function ContactsComponent({ lang }: Props) {
   ];
 
   return (
-    <>
-      {/* ── Header ─────────────────────────────────────────── */}
-      <section className="bg-white py-10">
-        <div className="container space-y-2">
+    <section className="bg-[#f0fbfc] py-10">
+      <div className="container">
+        {/* Header */}
+        <div className="mb-8 space-y-2">
           <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">{t("title")}</h1>
           <p className="max-w-2xl text-gray-500 lg:text-lg">{t("intro")}</p>
         </div>
-      </section>
 
-      {/* ── Service rows ───────────────────────────────────── */}
-      <section className="bg-[#f0fbfc] py-4">
-        <div className="container divide-y divide-[#d4f2f3]">
+        {/* Service rows */}
+        <div className="divide-y divide-[#d4f2f3]">
           {items.map(({ key, title, desc, location, hours, phone, whatsapp, bar, btn }) => (
             <div key={key} className="flex flex-col gap-4 py-8 sm:flex-row sm:items-start sm:gap-10">
               {/* Left color bar */}
@@ -116,7 +114,7 @@ export function ContactsComponent({ lang }: Props) {
             </div>
           ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

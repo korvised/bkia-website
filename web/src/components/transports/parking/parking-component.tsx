@@ -27,42 +27,40 @@ export const ParkingComponent = ({ lang }: Props) => {
 
   return (
     <>
-      {/* ── Header ─────────────────────────────────────────── */}
-      <section className="bg-white py-10">
-        <div className="container space-y-2">
-          <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">{t.title}</h1>
-          <p className="max-w-2xl text-gray-500 lg:text-lg">{t.intro}</p>
-        </div>
-      </section>
-
-      {/* ── Map ────────────────────────────────────────────── */}
-      <section className="bg-gray-50 py-10">
-        <div className="container">
-          <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.mapTitle}</p>
-          <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
-            <div className="relative aspect-video">
-              <Image
-                src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/parking/Picture1.png"
-                alt={t.mapTitle}
-                fill
-                className="object-contain"
-                priority
-              />
+      {/* ── Header + Map ────────────────────────────────────── */}
+      <section className="bg-[#f0fbfc] py-10">
+        <div className="container space-y-8">
+          <div className="space-y-2">
+            <h1 className="text-3xl font-bold text-gray-900 lg:text-4xl">{t.title}</h1>
+            <p className="max-w-2xl text-gray-500 lg:text-lg">{t.intro}</p>
+          </div>
+          <div>
+            <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.mapTitle}</p>
+            <div className="overflow-hidden rounded-2xl bg-white">
+              <div className="relative aspect-video">
+                <Image
+                  src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/parking/Picture1.png"
+                  alt={t.mapTitle}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── Rates ──────────────────────────────────────────── */}
-      <section className="bg-[#f0fbfc] py-10">
+      <section className="bg-white py-10">
         <div className="container">
           <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.ratesTitle}</p>
           <h2 className="mb-8 text-xl font-semibold text-gray-900">{t.ratesNote}</h2>
 
-          <div className="grid gap-0 divide-y divide-[#d4f2f3] sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+          <div className="grid gap-0 divide-y divide-gray-100 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
             {/* Large vehicles */}
             <div className="flex items-center gap-5 py-6 pr-0 sm:pr-10">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gray-100">
                 <Car className="h-7 w-7 text-[#00AAAC]" />
               </div>
               <div className="flex-1">
@@ -77,7 +75,7 @@ export const ParkingComponent = ({ lang }: Props) => {
 
             {/* Small vehicles */}
             <div className="flex items-center gap-5 py-6 pl-0 sm:pl-10">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gray-100">
                 <Bike className="h-7 w-7 text-amber-500" />
               </div>
               <div className="flex-1">
@@ -94,7 +92,7 @@ export const ParkingComponent = ({ lang }: Props) => {
       </section>
 
       {/* ── Zones ──────────────────────────────────────────── */}
-      <section className="bg-white py-10">
+      <section className="bg-gray-50 py-10">
         <div className="container">
           <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.zonesTitle}</p>
           <h2 className="mb-8 text-xl font-semibold text-gray-900">{t.zonesTitle}</h2>
@@ -126,37 +124,40 @@ export const ParkingComponent = ({ lang }: Props) => {
         </div>
       </section>
 
-      {/* ── Payment ────────────────────────────────────────── */}
-      <section className="bg-gray-50 py-10">
-        <div className="container">
-          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.paymentTitle}</p>
-          <h2 className="mb-6 text-xl font-semibold text-gray-900">{t.paymentTitle}</h2>
-          <div className="space-y-4">
-            <div className="flex items-center gap-4 text-gray-700">
-              <Banknote className="h-5 w-5 shrink-0 text-emerald-500" />
-              {t.cashPayment}
-            </div>
-            <div className="flex items-center gap-4 text-gray-700">
-              <QrCode className="h-5 w-5 shrink-0 text-sky-500" />
-              {t.qrPayment}
+      {/* ── Payment + Tips ──────────────────────────────────── */}
+      <section className="bg-white py-10">
+        <div className="container space-y-10">
+          {/* Payment */}
+          <div>
+            <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">{t.paymentTitle}</p>
+            <h2 className="mb-6 text-xl font-semibold text-gray-900">{t.paymentTitle}</h2>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4 text-gray-700">
+                <Banknote className="h-5 w-5 shrink-0 text-emerald-500" />
+                {t.cashPayment}
+              </div>
+              <div className="flex items-center gap-4 text-gray-700">
+                <QrCode className="h-5 w-5 shrink-0 text-sky-500" />
+                {t.qrPayment}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ── Tips ───────────────────────────────────────────── */}
-      <section className="bg-amber-50/60 py-10">
-        <div className="container">
-          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-amber-600">{t.importantTitle}</p>
-          <h2 className="mb-6 text-xl font-semibold text-gray-900">{t.importantTitle}</h2>
-          <div className="space-y-3 border-l-2 border-amber-300 pl-5">
-            <p className="text-sm text-gray-600">{t.parkingTip1}</p>
-            <p className="text-sm text-gray-600">{t.parkingTip2}</p>
-            <p className="text-sm text-gray-600">{t.parkingTip3}</p>
-          </div>
-          <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-amber-700">
-            <AlertTriangle className="h-4 w-4 shrink-0" />
-            {t.lostTicketFee}
+          {/* Tips — inline callout, no colored section bg */}
+          <div>
+            <div className="mb-3 flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4 text-amber-500" />
+              <p className="text-xs font-bold uppercase tracking-widest text-amber-600">{t.importantTitle}</p>
+            </div>
+            <div className="space-y-3 border-l-2 border-amber-300 pl-5">
+              <p className="text-sm text-gray-600">{t.parkingTip1}</p>
+              <p className="text-sm text-gray-600">{t.parkingTip2}</p>
+              <p className="text-sm text-gray-600">{t.parkingTip3}</p>
+            </div>
+            <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-amber-700">
+              <AlertTriangle className="h-4 w-4 shrink-0" />
+              {t.lostTicketFee}
+            </div>
           </div>
         </div>
       </section>
