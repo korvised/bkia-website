@@ -4,7 +4,7 @@ import { Fragment, useEffect, useState, useRef, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, ArrowRight, ChevronRight } from "lucide-react";
+import { Menu, ArrowRight } from "lucide-react";
 import { GoSearch } from "react-icons/go";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import { PiWheelchairDuotone } from "react-icons/pi";
@@ -15,6 +15,8 @@ import { navigation } from "@/data/navigation";
 import { SearchDialog } from "@/components/common";
 import { LanguageSelector } from "./language-selector";
 import { Sidebar } from "./sidebar";
+import { MENU_ICONS } from "./menu-icons";
+import { tHeader } from "@/data/i18n/layout";
 
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -52,17 +54,10 @@ export function Header() {
     setActiveMenu(null);
   };
 
-  // Check if menu item is active based on current pathname
   const isMenuActive = (href: string) => {
-    // Remove language prefix from pathname for comparison
     const pathWithoutLang = pathname.replace(`/${lang}`, "") || "/";
-
-    // Exact match for home
     if (href === "/" && pathWithoutLang === "/") return true;
-
-    // Check if current path starts with menu href (for sub-pages)
     if (href !== "/" && pathWithoutLang.startsWith(href)) return true;
-
     return false;
   };
 
@@ -232,11 +227,11 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mega Menu Dropdown - Quick Exit Animation */}
+        {/* ── Mega Menu Dropdown ── */}
         <AnimatePresence mode="wait">
           {activeMenu && (
             <motion.div
-              className="absolute right-0 left-0 w-full bg-white shadow-xl"
+              className="absolute right-0 left-0 w-full bg-white"
               initial={{ height: 0, opacity: 0 }}
               animate={{
                 height: "auto",
@@ -258,7 +253,7 @@ export function Header() {
               onMouseLeave={handleDropdownLeave}
             >
               <motion.div
-                className="overflow-hidden"
+                className="overflow-hidden border-t border-gray-100"
                 initial={{ opacity: 0, y: -8 }}
                 animate={{
                   opacity: 1,
@@ -271,7 +266,7 @@ export function Header() {
                   transition: { duration: 0.1 },
                 }}
               >
-                <div className="mx-auto max-w-[1920px]">
+                <div>
                   {navigation
                     .filter((item) => item.hasDropdown)
                     .map((item) => (
@@ -281,121 +276,130 @@ export function Header() {
                           activeMenu === item.id ? "block" : "hidden",
                         )}
                       >
-                        {/* Separator Line */}
-                        <div className="h-px bg-gray-200" />
-
-                        {/* Grid Layout */}
-                        <div className="grid grid-cols-[1fr_auto_1fr] gap-8 px-6 py-10 lg:px-12">
-                          {/* Column 1: Page Title & Description */}
-                          <div className="flex justify-end">
-                            <div className="max-w-xs">
-                              <h2 className="text-2xl font-bold text-gray-900">
+                        <div className="container py-7">
+                          {/* Section header */}
+                          <div className="mb-5 flex items-start justify-between gap-4">
+                            <div>
+                              <h2 className="text-base font-bold text-gray-900 lg:text-lg">
                                 {item.label[lang]}
                               </h2>
                               {item.description && (
-                                <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                                <p className="mt-0.5 text-xs text-gray-500 lg:text-sm">
                                   {item.description[lang]}
                                 </p>
                               )}
                             </div>
+                            <Link
+                              href={`/${lang}${item.href}`}
+                              onClick={handleMenuItemClick}
+                              className="flex shrink-0 items-center gap-1.5 rounded-full bg-[#e6f7f8] px-3 py-1.5 text-xs font-semibold text-[#00AAAC] transition-colors duration-200 hover:bg-[#00AAAC] hover:text-white"
+                            >
+                              <span className="hidden sm:inline">{tHeader("viewAll", lang)}</span>
+                              <ArrowRight className="h-3 w-3" />
+                            </Link>
                           </div>
 
-                          {/* Column 2: Menu Items List */}
-                          <div className="flex w-80 flex-col gap-y-1 border-l border-gray-200 px-6">
-                            {item.menuItems?.map((menuItem, idx) => {
-                              const isActive = isMenuActive(menuItem.href);
+                          {/* Content row: items + featured card */}
+                          <div className="flex items-stretch gap-5 xl:gap-8">
+                            {/* Menu items — 2-column grid */}
+                            <div className="flex-1 grid grid-cols-2 gap-1 content-start">
+                              {item.menuItems?.map((menuItem, idx) => {
+                                const Icon =
+                                  MENU_ICONS[menuItem.href] ?? ArrowRight;
+                                const isActive = isMenuActive(menuItem.href);
 
-                              return (
-                                <Link
-                                  key={idx}
-                                  href={`/${lang}${menuItem.href}`}
-                                  onClick={handleMenuItemClick}
-                                  className={cn(
-                                    "group/link flex items-center justify-between gap-x-4 rounded-lg py-3 pr-2 pl-4 transition-all duration-200 sm:pr-4 sm:pl-6",
-                                    isActive
-                                      ? "bg-primary-50 hover:bg-primary-100"
-                                      : "hover:bg-gray-50",
-                                  )}
-                                >
-                                  <div className="grid flex-1">
-                                    <span
+                                return (
+                                  <Link
+                                    key={idx}
+                                    href={`/${lang}${menuItem.href}`}
+                                    onClick={handleMenuItemClick}
+                                    className={cn(
+                                      "group/link flex items-start gap-3 rounded-xl p-3 transition-all duration-200",
+                                      isActive
+                                        ? "bg-[#e6f7f8]"
+                                        : "hover:bg-gray-50",
+                                    )}
+                                  >
+                                    {/* Icon tile */}
+                                    <div
                                       className={cn(
-                                        "text-base font-semibold transition-colors duration-200",
+                                        "mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors duration-200",
                                         isActive
-                                          ? "text-primary-600"
-                                          : "group-hover/link:text-primary-600 text-gray-700",
+                                          ? "bg-[#00AAAC]"
+                                          : "bg-[#f0fbfc] group-hover/link:bg-[#e6f7f8]",
                                       )}
                                     >
-                                      {menuItem.label[lang]}
-                                    </span>
+                                      <Icon
+                                        className={cn(
+                                          "h-4 w-4",
+                                          isActive
+                                            ? "text-white"
+                                            : "text-[#00AAAC]",
+                                        )}
+                                      />
+                                    </div>
 
-                                    {menuItem.description && (
-                                      <span className="mt-1 text-xs leading-relaxed text-gray-500">
-                                        {menuItem.description[lang]}
+                                    {/* Text */}
+                                    <div className="min-w-0">
+                                      <span
+                                        className={cn(
+                                          "block text-sm font-semibold leading-snug transition-colors duration-200",
+                                          isActive
+                                            ? "text-[#007a7c]"
+                                            : "text-gray-800 group-hover/link:text-[#00AAAC]",
+                                        )}
+                                      >
+                                        {menuItem.label[lang]}
                                       </span>
-                                    )}
-                                  </div>
-                                  <ChevronRight
-                                    className={cn(
-                                      "text-primary-600 h-4 w-4 flex-shrink-0 transition-all duration-200",
-                                      isActive
-                                        ? "translate-x-0 opacity-100"
-                                        : "-translate-x-1 opacity-0 group-hover/link:translate-x-0 group-hover/link:opacity-100",
-                                    )}
+                                      {menuItem.description && (
+                                        <span className="mt-0.5 block text-xs leading-relaxed text-gray-500">
+                                          {menuItem.description[lang]}
+                                        </span>
+                                      )}
+                                    </div>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+
+                            {/* Featured card — full-height image with overlay */}
+                            {item.featuredContent && (
+                              <div className="relative hidden w-52 shrink-0 self-stretch min-h-44 xl:block xl:w-60">
+                                <Link
+                                  href={`/${lang}${item.href}`}
+                                  onClick={handleMenuItemClick}
+                                  className="group/card absolute inset-0 block overflow-hidden rounded-2xl"
+                                >
+                                  <Image
+                                    src={item.featuredContent.image}
+                                    alt={item.featuredContent.title[lang]}
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover/card:scale-105"
+                                    sizes="240px"
                                   />
-                                </Link>
-                              );
-                            })}
-                          </div>
+                                  {/* Gradient overlay */}
+                                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
 
-                          {/* Column 3: Featured Content Card */}
-                          {item.featuredContent && (
-                            <div className="flex items-start">
-                              <div className="w-80">
-                                <div className="group/card hover:border-primary-200 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md">
-                                  {/* Featured Image */}
-                                  <div className="relative aspect-video w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
-                                    <Image
-                                      src={item.featuredContent.image}
-                                      alt={item.featuredContent.title[lang]}
-                                      fill
-                                      className="object-cover transition-transform duration-500 group-hover/card:scale-105"
-                                      sizes="320px"
-                                    />
-                                  </div>
-
-                                  {/* Content */}
-                                  <div className="p-5">
-                                    <h3 className="text-lg font-bold text-gray-900">
+                                  {/* Text overlay */}
+                                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                                    <span className="mb-1 block text-[10px] font-bold uppercase tracking-widest text-[#4dd8da]">
+                                      {item.label[lang]}
+                                    </span>
+                                    <h3 className="text-sm font-bold leading-snug text-white">
                                       {item.featuredContent.title[lang]}
                                     </h3>
-
-                                    <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                                    <p className="mt-1 text-xs leading-relaxed text-white/70">
                                       {item.featuredContent.description[lang]}
                                     </p>
-
-                                    {/* CTA Link */}
-                                    {item.featuredContent.link && (
-                                      <Link
-                                        href={`/${lang}${item.featuredContent.link.href}`}
-                                        onClick={handleMenuItemClick}
-                                        className="group/cta text-primary-600 hover:text-primary-700 mt-4 inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200"
-                                      >
-                                        <span>
-                                          {
-                                            item.featuredContent.link.label[
-                                              lang
-                                            ]
-                                          }
-                                        </span>
-                                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
-                                      </Link>
-                                    )}
+                                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#4dd8da] transition-all duration-200 group-hover/card:gap-2">
+                                      {tHeader("explore", lang)}{" "}
+                                      <ArrowRight className="h-3 w-3" />
+                                    </span>
                                   </div>
-                                </div>
+                                </Link>
                               </div>
-                            </div>
-                          )}
+                            )}
+                          </div>
                         </div>
                       </div>
                     ))}

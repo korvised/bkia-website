@@ -7,6 +7,7 @@ import {
 } from "./search-dialog";
 import { footer, type FooterKey, tFooter } from "./footer";
 import { notfound, type NotfoundKey, tNotfound } from "./not-found";
+import { header, type HeaderKey, tHeader } from "./header";
 
 export function createLayoutI18n(lang: Lang) {
   const footerT = createTranslator<typeof footer, FooterKey>(footer, lang);
@@ -18,13 +19,15 @@ export function createLayoutI18n(lang: Lang) {
     searchDialog,
     lang,
   );
+  const headerT = createTranslator<typeof header, HeaderKey>(header, lang);
 
   return {
     footer: footerT,
     notfound: notfoundT,
     searchDialog: searchDialogT,
+    header: headerT,
   };
 }
 
-export { tFooter, tNotfound, tSearchDialog };
-export type { FooterKey, NotfoundKey, SearchDialogKey };
+export { tFooter, tNotfound, tSearchDialog, tHeader };
+export type { FooterKey, NotfoundKey, SearchDialogKey, HeaderKey };

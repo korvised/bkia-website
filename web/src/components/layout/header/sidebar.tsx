@@ -8,13 +8,14 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown, X, ArrowRight } from "lucide-react";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import { PiWheelchairDuotone } from "react-icons/pi";
 import { cn } from "@/lib";
 import { useApp } from "@/context/app-context";
 import { navigation } from "@/data/navigation";
 import { LanguageSelector } from "@/components/layout/header";
+import { MENU_ICONS } from "./menu-icons";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -65,9 +66,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                 leaveTo="translate-x-full"
               >
                 <DialogPanel className="pointer-events-auto relative w-screen max-w-xs sm:max-w-sm">
-                  <div className="flex h-full flex-col bg-white shadow-xl">
+                  <div className="flex h-full flex-col bg-white">
                     {/* Header */}
-                    <div className="bg-primary-600 flex items-center justify-between px-6 py-5">
+                    <div className="bg-[#00AAAC] flex items-center justify-between px-6 py-4">
                       <div className="flex items-center gap-2 sm:gap-3">
                         <LanguageSelector />
                         <button
@@ -156,28 +157,32 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                               {item.hasDropdown && expandedNow && (
                                 <div
                                   id={`section-${item.id}`}
-                                  className="bg-gray-50 px-4 py-3"
+                                  className="bg-gray-50/70 px-4 pb-3 pt-1"
                                 >
-                                  {/* Menu items */}
                                   {item.menuItems &&
                                     item.menuItems.length > 0 && (
-                                      <ul className="space-y-1">
-                                        {item.menuItems.map((mi) => (
-                                          <li key={`${item.id}-${mi.href}`}>
-                                            <Link
-                                              href={withLang(mi.href)}
-                                              onClick={onClose}
-                                              className="group ml-1 flex items-center gap-3 rounded-md px-2 py-2 hover:bg-white"
-                                            >
-                                              <span className="group-hover:bg-primary-600 h-1.5 w-1.5 flex-shrink-0 bg-gray-400 transition-colors" />
-                                              <span className="inline-flex flex-col">
-                                                <span className="group-hover:text-primary-700 text-sm font-medium text-gray-800">
+                                      <ul className="space-y-0.5">
+                                        {item.menuItems.map((mi) => {
+                                          const Icon =
+                                            MENU_ICONS[mi.href] ?? ArrowRight;
+                                          return (
+                                            <li key={`${item.id}-${mi.href}`}>
+                                              <Link
+                                                href={withLang(mi.href)}
+                                                onClick={onClose}
+                                                className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-white"
+                                              >
+                                                {/* Icon tile */}
+                                                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#f0fbfc] transition-colors duration-200 group-hover:bg-[#e6f7f8]">
+                                                  <Icon className="h-3.5 w-3.5 text-[#00AAAC]" />
+                                                </div>
+                                                <span className="text-sm font-medium text-gray-800 transition-colors group-hover:text-[#00AAAC]">
                                                   {mi.label[lang]}
                                                 </span>
-                                              </span>
-                                            </Link>
-                                          </li>
-                                        ))}
+                                              </Link>
+                                            </li>
+                                          );
+                                        })}
                                       </ul>
                                     )}
                                 </div>
@@ -189,7 +194,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     {/* Footer */}
-                    <div className="border-t border-gray-200 bg-gray-50 px-6 py-4">
+                    <div className="border-t border-gray-100 bg-gray-50 px-6 py-4">
                       <div className="text-center">
                         <div className="text-sm font-semibold text-gray-900">
                           Bokeo International Airport
