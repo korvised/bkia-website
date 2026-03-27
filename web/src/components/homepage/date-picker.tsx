@@ -76,35 +76,35 @@ export default function DatePicker({
   };
 
   return (
-    <div className="relative w-full min-w-fit md:w-56 xl:w-80">
+    <div className="relative w-full lg:w-52 xl:w-60">
       <button
         ref={buttonRef}
         onClick={handleToggleCalendar}
         className={cn(
-          "group relative flex h-14 w-full items-center gap-4 rounded-lg border-2 bg-white px-3 text-left shadow-sm transition-all md:h-16 xl:px-5",
+          "group relative flex h-12 w-full items-center gap-3 rounded-lg border-2 bg-white px-3 text-left transition-all xl:px-4",
           showCalendar
-            ? "border-primary-500 ring-primary-100 shadow-md ring-2"
-            : "border-gray-300 hover:border-gray-400 hover:shadow-md",
+            ? "border-[#00AAAC] ring-2 ring-[#e6f7f8]"
+            : "border-gray-200 hover:border-gray-300",
         )}
       >
         <div
           className={cn(
-            "flex flex-shrink-0 items-center justify-center rounded-lg transition-colors md:h-10 md:w-10",
-            showCalendar ? "sm:bg-primary-100" : "sm:bg-gray-100",
+            "flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg transition-colors",
+            showCalendar ? "bg-[#e6f7f8]" : "bg-gray-100",
           )}
         >
           <CalendarIcon
             className={cn(
-              "h-5 w-5 transition-colors",
-              showCalendar ? "text-primary-600" : "text-gray-700",
+              "h-4 w-4 transition-colors",
+              showCalendar ? "text-[#00AAAC]" : "text-gray-500",
             )}
           />
         </div>
         <div className="flex-1">
           <div
             className={cn(
-              "text-xs font-semibold tracking-wide uppercase",
-              showCalendar ? "text-primary-600" : "text-gray-500",
+              "text-xs font-semibold tracking-wide uppercase transition-colors",
+              showCalendar ? "text-[#00AAAC]" : "text-gray-500",
             )}
           >
             {label}

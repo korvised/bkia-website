@@ -16,87 +16,133 @@ import { getWeatherDescription } from "@/data/weather-description";
 interface WeatherWidgetProps {
   lang: Lang;
   className?: string;
+  /** Use on dark/teal backgrounds — flips all colours to white */
+  inverted?: boolean;
 }
 
-export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
+export default function WeatherWidget({
+  lang,
+  className,
+  inverted = false,
+}: WeatherWidgetProps) {
   const { weather, loading, error } = useWeather();
   const [currentTime, setCurrentTime] = useState<string>("");
   const { homepage: t } = createCommonI18n(lang);
 
-  // Update current time
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      const timeString = fmtTime(now, lang, "HH:mm");
-      setCurrentTime(timeString);
+      setCurrentTime(fmtTime(now, lang, "HH:mm"));
     };
-
     updateTime();
     const interval = setInterval(updateTime, 1000);
-
     return () => clearInterval(interval);
   }, [lang]);
 
   const { iconEl, temperature, feelsLike, localizedDescription } =
     useMemo(() => {
       const weatherIcon = weather?.weather?.[0]?.icon || "01d";
-      const iconColorClass = getWeatherIconColor(weatherIcon);
+      const iconColorClass = inverted
+        ? "text-white"
+        : getWeatherIconColor(weatherIcon);
       const iconEl = getWeatherIconElement(
         weatherIcon,
         cn("h-10 w-10", iconColorClass),
       );
+      return {
+        iconEl,
+        temperature: Math.round(weather?.main?.temp ?? 0),
+        feelsLike: Math.round(weather?.main?.feels_like ?? 0),
+        localizedDescription: getWeatherDescription(weatherIcon, lang),
+      };
+    }, [weather, lang, inverted]);
 
-      const temperature = Math.round(weather?.main?.temp ?? 0);
-      const feelsLike = Math.round(weather?.main?.feels_like ?? 0);
-      const localizedDescription = getWeatherDescription(weatherIcon, lang);
+  const containerCls = cn(
+    "flex items-center justify-between gap-3 rounded-2xl px-4 py-3.5",
+    inverted
+      ? "bg-white/10 ring-1 ring-white/20 backdrop-blur-sm"
+      : "bg-primary-50/50 ring-1 ring-primary-200/50 shadow-lg backdrop-blur-sm",
+    className,
+  );
 
-      return { iconEl, temperature, feelsLike, localizedDescription };
-    }, [weather, lang]);
-
-  // Skeleton loading state
   if (loading) {
     return (
-      <div
-        className={cn(
-          "bg-primary-50/50 flex items-center justify-between gap-3 rounded-2xl px-4 py-3.5 shadow-lg backdrop-blur-sm",
-          className,
-        )}
-      >
+      <div className={containerCls}>
         <div className="flex items-center gap-3">
-          <div className="bg-primary-200/50 h-12 w-12 animate-pulse rounded-full" />
+          <div
+            className={cn(
+              "h-12 w-12 animate-pulse rounded-full",
+              inverted ? "bg-white/20" : "bg-primary-200/50",
+            )}
+          />
           <div className="flex flex-col gap-1.5">
-            <div className="bg-primary-200/50 h-6 w-16 animate-pulse rounded" />
-            <div className="bg-primary-200/50 h-3 w-24 animate-pulse rounded" />
+            <div
+              className={cn(
+                "h-6 w-16 animate-pulse rounded",
+                inverted ? "bg-white/20" : "bg-primary-200/50",
+              )}
+            />
+            <div
+              className={cn(
+                "h-3 w-24 animate-pulse rounded",
+                inverted ? "bg-white/20" : "bg-primary-200/50",
+              )}
+            />
           </div>
         </div>
         <div className="hidden sm:block">
           <div className="flex flex-col gap-1.5">
-            <div className="bg-primary-200/50 h-4 w-20 animate-pulse rounded" />
-            <div className="bg-primary-200/50 h-3 w-24 animate-pulse rounded" />
+            <div
+              className={cn(
+                "h-4 w-20 animate-pulse rounded",
+                inverted ? "bg-white/20" : "bg-primary-200/50",
+              )}
+            />
+            <div
+              className={cn(
+                "h-3 w-24 animate-pulse rounded",
+                inverted ? "bg-white/20" : "bg-primary-200/50",
+              )}
+            />
           </div>
         </div>
       </div>
     );
   }
 
-  // Error state - show fallback with cloud icon
   if (error || !weather) {
     return (
-      <div
-        className={cn(
-          "bg-primary-50/50 flex items-center justify-between gap-3 rounded-2xl px-4 py-3.5 shadow-lg backdrop-blur-sm",
-          className,
-        )}
-      >
+      <div className={containerCls}>
         <div className="flex items-center gap-3">
-          <WiCloudy className="h-12 w-12 text-gray-400" />
+          <WiCloudy
+            className={cn("h-12 w-12", inverted ? "text-white/60" : "text-gray-400")}
+          />
           <div className="flex flex-col">
-            <span className="text-primary-900 text-xl font-bold">--°C</span>
-            <span className="text-primary-700 text-xs">{currentTime}</span>
+            <span
+              className={cn(
+                "text-xl font-bold",
+                inverted ? "text-white" : "text-primary-900",
+              )}
+            >
+              --°C
+            </span>
+            <span
+              className={cn(
+                "text-xs",
+                inverted ? "text-white/60" : "text-primary-700",
+              )}
+            >
+              {currentTime}
+            </span>
           </div>
         </div>
         <div className="hidden text-right sm:block">
-          <span className="text-primary-800 text-sm font-medium">
+          <span
+            className={cn(
+              "text-sm font-medium",
+              inverted ? "text-white/70" : "text-primary-800",
+            )}
+          >
             {t.loading}
           </span>
         </div>
@@ -104,40 +150,62 @@ export default function WeatherWidget({ lang, className }: WeatherWidgetProps) {
     );
   }
 
-  // Get weather data
-
   return (
-    <div
-      className={cn(
-        "bg-primary-50/50 ring-primary-200/50 flex items-center justify-between gap-3 rounded-2xl px-4 py-3.5 shadow-lg ring-1 backdrop-blur-sm",
-        className,
-      )}
-    >
-      {/* Left side: Icon + Temperature + Time */}
+    <div className={containerCls}>
+      {/* Icon + Temperature + Time */}
       <div className="flex items-center gap-3">
-        {/* Weather Icon - Colorful and bigger */}
-        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/80">
+        <div
+          className={cn(
+            "flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full",
+            inverted ? "bg-white/20" : "bg-white/80",
+          )}
+        >
           {iconEl}
         </div>
-
-        {/* Temperature and Time */}
         <div className="flex flex-col leading-tight">
-          <span className="text-primary-900 text-xl font-bold">
+          <span
+            className={cn(
+              "text-xl font-bold",
+              inverted ? "text-white" : "text-primary-900",
+            )}
+          >
             {temperature}°C
           </span>
           <div className="flex items-center gap-1">
-            <Clock className="text-primary-600 -mt-0.5 h-3.5 w-3.5" />
-            <span className="text-primary-700 text-xs">{currentTime}</span>
+            <Clock
+              className={cn(
+                "-mt-0.5 h-3.5 w-3.5",
+                inverted ? "text-white/50" : "text-primary-600",
+              )}
+            />
+            <span
+              className={cn(
+                "text-xs",
+                inverted ? "text-white/70" : "text-primary-700",
+              )}
+            >
+              {currentTime}
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Right side: Description + Feels Like (hidden on mobile) */}
+      {/* Description + Feels Like */}
       <div className="hidden text-right sm:block">
-        <p className="text-primary-900 mt-1 text-sm font-semibold">
+        <p
+          className={cn(
+            "mt-1 text-sm font-semibold",
+            inverted ? "text-white" : "text-primary-900",
+          )}
+        >
           {localizedDescription}
         </p>
-        <p className="text-primary-700 mt-1 text-xs">
+        <p
+          className={cn(
+            "mt-1 text-xs",
+            inverted ? "text-white/60" : "text-primary-700",
+          )}
+        >
           {t.feelsLike} {feelsLike}°C
         </p>
       </div>

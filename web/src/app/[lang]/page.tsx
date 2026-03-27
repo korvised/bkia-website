@@ -35,22 +35,18 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div className="w-full">
-      <section className="flex h-[100svh] min-h-0 flex-col md:h-screen">
-        {/* hero */}
-        <div className="min-h-0 basis-[58%] sm:basis-[60%] md:basis-[65%] lg:basis-[73%]">
-          <HeroSection banners={banners} notices={notices} className="h-full min-h-0" />
+      {/* Full-screen hero + search = 100svh */}
+      <section className="flex h-[100svh] flex-col overflow-hidden md:h-screen">
+        {/* Hero slideshow with notice ticker overlay */}
+        <div className="h-[62vh] shrink-0 sm:h-[65vh]">
+          <HeroSection banners={banners} notices={notices} className="h-full" />
         </div>
 
-        {/* search — auto height on mobile, fills rest on md+ */}
-        <div className="flex-shrink-0 md:min-h-0 md:flex-1">
-          <FlightSearch />
-        </div>
+        {/* White panel: weather + search */}
+        <FlightSearch className="flex-1" />
       </section>
 
-      {/* Useful Services Section */}
       <UsefulServicesSection lang={lang as Lang} />
-
-      {/* News Section */}
       <NewsSection lang={lang as Lang} news={news} />
     </div>
   );
