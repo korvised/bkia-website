@@ -40,7 +40,7 @@ export const CustomServicesNav = ({ lang }: Props) => {
           aria-label="Custom services sections"
           className="flex gap-2 overflow-x-auto py-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {navItems.map(({ slug, icon: Icon, titleKey }, i) => {
+          {navItems.map(({ slug, icon: Icon, titleKey }) => {
             const isActive = pathname.includes(slug);
             return (
               <Link
@@ -53,16 +53,6 @@ export const CustomServicesNav = ({ lang }: Props) => {
                     : "bg-gray-100 font-medium text-gray-600 hover:bg-gray-200 hover:text-gray-800",
                 )}
               >
-                <span
-                  className={cn(
-                    "flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold",
-                    isActive
-                      ? "bg-white/25 text-white"
-                      : "bg-white text-gray-500",
-                  )}
-                >
-                  {i + 1}
-                </span>
                 <Icon className="h-4 w-4 shrink-0" />
                 <span className="hidden whitespace-nowrap md:inline">
                   {t[titleKey]}

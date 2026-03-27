@@ -4,133 +4,97 @@ export const profile = {
   // ─── Meta ──────────────────────────────────────────────────────────────────
   pageTitle: {
     en: "Airport Profile — Bokeo International Airport",
-    lo: "ໂປຣໄຟລ໌ — ສະໜາມບິນສາກົນບໍ່ແກ້ວ",
+    lo: "ຂໍ້ມູນສະໜາມບິນ — ສະໜາມບິນສາກົນບໍ່ແກ້ວ",
     zh: "机场简介 — 博胶国际机场",
   },
   pageDescription: {
     en: "Learn about Bokeo International Airport — our history, vision, mission, and core values.",
-    lo: "ຮຽນຮູ້ກ່ຽວກັບສະໜາມບິນສາກົນບໍ່ແກ້ວ — ປະຫວັດ, ວິໃສທັດ, ພາລະກິດ ແລະ ຄຸນຄ່າຫຼັກ.",
+    lo: "ຮຽນຮູ້ກ່ຽວກັບສະໜາມບິນສາກົນບໍ່ແກ້ວ — ປະຫວັດຄວາມເປັນມາ, ວິໃສທັດ, ພາລະກິດ ແລະ ຄຸນຄ່າຫຼັກຂອງພວກເຮົາ.",
     zh: "了解博胶国际机场 — 我们的历史、愿景、使命和核心价值观。",
   },
 
-  // ─── Intro strip ────────────────────────────────────────────────────────────
-  introTagline: {
-    en: "Connecting Laos to the World",
-    lo: "ເຊື່ອມໂຍງລາວສູ່ສາກົນ",
-    zh: "连接老挝与世界",
+  // ─── Slogan (always shown bilingual — Lao line + English line) ───────────
+  sloganLabel: { en: "Our Motto", lo: "ຄຳຂວັນ", zh: "口号" },
+  sloganLo: {
+    en: "ບໍລິການດ້ວຍໃຈ ຫ່ວງໃຍທຸກການເດີນທາງ",
+    lo: "ບໍລິການດ້ວຍໃຈ ຫ່ວງໃຍທຸກການເດີນທາງ",
+    zh: "ບໍລິການດ້ວຍໃຈ ຫ່ວງໃຍທຸກການເດີນທາງ",
   },
-  introEstLabel: { en: "Established", lo: "ກໍ່ຕັ້ງ", zh: "成立" },
-  introEstYear: { en: "2021", lo: "2021", zh: "2021" },
-  introConcessionLabel: { en: "Concession", lo: "ສຳປະທານ", zh: "特许经营权" },
-  introConcessionValue: { en: "50 Years · BOT", lo: "50 ປີ · BOT", zh: "50年 · BOT" },
-  introModelLabel: { en: "Investment Model", lo: "ຮູບແບບການລົງທຶນ", zh: "投资模式" },
-  introModelValue: {
-    en: "Build · Operate · Transfer",
-    lo: "ກໍ່ສ້າງ · ດໍາເນີນງານ · ສົ່ງມອບ",
-    zh: "建设 · 运营 · 移交",
+  sloganEn: {
+    en: "Service with heart, caring for every journey",
+    lo: "Service with heart, caring for every journey",
+    zh: "用心服务，关爱每一段旅程",
   },
 
-  // ─── History ─────────────────────────────────────────────────────────────────
-  historyLabel: { en: "Our Story", lo: "ປະຫວັດຄວາມເປັນມາ", zh: "我们的故事" },
+  // ─── History ─────────────────────────────────────────────────────────────
+  historyLabel: { en: "Brief History", lo: "ປະຫວັດຄວາມເປັນມາ", zh: "简史" },
+  historyEstBadge: { en: "EST. 2021", lo: "ສ້າງຕັ້ງ 2021", zh: "成立 2021" },
+  historyHeading: {
+    en: "Bokeo International Airport Co., Ltd.",
+    lo: "ບໍລິສັດ ສະໜາມບິນສາກົນບໍ່ແກ້ວ ຈຳກັດ",
+    zh: "博胶国际机场有限公司",
+  },
   historyPara1: {
-    en: "Bokeo International Airport Co., Ltd. is a 100% wholly-owned subsidiary of Greater Bay Area Investment and Development Co., Ltd.",
-    lo: "ບໍລິສັດ ສະໜາມບິນສາກົນບໍ່ແກ້ວ ຈໍາກັດ ແມ່ນບໍລິສັດລູກທີ່ຖືຮຸ້ນ 100% ໂດຍ ບໍລິສັດ ກຣີເຕີເບ ເອເລຍອິນເວສເມັ້ນ ແອນ ດິວິລົບເມັ້ນ ຈຳກັດ.",
-    zh: "博胶国际机场有限公司是大湾区投资发展有限公司持股100%的全资子公司。",
+    en: "Bokeo International Airport Co., Ltd. is a subsidiary of Greater Bay Area Investment And Development HK Co., Ltd., established in 2021 under Investment License No. 01/MIPP.BES dated 26 February 2021 and Enterprise Registration No. 102/MOIC.BKG dated 23 April 2021. The company's headquarters is located at Bokeo International Airport, Golden Triangle Special Economic Zone, Ban Ngai Simuangngang, Tonpheung District, Bokeo Province, and has been granted rights to manage, operate, and provide services at Bokeo International Airport.",
+    lo: "ບໍລິສັດ ສະໜາມບິນສາກົນບໍ່ແກ້ວ ຈຳກັດ ເປັນບໍລິສັດລູກຂອງ ບໍລິສັດ ກຣິດເຕີເບ ເອເລຍ ອິນເວດເມັນ ແອນ ດີເວວລົບເມັ້ນ ຈຳກັດ (Greater Bay Area Investment And Development HK Co., Ltd) ຖືກສ້າງຕັ້ງຂຶ້ນໃນປີ 2021 ຕາມໃບອະນຸຍາດລົງທຶນ ເລກທີ 01/ກຜທ.ຫຂສພ, ລົງວັນທີ 26 ກຸມພາ 2021 ແລະ ໃບທະບຽນວິສາຫະກິດ ສະບັບເລກທີ 102/ຄຂພສ.ບກ, ລົງວັນທີ 23 ເມສາ 2021. ມີສໍານັກງານໃຫຍ່ຕັ້ງຢູ່ ສະໜາມບິນສາກົນບໍ່ແກ້ວ, ເຂດເສດຖະກິດພິເສດສາມຫຼ່ຽມຄຳ, ບ້ານໃຫຍ່ສີເມືອງງາມ, ເມືອງຕົ້ນເຜີ້ງ, ແຂວງບໍ່ແກ້ວ, ໂດຍໄດ້ຮັບສິດໃຫ້ເປັນຜູ້ຄຸ້ມຄອງ, ບໍລິຫານ ແລະ ໃຫ້ບໍລິການຢູ່ສະໜາມບິນສາກົນບໍ່ແກ້ວຢ່າງເປັນທາງການ.",
+    zh: "博胶国际机场有限公司是大湾区投资发展（香港）有限公司的子公司，依据2021年2月26日颁发的投资许可证第01/MIPP.BES号及2021年4月23日颁发的企业注册证第102/MOIC.BKG号，于2021年正式成立。公司总部位于老挝博胶省敦评县大湾区金三角经济特区博胶国际机场，并获授权管理、运营及提供博胶国际机场相关服务。",
   },
   historyPara2: {
-    en: "The company was established in 2021 and officially registered under Investment License No. 01/MIPP.BES dated 26 February 2021 and Enterprise Registration No. 102/MOIC.BKG dated 23 April 2021. Headquarters is located at Bokeo International Airport, Golden Triangle Special Economic Zone, Ban Ngai Simuangngang, Tonpheung District, Bokeo Province, Lao PDR.",
-    lo: "ບໍລິສັດໄດ້ກໍ່ຕັ້ງຂຶ້ນໃນປີ 2021 ແລະ ໄດ້ຈົດທະບຽນຢ່າງເປັນທາງການຕາມໃບອະນຸຍາດການລົງທຶນ ໝາຍເລກ 01/ກຜທ.ຫຂສພ ລົງວັນທີ 26 ກຸມພາ 2021 ແລະ ໃບທະບຽນວິສາຫະກິດ ໝາຍເລກ 102/ຄຂພສ.ບກ ລົງວັນທີ 23 ເມສາ 2021. ສຳນັກງານໃຫຍ່ຕັ້ງຢູ່ທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ, ເຂດເສດຖະກິດພິເສດສາມຫຼ່ຽມຄໍາ, ບ້ານໃຫຍ່ສີເມືອງງາມ, ເມືອງຕົ້ນເຜິ້ງ, ແຂວງບໍ່ແກ້ວ, ສປປ ລາວ.",
-    zh: "公司于2021年成立，依据2021年2月26日颁发的投资许可证01/MIPP.BES号及2021年4月23日颁发的企业注册证102/MOIC.BKG号正式登记注册。总部位于老挝人民民主共和国博胶省敦评县大湾区金三角经济特区博胶国际机场。",
+    en: "The Bokeo International Airport construction project is a 100% BOT investment, built to the safety standards of the Department of Civil Aviation and the International Civil Aviation Organization (ICAO). It is a Code 4C airport with a 50-year concession, covering 314 hectares 5,478 sq.m., with a runway 2,500m long and 45m wide with 7.5m shoulders on each side. The airport accommodates Boeing 737-900ER, Airbus A320/A321 and other aircraft with up to 200 passenger seats. The terminal handles both arrivals and departures simultaneously for up to 600 passengers, with an annual capacity of 300,000 passengers.",
+    lo: "ໂຄງການກໍ່ສ້າງສະໜາມບິນສາກົນບໍ່ແກ້ວ ເປັນການລົງທຶນ 100% ໃນຮູບແບບ BOT, ເປັນສະໜາມບິນທີ່ກໍ່ສ້າງພາຍໃຕ້ມາດຕະຖານຄວາມປອດໄພຂອງກົມການບິນພົນລະເຮືອນ ແລະ ມາດຕະຖານຂອງອົງການການບິນພົນລະເຮືອນສາກົນ (ICAO). ເປັນສະໜາມບິນຂະໜາດ Code 4C, ມີອາຍຸສຳປະທານ 50 ປີ, ເນື້ອທີ່ທັງໝົດ 314 ເຮັກຕາ 5.478 ຕາແມັດ. ທາງແລ່ນ (Runway) ມີຄວາມຍາວ 2.500 ແມັດ, ກວ້າງ 45 ແມັດ ແລະ ມີບ່າທາງແລ່ນເບື້ອງລະ 7,5 ແມັດ, ສາມາດຮອງຮັບເຮືອບິນຂະໜາດ Boeing 737-900ER, Airbus A320/A321 ຫຼື ເຮືອບິນທີ່ມີບ່ອນນັ່ງບໍ່ເກີນ 200 ບ່ອນ. ອາຄານຜູ້ໂດຍສານສາມາດຮອງຮັບຜູ້ໂດຍສານຂາເຂົ້າ-ຂາອອກໄດ້ 600 ຄົນໃນເວລາດຽວກັນ ແລະ ຮອງຮັບຜູ້ໂດຍສານໄດ້ສູງສຸດ 300.000 ຄົນຕໍ່ປີ.",
+    zh: "博胶国际机场建设项目采用100% BOT投资模式，按照老挝民航局及国际民用航空组织（ICAO）安全标准建设，属4C级机场，特许经营期50年，占地314公顷5,478平方米，跑道长2,500米、宽45米，两侧道肩各7.5米，可停靠波音737-900ER、空客A320/A321及200座以下各类机型。航站楼可同时接待进出港旅客600人，年旅客吞吐量达30万人次。",
   },
-  historyPara3: {
-    en: "The company has been granted rights by its parent company to manage, operate, and provide services at Bokeo International Airport under a concession agreement with the Government of the Lao PDR, in the form of Build-Operate-Transfer (BOT) investment with a 50-year concession period.",
-    lo: "ບໍລິສັດໄດ້ຮັບສິດຈາກບໍລິສັດແມ່ ໃນການຄຸ້ມຄອງ, ບໍລິຫານ ແລະ ໃຫ້ບໍລິການສະໜາມບິນສາກົນບໍ່ແກ້ວ ຕາມສັນຍາສຳປະທານກັບລັດຖະບານ ສປປ ລາວ ໃນຮູບແບບ BOT ດ້ວຍອາຍຸສັນຍາ 50 ປີ.",
-    zh: "公司已获得母公司授权，依据与老挝人民民主共和国政府签订的特许经营协议，以建设-运营-移交（BOT）投资模式管理、运营博胶国际机场，特许经营期限为50年。",
-  },
-  // Image guide: exterior front view of terminal building (daytime, clear sky, from arrival road)
 
-  // ─── Vision ──────────────────────────────────────────────────────────────────
+  // ─── Vision ──────────────────────────────────────────────────────────────
   visionLabel: { en: "Vision", lo: "ວິໃສທັດ", zh: "愿景" },
-  visionText: {
-    en: "Committed to elevating airports in Lao PDR to international standards — aspiring to become a leading mid-size airport in Southeast Asia, renowned for outstanding service, environmental sustainability, and social responsibility.",
-    lo: "ມຸ່ງໝັ້ນຍົກລະດັບສະໜາມບິນຂອງ ສປປ ລາວ ໃຫ້ມີມາດຕະຖານເທົ່າທຽມ ແລະ ເປັນທີ່ຍອມຮັບຂອງສາກົນ ໄປສູ່ການເປັນສະໜາມບິນຂະໜາດກາງຊັ້ນນໍາໃນອາຊີຕາເວັນອອກສຽງໃຕ້ ທີ່ມີການບໍລິການທີ່ດີທີ່ສຸດ, ມີຄວາມຍືນຍົງດ້ານສິ່ງແວດລ້ອມ ແລະ ສັງຄົມ.",
-    zh: "致力于将老挝人民民主共和国机场提升至国际标准——致力成为东南亚领先的中型机场，以卓越服务、环境可持续性及社会责任为核心，赢得国际认可。",
+  visionTeamFull: {
+    en: "Transparency · Excellence · Accountability · Mutual Respect",
+    lo: "ຄວາມໂປ່ງໃສ · ຄວາມເປັນເລີດ · ຄວາມຮັບຜິດຊອບ · ການເຄົາລົບເຊິ່ງກັນ ແລະ ກັນ",
+    zh: "透明 · 卓越 · 责任 · 相互尊重",
   },
-  // Image guide: dramatic wide shot — runway/apron at golden hour, or terminal interior with high vaulted ceiling and natural light
+  visionPoint1: {
+    en: "Deliver the highest quality of service in terms of safety and passenger facilities",
+    lo: "ສົ່ງມອບການບໍລິການທີ່ມີຄຸນນະພາບສູງສຸດ ທັງດ້ານຄວາມປອດໄພ ແລະ ສິ່ງອຳນວຍຄວາມສະດວກໃຫ້ແກ່ຜູ້ໂດຍສານ",
+    zh: "在安全和旅客设施方面提供最高质量的服务",
+  },
+  visionPoint2: {
+    en: "Promote safety standards and aviation security through the concept known as 'TEAM'",
+    lo: 'ສົ່ງເສີມມາດຕະຖານຄວາມປອດໄພ ແລະ ການປ້ອງກັນຄວາມປອດໄພການບິນ ຜ່ານຫຼັກການບໍລິຫານແບບ "TEAM"',
+    zh: '通过"TEAM"理念促进安全标准和航空安全',
+  },
 
-  // ─── Mission ─────────────────────────────────────────────────────────────────
+  // TEAM letter words (T·E·A·M)
+  valuesTWord: { en: "Transparency", lo: "ຄວາມໂປ່ງໃສ", zh: "透明" },
+  valuesEWord: { en: "Excellence", lo: "ຄວາມເປັນເລີດ", zh: "卓越" },
+  valuesAWord: { en: "Accountability", lo: "ຄວາມຮັບຜິດຊອບ", zh: "责任" },
+  valuesMWord: {
+    en: "Mutual Respect",
+    lo: "ການເຄົາລົບເຊິ່ງກັນ ແລະ ກັນ",
+    zh: "相互尊重",
+  },
+
+  // ─── Mission ─────────────────────────────────────────────────────────────
   missionLabel: { en: "Mission", lo: "ພາລະກິດ", zh: "使命" },
-  missionSubtitle: {
-    en: "Four pillars that guide everything we do",
-    lo: "ສີ່ເສົາຫຼັກທີ່ນໍາພາທຸກສິ່ງທີ່ພວກເຮົາເຮັດ",
-    zh: "指引我们一切行动的四大支柱",
-  },
-  missionConnectTitle: { en: "Regional Connectivity", lo: "ການເຊື່ອມໂຍງພາກພື້ນ", zh: "区域互联互通" },
-  missionConnectText: {
-    en: "Promote regional air connectivity through collaboration with airlines and all relevant stakeholders.",
-    lo: "ສົ່ງເສີມການເຊື່ອມໂຍງທາງອາກາດໃນພາກພື້ນ ຜ່ານການຮ່ວມມືກັບສາຍການບິນ ແລະ ຜູ້ມີສ່ວນກ່ຽວຂ້ອງ.",
-    zh: "通过与航空公司及相关利益方的合作，促进区域航空互联互通。",
-  },
-  missionSafetyTitle: { en: "Safety & Security", lo: "ຄວາມປອດໄພ", zh: "安全与保障" },
-  missionSafetyText: {
-    en: "Continuously develop safety and security standards in compliance with international regulations and internal policies.",
-    lo: "ພັດທະນາມາດຕະຖານຄວາມປອດໄພຢ່າງຕໍ່ເນື່ອງ ໃຫ້ສອດຄ່ອງກັບກົດໝາຍສາກົນ ແລະ ລະບຽບພາຍໃນ.",
-    zh: "持续完善安全与保障标准，确保符合国际法规及内部规章。",
-  },
-  missionServiceTitle: { en: "Passenger Experience", lo: "ປະສົບການຜູ້ໂດຍສານ", zh: "旅客体验" },
-  missionServiceText: {
-    en: "Provide safe, convenient, and attentive service to create outstanding experiences for every passenger.",
-    lo: "ໃຫ້ບໍລິການທີ່ປອດໄພ, ສະດວກ ແລະ ໃສ່ໃຈ ເພື່ອສ້າງປະສົບການທີ່ດີໃຫ້ຜູ້ໂດຍສານ.",
-    zh: "提供安全、便捷、贴心的服务，为每位旅客创造卓越体验。",
-  },
-  missionGreenTitle: { en: "Green Airport", lo: "ສະໜາມບິນສີຂຽວ", zh: "绿色机场" },
-  missionGreenText: {
-    en: "Promote the green airport concept to minimize environmental impact and support long-term sustainability.",
-    lo: "ສົ່ງເສີມການເປັນສະໜາມບິນສີຂຽວ ເພື່ອຫຼຸດຜົນກະທົບຕໍ່ສິ່ງແວດລ້ອມ ແລະ ສົ່ງເສີມຄວາມຍືນຍົງໃນລະຍະຍາວ.",
-    zh: "推广绿色机场理念，最大限度减少环境影响，支持长期可持续发展。",
-  },
-
-  // ─── Core Values (TEAM) ──────────────────────────────────────────────────────
-  valuesLabel: { en: "Core Values", lo: "ຫຼັກຄວາມຄິດ", zh: "核心价值观" },
-  valuesSubtitle: {
-    en: "We work as a TEAM",
-    lo: "ພວກເຮົາເຮັດວຽກໃນນາມ TEAM",
-    zh: "我们以团队精神协作",
-  },
-  valuesTrustLetter: { en: "T", lo: "T", zh: "T" },
-  valuesTrustWord: { en: "Trust", lo: "ຄວາມໄວ້ໃຈ", zh: "信任" },
-  valuesTrustText: {
-    en: "We build trust and inspire our team through clear delegation, honesty, and genuine care for one another.",
-    lo: "ພວກເຮົາສ້າງຄວາມເຊື່ອໝັ້ນ ແລະ ສົ່ງເສີມກຳລັງໃຈທີມງານ ຜ່ານການມອບໝາຍໜ້າທີ່, ຄວາມຊື່ສັດ ແລະ ຄວາມເອົາໃຈໃສ່.",
-    zh: "我们通过明确的责任分工、诚信和真诚关怀，建立信任、激励团队。",
-  },
-  valuesExcellenceLetter: { en: "E", lo: "E", zh: "E" },
-  valuesExcellenceWord: { en: "Excellence", lo: "ຄວາມເປັນເລີດ", zh: "卓越" },
-  valuesExcellenceText: {
-    en: "We are committed to delivering outstanding results that go beyond expectations, in every task we undertake.",
-    lo: "ພວກເຮົາມຸ່ງໝັ້ນໃນການສ້າງຜົນງານທີ່ໂດດເດັ່ນ ແລະ ເກີນຄາດຫວັງ ໃນທຸກໜ້າທີ່ທີ່ໄດ້ຮັບມອບໝາຍ.",
-    zh: "我们致力于在每项工作中提供超越预期的卓越成果。",
-  },
-  valuesAccountabilityLetter: { en: "A", lo: "A", zh: "A" },
-  valuesAccountabilityWord: { en: "Accountability", lo: "ຄວາມຮັບຜິດຊອບ", zh: "责任" },
-  valuesAccountabilityText: {
-    en: "We take ownership of our actions and stand firmly by every commitment we make to our colleagues and passengers.",
-    lo: "ພວກເຮົາຮັບຜິດຊອບກັບການກະທໍາຂອງຕົນເອງ ແລະ ຢືນຢັນໃນຄຳສັນຍາທຸກຂໍ້.",
-    zh: "我们为自己的行为负责，坚守对同事和旅客作出的每一项承诺。",
-  },
-  valuesMindfulnessLetter: { en: "M", lo: "M", zh: "M" },
-  valuesMindfulnessWord: { en: "Mindfulness", lo: "ຄວາມເອົາໃຈໃສ່", zh: "用心" },
-  valuesMindfulnessText: {
-    en: "We work with awareness, care deeply for those around us, and consider the environmental and social impact of every decision.",
-    lo: "ພວກເຮົາເຮັດວຽກດ້ວຍສະຕິ, ໃສ່ໃຈຄົນຮອບຂ້າງ ແລະ ຄໍານຶງເຖິງຜົນກະທົບຕໍ່ສິ່ງແວດລ້ອມ.",
-    zh: "我们以专注的心态工作，深切关怀周围的人，并在每个决策中考虑环境与社会影响。",
+  missionTaglineSafety: { en: "Safety", lo: "ຄວາມປອດໄພ", zh: "安全" },
+  missionTaglineCare: { en: "Care", lo: "ຄວາມໃສ່ໃຈ", zh: "关怀" },
+  missionTaglinePromote: { en: "Promote", lo: "ການສົ່ງເສີມ", zh: "促进" },
+  missionTaglineDevelop: { en: "Develop", lo: "ການພັດທະນາ", zh: "发展" },
+  missionText: {
+    en: "We are committed to providing safe airport services, elevating safety and aviation security standards in compliance with Lao civil aviation law, regulations and international standards, promoting and developing service quality, and contributing to the growth and development of the aviation industry.",
+    lo: "ພວກເຮົາມຸ່ງໝັ້ນທີ່ຈະສະໜອງການບໍລິການສະໜາມບິນທີ່ມີຄວາມປອດໄພ, ຍົກສູງມາດຕະຖານຄວາມປອດໄພ ແລະ ການປ້ອງກັນຄວາມປອດໄພດ້ານການບິນ ໃຫ້ສອດຄ່ອງກັບກົດໝາຍການບິນພົນລະເຮືອນລາວ, ລະບຽບການ ແລະ ມາດຕະຖານສາກົນ, ພ້ອມທັງພັດທະນາຄຸນນະພາບການບໍລິການຢ່າງຕໍ່ເນື່ອງ ເພື່ອປະກອບສ່ວນເຂົ້າໃນການເຕີບໂຕ ແລະ ພັດທະນາອຸດສາຫະກຳການບິນຢ່າງຍືນຍົງ.",
+    zh: "我们致力于提供安全的机场服务，按照老挝民航法律、法规及国际标准提升安全与航空安保水平，促进和发展服务质量，持续为航空业的增长与发展做出贡献。",
   },
 } as const;
 
 export type ProfileI18nKey = keyof typeof profile;
 
 export function tProfile(k: ProfileI18nKey, lang: Lang): string {
-  return (profile[k] as Record<string, string>)[lang] ?? profile[k].en;
+  // Use 'lo' as primary fallback, then 'en'
+  return (
+    (profile[k] as Record<string, string>)[lang] ??
+    (profile[k] as Record<string, string>)["lo"] ??
+    profile[k].en
+  );
 }
 
 export function createProfileI18n(lang: Lang) {

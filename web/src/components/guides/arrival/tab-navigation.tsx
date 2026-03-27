@@ -6,7 +6,6 @@ import {
   Package,
   UserCheck,
   Luggage,
-  ClipboardCheck,
   DoorOpen,
 } from "lucide-react";
 import { Lang } from "@/types/language";
@@ -22,10 +21,9 @@ interface Tab {
 
 const TABS: readonly Tab[] = [
   { id: "airport", labelKey: "airport", icon: PlaneLanding },
-  { id: "customs-inspection", labelKey: "customsInspection", icon: Package },
   { id: "border-inspection", labelKey: "borderInspection", icon: UserCheck },
   { id: "baggage-claim", labelKey: "baggageClaim", icon: Luggage },
-  { id: "exit-customs", labelKey: "exitCustoms", icon: ClipboardCheck },
+  { id: "customs-inspection", labelKey: "customsInspection", icon: Package },
   { id: "leaving", labelKey: "leaving", icon: DoorOpen },
 ] as const;
 

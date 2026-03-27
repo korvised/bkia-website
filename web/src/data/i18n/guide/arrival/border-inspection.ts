@@ -1,64 +1,213 @@
 import type { Lang } from "@/types/language";
 
 export const borderInspection = {
-  // Page title
   title: {
-    en: "Immigration / Border Control (Arrival)",
+    en: "Immigration / Border Control",
     lo: "ດ່ານກວດຄົນເຂົ້າ-ອອກເມືອງ (ຂາເຂົ້າ)",
     zh: "边检（入境）",
   },
   intro: {
-    en: "All international passengers must clear immigration control at Bokeo International Airport. Present your passport and completed arrival card at the immigration counter. Lao citizens and foreign nationals use separate queues.",
-    lo: "ຜູ້ໂດຍສານສາກົນທັງໝົດ ຕ້ອງໄດ້ຜ່ານຂັ້ນຕອນການກວດຄົນເຂົ້າ-ອອກເມືອງ ທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ. ກະລຸນາຍື່ນໜັງສືຜ່ານແດນ ແລະ ໃບແຈ້ງເຂົ້າ-ອອກ ທີ່ຂຽນຂໍ້ມູນຄົບຖ້ວນຢູ່ເຄົາເຕີກວດຄົນເຂົ້າ-ອອກເມືອງ. ພົນລະເມືອງລາວ ແລະ ຄົນຕ່າງປະເທດ ແມ່ນແຍກແຖວເຂົ້າຄິວກັນ.",
-    zh: "所有国际旅客必须在博胶国际机场通过边检。请向边检柜台出示护照和填写完整的入境卡。老挝公民和外国公民使用不同的队列。",
+    en: "All international passengers must clear immigration at Bokeo International Airport. Present your passport and official digital QR code at the immigration counter. Lao citizens and foreign nationals use separate queues.",
+    lo: "ຜູ້ໂດຍສານສາກົນທັງໝົດ ຕ້ອງຜ່ານຂັ້ນຕອນກວດຄົນເຂົ້າ-ອອກ ທີ່ສະໝາມບິນສາກົນບໍ່ແກ້ວ. ຍື່ນໜັງສືຜ່ານແດນ ແລະ ລະຫັດ QR Code ດິຈິຕອລທີ່ເຄົາເຕີ. ພົນລະເມືອງລາວ ແລະ ຕ່າງຊາດ ໃຊ້ຄິວແຍກກັນ.",
+    zh: "所有国际旅客须在博胶国际机场通过边检。请向柜台出示护照及官方电子入境二维码。老挝公民与外国公民使用不同队列。",
   },
 
-  // Wait time
+  // ── Wait Times ───────────────────────────────────────────────────────────
+
   waitTimeTitle: {
-    en: "Estimated Wait Time:",
-    lo: "ເວລາລໍຖ້າໂດຍປະມານ:",
-    zh: "预计等待时间：",
+    en: "Estimated Wait Times",
+    lo: "ເວລາລໍຖ້າໂດຍປະມານ",
+    zh: "预计等待时间",
   },
-  waitOffPeak: {
-    en: "Off-peak hours: 5-15 minutes",
-    lo: "ຊ່ວງເວລາທົ່ວໄປ: 5-15 ນາທີ",
-    zh: "非高峰时段：5-15分钟",
+  waitOffPeakLabel: {
+    en: "Off-peak hours",
+    lo: "ຊ່ວງເວລາທົ່ວໄປ",
+    zh: "非高峰时段",
   },
-  waitPeak: {
-    en: "Peak hours (multiple arrivals): 15-45 minutes",
-    lo: "ຊ່ວງເວລາທີ່ມີແຂກຫຼາຍ (ມີຫຼາຍຖ້ຽວບິນມາຮອດ): 15-45 ນາທີ",
-    zh: "高峰时段（多个航班到达）：15-45分钟",
+  waitOffPeakValue: { en: "5–15 min", lo: "5–15 ນາທີ", zh: "5–15 分钟" },
+  waitPeakLabel: {
+    en: "Peak hours (multiple arrivals)",
+    lo: "ຊ່ວງທີ່ມີຫຼາຍຖ້ຽວ",
+    zh: "高峰时段（多航班到达）",
   },
+  waitPeakValue: { en: "15–45 min", lo: "15–45 ນາທີ", zh: "15–45 分钟" },
   waitAdvice: {
-    en: "Have documents ready to expedite processing",
-    lo: "ກະລຸນາກຽມເອກະສານໃຫ້ພ້ອມ ເພື່ອຄວາມສະດວກວ່ອງໄວໃນການກວດສອບ",
-    zh: "请准备好证件以加快处理速度",
+    en: "Have all documents and LDIF QR Code ready before reaching the counter",
+    lo: "ກຽມເອກະສານ ແລະ QR Code (LDIF) ໃຫ້ພ້ອມ ກ່ອນໄປຮອດເຄົາເຕີ",
+    zh: "到达柜台前请备好所有证件及 LDIF 二维码",
   },
 
-  // Required documents
+  // ── LDIF Digital Form ────────────────────────────────────────────────────
+
+  ldifTitle: {
+    en: "Lao Digital Immigration Form (LDIF)",
+    lo: "ແບບຟອມດີຈີຕອນ (LDIF)",
+    zh: "老挝数字移民表格 (LDIF)",
+  },
+  ldifDesc: {
+    en: "The Lao government has moved to a paperless system at international airports. All passengers except Lao nationals must complete this form online before travel.",
+    lo: "ລັດຖະບານລາວໄດ້ປ່ຽນມາໃຊ້ລະບົບບໍ່ໃຊ້ເຈ້ຍ. ຜູ້ໂດຍສານທຸກຄົນ ຍົກເວັ້ນ ຄົນລາວ ຕ້ອງຕື່ມຟອມອອນລາຍ ກ່ອນການເດີນທາງ.",
+    zh: "老挝政府已推行国际机场无纸化系统。除老挝公民外，所有旅客须在出行前在线填写此表格。",
+  },
+  ldifWhoLabel: { en: "Who", lo: "ຜູ້ທີ່ຕ້ອງເຮັດ", zh: "适用人群" },
+  ldifWhoDesc: {
+    en: "All passengers except Lao nationals",
+    lo: "ທຸກຄົນ ຍົກເວັ້ນ ຄົນລາວ",
+    zh: "除老挝公民外的所有旅客",
+  },
+  ldifTimingLabel: { en: "When", lo: "ເວລາ", zh: "时间" },
+  ldifTimingDesc: {
+    en: "Within 72 hours before arrival or departure",
+    lo: "ພາຍໃນ 72 ຊົ່ວໂມງ ກ່ອນການເດີນທາງ",
+    zh: "抵达或出发前72小时内",
+  },
+  ldifRequirementLabel: { en: "Requirement", lo: "ສິ່ງທີ່ຕ້ອງກຽມ", zh: "要求" },
+  ldifRequirementDesc: {
+    en: "Present the QR Code on your phone or as a printout to the immigration officer",
+    lo: "ສະແດງ QR Code ໃນໂທລະສັບ ຫຼື ໃບພິມ ຕໍ່ເຈົ້າໜ້າທີ່",
+    zh: "向移民官员出示手机或打印的二维码",
+  },
+
+  // ── Visa Categories ──────────────────────────────────────────────────────
+
+  visaCategoriesTitle: {
+    en: "Visa Categories",
+    lo: "ປະເພດວີຊ່າ",
+    zh: "签证类别",
+  },
+  visaCategoriesDesc: {
+    en: "Most foreign nationals require a visa to enter Lao PDR. Choose the category that matches your purpose of travel.",
+    lo: "ຄົນຕ່າງຊາດສ່ວນໃຫຍ່ ຕ້ອງມີວີຊ່າ ເພື່ອເຂົ້າ ສປປ ລາວ. ເລືອກປະເພດທີ່ກົງກັບຈຸດປະສົງການເດີນທາງ.",
+    zh: "大多数外国公民进入老挝需要签证业务。请根据您的出行目的选择相应类别。",
+  },
+
+  visaTouristCode: { en: "T-B3", lo: "T-B3", zh: "T-B3" },
+  visaTouristName: { en: "Tourist Visa", lo: "ວີຊ່າທ່ອງທ່ຽວ", zh: "旅游签证" },
+  visaTouristDesc: {
+    en: "Leisure travel — up to 30 days, extendable",
+    lo: "ທ່ອງທ່ຽວ — ສູງສຸດ 30 ວັນ, ຕໍ່ອາຍຸໄດ້",
+    zh: "休闲旅游 — 最多30天，可延期",
+  },
+
+  visaBusinessCode: { en: "NI-B2", lo: "NI-B2", zh: "NI-B2" },
+  visaBusinessName: { en: "Business Visa", lo: "ວີຊ່າທຸລະກິດ", zh: "商务签证" },
+  visaBusinessDesc: {
+    en: "For business people and investors",
+    lo: "ສຳລັບນັກທຸລະກິດ ແລະ ນັກລົງທຶນ",
+    zh: "商务人士及投资者",
+  },
+
+  visaLaborCode: { en: "LA-B2", lo: "LA-B2", zh: "LA-B2" },
+  visaLaborName: { en: "Labor Visa", lo: "ວີຊ່າແຮງງານ", zh: "劳务签证" },
+  visaLaborDesc: {
+    en: "Authorized foreign workers and their families",
+    lo: "ແຮງງານຕ່າງຊາດ ແລະ ຄອບຄົວທີ່ໄດ້ຮັບອະນຸຍາດ",
+    zh: "获授权外籍工人及家属",
+  },
+
+  visaDiplomaticCode: {
+    en: "S-A2 / D-A1",
+    lo: "S-A2 / D-A1",
+    zh: "S-A2 / D-A1",
+  },
+  visaDiplomaticName: {
+    en: "Official / Diplomatic",
+    lo: "ລັດຖະການ / ການທູດ",
+    zh: "公务 / 外交",
+  },
+  visaDiplomaticDesc: {
+    en: "Diplomats and administrative-technical mission staff",
+    lo: "ນັກການທູດ ແລະ ພະນັກງານຄະນະທູດ",
+    zh: "外交官及使馆行政技术人员",
+  },
+
+  visaExpertCode: { en: "E-B2", lo: "E-B2", zh: "E-B2" },
+  visaExpertName: { en: "Expert Visa", lo: "ວີຊ່າຜູ້ຊ່ຽວຊານ", zh: "专家签证" },
+  visaExpertDesc: {
+    en: "Specialists, technicians, and NGO staff",
+    lo: "ຜູ້ຊ່ຽວຊານ, ຊ່າງເຕັກນິກ ແລະ ພະນັກງານ NGO",
+    zh: "专家、技术人员及非政府组织人员",
+  },
+
+  visaTransitCode: { en: "TR-B3", lo: "TR-B3", zh: "TR-B3" },
+  visaTransitName: { en: "Transit Visa", lo: "ວີຊ່າຜ່ານທາງ", zh: "过境签证" },
+  visaTransitDesc: {
+    en: "Passing through Laos to a third country — onward travel proof required",
+    lo: "ຜ່ານລາວໄປປະເທດທີ່ສາມ — ຕ້ອງມີໃບຢືນຢັນການເດີນທາງຕໍ່",
+    zh: "途径老挝前往第三国 — 需提供续程证明",
+  },
+
+  visaExemptionLabel: {
+    en: "Visa Exemption",
+    lo: "ການຍົກເວັ້ນວີຊ່າ",
+    zh: "免签政策",
+  },
+  visaExemptionDesc: {
+    en: "Certain nationalities are exempt under bilateral or unilateral agreements. Check the official immigration website for the current exemption list.",
+    lo: "ບາງສັນຊາດໄດ້ຮັບການຍົກເວັ້ນ ຕາມຂໍ້ຕົກລົງທະວິພາຄີ. ກວດສອບລາຍຊື່ຢູ່ເວັບໄຊ ຕມ ທາງການ.",
+    zh: "部分国籍依据双边或单边协议享有免签待遇。请查阅老挝移民局官方网站获取最新免签名单。",
+  },
+
+  // ── How to Obtain ────────────────────────────────────────────────────────
+
+  obtainTitle: {
+    en: "How to Get Your Visa",
+    lo: "ວິທີຂໍວີຊ່າ",
+    zh: "如何办理签证",
+  },
+  obtainVoaLabel: { en: "Visa on Arrival", lo: "ວີຊ່າກັບດ່ານ", zh: "落地签" },
+  obtainVoaDesc: {
+    en: "Available at Bokeo International Airport for eligible nationalities. Bring passport photos and USD cash for the fee.",
+    lo: "ມີຢູ່ທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ ສຳລັບສັນຊາດທີ່ມີສິດ. ກຽມຮູບ ແລະ ເງິນ USD.",
+    zh: "博胶国际机场为符合条件的国籍提供。请准备护照照片和美元现金支付签证费。",
+  },
+  obtainEvisaLabel: {
+    en: "E-Visa (Online)",
+    lo: "E-Visa (ອອນລາຍ)",
+    zh: "电子签证（在线）",
+  },
+  obtainEvisaDesc: {
+    en: "Apply online before your flight via the official government portal.",
+    lo: "ຍື່ນຄຳຮ້ອງອອນລາຍ ກ່ອນຂຶ້ນເຄື່ອງ ທາງເວັບໄຊທາງການ.",
+    zh: "在登机前通过官方门户网站在线申请。",
+  },
+  obtainEvisaNote: {
+    en: 'Select "Bokeo International Airport" as your port of entry',
+    lo: 'ເລືອກ "ສະໜາມບິນສາກົນບໍ່ແກ້ວ" ເປັນດ່ານເຂົ້າ',
+    zh: '选择"博胶国际机场"作为入境口岸',
+  },
+  obtainEmbassyLabel: {
+    en: "Embassy / Consulate",
+    lo: "ສະຖານທູດ / ກົງສຸນ",
+    zh: "大使馆 / 领事馆",
+  },
+  obtainEmbassyDesc: {
+    en: "Apply at a Lao diplomatic mission in your home country. Recommended for long-term or specific work visas.",
+    lo: "ຍື່ນຢູ່ສະຖານທູດລາວໃນປະເທດຕົ້ນທາງ. ແນະນຳ ສຳລັບວີຊ່າແຮງງານ ຫຼື ໄລຍະຍາວ.",
+    zh: "在所在国老挝外交使团申请。推荐用于劳务或长期签证。",
+  },
+
+  // ── Required Documents ───────────────────────────────────────────────────
+
   documentsTitle: {
     en: "Required Documents",
     lo: "ເອກະສານທີ່ຕ້ອງກຽມ",
     zh: "所需证件",
   },
-  laoCitizensTitle: {
-    en: "Lao Citizens",
-    lo: "ພົນລະເມືອງລາວ",
-    zh: "老挝公民",
-  },
+  laoCitizensTitle: { en: "Lao Citizens", lo: "ພົນລະເມືອງລາວ", zh: "老挝公民" },
   laoDoc1: {
     en: "Valid Lao passport",
-    lo: "ໜັງສືຜ່ານແດນລາວ ທີ່ຍັງບໍ່ໝົດອາຍຸ",
+    lo: "ໜັງສືຜ່ານແດນລາວທີ່ຍັງບໍ່ໝົດອາຍຸ",
     zh: "有效老挝护照",
   },
   laoDoc2: {
-    en: "Completed arrival card",
-    lo: "ໃບແຈ້ງເຂົ້າ-ອອກ ທີ່ຂຽນຂໍ້ມູນຄົບຖ້ວນ",
-    zh: "填写完整的入境卡",
+    en: "Completed LDIF (if traveling internationally)",
+    lo: "ໃບ LDIF ທີ່ຕື່ມຄົບ (ຖ້າເດີນທາງໄປຕ່າງປະເທດ)",
+    zh: "填写完整的 LDIF（如涉及国际旅行）",
   },
   laoDoc3: {
     en: "No visa required for Lao nationals",
-    lo: "ພົນລະເມືອງລາວ ແມ່ນບໍ່ຕ້ອງໃຊ້ວີຊ່າ",
+    lo: "ພົນລະເມືອງລາວ ບໍ່ຕ້ອງໃຊ້ວີຊ່າ",
     zh: "老挝公民无需签证",
   },
 
@@ -69,188 +218,41 @@ export const borderInspection = {
   },
   foreignDoc1: {
     en: "Valid passport (6+ months validity)",
-    lo: "ໜັງສືຜ່ານແດນທີ່ຍັງມີອາຍຸການໃຊ້ງານ (6 ເດືອນຂຶ້ນໄປ)",
+    lo: "ໜັງສືຜ່ານແດນ (ອາຍຸ 6 ເດືອນຂຶ້ນໄປ)",
     zh: "有效护照（有效期6个月以上）",
   },
   foreignDoc2: {
-    en: "Valid Lao visa OR visa exemption",
-    lo: "ວີຊ່າລາວທີ່ຍັງບໍ່ໝົດອາຍຸ ຫຼື ເອກະສານຍົກເວັ້ນວີຊ່າ",
-    zh: "有效老挝签证或免签",
+    en: "Valid Lao visa or visa exemption",
+    lo: "ວີຊ່າລາວທີ່ຍັງໃຊ້ໄດ້ ຫຼື ການຍົກເວັ້ນວີຊ່າ",
+    zh: "有效老挝签证或免签文件",
   },
   foreignDoc3: {
-    en: "Completed arrival card (white form)",
-    lo: "ໃບແຈ້ງເຂົ້າ-ອອກ ທີ່ຂຽນຂໍ້ມູນຄົບຖ້ວນ (ໃບສີຂາວ)",
-    zh: "填写完整的入境卡（白色表格）",
+    en: "Mandatory LDIF QR Code",
+    lo: "ລະຫັດ QR Code ຈາກລະບົບ LDIF",
+    zh: "强制性 LDIF 二维码",
   },
   foreignDoc4: {
-    en: "Return/onward ticket (may be checked)",
-    lo: "ປີ້ຍົນຂາກັບ ຫຼື ປີ້ໄປປະເທດທີສາມ (ອາດມີການກວດສອບ)",
-    zh: "回程/续程机票（可能被检查）",
+    en: "Return / onward ticket (may be checked)",
+    lo: "ປີ້ຍົນຂາກັບ ຫຼື ໄປຕໍ່ (ອາດຖືກກວດ)",
+    zh: "回程 / 续程机票（可能被检查）",
   },
 
-  // Visa on arrival
-  voaTitle: {
-    en: "Visa on Arrival (VOA)",
-    lo: "ວີຊ່າກັບດ່ານ (Visa on Arrival)",
-    zh: "落地签（VOA）",
-  },
-  voaAvailable: {
-    en: "Available at Bokeo International Airport: Citizens of most countries can obtain a visa on arrival. Requirements and process:",
-    lo: "ມີບໍລິການຢູ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ: ພົນລະເມືອງສ່ວນໃຫຍ່ສາມາດຂໍວີຊ່າກັບດ່ານໄດ້. ຂໍ້ກຳນົດ ແລະ ຂັ້ນຕອນມີດັ່ງນີ້:",
-    zh: "博胶国际机场可办理：大多数国家公民可以办理落地签。要求和流程：",
-  },
-  voaFee: {
-    en: "Fee: USD 30-42 (depending on nationality). Payment in USD cash only.",
-    lo: "ຄ່າທຳນຽມ: 30-42 ໂດລາ (ຂຶ້ນກັບສັນຊາດ). ຊຳລະເປັນເງິນສົດສະກຸນໂດລາ (USD) ເທົ່ານັ້ນ.",
-    zh: "费用：30-42美元（取决于国籍）。仅接受美元现金付款。",
-  },
-  voaProcessing: {
-    en: "Processing Time: 10-20 minutes",
-    lo: "ເວລາໃນການດຳເນີນການ: 10-20 ນາທີ",
-    zh: "处理时间：10-20分钟",
-  },
-  voaValidity: {
-    en: "Validity: 30 days from date of entry",
-    lo: "ອາຍຸວີຊ່າ: 30 ວັນ ນັບຈາກວັນທີເຂົ້າເມືອງ",
-    zh: "有效期：入境之日起30天",
-  },
-  voaDocuments: {
-    en: "Documents Needed:",
-    lo: "ເອກະສານທີ່ຕ້ອງໃຊ້:",
-    zh: "所需文件：",
-  },
-  voaDoc1: {
-    en: "Passport with 6 months validity and 2 blank pages",
-    lo: "ໜັງສືຜ່ານແດນທີ່ມີອາຍຸການໃຊ້ງານ 6 ເດືອນ ແລະ ມີໜ້າວ່າງ 2 ໜ້າຂຶ້ນໄປ",
-    zh: "有效期6个月的护照，且有2页空白页",
-  },
-  voaDoc2: {
-    en: "1 passport photo (4x6cm) - photo booth available at airport",
-    lo: "ຮູບຖ່າຍ 1 ໃບ (4x6 ຊມ) - ມີຕູ້ຖ່າຍຮູບໃຫ້ບໍລິການຢູ່ສະໜາມບິນ",
-    zh: "1张护照照片（4x6厘米）- 机场有照相亭",
-  },
-  voaDoc3: {
-    en: "Completed visa application form",
-    lo: "ແບບຟອມຂໍວີຊ່າທີ່ຂຽນຂໍ້ມູນຄົບຖ້ວນ",
-    zh: "填写完整的签证申请表",
-  },
-  voaDoc4: {
-    en: "Cash in USD for visa fee",
-    lo: "ເງິນສົດໂດລາ (USD) ສຳລັບຄ່າທຳນຽມວີຊ່າ",
-    zh: "签证费用的美元现金",
-  },
+  // ── Official Disclaimer ───────────────────────────────────────────────────
 
-  // Interview questions
-  interviewTitle: {
-    en: "Immigration Interview Questions",
-    lo: "ຄຳຖາມສຳພາດຂອງເຈົ້າໜ້າທີ່",
-    zh: "边检问询",
+  disclaimerTitle: {
+    en: "Official Notice",
+    lo: "ແຈ້ງການທາງການ",
+    zh: "官方声明",
   },
-  interviewDesc: {
-    en: "Immigration officers may ask you the following questions. Answer honestly and clearly:",
-    lo: "ເຈົ້າໜ້າທີ່ ຕມ ອາດຈະຖາມຄຳຖາມລຸ່ມນີ້. ກະລຸນາຕອບຕາມຄວາມຈິງ ແລະ ຊັດເຈນ:",
-    zh: "边检人员可能会问以下问题。请诚实清楚地回答：",
+  disclaimerDesc: {
+    en: "Immigration regulations, entry requirements, and fees are subject to change by the Lao government without prior notice. For the most up-to-date information, always refer to the official portal.",
+    lo: "ກົດລະບຽບ ຕມ, ຂໍ້ກຳນົດການເຂົ້າ ແລະ ຄ່າທຳນຽມ ອາດປ່ຽນແປງໂດຍບໍ່ແຈ້ງລ່ວງໜ້າ. ກວດສອບຂໍ້ມູນຫຼ້າສຸດ ທີ່ເວັບໄຊທາງການ.",
+    zh: "移民法规、入境要求和费用可能随时变更，恕不另行通知。如需最新信息，请随时查阅官方门户网站。",
   },
-  q1: {
-    en: "Q: What is the purpose of your visit?",
-    lo: "ຖ: ຈຸດປະສົງຂອງການເດີນທາງມາຄັ້ງນີ້ແມ່ນຫຍັງ?",
-    zh: "问：您访问的目的是什么？",
-  },
-  a1: {
-    en: "A: Tourism / Business / Visiting family / Transit",
-    lo: "ຕ: ມາທ່ອງທ່ຽວ / ມາເຮັດທຸລະກິດ / ມາຢ້ຽມຢາມຄອບຄົວ / ຜ່ານແດນ",
-    zh: "答：旅游/商务/探亲/过境",
-  },
-  q2: {
-    en: "Q: How long will you stay in Laos?",
-    lo: "ຖ: ທ່ານຈະພັກເຊົາຢູ່ລາວດົນປານໃດ?",
-    zh: "问：您将在老挝停留多长时间？",
-  },
-  a2: {
-    en: 'A: State your planned duration (e.g., "5 days," "2 weeks")',
-    lo: 'ຕ: ບອກໄລຍະເວລາທີ່ວາງແຜນໄວ້ (ເຊັ່ນ: "5 ວັນ," "2 ອາທິດ")',
-    zh: '答：说明您计划的停留时间（例如："5天"、"2周"）',
-  },
-  q3: {
-    en: "Q: Where will you be staying?",
-    lo: "ຖ: ທ່ານຈະພັກເຊົາຢູ່ໃສ?",
-    zh: "问：您将住在哪里？",
-  },
-  a3: {
-    en: "A: Provide hotel name or address",
-    lo: "ຕ: ບອກຊື່ໂຮງແຮມ ຫຼື ທີ່ຢູ່ບ່ອນພັກເຊົາ",
-    zh: "答：提供酒店名称或地址",
-  },
-  q4: {
-    en: "Q: Do you have sufficient funds for your stay?",
-    lo: "ຖ: ທ່ານມີງົບປະມານພຽງພໍສຳລັບການພັກເຊົາບໍ່?",
-    zh: "问：您有足够的资金支持停留期间的费用吗？",
-  },
-  a4: {
-    en: "A: Yes (officers rarely check but may ask)",
-    lo: "ຕ: ມີ (ເຈົ້າໜ້າທີ່ອາດຈະຖາມເປັນບາງກໍລະນີ)",
-    zh: "答：有（官员很少检查但可能询问）",
-  },
-
-  // Reminders
-  remindersTitle: {
-    en: "Important Reminders",
-    lo: "ຂໍ້ຄວນລະວັງ ແລະ ຄຳເຕືອນສຳຄັນ",
-    zh: "重要提醒",
-  },
-  reminder1: {
-    en: "Keep the departure portion of your arrival card - you'll need it when leaving Laos",
-    lo: "ກະລຸນາເກັບສ່ວນຂາອອກຂອງໃບແຈ້ງເຂົ້າ-ອອກໄວ້ - ທ່ານຈະໄດ້ໃຊ້ໃນເວລາກັບອອກຈາກລາວ",
-    zh: "保留入境卡的出境联 - 离开老挝时需要用到",
-  },
-  reminder2: {
-    en: "Immigration will stamp your passport with entry date and permitted stay duration",
-    lo: "ເຈົ້າໜ້າທີ່ ຕມ ຈະປະທັບຕາໃສ່ໜັງສືຜ່ານແດນ ໂດຍລະບຸວັນທີເຂົ້າ ແລະ ໄລຍະເວລາພັກເຊົາທີ່ໄດ້ຮັບອະນຸຍາດ",
-    zh: "边检会在护照上盖章，标注入境日期和允许停留时间",
-  },
-  reminder3: {
-    en: "Check your stamp carefully before leaving the counter",
-    lo: "ກະລຸນາກວດເບິ່ງກາປະທັບຂອງທ່ານໃຫ້ລະອຽດ ກ່ອນຈະອອກຈາກເຄົາເຕີ",
-    zh: "离开柜台前请仔细检查盖章",
-  },
-  reminder4: {
-    en: "If you lose your arrival card, report to immigration office for replacement",
-    lo: "ຫາກທ່ານເຮັດໃບແຈ້ງເຂົ້າ-ອອກເສຍ, ໃຫ້ແຈ້ງຫ້ອງການ ຕມ ເພື່ອຂໍໃບໃໝ່",
-    zh: "如果遗失入境卡，请向边检办公室报告补办",
-  },
-  reminder5: {
-    en: "Do not overstay your visa - fines of USD 10/day apply",
-    lo: "ຫ້າມພັກເຊົາເກີນກຳນົດວີຊ່າ - ຈະມີຄ່າປັບໃໝ 10 ໂດລາຕໍ່ມື້",
-    zh: "不要逾期停留 - 每天罚款10美元",
-  },
-
-  // After clearance
-  afterClearanceTitle: {
-    en: "After Immigration Clearance",
-    lo: "ຫຼັງຈາກຜ່ານຂັ້ນຕອນການກວດຄົນເຂົ້າ-ອອກເມືອງ",
-    zh: "通过边检后",
-  },
-  afterClearanceDesc: {
-    en: "Once your passport is stamped, proceed to the baggage claim area. Follow signs for baggage carousels. Your flight number will be displayed on screens above the carousel.",
-    lo: "ຫຼັງຈາກປະທັບຕາແລ້ວ, ໃຫ້ເດີນທາງໄປຫາຈຸດຮັບກະເປົາ. ຍ່າງຕາມປ້າຍບອກທາງໄປຫາສາຍພານຮັບກະເປົາ. ເລກຖ້ຽວບິນຂອງທ່ານຈະສະແດງຢູ່ໜ້າຈໍເທິງສາຍພານ.",
-    zh: "护照盖章后，请前往行李提取区。请跟随指示牌前往行李传送带。您的航班号会显示在传送带上方的屏幕上。",
-  },
-
-  // Assistance
-  assistanceTitle: {
-    en: "Need Assistance?",
-    lo: "ຕ້ອງການຄວາມຊ່ວຍເຫຼືອບໍ່?",
-    zh: "需要帮助？",
-  },
-  assistanceDesk: {
-    en: "Immigration Help Desk: Available at the immigration hall",
-    lo: "ຈຸດບໍລິການຊ່ວຍເຫຼືອ ຕມ: ມີໃຫ້ບໍລິການຢູ່ຫ້ອງໂຖງກວດຄົນເຂົ້າ-ອອກເມືອງ",
-    zh: "边检服务台：位于边检大厅",
-  },
-  assistanceEmergency: {
-    en: "Emergency: Contact airport police or information desk",
-    lo: "ກໍລະນີສຸກເສີນ: ຕິດຕໍ່ຕຳຫຼວດສະໜາມບິນ ຫຼື ເຄົາເຕີປະຊາສຳພັນ",
-    zh: "紧急情况：联系机场警察或问询台",
+  disclaimerLinkText: {
+    en: "immigration.gov.la",
+    lo: "immigration.gov.la",
+    zh: "immigration.gov.la",
   },
 } as const;
 

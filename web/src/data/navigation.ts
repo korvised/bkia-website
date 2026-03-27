@@ -104,16 +104,16 @@ export const navigation: NavItem[] = [
     ],
     featuredContent: {
       image:
-        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/featured/my-hkg-app.png",
+        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/navbar/flight-status.png",
       title: {
-        en: '"My Airport" App',
-        lo: 'ແອັບ "ສະໜາມບິນຂອງຂ້ອຍ"',
-        zh: '"我的机场" 应用',
+        en: "Real-time Flight Status",
+        lo: "ກວດສອບສະຖານະຖ່ຽວບິນ",
+        zh: "实时航班动态",
       },
       description: {
-        en: "Search airport info at your fingertips",
-        lo: "ຄົ້ນຫາຂໍ້ມູນສະໜາມບິນໄດ້ງ່າຍໆ",
-        zh: "随时搜索机场信息",
+        en: "Check arrivals and departures instantly",
+        lo: "ຕິດຕາມຖ່ຽວບິນຂາເຂົ້າ ແລະ ຂາອອກ ໄດ້ທັນທີ",
+        zh: "即时查询起飞与到达航班",
       },
     },
   },
@@ -147,11 +147,7 @@ export const navigation: NavItem[] = [
         href: "/guides/arrivals",
       },
       {
-        label: {
-          en: "Custom Services",
-          lo: "ບໍລິການພິເສດ",
-          zh: "定制服务",
-        },
+        label: { en: "Custom Services", lo: "ບໍລິການພິເສດ", zh: "定制服务" },
         description: {
           en: "Special assistance and pet travel guide",
           lo: "ບໍລິການຊ່ວຍເຫຼືອພິເສດ ແລະ ຄຳແນະນຳສັດລ້ຽງ",
@@ -159,19 +155,6 @@ export const navigation: NavItem[] = [
         },
         href: "/guides/custom-services",
       },
-      /*{
-        label: {
-          en: "Transfer / Transit",
-          lo: "ການຕໍ່ຖ້ຽວບິນ",
-          zh: "中转/过境",
-        },
-        description: {
-          en: "Connection flight information",
-          lo: "ຂໍ້ມູນການຕໍ່ຖ້ຽວບິນ",
-          zh: "转机航班信息",
-        },
-        href: "/guides/transfer",
-      },*/
       {
         label: { en: "Airport Security", lo: "ຄວາມປອດໄພ", zh: "安检须知" },
         description: {
@@ -197,16 +180,16 @@ export const navigation: NavItem[] = [
     ],
     featuredContent: {
       image:
-        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/featured/one-stop-booking.png",
+        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/navbar/check-in.png",
       title: {
-        en: "One-stop Services",
-        lo: "ບໍລິການຄັ້ງດຽວ",
-        zh: "一站式服务",
+        en: "Travel Guide",
+        lo: "ຄຳແນະນຳການເດີນທາງ",
+        zh: "出行指南",
       },
       description: {
-        en: "Book airport essentials in one place",
-        lo: "ຈອງບໍລິການທັງໝົດໃນບ່ອນດຽວ",
-        zh: "一处预订所有服务",
+        en: "Prepare your documents and digital forms",
+        lo: "ກຽມເອກະສານ ແລະ ແບບຟອມດີຈີຕອນໃຫ້ພ້ອມ",
+        zh: "准备好您的旅行证件和数字表格",
       },
     },
   },
@@ -268,12 +251,12 @@ export const navigation: NavItem[] = [
     ],
     featuredContent: {
       image:
-        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/featured/valet-parking.jpg",
-      title: { en: "Valet Parking", lo: "ຈອດລົດພິເສດ", zh: "代客泊车" },
+        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/navbar/taxi.png",
+      title: { en: "Premium Parking", lo: "ຈອດລົດພິເສດ", zh: "尊享停车" },
       description: {
-        en: "Hassle-free parking experience",
-        lo: "ປະສົບການຈອດລົດທີ່ສະດວກ",
-        zh: "轻松停车体验",
+        en: "Convenient and secure parking experience",
+        lo: "ປະສົບການຈອດລົດທີ່ສະດວກ ແລະ ປອດໄພ",
+        zh: "便捷且安全的停车体验",
       },
     },
   },
@@ -331,22 +314,22 @@ export const navigation: NavItem[] = [
     ],
     featuredContent: {
       image:
-        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/featured/customer-support.jpeg",
-      title: { en: "24/7 Support", lo: "ຊ່ວຍເຫຼືອ 24/7", zh: "24/7客服" },
+        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/navbar/information.png",
+      title: {
+        en: "Passenger Assistance",
+        lo: "ບໍລິການຊ່ວຍເຫຼືອ",
+        zh: "旅客协助",
+      },
       description: {
-        en: "We're here to help anytime",
-        lo: "ພວກເຮົາພ້ອມຊ່ວຍເຫຼືອທຸກເວລາ",
-        zh: "随时为您提供帮助",
+        en: "Our team is ready to help 24/7",
+        lo: "ທີມງານພວກເຮົາພ້ອມຊ່ວຍເຫຼືອຕະຫຼອດ 24 ຊົ່ວໂມງ",
+        zh: "我们的团队全天候为您提供帮助",
       },
     },
   },
   {
     id: "about",
-    label: {
-      en: "About",
-      lo: "ກ່ຽວກັບ",
-      zh: "关于我们",
-    },
+    label: { en: "About", lo: "ກ່ຽວກັບ", zh: "关于我们" },
     description: {
       en: "Airport profile, news, and business",
       lo: "ຂໍ້ມູນສະໜາມບິນ, ຂ່າວສານ ແລະ ທຸລະກິດ",
@@ -383,11 +366,7 @@ export const navigation: NavItem[] = [
         href: "/about/careers",
       },
       {
-        label: {
-          en: "Auctions",
-          lo: "ການປະມູນ",
-          zh: "拍卖招标",
-        },
+        label: { en: "Auctions", lo: "ການປະມູນ", zh: "拍卖招标" },
         description: {
           en: "Explore bidding documents and procurement opportunities",
           lo: "ຄົ້ນຫາເອກະສານການປະມູນ ແລະ ໂອກາດການຈັດຊື້",
@@ -399,11 +378,11 @@ export const navigation: NavItem[] = [
     featuredContent: {
       image:
         "https://bkia-website.s3.ap-southeast-7.amazonaws.com/carousel/001.jpg",
-      title: { en: "Modern Hub", lo: "ສູນກາງທັນສະໄໝ", zh: "现代化枢纽" },
+      title: { en: "Airport Profile", lo: "ຂໍ້ມູນສະໜາມບິນ", zh: "机场简介" },
       description: {
-        en: "Connecting Laos to the world",
-        lo: "ເຊື່ອມຕໍ່ລາວສູ່ສາກົນ",
-        zh: "连接老挝与世界",
+        en: "Learn about Bokeo International Airport",
+        lo: "ຮຽນຮູ້ກ່ຽວກັບສະໜາມບິນສາກົນບໍ່ແກ້ວ",
+        zh: "了解博胶国际机场",
       },
     },
   },

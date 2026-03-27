@@ -1,7 +1,6 @@
 import type { Lang } from "@/types/language";
 
 export const baggageClaim = {
-  // Page title
   title: {
     en: "Baggage Claim",
     lo: "ຈຸດຮັບກະເປົາ",
@@ -9,136 +8,167 @@ export const baggageClaim = {
   },
   intro: {
     en: "After clearing immigration, proceed to the baggage claim area to collect your checked luggage. Bokeo International Airport has 2 baggage carousels. Flight information screens will display which carousel your flight is assigned to.",
-    lo: "ຫຼັງຈາກຜ່ານຂັ້ນຕອນການກວດຄົນເຂົ້າ-ອອກເມືອງແລ້ວ, ກະລຸນາເດີນທາງໄປຫາຈຸດຮັບກະເປົາເພື່ອຮັບສຳພາລະຂອງທ່ານ. ສະໜາມບິນສາກົນບໍ່ແກ້ວ ມີສາຍພານຮັບກະເປົາ 2 ສາຍ. ທ່ານສາມາດກວດເບິ່ງເລກຖ້ຽວບິນ ແລະ ສາຍພານທີ່ກຳນົດໃຫ້ໄດ້ ຢູ່ໜ້າຈໍສະແດງຂໍ້ມູນຖ້ຽວບິນ.",
-    zh: "通过边检后，请前往行李提取区领取托运行李。博胶国际机场有2条行李传送带。航班信息显示屏会显示您的航班分配到哪条传送带。",
+    lo: "ຫຼັງຈາກຜ່ານການກວດຄົນເຂົ້າ-ອອກເມືອງ, ເດີນໄປຫາຈຸດຮັບກະເປົາ. ສະໜາມບິນສາກົນບໍ່ແກ້ວ ມີສາຍພານ 2 ສາຍ. ໜ້າຈໍຂໍ້ມູນຖ້ຽວບິນຈະສະແດງສາຍພານທີ່ກຳນົດໃຫ້.",
+    zh: "通过边检后，前往行李提取区领取托运行李。博胶国际机场有2条传送带。航班信息屏将显示您的航班所分配的传送带编号。",
   },
 
-  // Wait times
+  // ── Wait Times ───────────────────────────────────────────────────────────
+
   waitTimesTitle: {
-    en: "Typical Wait Times:",
-    lo: "ໄລຍະເວລາລໍຖ້າໂດຍປະມານ:",
-    zh: "典型等待时间：",
-  },
-  firstBags: {
-    en: "First bags appear: 15-25 minutes after landing",
-    lo: "ກະເປົາຊຸດທຳອິດ: 15-25 ນາທີ ຫຼັງຈາກຍົນລົງຈອດ",
-    zh: "首件行李出现：降落后15-25分钟",
-  },
-  mostBags: {
-    en: "Most bags delivered: Within 30-40 minutes",
-    lo: "ກະເປົາສ່ວນໃຫຍ່: ພາຍໃນ 30-40 ນາທີ",
-    zh: "大部分行李送达：30-40分钟内",
-  },
-  priorityBags: {
-    en: "Priority bags (business class): Usually first",
-    lo: "ກະເປົາບຸລິມະສິດ (ຊັ້ນທຸລະກິດ): ປົກກະຕິຈະອອກມາກ່ອນ",
-    zh: "优先行李（商务舱）：通常最先送达",
+    en: "Typical Wait Times",
+    lo: "ໄລຍະເວລາລໍຖ້າໂດຍປະມານ",
+    zh: "预计等待时间",
   },
 
-  // Collecting luggage
+  firstBagsLabel: { en: "First bags", lo: "ກະເປົາຊຸດທຳອິດ", zh: "首件行李" },
+  firstBagsValue: {
+    en: "15–25 min after landing",
+    lo: "15–25 ນາທີ ຫຼັງລົງຈອດ",
+    zh: "降落后 15–25 分钟",
+  },
+
+  mostBagsLabel: { en: "Most bags", lo: "ກະເປົາສ່ວນໃຫຍ່", zh: "大部分行李" },
+  mostBagsValue: {
+    en: "Within 30–40 min",
+    lo: "ພາຍໃນ 30–40 ນາທີ",
+    zh: "30–40 分钟内",
+  },
+
+  priorityBagsLabel: {
+    en: "Priority (Business)",
+    lo: "ບຸລິມະສິດ (ທຸລະກິດ)",
+    zh: "优先（商务舱）",
+  },
+  priorityBagsValue: {
+    en: "Usually first off",
+    lo: "ປົກກະຕິອອກກ່ອນ",
+    zh: "通常最先送达",
+  },
+
+  // ── Collecting Luggage ───────────────────────────────────────────────────
+
   collectingTitle: {
     en: "Collecting Your Luggage",
     lo: "ຂັ້ນຕອນການຮັບກະເປົາ",
-    zh: "领取行李",
+    zh: "领取行李步骤",
   },
   collectStep1: {
     en: "Check information screens for your flight number and assigned carousel",
-    lo: "ກວດເບິ່ງໜ້າຈໍຂໍ້ມູນສຳລັບເລກຖ້ຽວບິນ ແລະ ສາຍພານທີ່ກຳນົດໃຫ້",
-    zh: "查看信息屏幕上的航班号和分配的传送带",
+    lo: "ກວດເບິ່ງໜ້າຈໍຂໍ້ມູນ ຫາເລກຖ້ຽວບິນ ແລະ ສາຍພານທີ່ກຳນົດໃຫ້",
+    zh: "查看信息屏幕上的航班号及分配传送带",
   },
   collectStep2: {
-    en: "Position yourself near the carousel exit point for better visibility",
-    lo: "ຢືນລໍຖ້າຢູ່ບໍລິເວນຈຸດປ່ອຍກະເປົາ ເພື່ອໃຫ້ສັງເກດເຫັນໄດ້ງ່າຍ",
-    zh: "站在传送带出口附近以便更好地观察",
+    en: "Stand near the carousel exit point for the best view",
+    lo: "ຢືນລໍຖ້າໃກ້ຈຸດປ່ອຍກະເປົາ ເພື່ອສັງເກດເຫັນໄດ້ງ່າຍ",
+    zh: "站在传送带出口处以便观察",
   },
   collectStep3: {
-    en: "Verify baggage tag matches your claim tag before taking luggage",
-    lo: "ກະລຸນາກວດສອບເບິ່ງບັດຝາກກະເປົາ ໃຫ້ກົງກັບບັດຮັບກະເປົາຂອງທ່ານ ກ່ອນຈະຍົກອອກຈາກສາຍພານ",
-    zh: "取行李前请核对行李牌与您的行李票是否一致",
+    en: "Verify the baggage tag matches your claim tag before taking luggage",
+    lo: "ກວດສອບໃຫ້ແຕ່ລ່ະໃບ match ກ່ອນຍົກກະເປົາ",
+    zh: "取行李前核对行李牌与您的行李票",
   },
   collectStep4: {
-    en: "Inspect luggage for damage immediately - report any damage before leaving baggage hall",
-    lo: "ກວດເບິ່ງຄວາມຮຽບຮ້ອຍຂອງກະເປົາທັນທີ - ຫາກພົບຄວາມເສຍຫາຍ ໃຫ້ແຈ້ງເຈົ້າໜ້າທີ່ກ່ອນອອກຈາກຫ້ອງຮັບກະເປົາ",
-    zh: "立即检查行李是否损坏 - 离开行李大厅前报告任何损坏",
+    en: "Inspect for damage immediately — report before leaving the baggage hall",
+    lo: "ກວດເບິ່ງຄວາມເສຍຫາຍທັນທີ — ແຈ້ງກ່ອນອອກຈາກຫ້ອງຮັບກະເປົາ",
+    zh: "立即检查是否有损坏 — 离开前报告",
   },
   collectStep5: {
-    en: "Use luggage cart (available free of charge) for heavy or multiple bags",
-    lo: "ມີລົດເຂັນກະເປົາໃຫ້ບໍລິການຟຣີ ສຳລັບກະເປົາທີ່ມີນ້ຳໜັກຫຼາຍ ຫຼື ມີຫຼາຍໜ່ວຍ",
-    zh: "使用行李推车（免费提供）搬运重行李或多件行李",
+    en: "Use a luggage cart (free of charge) for heavy or multiple bags",
+    lo: "ໃຊ້ລົດເຂັນ (ຟຣີ) ສຳລັບກະເປົາໜັກ ຫຼື ຫຼາຍໜ່ວຍ",
+    zh: "使用行李推车（免费）搬运重行李或多件行李",
   },
 
-  // Important reminders
+  // ── Reminders ────────────────────────────────────────────────────────────
+
   remindersTitle: {
     en: "Important Reminders",
-    lo: "ຂໍ້ຄວນລະວັງ ແລະ ຄຳເຕືອນສຳຄັນ",
+    lo: "ຂໍ້ຄວນລະວັງ",
     zh: "重要提醒",
   },
-  reminder1: {
-    en: "Keep your baggage claim tag (from check-in) until you've collected all luggage",
-    lo: "ກະລຸນາເກັບບັດຮັບກະເປົາ (ທີ່ໄດ້ຈາກຕອນແຈ້ງປີ້) ໄວ້ໃຫ້ດີ ຈົນກວ່າຈະໄດ້ຮັບກະເປົາຄົບທຸກໜ່ວຍ",
-    zh: "保管好行李票（值机时的）直到取完所有行李",
+
+  reminder1Label: {
+    en: "Keep Your Tags",
+    lo: "ເກັບໃບຮັບກະເປົາ",
+    zh: "保管行李票",
   },
-  reminder2: {
-    en: "Watch your belongings - never leave bags unattended",
-    lo: "ກະລຸນາເຝົ້າລະວັງຊັບສິນຂອງທ່ານ - ຫ້າມວາງກະເປົາປະໄວ້ໂດຍບໍ່ມີຄົນເບິ່ງແຍງ",
-    zh: "看管好您的物品 - 切勿让行李无人看管",
-  },
-  reminder3: {
-    en: "Fragile items may arrive on separate carousel or service counter",
-    lo: "ເຄື່ອງຂອງທີ່ແຕກງ່າຍ ອາດຈະຖືກແຍກມາທາງສາຍພານພິເສດ ຫຼື ຢູ່ເຄົາເຕີບໍລິການ",
-    zh: "易碎物品可能在单独的传送带或服务柜台送达",
-  },
-  reminder4: {
-    en: "Special items (sports equipment, strollers) delivered at oversized baggage area",
-    lo: "ສິ່ງຂອງພິເສດ (ອຸປະກອນກິລາ, ລົດເຂັນເດັກນ້ອຍ) ສາມາດຮັບໄດ້ຢູ່ບໍລິເວນກະເປົາຂະໜາດໃຫຍ່ (Oversized Baggage)",
-    zh: "特殊物品（运动器材、婴儿车）在超大行李区领取",
+  reminder1Desc: {
+    en: "Hold onto your baggage claim tag until you have collected every piece of luggage",
+    lo: "ຖືໃບຮັບກະເປົາໄວ້ ຈົນກວ່າຈະໄດ້ຮັບກະເປົາຄົບທຸກໜ່ວຍ",
+    zh: "保管好行李票，直到取完所有行李",
   },
 
-  // Lost/damaged baggage
-  lostDamagedTitle: {
-    en: "Lost, Delayed, or Damaged Baggage",
-    lo: "ກໍລະນີກະເປົາເສຍ, ຊັກຊ້າ ຫຼື ເສຍຫາຍ",
-    zh: "遗失、延误或损坏行李",
+  reminder2Label: { en: "Stay Alert", lo: "ລະວັງຊັບສິນ", zh: "看管财物" },
+  reminder2Desc: {
+    en: "Never leave bags unattended — keep your belongings in sight at all times",
+    lo: "ຫ້າມວາງກະເປົາປະໄວ້ໂດຍບໍ່ມີຄົນເບິ່ງ — ສັງເກດຊັບສິນຕະຫຼອດ",
+    zh: "切勿让行李无人看管，随时注意随身物品",
   },
+
+  reminder3Label: { en: "Fragile Items", lo: "ເຄື່ອງແຕກງ່າຍ", zh: "易碎物品" },
+  reminder3Desc: {
+    en: "Fragile items may arrive on a separate carousel or at the service counter",
+    lo: "ເຄື່ອງຂອງທີ່ແຕກງ່າຍ ອາດໃຊ້ສາຍພານພິເສດ ຫຼື ເຄົາເຕີບໍລິການ",
+    zh: "易碎物品可能通过单独传送带或服务柜台送达",
+  },
+
+  reminder4Label: {
+    en: "Oversized Items",
+    lo: "ສິ່ງຂອງຂະໜາດໃຫຍ່",
+    zh: "超大物品",
+  },
+  reminder4Desc: {
+    en: "Sports equipment, strollers, and oversized items are delivered at the oversized baggage area",
+    lo: "ອຸປະກອນກິລາ, ລົດເຂັນເດັກ ແລະ ສິ່ງຂອງຂະໜາດໃຫຍ່ ຮັບທີ່ຈຸດ Oversized Baggage",
+    zh: "运动器材、婴儿车及超大物品在超大行李区领取",
+  },
+
+  // ── Lost / Damaged ───────────────────────────────────────────────────────
+
+  lostDamagedTitle: {
+    en: "Lost, Delayed or Damaged Baggage",
+    lo: "ກໍລະນີກະເປົາສູນຫາຍ, ຊັກຊ້າ ຫຼື ເສຍຫາຍ",
+    zh: "行李遗失、延误或损坏",
+  },
+
   missingBaggageTitle: {
     en: "Missing Baggage",
-    lo: "ກະເປົາບໍ່ມາຮອດ ຫຼື ສູນຫາຍ",
-    zh: "行李遗失",
+    lo: "ກະເປົາບໍ່ມາຮອດ",
+    zh: "行李未到",
   },
   missingBaggageDesc: {
-    en: "If your luggage doesn't arrive:",
-    lo: "ຫາກກະເປົາຂອງທ່ານບໍ່ມາຮອດຕາມກຳນົດ:",
-    zh: "如果您的行李未送达：",
+    en: "If your luggage doesn't arrive, act quickly:",
+    lo: "ຫາກກະເປົາຍັງບໍ່ມາ, ດຳເນີນການດ່ວນ:",
+    zh: "如行李未送达，请迅速采取行动：",
   },
   missingStep1: {
-    en: "Wait until carousel stops completely",
-    lo: "ລໍຖ້າຈົນກວ່າສາຍພານຈະຢຸດໝຸນສະນິດ",
+    en: "Wait until the carousel stops completely",
+    lo: "ລໍຖ້າຈົນສາຍພານຢຸດໝຸນສະນິດ",
     zh: "等待传送带完全停止",
   },
   missingStep2: {
-    en: "Go to Baggage Services counter immediately",
-    lo: "ຟ້າວໄປຕິດຕໍ່ທີ່ເຄົາເຕີບໍລິການກະເປົາ (Baggage Services) ທັນທີ",
-    zh: "立即前往行李服务柜台",
+    en: "Go directly to the Baggage Services counter",
+    lo: "ໄປທີ່ເຄົາເຕີ Baggage Services ທັນທີ",
+    zh: "直接前往行李服务柜台",
   },
   missingStep3: {
-    en: "Present baggage claim tag and boarding pass",
-    lo: "ຍື່ນບັດຮັບກະເປົາ ແລະ ບັດຂຶ້ນເຮືອບິນ (Boarding Pass)",
+    en: "Present your baggage claim tag and boarding pass",
+    lo: "ຍື່ນໃບຮັບກະເປົາ ແລະ Boarding Pass",
     zh: "出示行李票和登机牌",
   },
   missingStep4: {
-    en: "File Property Irregularity Report (PIR)",
-    lo: "ຂຽນໃບລາຍງານຄວາມຜິດປົກກະຕິຂອງຊັບສິນ (PIR)",
+    en: "File a Property Irregularity Report (PIR)",
+    lo: "ຂຽນໃບລາຍງານ PIR (Property Irregularity Report)",
     zh: "填写财产不正常报告（PIR）",
   },
   missingStep5: {
-    en: "Provide local contact information",
-    lo: "ໃຫ້ຂໍ້ມູນ ແລະ ເບີໂທລະສັບຕິດຕໍ່ໃນທ້ອງຖິ່ນ",
-    zh: "提供当地联系信息",
+    en: "Provide your local contact details",
+    lo: "ໃຫ້ຂໍ້ມູນຕິດຕໍ່ໃນທ້ອງຖິ່ນ",
+    zh: "提供本地联系信息",
   },
   missingStep6: {
-    en: "Keep PIR reference number",
-    lo: "ເກັບເລກອ້າງອີງ PIR ໄວ້ເພື່ອຕິດຕາມຜົນ",
-    zh: "保留PIR参考编号",
+    en: "Keep your PIR reference number for follow-up",
+    lo: "ເກັບເລກ PIR ໄວ້ ເພື່ອຕິດຕາມຜົນ",
+    zh: "保存PIR编号以便跟进",
   },
 
   damagedBaggageTitle: {
@@ -147,110 +177,34 @@ export const baggageClaim = {
     zh: "行李损坏",
   },
   damagedBaggageDesc: {
-    en: "If you notice damage:",
-    lo: "ຫາກທ່ານພົບວ່າກະເປົາເສຍຫາຍ:",
-    zh: "如果您发现损坏：",
+    en: "If you notice damage, act before leaving the area:",
+    lo: "ຫາກພົບຄວາມເສຍຫາຍ, ດຳເນີນການກ່ອນອອກ:",
+    zh: "发现损坏时，请在离开前采取行动：",
   },
   damagedStep1: {
-    en: "Report immediately at Baggage Services",
-    lo: "ແຈ້ງເຈົ້າໜ້າທີ່ຢູ່ຈຸດບໍລິການກະເປົາທັນທີ",
-    zh: "立即在行李服务处报告",
+    en: "Report immediately at Baggage Services — do not leave the area first",
+    lo: "ແຈ້ງທັນທີ ຢູ່ຈຸດ Baggage Services — ຢ່າອອກໄປກ່ອນ",
+    zh: "立即在行李服务处报告 — 不要先离开",
   },
   damagedStep2: {
-    en: "Do NOT leave baggage claim area first",
-    lo: "ຫ້າມອອກຈາກບໍລິເວນຈຸດຮັບກະເປົາ ຈົນກວ່າຈະແຈ້ງຄວາມເສຍຫາຍສຳເລັດ",
-    zh: "请勿先离开行李提取区",
+    en: "Take photos of the damage as evidence",
+    lo: "ຖ່າຍຮູບຄວາມເສຍຫາຍໄວ້ເປັນຫຼັກຖານ",
+    zh: "拍摄损坏照片留作证据",
   },
   damagedStep3: {
-    en: "Take photos of damage",
-    lo: "ຖ່າຍຮູບຄວາມເສຍຫາຍໄວ້ເປັນຫຼັກຖານ",
-    zh: "拍摄损坏照片",
+    en: "Complete the damage report form provided by staff",
+    lo: "ຕື່ມແບບຟອມລາຍງານຄວາມເສຍຫາຍທີ່ເຈົ້າໜ້າທີ່ສະໜອງໃຫ້",
+    zh: "填写工作人员提供的损坏报告表",
   },
   damagedStep4: {
-    en: "Complete damage report form",
-    lo: "ຕື່ມແບບຟອມລາຍງານຄວາມເສຍຫາຍໃຫ້ຄົບຖ້ວນ",
-    zh: "填写损坏报告表",
+    en: "Claims must be filed within 7 days of arrival",
+    lo: "ຕ້ອງຍື່ນຄຳຮ້ອງພາຍໃນ 7 ວັນ ຫຼັງຈາກມາຮອດ",
+    zh: "须在抵达后7天内提出索赔",
   },
   damagedStep5: {
-    en: "Claims must be filed within 7 days",
-    lo: "ຕ້ອງຍື່ນຄຳຮ້ອງຂໍຊົດເຊີຍພາຍໃນ 7 ວັນ",
-    zh: "必须在7天内提出索赔",
-  },
-  damagedStep6: {
-    en: "Contact airline for compensation",
-    lo: "ຕິດຕໍ່ສາຍການບິນເພື່ອດຳເນີນການຊົດເຊີຍ",
-    zh: "联系航空公司索赔",
-  },
-
-  // Baggage services
-  servicesOfficeTitle: {
-    en: "Baggage Services Office",
-    lo: "ຫ້ອງການບໍລິການກະເປົາ",
-    zh: "行李服务处",
-  },
-  servicesLocation: {
-    en: "Location: Baggage claim hall, near carousel 2",
-    lo: "ສະຖານທີ່: ຫ້ອງໂຖງຮັບກະເປົາ, ໃກ້ກັບສາຍພານສາຍທີ 2",
-    zh: "位置：行李提取大厅，2号传送带附近",
-  },
-  servicesHours: {
-    en: "Operating Hours: Available for all arriving flights",
-    lo: "ເວລາໃຫ້ບໍລິການ: ເປີດໃຫ້ບໍລິການທຸກຖ້ຽວບິນທີ່ຂາເຂົ້າ",
-    zh: "营业时间：所有到达航班时段",
-  },
-  servicesProvided: {
-    en: "Services Provided:",
-    lo: "ການບໍລິການທີ່ມີໃຫ້:",
-    zh: "提供的服务：",
-  },
-  serviceLostTracking: {
-    en: "Lost baggage tracking and reports",
-    lo: "ຕິດຕາມ ແລະ ອອກໃບລາຍງານກະເປົາສູນຫາຍ",
-    zh: "遗失行李追踪和报告",
-  },
-  serviceDamageClaims: {
-    en: "Damage claims processing",
-    lo: "ດຳເນີນການຮ້ອງຂໍຄ່າເສຍຫາຍ",
-    zh: "损坏索赔处理",
-  },
-  serviceDelayedDelivery: {
-    en: "Delayed baggage delivery arrangements",
-    lo: "ຈັດການເລື່ອງການສົ່ງກະເປົາທີ່ມາຮອດຊັກຊ້າ",
-    zh: "延误行李送达安排",
-  },
-  serviceOversized: {
-    en: "Oversized/special items assistance",
-    lo: "ຊ່ວຍເຫຼືອດ້ານສຳພາລະຂະໜາດໃຫຍ່ ຫຼື ສິ່ງຂອງພິເສດ",
-    zh: "超大/特殊物品协助",
-  },
-
-  // Pro tip
-  proTip: {
-    en: "Pro Tip: Most delayed bags arrive on the next available flight (usually within 24-48 hours). The airline will deliver to your accommodation free of charge. Keep your PIR number and check status online using airline baggage tracking systems.",
-    lo: "ຄຳແນະນຳ: ກະເປົາທີ່ຊັກຊ້າສ່ວນໃຫຍ່ ຈະມາຮອດນຳຖ້ຽວບິນຖັດໄປ (ພາຍໃນ 24-48 ຊົ່ວໂມງ). ສາຍການບິນຈະຈັດສົ່ງໃຫ້ຮອດທີ່ພັກຂອງທ່ານໂດຍບໍ່ເສຍຄ່າ. ກະລຸນາເກັບເລກ PIR ໄວ້ ແລະ ສາມາດກວດສອບສະຖານະທາງອອນໄລນ໌ໄດ້.",
-    zh: "小贴士：大多数延误行李会在下一班可用航班送达（通常在24-48小时内）。航空公司会免费送到您的住宿地。请保留PIR编号并使用航空公司行李追踪系统在线查询状态。",
-  },
-
-  // Contact
-  contactTitle: {
-    en: "Baggage Services Contact:",
-    lo: "ຂໍ້ມູນຕິດຕໍ່ບໍລິການກະເປົາ:",
-    zh: "行李服务联系方式：",
-  },
-  contactPhone: {
-    en: "Phone: +856 84 260 179",
-    lo: "ໂທລະສັບ: +856 84 260 179",
-    zh: "电话：+856 84 260 179",
-  },
-  contactEmail: {
-    en: "Email: baggage@bokeoairport.la",
-    lo: "ອີເມວ: baggage@bokeoairport.la",
-    zh: "邮箱：baggage@bokeoairport.la",
-  },
-  contactAirline: {
-    en: "For airline-specific issues, contact your airline's customer service directly",
-    lo: "ສຳລັບບັນຫາສະເພາະຂອງແຕ່ລະສາຍການບິນ, ກະລຸນາຕິດຕໍ່ຝ່າຍບໍລິການລູກຄ້າຂອງສາຍການບິນນັ້ນໂດຍກົງ",
-    zh: "如有航空公司特定问题，请直接联系您航空公司的客户服务",
+    en: "Contact your airline directly for compensation",
+    lo: "ຕິດຕໍ່ສາຍການບິນໂດຍກົງ ສຳລັບການຊົດເຊີຍ",
+    zh: "直接联系航空公司申请赔偿",
   },
 } as const;
 

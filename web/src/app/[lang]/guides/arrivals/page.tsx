@@ -7,7 +7,6 @@ import {
   BaggageClaimContent,
   BorderInspectionContent,
   CustomsInspectionContent,
-  ExitCustomsContent,
   LeavingAirportContent,
   RelatedServices,
 } from "@/components/guides/arrival";
@@ -75,8 +74,6 @@ function ArrivalContent({ tab, lang }: { tab: ArrivalTab; lang: Lang }) {
       return <BorderInspectionContent lang={lang} />;
     case "baggage-claim":
       return <BaggageClaimContent lang={lang} />;
-    case "exit-customs":
-      return <ExitCustomsContent lang={lang} />;
     case "leaving":
       return <LeavingAirportContent lang={lang} />;
     default:

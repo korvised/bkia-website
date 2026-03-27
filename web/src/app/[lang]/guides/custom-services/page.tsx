@@ -20,31 +20,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function CustomServicesSkeleton() {
   return (
-    <div className="container space-y-8">
-      <div className="h-10 w-56 animate-pulse rounded-lg bg-gray-200" />
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {[1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="flex flex-col gap-4 rounded-lg border border-gray-200 bg-white p-5"
-          >
-            <div className="flex items-start justify-between gap-3">
-              <div className="flex-1 space-y-2">
-                <div className="h-4 w-28 animate-pulse rounded bg-gray-200" />
-                <div className="h-5 w-full animate-pulse rounded bg-gray-200" />
-                <div className="h-5 w-3/4 animate-pulse rounded bg-gray-200" />
+    <>
+      {/* Header */}
+      <section className="bg-white py-10">
+        <div className="container space-y-3">
+          <div className="h-3 w-24 animate-pulse rounded bg-gray-200" />
+          <div className="h-9 w-64 animate-pulse rounded-lg bg-gray-200" />
+          <div className="h-5 w-80 animate-pulse rounded bg-gray-200" />
+        </div>
+      </section>
+
+      {/* Service cards */}
+      <section className="bg-gray-50 py-10">
+        <div className="container">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="flex flex-col gap-5 bg-white px-6 py-6">
+                <div className="h-12 w-12 animate-pulse rounded-xl bg-gray-200" />
+                <div className="flex-1 space-y-2">
+                  <div className="h-5 w-32 animate-pulse rounded bg-gray-200" />
+                  <div className="h-4 w-full animate-pulse rounded bg-gray-200" />
+                  <div className="h-4 w-3/4 animate-pulse rounded bg-gray-200" />
+                </div>
+                <div className="h-4 w-24 animate-pulse rounded bg-gray-200" />
               </div>
-              <div className="h-14 w-14 shrink-0 animate-pulse rounded-full bg-gray-200" />
-            </div>
-            <div className="space-y-2">
-              <div className="h-4 w-full animate-pulse rounded bg-gray-200" />
-              <div className="h-4 w-5/6 animate-pulse rounded bg-gray-200" />
-            </div>
-            <div className="h-10 w-full animate-pulse rounded-lg bg-gray-200" />
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      </section>
+    </>
   );
 }
 

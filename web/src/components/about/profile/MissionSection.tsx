@@ -1,83 +1,83 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Globe2, Shield, Users, Leaf } from "lucide-react";
+import { Shield, Heart, Megaphone, Rocket } from "lucide-react";
 import type { Lang } from "@/types/language";
 import { tProfile } from "@/data/i18n/about/profile";
 
-const MISSIONS = (lang: Lang) => [
+const PILLARS = [
   {
-    Icon: Globe2,
-    title: tProfile("missionConnectTitle", lang),
-    text: tProfile("missionConnectText", lang),
-    iconBg: "bg-sky-100",
-    iconColor: "text-sky-600",
-  },
-  {
+    key: "missionTaglineSafety" as const,
     Icon: Shield,
-    title: tProfile("missionSafetyTitle", lang),
-    text: tProfile("missionSafetyText", lang),
-    iconBg: "bg-red-100",
-    iconColor: "text-red-500",
+    gradient: "from-red-500 to-rose-600",
   },
   {
-    Icon: Users,
-    title: tProfile("missionServiceTitle", lang),
-    text: tProfile("missionServiceText", lang),
-    iconBg: "bg-[#e6f7f8]",
-    iconColor: "text-[#00AAAC]",
+    key: "missionTaglineCare" as const,
+    Icon: Heart,
+    gradient: "from-[#00AAAC] to-[#008e90]",
   },
   {
-    Icon: Leaf,
-    title: tProfile("missionGreenTitle", lang),
-    text: tProfile("missionGreenText", lang),
-    iconBg: "bg-emerald-100",
-    iconColor: "text-emerald-600",
+    key: "missionTaglinePromote" as const,
+    Icon: Megaphone,
+    gradient: "from-blue-500 to-blue-600",
+  },
+  {
+    key: "missionTaglineDevelop" as const,
+    Icon: Rocket,
+    gradient: "from-emerald-500 to-emerald-600",
   },
 ];
 
 export function MissionSection({ lang }: { lang: Lang }) {
-  const missions = MISSIONS(lang);
-
   return (
-    <section className="bg-[#f5fbfc] py-16 sm:py-20">
+    <section className="bg-white py-16 sm:py-24">
       <div className="container">
 
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
+        {/* Section label */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-          className="mb-12 text-center"
+          className="mb-12 text-center text-sm font-bold uppercase tracking-widest text-[#00AAAC]"
         >
-          <span className="mb-2 inline-block text-sm font-bold uppercase tracking-widest text-[#00AAAC]">
-            {tProfile("missionLabel", lang)}
-          </span>
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            {tProfile("missionSubtitle", lang)}
-          </h2>
-        </motion.div>
+          {tProfile("missionLabel", lang)}
+        </motion.p>
 
-        {/* Mission cards — staggered reveal */}
-        <div className="grid gap-5 sm:grid-cols-2">
-          {missions.map(({ Icon, title, text, iconBg, iconColor }, i) => (
+        {/* Four pillars — floating, no boxes */}
+        <div className="mb-14 flex flex-wrap justify-center gap-10 sm:gap-16">
+          {PILLARS.map(({ key, Icon, gradient }, i) => (
             <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 32 }}
+              key={key}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: i * 0.1, ease: [0.25, 1, 0.5, 1] }}
-              className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200/80"
+              transition={{ duration: 0.5, delay: i * 0.09, ease: [0.25, 1, 0.5, 1] }}
+              className="flex flex-col items-center gap-3"
             >
-              <div className={`mb-4 inline-flex rounded-xl p-3 ${iconBg}`}>
-                <Icon className={`h-6 w-6 ${iconColor}`} />
+              {/* Coloured circle icon */}
+              <div className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${gradient}`}>
+                <Icon className="h-7 w-7 text-white" />
               </div>
-              <h3 className="mb-2 text-base font-bold text-gray-900 sm:text-lg">{title}</h3>
-              <p className="text-sm leading-relaxed text-gray-500">{text}</p>
+
+              {/* Label */}
+              <p className="text-sm font-bold text-gray-800 sm:text-base">
+                {tProfile(key, lang)}
+              </p>
             </motion.div>
           ))}
         </div>
+
+        {/* Mission paragraph */}
+        <motion.p
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 1, 0.5, 1] }}
+          className="mx-auto max-w-3xl text-center text-base leading-relaxed text-gray-600 sm:text-lg"
+        >
+          {tProfile("missionText", lang)}
+        </motion.p>
 
       </div>
     </section>

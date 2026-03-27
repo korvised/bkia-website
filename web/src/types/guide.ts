@@ -10,5 +10,4 @@ export type ArrivalTab =
   | "customs-inspection"
   | "border-inspection"
   | "baggage-claim"
-  | "exit-customs"
   | "leaving";
