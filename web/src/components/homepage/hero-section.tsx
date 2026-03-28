@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
-import { ChevronLeft, ChevronRight, Megaphone } from "lucide-react";
+import { ChevronLeft, ChevronRight, Megaphone, Pause, Play } from "lucide-react";
 import { cn, formatDate } from "@/lib";
 import { useLanguage } from "@/context";
 import { createCommonI18n } from "@/data/i18n/common";
@@ -42,7 +42,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const [heroSwiper, setHeroSwiper] = useState<SwiperType | null>(null);
   const [noticeSwiper, setNoticeSwiper] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [activeNotice, setActiveNotice] = useState(0);
+  const [noticePaused, setNoticePaused] = useState(false);
 
   const slides =
     banners && banners.length > 0
@@ -79,7 +79,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 priority={index === 0}
                 quality={90}
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/50" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/5 to-black/30" />
             </div>
           </SwiperSlide>
         ))}
@@ -109,7 +109,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 autoplay={{ delay: 4500, disableOnInteraction: false }}
                 loop
                 onSwiper={setNoticeSwiper}
-                onSlideChange={(s) => setActiveNotice(s.realIndex)}
                 className="h-12 w-full"
               >
                 {notices.map((notice) => (
@@ -118,7 +117,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                       href={`/${lang}/support/notices/${notice.id}`}
                       className="group flex h-full w-full items-center gap-3"
                       onMouseEnter={() => noticeSwiper?.autoplay.stop()}
-                      onMouseLeave={() => noticeSwiper?.autoplay.start()}
+                      onMouseLeave={() => { if (!noticePaused) noticeSwiper?.autoplay.start(); }}
                     >
                       <span className="line-clamp-1 text-xs font-medium text-white/85 transition-colors group-hover:text-white group-hover:underline sm:text-sm">
                         {notice.title[lang]}
@@ -132,74 +131,52 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </Swiper>
             </div>
 
-            {/* Dot indicators + controls */}
-            <div className="flex shrink-0 items-center gap-2 pr-4 sm:pr-5">
-              {/* Dot indicators */}
-              <div className="hidden items-center gap-1 sm:flex">
-                {notices.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => noticeSwiper?.slideToLoop(i)}
-                    className={cn(
-                      "rounded-full transition-all duration-300",
-                      activeNotice === i
-                        ? "bg-primary h-1.5 w-4"
-                        : "h-1 w-1 bg-white/30 hover:bg-white/50",
-                    )}
-                  />
-                ))}
-              </div>
-
-              {/* Prev / Next */}
-              <div className="flex items-center">
-                <button
-                  onClick={() => noticeSwiper?.slidePrev()}
-                  className="rounded p-1 text-white/40 transition-colors hover:text-white"
-                >
-                  <ChevronLeft className="h-3.5 w-3.5" />
-                </button>
-                <button
-                  onClick={() => noticeSwiper?.slideNext()}
-                  className="rounded p-1 text-white/40 transition-colors hover:text-white"
-                >
-                  <ChevronRight className="h-3.5 w-3.5" />
-                </button>
-              </div>
+            {/* Controls: < || > */}
+            <div className="flex shrink-0 items-center pr-3 sm:pr-4">
+              <button
+                onClick={() => noticeSwiper?.slidePrev()}
+                className="rounded p-1 text-white/40 transition-colors hover:text-white"
+              >
+                <ChevronLeft className="h-3.5 w-3.5" />
+              </button>
+              <button
+                onClick={() => {
+                  if (noticePaused) {
+                    noticeSwiper?.autoplay.start();
+                    setNoticePaused(false);
+                  } else {
+                    noticeSwiper?.autoplay.stop();
+                    setNoticePaused(true);
+                  }
+                }}
+                className="rounded p-1 text-white/40 transition-colors hover:text-white"
+              >
+                {noticePaused
+                  ? <Play className="h-3 w-3" />
+                  : <Pause className="h-3 w-3" />}
+              </button>
+              <button
+                onClick={() => noticeSwiper?.slideNext()}
+                className="rounded p-1 text-white/40 transition-colors hover:text-white"
+              >
+                <ChevronRight className="h-3.5 w-3.5" />
+              </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Prev / Next — ghost arrows on left & right edges */}
-      <button
-        onClick={() => heroSwiper?.slidePrev()}
-        className="group absolute top-1/2 left-3 z-20 -translate-y-1/2 rounded-full p-2 opacity-0 transition-all duration-200 hover:bg-white/20 hover:opacity-100 sm:left-4 [&:hover]:opacity-100 [@media(hover:none)]:opacity-100"
-      >
-        <ChevronLeft className="h-5 w-5 text-white/80 drop-shadow" />
-      </button>
-      <button
-        onClick={() => heroSwiper?.slideNext()}
-        className="group absolute top-1/2 right-3 z-20 -translate-y-1/2 rounded-full p-2 opacity-0 transition-all duration-200 hover:bg-white/20 hover:opacity-100 sm:right-4 [&:hover]:opacity-100 [@media(hover:none)]:opacity-100"
-      >
-        <ChevronRight className="h-5 w-5 text-white/80 drop-shadow" />
-      </button>
-
-      {/* Slide indicator — vertical pills, bottom-right */}
-      <div
-        className={cn(
-          "absolute right-4 z-20 flex flex-col items-center gap-1.5 sm:right-6",
-          hasNotices ? "bottom-16 sm:bottom-18" : "bottom-5 sm:bottom-7",
-        )}
-      >
+      {/* Slide indicator — vertical pills, right-center */}
+      <div className="absolute right-4 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center gap-2 sm:right-5">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => heroSwiper?.slideToLoop(index)}
             className={cn(
-              "w-[3px] rounded-full transition-all duration-300",
+              "w-1.5 rounded-full transition-all duration-300",
               activeIndex === index
-                ? "h-7 bg-white shadow-[0_0_6px_rgba(255,255,255,0.6)]"
-                : "h-2.5 bg-white/35 hover:bg-white/65",
+                ? "h-6 bg-white shadow-[0_0_8px_rgba(255,255,255,0.6)]"
+                : "h-1.5 bg-white/40 hover:bg-white/70",
             )}
           />
         ))}

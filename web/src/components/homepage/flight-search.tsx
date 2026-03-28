@@ -51,7 +51,7 @@ export const FlightSearch: React.FC<FlightSearchProps> = ({ className }) => {
   return (
     <section
       className={cn(
-        "relative flex flex-col overflow-hidden bg-white",
+        "relative flex flex-col bg-white",
         className,
       )}
     >

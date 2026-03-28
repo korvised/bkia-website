@@ -1,10 +1,4 @@
-import {
-  Accessibility,
-  ArrowRight,
-  Car,
-  LucideIcon,
-  SquareChartGantt,
-} from "lucide-react";
+import { Accessibility, ArrowRight, BookOpen, Car, LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { Lang, MultilingualText } from "@/types/language";
 import { createCommonI18n } from "@/data/i18n/common";
@@ -16,11 +10,9 @@ interface ServiceCard {
   icon: LucideIcon;
   buttonText: MultilingualText;
   buttonLink: string;
-  bgColor: string;
-  textColor: string;
-  buttonBg: string;
-  buttonHover: string;
-  buttonTextColor?: string;
+  accentClass: string;
+  iconBgClass: string;
+  iconColorClass: string;
 }
 
 const servicesData: ServiceCard[] = [
@@ -33,20 +25,15 @@ const servicesData: ServiceCard[] = [
     },
     description: {
       en: "Step-by-step guide for departures, arrivals and transfers",
-      lo: "ຄຳແນະນຳການຂາອອກ, ຂາເຂົ້າ ແລະ ການຕໍ່ຖ້ວຍບິນ",
+      lo: "ຄຳແນະນຳການຂາອອກ, ຂາເຂົ້າ ແລະ ການຕໍ່ຖ້ຽວບິນ",
       zh: "出发、到达和中转的详细指南",
     },
-    icon: SquareChartGantt,
-    buttonText: {
-      en: "View guide",
-      lo: "ເບິ່ງຄູ່ມື",
-      zh: "查看指南",
-    },
+    icon: BookOpen,
+    buttonText: { en: "View guide", lo: "ເບິ່ງຄູ່ມື", zh: "查看指南" },
     buttonLink: "guides/departures",
-    bgColor: "bg-gradient-to-br from-primary-50 to-primary-100",
-    textColor: "text-primary-900",
-    buttonBg: "bg-primary-600",
-    buttonHover: "hover:bg-primary-700",
+    accentClass: "bg-primary",
+    iconBgClass: "bg-primary/10",
+    iconColorClass: "text-primary",
   },
   {
     id: "transport",
@@ -61,106 +48,103 @@ const servicesData: ServiceCard[] = [
       zh: "出租车、面包车、停车费及区域连接",
     },
     icon: Car,
-    buttonText: {
-      en: "Plan transport",
-      lo: "ວາງແຜນການເດີນທາງ",
-      zh: "规划交通",
-    },
+    buttonText: { en: "Plan transport", lo: "ວາງແຜນການເດີນທາງ", zh: "规划交通" },
     buttonLink: "transports/to-from-airport",
-    bgColor: "bg-gradient-to-br from-danger-400 to-danger-500",
-    textColor: "text-white",
-    buttonBg: "bg-white",
-    buttonHover: "hover:bg-gray-100",
-    buttonTextColor: "text-danger-600",
+    accentClass: "bg-danger",
+    iconBgClass: "bg-danger-50",
+    iconColorClass: "text-danger-500",
   },
   {
     id: "custom-services",
     title: {
-      en: "Custom Services",
+      en: "Special Services",
       lo: "ບໍລິການພິເສດ",
-      zh: "定制服务",
+      zh: "特殊服务",
     },
     description: {
       en: "Dedicated services for pregnancy, mobility assistance, and pets",
-      lo: "ບໍລິການພິເສດສຳລັບແມ່ຍິງຖືພາ, ຜູ້ພິການ ແລະ ສັດລ້ຽງ",
+      lo: "ບໍລິການສຳລັບແມ່ຍິງຖືພາ, ຜູ້ພິການ ແລະ ສັດລ້ຽງ",
       zh: "为孕妇、残障人士和宠物提供的专属服务",
     },
     icon: Accessibility,
-    buttonText: {
-      en: "Explore services",
-      lo: "ສຳຫຼວດບໍລິການ",
-      zh: "探索服务",
-    },
+    buttonText: { en: "Explore services", lo: "ສຳຫຼວດບໍລິການ", zh: "探索服务" },
     buttonLink: "guides/custom-services",
-    bgColor: "bg-white",
-    textColor: "text-gray-900",
-    buttonBg: "bg-primary-600",
-    buttonHover: "hover:bg-primary-700",
+    accentClass: "bg-secondary",
+    iconBgClass: "bg-secondary-50",
+    iconColorClass: "text-secondary-500",
   },
 ];
 
-interface Props {
+const SERVICE_TAG: Record<Lang, string> = {
+  en: "Our Services",
+  lo: "ບໍລິການຂອງເຮົາ",
+  zh: "我们的服务",
+};
+
+interface ServiceCardItemProps {
   lang: Lang;
   service: ServiceCard;
 }
 
-const ServiceCardComponent: React.FC<Props> = ({ lang, service }) => {
-  return (
-    <div
-      className={`${service.bgColor} ${service.textColor} rounded-2xl p-8 shadow-lg`}
-    >
+const ServiceCardItem: React.FC<ServiceCardItemProps> = ({ lang, service }) => (
+  <div className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    {/* Color accent bar */}
+    <div className={`h-1 w-full ${service.accentClass}`} />
+
+    <div className="flex flex-1 flex-col p-6">
       {/* Icon */}
-      <div className="mb-6">
-        <service.icon className="h-12 w-12" />
+      <div
+        className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl ${service.iconBgClass}`}
+      >
+        <service.icon className={`h-6 w-6 ${service.iconColorClass}`} />
       </div>
 
       {/* Title */}
-      <h3 className="mb-4 text-2xl leading-tight font-bold">
+      <h3 className="mb-2 text-lg font-bold text-gray-900">
         {service.title[lang]}
       </h3>
 
       {/* Description */}
-      <p className="mb-6 text-base leading-relaxed opacity-90">
+      <p className="mb-6 flex-1 text-sm leading-relaxed text-gray-500">
         {service.description[lang]}
       </p>
 
-      {/* Button */}
+      {/* CTA */}
       <Link
         href={`/${lang}/${service.buttonLink}`}
-        className={`inline-flex items-center gap-2 rounded-full ${service.buttonBg} ${service.buttonHover} px-6 py-3 text-sm font-semibold ${service.buttonTextColor || "text-white"} transition-colors duration-200`}
+        className={`inline-flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 group-hover:gap-3 ${service.iconColorClass}`}
       >
         {service.buttonText[lang]}
         <ArrowRight className="h-4 w-4" />
       </Link>
     </div>
-  );
-};
+  </div>
+);
 
-interface ServiceCardComponentProps {
+interface UsefulServicesSectionProps {
   lang: Lang;
 }
 
-export const UsefulServicesSection = ({ lang }: ServiceCardComponentProps) => {
+export const UsefulServicesSection = ({ lang }: UsefulServicesSectionProps) => {
   const { homepage: t } = createCommonI18n(lang);
 
   return (
-    <section className="relative w-full bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 py-16 md:py-24">
+    <section className="w-full bg-gray-50 py-14 md:py-20">
       <div className="container">
-        {/* Section Title */}
-        <div className="mb-12 text-center">
+        {/* Section Header */}
+        <div className="mb-10 sm:mb-12">
+          <span className="mb-3 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary">
+            {SERVICE_TAG[lang]}
+          </span>
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
             {t.usefulServicesTitle}
           </h2>
         </div>
 
-        {/* Service Cards Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* Cards */}
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {servicesData.map((service) => (
-            <ServiceCardComponent
-              key={service.id}
-              lang={lang}
-              service={service}
-            />
+            <ServiceCardItem key={service.id} lang={lang} service={service} />
           ))}
         </div>
       </div>

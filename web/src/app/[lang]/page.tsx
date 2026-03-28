@@ -1,5 +1,6 @@
 import { Lang } from "@/types/language";
 import {
+  FeedbackSection,
   FlightSearch,
   HeroSection,
   NewsSection,
@@ -36,9 +37,9 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <div className="w-full">
       {/* Full-screen hero + search = 100svh */}
-      <section className="flex h-[100svh] flex-col overflow-hidden md:h-screen">
-        {/* Hero slideshow with notice ticker overlay */}
-        <div className="h-[62vh] shrink-0 sm:h-[65vh]">
+      <section className="flex h-[100svh] flex-col md:h-screen">
+        {/* Hero slideshow — needs overflow-hidden to contain Swiper slides */}
+        <div className="h-[62vh] shrink-0 overflow-hidden sm:h-[65vh]">
           <HeroSection banners={banners} notices={notices} className="h-full" />
         </div>
 
@@ -48,6 +49,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
       <UsefulServicesSection lang={lang as Lang} />
       <NewsSection lang={lang as Lang} news={news} />
+      <FeedbackSection lang={lang as Lang} />
     </div>
   );
 }
