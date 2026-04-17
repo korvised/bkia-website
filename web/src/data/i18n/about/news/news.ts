@@ -126,6 +126,18 @@ export const news = {
     zh: "请尝试调整搜索或浏览所有新闻。",
   },
 
+  // Gallery
+  photoGallery: {
+    en: "Photo Gallery",
+    lo: "ຄັງຮູບພາບ",
+    zh: "图片集",
+  },
+  photos: {
+    en: "photos",
+    lo: "ຮູບພາບ",
+    zh: "张照片",
+  },
+
   // Detail page
   backToNews: {
     en: "Back to news",

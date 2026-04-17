@@ -9,11 +9,11 @@ import {
   Patch,
   Post,
   Query,
-  UploadedFile,
+  UploadedFiles,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { Permissions, Roles } from '@/common/decorators';
 import { JwtAuthGuard, PermissionsGuard, RolesGuard } from '@/common/guards';
 import { imageFileFilter } from '@/common/filters';
@@ -90,20 +90,34 @@ export class NewsController {
   @Permissions(NEWS.CREATE)
   @Post()
   @UseInterceptors(
-    FileInterceptor('coverImage', {
-      limits: { fileSize: FILE_SIZES.LARGE_IMAGE },
-      fileFilter: imageFileFilter,
-    }),
+    FileFieldsInterceptor(
+      [
+        { name: 'coverImage', maxCount: 1 },
+        { name: 'images', maxCount: 10 },
+      ],
+      {
+        limits: { fileSize: FILE_SIZES.LARGE_IMAGE },
+        fileFilter: imageFileFilter,
+      },
+    ),
   )
   async create(
     @Body() dto: CreateNewsDto,
-    @UploadedFile() coverImage?: Express.Multer.File,
+    @UploadedFiles()
+    files?: {
+      coverImage?: Express.Multer.File[];
+      images?: Express.Multer.File[];
+    },
   ) {
-    if (!coverImage) {
+    if (!files?.coverImage?.[0]) {
       throw new BadRequestException('Cover image is required');
     }
 
-    return await this.service.create(dto, coverImage);
+    return await this.service.create(
+      dto,
+      files.coverImage[0],
+      files.images ?? [],
+    );
   }
 
   /**
@@ -115,17 +129,32 @@ export class NewsController {
   @Permissions(NEWS.UPDATE)
   @Patch(':id')
   @UseInterceptors(
-    FileInterceptor('coverImage', {
-      limits: { fileSize: FILE_SIZES.LARGE_IMAGE },
-      fileFilter: imageFileFilter,
-    }),
+    FileFieldsInterceptor(
+      [
+        { name: 'coverImage', maxCount: 1 },
+        { name: 'images', maxCount: 10 },
+      ],
+      {
+        limits: { fileSize: FILE_SIZES.LARGE_IMAGE },
+        fileFilter: imageFileFilter,
+      },
+    ),
   )
   async update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() dto: UpdateNewsDto,
-    @UploadedFile() coverImage?: Express.Multer.File,
+    @UploadedFiles()
+    files?: {
+      coverImage?: Express.Multer.File[];
+      images?: Express.Multer.File[];
+    },
   ) {
-    return await this.service.update(id, dto, coverImage);
+    return await this.service.update(
+      id,
+      dto,
+      files?.coverImage?.[0],
+      files?.images ?? [],
+    );
   }
 
   /**

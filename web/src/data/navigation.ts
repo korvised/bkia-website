@@ -104,7 +104,7 @@ export const navigation: NavItem[] = [
     ],
     featuredContent: {
       image:
-        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/navbar/flight-status.png",
+        "https://bkia-website.s3.ap-southeast-7.amazonaws.com/navbar/flight-status.jpg",
       title: {
         en: "Real-time Flight Status",
         lo: "ກວດສອບສະຖານະຖ່ຽວບິນ",

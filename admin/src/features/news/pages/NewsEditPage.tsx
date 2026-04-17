@@ -23,6 +23,11 @@ function buildFormData(payload: INewsSubmitPayload): FormData {
     fd.append("metaDescription", JSON.stringify(payload.metaDescription));
   if (payload.coverImageFile)
     fd.append("coverImage", payload.coverImageFile);
+  // Always send keepImageIds so server knows to rebuild gallery
+  fd.append("keepImageIds", JSON.stringify(payload.existingImages.map((img) => img.id)));
+  for (const file of payload.galleryFiles) {
+    fd.append("images", file);
+  }
   return fd;
 }
 

@@ -49,6 +49,8 @@ const emptyForm = (): INewsForm => ({
   tags: [],
   metaDescription: { en: "", lo: "", zh: "" },
   coverImageFile: null,
+  galleryFiles: [],
+  existingImages: [],
 });
 
 // ─── Props ──────────────────────────────────────────────────────────────────
@@ -87,6 +89,7 @@ export function NewsForm({
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const galleryInputRef = useRef<HTMLInputElement>(null);
 
   // Pre-populate when editing
   useEffect(() => {
@@ -106,6 +109,8 @@ export function NewsForm({
         tags: defaultValues.tags ?? [],
         metaDescription: defaultValues.metaDescription ?? { en: "", lo: "", zh: "" },
         coverImageFile: null,
+        existingImages: defaultValues.images ?? [],
+        galleryFiles: [],
       });
       setCoverPreview(defaultValues.coverImage?.path ? asset(defaultValues.coverImage.path) : null);
     } else {
@@ -163,6 +168,23 @@ export function NewsForm({
     }));
   };
 
+  const handleGalleryFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const picked = Array.from(e.target.files ?? []);
+    if (!picked.length) return;
+    setForm((prev) => {
+      const current = prev.existingImages.length + prev.galleryFiles.length;
+      const allowed = Math.max(0, 10 - current);
+      return { ...prev, galleryFiles: [...prev.galleryFiles, ...picked.slice(0, allowed)] };
+    });
+    if (galleryInputRef.current) galleryInputRef.current.value = "";
+  };
+
+  const removeGalleryFile = (i: number) =>
+    setForm((prev) => ({ ...prev, galleryFiles: prev.galleryFiles.filter((_, j) => j !== i) }));
+
+  const removeExistingImage = (id: string) =>
+    setForm((prev) => ({ ...prev, existingImages: prev.existingImages.filter((img) => img.id !== id) }));
+
   const validate = (): boolean => {
     const errs: Record<string, string> = {};
     if (!form.slug.trim()) errs.slug = "Slug is required.";
@@ -193,6 +215,8 @@ export function NewsForm({
       tags: form.tags,
       metaDescription: hasMeta ? form.metaDescription : null,
       coverImageFile: form.coverImageFile,
+      galleryFiles: form.galleryFiles,
+      existingImages: form.existingImages,
     });
   };
 
@@ -267,6 +291,97 @@ export function NewsForm({
             )}
           </div>
         </div>
+      </div>
+
+      {/* ── Gallery Images ── */}
+      <div className="rounded-xl border border-gray-200 bg-white p-6">
+        <h3 className="mb-1 text-sm font-semibold uppercase tracking-wide text-gray-700">
+          Gallery Images{" "}
+          <span className="font-normal normal-case text-gray-400">(optional, max 10)</span>
+        </h3>
+        <p className="mb-4 text-xs text-gray-400">
+          Accepted: JPG, PNG, WebP. Max 10 MB each.
+        </p>
+
+        {/* Existing saved images (edit mode) */}
+        {form.existingImages.length > 0 && (
+          <div className="mb-4">
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500">
+              Saved images
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {form.existingImages.map((img) => (
+                <div key={img.id} className="relative h-20 w-20 shrink-0">
+                  <img
+                    src={asset(img.path)}
+                    alt={img.originalName}
+                    className="h-full w-full rounded-lg object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeExistingImage(img.id)}
+                    className="absolute -right-1.5 -top-1.5 rounded-full bg-red-500 p-0.5 text-white shadow transition-colors hover:bg-red-600"
+                    aria-label={`Remove ${img.originalName}`}
+                  >
+                    <LuX className="h-3 w-3" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Staged new files with previews */}
+        {form.galleryFiles.length > 0 && (
+          <div className="mb-4">
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500">
+              New images to upload
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {form.galleryFiles.map((file, i) => (
+                <div key={i} className="relative h-20 w-20 shrink-0">
+                  <img
+                    src={URL.createObjectURL(file)}
+                    alt={file.name}
+                    className="h-full w-full rounded-lg object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeGalleryFile(i)}
+                    className="absolute -right-1.5 -top-1.5 rounded-full bg-gray-700 p-0.5 text-white shadow transition-colors hover:bg-gray-900"
+                    aria-label={`Remove ${file.name}`}
+                  >
+                    <LuX className="h-3 w-3" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Add images button */}
+        {form.existingImages.length + form.galleryFiles.length < 10 ? (
+          <>
+            <input
+              ref={galleryInputRef}
+              id="gallery-images-input"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              multiple
+              onChange={handleGalleryFilesChange}
+              className="hidden"
+            />
+            <label
+              htmlFor="gallery-images-input"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:border-primary hover:bg-primary/5 hover:text-primary"
+            >
+              <LuPlus className="h-4 w-4" />
+              Add images ({form.existingImages.length + form.galleryFiles.length}/10)
+            </label>
+          </>
+        ) : (
+          <p className="text-xs text-gray-400">Maximum of 10 images reached.</p>
+        )}
       </div>
 
       {/* ── Slug ── */}

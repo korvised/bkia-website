@@ -6,7 +6,9 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  ManyToMany,
   JoinColumn,
+  JoinTable,
 } from 'typeorm';
 import { NewsCategory } from '@/types/enum';
 import { File } from './File.entity';
@@ -29,6 +31,15 @@ export class News {
   @ManyToOne(() => File, { nullable: false, onDelete: 'RESTRICT' })
   @JoinColumn({ name: 'coverImageId' })
   coverImage: File;
+
+  // Optional gallery images (up to 10)
+  @ManyToMany(() => File, { cascade: ['insert'], eager: false })
+  @JoinTable({
+    name: 'news_images',
+    joinColumn: { name: 'newsId', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'fileId', referencedColumnName: 'id' },
+  })
+  images: File[];
 
   // Multilingual title: { en: "...", lo: "...", zh: "..." }
   @Column({ type: 'jsonb' })

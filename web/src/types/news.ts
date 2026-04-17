@@ -16,6 +16,7 @@ export interface INews {
   id: string;
   slug: string;
   coverImage: IFile;
+  images?: IFile[];
   title: MultilingualText;
   excerpt: MultilingualText;
   content: MultilingualText;

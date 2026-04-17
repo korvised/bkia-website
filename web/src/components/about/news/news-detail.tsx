@@ -1,5 +1,5 @@
-// /components/news/news-detail.tsx - Refactored version
 import { ArrowLeft, Calendar, Eye, Tag, User } from "lucide-react";
+import { NewsGallery } from "./news-gallery";
 import Link from "next/link";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
@@ -88,7 +88,7 @@ export function NewsDetail({ lang, news }: NewsDetailProps) {
       {/* Content section */}
       <section className="bg-white py-10">
         <div className="container">
-          <div className="mx-auto max-w-3xl">
+          <div>
             {/* Title */}
             <h1 className="mb-6 text-3xl font-bold text-gray-900 lg:text-4xl">
               {news.title[lang]}
@@ -96,17 +96,26 @@ export function NewsDetail({ lang, news }: NewsDetailProps) {
 
             {/* Excerpt callout */}
             <div className="mb-8 rounded-r-lg border-l-4 border-[#00AAAC] bg-[#f0fbfc] px-6 py-4">
-              <p className="text-lg leading-relaxed text-gray-700">
+              <p className="text-lg leading-relaxed text-gray-700 italic">
                 {news.excerpt[lang]}
               </p>
             </div>
 
             {/* Main Content (Markdown) */}
-            <article className="prose prose-gray prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-h1:mt-8 prose-h1:mb-4 prose-h1:text-3xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:text-2xl prose-h3:mt-6 prose-h3:mb-3 prose-h3:text-xl prose-p:mb-4 prose-p:leading-relaxed prose-p:text-gray-700 prose-a:font-medium prose-a:no-underline prose-a:text-[#00AAAC] hover:prose-a:underline prose-strong:font-semibold prose-strong:text-gray-900 prose-ol:my-4 prose-ul:my-4 prose-li:my-2 prose-li:text-gray-700 prose-blockquote:my-6 prose-blockquote:border-l-4 prose-blockquote:border-[#00AAAC] prose-blockquote:bg-[#f0fbfc] prose-blockquote:px-4 prose-blockquote:py-2 prose-code:rounded prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:font-mono prose-code:text-sm prose-code:text-[#00AAAC] prose-img:my-8 prose-img:rounded-xl prose-pre:rounded-xl prose-pre:bg-gray-900 prose-pre:p-4 prose-pre:text-gray-100">
+            <article className="news-content">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {news.content[lang]}
               </ReactMarkdown>
             </article>
+
+            {/* Photo Gallery (after content) */}
+            {news.images && news.images.length > 0 && (
+              <NewsGallery
+                images={news.images}
+                title={t.photoGallery}
+                photosLabel={t.photos}
+              />
+            )}
 
             {/* Tags */}
             {news.tags && news.tags.length > 0 && (
@@ -127,17 +136,6 @@ export function NewsDetail({ lang, news }: NewsDetailProps) {
                 </div>
               </div>
             )}
-
-            {/* Footer link */}
-            <div className="mt-10 border-t border-gray-100 pt-8">
-              <Link
-                href={`/${lang}/about/news`}
-                className="group inline-flex items-center gap-2 text-sm font-medium text-[#00AAAC] transition-colors hover:text-[#008e90]"
-              >
-                <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-                {t.viewAllNews}
-              </Link>
-            </div>
           </div>
         </div>
       </section>

@@ -23,7 +23,7 @@ export class NewsService {
   async findOne(id: string) {
     const news = await this.newsRepo.findOne({
       where: { id },
-      relations: { coverImage: true },
+      relations: { coverImage: true, images: true },
     });
 
     if (!news) throw new NotFoundException('News not found');
@@ -36,7 +36,7 @@ export class NewsService {
   async findBySlug(slug: string) {
     const news = await this.newsRepo.findOne({
       where: { slug },
-      relations: { coverImage: true },
+      relations: { coverImage: true, images: true },
     });
 
     if (!news) throw new NotFoundException('News not found');
@@ -63,7 +63,8 @@ export class NewsService {
 
     const qb = this.newsRepo
       .createQueryBuilder('news')
-      .leftJoinAndSelect('news.coverImage', 'coverImage');
+      .leftJoinAndSelect('news.coverImage', 'coverImage')
+      .leftJoinAndSelect('news.images', 'images');
 
     // Search across all multilingual fields
     if (search?.trim()) {
@@ -159,7 +160,8 @@ export class NewsService {
 
     const qb = this.newsRepo
       .createQueryBuilder('news')
-      .leftJoinAndSelect('news.coverImage', 'coverImage');
+      .leftJoinAndSelect('news.coverImage', 'coverImage')
+      .leftJoinAndSelect('news.images', 'images');
 
     // Only published news
     qb.andWhere('news.isPublished = :isPublished', { isPublished: true });
@@ -233,7 +235,7 @@ export class NewsService {
         isPublished: true,
         isFeatured: true,
       },
-      relations: { coverImage: true },
+      relations: { coverImage: true, images: true },
       order: { publishDate: 'DESC' },
       take: limit,
     });
@@ -254,6 +256,7 @@ export class NewsService {
   async create(
     dto: CreateNewsDto,
     coverImage: Express.Multer.File,
+    imageFiles: Express.Multer.File[] = [],
   ): Promise<News> {
     // Check if slug already exists
     const existing = await this.newsRepo.findOne({
@@ -288,6 +291,16 @@ export class NewsService {
     // Save to get ID for file upload path
     const saved = await this.newsRepo.save(news);
 
+    // Upload gallery images if provided
+    if (imageFiles.length > 0) {
+      saved.images = await Promise.all(
+        imageFiles.map((f) =>
+          this.fileService.uploadFile(f, `news/${saved.id}/gallery`),
+        ),
+      );
+      await this.newsRepo.save(saved);
+    }
+
     return this.findOne(saved.id);
   }
 
@@ -298,6 +311,7 @@ export class NewsService {
     id: string,
     dto: UpdateNewsDto,
     coverImage?: Express.Multer.File,
+    imageFiles: Express.Multer.File[] = [],
   ) {
     const news = await this.findOne(id);
 
@@ -333,7 +347,34 @@ export class NewsService {
     if (dto.metaDescription !== undefined)
       news.metaDescription = dto.metaDescription ?? null;
 
-    return await this.newsRepo.save(news);
+    // Gallery update logic
+    if (dto.keepImageIds !== undefined) {
+      // keepImageIds present → rebuild gallery: keep specified IDs + add new uploads
+      const keepIds: string[] = JSON.parse(dto.keepImageIds);
+      const keptImages = (news.images ?? []).filter((img) =>
+        keepIds.includes(img.id),
+      );
+      const newImages =
+        imageFiles.length > 0
+          ? await Promise.all(
+              imageFiles.map((f) =>
+                this.fileService.uploadFile(f, `news/${news.id}/gallery`),
+              ),
+            )
+          : [];
+      news.images = [...keptImages, ...newImages];
+    } else if (imageFiles.length > 0) {
+      // No keepImageIds but new files present → append to existing gallery
+      const newImages = await Promise.all(
+        imageFiles.map((f) =>
+          this.fileService.uploadFile(f, `news/${news.id}/gallery`),
+        ),
+      );
+      news.images = [...(news.images ?? []), ...newImages];
+    }
+
+    await this.newsRepo.save(news);
+    return this.findOne(news.id);
   }
 
   /**

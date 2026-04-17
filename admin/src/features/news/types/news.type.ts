@@ -11,6 +11,7 @@ export interface INews {
   id: string;
   slug: string;
   coverImage: IFile;
+  images?: IFile[];
   title: IMultilingualText;
   excerpt: IMultilingualText;
   content: IMultilingualText;
@@ -60,6 +61,8 @@ export interface INewsForm {
   tags: IMultilingualText[];
   metaDescription: IMultilingualText;
   coverImageFile: File | null;
+  galleryFiles: File[];
+  existingImages: IFile[];
 }
 
 export interface INewsSubmitPayload {
@@ -75,4 +78,6 @@ export interface INewsSubmitPayload {
   tags: IMultilingualText[];
   metaDescription?: IMultilingualText | null;
   coverImageFile: File | null;
+  galleryFiles: File[];
+  existingImages: IFile[];
 }
