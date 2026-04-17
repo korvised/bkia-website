@@ -61,6 +61,9 @@ export function AnimatedGlobe() {
         className="h-full w-full"
         preserveAspectRatio="xMaxYMid slice"
       >
+        {/* ── Mobile shift: nudge map right so BOR sits in visible right area ── */}
+        <g className="max-sm:[transform:translate(160px,-40px)]">
+
         {/* ── Graticule ────────────────────────────────────────────────── */}
         <g stroke="#00AAAC" strokeWidth="0.3" opacity="0.08" fill="none">
           {PARALLELS.map((lat) => (
@@ -222,6 +225,9 @@ export function AnimatedGlobe() {
           fontFamily="ui-monospace, monospace" fontWeight="700" opacity="0.9" letterSpacing="0.05em">
           BOR
         </text>
+
+        {/* close mobile-shift wrapper */}
+        </g>
       </svg>
     </div>
   );

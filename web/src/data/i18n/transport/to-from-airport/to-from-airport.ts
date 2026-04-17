@@ -113,12 +113,12 @@ export const toFromAirport = {
   // Advance booking
   bookingTitle: {
     en: "Advance Booking",
-    lo: "ການຈອງລວງໜ້າ",
+    lo: "ການຈອງລ່ວງໜ້າ",
     zh: "提前预约",
   },
   bookingDesc: {
     en: "Book in advance via phone or WhatsApp for scheduled pick-up or drop-off.",
-    lo: "ທ່ານສາມາດໂທຈອງລົດລວງໜ້າ ຫຼື ຕິດຕໍ່ທາງ WhatsApp ເພື່ອນັດໝາຍເວລາຮັບ-ສົ່ງ.",
+    lo: "ທ່ານສາມາດໂທຈອງລົດລ່ວງໜ້າ ຫຼື ຕິດຕໍ່ທາງ WhatsApp ເພື່ອນັດໝາຍເວລາຮັບ-ສົ່ງ.",
     zh: "可通过电话或 WhatsApp 提前预约，安排特定时间的接送服务。",
   },
   phone: {

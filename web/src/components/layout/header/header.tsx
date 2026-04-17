@@ -382,9 +382,6 @@ export function Header() {
 
                                   {/* Text overlay */}
                                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                                    <span className="mb-1 block text-[10px] font-bold uppercase tracking-widest text-[#4dd8da]">
-                                      {item.label[lang]}
-                                    </span>
                                     <h3 className="text-sm font-bold leading-snug text-white">
                                       {item.featuredContent.title[lang]}
                                     </h3>
