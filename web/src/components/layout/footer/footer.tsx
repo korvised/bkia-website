@@ -35,6 +35,7 @@ const socialLinks = [
 export default async function Footer({ lang }: FooterProps) {
   const currentYear = new Date().getFullYear();
   const { footer: t } = createLayoutI18n(lang);
+  const appVersion = process.env.NEXT_PUBLIC_APP_VERSION ?? process.env.APP_VERSION;
 
   return (
     <footer className="bg-primary-600 text-white">
@@ -294,31 +295,14 @@ export default async function Footer({ lang }: FooterProps) {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             {/* Copyright */}
             <p className="text-center text-sm opacity-80">
-              © {currentYear} Bokeo International Airport.{" "}
-              {t.allRightsReserved}.
+              © {currentYear} Bokeo International Airport Co., Ltd. All Rights Reserved.
             </p>
 
-            {/* Legal Links */}
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
-              <Link
-                href={`/${lang}/legal/privacy`}
-                className="opacity-80 transition-opacity hover:opacity-100"
-              >
-                {t.privacyPolicy}
-              </Link>
-              <Link
-                href={`/${lang}/legal/terms`}
-                className="opacity-80 transition-opacity hover:opacity-100"
-              >
-                {t.termsOfUse}
-              </Link>
-              <Link
-                href={`/${lang}/legal/accessibility`}
-                className="opacity-80 transition-opacity hover:opacity-100"
-              >
-                {t.accessibility}
-              </Link>
-            </div>
+            {/* Version */}
+            {appVersion && (
+              <p className="text-sm opacity-40">{appVersion}</p>
+            )}
+
           </div>
         </div>
       </div>

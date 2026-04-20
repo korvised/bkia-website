@@ -65,6 +65,12 @@ export const PERMISSIONS = {
     UPDATE: 'feedback:update',
     DELETE: 'feedback:delete',
   },
+  CAREER: {
+    READ: 'career:read',
+    CREATE: 'career:create',
+    UPDATE: 'career:update',
+    DELETE: 'career:delete',
+  },
 } as const;
 
 // This type allows you to use the values in your code safely

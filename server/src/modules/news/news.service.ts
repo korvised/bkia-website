@@ -351,9 +351,10 @@ export class NewsService {
     if (dto.keepImageIds !== undefined) {
       // keepImageIds present → rebuild gallery: keep specified IDs + add new uploads
       const keepIds: string[] = JSON.parse(dto.keepImageIds);
-      const keptImages = (news.images ?? []).filter((img) =>
-        keepIds.includes(img.id),
-      );
+      // Preserve the ORDER of keepIds (admin may have reordered the gallery)
+      const keptImages = keepIds
+        .map((id) => (news.images ?? []).find((img) => img.id === id))
+        .filter((img): img is NonNullable<typeof img> => !!img);
       const newImages =
         imageFiles.length > 0
           ? await Promise.all(

@@ -94,6 +94,12 @@ const DEFAULT_PERMISSIONS: PermissionSeed[] = [
   { name: 'Create Feedback', slug: PermissionSlug.FEEDBACK_CREATE, description: 'Create feedback entries' },
   { name: 'Update Feedback', slug: PermissionSlug.FEEDBACK_UPDATE, description: 'Update feedback status' },
   { name: 'Delete Feedback', slug: PermissionSlug.FEEDBACK_DELETE, description: 'Delete feedback submissions' },
+
+  // Career
+  { name: 'View Careers', slug: PermissionSlug.CAREER_READ, description: 'View job posts and activity gallery' },
+  { name: 'Create Career', slug: PermissionSlug.CAREER_CREATE, description: 'Create job posts and upload activity photos' },
+  { name: 'Update Career', slug: PermissionSlug.CAREER_UPDATE, description: 'Update job posts and activity photos' },
+  { name: 'Delete Career', slug: PermissionSlug.CAREER_DELETE, description: 'Delete job posts and activity photos' },
 ];
 
 @Injectable()

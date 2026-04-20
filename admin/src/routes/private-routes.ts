@@ -12,6 +12,7 @@ import { permissionRoutes } from "@/features/permission/routes.ts";
 import { feedbackRoutes } from "@/features/feedback/routes.ts";
 import { lostFoundRoutes } from "@/features/lost-found/routes.ts";
 import { noticeRoutes } from "@/features/notice/routes.ts";
+import { careersRoutes } from "@/features/careers/routes.ts";
 import { newsRoutes } from "@/features/news/routes.ts";
 
 export const privateRoutes: IRoute[] = [
@@ -27,6 +28,7 @@ export const privateRoutes: IRoute[] = [
     ...feedbackRoutes,
     ...lostFoundRoutes,
     ...noticeRoutes,
+    ...careersRoutes,
     ...newsRoutes,
     ...auctionRoutes,
     ...bannerRoutes,

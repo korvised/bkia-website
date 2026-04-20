@@ -59,13 +59,6 @@ export function NewsList({
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              {article.isFeatured && (
-                <div className="absolute top-3 left-3">
-                  <span className="inline-flex items-center rounded-full bg-[#00AAAC] px-3 py-1 text-xs font-semibold text-white">
-                    {t.featuredNews}
-                  </span>
-                </div>
-              )}
             </div>
 
             {/* Content */}

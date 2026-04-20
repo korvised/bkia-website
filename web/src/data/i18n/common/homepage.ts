@@ -59,6 +59,43 @@ export const homepage = {
     lo: "ຂ່າວເດັ່ນ",
     zh: "精选",
   },
+
+  // Jobs Section
+  weAreHiringTag: {
+    en: "Career",
+    lo: "ຮ່ວມງານກັບພວກເຮົາ",
+    zh: "加入我们",
+  },
+  openPositionsTitle: {
+    en: "Open Positions",
+    lo: "ຕໍາແໜ່ງທີ່ເປີດຮັບ",
+    zh: "招聘职位",
+  },
+  viewAllPositions: {
+    en: "View all positions",
+    lo: "ເບິ່ງທຸກຕໍາແໜ່ງ",
+    zh: "查看全部职位",
+  },
+  vacancy: {
+    en: "vacancy",
+    lo: "ຕໍາແໜ່ງ",
+    zh: "名额",
+  },
+  vacancies: {
+    en: "vacancies",
+    lo: "ຕໍາແໜ່ງ",
+    zh: "名额",
+  },
+  closesOn: {
+    en: "Closes",
+    lo: "ປິດຮັບ",
+    zh: "截止",
+  },
+  applyNow: {
+    en: "View details",
+    lo: "ເບິ່ງລາຍລະອຽດ",
+    zh: "查看详情",
+  },
 } as const;
 
 export type HomepageKey = keyof typeof homepage;

@@ -50,13 +50,6 @@ export function NewsDetail({ lang, news }: NewsDetailProps) {
               className="object-cover"
               priority
             />
-            {news.isFeatured && (
-              <div className="absolute top-4 left-4">
-                <span className="inline-flex items-center rounded-full bg-[#00AAAC] px-3 py-1.5 text-xs font-semibold text-white">
-                  {t.featuredNews}
-                </span>
-              </div>
-            )}
           </div>
 
           {/* Meta chips */}

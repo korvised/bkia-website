@@ -1,7 +1,7 @@
 import { Fragment, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { LuMenu, LuUser, LuSettings, LuLogOut } from "react-icons/lu";
+import { LuMenu, LuUser, LuLogOut } from "react-icons/lu";
 import { cn } from "@/lib";
 import { CurrentUserService } from "@/services";
 import type { ICurrentUser } from "@/types";
@@ -110,14 +110,14 @@ export const Header: React.FC<HeaderProps> = ({
                 </Fragment>
               ) : (
                 <Fragment>
-                  <span className="text-sm leading-tight font-medium text-gray-900">
-                    {userInfo.displayName}
-                  </span>
-                  {userInfo.email && (
+                  {userInfo.employeeId && (
                     <span className="text-xs leading-tight text-gray-500">
-                      {userInfo.email}
+                      {userInfo.employeeId}
                     </span>
                   )}
+                  <span className="text-sm leading-tight font-medium text-gray-900">
+                    {userInfo.fullName || userInfo.displayName}
+                  </span>
                 </Fragment>
               )}
             </div>
@@ -181,21 +181,6 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <LuUser className="h-4 w-4 text-gray-500" />
                     <span>My Profile</span>
-                  </Link>
-                )}
-              </MenuItem>
-
-              <MenuItem>
-                {({ focus }) => (
-                  <Link
-                    to="/profile/setting"
-                    className={cn(
-                      "flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm text-gray-700",
-                      focus && "bg-gray-100",
-                    )}
-                  >
-                    <LuSettings className="h-4 w-4 text-gray-500" />
-                    <span>Settings</span>
                   </Link>
                 )}
               </MenuItem>

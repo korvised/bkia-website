@@ -11,6 +11,7 @@ import { CounterModule } from '@/modules/counter';
 import { FeedbackModule } from '@/modules/feedback';
 import { FlightModule } from '@/modules/flight';
 import { LostFoundModule } from '@/modules/lost-found';
+import { CareerModule } from '@/modules/career';
 import { NewsModule } from '@/modules/news';
 import { NoticeModule } from '@/modules/notice';
 import { PermissionModule } from '@/modules/permission';
@@ -33,6 +34,7 @@ import { AppService } from './app.service';
     AirportModule,
     AuctionModule,
     BannerModule,
+    CareerModule,
     AuthModule,
     CounterModule,
     FeedbackModule,

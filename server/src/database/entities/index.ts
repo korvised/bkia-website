@@ -1,5 +1,7 @@
 export { Airline } from './Airline.entity';
 export { Airport } from './Airport.entity';
+export { CareerActivity } from './CareerActivity.entity';
+export { JobPost } from './JobPost.entity';
 export { Auction } from './Auction.entity';
 export { AuctionDocument } from './AuctionDocument.entity';
 export { Banner } from './Banner.entity';

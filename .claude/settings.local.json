@@ -12,7 +12,8 @@
       "Bash(xargs grep -l \"ProtectedRoute\")",
       "Bash(grep -n \"fmtDate\" \"D:\\\\projects\\\\bkia-website\\\\web\\\\src\\\\lib\"*.ts)",
       "Bash(find D:projectsbkia-websiteadminsrcfeatureslost-foundhooks -type f -name *.ts*)",
-      "Bash(grep -l \"scroll\\\\|animation\\\\|reveal\" D:/projects/bkia-website/web/src/app/[lang]/about/history/page.tsx)"
+      "Bash(grep -l \"scroll\\\\|animation\\\\|reveal\" D:/projects/bkia-website/web/src/app/[lang]/about/history/page.tsx)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(k,v\\) for k,v in {**d.get\\('dependencies',{}\\),**d.get\\('devDependencies',{}\\)}.items\\(\\) if any\\(x in k.lower\\(\\) for x in ['drag','dnd','sort']\\)]\")"
     ]
   }
 }

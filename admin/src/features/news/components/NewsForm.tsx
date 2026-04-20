@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import {
   LuEye,
+  LuGripVertical,
   LuImage,
   LuPencilLine,
   LuPlus,
+  LuTrash2,
   LuX,
 } from "react-icons/lu";
 import ReactMarkdown from "react-markdown";
@@ -11,6 +13,7 @@ import remarkGfm from "remark-gfm";
 import { Input, Select } from "@/components/ui";
 import { asset, cn } from "@/lib";
 import { NewsCategory } from "@/types";
+import type { IFile } from "@/types";
 import type {
   IMultilingualText,
   INews,
@@ -73,6 +76,12 @@ function slugify(text: string): string {
     .replace(/-+/g, "-");
 }
 
+// ─── Unified gallery entry (existing saved image OR new local file) ──────────
+
+type GalleryEntry =
+  | { kind: "existing"; data: IFile }
+  | { kind: "new"; data: File; preview: string };
+
 // ─── Component ──────────────────────────────────────────────────────────────
 
 export function NewsForm({
@@ -88,8 +97,13 @@ export function NewsForm({
   const [tagLang, setTagLang] = useState<"en" | "lo" | "zh">("en");
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  // Unified ordered gallery (existing + new files merged for drag-to-reorder)
+  const [galleryOrder, setGalleryOrder] = useState<GalleryEntry[]>([]);
+  const [draggingId, setDraggingId] = useState<string | null>(null);
+  const [recentlyMovedId, setRecentlyMovedId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
+  const dragIndex = useRef<number | null>(null);
 
   // Pre-populate when editing
   useEffect(() => {
@@ -112,9 +126,13 @@ export function NewsForm({
         existingImages: defaultValues.images ?? [],
         galleryFiles: [],
       });
+      setGalleryOrder(
+        (defaultValues.images ?? []).map((img) => ({ kind: "existing", data: img })),
+      );
       setCoverPreview(defaultValues.coverImage?.path ? asset(defaultValues.coverImage.path) : null);
     } else {
       setForm(emptyForm());
+      setGalleryOrder([]);
       setCoverPreview(null);
     }
   }, [defaultValues]);
@@ -171,19 +189,45 @@ export function NewsForm({
   const handleGalleryFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const picked = Array.from(e.target.files ?? []);
     if (!picked.length) return;
-    setForm((prev) => {
-      const current = prev.existingImages.length + prev.galleryFiles.length;
-      const allowed = Math.max(0, 10 - current);
-      return { ...prev, galleryFiles: [...prev.galleryFiles, ...picked.slice(0, allowed)] };
-    });
+    const allowed = Math.max(0, 20 - galleryOrder.length);
+    const newEntries: GalleryEntry[] = picked.slice(0, allowed).map((file) => ({
+      kind: "new",
+      data: file,
+      preview: URL.createObjectURL(file),
+    }));
+    setGalleryOrder((prev) => [...prev, ...newEntries]);
     if (galleryInputRef.current) galleryInputRef.current.value = "";
   };
 
-  const removeGalleryFile = (i: number) =>
-    setForm((prev) => ({ ...prev, galleryFiles: prev.galleryFiles.filter((_, j) => j !== i) }));
+  const removeGalleryEntry = (i: number) =>
+    setGalleryOrder((prev) => prev.filter((_, j) => j !== i));
 
-  const removeExistingImage = (id: string) =>
-    setForm((prev) => ({ ...prev, existingImages: prev.existingImages.filter((img) => img.id !== id) }));
+  // Stable ID for each gallery entry (blob URL for new files, DB id for existing)
+  const getEntryId = (entry: GalleryEntry) =>
+    entry.kind === "existing" ? entry.data.id : entry.preview;
+
+  // Drag-to-reorder handlers
+  const handleGalleryDragStart = (i: number) => {
+    dragIndex.current = i;
+    setDraggingId(getEntryId(galleryOrder[i]));
+  };
+  const handleGalleryDragEnter = (i: number) => {
+    if (dragIndex.current === null || dragIndex.current === i) return;
+    const from = dragIndex.current;
+    dragIndex.current = i; // update ref BEFORE setState, outside the pure callback
+    setGalleryOrder((prev) => {
+      const next = [...prev];
+      const [moved] = next.splice(from, 1);
+      next.splice(i, 0, moved);
+      return next;
+    });
+  };
+  const handleGalleryDragEnd = () => {
+    const movedId = draggingId;
+    dragIndex.current = null;
+    setDraggingId(null);
+    if (movedId) setRecentlyMovedId(movedId);
+  };
 
   const validate = (): boolean => {
     const errs: Record<string, string> = {};
@@ -202,6 +246,13 @@ export function NewsForm({
     e.preventDefault();
     if (!validate()) return;
     const hasMeta = Object.values(form.metaDescription).some((v) => v?.trim());
+    // Derive ordered existing + new files from the unified drag list
+    const existingImages = galleryOrder
+      .filter((e): e is { kind: "existing"; data: IFile } => e.kind === "existing")
+      .map((e) => e.data);
+    const galleryFiles = galleryOrder
+      .filter((e): e is { kind: "new"; data: File; preview: string } => e.kind === "new")
+      .map((e) => e.data);
     await onSubmit({
       slug: form.slug.trim(),
       title: form.title,
@@ -215,8 +266,8 @@ export function NewsForm({
       tags: form.tags,
       metaDescription: hasMeta ? form.metaDescription : null,
       coverImageFile: form.coverImageFile,
-      galleryFiles: form.galleryFiles,
-      existingImages: form.existingImages,
+      galleryFiles,
+      existingImages,
     });
   };
 
@@ -295,92 +346,110 @@ export function NewsForm({
 
       {/* ── Gallery Images ── */}
       <div className="rounded-xl border border-gray-200 bg-white p-6">
-        <h3 className="mb-1 text-sm font-semibold uppercase tracking-wide text-gray-700">
-          Gallery Images{" "}
-          <span className="font-normal normal-case text-gray-400">(optional, max 10)</span>
-        </h3>
-        <p className="mb-4 text-xs text-gray-400">
-          Accepted: JPG, PNG, WebP. Max 10 MB each.
-        </p>
-
-        {/* Existing saved images (edit mode) */}
-        {form.existingImages.length > 0 && (
-          <div className="mb-4">
-            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500">
-              Saved images
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {form.existingImages.map((img) => (
-                <div key={img.id} className="relative h-20 w-20 shrink-0">
-                  <img
-                    src={asset(img.path)}
-                    alt={img.originalName}
-                    className="h-full w-full rounded-lg object-cover"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => removeExistingImage(img.id)}
-                    className="absolute -right-1.5 -top-1.5 rounded-full bg-red-500 p-0.5 text-white shadow transition-colors hover:bg-red-600"
-                    aria-label={`Remove ${img.originalName}`}
-                  >
-                    <LuX className="h-3 w-3" />
-                  </button>
-                </div>
-              ))}
-            </div>
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-700">
+              Gallery Images{" "}
+              <span className="font-normal normal-case text-gray-400">(optional, max 20)</span>
+            </h3>
+            {galleryOrder.length > 0 && (
+              <p className="mt-0.5 text-xs text-gray-400">
+                Drag to reorder · {galleryOrder.length}/20
+              </p>
+            )}
           </div>
-        )}
+          {galleryOrder.length < 20 && (
+            <>
+              <input
+                ref={galleryInputRef}
+                id="gallery-images-input"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                multiple
+                onChange={handleGalleryFilesChange}
+                className="hidden"
+              />
+              <label
+                htmlFor="gallery-images-input"
+                className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-dashed border-gray-300 px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:border-primary hover:bg-primary/5 hover:text-primary"
+              >
+                <LuPlus className="h-4 w-4" />
+                Add images
+              </label>
+            </>
+          )}
+        </div>
 
-        {/* Staged new files with previews */}
-        {form.galleryFiles.length > 0 && (
-          <div className="mb-4">
-            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-500">
-              New images to upload
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {form.galleryFiles.map((file, i) => (
-                <div key={i} className="relative h-20 w-20 shrink-0">
-                  <img
-                    src={URL.createObjectURL(file)}
-                    alt={file.name}
-                    className="h-full w-full rounded-lg object-cover"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => removeGalleryFile(i)}
-                    className="absolute -right-1.5 -top-1.5 rounded-full bg-gray-700 p-0.5 text-white shadow transition-colors hover:bg-gray-900"
-                    aria-label={`Remove ${file.name}`}
-                  >
-                    <LuX className="h-3 w-3" />
-                  </button>
-                </div>
-              ))}
-            </div>
+        {galleryOrder.length === 0 ? (
+          <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-200 py-10 text-center">
+            <LuImage className="mb-2 h-8 w-8 text-gray-300" />
+            <p className="text-sm text-gray-400">No gallery images yet.</p>
+            <p className="text-xs text-gray-300">JPG, PNG, WebP · max 10 MB each</p>
           </div>
-        )}
-
-        {/* Add images button */}
-        {form.existingImages.length + form.galleryFiles.length < 10 ? (
-          <>
-            <input
-              ref={galleryInputRef}
-              id="gallery-images-input"
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              multiple
-              onChange={handleGalleryFilesChange}
-              className="hidden"
-            />
-            <label
-              htmlFor="gallery-images-input"
-              className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:border-primary hover:bg-primary/5 hover:text-primary"
-            >
-              <LuPlus className="h-4 w-4" />
-              Add images ({form.existingImages.length + form.galleryFiles.length}/10)
-            </label>
-          </>
         ) : (
-          <p className="text-xs text-gray-400">Maximum of 10 images reached.</p>
+          <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5">
+            {galleryOrder.map((entry, i) => {
+              const entryId = getEntryId(entry);
+              const src = entry.kind === "existing" ? asset(entry.data.path) : entry.preview;
+              const alt = entry.kind === "existing" ? entry.data.originalName : entry.data.name;
+              const isDragging = entryId === draggingId;
+              const wasMoved = entryId === recentlyMovedId;
+              const isNew = entry.kind === "new";
+
+              return (
+                <div
+                  key={entryId}
+                  draggable
+                  onDragStart={() => handleGalleryDragStart(i)}
+                  onDragEnter={() => handleGalleryDragEnter(i)}
+                  onDragEnd={handleGalleryDragEnd}
+                  onDragOver={(e) => e.preventDefault()}
+                  className={cn(
+                    "group relative aspect-square cursor-grab overflow-hidden rounded-xl bg-gray-100 transition-all duration-200 active:cursor-grabbing",
+                    isDragging && "opacity-40",
+                    wasMoved && "ring-2 ring-primary ring-offset-2",
+                  )}
+                >
+                  <img
+                    src={src}
+                    alt={alt}
+                    draggable={false}
+                    className="h-full w-full object-cover"
+                  />
+
+                  {/* Order badge — teal when just moved */}
+                  <span
+                    className={cn(
+                      "absolute left-1.5 top-1.5 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold text-white transition-colors duration-300",
+                      wasMoved ? "bg-primary" : "bg-black/60",
+                    )}
+                  >
+                    {i + 1}
+                  </span>
+
+                  {/* New badge */}
+                  {isNew && (
+                    <span className="absolute right-1.5 top-1.5 rounded bg-primary/90 px-1 py-0.5 text-[9px] font-bold uppercase text-white">
+                      New
+                    </span>
+                  )}
+
+                  {/* Hover overlay: drag hint + remove */}
+                  <div className="absolute inset-0 flex items-end justify-between bg-gradient-to-t from-black/50 to-transparent p-2 opacity-0 transition-opacity group-hover:opacity-100">
+                    <LuGripVertical className="h-4 w-4 text-white/70" />
+                    <button
+                      type="button"
+                      onClick={() => removeGalleryEntry(i)}
+                      className="rounded-lg bg-red-500 p-1.5 text-white transition-colors hover:bg-red-600"
+                      title="Remove"
+                    >
+                      <LuTrash2 className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         )}
       </div>
 
@@ -421,7 +490,7 @@ export function NewsForm({
               className={cn(
                 "rounded-t-md px-4 py-2 text-sm font-medium transition-colors",
                 activeLang === tab.key
-                  ? "border-b-2 border-blue-600 text-blue-600"
+                  ? "border-b-2 border-primary text-primary"
                   : "text-gray-500 hover:text-gray-700",
               )}
             >
@@ -458,7 +527,7 @@ export function NewsForm({
               value={form.excerpt[activeLang] ?? ""}
               onChange={(e) => setMultilingual("excerpt", activeLang, e.target.value)}
               rows={3}
-              className="w-full resize-none rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="w-full resize-none rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
             />
           </div>
 
@@ -507,7 +576,7 @@ export function NewsForm({
                 value={form.content[activeLang] ?? ""}
                 onChange={(e) => setMultilingual("content", activeLang, e.target.value)}
                 rows={14}
-                className="w-full resize-y rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                className="w-full resize-y rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
               />
             ) : (
               <div className="min-h-[200px] rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
@@ -541,7 +610,7 @@ export function NewsForm({
                 setMultilingual("metaDescription", activeLang, e.target.value)
               }
               rows={2}
-              className="w-full resize-none rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="w-full resize-none rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
             />
           </div>
         </div>
@@ -598,7 +667,7 @@ export function NewsForm({
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, publishDate: e.target.value }))
               }
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
             />
             {errors.publishDate && (
               <p className="mt-1 text-xs text-red-500">{errors.publishDate}</p>
@@ -618,8 +687,8 @@ export function NewsForm({
                 setForm((prev) => ({ ...prev, isFeatured: !prev.isFeatured }))
               }
               className={cn(
-                "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-                form.isFeatured ? "bg-yellow-400" : "bg-gray-300",
+                "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                form.isFeatured ? "bg-amber-400" : "bg-gray-300",
               )}
             >
               <span
@@ -647,8 +716,8 @@ export function NewsForm({
                 setForm((prev) => ({ ...prev, isPublished: !prev.isPublished }))
               }
               className={cn(
-                "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-                form.isPublished ? "bg-green-500" : "bg-gray-300",
+                "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                form.isPublished ? "bg-primary" : "bg-gray-300",
               )}
             >
               <span
@@ -685,13 +754,13 @@ export function NewsForm({
               return (
                 <span
                   key={index}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-sm text-blue-700"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-sm text-primary"
                 >
                   {label}
                   <button
                     type="button"
                     onClick={() => removeTag(index)}
-                    className="rounded-full p-0.5 transition-colors hover:bg-blue-100"
+                    className="rounded-full p-0.5 transition-colors hover:bg-primary/10"
                   >
                     <LuX className="h-3 w-3" />
                   </button>
@@ -714,7 +783,7 @@ export function NewsForm({
                 className={cn(
                   "rounded px-3 py-1 text-xs font-medium transition-colors",
                   tagLang === tab.key
-                    ? "bg-blue-100 text-blue-700"
+                    ? "bg-primary/10 text-primary"
                     : "text-gray-500 hover:bg-gray-100",
                 )}
               >
@@ -741,7 +810,7 @@ export function NewsForm({
             <button
               type="button"
               onClick={addTag}
-              className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+              className="flex items-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600"
             >
               <LuPlus className="h-4 w-4" />
               Add
@@ -758,8 +827,8 @@ export function NewsForm({
           className={cn(
             "flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-medium text-white transition-colors",
             isLoading
-              ? "cursor-not-allowed bg-blue-400"
-              : "bg-blue-600 hover:bg-blue-700",
+              ? "cursor-not-allowed bg-primary/60"
+              : "bg-primary hover:bg-primary-600",
           )}
         >
           {isLoading ? (
