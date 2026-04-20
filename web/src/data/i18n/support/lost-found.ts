@@ -156,9 +156,9 @@ export const lostFound = {
   reporterName: { en: "Your Name", lo: "ຊື່ຜູ້ແຈ້ງ", zh: "您的姓名" },
   reporterEmail: { en: "Email", lo: "ອີເມວ", zh: "电子邮件" },
   reporterPhone: {
-    en: "Phone (optional)",
-    lo: "ເບີໂທລະສັບ (ຖ້າມີ)",
-    zh: "电话（选填）",
+    en: "Phone",
+    lo: "ເບີໂທລະສັບ",
+    zh: "电话",
   },
   itemImages: {
     en: "Upload images of the item (optional)",

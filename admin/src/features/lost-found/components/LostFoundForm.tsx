@@ -197,7 +197,7 @@ export function LostFoundForm({ formik }: Props) {
           />
 
           <Input
-            label="Email *"
+            label="Email"
             name="reporterEmail"
             type="email"
             placeholder="john@example.com"
@@ -208,7 +208,7 @@ export function LostFoundForm({ formik }: Props) {
           />
 
           <Input
-            label="Phone"
+            label="Phone *"
             name="reporterPhone"
             placeholder="+856 20..."
             value={values.reporterPhone}

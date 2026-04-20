@@ -26,8 +26,8 @@ export interface ILostFoundItem {
   flightNumber?: string;
   referenceCode: string;
   reporterName: string;
-  reporterEmail: string;
-  reporterPhone?: string;
+  reporterEmail?: string;
+  reporterPhone: string;
   displayNames?: IMultilingualText;
   displayDescriptions?: IMultilingualText;
   displayLocations?: IMultilingualText;
@@ -83,8 +83,8 @@ export interface ICreateLostFoundPayload {
   incidentDate: string;
   flightNumber?: string;
   reporterName: string;
-  reporterEmail: string;
-  reporterPhone?: string;
+  reporterEmail?: string;
+  reporterPhone: string;
   images?: File[];
 }
 

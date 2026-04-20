@@ -198,7 +198,7 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
           required
           value={form.category}
           onChange={handleChange}
-          className="form-select focus:border-[#00AAAC] focus:ring-[#00AAAC]/10 w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm transition-all focus:ring-4 focus:outline-none"
+          className="form-select w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm transition-all focus:border-[#00AAAC] focus:ring-4 focus:ring-[#00AAAC]/10 focus:outline-none"
         >
           {categories.map((c) => (
             <option key={c.id} value={c.id}>
@@ -242,7 +242,7 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
           value={form.description}
           onChange={handleChange}
           placeholder="Brand, color, distinguishing marks, contents…"
-          className="form-textarea focus:border-[#00AAAC] focus:ring-[#00AAAC]/10 w-full resize-none rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm transition-all placeholder:text-gray-400 focus:ring-4 focus:outline-none"
+          className="form-textarea w-full resize-none rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm transition-all placeholder:text-gray-400 focus:border-[#00AAAC] focus:ring-4 focus:ring-[#00AAAC]/10 focus:outline-none"
         />
       </div>
 
@@ -303,7 +303,7 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
 
       {/* Contact information */}
       <div className="space-y-4 border-t border-gray-100 pt-5">
-        <p className="text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+        <p className="text-xs font-bold tracking-widest text-[#00AAAC] uppercase">
           {t.contactInfo}
         </p>
 
@@ -326,38 +326,21 @@ export function LostFoundReportForm({ lang }: LostFoundReportFormProps) {
           </div>
           <div>
             <label
-              htmlFor="reporterEmail"
+              htmlFor="reporterPhone"
               className="mb-1.5 block text-sm font-medium text-gray-700"
             >
-              {t.reporterEmail} <span className="text-red-500">*</span>
+              {t.reporterPhone} <span className="text-red-500">*</span>
             </label>
             <input
-              id="reporterEmail"
-              name="reporterEmail"
-              type="email"
+              id="reporterPhone"
+              name="reporterPhone"
+              type="tel"
               required
-              value={form.reporterEmail}
+              value={form.reporterPhone}
               onChange={handleChange}
               className={INPUT_BASE}
             />
           </div>
-        </div>
-
-        <div>
-          <label
-            htmlFor="reporterPhone"
-            className="mb-1.5 block text-sm font-medium text-gray-700"
-          >
-            {t.reporterPhone}
-          </label>
-          <input
-            id="reporterPhone"
-            name="reporterPhone"
-            type="tel"
-            value={form.reporterPhone}
-            onChange={handleChange}
-            className={INPUT_BASE}
-          />
         </div>
       </div>
 

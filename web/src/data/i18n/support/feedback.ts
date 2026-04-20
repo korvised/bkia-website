@@ -66,9 +66,9 @@ export const feedback = {
     zh: "your@email.com",
   },
   phone: {
-    en: "Phone (optional)",
-    lo: "ເບີໂທລະສັບ (ເລືອກໄດ້)",
-    zh: "电话（选填）",
+    en: "Phone",
+    lo: "ເບີໂທລະສັບ",
+    zh: "电话",
   },
   phonePlaceholder: {
     en: "+856 20 xxx xxxx",
@@ -155,6 +155,11 @@ export const feedback = {
     en: "Email is required when follow-up is requested",
     lo: "ກະລຸນາປ້ອນອີເມວເມື່ອຕ້ອງການໃຫ້ຕິດຕໍ່ກັບ",
     zh: "请求跟进时需要提供邮箱",
+  },
+  phoneRequired: {
+    en: "Phone number is required when follow-up is requested",
+    lo: "ກະລຸນາປ້ອນເບີໂທລະສັບເມື່ອຕ້ອງການໃຫ້ຕິດຕໍ່ກັບ",
+    zh: "请求跟进时需要提供电话号码",
   },
 
   // ── Rating Descriptions ──────────────────────────────────────────────────

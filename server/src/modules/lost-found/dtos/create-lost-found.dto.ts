@@ -40,11 +40,11 @@ export class CreateLostFoundDto {
   @Length(2, 255)
   reporterName: string;
 
-  @IsEmail()
-  reporterEmail: string;
-
   @IsOptional()
+  @IsEmail()
+  reporterEmail?: string;
+
   @IsString()
-  @Length(0, 30)
-  reporterPhone?: string;
+  @Length(2, 30)
+  reporterPhone: string;
 }

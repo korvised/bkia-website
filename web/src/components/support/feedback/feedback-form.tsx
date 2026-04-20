@@ -37,7 +37,7 @@ export function FeedbackForm({ lang }: Props) {
   const [error, setError] = useState("");
   const [categoryError, setCategoryError] = useState(false);
   const [commentError, setCommentError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
 
   const starLabels = [t.star1, t.star2, t.star3, t.star4, t.star5];
 
@@ -58,7 +58,7 @@ export function FeedbackForm({ lang }: Props) {
     let valid = true;
     if (!category) { setCategoryError(true); valid = false; } else { setCategoryError(false); }
     if (!comment.trim()) { setCommentError(true); valid = false; } else { setCommentError(false); }
-    if (followUp && !email) { setEmailError(true); valid = false; } else { setEmailError(false); }
+    if (followUp && !phone) { setPhoneError(true); valid = false; } else { setPhoneError(false); }
     if (!valid) return;
 
     setIsSubmitting(true);
@@ -71,7 +71,7 @@ export function FeedbackForm({ lang }: Props) {
       if (specificArea) fd.append("specificArea", specificArea);
       fd.append("followUp", String(followUp));
       if (followUp && email) fd.append("email", email);
-      if (followUp && phone) fd.append("phone", phone);
+      if (followUp) fd.append("phone", phone);
       files.forEach((f) => fd.append("files", f));
 
       await submitFeedback(fd);
@@ -87,7 +87,7 @@ export function FeedbackForm({ lang }: Props) {
     setRating(0); setHoveredRating(0); setCategory(""); setComment("");
     setTerminal(""); setSpecificArea(""); setFollowUp(false);
     setEmail(""); setPhone(""); setFiles([]);
-    setError(""); setCategoryError(false); setEmailError(false);
+    setError(""); setCategoryError(false); setPhoneError(false);
     setCommentError(false); setSubmitted(false);
   };
 
@@ -244,38 +244,38 @@ export function FeedbackForm({ lang }: Props) {
         </label>
       </div>
 
-      {/* 7 & 8. Email + Phone (conditional) */}
+      {/* 7 & 8. Phone + Email (conditional) */}
       {followUp && (
         <div className="space-y-4 rounded-r-lg border-l-4 border-[#00AAAC] bg-[#f0fbfc] px-4 py-4">
           <div>
-            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-700">
-              {t.email} <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => { setEmail(e.target.value); setEmailError(false); }}
-              placeholder={t.emailPlaceholder}
-              className={cn(
-                INPUT_BASE,
-                emailError && "border-red-400 bg-red-50",
-              )}
-            />
-            {emailError && (
-              <p className="mt-1 text-xs text-red-500">{t.emailRequired}</p>
-            )}
-          </div>
-          <div>
             <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-gray-700">
-              {t.phone}
+              {t.phone} <span className="text-red-500">*</span>
             </label>
             <input
               id="phone"
               type="tel"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => { setPhone(e.target.value); setPhoneError(false); }}
               placeholder={t.phonePlaceholder}
+              className={cn(
+                INPUT_BASE,
+                phoneError && "border-red-400 bg-red-50",
+              )}
+            />
+            {phoneError && (
+              <p className="mt-1 text-xs text-red-500">{t.phoneRequired}</p>
+            )}
+          </div>
+          <div>
+            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-700">
+              {t.email}
+            </label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder={t.emailPlaceholder}
               className={INPUT_BASE}
             />
           </div>
