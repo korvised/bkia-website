@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Baby, Accessibility, PawPrint } from "lucide-react";
 import { Lang } from "@/types/language";
-import { createCustomServicesI18n } from "@/data/i18n/guide";
+import { createCustomServicesI18n } from "@/data/i18n/guides";
 import { cn } from "@/lib";
 
 const navItems = [

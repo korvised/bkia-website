@@ -1,10 +1,9 @@
-import { Metadata } from "next";
+﻿import { Metadata } from "next";
 import { HandHeart } from "lucide-react";
-import Link from "next/link";
 import { Lang } from "@/types/language";
 import { facilitiesServices, getColorClasses } from "@/data/guide";
 import { cn, getLocalizedText } from "@/lib";
-import { createDepartureGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guides";
 
 interface FacilityServicePageProps {
   params: Promise<{ lang: Lang }>;
@@ -38,7 +37,7 @@ export default async function AirportFacilitiesPage({
             <HandHeart className="h-7 w-7 text-white" />
           </div>
           <div>
-            <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
+            <p className="mb-1 text-xs font-bold tracking-widest text-[#00AAAC] uppercase">
               Airport Facilities
             </p>
             <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -60,9 +59,8 @@ export default async function AirportFacilitiesPage({
               const Icon = facility.icon;
 
               return (
-                <Link
+                <div
                   key={facility.id}
-                  href={`/${lang}/guides/facilities/${facility.id}`}
                   className="group flex flex-col items-center text-center transition-opacity hover:opacity-80"
                 >
                   <div
@@ -77,10 +75,10 @@ export default async function AirportFacilitiesPage({
                       className={cn("h-12 w-12 sm:h-16 sm:w-16", colors.icon)}
                     />
                   </div>
-                  <h3 className="text-xs font-semibold leading-tight text-gray-900 sm:text-sm">
+                  <h3 className="text-xs leading-tight font-semibold text-gray-900 sm:text-sm">
                     {getLocalizedText(facility.name, language)}
                   </h3>
-                </Link>
+                </div>
               );
             })}
           </div>

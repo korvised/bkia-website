@@ -78,7 +78,7 @@ export function FeaturedJobsSection({ lang, jobs }: FeaturedJobsSectionProps) {
 
           {/* View all CTA */}
           <Link
-            href={`/${lang}/about/careers`}
+            href={`/${lang}/careers`}
             className="self-start inline-flex shrink-0 items-center gap-2 rounded-full bg-[#00AAAC] px-5 py-2.5 text-sm font-bold text-white transition-colors duration-200 hover:bg-[#008e90] sm:self-auto"
           >
             {t.viewAllPositions}
@@ -91,7 +91,7 @@ export function FeaturedJobsSection({ lang, jobs }: FeaturedJobsSectionProps) {
           {jobs.map((job) => (
             <Link
               key={job.id}
-              href={`/${lang}/about/careers/${job.id}`}
+              href={`/${lang}/careers/${job.id}`}
               className="group flex flex-col rounded-2xl border border-white/10 bg-white p-5 shadow-sm transition-all duration-200 hover:border-[#00AAAC]/50 hover:shadow-[0_4px_28px_rgba(0,170,172,0.15)]"
             >
               {/* ── Row 1: Position + vacancy count ─────────────── */}

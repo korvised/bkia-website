@@ -3,7 +3,7 @@ import { CheckCircle } from "lucide-react";
 import { MdOutlineSecurity } from "react-icons/md";
 import { PiDropHalfBottomFill } from "react-icons/pi";
 import { Lang } from "@/types/language";
-import { createDepartureGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guides";
 
 interface SecurityContentProps {
   lang: Lang;

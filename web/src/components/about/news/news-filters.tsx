@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   Search,
@@ -17,7 +17,7 @@ import { useState, useCallback } from "react";
 import { Lang } from "@/types/language";
 import { cn } from "@/lib";
 import { NewsCategory } from "@/types/news";
-import { createNewsI18n } from "@/data/i18n/about";
+import { createNewsI18n } from "@/data/i18n/notices";
 
 interface NewsFiltersProps {
   lang: Lang;
@@ -82,7 +82,7 @@ export function NewsFilters({
         params.set("page", "1");
         params.set("q", value);
       }
-      router.push(`/${lang}/about/news?${params.toString()}`, {
+      router.push(`/${lang}/notices/news?${params.toString()}`, {
         scroll: false,
       });
     },
@@ -99,7 +99,7 @@ export function NewsFilters({
         params.set("page", "1");
         params.set("category", id);
       }
-      router.push(`/${lang}/about/news?${params.toString()}`, {
+      router.push(`/${lang}/notices/news?${params.toString()}`, {
         scroll: false,
       });
     },
@@ -110,7 +110,7 @@ export function NewsFilters({
     setSearchQuery("");
     const params = new URLSearchParams(searchParams.toString());
     params.delete("q");
-    router.push(`/${lang}/about/news?${params.toString()}`, {
+    router.push(`/${lang}/notices/news?${params.toString()}`, {
       scroll: false,
     });
   }, [lang, router, searchParams]);

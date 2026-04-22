@@ -23,7 +23,7 @@ export function LostFoundPagination({
       if (v && k !== "page") params.set(k, v);
     });
     params.set("page", page.toString());
-    return `/${lang}/support/lost-found?${params.toString()}`;
+    return `/${lang}/about/lost-found?${params.toString()}`;
   };
 
   const start = (meta.page - 1) * meta.limit + 1;

@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+﻿import { Metadata } from "next";
 import { Suspense } from "react";
 import { Lang } from "@/types/language";
 import {
@@ -11,7 +11,7 @@ import {
   RelatedServices,
 } from "@/components/guides/arrival";
 import { ArrivalTab } from "@/types/guide";
-import { createArrivalGuideI18n } from "@/data/i18n/guide";
+import { createArrivalGuideI18n } from "@/data/i18n/guides";
 
 interface ArrivalPageProps {
   params: Promise<{ lang: Lang }>;

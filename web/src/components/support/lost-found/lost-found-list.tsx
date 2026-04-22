@@ -1,11 +1,11 @@
-import { Calendar, MapPin, Package, Plane } from "lucide-react";
+﻿import { Calendar, MapPin, Package, Plane } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Lang } from "@/types/language";
 import { ILostFoundItem } from "@/types/lost-found";
 import { LostFoundStatus, LostFoundType } from "@/types/enum";
 import { asset, cn, fmtDate } from "@/lib";
-import { createSupportI18n } from "@/data/i18n/support";
+import { createLostFoundI18n } from "@/data/i18n/about/lost-found";
 import { IPaginationMeta } from "@/types/pagination";
 import { LostFoundPagination } from "./lost-found-pagination";
 
@@ -35,7 +35,7 @@ export function LostFoundList({
   meta,
   searchParams,
 }: LostFoundListProps) {
-  const t = createSupportI18n(lang).lostFound;
+  const t = createLostFoundI18n(lang).lostFound;
 
   const statusLabel: Record<LostFoundStatus, string> = {
     [LostFoundStatus.OPEN]: t.statusOpen,
@@ -72,7 +72,7 @@ export function LostFoundList({
         {items.map((item) => (
           <Link
             key={item.id}
-            href={`/${lang}/support/lost-found/${item.id}`}
+            href={`/${lang}/about/lost-found/${item.id}`}
             className="group flex flex-col overflow-hidden rounded-xl bg-white transition-colors hover:bg-[#f0fbfc]"
           >
             {/* Cover image */}

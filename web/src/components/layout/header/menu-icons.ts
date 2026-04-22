@@ -5,19 +5,21 @@ import {
   Building2,
   Accessibility,
   ShieldCheck,
+  Globe,
   LayoutGrid,
+  Luggage,
   Car,
   Map,
-  Globe,
-  Phone,
+  Star,
   Bell,
+  Newspaper,
+  ClipboardList,
+  Phone,
   HelpCircle,
   Package,
   MessageSquare,
   Building,
-  Newspaper,
   Briefcase,
-  Hammer,
   type LucideIcon,
 } from "lucide-react";
 
@@ -33,23 +35,25 @@ export const MENU_ICONS: Record<string, LucideIcon> = {
   "/guides/arrivals": PlaneLanding,
   "/guides/custom-services": Accessibility,
   "/guides/security": ShieldCheck,
-  "/guides/facilities": LayoutGrid,
+  "/guides/regional": Globe,
 
-  // Transports
-  "/transports/to-from-airport": Car,
-  "/transports/parking": Map,
-  "/transports/regional": Globe,
-  "/transports/contacts": Phone,
+  // Services (was Transports)
+  "/services/packing": Luggage,
+  "/services/taxi": Car,
+  "/services/parking": Map,
+  "/services/facilities": LayoutGrid,
+  "/services/vip-lounge": Star,
 
-  // Support
-  "/support/notices": Bell,
-  "/support/faq": HelpCircle,
-  "/support/lost-found": Package,
-  "/support/feedback": MessageSquare,
+  // Notices (was Support)
+  "/notices/airport": Bell,
+  "/notices/news": Newspaper,
+  "/notices/auctions": ClipboardList,
 
   // About
   "/about/profile": Building,
-  "/about/news": Newspaper,
-  "/about/careers": Briefcase,
-  "/about/auctions": Hammer,
+  "/about/contact": Phone,
+  "/about/faq": HelpCircle,
+  "/about/lost-found": Package,
+  "/about/feedback": MessageSquare,
+  "/careers": Briefcase,
 };

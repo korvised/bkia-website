@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Lang } from "@/types/language";
-import { createDepartureGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guides";
 import { facilitiesServices, getColorClasses } from "@/data/guide";
 
 interface RelatedServicesProps {
@@ -44,7 +44,7 @@ export function RelatedServices({ lang }: RelatedServicesProps) {
 
             const Icon = service.icon;
             const colorClasses = getColorClasses(service.color);
-            const href = `/${lang}/guides/facilities/${service.id}`;
+            const href = `/${lang}/services/facilities/${service.id}`;
 
             return (
               <Link

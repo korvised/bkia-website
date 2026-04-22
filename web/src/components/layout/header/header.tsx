@@ -33,7 +33,12 @@ export function Header() {
 
   const handleMenuEnter = (id: string, hasDropdown: boolean) => {
     if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
-    if (hasDropdown) setActiveMenu(id);
+    if (hasDropdown) {
+      setActiveMenu(id);
+    } else {
+      // Standalone link — close any open dropdown immediately
+      setActiveMenu(null);
+    }
   };
 
   const handleMenuLeave = () => {
@@ -135,31 +140,57 @@ export function Header() {
                       }
                       onMouseLeave={handleMenuLeave}
                     >
-                      <Link
-                        href={`/${lang}${item.href}`}
-                        className={cn(
-                          "group relative flex h-full flex-col items-center justify-center px-3 transition-all duration-300 ease-in-out lg:px-4 xl:px-5",
-                          isHeaderWhite
-                            ? "hover:text-primary-600 text-gray-800"
-                            : "hover:text-primary-200 text-white",
-                          isScrolled ? "py-5" : "py-9",
-                        )}
-                      >
-                        <span className="text-sm font-semibold whitespace-nowrap xl:text-base">
-                          {item.label[lang]}
-                        </span>
-
-                        {/* Active/Hover Underline */}
-                        <span
+                      {item.hasDropdown ? (
+                        /* ── Dropdown trigger — underline animation ── */
+                        <Link
+                          href={`/${lang}${item.href}`}
                           className={cn(
-                            "absolute bottom-0 left-0 h-0.5 w-full origin-left transition-transform duration-300 ease-out",
-                            activeMenu === item.id
-                              ? "scale-x-100"
-                              : "scale-x-0 group-hover:scale-x-100",
-                            isHeaderWhite ? "bg-primary-600" : "bg-white",
+                            "group relative flex h-full flex-col items-center justify-center px-3 transition-all duration-300 ease-in-out lg:px-4 xl:px-5",
+                            isHeaderWhite
+                              ? "hover:text-primary-600 text-gray-800"
+                              : "hover:text-primary-200 text-white",
+                            isScrolled ? "py-5" : "py-9",
                           )}
-                        />
-                      </Link>
+                        >
+                          <span className="text-sm font-semibold whitespace-nowrap xl:text-base">
+                            {item.label[lang]}
+                          </span>
+
+                          {/* Underline bar — expands on hover / stays while dropdown is open */}
+                          <span
+                            className={cn(
+                              "absolute bottom-0 left-0 h-0.5 w-full origin-left transition-transform duration-300 ease-out",
+                              activeMenu === item.id
+                                ? "scale-x-100"
+                                : "scale-x-0 group-hover:scale-x-100",
+                              isHeaderWhite ? "bg-primary-600" : "bg-white",
+                            )}
+                          />
+                        </Link>
+                      ) : (
+                        /* ── Standalone link (Careers) — pill hover animation ── */
+                        <Link
+                          href={`/${lang}${item.href}`}
+                          className={cn(
+                            "relative flex h-full items-center justify-center px-3 transition-all duration-300 ease-in-out lg:px-4 xl:px-5",
+                            isScrolled ? "py-5" : "py-9",
+                          )}
+                        >
+                          <span
+                            className={cn(
+                              "text-sm font-semibold whitespace-nowrap transition-colors duration-200 xl:text-base",
+                              isHeaderWhite
+                                ? "text-gray-800 hover:text-[#00AAAC]"
+                                : "text-white hover:text-white/70",
+                              isMenuActive(item.href) && isHeaderWhite
+                                ? "text-[#00AAAC]"
+                                : "",
+                            )}
+                          >
+                            {item.label[lang]}
+                          </span>
+                        </Link>
+                      )}
                     </li>
                   );
                 })}

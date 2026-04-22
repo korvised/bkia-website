@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   Smartphone,
@@ -18,7 +18,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 import { Lang } from "@/types/language";
 import { cn } from "@/lib";
-import { createSupportI18n } from "@/data/i18n/support";
+import { createLostFoundI18n } from "@/data/i18n/about/lost-found";
 import { LostFoundCategory } from "@/types/enum";
 
 interface LostFoundFiltersProps {
@@ -36,12 +36,12 @@ export function LostFoundFilters({
 }: LostFoundFiltersProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const t = createSupportI18n(lang).lostFound;
+  const t = createLostFoundI18n(lang).lostFound;
   const [searchQuery, setSearchQuery] = useState(query);
 
   const push = useCallback(
     (params: URLSearchParams) => {
-      router.push(`/${lang}/support/lost-found?${params.toString()}`, {
+      router.push(`/${lang}/about/lost-found?${params.toString()}`, {
         scroll: false,
       });
     },

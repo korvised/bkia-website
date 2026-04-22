@@ -13,28 +13,60 @@ interface CareersHeroProps {
   subtitle: string;
 }
 
-// ── Text overlay ──────────────────────────────────────────────────────────────
-function HeroTextOverlay({ title, subtitle }: { title: string; subtitle: string }) {
+const CAREERS_LABEL: Record<Lang, string> = {
+  en: "Careers",
+  lo: "ຮ່ວມງານກັບພວກເຮົາ",
+  zh: "人才招聘",
+};
+
+// ── Text overlay + scroll indicator ──────────────────────────────────────────
+function HeroOverlay({
+  title,
+  subtitle,
+  lang,
+}: {
+  title: string;
+  subtitle: string;
+  lang: Lang;
+}) {
+  const label = CAREERS_LABEL[lang];
+
   return (
-    <div className="pointer-events-none absolute inset-0 z-20 flex flex-col justify-end bg-gradient-to-t from-[#0a1428]/90 via-[#0a1428]/20 to-transparent px-6 pb-8 sm:px-10 sm:pb-12">
-      <p
-        className="mb-2 text-[10px] font-extrabold uppercase tracking-[0.32em] text-[#00AAAC]"
-        style={{ animation: "hero-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 0.15s both" }}
-      >
-        BKIA — Careers
-      </p>
-      <h2
-        className="max-w-2xl text-2xl font-bold leading-tight text-white sm:text-4xl"
-        style={{ animation: "hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.28s both" }}
-      >
-        {title}
-      </h2>
-      <p
-        className="mt-2 max-w-xl text-sm leading-relaxed text-white/65 sm:text-base"
-        style={{ animation: "hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.42s both" }}
-      >
-        {subtitle}
-      </p>
+    <div
+      className="pointer-events-none absolute inset-0 z-20 flex flex-col justify-end px-6 sm:px-10"
+      style={{
+        background:
+          "linear-gradient(to bottom, transparent 0%, transparent 45%, rgba(10,20,40,0.78) 72%, rgba(10,20,40,0.96) 100%)",
+      }}
+    >
+      {/* ── Title / subtitle ── */}
+      <div className="pb-8 sm:pb-12">
+        <p
+          className="mb-2 text-[10px] font-extrabold uppercase tracking-[0.32em] text-[#00AAAC]"
+          style={{
+            animation: "hero-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 0.15s both",
+          }}
+        >
+          BKIA — {label}
+        </p>
+        <h2
+          className="max-w-2xl text-2xl font-bold leading-tight text-white sm:text-4xl"
+          style={{
+            animation: "hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.28s both",
+          }}
+        >
+          {title}
+        </h2>
+        <p
+          className="mt-2 max-w-xl text-sm leading-relaxed text-white/65 sm:text-base"
+          style={{
+            animation: "hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.42s both",
+          }}
+        >
+          {subtitle}
+        </p>
+      </div>
+
       <style>{`
         @keyframes hero-fade-up {
           from { opacity: 0; transform: translateY(16px); }
@@ -49,9 +81,17 @@ function HeroTextOverlay({ title, subtitle }: { title: string; subtitle: string 
 }
 
 // ── Fallback (0 images) ───────────────────────────────────────────────────────
-function HeroFallback({ title, subtitle }: { title: string; subtitle: string }) {
+function HeroFallback({
+  title,
+  subtitle,
+  lang,
+}: {
+  title: string;
+  subtitle: string;
+  lang: Lang;
+}) {
   return (
-    <div className="relative h-56 overflow-hidden bg-[#1a2c5b] sm:h-72 md:h-80">
+    <div className="relative h-full overflow-hidden bg-[#1a2c5b]">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -right-32 top-0 h-full w-1/2 bg-[#00AAAC]/5 [transform:skewX(-8deg)]" />
         <div className="absolute -right-10 top-0 h-full w-1/3 bg-[#00AAAC]/4 [transform:skewX(-8deg)]" />
@@ -68,12 +108,7 @@ function HeroFallback({ title, subtitle }: { title: string; subtitle: string }) 
           BKIA
         </span>
       </div>
-      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-14 sm:gap-24">
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="h-8 w-0.5 rounded-full bg-[#00AAAC]/25 sm:h-12" />
-        ))}
-      </div>
-      <HeroTextOverlay title={title} subtitle={subtitle} />
+      <HeroOverlay title={title} subtitle={subtitle} lang={lang} />
     </div>
   );
 }
@@ -83,14 +118,15 @@ function HeroSingle({
   activity,
   title,
   subtitle,
+  lang,
 }: {
   activity: ICareerActivity;
   title: string;
   subtitle: string;
+  lang: Lang;
 }) {
   return (
-    <div className="relative h-56 overflow-hidden bg-[#0a1428] sm:h-72 md:h-80">
-      {/* Image constrained to max-w-5xl, centered */}
+    <div className="relative h-full overflow-hidden bg-[#0a1428]">
       <div className="absolute inset-y-0 left-1/2 w-full max-w-5xl -translate-x-1/2">
         <Image
           src={asset(activity.image.path)}
@@ -101,7 +137,7 @@ function HeroSingle({
           priority
         />
       </div>
-      <HeroTextOverlay title={title} subtitle={subtitle} />
+      <HeroOverlay title={title} subtitle={subtitle} lang={lang} />
     </div>
   );
 }
@@ -111,13 +147,15 @@ function HeroDouble({
   activities,
   title,
   subtitle,
+  lang,
 }: {
   activities: ICareerActivity[];
   title: string;
   subtitle: string;
+  lang: Lang;
 }) {
   return (
-    <div className="relative h-56 overflow-hidden bg-[#0a1428] sm:h-72 md:h-80">
+    <div className="relative h-full overflow-hidden bg-[#0a1428]">
       <div className="grid h-full grid-cols-2 gap-1">
         {activities.slice(0, 2).map((act) => (
           <div key={act.id} className="relative overflow-hidden">
@@ -131,20 +169,22 @@ function HeroDouble({
           </div>
         ))}
       </div>
-      <HeroTextOverlay title={title} subtitle={subtitle} />
+      <HeroOverlay title={title} subtitle={subtitle} lang={lang} />
     </div>
   );
 }
 
-// ── 3-up carousel (3+ images): prev peek | center MAIN | next peek ────────────
+// ── Carousel (3+ images): prev peek | centre MAIN | next peek ─────────────────
 function HeroCarousel({
   activities,
   title,
   subtitle,
+  lang,
 }: {
   activities: ICareerActivity[];
   title: string;
   subtitle: string;
+  lang: Lang;
 }) {
   const total = activities.length;
   const [active, setActive] = useState(0);
@@ -153,15 +193,10 @@ function HeroCarousel({
   const prevIndex = (active - 1 + total) % total;
   const nextIndex = (active + 1) % total;
 
-  const goTo = (i: number) => {
-    if (i === active) return;
-    setActive(i);
-  };
-
+  const goTo = (i: number) => { if (i !== active) setActive(i); };
   const goNext = () => setActive((a) => (a + 1) % total);
   const goPrev = () => setActive((a) => (a - 1 + total) % total);
 
-  // Auto-advance — reset timer on manual nav
   const resetTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(goNext, 5000);
@@ -177,9 +212,9 @@ function HeroCarousel({
   const handleNext = () => { goNext(); resetTimer(); };
 
   return (
-    <div className="relative h-56 overflow-hidden bg-[#0a1428] sm:h-72 md:h-80">
+    <div className="relative h-full overflow-hidden bg-[#0a1428]">
 
-      {/* ── Left peek — shows PREV image ── */}
+      {/* Left peek — PREV image */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-1/4 overflow-hidden">
         {activities.map((act, i) => (
           <div
@@ -187,20 +222,14 @@ function HeroCarousel({
             className="absolute inset-0 transition-opacity duration-700 ease-out"
             style={{ opacity: i === prevIndex ? 1 : 0 }}
           >
-            <Image
-              src={asset(act.image.path)}
-              alt=""
-              fill
-              sizes="25vw"
-              className="object-cover object-right"
-            />
+            <Image src={asset(act.image.path)} alt="" fill sizes="25vw" className="object-cover object-right" />
           </div>
         ))}
         <div className="absolute inset-0 bg-[#0a1428]/60" />
         <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#0a1428] to-transparent" />
       </div>
 
-      {/* ── Center MAIN — pure crossfade, no keyframes ── */}
+      {/* Centre MAIN — crossfade */}
       <div className="absolute inset-y-0 left-1/4 right-1/4 z-10 overflow-hidden">
         {activities.map((act, i) => (
           <div
@@ -220,7 +249,7 @@ function HeroCarousel({
         ))}
       </div>
 
-      {/* ── Right peek — shows NEXT image ── */}
+      {/* Right peek — NEXT image */}
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-1/4 overflow-hidden">
         {activities.map((act, i) => (
           <div
@@ -228,24 +257,18 @@ function HeroCarousel({
             className="absolute inset-0 transition-opacity duration-700 ease-out"
             style={{ opacity: i === nextIndex ? 1 : 0 }}
           >
-            <Image
-              src={asset(act.image.path)}
-              alt=""
-              fill
-              sizes="25vw"
-              className="object-cover object-left"
-            />
+            <Image src={asset(act.image.path)} alt="" fill sizes="25vw" className="object-cover object-left" />
           </div>
         ))}
         <div className="absolute inset-0 bg-[#0a1428]/60" />
         <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#0a1428] to-transparent" />
       </div>
 
-      {/* ── Thin dividers between panels ── */}
+      {/* Panel dividers */}
       <div className="pointer-events-none absolute inset-y-0 left-1/4 z-20 w-px bg-white/10" />
       <div className="pointer-events-none absolute inset-y-0 right-1/4 z-20 w-px bg-white/10" />
 
-      {/* ── Prev / Next arrow buttons ── */}
+      {/* Prev / Next buttons */}
       <button
         type="button"
         onClick={handlePrev}
@@ -267,8 +290,8 @@ function HeroCarousel({
         </svg>
       </button>
 
-      {/* ── Dot indicators ── */}
-      <div className="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 items-center gap-1.5 sm:bottom-6">
+      {/* Dot indicators — tucked at the very bottom edge */}
+      <div className="absolute bottom-6 left-1/2 z-30 flex -translate-x-1/2 items-center gap-1.5 sm:bottom-8">
         {activities.map((_, i) => (
           <button
             key={i}
@@ -282,24 +305,16 @@ function HeroCarousel({
         ))}
       </div>
 
-      {/* ── Text overlay — rendered above all images ── */}
-      <HeroTextOverlay title={title} subtitle={subtitle} />
+      <HeroOverlay title={title} subtitle={subtitle} lang={lang} />
     </div>
   );
 }
 
 // ── Main export ───────────────────────────────────────────────────────────────
-export function CareersHero({
-  activities,
-  lang: _lang,
-  title,
-  subtitle,
-}: CareersHeroProps) {
+export function CareersHero({ activities, lang, title, subtitle }: CareersHeroProps) {
   const count = activities.length;
-  if (count === 0) return <HeroFallback title={title} subtitle={subtitle} />;
-  if (count === 1)
-    return <HeroSingle activity={activities[0]} title={title} subtitle={subtitle} />;
-  if (count === 2)
-    return <HeroDouble activities={activities} title={title} subtitle={subtitle} />;
-  return <HeroCarousel activities={activities} title={title} subtitle={subtitle} />;
+  if (count === 0) return <HeroFallback title={title} subtitle={subtitle} lang={lang} />;
+  if (count === 1) return <HeroSingle activity={activities[0]} title={title} subtitle={subtitle} lang={lang} />;
+  if (count === 2) return <HeroDouble activities={activities} title={title} subtitle={subtitle} lang={lang} />;
+  return <HeroCarousel activities={activities} title={title} subtitle={subtitle} lang={lang} />;
 }

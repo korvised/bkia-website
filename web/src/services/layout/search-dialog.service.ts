@@ -31,13 +31,13 @@ const CAT = {
     icon: Luggage as LucideIcon,
     label: { en: "Passenger Guide", lo: "ຄູ່ມືຜູ້ໂດຍສານ", zh: "乘客指南" },
   },
-  transports: {
+  services: {
     icon: Car as LucideIcon,
-    label: { en: "Transport", lo: "ການຂົນສົ່ງ", zh: "交通" },
+    label: { en: "Services", lo: "ການບໍລິການ", zh: "服务" },
   },
-  support: {
+  notices: {
     icon: Bell as LucideIcon,
-    label: { en: "Support", lo: "ຊ່ວຍເຫຼືອ", zh: "客户支持" },
+    label: { en: "Announcements", lo: "ແຈ້ງການ", zh: "公告" },
   },
   about: {
     icon: Building2 as LucideIcon,
@@ -524,15 +524,15 @@ export const allSearchItems: SearchableItem[] = [
   // ════════════════════════════════════════════════════════
 
   item(
-    "guides-facilities",
-    "guides",
+    "services-facilities",
+    "services",
     { en: "Facilities & Services", lo: "ສິ່ງອຳນວຍຄວາມສະດວກ", zh: "设施与服务" },
     {
       en: "Airport amenities: dining, shopping, WiFi, lounges, ATM",
       lo: "ສິ່ງອຳນວຍຄວາມສະດວກ: ອາຫານ, ຊອບປິ້ງ, WiFi, ຫ້ອງພັກ, ATM",
       zh: "机场设施：餐饮、购物、WiFi、候机室、ATM",
     },
-    "/guides/facilities",
+    "/services/facilities",
     {
       en: [
         "facilities", "services", "amenities", "dining", "restaurant",
@@ -655,46 +655,80 @@ export const allSearchItems: SearchableItem[] = [
   ),
 
   // ════════════════════════════════════════════════════════
-  //  TRANSPORTS
+  //  SERVICES (ground transport + airport facilities)
   // ════════════════════════════════════════════════════════
 
   item(
-    "transports-to-from",
-    "transports",
-    { en: "To & From Airport", lo: "ຮັບ-ສົ່ງ ສະໜາມບິນ", zh: "往返机场" },
+    "services-packing",
+    "services",
+    { en: "Packing Services", lo: "ບໍລິການຫຸ້ມຫໍ່ພັດສະດຸ", zh: "包装服务" },
     {
-      en: "Taxi, shuttle and van services to and from the airport",
-      lo: "ບໍລິການລົດແທັກຊີ ແລະ ລົດຕູ້ຮັບ-ສົ່ງ ສະໜາມບິນ",
-      zh: "往返机场的出租车、摆渡车及面包车服务",
+      en: "Standardized packing services for secure shipping",
+      lo: "ບໍລິການຫຸ້ມຫໍ່ພັດສະດຸ ທີ່ໄດ້ມາດຕະຖານ ແລະ ປອດໄພ",
+      zh: "符合标准的专业包装服务，确保运输安全",
     },
-    "/transports/to-from-airport",
+    "/services/packing",
+    {
+      en: ["packing", "packing service", "luggage", "bag", "pack", "wrap", "parcel", "secure shipping"],
+      lo: ["ຫຸ້ມ", "ຫໍ່", "ພັດສະດຸ", "ກະເປົ໋າ", "ຈັດ", "ເຄື່ອງ"],
+      zh: ["包装", "打包服务", "包装服务", "行李", "安全运输"],
+    },
+  ),
+
+  item(
+    "services-vip-lounge",
+    "services",
+    { en: "VIP Lounge", lo: "ຫ້ອງ VIP", zh: "贵宾休息室" },
+    {
+      en: "Premium lounge services for VIP guests at the airport",
+      lo: "ບໍລິການຫ້ອງ VIP ພິເສດສຳລັບແຂກ VIP",
+      zh: "机场尊享贵宾休息室服务",
+    },
+    "/services/vip-lounge",
+    {
+      en: ["vip", "lounge", "premium", "business class", "executive lounge"],
+      lo: ["VIP", "ຫ້ອງ", "ພິເສດ"],
+      zh: ["贵宾", "休息室", "VIP", "头等舱"],
+    },
+  ),
+
+  item(
+    "services-to-from",
+    "services",
+    { en: "Airport Taxi", lo: "ແທັກຊີສະໜາມບິນ", zh: "机场出租车" },
+    {
+      en: "Taxi and van shuttle services to and from the airport",
+      lo: "ບໍລິການລົດແທັກຊີ ແລະ ລົດຕູ້ຮັບ-ສົ່ງ ສະໜາມບິນ",
+      zh: "往返机场的出租车及面包车接送服务",
+    },
+    "/services/taxi",
     {
       en: [
-        "taxi", "shuttle", "van", "transportation", "transport to airport",
-        "how to get to airport", "airport transfer", "minibus",
-        "getting to airport", "airport bus", "pick up",
+        "taxi", "airport taxi", "shuttle", "van", "transportation",
+        "transport to airport", "how to get to airport",
+        "airport transfer", "minibus", "getting to airport", "pick up",
       ],
       lo: [
-        "ແທັກຊີ", "ລົດ", "ຮັບ", "ສົ່ງ", "ຂົນສົ່ງ",
-        "ໄປ", "ຈາກ", "ສະໜາມບິນ", "ຕູ້",
+        "ແທັກຊີ", "ສະໜາມບິນ", "ລົດ", "ຮັບ", "ສົ່ງ",
+        "ຂົນສົ່ງ", "ໄປ", "ຈາກ", "ຕູ້",
       ],
       zh: [
-        "出租车", "接送", "摆渡车", "面包车",
-        "机场交通", "如何前往机场", "机场大巴",
+        "出租车", "机场出租车", "接送", "面包车",
+        "机场交通", "如何前往机场",
       ],
     },
   ),
 
   item(
-    "transports-parking",
-    "transports",
+    "services-parking",
+    "services",
     { en: "Parking", lo: "ບ່ອນຈອດລົດ", zh: "停车场" },
     {
       en: "Parking rates, facilities and reservations at the airport",
       lo: "ອັດຕາຄ່າຈອດລົດ, ສິ່ງອຳນວຍຄວາມສະດວກ ແລະ ການຈອງ",
       zh: "机场停车费率、设施及预订",
     },
-    "/transports/parking",
+    "/services/parking",
     {
       en: [
         "parking", "car park", "parking rate", "parking fee",
@@ -713,15 +747,15 @@ export const allSearchItems: SearchableItem[] = [
   ),
 
   item(
-    "transports-regional",
-    "transports",
+    "guides-regional",
+    "guides",
     { en: "Regional Connection", lo: "ການເຊື່ອມຕໍ່ພາກພື້ນ", zh: "区域连接" },
     {
       en: "Cross-border transport to Thailand, Myanmar and other destinations",
       lo: "ການຂົນສົ່ງຂ້າມແດນໄທ, ມຽນມາ ແລະ ຈຸດໝາຍອື່ນໆ",
       zh: "前往泰国、缅甸及其他目的地的跨境交通",
     },
-    "/transports/regional",
+    "/guides/regional",
     {
       en: [
         "regional transport", "cross-border", "Thailand", "Myanmar",
@@ -740,36 +774,36 @@ export const allSearchItems: SearchableItem[] = [
   ),
 
   item(
-    "transports-contacts",
-    "transports",
-    { en: "Transport Contacts", lo: "ຕິດຕໍ່ສອບຖາມ", zh: "交通联系方式" },
+    "about-contact",
+    "about",
+    { en: "Contact Us", lo: "ຕິດຕໍ່ພວກເຮົາ", zh: "联系我们" },
     {
       en: "Contact information for transport service providers",
       lo: "ຂໍ້ມູນຕິດຕໍ່ຜູ້ໃຫ້ບໍລິການຂົນສົ່ງ",
       zh: "交通服务提供商的联系方式",
     },
-    "/transports/contacts",
+    "/about/contact",
     {
-      en: ["transport contacts", "taxi contact", "shuttle contact", "transport phone", "driver contact"],
+      en: ["contact", "contact us", "phone", "email", "address", "transport contacts", "taxi contact"],
       lo: ["ຕິດຕໍ່", "ເບີ", "ໂທ", "ລົດ", "ຜູ້ໃຫ້ບໍລິການ"],
       zh: ["联系方式", "出租车电话", "交通联系", "司机联系"],
     },
   ),
 
   // ════════════════════════════════════════════════════════
-  //  SUPPORT
+  //  NOTICES / ANNOUNCEMENTS
   // ════════════════════════════════════════════════════════
 
   item(
-    "support-notices",
-    "support",
-    { en: "Notices", lo: "ແຈ້ງການ", zh: "机场公告" },
+    "notices-airport",
+    "notices",
+    { en: "Airport Notices", lo: "ແຈ້ງການສະໜາມບິນ", zh: "机场公告" },
     {
       en: "Airport announcements, operational changes and travel advisories",
       lo: "ແຈ້ງການ, ການປ່ຽນແປງ ແລະ ຄຳແນະນຳການເດີນທາງ",
       zh: "机场公告、运营变更及旅行提示",
     },
-    "/support/notices",
+    "/notices/airport",
     {
       en: ["notices", "announcements", "advisory", "operational changes", "airport news", "alerts"],
       lo: ["ແຈ້ງ", "ການ", "ປ່ຽນ", "ຂ່າວ", "ຄຳ", "ແນະ"],
@@ -778,15 +812,15 @@ export const allSearchItems: SearchableItem[] = [
   ),
 
   item(
-    "support-faq",
-    "support",
+    "about-faq",
+    "about",
     { en: "FAQs", lo: "ຄຳຖາມທີ່ພົບເລື້ອຍ", zh: "常见问题" },
     {
       en: "Frequently asked questions about the airport and services",
       lo: "ຄຳຖາມທີ່ຖືກຖາມເລື້ອຍໆ ກ່ຽວກັບສະໜາມບິນ ແລະ ບໍລິການ",
       zh: "有关机场及服务的常见问题解答",
     },
-    "/support/faq",
+    "/about/faq",
     {
       en: ["faq", "faqs", "frequently asked questions", "questions", "help", "how to"],
       lo: ["ຄຳ", "ຖາມ", "ຕອບ", "ຊ່ວຍ", "ວິທີ", "ເລື້ອຍ"],
@@ -795,15 +829,15 @@ export const allSearchItems: SearchableItem[] = [
   ),
 
   item(
-    "support-lost-found",
-    "support",
+    "about-lost-found",
+    "about",
     { en: "Lost & Found", lo: "ເຄື່ອງເສຍ ແລະ ເຄື່ອງຕົກຄ້າງ", zh: "失物招领" },
     {
       en: "Report or claim lost items at the airport",
       lo: "ແຈ້ງ ຫຼື ຢືນຢັນການຮັບເຄື່ອງທີ່ເສຍ ຫຼື ຕົກຄ້າງ",
       zh: "报告或认领在机场遗失的物品",
     },
-    "/support/lost-found",
+    "/about/lost-found",
     {
       en: [
         "lost", "found", "lost and found", "lost item", "found item",
@@ -822,15 +856,15 @@ export const allSearchItems: SearchableItem[] = [
   ),
 
   item(
-    "support-feedback",
-    "support",
+    "about-feedback",
+    "about",
     { en: "Feedback", lo: "ຄຳຄິດເຫັນ", zh: "意见反馈" },
     {
       en: "Share your experience or submit a complaint",
       lo: "ແບ່ງປັນປະສົບການ ຫຼື ສົ່ງຄຳຮ້ອງທຸກ",
       zh: "分享您的体验或提交投诉",
     },
-    "/support/feedback",
+    "/about/feedback",
     {
       en: ["feedback", "complaint", "suggestion", "review", "rate", "experience", "survey"],
       lo: ["ຄຳຄິດ", "ເຫັນ", "ຮ້ອງ", "ທຸກ", "ລາຍ", "ງານ", "ປະສົບ"],
@@ -877,7 +911,7 @@ export const allSearchItems: SearchableItem[] = [
       lo: "ຂ່າວສານ, ການອັບເດດ ແລະ ຂ່າວສານລ່າສຸດຈາກສະໜາມບິນ",
       zh: "机场最新新闻、动态及新闻稿",
     },
-    "/about/news",
+    "/notices/news",
     {
       en: ["news", "press release", "updates", "articles", "stories", "latest news"],
       lo: ["ຂ່າວ", "ສານ", "ອັບ", "ເດດ", "ລ່າ", "ສຸດ"],
@@ -894,7 +928,7 @@ export const allSearchItems: SearchableItem[] = [
       lo: "ຕໍາແໜ່ງວ່າງ ແລະ ໂອກາດການຈ້າງງານທີ່ BKIA",
       zh: "博胶国际机场的招聘职位与就业机会",
     },
-    "/about/careers",
+    "/careers",
     {
       en: [
         "careers", "jobs", "vacancies", "employment", "hiring",
@@ -920,7 +954,7 @@ export const allSearchItems: SearchableItem[] = [
       lo: "ເອກະສານການປະມູນ ແລະ ໂອກາດການຈັດຊື້",
       zh: "机场招标文件与采购机会",
     },
-    "/about/auctions",
+    "/notices/auctions",
     {
       en: ["auctions", "tender", "procurement", "bidding", "bid", "contract"],
       lo: ["ປະມູນ", "ຈັດ", "ຊື້", "ໂອ", "ກາດ", "ສັນ"],

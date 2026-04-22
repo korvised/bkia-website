@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { FileText } from "lucide-react";
 import { Lang } from "@/types/language";
 import { AuctionCategory, AuctionStatus } from "@/types/auction";
 import { listPublicAuctions } from "@/services/auction";
-import { createAuctionI18n } from "@/data/i18n/about";
+import { createAuctionI18n } from "@/data/i18n/notices";
 import { AuctionCard } from "./auction-card";
 
 interface AuctionListProps {

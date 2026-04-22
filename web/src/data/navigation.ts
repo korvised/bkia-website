@@ -54,6 +54,7 @@ interface NavItem {
 
 // Main Navigation Items
 export const navigation: NavItem[] = [
+  // I. Flights — unchanged
   {
     id: "flights",
     label: { en: "Flights", lo: "ຖ້ຽວບິນ", zh: "航班" },
@@ -93,11 +94,11 @@ export const navigation: NavItem[] = [
         href: "/flights/schedules",
       },
       {
-        label: { en: "Airlines", lo: "ສາຍການບິນ", zh: "航空公司" },
+        label: { en: "Airlines", lo: "ຂໍ້ມູນສາຍການບິນ", zh: "航空公司" },
         description: {
-          en: "View airline information",
-          lo: "ເບິ່ງຂໍ້ມູນສາຍການບິນ",
-          zh: "查看航空公司信息",
+          en: "Search for airline codes and contact info",
+          lo: "ຄົ້ນຫາລະຫັດສາຍການບິນ ແລະ ຂໍ້ມູນຕິດຕໍ່",
+          zh: "搜索航空公司代码及联系信息",
         },
         href: "/flights/airlines",
       },
@@ -117,6 +118,8 @@ export const navigation: NavItem[] = [
       },
     },
   },
+
+  // II. Passenger Guide — remove facilities, add regional
   {
     id: "guides",
     label: { en: "Passenger Guide", lo: "ຄູ່ມືຜູ້ໂດຍສານ", zh: "乘客指南" },
@@ -166,16 +169,16 @@ export const navigation: NavItem[] = [
       },
       {
         label: {
-          en: "Facilities & Services",
-          lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
-          zh: "设施与服务",
+          en: "Regional Connection",
+          lo: "ການເຊື່ອມຕໍ່ພາກພື້ນ",
+          zh: "区域连接",
         },
         description: {
-          en: "Airport amenities for passengers",
-          lo: "ສິ່ງອຳນວຍຄວາມສະດວກຕ່າງໆ",
-          zh: "机场旅客设施",
+          en: "Cross-border transport services",
+          lo: "ບໍລິການຂົນສົ່ງຂ້າມແດນ",
+          zh: "跨境交通服务",
         },
-        href: "/guides/facilities",
+        href: "/guides/regional",
       },
     ],
     featuredContent: {
@@ -193,29 +196,44 @@ export const navigation: NavItem[] = [
       },
     },
   },
+
+  // III. Services (was Transport)
   {
-    id: "transports",
-    label: { en: "Transport", lo: "ການຂົນສົ່ງ", zh: "交通" },
+    id: "services",
+    label: { en: "Services", lo: "ການບໍລິການ", zh: "服务" },
     description: {
-      en: "Ground transportation and parking",
-      lo: "ການຂົນສົ່ງ ແລະ ບ່ອນຈອດລົດ",
-      zh: "地面交通和停车",
+      en: "Airport services and ground transport",
+      lo: "ບໍລິການສະໜາມບິນ ແລະ ການຂົນສົ່ງ",
+      zh: "机场服务与地面交通",
     },
-    href: "/transports/to-from-airport",
+    href: "/services/taxi",
     hasDropdown: true,
     menuItems: [
       {
         label: {
-          en: "To & From Airport",
-          lo: "ຮັບ-ສົ່ງ ສະໜາມບິນ",
-          zh: "往返机场",
+          en: "Packing Services",
+          lo: "ບໍລິການຫຸ້ມຫໍ່ພັດສະດຸ",
+          zh: "包装服务",
+        },
+        description: {
+          en: "Standardized packing services for secure shipping",
+          lo: "ບໍລິການຫຸ້ມຫໍ່ພັດສະດຸ ທີ່ໄດ້ມາດຕະຖານ ແລະ ປອດໄພ",
+          zh: "符合标准的专业包装服务，确保运输安全",
+        },
+        href: "/services/packing",
+      },
+      {
+        label: {
+          en: "Airport Taxi",
+          lo: "ແທັກຊີສະໜາມບິນ",
+          zh: "机场出租车",
         },
         description: {
           en: "Taxi and van shuttle services",
           lo: "ບໍລິການລົດແທັກຊີ ແລະ ລົດຕູ້ຮັບສົ່ງ",
           zh: "出租车和面包车接送服务",
         },
-        href: "/transports/to-from-airport",
+        href: "/services/taxi",
       },
       {
         label: { en: "Parking", lo: "ບ່ອນຈອດລົດ", zh: "停车场" },
@@ -224,29 +242,29 @@ export const navigation: NavItem[] = [
           lo: "ອັດຕາຄ່າຈອດລົດ ແລະ ການຈອງ",
           zh: "停车费和预订",
         },
-        href: "/transports/parking",
+        href: "/services/parking",
       },
       {
         label: {
-          en: "Regional Connection",
-          lo: "ການເຊື່ອມຕໍ່ພາກພື້ນ",
-          zh: "区域连接",
+          en: "Facilities & Services",
+          lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
+          zh: "设施与服务",
         },
         description: {
-          en: "Cross-border transport services",
-          lo: "ບໍລິການຂົນສົ່ງຂ້າມແດນ",
-          zh: "跨境交通服务",
+          en: "Airport amenities for passengers",
+          lo: "ສິ່ງອຳນວຍຄວາມສະດວກຕ່າງໆ",
+          zh: "机场旅客设施",
         },
-        href: "/transports/regional",
+        href: "/services/facilities",
       },
       {
-        label: { en: "Useful Contacts", lo: "ຕິດຕໍ່ສອບຖາມ", zh: "实用联系" },
+        label: { en: "VIP Lounge", lo: "ຫ້ອງ VIP", zh: "贵宾休息室" },
         description: {
-          en: "Transport service contacts",
-          lo: "ເບີຕິດຕໍ່ບໍລິການຂົນສົ່ງ",
-          zh: "交通服务联系",
+          en: "Premium lounge services",
+          lo: "ບໍລິການຫ້ອງ VIP ພິເສດ",
+          zh: "尊享贵宾休息室服务",
         },
-        href: "/transports/contacts",
+        href: "/services/vip-lounge",
       },
     ],
     featuredContent: {
@@ -260,80 +278,84 @@ export const navigation: NavItem[] = [
       },
     },
   },
+
+  // IV. Announcements (was Support)
   {
-    id: "support",
-    label: { en: "Support", lo: "ຊ່ວຍເຫຼືອ", zh: "客户支持" },
+    id: "notices",
+    label: { en: "Announcements", lo: "ແຈ້ງການ", zh: "公告" },
     description: {
-      en: "Help center and passenger services",
-      lo: "ສູນຊ່ວຍເຫຼືອຜູ້ໂດຍສານ",
-      zh: "帮助中心和旅客服务",
+      en: "Airport announcements and news",
+      lo: "ແຈ້ງການ ແລະ ຂ່າວສານສະໜາມບິນ",
+      zh: "机场公告与新闻",
     },
-    href: "/support/notices",
+    href: "/notices/airport",
     hasDropdown: true,
     menuItems: [
       {
-        label: { en: "Notices", lo: "ແຈ້ງການ", zh: "机场公告" },
+        label: { en: "Airport Notices", lo: "ແຈ້ງການສະໜາມບິນ", zh: "机场公告" },
         description: {
           en: "Operational changes and advisories",
           lo: "ການປ່ຽນແປງ ແລະ ຄຳແນະນຳ",
           zh: "运营变更与提示",
         },
-        href: "/support/notices",
+        href: "/notices/airport",
       },
       {
-        label: { en: "FAQs", lo: "ຄຳຖາມທີ່ພົບເລື້ອຍ", zh: "常见问题" },
+        label: { en: "News", lo: "ຂ່າວສານ", zh: "新闻中心" },
         description: {
-          en: "Frequently asked questions",
-          lo: "ຄຳຖາມທີ່ຖືກຖາມເລື້ອຍໆ",
-          zh: "常见问题解答",
+          en: "Latest airport updates and stories",
+          lo: "ການອັບເດດ ແລະ ຂ່າວສານລ່າສຸດ",
+          zh: "最新动态与新闻",
         },
-        href: "/support/faq",
+        href: "/notices/news",
       },
       {
-        label: {
-          en: "Lost & Found",
-          lo: "ເຄື່ອງເສຍ ແລະ ເຄື່ອງຕົກຄ້າງ",
-          zh: "失物招领",
-        },
+        label: { en: "Auctions", lo: "ແຈ້ງເປີດປະມູນ", zh: "拍卖招标" },
         description: {
-          en: "Report or claim lost items at the airport",
-          lo: "ແຈ້ງເຄື່ອງເສຍ ຫຼື ຢືນຢັນການຮັບເຄື່ອງຄືນ",
-          zh: "报告或认领丢失物品",
+          en: "Explore bidding documents and procurement opportunities",
+          lo: "ຄົ້ນຫາເອກະສານການປະມູນ ແລະ ໂອກາດການຈັດຊື້",
+          zh: "查看招标文件与采购机会",
         },
-        href: "/support/lost-found",
-      },
-      {
-        label: { en: "Feedback", lo: "ຄຳຄິດເຫັນ", zh: "意见反馈" },
-        description: {
-          en: "Share your experience",
-          lo: "ແບ່ງປັນປະສົບການຂອງທ່ານ",
-          zh: "分享您的体验",
-        },
-        href: "/support/feedback",
+        href: "/notices/auctions",
       },
     ],
     featuredContent: {
       image:
         "https://bkia-website.s3.ap-southeast-7.amazonaws.com/navbar/information.png",
       title: {
-        en: "Passenger Assistance",
-        lo: "ບໍລິການຊ່ວຍເຫຼືອ",
-        zh: "旅客协助",
+        en: "Stay Informed",
+        lo: "ຕິດຕາມຂ່າວສານ",
+        zh: "获取最新资讯",
       },
       description: {
-        en: "Our team is ready to help 24/7",
-        lo: "ທີມງານພວກເຮົາພ້ອມຊ່ວຍເຫຼືອຕະຫຼອດ 24 ຊົ່ວໂມງ",
-        zh: "我们的团队全天候为您提供帮助",
+        en: "Latest notices, news and procurement",
+        lo: "ແຈ້ງການ, ຂ່າວສານ ແລະ ການປະມູນລ່າສຸດ",
+        zh: "最新公告、新闻与采购信息",
       },
     },
   },
+
+  // V. Careers — standalone, no dropdown
+  {
+    id: "careers",
+    label: { en: "Careers", lo: "ຮ່ວມງານກັບພວກເຮົາ", zh: "人才招聘" },
+    description: {
+      en: "Job opportunities at the airport",
+      lo: "ໂອກາດວຽກງານຢູ່ສະໜາມບິນ",
+      zh: "机场工作机会",
+    },
+    href: "/careers",
+    hasDropdown: false,
+  },
+
+  // VI. About — remove news/auctions/careers, add contact/faq/lost-found/feedback
   {
     id: "about",
     label: { en: "About", lo: "ກ່ຽວກັບ", zh: "关于我们" },
     description: {
-      en: "Airport profile, news, and business",
-      lo: "ຂໍ້ມູນສະໜາມບິນ, ຂ່າວສານ ແລະ ທຸລະກິດ",
-      zh: "机场概况、新闻与商务",
+      en: "Airport profile and passenger services",
+      lo: "ຂໍ້ມູນສະໜາມບິນ ແລະ ບໍລິການຜູ້ໂດຍສານ",
+      zh: "机场概况与旅客服务",
     },
     href: "/about/profile",
     hasDropdown: true,
@@ -348,31 +370,44 @@ export const navigation: NavItem[] = [
         href: "/about/profile",
       },
       {
-        label: { en: "News", lo: "ຂ່າວສານ", zh: "新闻中心" },
+        label: { en: "Contact Us", lo: "ຕິດຕໍ່ພວກເຮົາ", zh: "联系我们" },
         description: {
-          en: "Latest airport updates and stories",
-          lo: "ການອັບເດດ ແລະ ຂ່າວສານລ່າສຸດ",
-          zh: "最新动态与新闻",
+          en: "Get in touch with us",
+          lo: "ຕິດຕໍ່ຫາພວກເຮົາ",
+          zh: "与我们取得联系",
         },
-        href: "/about/news",
+        href: "/about/contact",
       },
       {
-        label: { en: "Careers", lo: "ຮ່ວມງານກັບພວກເຮົາ", zh: "人才招聘" },
+        label: { en: "FAQs", lo: "ຄຳຖາມທີ່ພົບເລື້ອຍ", zh: "常见问题" },
         description: {
-          en: "Job opportunities and recruitment",
-          lo: "ໂອກາດການຈ້າງງານ ແລະ ການຮັບສະໝັກ",
-          zh: "工作机会与人才招聘",
+          en: "Frequently asked questions",
+          lo: "ຄຳຖາມທີ່ຖືກຖາມເລື້ອຍໆ",
+          zh: "常见问题解答",
         },
-        href: "/about/careers",
+        href: "/about/faq",
       },
       {
-        label: { en: "Auctions", lo: "ການປະມູນ", zh: "拍卖招标" },
-        description: {
-          en: "Explore bidding documents and procurement opportunities",
-          lo: "ຄົ້ນຫາເອກະສານການປະມູນ ແລະ ໂອກາດການຈັດຊື້",
-          zh: "查看招标文件与采购机会",
+        label: {
+          en: "Lost & Found",
+          lo: "ເຄື່ອງເສຍ ແລະ ເຄື່ອງຕົກຄ້າງ",
+          zh: "失物招领",
         },
-        href: "/about/auctions",
+        description: {
+          en: "Report or claim lost items at the airport",
+          lo: "ແຈ້ງເຄື່ອງເສຍ ຫຼື ຢືນຢັນການຮັບເຄື່ອງຄືນ",
+          zh: "报告或认领丢失物品",
+        },
+        href: "/about/lost-found",
+      },
+      {
+        label: { en: "Feedback", lo: "ຄຳຄິດເຫັນ", zh: "意见反馈" },
+        description: {
+          en: "Share your experience",
+          lo: "ແບ່ງປັນປະສົບການຂອງທ່ານ",
+          zh: "分享您的体验",
+        },
+        href: "/about/feedback",
       },
     ],
     featuredContent: {

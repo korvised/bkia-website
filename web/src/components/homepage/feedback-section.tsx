@@ -54,7 +54,7 @@ export const FeedbackSection = ({ lang }: FeedbackSectionProps) => {
 
           {/* CTA */}
           <Link
-            href={`/${lang}/support/feedback`}
+            href={`/${lang}/about/feedback`}
             className="inline-flex items-center gap-2.5 rounded-full bg-primary px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-600 hover:shadow-primary/30 active:scale-[0.98]"
           >
             {t.cta}

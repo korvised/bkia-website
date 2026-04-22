@@ -114,7 +114,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 {notices.map((notice) => (
                   <SwiperSlide key={notice.id}>
                     <Link
-                      href={`/${lang}/support/notices/${notice.id}`}
+                      href={`/${lang}/notices/airport/${notice.id}`}
                       className="group flex h-full w-full items-center gap-3"
                       onMouseEnter={() => noticeSwiper?.autoplay.stop()}
                       onMouseLeave={() => { if (!noticePaused) noticeSwiper?.autoplay.start(); }}

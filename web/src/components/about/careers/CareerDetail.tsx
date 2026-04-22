@@ -30,7 +30,7 @@ export function CareerDetail({ job, lang }: CareerDetailProps) {
     <div>
       {/* Back link */}
       <Link
-        href={`/${lang}/about/careers`}
+        href={`/${lang}/careers`}
         className="group mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-gray-400 transition-colors hover:text-[#00AAAC]"
       >
         <svg

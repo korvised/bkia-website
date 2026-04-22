@@ -18,7 +18,7 @@ import { LuFootprints, LuScanLine, LuShield } from "react-icons/lu";
 import { IoBodyOutline } from "react-icons/io5";
 import { BiSolidBadgeCheck } from "react-icons/bi";
 import { Lang } from "@/types/language";
-import { createDepartureGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guides";
 
 interface AirportSecurityProps {
   lang: Lang;
@@ -368,7 +368,7 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
             {t.additionalInfoTitle}
           </h3>
           <a
-            href={`/${lang}/support/faqs`}
+            href={`/${lang}/about/faq`}
             className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#00AAAC] transition-colors hover:text-[#008e90]"
           >
             {t.faqsLink}

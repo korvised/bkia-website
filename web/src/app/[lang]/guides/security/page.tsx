@@ -1,7 +1,7 @@
-import { Lang } from "@/types/language";
+﻿import { Lang } from "@/types/language";
 import { AirportSecurity } from "@/components/guides/security";
 import { Metadata } from "next";
-import { createDepartureGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guides";
 
 interface SecurityPageProps {
   params: Promise<{ lang: Lang }>;

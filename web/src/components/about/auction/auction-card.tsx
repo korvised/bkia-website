@@ -1,8 +1,8 @@
-import { Calendar, HelpCircle } from "lucide-react";
+﻿import { Calendar, HelpCircle } from "lucide-react";
 import { Lang } from "@/types/language";
 import { IAuction, AuctionCategory, AuctionStatus } from "@/types/auction";
 import { asset, fmtDate } from "@/lib";
-import { createAuctionI18n } from "@/data/i18n/about";
+import { createAuctionI18n } from "@/data/i18n/notices";
 import { CATEGORY_ICONS, CATEGORY_COLORS, STATUS_CLASS } from "./auction-helpers";
 import { AuctionDownloadButton } from "./auction-download-button";
 

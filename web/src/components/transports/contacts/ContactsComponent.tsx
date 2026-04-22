@@ -2,7 +2,7 @@
 
 import { Phone, MessageCircle, MapPin, Clock } from "lucide-react";
 import type { Lang } from "@/types/language";
-import { tContacts } from "@/data/i18n/transport/contacts";
+import { tContacts } from "@/data/i18n/about/contact";
 
 interface Props {
   lang: Lang;

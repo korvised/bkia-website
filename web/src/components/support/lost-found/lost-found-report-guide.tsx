@@ -1,13 +1,13 @@
-import { CheckCircle, Mail, Search, FileText, Lightbulb } from "lucide-react";
+﻿import { CheckCircle, Mail, Search, FileText, Lightbulb } from "lucide-react";
 import { Lang } from "@/types/language";
-import { createSupportI18n } from "@/data/i18n/support";
+import { createLostFoundI18n } from "@/data/i18n/about/lost-found";
 
 interface LostFoundReportGuideProps {
   lang: Lang;
 }
 
 export function LostFoundReportGuide({ lang }: LostFoundReportGuideProps) {
-  const t = createSupportI18n(lang).lostFound;
+  const t = createLostFoundI18n(lang).lostFound;
 
   const steps = [
     { icon: FileText, title: t.guideStep1Title, desc: t.guideStep1Desc },

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   AlertCircle,
@@ -13,7 +13,7 @@ import { useCallback, useState } from "react";
 import { Lang } from "@/types/language";
 import { cn } from "@/lib";
 import { ImportantPriority } from "@/types/enum";
-import { createSupportI18n } from "@/data/i18n/support";
+import { createAirportNoticesI18n } from "@/data/i18n/notices/airport";
 
 interface NoticeFiltersProps {
   lang: Lang;
@@ -28,7 +28,7 @@ export function NoticeFilters({
 }: NoticeFiltersProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const t = createSupportI18n(lang).notices;
+  const t = createAirportNoticesI18n(lang).notices;
   const [searchQuery, setSearchQuery] = useState(query);
 
   const categories = [
@@ -69,7 +69,7 @@ export function NoticeFilters({
         params.set("page", "1");
         params.set("q", value);
       }
-      router.push(`/${lang}/support/notices?${params.toString()}`, {
+      router.push(`/${lang}/notices/airport?${params.toString()}`, {
         scroll: false,
       });
     },
@@ -84,7 +84,7 @@ export function NoticeFilters({
       } else {
         params.set("priority", id);
       }
-      router.push(`/${lang}/support/notices?${params.toString()}`, {
+      router.push(`/${lang}/notices/airport?${params.toString()}`, {
         scroll: false,
       });
     },
@@ -95,7 +95,7 @@ export function NoticeFilters({
     setSearchQuery("");
     const params = new URLSearchParams(searchParams.toString());
     params.delete("q");
-    router.push(`/${lang}/support/notices?${params.toString()}`, {
+    router.push(`/${lang}/notices/airport?${params.toString()}`, {
       scroll: false,
     });
   }, [lang, router, searchParams]);

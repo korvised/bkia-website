@@ -42,7 +42,7 @@ function JobRow({ job, lang }: { job: IJobPost; lang: Lang }) {
 
   return (
     <Link
-      href={`/${lang}/about/careers/${job.id}`}
+      href={`/${lang}/careers/${job.id}`}
       className="group block rounded-xl border border-gray-100 bg-white px-5 py-4 transition-all duration-200 hover:border-[#00AAAC]/40 hover:shadow-md hover:-translate-y-px sm:px-6"
     >
       {/* ── Row 1: badges + new + arrow ── */}

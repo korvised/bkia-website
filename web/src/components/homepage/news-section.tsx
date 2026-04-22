@@ -40,7 +40,7 @@ export const NewsSection = ({ lang, news }: NewsSectionProps) => {
             </h2>
           </div>
           <Link
-            href={`/${lang}/about/news`}
+            href={`/${lang}/notices/news`}
             className="self-start inline-flex shrink-0 items-center gap-2 rounded-full border border-primary px-5 py-2 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-white sm:self-auto"
           >
             {t.viewAllNews}
@@ -53,7 +53,7 @@ export const NewsSection = ({ lang, news }: NewsSectionProps) => {
 
           {/* Featured article */}
           <Link
-            href={`/${lang}/about/news/${featured.slug}`}
+            href={`/${lang}/notices/news/${featured.slug}`}
             className="group relative overflow-hidden rounded-2xl bg-gray-100 lg:col-span-2"
           >
             <div className="relative aspect-[16/10] w-full overflow-hidden lg:h-full lg:min-h-[340px]">
@@ -89,7 +89,7 @@ export const NewsSection = ({ lang, news }: NewsSectionProps) => {
             {rest.map((article) => (
               <Link
                 key={article.id}
-                href={`/${lang}/about/news/${article.slug}`}
+                href={`/${lang}/notices/news/${article.slug}`}
                 className="group flex gap-4 overflow-hidden rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition-all hover:border-primary/20 hover:shadow-md"
               >
                 {/* Thumbnail */}

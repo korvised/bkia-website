@@ -3,7 +3,7 @@ import { MdOutlineLuggage, MdOutlineDiamond } from "react-icons/md";
 import { BsBoxSeam } from "react-icons/bs";
 import { TbAlertTriangle } from "react-icons/tb";
 import { Lang } from "@/types/language";
-import { createDepartureGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guides";
 
 interface BaggageContentProps {
   lang: Lang;

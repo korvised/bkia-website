@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { Car, Bike, AlertTriangle, Banknote, QrCode } from "lucide-react";
 import { Lang } from "@/types/language";
-import { createParkingI18n } from "@/data/i18n/transport/parking";
+import { createParkingI18n } from "@/data/i18n/services/parking";
 
 interface Props {
   lang: Lang;

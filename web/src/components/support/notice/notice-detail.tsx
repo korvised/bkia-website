@@ -1,4 +1,4 @@
-import {
+﻿import {
   Calendar,
   Clock,
   AlertCircle,
@@ -14,7 +14,7 @@ import { Lang } from "@/types/language";
 import { ImportantPriority } from "@/types/enum";
 import { INotice } from "@/types/notice";
 import { cn, fmtDate } from "@/lib";
-import { createSupportI18n } from "@/data/i18n/support";
+import { createAirportNoticesI18n } from "@/data/i18n/notices/airport";
 
 interface NoticeDetailProps {
   lang: Lang;
@@ -22,7 +22,7 @@ interface NoticeDetailProps {
 }
 
 export function NoticeDetail({ lang, notice }: NoticeDetailProps) {
-  const t = createSupportI18n(lang).notices;
+  const t = createAirportNoticesI18n(lang).notices;
 
   const priorityConfig: Record<
     ImportantPriority,
@@ -73,7 +73,7 @@ export function NoticeDetail({ lang, notice }: NoticeDetailProps) {
         <div className="container max-w-4xl">
           {/* Back */}
           <Link
-            href={`/${lang}/support/notices`}
+            href={`/${lang}/notices/airport`}
             className="group mb-8 inline-flex items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />

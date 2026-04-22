@@ -53,7 +53,7 @@ const servicesData: ServiceCard[] = [
       lo: "ວາງແຜນການເດີນທາງ",
       zh: "规划交通",
     },
-    buttonLink: "transports/to-from-airport",
+    buttonLink: "services/taxi",
     accentClass: "bg-danger",
     iconBgClass: "bg-danger-50",
     iconColorClass: "text-danger-500",

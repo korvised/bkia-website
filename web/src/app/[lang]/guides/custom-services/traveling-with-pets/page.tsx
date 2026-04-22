@@ -1,8 +1,8 @@
-import { Suspense } from "react";
+﻿import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Lang } from "@/types/language";
 import { TravelingWithPetsComponent } from "@/components/guides/custom-services";
-import { createCustomServicesI18n } from "@/data/i18n/guide";
+import { createCustomServicesI18n } from "@/data/i18n/guides";
 
 interface Props {
   params: Promise<{ lang: Lang }>;

@@ -7,7 +7,7 @@ import {
 import { TbAlertTriangle, TbSpeakerphone } from "react-icons/tb";
 import { BsPersonCheck } from "react-icons/bs";
 import { Lang } from "@/types/language";
-import { createDepartureGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guides";
 
 interface BoardingContentProps {
   lang: Lang;

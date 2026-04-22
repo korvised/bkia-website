@@ -1,10 +1,10 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef } from "react";
 import { Upload, X, CheckCircle, Loader2 } from "lucide-react";
 import { Lang } from "@/types/language";
 import { cn } from "@/lib";
-import { createSupportI18n } from "@/data/i18n/support";
+import { createLostFoundI18n } from "@/data/i18n/about/lost-found";
 import { submitClaim } from "@/services/lost-found";
 
 interface LostFoundClaimFormProps {
@@ -25,7 +25,7 @@ const INPUT_BASE =
   "form-input focus:border-[#00AAAC] focus:ring-[#00AAAC]/10 w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm transition-all placeholder:text-gray-400 focus:ring-4 focus:outline-none";
 
 export function LostFoundClaimForm({ lang, itemId }: LostFoundClaimFormProps) {
-  const t = createSupportI18n(lang).lostFound;
+  const t = createLostFoundI18n(lang).lostFound;
   const fileRef = useRef<HTMLInputElement>(null);
 
   const [form, setForm] = useState<FormState>({

@@ -36,17 +36,17 @@ const QUICK_LINKS = [
     tile: "bg-amber-50 text-amber-600 group-hover:bg-amber-100",
   },
   {
-    id: "transports",
+    id: "services",
     icon: Car,
-    label: { en: "Transport", lo: "ການຂົນສົ່ງ", zh: "交通" },
-    url: "/transports/to-from-airport",
+    label: { en: "Services", lo: "ການບໍລິການ", zh: "服务" },
+    url: "/services/taxi",
     tile: "bg-violet-50 text-violet-600 group-hover:bg-violet-100",
   },
   {
-    id: "support",
+    id: "notices",
     icon: Bell,
-    label: { en: "Support", lo: "ຊ່ວຍເຫຼືອ", zh: "客户服务" },
-    url: "/support/notices",
+    label: { en: "Announcements", lo: "ແຈ້ງການ", zh: "公告" },
+    url: "/notices/airport",
     tile: "bg-rose-50 text-rose-600 group-hover:bg-rose-100",
   },
   {

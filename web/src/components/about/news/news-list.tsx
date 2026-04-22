@@ -1,10 +1,10 @@
-import { Newspaper, Eye, Calendar, ArrowRight } from "lucide-react";
+﻿import { Newspaper, Eye, Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Lang } from "@/types/language";
 import { INews } from "@/types/news";
 import { asset, fmtDate } from "@/lib";
-import { createNewsI18n } from "@/data/i18n/about";
+import { createNewsI18n } from "@/data/i18n/notices";
 import { IPaginationMeta } from "@/types/pagination";
 import { NewsPagination } from "./news-pagination";
 
@@ -48,7 +48,7 @@ export function NewsList({
         {news.map((article) => (
           <Link
             key={article.id}
-            href={`/${lang}/about/news/${article.slug}`}
+            href={`/${lang}/notices/news/${article.slug}`}
             className="group flex flex-col overflow-hidden rounded-xl bg-white transition-all hover:bg-[#f0fbfc]"
           >
             {/* Cover Image */}

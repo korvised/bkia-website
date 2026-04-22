@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { Lang } from "@/types/language";
 import { ArrivalTab } from "@/types/guide";
-import { ArrivalNavKey, createArrivalGuideI18n } from "@/data/i18n/guide";
+import { ArrivalNavKey, createArrivalGuideI18n } from "@/data/i18n/guides";
 import { cn } from "@/lib";
 
 interface Tab {

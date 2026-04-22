@@ -9,7 +9,7 @@ import {
   ShieldX,
 } from "lucide-react";
 import { Lang } from "@/types/language";
-import { createDepartureGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guides";
 
 interface ImmigrationContentProps {
   lang: Lang;

@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import { TH, MM } from "country-flag-icons/react/1x1";
 import { Clock, FileText, MapPin, Car, Ship, AlertTriangle, Lightbulb } from "lucide-react";
 import { Lang } from "@/types/language";
-import { createRegionalTransportI18n } from "@/data/i18n/transport/regional";
+import { createRegionalTransportI18n } from "@/data/i18n/guides/regional";
 
 interface Props {
   lang: Lang;

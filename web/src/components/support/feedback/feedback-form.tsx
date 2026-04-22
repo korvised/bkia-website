@@ -1,10 +1,10 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef } from "react";
 import { CheckCircle, Star, Paperclip, X, Loader2, Upload } from "lucide-react";
 import { cn } from "@/lib";
 import { submitFeedback } from "@/services/feedback";
-import { createSupportI18n } from "@/data/i18n/support";
+import { createFeedbackI18n } from "@/data/i18n/about/feedback";
 import type { Lang } from "@/types/language";
 
 interface Props {
@@ -18,7 +18,7 @@ const SELECT_BASE =
   "form-select focus:border-[#00AAAC] focus:ring-[#00AAAC]/10 w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm transition-all focus:ring-4 focus:outline-none";
 
 export function FeedbackForm({ lang }: Props) {
-  const t = createSupportI18n(lang).feedback;
+  const t = createFeedbackI18n(lang).feedback;
 
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);

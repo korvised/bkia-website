@@ -28,7 +28,7 @@ export function NoticePagination({
 
     params.set("page", page.toString());
 
-    return `/${lang}/support/notices?${params.toString()}`;
+    return `/${lang}/notices/airport?${params.toString()}`;
   };
 
   const startResult = (meta.page - 1) * meta.limit + 1;

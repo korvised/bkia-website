@@ -1,4 +1,4 @@
-import {
+﻿import {
   ArrowLeft,
   Banknote,
   Briefcase,
@@ -22,7 +22,7 @@ import {
   LostFoundType,
 } from "@/types/enum";
 import { cn, fmtDate } from "@/lib";
-import { createSupportI18n } from "@/data/i18n/support";
+import { createLostFoundI18n } from "@/data/i18n/about/lost-found";
 import { LostFoundClaimForm } from "./lost-found-claim-form";
 import { LostFoundImageGallery } from "./lost-found-image-gallery";
 
@@ -68,7 +68,7 @@ const STATUS_STYLE: Record<LostFoundStatus, string> = {
 };
 
 export function LostFoundDetail({ lang, item }: LostFoundDetailProps) {
-  const t = createSupportI18n(lang).lostFound;
+  const t = createLostFoundI18n(lang).lostFound;
   const config = HEADER_CONFIG[item.type];
   const CategoryIcon = CATEGORY_ICON[item.category] ?? Package;
 
@@ -108,7 +108,7 @@ export function LostFoundDetail({ lang, item }: LostFoundDetailProps) {
         <div className="container max-w-5xl">
           {/* Back */}
           <Link
-            href={`/${lang}/support/lost-found`}
+            href={`/${lang}/about/lost-found`}
             className="group mb-8 inline-flex items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -232,7 +232,7 @@ export function LostFoundDetail({ lang, item }: LostFoundDetailProps) {
               <div className="rounded-r-lg border-l-4 border-[#00AAAC] bg-[#f0fbfc] px-4 py-4">
                 <p className="mb-3 text-xs text-gray-600">{t.lostSomething}</p>
                 <Link
-                  href={`/${lang}/support/lost-found/report`}
+                  href={`/${lang}/about/lost-found/report`}
                   className="inline-flex items-center gap-2 rounded-full bg-[#00AAAC] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#008e90]"
                 >
                   {t.reportLost}

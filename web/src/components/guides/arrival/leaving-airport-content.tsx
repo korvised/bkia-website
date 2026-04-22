@@ -11,7 +11,7 @@ import {
   Phone,
 } from "lucide-react";
 import { Lang } from "@/types/language";
-import { createArrivalGuideI18n } from "@/data/i18n/guide";
+import { createArrivalGuideI18n } from "@/data/i18n/guides";
 
 interface LeavingAirportContentProps {
   lang: Lang;

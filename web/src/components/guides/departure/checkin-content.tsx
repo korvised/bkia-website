@@ -4,7 +4,7 @@ import { MdOutlineAccessTime } from "react-icons/md";
 import { IoPeopleOutline } from "react-icons/io5";
 import { PiAirplaneTiltLight } from "react-icons/pi";
 import { Lang } from "@/types/language";
-import { createDepartureGuideI18n } from "@/data/i18n/guide";
+import { createDepartureGuideI18n } from "@/data/i18n/guides";
 
 interface CheckinContentProps {
   lang: Lang;

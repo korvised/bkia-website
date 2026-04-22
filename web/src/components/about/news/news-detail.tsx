@@ -1,4 +1,4 @@
-import { ArrowLeft, Calendar, Eye, Tag, User } from "lucide-react";
+﻿import { ArrowLeft, Calendar, Eye, Tag, User } from "lucide-react";
 import { NewsGallery } from "./news-gallery";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import remarkGfm from "remark-gfm";
 import { Lang } from "@/types/language";
 import { INews, NewsCategory } from "@/types/news";
 import { asset, fmtDate } from "@/lib";
-import { createNewsI18n } from "@/data/i18n/about";
+import { createNewsI18n } from "@/data/i18n/notices";
 
 interface NewsDetailProps {
   lang: Lang;
@@ -34,7 +34,7 @@ export function NewsDetail({ lang, news }: NewsDetailProps) {
         <div className="container">
           {/* Back link */}
           <Link
-            href={`/${lang}/about/news`}
+            href={`/${lang}/notices/news`}
             className="group mb-6 inline-flex items-center gap-2 text-sm font-medium text-[#008e90] transition-colors hover:text-[#00AAAC]"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />

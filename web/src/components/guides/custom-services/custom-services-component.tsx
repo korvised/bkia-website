@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Baby, Accessibility, PawPrint, ArrowRight } from "lucide-react";
 import { Lang } from "@/types/language";
-import { createCustomServicesI18n } from "@/data/i18n/guide";
+import { createCustomServicesI18n } from "@/data/i18n/guides";
 
 interface Props {
   lang: Lang;

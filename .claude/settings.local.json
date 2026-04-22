@@ -13,7 +13,21 @@
       "Bash(grep -n \"fmtDate\" \"D:\\\\projects\\\\bkia-website\\\\web\\\\src\\\\lib\"*.ts)",
       "Bash(find D:projectsbkia-websiteadminsrcfeatureslost-foundhooks -type f -name *.ts*)",
       "Bash(grep -l \"scroll\\\\|animation\\\\|reveal\" D:/projects/bkia-website/web/src/app/[lang]/about/history/page.tsx)",
-      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(k,v\\) for k,v in {**d.get\\('dependencies',{}\\),**d.get\\('devDependencies',{}\\)}.items\\(\\) if any\\(x in k.lower\\(\\) for x in ['drag','dnd','sort']\\)]\")"
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(k,v\\) for k,v in {**d.get\\('dependencies',{}\\),**d.get\\('devDependencies',{}\\)}.items\\(\\) if any\\(x in k.lower\\(\\) for x in ['drag','dnd','sort']\\)]\")",
+      "Bash(mkdir -p 'D:/projects/bkia-website/web/src/app/[lang]/services')",
+      "Bash(mkdir -p 'D:/projects/bkia-website/web/src/app/[lang]/notices')",
+      "Bash(cp -r 'D:/projects/bkia-website/web/src/app/[lang]/transports/to-from-airport' 'D:/projects/bkia-website/web/src/app/[lang]/services/to-from-airport')",
+      "Bash(cp -r 'D:/projects/bkia-website/web/src/app/[lang]/transports/parking' 'D:/projects/bkia-website/web/src/app/[lang]/services/parking')",
+      "Bash(cp -r 'D:/projects/bkia-website/web/src/app/[lang]/transports/regional' 'D:/projects/bkia-website/web/src/app/[lang]/guides/regional')",
+      "Bash(npx tsc *)",
+      "Bash(dir \"D:\\\\projects\\\\bkia-website\\\\web\\\\src\\\\app\\\\[lang]\\\\about\" /b)",
+      "Bash(rm -rf \"D:/projects/bkia-website/web/src/app/[lang]/transports/to-from-airport\")",
+      "Bash(rm -rf \"D:/projects/bkia-website/web/src/app/[lang]/services/to-from-airport\")",
+      "Bash(rm -rf \"D:/projects/bkia-website/web/src/app/[lang]/transports\")",
+      "Bash(rm -rf \"D:/projects/bkia-website/web/src/app/[lang]/support\")",
+      "Bash(find /d/projects/bkia-website/web/src -type f \\\\\\( -name \"*.ts\" -o -name \"*.tsx\" \\\\\\) -exec grep -l \"createToFromAirportI18n\\\\|ToFromAirportComponent\" {} \\\\;)",
+      "Bash(xargs grep *)",
+      "Bash(xargs cat *)"
     ]
   }
 }

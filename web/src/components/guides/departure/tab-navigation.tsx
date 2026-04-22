@@ -8,7 +8,7 @@ import {
 import { FaPassport } from "react-icons/fa";
 import { Lang } from "@/types/language";
 import { DepartureTab } from "@/types/guide";
-import { createDepartureGuideI18n, DepartureNavKey } from "@/data/i18n/guide";
+import { createDepartureGuideI18n, DepartureNavKey } from "@/data/i18n/guides";
 import { cn } from "@/lib";
 
 interface Tab {

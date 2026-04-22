@@ -1,11 +1,11 @@
-import { Bell, Calendar, ChevronRight, Clock } from "lucide-react";
+﻿import { Bell, Calendar, ChevronRight, Clock } from "lucide-react";
 import Link from "next/link";
 import { Lang } from "@/types/language";
 import { ImportantPriority } from "@/types/enum";
 import { INotice } from "@/types/notice";
 import { cn, fmtDate } from "@/lib";
 import { IPaginationMeta } from "@/types/pagination";
-import { createSupportI18n } from "@/data/i18n/support";
+import { createAirportNoticesI18n } from "@/data/i18n/notices/airport";
 import { NoticePagination } from "./notice-pagination";
 
 interface NoticeListProps {
@@ -52,7 +52,7 @@ export function NoticeList({
   meta,
   searchParams,
 }: NoticeListProps) {
-  const t = createSupportI18n(lang).notices;
+  const t = createAirportNoticesI18n(lang).notices;
 
   if (notices.length === 0) {
     return (
@@ -80,7 +80,7 @@ export function NoticeList({
           return (
             <Link
               key={notice.id}
-              href={`/${lang}/support/notices/${notice.id}`}
+              href={`/${lang}/notices/airport/${notice.id}`}
               className={cn(
                 "group flex items-start gap-4 border-l-4 bg-white px-5 py-5 transition-colors",
                 config.border,
