@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Image from "next/image";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Lang } from "@/types/language";
@@ -229,7 +229,7 @@ export default async function Footer({ lang }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/about/faq`}
+                  href={`/${lang}/about/faqs`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
                   {t.faq}

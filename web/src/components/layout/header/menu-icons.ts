@@ -1,4 +1,4 @@
-import {
+﻿import {
   PlaneTakeoff,
   PlaneLanding,
   CalendarDays,
@@ -52,7 +52,7 @@ export const MENU_ICONS: Record<string, LucideIcon> = {
   // About
   "/about/profile": Building,
   "/about/contact": Phone,
-  "/about/faq": HelpCircle,
+  "/about/faqs": HelpCircle,
   "/about/lost-found": Package,
   "/about/feedback": MessageSquare,
   "/careers": Briefcase,

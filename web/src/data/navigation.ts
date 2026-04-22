@@ -1,4 +1,4 @@
-interface FeaturedContent {
+﻿interface FeaturedContent {
   image: string;
   title: {
     en: string;
@@ -385,7 +385,7 @@ export const navigation: NavItem[] = [
           lo: "ຄຳຖາມທີ່ຖືກຖາມເລື້ອຍໆ",
           zh: "常见问题解答",
         },
-        href: "/about/faq",
+        href: "/about/faqs",
       },
       {
         label: {

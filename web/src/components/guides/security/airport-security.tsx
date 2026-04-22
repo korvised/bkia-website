@@ -1,4 +1,4 @@
-import {
+﻿import {
   MdOutlineCancel,
   MdOutlineCheckCircle,
   MdOutlineInfo,
@@ -368,7 +368,7 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
             {t.additionalInfoTitle}
           </h3>
           <a
-            href={`/${lang}/about/faq`}
+            href={`/${lang}/about/faqs`}
             className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#00AAAC] transition-colors hover:text-[#008e90]"
           >
             {t.faqsLink}

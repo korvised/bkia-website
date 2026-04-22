@@ -1,4 +1,4 @@
-import {
+﻿import {
   Bell,
   Building2,
   Car,
@@ -820,7 +820,7 @@ export const allSearchItems: SearchableItem[] = [
       lo: "ຄຳຖາມທີ່ຖືກຖາມເລື້ອຍໆ ກ່ຽວກັບສະໜາມບິນ ແລະ ບໍລິການ",
       zh: "有关机场及服务的常见问题解答",
     },
-    "/about/faq",
+    "/about/faqs",
     {
       en: ["faq", "faqs", "frequently asked questions", "questions", "help", "how to"],
       lo: ["ຄຳ", "ຖາມ", "ຕອບ", "ຊ່ວຍ", "ວິທີ", "ເລື້ອຍ"],
