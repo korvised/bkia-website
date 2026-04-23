@@ -22,9 +22,9 @@ export const petsGuideline = {
     zh: "携带宠物（货舱托运）所需文件和程序的指南。",
   },
   disclaimer: {
-    en: "The information on this page is for reference only. Please inquire with your airline or ticket agent for accurate information.",
-    lo: "ຂໍ້ມູນໃນໜ້ານີ້ແມ່ນເພື່ອເປັນການອ້າງອີງເທົ່ານັ້ນ ກະລຸນາສອບຖາມກັບສາຍການບິນ ຫຼື ຕົວແທນຈໍາໜ່າຍປີ້ສຳລັບຂໍ້ມູນທີ່ຖືກຕ້ອງ",
-    zh: "本页信息仅供参考。请向航空公司或购票代理咨询以获取准确信息。",
+    en: "Regulations and policies may vary by airline. Please consult your carrier or ticketing agent for specific details.",
+    lo: "ຂໍ້ກຳນົດລະບຽບນະໂຍບາຍແຕ່ລະສາຍການບິນອາດແຕກຕ່າງກັນ, ກະລຸນາສອບຖາມກັບສາຍການບິນ ຫຼື ຕົວເເທນຈໍາໜ່າຍປີ້ຂອງທ່ານເພີ່ມເຕີ່ມ",
+    zh: "各航空公司的规章制度和政策可能有所不同，请咨询您的航空公司或购票代理以获取更多详情。",
   },
 
   // General Rules
@@ -49,9 +49,9 @@ export const petsGuideline = {
     zh: "同种类的两只宠物如果共同生活且总重量不超过 15 公斤，可以共用一个航空箱。",
   },
   general4: {
-    en: "Airlines reserve the right to unload or refuse pets that exhibit strong odors or health issues.",
-    lo: "ສາຍການບິນມີສິດປະຕິເສດ ຫຼື ໃຫ້ເອົາສັດລ້ຽງອອກ ຫາກພົບວ່າມີກິ່ນເໝັນແຮງ ຫຼື ມີບັນຫາສຸຂະພາບ.",
-    zh: "如果发现宠物有强烈异味或健康问题，航空公司保留卸载或拒绝承运的权利。",
+    en: "Airlines reserve the right to refuse or offload pets if they have strong odors, health issues, or cause noise disturbances during boarding preparation.",
+    lo: "ສາຍການບິນມີສິດປະຕິເສດ ຫຼື ໃຫ້ເອົາສັດລ້ຽງອອກ ຫາກພົບວ່າມີກິ່ນເໝັນແຮງ, ມີບັນຫາສຸຂະພາບ ຫຼື ຍັງສົ່ງສຽງຮ້ອງລົບກວນໃນລະຫວ່າງການກຽມຂຶ້ນບິນ.",
+    zh: "航空公司有权拒绝或要求移除宠物，如果发现其有强烈异味、健康问题，或在登机准备过程中持续鸣叫骚扰。",
   },
 
   // AVIH Specifics (New section from image)

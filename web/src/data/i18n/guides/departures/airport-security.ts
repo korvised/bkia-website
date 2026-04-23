@@ -4,7 +4,7 @@ export const airportSecurity = {
   // Page title and intro
   title: {
     en: "Airport Security",
-    lo: "ຄວາມປອດໄພສະໜາມບິນ",
+    lo: "ການປ້ອງກັນຄວາມປອດໄພສະໜາມບິນ",
     zh: "机场安保",
   },
   intro: {
@@ -26,7 +26,7 @@ export const airportSecurity = {
   },
   aircraftSafetyTitle: {
     en: "Aircraft Safety",
-    lo: "ຄວາມປອດໄພຂອງເຮືອບິນ",
+    lo: "ການປ້ອງກັນຄວາມປອດໄພຂອງເຮືອບິນ",
     zh: "飞机安全",
   },
   aircraftSafetyDesc: {
@@ -50,12 +50,12 @@ export const airportSecurity = {
   },
   liquids100ml: {
     en: "Containers must not exceed 100ml for carry-on",
-    lo: "ບັນຈຸໃນພາຊະນະຂະໜາດບໍ່ເກີນ 100 ມລ ເທົ່ານັ້ນ ຖ້ານຳຂຶ້ນຍົນ (carry-on)",
+    lo: "ບັນຈຸໃນພາຊະນະຂະໜາດບໍ່ເກີນ 100 ມລ ເທົ່ານັ້ນ ຖ້ານຳຂຶ້ນເຮືອບິນ (carry-on)",
     zh: "随身携带容器不得超过100毫升",
   },
   liquidsZiplock: {
     en: "All containers must be stored in a clear zip-lock plastic bag of specified size",
-    lo: "ພາຊະນະທັງໝົດຕ້ອງເກັບໄວ້ລວມກັນໃນ ຖົງພລາສຕິກໃສແບບ zip-lock ຂະໜາດທີ່ກຳນົດ",
+    lo: "ພາຊະນະທັງໝົດຕ້ອງເກັບໄວ້ລວມກັນໃນ ຖົງພລາສຕິກໃສແບບ zip-lock ຕາມຂະໜາດທີ່ກຳນົດ",
     zh: "所有容器必须装入规定尺寸的透明密封袋中",
   },
   liquids1liter: {
@@ -65,7 +65,7 @@ export const airportSecurity = {
   },
   liquidsChecked: {
     en: "Liquids over 100ml must be checked in",
-    lo: "ຂອງແຫຼວທີ່ເກີນ 100 ມລ ຕ້ອງໂຫຼດກ້ອງທ້ອງເຮືອບິນ (ແຈ້ງຕອນແຈ້ງປີ້)",
+    lo: "ຂອງແຫຼວທີ່ເກີນ 100 ມລ ຕ້ອງໂຫຼດກ້ອງທ້ອງເຮືອບິນ (ແຈ້ງເວລາແຈ້ງປີ້)",
     zh: "超过100毫升的液体必须托运",
   },
 
@@ -130,14 +130,14 @@ export const airportSecurity = {
   },
   tobaccoChecked: {
     en: "If bringing on flight, must be in checked baggage only and not exceed 200 cigarettes or 10 packs",
-    lo: "ຖ້າຈະນຳຕິດຕົວໄປນຳເຮືອບິນ, ໃຫ້ໃສ່ກະເປົາໂຫຼດກ້ອງທ້ອງເຮືອບິນເທົ່ານັ້ນ ແລະ ຕ້ອງບໍ່ເກີນ 200 ກອກ ຫຼື 10 ກັບ",
+    lo: "ຖ້າຈະນຳຂຶ້ນເຮືອບິນ, ໃຫ້ໃສ່ກະເປົາໂຫຼດກ້ອງທ້ອງເຮືອບິນເທົ່ານັ້ນ ແລະ ຕ້ອງບໍ່ເກີນ 200 ກອກ ຫຼື 10 ກັບ",
     zh: "如需携带，只能放入托运行李，且不得超过200支香烟或10包",
   },
 
   // Screening Steps Section
   screeningStepsTitle: {
     en: "Security Checkpoint Procedures",
-    lo: "ຂັ້ນຕອນຢູ່ຈຸດກວດຄົ້ນຄວາມປອດໄພ",
+    lo: "ຂັ້ນຕອນຢູ່ຈຸດກວດຄົ້ນດ້ານການປ້ອງກັນຄວາມປອດໄພ",
     zh: "安检程序",
   },
 
@@ -251,7 +251,7 @@ export const airportSecurity = {
   // Prohibited items
   itemFirearms: {
     en: "Firearms/Replica weapons",
-    lo: "ອາວຸດປືນ/ອາວຸດປອມ",
+    lo: "ອາວຸດປືນ/ສິ່ງຂອງທີ່ມີລັກສະນະຄ້າຍຄືອາວຸດປືນ",
     zh: "枪支/仿制武器",
   },
   itemStunDevices: {
@@ -271,7 +271,7 @@ export const airportSecurity = {
   },
   itemLiquidsOver100: {
     en: "Liquids, cosmetics, gels (over 100ml)",
-    lo: "ທາດແຫຼວ, ເຄື່ອງສຳອາງ, ເຈວ (ເກີນ 100 ມລ)",
+    lo: "ທາດແຫຼວ, ເຄື່ອງສຳອາງ, ເຈວ (ປະລິມານເກີນ 100 ມລ)",
     zh: "液体、化妆品、凝胶（超过100毫升）",
   },
   itemTools: {

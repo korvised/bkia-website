@@ -327,7 +327,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "You need a valid passport with at least 6 months of remaining validity, your return ticket, and a valid visa if required by your destination country. Some destinations may also require health certificates.",
-      lo: "ທ່ານຕ້ອງມີ ໜັງສືຜ່ານແດນ (Passport) ທີ່ມີອາຍຸການໃຊ້ງານເຫຼືອຢ່າງໜ້ອຍ 6 ເດືອນ, ປີ້ຍົນຂາກັບ, ແລະ ວີຊາທີ່ຖືກຕ້ອງ (ຖ້າປະເທດປາຍທາງກຳນົດ). ບາງປະເທດອາດຮຽກຮ້ອງເອກະສານຢັ້ງຢືນສຸຂະພາບເພີ່ມເຕີມ.",
+      lo: "ທ່ານຕ້ອງມີ ໜັງສືຜ່ານແດນ (Passport) ທີ່ມີອາຍຸການໃຊ້ງານເຫຼືອຢ່າງໜ້ອຍ 6 ເດືອນ, ປີ້ເຮືອບິນຂາກັບ, ແລະ ວີຊາທີ່ຖືກຕ້ອງ (ຖ້າປະເທດປາຍທາງກຳນົດ). ບາງປະເທດອາດຮຽກຮ້ອງເອກະສານຢັ້ງຢືນສຸຂະພາບເພີ່ມເຕີມ.",
       zh: "您需要持有有效期在 6 个月以上的护照、返程机票以及目的地国家要求的有效签证。部分目的地可能还需要健康证明或疫苗接种证明。",
     },
   },
@@ -544,7 +544,11 @@ export const faqData: FAQQA[] = [
     },
     links: [
       {
-        label: { en: "View Airlines", lo: "ເບິ່ງສາຍການບິນ", zh: "查看航空公司" },
+        label: {
+          en: "View Airlines",
+          lo: "ເບິ່ງສາຍການບິນ",
+          zh: "查看航空公司",
+        },
         href: "/flights/airlines",
       },
     ],
@@ -564,7 +568,11 @@ export const faqData: FAQQA[] = [
     },
     links: [
       {
-        label: { en: "Departures Board", lo: "ກະດານທ່ຽວບິນຂາອອກ", zh: "出发航班列表" },
+        label: {
+          en: "Departures Board",
+          lo: "ກະດານທ່ຽວບິນຂາອອກ",
+          zh: "出发航班列表",
+        },
         href: "/flights/departures",
       },
     ],
@@ -586,7 +594,11 @@ export const faqData: FAQQA[] = [
     },
     links: [
       {
-        label: { en: "Packing Service", lo: "ບໍລິການຫຸ້ມຫໍ່ກະເປົ໋າ", zh: "行李裹膜服务" },
+        label: {
+          en: "Packing Service",
+          lo: "ບໍລິການຫຸ້ມຫໍ່ກະເປົ໋າ",
+          zh: "行李裹膜服务",
+        },
         href: "/services/packing",
       },
     ],
@@ -606,7 +618,11 @@ export const faqData: FAQQA[] = [
     },
     links: [
       {
-        label: { en: "Packing & Prohibited Items", lo: "ຂໍ້ຫ້າມການຈັດກະເປົ໋າ", zh: "行李打包与禁带物品" },
+        label: {
+          en: "Packing & Prohibited Items",
+          lo: "ຂໍ້ຫ້າມການຈັດກະເປົ໋າ",
+          zh: "行李打包与禁带物品",
+        },
         href: "/services/packing",
       },
     ],
@@ -686,7 +702,11 @@ export const faqData: FAQQA[] = [
     },
     links: [
       {
-        label: { en: "Airport Facilities", lo: "ສິ່ງອຳນວຍຄວາມສະດວກ", zh: "机场设施" },
+        label: {
+          en: "Airport Facilities",
+          lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
+          zh: "机场设施",
+        },
         href: "/services/facilities",
       },
     ],
@@ -706,7 +726,11 @@ export const faqData: FAQQA[] = [
     },
     links: [
       {
-        label: { en: "Airport Facilities", lo: "ສິ່ງອຳນວຍຄວາມສະດວກ", zh: "机场设施" },
+        label: {
+          en: "Airport Facilities",
+          lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
+          zh: "机场设施",
+        },
         href: "/services/facilities",
       },
     ],
@@ -748,7 +772,11 @@ export const faqData: FAQQA[] = [
     },
     links: [
       {
-        label: { en: "Taxi & Shuttle Fares", lo: "ລາຄາລົດຮັບ-ສົ່ງ", zh: "出租车资费" },
+        label: {
+          en: "Taxi & Shuttle Fares",
+          lo: "ລາຄາລົດຮັບ-ສົ່ງ",
+          zh: "出租车资费",
+        },
         href: "/services/taxi",
       },
     ],
@@ -768,7 +796,11 @@ export const faqData: FAQQA[] = [
     },
     links: [
       {
-        label: { en: "Taxi & Shuttle Fares", lo: "ລາຄາລົດຮັບ-ສົ່ງ", zh: "出租车资费" },
+        label: {
+          en: "Taxi & Shuttle Fares",
+          lo: "ລາຄາລົດຮັບ-ສົ່ງ",
+          zh: "出租车资费",
+        },
         href: "/services/taxi",
       },
     ],

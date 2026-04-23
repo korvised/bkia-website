@@ -11,7 +11,7 @@ export const security = {
   // Introduction
   intro: {
     en: "All passengers and cabin baggage must pass through security screening before entering the departure area. This is mandatory for your safety and in compliance with international aviation security standards.",
-    lo: "ຜູ້ໂດຍສານ ແລະ ກະເປົາຖືຂຶ້ນເຮືອບິນທັງໝົດຕ້ອງຜ່ານການກວດກາ ດ້ານການປ້ອງກັນຄວາມປອດໄພກ່ອນ ເຂົ້າຫ້ອງລໍຖ້າຜູ້ໂດຍສານ (ເຂດຫວງຫ້າມຂອງສະໜາມບິນ). ເປັນຂໍ້ບັງຄັບດ້ານມາດຕະການປ້ອງກັນຄວາມປອດໄພສະໜາມບິນ ເພື່ອຄວາມປອດໄພຂອງທ່ານ ແລະ ຜູ້ໂດຍສານທັງໝົດ ເຊິ່ງເປັນມາດຕະຖານດ້ານການປ້ອງກັນຄວາມປອດໄພຂອງການບິນພົນລະເຮືອນສາກົນ.",
+    lo: "ຜູ້ໂດຍສານ ແລະ ກະເປົາຖືຂຶ້ນເຮືອບິນທັງໝົດຕ້ອງຜ່ານການກວດກາ ດ້ານການປ້ອງກັນຄວາມປອດໄພກ່ອນ ເຂົ້າຫ້ອງລໍຖ້າຜູ້ໂດຍສານຂາອອກ (ເຂດຫວງຫ້າມຂອງສະໜາມບິນ). ເປັນຂໍ້ບັງຄັບດ້ານມາດຕະການປ້ອງກັນຄວາມປອດໄພສະໜາມບິນ ເພື່ອຄວາມປອດໄພຂອງທ່ານ ແລະ ຜູ້ໂດຍສານທັງໝົດ ເຊິ່ງເປັນມາດຕະຖານດ້ານການປ້ອງກັນຄວາມປອດໄພຂອງການບິນພົນລະເຮືອນສາກົນ.",
     zh: "所有旅客和随身行李在进入出发区前必须通过安全检查。这是强制性规定，旨在保障您的安全并符合国际航空安全标准。",
   },
 
@@ -23,7 +23,7 @@ export const security = {
   },
   prepareDesc: {
     en: "To speed up the screening process, please prepare the following before reaching the checkpoint:",
-    lo: "ເພື່ອຄວາມວ໋ອງໄວໃນການກວດຄົ້ນ ກະລຸນາກະກຽມສິ່ງຕໍ່ໄປນີ້ກ່ອນຮອດຈຸດກວດຄົ້ນ:",
+    lo: "ເພື່ອຄວາມວ່ອງໄວໃນການກວດຄົ້ນ ກະລຸນາກະກຽມສິ່ງຕໍ່ໄປນີ້ກ່ອນຮອດຈຸດກວດຄົ້ນ:",
     zh: "为加快检查流程，请在到达检查点前准备好以下物品：",
   },
   prepareDocs: {
@@ -48,7 +48,7 @@ export const security = {
   },
   prepareClothing: {
     en: "Remove jackets, coats, hats, accessories, and wallets.",
-    lo: "ຖອດເສື້ອກັນໜາວ, ເສື້ອຄຸມ, ໝວກ, ເຄື່ອງແຟຣຊັ່ນ, ກະເປົາເງີນ...",
+    lo: "ຖອດເສື້ອກັນໜາວ, ເສື້ອຄຸມ, ໝວກ, ເຄື່ອງແຟຣຊັ່ນ, ກະເປົາເງິນ...",
     zh: "脱下夹克、外套、帽子、配饰和钱包。",
   },
 
@@ -81,19 +81,19 @@ export const security = {
     zh: "液体、气雾剂、凝胶（LAGs）",
   },
   liquids100ml: {
-    en: "Containers must not exceed 100ml (Carry-on)",
-    lo: "ພາຊະນະບັນຈຸທີມີປະລິມານ ບໍ່ເກີນ 100 ມລ (ຖືຂຶ້ນເຮືອບິນ)",
-    zh: "容器容量不得超过 100 毫升（随身携带）",
+    en: "Liquid containers with a volume not exceeding 100ml can be carried on board.",
+    lo: "ພາຊະນະບັນຈຸຂອງແຫຼວທີ່ມີປະລິມານບໍ່ເກີນ 100 ມລ ສາມາດຖືຂຶ້ນເຮືອບິນໄດ້",
+    zh: "容器容量不超过 100 毫升的液体可以随身携带上机。",
   },
   liquidsZiplock: {
-    en: "Total capacity not exceeding 1 liter, packed in a clear zip-lock bag (20.5cm x 20.5cm or 25cm x 15cm)",
-    lo: "ພາຊະນະທັງໝົດລວມກັນໃນຖົງ ບໍ່ເກີນ 1 ລິດ ແລະ ມີການຫຸ່ມຫໍ່ດ້ວຍຖົງພລາສຕິກໃສແບບ ຊິບລ໋ອກ (zip-lock) ຕາມຂະໜາດທີ່ກໍານົດໄວ້ 20.5cm x 20.5cm ຫຼື 25cm x 15cm",
-    zh: "总容量不超过 1 升，并装入规定尺寸的透明密封袋中（20.5cm x 20.5cm 或 25cm x 15cm）",
+    en: "Liquids must be packed together in a clear zip-lock plastic bag with a total capacity not exceeding 1 liter, following the specified sizes: 20.5cm x 20.5cm or 25cm x 15cm.",
+    lo: "ຂອງແຫຼວທີ່ບັນຈຸໃນພາຊະນະລວມກັນໃນຖົງທັງໝົດ ບໍ່ເກີນ 1 ລິດ ແລະ ມີການຫຸ້ມຫໍ່ດ້ວຍຖົງພຣາສຕິກໃສແບບມີຊິບລ໋ອກ (Zip-lock) ຕາມຂະໜາດທີ່ກຳນົດໄວ້ 20.5cm x 20.5cm ຫຼື 25cm X 15 cm",
+    zh: "液体必须统一装在容量不超过 1 升的透明自封袋（Zip-lock）内，袋子尺寸需符合规定：20.5cm x 20.5cm 或 25cm x 15cm。",
   },
   liquidsChecked: {
-    en: "Liquids over 100ml must be checked in and securely packed (Load)",
-    lo: "ຂອງແຫຼວທີ່ເກີນ 100 ມລ ຕ້ອງນໍາໂຫຼດເຂົ້າທ້ອງເຮືອບິນ ແລະ ມີການຫຸ່ມຫໍ່ຢ່າງແໜ້ນໜາ (Load)",
-    zh: "超过 100 毫升的液体必须托运并严密包装",
+    en: "Liquids exceeding 100ml cannot be carried on board but may be transported in checked baggage if securely packed.",
+    lo: "ຂອງແຫຼວທີ່ມີປະລິມານເກີນ 100 ມລ ແມ່ນບໍ່ສາມາດຖືຂຶ້ນເຮືອບິນໄດ້ ແຕ່ສາມາດນໍາໃສ່ໃນກະເປົາໂຫຼດໄດ້ໂດຍມີການຫຸ້ມຫໍ່ຢ່າງໜາແໜ້ນ",
+    zh: "超过 100 毫升的液体严禁随身携带上机，但可以放入托运行李中，前提是必须经过严密包装。",
   },
   liquidIncludes: {
     en: "Includes:",
@@ -144,12 +144,12 @@ export const security = {
   },
   reminderSharpObjects: {
     en: "Sharp objects (knives, scissors, tools) are prohibited in carry-on baggage.",
-    lo: "ຫ້າມນໍາວັດຖຸມີຄົມຂຶ້ນເຮືອບິນ ເຊັ່ນ: ມີດ, ມີດຕັດ, ເຫຼັກແຫຼມ, ອຸປະກອນເຄື່ອງມີຊ່າງ...",
+    lo: "ຫ້າມນໍາວັດຖຸມີຄົມຂຶ້ນເຮືອບິນ ເຊັ່ນ: ມີດ, ມີດຕັດ, ເຫຼັກແຫຼມ, ອຸປະກອນເຄື່ອງມືຊ່າງ...",
     zh: "严禁随身携带利器（刀具、剪刀、工具等）。",
   },
   reminderFlammables: {
     en: "Flammable materials (sprays, lighters, matches, fireworks) are prohibited.",
-    lo: "ຫ້າມນໍາວັດຖຸໄວໄຟຂຶ້ນເຮືອບິນ ເຊັ່ນ: ສະເປໄວໄຟ, ກະໄຟ, ໄມ້ຂີດໄຟ, ພຸດອກໄມ້ໄຟ...",
+    lo: "ຫ້າມນໍາວັດຖຸໄວໄຟຂຶ້ນເຮືອບິນ ເຊັ່ນ: ສະເປໄວໄຟ, ກັບໄຟ, ໄມ້ຂີດໄຟ, ພຸດອກໄມ້ໄຟ...",
     zh: "严禁携带易燃物品（喷雾、打火机、火柴、烟花等）。",
   },
   reminderDrugs: {
@@ -176,7 +176,7 @@ export const security = {
   },
   afterSecurityDesc: {
     en: "Once you clear the X-ray screening, you will enter the departure lounge where you can:",
-    lo: "ເມື່ອທ່ານຜ່ານການກວດສ່ອງລັງສີ (X-ray screening) ແລ້ວ, ທ່ານສາມາດ:",
+    lo: "ເມື່ອທ່ານຜ່ານການກວດຄົ້ນດ້ານການປ້ອງກັນຄວາມປອດໄພ (X-ray screening) ແລ້ວ, ທ່ານສາມາດ:",
     zh: "通过X光安检后，您可以：",
   },
   afterVipRoom: {

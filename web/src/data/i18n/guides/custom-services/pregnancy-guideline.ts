@@ -18,9 +18,9 @@ export const pregnancyGuideline = {
     zh: "出行要求及设施",
   },
   disclaimer: {
-    en: "The information on this page is for reference only. Please verify with the relevant airline or agency for accurate information.",
-    lo: "ຂໍ້ມູນໃນໜ້ານີ້ແມ່ນເພື່ອເປັນການອ້າງອີງເທົ່ານັ້ນ. ກະລຸນາກວດສອບກັບສາຍການບິນ ຫຼື ຕົວແທນຈຳໜ່າຍສຳລັບຂໍ້ມູນທີ່ຖືກຕ້ອງ.",
-    zh: "本页信息仅供参考。请与相关航空公司或机构核实准确信息。",
+    en: "Regulations and policies may vary by airline. Please consult your carrier or ticketing agent for specific details.",
+    lo: "ຂໍ້ກຳນົດລະບຽບນະໂຍບາຍແຕ່ລະສາຍການບິນອາດແຕກຕ່າງກັນ, ກະລຸນາສອບຖາມກັບສາຍການບິນ ຫຼື ຕົວເເທນຈໍາໜ່າຍປີ້ຂອງທ່ານເພີ່ມເຕີ່ມ",
+    zh: "各航空公司的规章制度和政策可能有所不同，请咨询您的航空公司或购票代理以获取更多详情。",
   },
 
   // Pregnant Women Sections

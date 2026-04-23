@@ -11,7 +11,7 @@ export const checkin = {
   // Introduction
   intro: {
     en: "Make sure you have all your travel documents ready, including a valid passport, air ticket or booking confirmation and any necessary visas.",
-    lo: "ກະລຸນາກະກຽມເອກະສານການເດີນທາງໃຫ້ພ້ອມ, ລວມທັງໜັງສືຜ່ານແດນ, ປີ້ຍົນ ຫຼື ການຢືນຢັນການຈອງ ແລະ ວີຊ່າທີ່ຈຳເປັນ.",
+    lo: "ກະລຸນາກະກຽມເອກະສານການເດີນທາງໃຫ້ພ້ອມ, ລວມທັງໜັງສືຜ່ານແດນ, ປີ້ເຮືອບິນ ຫຼື ການຢືນຢັນການຈອງ ແລະ ວີຊ່າທີ່ຈຳເປັນ.",
     zh: "请确保您已准备好所有旅行证件，包括有效护照、机票或预订确认函以及所需签证。",
   },
 

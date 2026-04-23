@@ -233,7 +233,7 @@ export const borderInspection = {
   },
   foreignDoc4: {
     en: "Return / onward ticket (may be checked)",
-    lo: "ປີ້ຍົນຂາກັບ ຫຼື ໄປຕໍ່ (ອາດຖືກກວດ)",
+    lo: "ປີ້ເຮືອບິນຂາກັບ ຫຼື ໄປຕໍ່ (ອາດຖືກກວດ)",
     zh: "回程 / 续程机票（可能被检查）",
   },
 

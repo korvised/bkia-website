@@ -7,9 +7,9 @@ export const baggageClaim = {
     zh: "行李提取",
   },
   intro: {
-    en: "After clearing immigration, proceed to the baggage claim area to collect your checked luggage. Bokeo International Airport has 2 baggage carousels. Flight information screens will display which carousel your flight is assigned to.",
-    lo: "ຫຼັງຈາກຜ່ານການກວດຄົນເຂົ້າ-ອອກເມືອງ, ເດີນໄປຫາຈຸດຮັບກະເປົາ. ສະໜາມບິນສາກົນບໍ່ແກ້ວ ມີສາຍພານ 2 ສາຍ. ໜ້າຈໍຂໍ້ມູນຖ້ຽວບິນຈະສະແດງສາຍພານທີ່ກຳນົດໃຫ້.",
-    zh: "通过边检后，前往行李提取区领取托运行李。博胶国际机场有2条传送带。航班信息屏将显示您的航班所分配的传送带编号。",
+    en: "After clearing immigration, you can collect your luggage at the carousel indicated on the flight information display screens.",
+    lo: "ຫຼັງຈາກຜ່ານການກວດຄົນເຂົ້າເມືອງ, ສາມາດຮັບກະເປົາໄດ້ທີ່ສາຍພານ ຕາມໜ້າຈໍສະແດງຜົນຖ້ຽວບິນທີ່ລະບຸຂຶ້ນຈໍ.",
+    zh: "通过入境审查后，请根据航班信息显示屏的指示，前往指定的传送带提取行李。",
   },
 
   // ── Wait Times ───────────────────────────────────────────────────────────
@@ -36,12 +36,12 @@ export const baggageClaim = {
 
   priorityBagsLabel: {
     en: "Priority (Business)",
-    lo: "ບຸລິມະສິດ (ທຸລະກິດ)",
+    lo: "ບຸລິມະສິດ (ຊັ້ນທຸລະກິດ)",
     zh: "优先（商务舱）",
   },
   priorityBagsValue: {
     en: "Usually first off",
-    lo: "ປົກກະຕິອອກກ່ອນ",
+    lo: "ປົກກະຕິກະເປົາຈະລົງສາຍພານໃຫ້ໄດ້ຮັບກະເປົາກ່ອນ",
     zh: "通常最先送达",
   },
 

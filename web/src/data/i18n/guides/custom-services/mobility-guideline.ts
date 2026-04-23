@@ -63,7 +63,7 @@ export const mobilityGuideline = {
     lo: "ຫ້ອງນ້ຳສຳລັບຜູ້ພິການໂດຍສະເພາະ ມີໃຫ້ບໍລິການທັງໃນອາຄານຜູ້ໂດຍສານພາຍໃນ ແລະ ສາກົນ.",
     zh: "国内和国际航站楼均设有专用无障碍卫生间。",
   },
-  service4Title: {
+  /*  service4Title: {
     en: "Dedicated Parking",
     lo: "ທີ່ຈອດລົດສຳຮອງພິເສດ",
     zh: "专用停车位",
@@ -72,7 +72,7 @@ export const mobilityGuideline = {
     en: "Reserved parking spaces are available near terminal entrances. Valid disability identification is required.",
     lo: "ມີທີ່ຈອດລົດສຳຮອງໃກ້ທາງເຂົ້າອາຄານຜູ້ໂດຍສານ. ກະລຸນາສະແດງບັດຜູ້ພິການ ຫຼື ເອກະສານທີ່ກ່ຽວຂ້ອງ.",
     zh: "航站楼入口附近设有专用停车位。需出示有效证明。",
-  },
+  },*/
 
   // Requirements
   requirementsTitle: {
@@ -108,34 +108,29 @@ export const mobilityGuideline = {
     zh: "无障碍设施",
   },
   facility1: {
-    en: "Ramps and elevators throughout the terminal",
-    lo: "ທາງຄ້ອຍສຳລັບລໍ້ຍູ້ ແລະ ລິຟໂດຍສານທົ່ວອາຄານ",
-    zh: "航站楼内设有坡道和电梯",
+    en: "Passenger elevators available throughout the terminal.",
+    lo: "ລິບໂດຍສານທົ່ວອາຄານ",
+    zh: "航站楼内各处设有乘客电梯。",
   },
   facility2: {
-    en: "Accessible check-in counters at a lower height",
-    lo: "ເຄົາເຕີແຈ້ງປີ້ແບບພິເສດ (ຄວາມສູງເໝາະສຳລັບລໍ້ຍູ້)",
-    zh: "设有低台面无障碍值机柜台",
+    en: "Priority check-in assistance and accessible counters.",
+    lo: "ບໍລິການຊ່ວຍເຫຼືອແຈ້ງປີ້",
+    zh: "优先值机协助与无障碍柜台。",
   },
   facility3: {
-    en: "Tactile floor indicators for visually impaired passengers",
-    lo: "ທາງຍ່າງສັນຍາລັກ (Tactile) ສຳລັບຜູ້ພິການທາງສາຍຕາ",
-    zh: "为视障乘客设有触觉地面指示",
+    en: "Accessible restrooms for passengers with disabilities.",
+    lo: "ຫ້ອງນໍ້າສຳຫຼັບຜູ້ພິການ",
+    zh: "无障碍残疾人专用洗手间。",
   },
   facility4: {
-    en: "Designated seating areas in departure and arrival halls",
-    lo: "ບ່ອນນັ່ງສຳຮອງພິເສດໃນຫ້ອງໂຖງຂາອອກ ແລະ ຂາເຂົ້າ",
-    zh: "出发和到达大厅设有专用座位区",
+    en: "Wheelchair assistance for the elderly, injured, and passengers with disabilities.",
+    lo: "ລໍ້ຍູ້ສຳຫຼັບຜູ້ສູງອາຍຸ, ຄົນເຈັບ ແລະ ຜູ້ພິການ",
+    zh: "为老年人、病患及残障旅客提供轮椅协助服务。",
   },
   facility5: {
-    en: "Assistance call buttons at key locations",
-    lo: "ປຸ່ມກົດຂໍຄວາມຊ່ວຍເຫຼືອຕາມຈຸດສຳຄັນຕ່າງໆ",
-    zh: "各关键位置设有呼叫协助按钮",
-  },
-  facility6: {
-    en: "Accessible boarding gates with jet bridges",
-    lo: "ປະຕູທາງອອກຂຶ້ນເຄື່ອງທີ່ຮອງຮັບລໍ້ຍູ້ ພ້ອມຂົວທ້ຽບເຮຶອບິນ",
-    zh: "无障碍登机口及廊桥设施",
+    en: "Baggage trolleys available for passenger use.",
+    lo: "ລໍ້ຍູ້ສຳພາລະ",
+    zh: "航站楼内提供行李手推车。",
   },
 
   // Tips
