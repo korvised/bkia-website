@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFetchLostFoundItemsQuery } from "@/features/lost-found/api";
-import type { ILostFoundFilter } from "@/features/lost-found/types";
+import { useFetchLostFoundItemsQuery, useDeleteLostFoundMutation } from "@/features/lost-found/api";
+import type { ILostFoundFilter, ILostFoundItem } from "@/features/lost-found/types";
+import { alertService } from "@/services/alert.service";
 
 const defaultFilters: ILostFoundFilter = {
   type: "",
   category: "",
   status: "",
-  visibility: "",
   search: "",
   page: 1,
   limit: 10,
@@ -18,6 +18,7 @@ export function useGetLostFoundItems() {
   const [filters, setFilters] = useState<ILostFoundFilter>(defaultFilters);
 
   const { data, isLoading, isFetching } = useFetchLostFoundItemsQuery(filters);
+  const [deleteLostFound] = useDeleteLostFoundMutation();
 
   const handleFilterChange = (key: keyof ILostFoundFilter, value: unknown) => {
     setFilters((prev) => ({ ...prev, [key]: value, page: 1 }));
@@ -33,6 +34,20 @@ export function useGetLostFoundItems() {
 
   const handleRowClick = (id: string) => navigate(`/support/lost-found/${id}`);
 
+  const handleDelete = async (item: ILostFoundItem) => {
+    const result = await alertService.confirmModal(
+      "Delete Report",
+      `Are you sure you want to delete "${item.displayNames?.en ?? item.displayNames?.lo ?? "this item"}"? This action cannot be undone.`,
+    );
+    if (!result.isConfirmed) return;
+    try {
+      await deleteLostFound(item.id).unwrap();
+      await alertService.success("Deleted", "Lost & found report deleted successfully.");
+    } catch {
+      await alertService.error("Failed to delete report. Please try again.");
+    }
+  };
+
   return {
     data,
     filters,
@@ -43,5 +58,6 @@ export function useGetLostFoundItems() {
     handlePageChange,
     handlePageSizeChange,
     handleRowClick,
+    handleDelete,
   };
 }

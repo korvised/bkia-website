@@ -1,6 +1,6 @@
 import { LuSearch, LuRotateCcw } from "react-icons/lu";
 import { Input, Select } from "@/components/ui";
-import { LostFoundCategory, LostFoundStatus, LostFoundType, LostFoundVisibility } from "@/types";
+import { LostFoundCategory, LostFoundStatus, LostFoundType } from "@/types";
 import type { ILostFoundFilter } from "@/features/lost-found/types";
 
 const TYPE_OPTIONS = [
@@ -14,12 +14,6 @@ const STATUS_OPTIONS = [
   { value: LostFoundStatus.RETURNED, label: "Returned" },
   { value: LostFoundStatus.DONATED, label: "Donated" },
   { value: LostFoundStatus.DISPOSED, label: "Disposed" },
-];
-
-const VISIBILITY_OPTIONS = [
-  { value: LostFoundVisibility.PENDING_REVIEW, label: "Pending Review" },
-  { value: LostFoundVisibility.VISIBLE, label: "Visible" },
-  { value: LostFoundVisibility.HIDDEN, label: "Hidden" },
 ];
 
 const CATEGORY_OPTIONS = [
@@ -77,15 +71,6 @@ export function LostFoundFilters({ filters, onFilterChange, onReset }: Props) {
             value={filters.status ?? ""}
             onChange={(value) => onFilterChange("status", value)}
             options={STATUS_OPTIONS}
-          />
-        </div>
-
-        <div className="w-44 shrink-0">
-          <Select
-            placeholder="All Visibility"
-            value={filters.visibility ?? ""}
-            onChange={(value) => onFilterChange("visibility", value)}
-            options={VISIBILITY_OPTIONS}
           />
         </div>
 

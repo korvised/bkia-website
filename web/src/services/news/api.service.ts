@@ -53,7 +53,7 @@ export function listFeaturedNews(limit: number = 3) {
 export async function getNewsBySlug(slug: string): Promise<INews | null> {
   try {
     return await fetchJSON<INews>(`news/slug/${slug}`);
-  } catch (_error) {
+  } catch {
     return null;
   }
 }

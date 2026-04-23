@@ -1,6 +1,7 @@
 import type { Lang } from "@/types/language";
 
 export const lostFound = {
+  // ── Metadata ─────────────────────────────────────────────────────────────
   pageTitle: {
     en: "Lost & Found",
     lo: "ບໍລິການເຄື່ອງເສຍ ແລະ ເຄື່ອງຕົກຄ້າງ",
@@ -12,260 +13,196 @@ export const lostFound = {
     zh: "在博胶国际机场查找丢失物品或上报拾获物品",
   },
 
-  // Tabs
-  tabAll: { en: "All Items", lo: "ທັງໝົດ", zh: "全部物品" },
-  tabLost: { en: "Lost", lo: "ເຄື່ອງເສຍ", zh: "失物" },
-  tabFound: { en: "Found", lo: "ເຄື່ອງທີ່ເກັບໄດ້", zh: "招领" },
-  tabReport: { en: "Report Item", lo: "ລາຍງານສິ່ງຂອງ", zh: "上报物品" },
-
-  // Categories
-  categoryAll: { en: "All Categories", lo: "ທຸກໝວດໝູ່", zh: "全部类别" },
-  categoryElectronics: {
-    en: "Electronics",
-    lo: "ອຸປະກອນອີເລັກໂທຣນິກ",
-    zh: "电子产品",
+  // ── Hero / search ─────────────────────────────────────────────────────────
+  heroSubtitle: {
+    en: "Search our database of found items. If you spot a match, submit a claim with your proof of ownership.",
+    lo: "ຄົ້ນຫາໃນຖານຂໍ້ມູນເຄື່ອງຕົກຄ້າງຂອງພວກເຮົາ. ຫາກທ່ານພົບລາຍການທີ່ຄ້າຍຄືສິ່ງຂອງຂອງທ່ານ, ກະລຸນາສົ່ງຄຳຮ້ອງພ້ອມຫຼັກຖານຢືນຢັນຄວາມເປັນເຈົ້າຂອງ.",
+    zh: "在我们的失物数据库中进行搜索。如果发现匹配物品，请提交认领申请并提供所有权证明。",
   },
-  categoryBaggage: { en: "Baggage", lo: "ກະເປົ໋າເດີນທາງ", zh: "行李" },
-  categoryClothing: { en: "Clothing", lo: "ເຄື່ອງນຸ່ງຫົ່ມ", zh: "服装" },
-  categoryDocuments: { en: "Documents", lo: "ເອກະສານສຳຄັນ", zh: "证件文件" },
-  categoryJewelry: { en: "Jewelry", lo: "ເຄື່ອງປະດັບ", zh: "珠宝首饰" },
-  categoryKeys: { en: "Keys", lo: "ກຸນແຈ", zh: "钥匙" },
-  categoryCash: { en: "Cash", lo: "ເງິນສົດ", zh: "现金" },
-  categoryToys: { en: "Toys", lo: "ຂອງຫຼິ້ນ", zh: "玩具" },
-  categoryOther: { en: "Other", lo: "ອື່ນໆ", zh: "其他" },
-
-  // Status badge
-  statusOpen: { en: "Open", lo: "ກຳລັງດຳເນີນການ", zh: "待处理" },
-  statusMatched: { en: "Matched", lo: "ພົບຂໍ້ມູນທີ່ກົງກັນ", zh: "已匹配" },
-  statusReturned: { en: "Returned", lo: "ສົ່ງຄືນເຈົ້າຂອງແລ້ວ", zh: "已归还" },
-  statusDonated: { en: "Donated", lo: "ບໍລິຈາກແລ້ວ", zh: "已捐赠" },
-  statusDisposed: { en: "Disposed", lo: "ກຳຈັດ/ທຳລາຍແລ້ວ", zh: "已处置" },
-
-  // Type badge
-  typeLost: { en: "Lost", lo: "ເຄື່ອງເສຍ", zh: "失物" },
-  typeFound: { en: "Found", lo: "ເຄື່ອງທີ່ເກັບໄດ້", zh: "招领" },
-
-  // Search
-  searchPlaceholder: {
-    en: "Search by item name or location...",
-    lo: "ຄົ້ນຫາດ້ວຍຊື່ສິ່ງຂອງ ຫຼື ສະຖານທີ່...",
-    zh: "按物品名称或地点搜索...",
+  searchPlaceholderMain: {
+    en: "Search by item name, category or location…",
+    lo: "ຄົ້ນຫາດ້ວຍຊື່ສິ່ງຂອງ, ໝວດໝູ່ ຫຼື ສະຖານທີ່…",
+    zh: "按物品名称、类别或地点搜索…",
   },
   clearSearch: { en: "Clear", lo: "ລ້າງການຄົ້ນຫາ", zh: "清除" },
 
-  // Labels
-  incidentDate: { en: "Date", lo: "ວັນທີ", zh: "日期" },
-  location: { en: "Location", lo: "ສະຖານທີ່", zh: "地点" },
-  flightNumber: { en: "Flight", lo: "ທ່ຽວບິນ", zh: "航班" },
-  claimItem: { en: "Claim This Item", lo: "ແຈ້ງຮັບເຄື່ອງນີ້", zh: "申领此物" },
-  reportLost: { en: "Report Lost Item", lo: "ແຈ້ງເຄື່ອງເສຍ", zh: "上报失物" },
-  reportFound: {
-    en: "Report Found Item",
-    lo: "ແຈ້ງເຄື່ອງທີ່ເກັບໄດ້",
-    zh: "上报拾获物品",
+  // ── Stats ─────────────────────────────────────────────────────────────────
+  statsTitle: {
+    en: "Items currently in our care",
+    lo: "ສິ່ງຂອງທີ່ຢູ່ໃນຄວາມດູແລຂອງພວກເຮົາ",
+    zh: "目前保管中的物品",
   },
-  backToList: {
-    en: "Back to Lost & Found",
-    lo: "ກັບຄືນ",
-    zh: "返回失物招领",
-  },
-  viewDetail: { en: "View Details", lo: "ເບິ່ງລາຍລະອຽດ", zh: "查看详情" },
+  statTotal: { en: "Total Items", lo: "ສິ່ງຂອງທັງໝົດ", zh: "物品总数" },
+  statOpen: { en: "Awaiting Claim", lo: "ລໍຖ້າເຈົ້າຂອງມາຮັບ", zh: "待认领" },
+  statMatched: { en: "Under Review", lo: "ກຳລັງກວດສອບຄຳຮ້ອງ", zh: "审核中" },
+  statReturned: { en: "Returned", lo: "ສົ່ງຄືນເຈົ້າຂອງແລ້ວ", zh: "已归还" },
 
-  // Empty state
-  noItemsFound: { en: "No items found", lo: "ບໍ່ພົບລາຍການ", zh: "未找到物品" },
-  noItemsMessage: {
-    en: "Try adjusting your filters or search terms.",
-    lo: "ກະລຸນາລອງປ່ຽນຕົວກອງ ຫຼື ຄຳຄົ້ນຫາໃໝ່.",
-    zh: "请尝试调整筛选条件或搜索词。",
+  // ── Search results ────────────────────────────────────────────────────────
+  searchResultsCount: {
+    en: "result(s) found for",
+    lo: "ລາຍການທີ່ພົບສຳລັບ",
+    zh: "条结果：",
   },
+  noResultsFound: {
+    en: "No matching items found",
+    lo: "ບໍ່ພົບລາຍການທີ່ກົງກັນ",
+    zh: "未找到匹配物品",
+  },
+  noResultsHint: {
+    en: "Try different keywords, or contact us — our staff can search records directly.",
+    lo: "ລອງໃຊ້ຄຳຄົ້ນຫາອື່ນ ຫຼື ຕິດຕໍ່ພວກເຮົາ — ພະນັກງານສາມາດຊ່ວຍຄົ້ນຫາຈາກບັນທຶກໂດຍກົງ.",
+    zh: "请尝试使用其他关键词，或直接联系我们——工作人员可为您查询内部记录。",
+  },
+  claimThisItem: { en: "This is mine", lo: "ແມ່ນຂອງຂ້ອຍ", zh: "这是我的" },
+  cancelClaim: { en: "Cancel", lo: "ຍົກເລີກ", zh: "取消" },
+  backToList: { en: "Back", lo: "ກັບຄືນ", zh: "返回" },
 
-  // Not found
-  notFoundTitle: { en: "Item Not Found", lo: "ບໍ່ພົບຂໍ້ມູນ", zh: "未找到物品" },
-  notFoundMessage: {
-    en: "This item does not exist or may have been removed.",
-    lo: "ບໍ່ພົບລາຍການນີ້ ຫຼື ອາດຖືກລຶບອອກຈາກລະບົບແລ້ວ.",
-    zh: "此物品不存在或可能已被删除。",
+  // ── Claim form ────────────────────────────────────────────────────────────
+  claimItemLabel: { en: "Claiming", lo: "ແຈ້ງຮັບເຄື່ອງຄືນ", zh: "申领物品" },
+  claimSectionDescribe: {
+    en: "Describe your item",
+    lo: "ອະທິບາຍລາຍລະອຽດສິ່ງຂອງ",
+    zh: "描述您的物品",
   },
-
-  // Claim form
-  claimFormTitle: {
-    en: "Submit a Claim",
-    lo: "ສົ່ງຄຳຮ້ອງຂໍຮັບເຄື່ອງຄືນ",
-    zh: "提交申领",
+  claimSectionFlight: {
+    en: "Your flight details",
+    lo: "ຂໍ້ມູນທ່ຽວບິນຂອງທ່ານ",
+    zh: "航班详情",
   },
-  claimantName: { en: "Your Name", lo: "ຊື່ ແລະ ນາມສະກຸນ", zh: "您的姓名" },
-  claimantEmail: { en: "Email", lo: "ອີເມວ", zh: "电子邮件" },
-  claimantPhone: {
-    en: "Phone (optional)",
-    lo: "ເບີໂທລະສັບ (ຖ້າມີ)",
-    zh: "电话（选填）",
+  claimSectionProof: {
+    en: "Proof documents",
+    lo: "ເອກະສານຢືນຢັນ",
+    zh: "证明文件",
+  },
+  claimSectionContact: {
+    en: "Your contact info",
+    lo: "ຂໍ້ມູນຕິດຕໍ່",
+    zh: "联系方式",
   },
   ownershipProof: {
     en: "Describe how you can prove ownership",
-    lo: "ລາຍລະອຽດເພື່ອຢືນຢັນຄວາມເປັນເຈົ້າຂອງ",
-    zh: "请描述您如何证明物品归属",
+    lo: "ທ່ານຈະຢືນຢັນຄວາມເປັນເຈົ້າຂອງໄດ້ແນວໃດ?",
+    zh: "请描述您如何证明该物品归您所有",
   },
   ownershipProofHint: {
     en: "e.g. contents inside, distinguishing marks, receipts, etc.",
-    lo: "ຕົວຢ່າງ: ສິ່ງຂອງທາງໃນ, ຈຸດຕຳໜິ, ໃບບິນຢືນຢັນ, ແລະ ອື່ນໆ.",
-    zh: "如：物品内容物、特殊标记、购买收据等",
+    lo: "ຕົວຢ່າງ: ສິ່ງຂອງທີ່ຢູ່ທາງໃນ, ຈຸດຕຳໜິພິເສດ, ໃບບິນຊື້ເຄື່ອງ ແລະ ອື່ນໆ.",
+    zh: "例如：内部装有的物品、特殊标记、购买收据等",
   },
-  proofFiles: {
-    en: "Upload proof (ID, boarding pass, receipt) — optional",
-    lo: "ອັບໂຫລດຫຼັກຖານ (ບັດປະຈຳຕົວ, ບັດຂຶ້ນເຮືອ, ໃບບິນ) — ຖ້າມີ",
-    zh: "上传证明文件（身份证、登机牌、收据）— 选填",
+  claimFlightNumber: {
+    en: "Your flight number",
+    lo: "ເລກທ່ຽວບິນຂອງທ່ານ",
+    zh: "航班号",
+  },
+  claimFlightHint: {
+    en: "e.g. QV 201 — the flight you were on when the item was lost",
+    lo: "ຕົວຢ່າງ: QV 201 — ທ່ຽວບິນທີ່ທ່ານເດີນທາງໃນຊ່ວງທີ່ເຄື່ອງເສຍ",
+    zh: "例如：QV 201 — 丢失物品时乘坐的航班",
+  },
+  claimSeatNumber: {
+    en: "Your seat number",
+    lo: "ໝາຍເລກບ່ອນນັ່ງ",
+    zh: "座位号",
+  },
+  claimSeatHint: {
+    en: "e.g. 14A — helps confirm you were on the flight",
+    lo: "ຕົວຢ່າງ: 14A — ຊ່ວຍຢືນຢັນວ່າທ່ານຢູ່ໃນທ່ຽວບິນແທ້",
+    zh: "例如：14A — 有助于确认您确实在该航班上",
+  },
+  proofPhotos: {
+    en: "Upload proof photos",
+    lo: "ອັບໂຫຼດຮູບພາບຢືນຢັນ",
+    zh: "上传证明照片",
+  },
+  proofPhotosHint: {
+    en: "Boarding pass, receipt, photo of item, or ID — optional but speeds up review",
+    lo: "ບັດຂຶ້ນເຮືອ, ໃບບິນ, ຮູບສິ່ງຂອງ ຫຼື ບັດປະຈຳຕົວ — ບໍ່ບັງຄັບ ແຕ່ຈະຊ່ວຍໃຫ້ກວດສອບໄວຂຶ້ນ",
+    zh: "登机牌、收据、物品照片或身份证明 — 选填，但能加快审核速度",
+  },
+  claimantName: { en: "Your Name", lo: "ຊື່ ແລະ ນາມສະກຸນ", zh: "您的姓名" },
+  claimantPhone: { en: "Phone", lo: "ເບີໂທລະສັບ", zh: "联系电话" },
+  claimantEmail: {
+    en: "Email (optional)",
+    lo: "ອີເມວ (ຖ້າມີ)",
+    zh: "电子邮件（选填）",
   },
   submitClaim: {
     en: "Submit Claim",
-    en2: "Submitting...",
-    lo: "ສົ່ງຄຳຮ້ອງຂໍ",
+    lo: "ສົ່ງຄຳຮ້ອງຂໍຮັບເຄື່ອງ",
     zh: "提交申领",
   },
   claimSuccess: {
-    en: "Claim submitted successfully. Our staff will contact you via email.",
-    lo: "ສົ່ງຄຳຮ້ອງສຳເລັດແລ້ວ. ພະນັກງານຈະຕິດຕໍ່ຫາທ່ານຜ່ານທາງອີເມວ.",
-    zh: "申领已成功提交，工作人员将通过电子邮件与您联系。",
+    en: "Claim submitted successfully. Our staff will review it and contact you.",
+    lo: "ສົ່ງຄຳຮ້ອງສຳເລັດແລ້ວ. ພະນັກງານຈະກວດສອບ ແລະ ຕິດຕໍ່ຫາທ່ານໂດຍໄວ.",
+    zh: "申领已成功提交。工作人员将进行审核并与您联系。",
   },
 
-  // Report form
-  reportFormTitle: {
-    en: "Report an Item",
-    lo: "ແຈ້ງຂໍ້ມູນສິ່ງຂອງ",
-    zh: "上报物品",
+  // ── Can't find + How it works + CTA ─────────────────────────────────────
+  cantFindItem: {
+    en: "Can't find your item?",
+    lo: "ຍັງຊອກບໍ່ພົບສິ່ງຂອງຂອງທ່ານບໍ?",
+    zh: "找不到您的物品？",
   },
-  reportFormSubtitle: {
-    en: "Please provide as much detail as possible Our team will review your report and contact you shortly.",
-    lo: "ກະລຸນາໃຫ້ລາຍລະອຽດຫຼາຍທີ່ສຸດເທົ່າທີ່ຈະເປັນໄປໄດ້ ທີມງານຂອງພວກເຮົາຈະກວດສອບລາຍງານ ແລະ ຕິດຕໍ່ຫາທ່ານໂດຍໄວ.",
-    zh: "请提供尽可能详尽的信息 我们的团队将审核您的申请并尽快与您联系。",
+  cantFindDesc: {
+    en: "Contact our staff directly and we'll search our records for you.",
+    lo: "ຕິດຕໍ່ພະນັກງານຂອງພວກເຮົາໂດຍກົງ ເພື່ອໃຫ້ຊ່ວຍຄົ້ນຫາໃນຖານຂໍ້ມູນ.",
+    zh: "请直接联系我们的工作人员，我们将为您在记录中查找。",
   },
-  reportType: { en: "Report Type", lo: "ປະເພດການແຈ້ງ", zh: "上报类型" },
-  itemName: { en: "Item Name", lo: "ຊື່ສິ່ງຂອງ", zh: "物品名称" },
-  itemCategory: { en: "Category", lo: "ໝວດໝູ່", zh: "类别" },
-  itemDescription: { en: "Description", lo: "ລາຍລະອຽດ", zh: "描述" },
-  itemLocation: { en: "Location", lo: "ສະຖານທີ່ ທີ່ພົບ/ເສຍ", zh: "地点" },
-  itemIncidentDate: {
-    en: "Date Lost/Found",
-    lo: "ວັນທີ ເສຍ/ເກັບໄດ້",
-    zh: "丢失/拾获日期",
+  contactStaff: {
+    en: "Contact Airport Staff",
+    lo: "ຕິດຕໍ່ພະນັກງານສະໜາມບິນ",
+    zh: "联系机场工作人员",
   },
-  itemFlightNumber: {
-    en: "Flight Number (optional)",
-    lo: "ເລກທ່ຽວບິນ (ຖ້າມີ)",
-    zh: "航班号（选填）",
+  howItWorks: {
+    en: "How claiming works",
+    lo: "ຂັ້ນຕອນການຂໍຮັບເຄື່ອງຄືນ",
+    zh: "认领流程说明",
   },
-  reporterName: { en: "Your Name", lo: "ຊື່ຜູ້ແຈ້ງ", zh: "您的姓名" },
-  reporterEmail: { en: "Email", lo: "ອີເມວ", zh: "电子邮件" },
-  reporterPhone: {
-    en: "Phone",
-    lo: "ເບີໂທລະສັບ",
-    zh: "电话",
+  howStep1Title: { en: "Search", lo: "ຄົ້ນຫາ", zh: "1. 搜索" },
+  howStep1Desc: {
+    en: "Search our database by item name, category, or location.",
+    lo: "ຄົ້ນຫາໃນຖານຂໍ້ມູນດ້ວຍຊື່ສິ່ງຂອງ, ໝວດໝູ່ ຫຼື ສະຖານທີ່.",
+    zh: "按物品名称、类别或地点在数据库中搜索。",
   },
-  itemImages: {
-    en: "Upload images of the item (optional)",
-    lo: "ອັບໂຫລດຮູບພາບສິ່ງຂອງ (ຖ້າມີ)",
-    zh: "上传物品图片（选填）",
+  howStep2Title: { en: "Claim", lo: "ແຈ້ງຄວາມເປັນເຈົ້າຂອງ", zh: "2. 申领" },
+  howStep2Desc: {
+    en: "Click 'This is mine' and provide your ownership proof, flight details, and contact info.",
+    lo: "ກົດ 'ແມ່ນຂອງຂ້ອຍ' ແລ້ວໃຫ້ຂໍ້ມູນຢືນຢັນ, ລາຍລະອຽດທ່ຽວບິນ ແລະ ຂໍ້ມູນຕິດຕໍ່.",
+    zh: "点击“这是我的”，提供所有权证明、航班信息和联系方式。",
   },
-  submitReport: { en: "Submit Report", lo: "ສົ່ງລາຍງານ", zh: "提交上报" },
-  reportSuccess: {
-    en: "Report submitted. Your reference code is:",
-    lo: "ແຈ້ງລາຍງານສຳເລັດ. ລະຫັດອ້າງອີງຂອງທ່ານແມ່ນ:",
-    zh: "上报成功，您的参考编号为：",
-  },
-  copyCode: { en: "Copy", lo: "ຄັດລອກ", zh: "复制" },
-  codeCopied: { en: "Copied!", lo: "ຄັດລອກແລ້ວ!", zh: "已复制！" },
-
-  // Guide
-  guideTitle: {
-    en: "How it works",
-    lo: "ຂັ້ນຕອນການດຳເນີນການ",
-    zh: "操作流程",
-  },
-  guideStep1Title: {
-    en: "Submit your report",
-    lo: "ສົ່ງຟອມລາຍງານ",
-    zh: "提交申请",
-  },
-  guideStep1Desc: {
-    en: "Fill in the form with as much detail as possible about the item.",
-    lo: "ຕື່ມຂໍ້ມູນລາຍລະອຽດກ່ຽວກັບເຄື່ອງຂອງໃຫ້ຄົບຖ້ວນທີ່ສຸດ.",
-    zh: "请尽可能详细地填写物品的相关信息。",
-  },
-  guideStep2Title: {
-    en: "Get your reference code",
-    lo: "ຮັບລະຫັດອ້າງອີງ",
-    zh: "获取参考编号",
-  },
-  guideStep2Desc: {
-    en: "After submission you will receive a unique reference code. Keep it safe.",
-    lo: "ຫຼັງຈາກສົ່ງຟອມແລ້ວ ທ່ານຈະໄດ້ຮັບລະຫັດອ້າງອີງສະເພາະ. ກະລຸນາເກັບຮັກສາໄວ້ໃຫ້ດີ.",
-    zh: "提交后您将收到一个唯一的参考编号，请妥善保管。",
-  },
-  guideStep3Title: {
-    en: "Staff review",
-    lo: "ພະນັກງານກວດສອບຂໍ້ມູນ",
-    zh: "人工审核",
-  },
-  guideStep3Desc: {
-    en: "Our team will review your report and match it with found items in our system.",
-    lo: "ທີມງານຂອງພວກເຮົາຈະກວດສອບລາຍງານ ແລະ ທຽບເຄືອງກັບເຄື່ອງທີ່ເກັບໄດ້ໃນລະບົບ.",
-    zh: "我们的团队将审核您的申请，并将其与系统中找到的物品进行比对。",
-  },
-  guideStep4Title: {
+  howStep3Title: {
     en: "We contact you",
-    lo: "ພວກເຮົາຈະຕິດຕໍ່ຫາທ່ານ",
-    zh: "与您取得联系",
+    lo: "ລໍຖ້າການຕິດຕໍ່ກັບ",
+    zh: "3. 等候联系",
   },
-  guideStep4Desc: {
-    en: "If a match is found, we will contact you using the contact details provided in your report.",
-    lo: "ຖ້າຂໍ້ມູນກົງກັນ, ພວກເຮົາຈະຕິດຕໍ່ຫາທ່ານຕາມຂໍ້ມູນຕິດຕໍ່ທີ່ທ່ານໄດ້ໃຫ້ໄວ້ໃນລາຍງານ.",
-    zh: "如果发现匹配项，我们将按照您在申请表中提供的联系方式与您联系。",
+  howStep3Desc: {
+    en: "Staff review your claim within 1–2 days and contact you to arrange the return.",
+    lo: "ພະນັກງານຈະກວດສອບພາຍໃນ 1-2 ວັນ ແລ້ວຕິດຕໍ່ຫາທ່ານເພື່ອຈັດແຈງການສົ່ງຄືນ.",
+    zh: "工作人员将在 1-2 天内审核您的申请，并联系您安排归还事宜。",
   },
-  guideTipTitle: {
-    en: "Helpful tips",
-    lo: "ຂໍ້ແນະນຳເພີ່ມເຕີມ",
-    zh: "温馨提示",
+  stillNeedHelp: {
+    en: "Still need help?",
+    lo: "ຍັງຕ້ອງການຄວາມຊ່ວຍເຫຼືອເພີ່ມເຕີມບໍ?",
+    zh: "仍需帮助？",
   },
-  guideTip1: {
-    en: "Include brand, color, and any unique marks in your description.",
-    lo: "ຄວນລະບຸຍີ່ຫໍ້, ສີ ແລະ ສັນຍາລັກພິເສດຕ່າງໆໃນຄຳອະທິບາຍ.",
-    zh: "描述中请包含品牌、颜色以及任何独特的特征。",
+  ctaSubtitle: {
+    en: "Our airport staff are available to assist you in person.",
+    lo: "ພະນັກງານສະໜາມບິນຂອງພວກເຮົາ ພ້ອມໃຫ້ການຊ່ວຍເຫຼືອທ່ານຢູ່ທີ່ຈຸດບໍລິການ.",
+    zh: "我们的机场工作人员随时为您提供现场帮助。",
   },
-  guideTip2: {
-    en: "Upload clear photos if you have them — it speeds up matching.",
-    lo: "ການອັບໂຫລດຮູບພາບທີ່ຊັດເຈນຈະຊ່ວຍໃຫ້ການກວດສອບໄວຂຶ້ນ.",
-    zh: "如有清晰的照片请上传，这将有助于加快比对进度。",
-  },
-  guideTip3: {
-    en: "Reports are reviewed within 1–2 business days.",
-    lo: "ລາຍງານຈະຖືກກວດສອບພາຍໃນ 1-2 ວັນ.",
-    zh: "申请通常会在1-2个工作日内完成审核。",
-  },
+  callUs: { en: "Call Us", lo: "ໂທຫາພວກເຮົາ", zh: "拨打电话" },
+  emailUs: { en: "Email Us", lo: "ສົ່ງອີເມວຫາພວກເຮົາ", zh: "发送邮件" },
 
-  // Form / UI strings
-  contactInfo: { en: "Contact Information", lo: "ຂໍ້ມູນຕິດຕໍ່", zh: "联系方式" },
-  submitting: { en: "Submitting...", lo: "ກຳລັງສົ່ງ...", zh: "正在提交..." },
+  // ── Shared UI ─────────────────────────────────────────────────────────────
+  submitting: {
+    en: "Submitting...",
+    lo: "ກຳລັງສົ່ງຂໍ້ມູນ...",
+    zh: "正在提交...",
+  },
   errorGeneric: {
     en: "Something went wrong. Please try again.",
-    lo: "ມີຂໍ້ຜິດພາດ. ກະລຸນາລອງໃໝ່.",
-    zh: "发生错误，请重试。",
-  },
-
-  // Detail page
-  referenceLabel: { en: "Reference", lo: "ລະຫັດ", zh: "编号" },
-  lostItemNote: {
-    en: "This is a lost item report.",
-    lo: "ນີ້ແມ່ນລາຍງານເຄື່ອງເສຍ.",
-    zh: "这是失物申报。",
-  },
-  notAvailableNote: {
-    en: "This item is no longer available for claim.",
-    lo: "ສິ່ງຂອງນີ້ບໍ່ສາມາດຮ້ອງຂໍຮັບຄືນໄດ້ອີກ.",
-    zh: "此物品已不再开放申领。",
-  },
-  lostSomething: {
-    en: "Lost something at the airport?",
-    lo: "ທ່ານໄດ້ເສຍສິ່ງຂອງຢູ່ສະໜາມບິນ?",
-    zh: "在机场丢失了东西？",
+    lo: "ເກີດຂໍ້ຜິດພາດບາງຢ່າງ. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ.",
+    zh: "发生错误，请稍后重试。",
   },
 } as const;
 

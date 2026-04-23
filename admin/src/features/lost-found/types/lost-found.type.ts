@@ -4,7 +4,6 @@ import type {
   LostFoundCategory,
   LostFoundStatus,
   LostFoundType,
-  LostFoundVisibility,
 } from "@/types";
 
 export interface IMultilingualText {
@@ -13,29 +12,26 @@ export interface IMultilingualText {
   zh?: string;
 }
 
+export interface ICreatedBy {
+  id: string;
+  name: string;
+  email: string;
+}
+
 export interface ILostFoundItem {
   id: string;
   type: LostFoundType;
   category: LostFoundCategory;
   status: LostFoundStatus;
-  visibility: LostFoundVisibility;
-  itemName: string;
-  description?: string;
-  location?: string;
+  displayNames: IMultilingualText;
+  displayDescriptions: IMultilingualText;
+  displayLocations: IMultilingualText;
   incidentDate: string;
-  flightNumber?: string;
-  referenceCode: string;
-  reporterName: string;
-  reporterEmail?: string;
-  reporterPhone: string;
-  displayNames?: IMultilingualText;
-  displayDescriptions?: IMultilingualText;
-  displayLocations?: IMultilingualText;
+  flightNumber?: string | null;
   images: IFile[];
-  coverImage?: IFile;
-  hideReason?: string;
-  reviewedAt?: string;
-  resolvedAt?: string;
+  createdBy?: ICreatedBy | null;
+  pendingClaimsCount?: number;
+  resolvedAt?: string | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -45,11 +41,13 @@ export interface ILostFoundClaim {
   status: ClaimStatus;
   claimantName: string;
   claimantEmail: string;
-  claimantPhone?: string;
+  claimantPhone?: string | null;
+  flightNumber?: string | null;
+  seatNumber?: string | null;
   ownershipProof: string;
   proofFiles: IFile[];
-  staffNote?: string;
-  reviewedAt?: string;
+  staffNote?: string | null;
+  reviewedAt?: string | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -68,7 +66,6 @@ export interface ILostFoundFilter {
   type?: LostFoundType | "";
   category?: LostFoundCategory | "";
   status?: LostFoundStatus | "";
-  visibility?: LostFoundVisibility | "";
   search?: string;
   page?: number;
   limit?: number;
@@ -106,11 +103,6 @@ export interface IUpdateDisplayPayload {
   displayNames?: IMultilingualText;
   displayDescriptions?: IMultilingualText;
   displayLocations?: IMultilingualText;
-}
-
-export interface IUpdateVisibilityPayload {
-  visibility: LostFoundVisibility;
-  hideReason?: string;
 }
 
 export interface IReviewClaimPayload {

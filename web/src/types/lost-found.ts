@@ -17,11 +17,6 @@ export interface ILostFoundItem {
   createdAt: string;
 }
 
-export interface LostFoundPageProps {
-  params: Promise<{ lang: string }>;
-  searchParams: Promise<Record<string, string | undefined>>;
-}
-
 export interface QueryLostFound {
   type?: string;
   category?: string;

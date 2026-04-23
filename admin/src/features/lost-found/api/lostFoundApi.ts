@@ -6,7 +6,6 @@ import type {
   ILostFoundListResponse,
   ILostFoundFilter,
   IUpdateDisplayPayload,
-  IUpdateVisibilityPayload,
   IReviewClaimPayload,
   ILostFoundClaim,
 } from "@/features/lost-found/types";
@@ -60,27 +59,6 @@ const lostFoundApi = apiSlice.injectEndpoints({
       ],
     }),
 
-    updateVisibility: builder.mutation<ILostFoundItem, { id: string; body: IUpdateVisibilityPayload }>({
-      query: ({ id, body }) => ({
-        url: `/lost-found/${id}/visibility`,
-        method: "PATCH",
-        data: body,
-      }),
-      invalidatesTags: (_result, _error, { id }) => [
-        { type: LOST_FOUND_TAG, id },
-        { type: LOST_FOUND_TAG, id: "LIST" },
-      ],
-    }),
-
-    setCover: builder.mutation<ILostFoundItem, { id: string; fileId: string }>({
-      query: ({ id, fileId }) => ({
-        url: `/lost-found/${id}/cover`,
-        method: "PATCH",
-        data: { fileId },
-      }),
-      invalidatesTags: (_result, _error, { id }) => [{ type: LOST_FOUND_TAG, id }],
-    }),
-
     uploadImages: builder.mutation<ILostFoundItem, { id: string; formData: FormData }>({
       query: ({ id, formData }) => ({
         url: `/lost-found/${id}/images`,
@@ -118,6 +96,17 @@ const lostFoundApi = apiSlice.injectEndpoints({
         { type: LOST_FOUND_TAG, id: "LIST" },
       ],
     }),
+
+    deleteLostFound: builder.mutation<{ success: boolean }, string>({
+      query: (id) => ({
+        url: `/lost-found/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (_result, _error, id) => [
+        { type: LOST_FOUND_TAG, id },
+        { type: LOST_FOUND_TAG, id: "LIST" },
+      ],
+    }),
   }),
 });
 
@@ -126,10 +115,9 @@ export const {
   useFetchLostFoundByIdQuery,
   useCreateLostFoundMutation,
   useUpdateDisplayMutation,
-  useUpdateVisibilityMutation,
-  useSetCoverMutation,
   useUploadImagesMutation,
   useRemoveImageMutation,
   useFetchClaimsQuery,
   useReviewClaimMutation,
+  useDeleteLostFoundMutation,
 } = lostFoundApi;

@@ -7,6 +7,7 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -14,16 +15,15 @@ import {
   LostFoundCategory,
   LostFoundStatus,
   LostFoundType,
-  LostFoundVisibility,
 } from '@/types/enum';
 import { File } from './File.entity';
+import { LostFoundClaim } from './LostFoundClaim.entity';
 import { User } from './User.entity';
 
 @Entity('lost_found')
 @Index(['type'])
 @Index(['status'])
 @Index(['category'])
-@Index(['visibility'])
 @Index(['incidentDate'])
 export class LostFound {
   @PrimaryGeneratedColumn('uuid')
@@ -50,27 +50,6 @@ export class LostFound {
     enumName: 'lost_found_category_enum',
   })
   category: LostFoundCategory;
-
-  // Content moderation — new submissions hidden until staff approves
-  @Column({
-    type: 'enum',
-    enum: LostFoundVisibility,
-    enumName: 'lost_found_visibility_enum',
-    default: LostFoundVisibility.PENDING_REVIEW,
-  })
-  visibility: LostFoundVisibility;
-
-  // Staff who approved/rejected visibility
-  @ManyToOne(() => User, { nullable: true, onDelete: 'SET NULL' })
-  @JoinColumn({ name: 'reviewedById' })
-  reviewedBy: User | null;
-
-  @Column({ type: 'timestamptz', nullable: true })
-  reviewedAt: Date | null;
-
-  // Reason if hidden e.g. "spam", "inappropriate content", "duplicate"
-  @Column({ type: 'varchar', length: 255, nullable: true })
-  hideReason: string | null;
 
   @Column({ type: 'varchar', length: 255 })
   itemName: string;
@@ -129,6 +108,13 @@ export class LostFound {
   @ManyToOne(() => File, { nullable: true, onDelete: 'SET NULL' })
   @JoinColumn({ name: 'coverFileId' })
   coverImage: File | null;
+
+  @OneToMany(() => LostFoundClaim, (claim) => claim.lostFound)
+  claims: LostFoundClaim[];
+
+  @ManyToOne(() => User, { nullable: true, onDelete: 'SET NULL' })
+  @JoinColumn({ name: 'createdById' })
+  createdBy: User | null;
 
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;

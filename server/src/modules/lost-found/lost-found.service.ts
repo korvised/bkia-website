@@ -10,7 +10,6 @@ import { FileService } from '@/common/file';
 import {
   ClaimStatus,
   LostFoundStatus,
-  LostFoundVisibility,
 } from '@/types/enum';
 import {
   CreateClaimDto,
@@ -18,9 +17,7 @@ import {
   QueryLostFoundAdminDto,
   QueryLostFoundDto,
   ReviewClaimDto,
-  SetCoverDto,
   UpdateDisplayDto,
-  UpdateVisibilityDto,
 } from './dtos';
 
 function getDisplay(
@@ -49,7 +46,7 @@ export class LostFoundService {
 
   // ─── PUBLIC ────────────────────────────────────────────────
 
-  async create(dto: CreateLostFoundDto, files: Express.Multer.File[]) {
+  async create(dto: CreateLostFoundDto, files: Express.Multer.File[], user: User) {
     const referenceCode = generateReferenceCode();
 
     const record = this.repo.create({
@@ -57,6 +54,7 @@ export class LostFoundService {
       incidentDate: new Date(dto.incidentDate),
       referenceCode,
       images: [],
+      createdBy: user,
     });
 
     const saved = await this.repo.save(record);
@@ -71,8 +69,18 @@ export class LostFoundService {
       await this.repo.save(saved);
     }
 
-    // return only referenceCode to public
     return { referenceCode: saved.referenceCode };
+  }
+
+  // Public stats — aggregated counts (no PII)
+  async getStats() {
+    const [total, open, matched, returned] = await Promise.all([
+      this.repo.count(),
+      this.repo.count({ where: { status: LostFoundStatus.OPEN } }),
+      this.repo.count({ where: { status: LostFoundStatus.MATCHED } }),
+      this.repo.count({ where: { status: LostFoundStatus.RETURNED } }),
+    ]);
+    return { total, open, matched, returned };
   }
 
   // Public list — only VISIBLE, select necessary fields + display fields by locale
@@ -103,7 +111,6 @@ export class LostFoundService {
         'cover.path',
       ])
       .leftJoin('lf.coverImage', 'cover')
-      .where('lf.visibility = :v', { v: LostFoundVisibility.VISIBLE })
       .orderBy('lf.createdAt', 'DESC')
       .skip((page - 1) * limit)
       .take(limit);
@@ -143,10 +150,10 @@ export class LostFoundService {
     };
   }
 
-  // Public detail — single item by id, only if VISIBLE
+  // Public detail — single item by id
   async findOne(id: string, locale = 'en') {
     const lf = await this.repo.findOne({
-      where: { id, visibility: LostFoundVisibility.VISIBLE },
+      where: { id },
       relations: { coverImage: true, images: true },
       select: {
         id: true,
@@ -191,7 +198,6 @@ export class LostFoundService {
       type,
       category,
       status,
-      visibility,
       search,
       page = 1,
       limit = 20,
@@ -199,8 +205,13 @@ export class LostFoundService {
 
     const qb = this.repo
       .createQueryBuilder('lf')
-      .leftJoinAndSelect('lf.coverImage', 'cover')
-      .leftJoinAndSelect('lf.reviewedBy', 'reviewer')
+      .leftJoinAndSelect('lf.createdBy', 'creator')
+      .loadRelationCountAndMap(
+        'lf.pendingClaimsCount',
+        'lf.claims',
+        'claim',
+        (cb) => cb.where('claim.status = :cs', { cs: ClaimStatus.PENDING }),
+      )
       .orderBy('lf.createdAt', 'DESC')
       .skip((page - 1) * limit)
       .take(limit);
@@ -208,11 +219,12 @@ export class LostFoundService {
     if (type) qb.andWhere('lf.type = :type', { type });
     if (category) qb.andWhere('lf.category = :category', { category });
     if (status) qb.andWhere('lf.status = :status', { status });
-    if (visibility) qb.andWhere('lf.visibility = :visibility', { visibility });
     if (search?.trim()) {
       const s = `%${search.trim()}%`;
       qb.andWhere(
-        '(lf.itemName ILIKE :s OR lf.reporterName ILIKE :s OR lf.referenceCode ILIKE :s)',
+        `(lf.itemName ILIKE :s OR EXISTS (
+          SELECT 1 FROM jsonb_each_text(COALESCE(lf."displayNames", '{}'::jsonb)) j(k,v) WHERE v ILIKE :s
+        ))`,
         { s },
       );
     }
@@ -228,10 +240,9 @@ export class LostFoundService {
     const lf = await this.repo.findOne({
       where: { id },
       relations: {
-        coverImage: true,
         images: true,
-        reviewedBy: true,
         handledBy: true,
+        createdBy: true,
       },
     });
     if (!lf) throw new NotFoundException('Item not found');
@@ -244,37 +255,6 @@ export class LostFoundService {
     if (dto.displayDescriptions)
       lf.displayDescriptions = dto.displayDescriptions;
     if (dto.displayLocations) lf.displayLocations = dto.displayLocations;
-    return this.repo.save(lf);
-  }
-
-  async updateVisibility(id: string, dto: UpdateVisibilityDto, staff: User) {
-    const lf = await this.findOneAdmin(id);
-
-    if (dto.visibility === LostFoundVisibility.HIDDEN && !dto.hideReason) {
-      throw new BadRequestException('hideReason is required when hiding');
-    }
-
-    lf.visibility = dto.visibility;
-    lf.hideReason = dto.hideReason ?? null;
-    lf.reviewedBy = staff;
-    lf.reviewedAt = new Date();
-    return this.repo.save(lf);
-  }
-
-  async setCover(id: string, dto: SetCoverDto) {
-    const lf = await this.repo.findOne({
-      where: { id },
-      relations: { images: true },
-    });
-    if (!lf) throw new NotFoundException('Item not found');
-
-    const isOwned = lf.images.some((f) => f.id === dto.fileId);
-    if (!isOwned)
-      throw new BadRequestException(
-        'Cover must be selected from uploaded images',
-      );
-
-    lf.coverImage = { id: dto.fileId } as any;
     return this.repo.save(lf);
   }
 
@@ -319,9 +299,7 @@ export class LostFoundService {
     dto: CreateClaimDto,
     files: Express.Multer.File[],
   ) {
-    const lf = await this.repo.findOne({
-      where: { id, visibility: LostFoundVisibility.VISIBLE },
-    });
+    const lf = await this.repo.findOne({ where: { id } });
     if (!lf) throw new NotFoundException('Item not found');
 
     if (lf.type !== 'FOUND')
@@ -334,6 +312,8 @@ export class LostFoundService {
       claimantName: dto.claimantName,
       claimantEmail: dto.claimantEmail,
       claimantPhone: dto.claimantPhone ?? null,
+      flightNumber: dto.flightNumber ?? null,
+      seatNumber: dto.seatNumber ?? null,
       ownershipProof: dto.ownershipProof,
       proofFiles: [],
     });
@@ -385,5 +365,23 @@ export class LostFoundService {
       relations: { proofFiles: true, reviewedBy: true },
       order: { createdAt: 'DESC' },
     });
+  }
+
+  async remove(id: string) {
+    const lf = await this.repo.findOne({
+      where: { id },
+      relations: { images: true },
+    });
+    if (!lf) throw new NotFoundException('Item not found');
+
+    // Delete all uploaded image files from storage
+    if (lf.images?.length) {
+      await Promise.allSettled(
+        lf.images.map((f) => this.fileService.deleteFile(f.id)),
+      );
+    }
+
+    await this.repo.remove(lf);
+    return { success: true };
   }
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { Lang } from "@/types/language";
-import { FAQsContent } from "./FAQsContent";
+import { FAQsContent } from "@/components/about/faqs";
 
 interface Props {
   params: Promise<{ lang: Lang }>;

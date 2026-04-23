@@ -86,12 +86,6 @@ export enum LostFoundCategory {
   OTHER = 'OTHER',
 }
 
-export enum LostFoundVisibility {
-  PENDING_REVIEW = 'PENDING_REVIEW', // default, hidden from public until staff approves
-  VISIBLE = 'VISIBLE', // approved, shown on public website
-  HIDDEN = 'HIDDEN', // staff manually hid (spam, fake, inappropriate)
-}
-
 export enum ClaimStatus {
   PENDING = 'PENDING', // submitted, waiting staff review
   APPROVED = 'APPROVED', // staff approved, arrange pickup/delivery

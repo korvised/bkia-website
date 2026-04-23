@@ -19,7 +19,7 @@ export class LostFoundClaim {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => LostFound, { onDelete: 'CASCADE' })
+  @ManyToOne(() => LostFound, (lf) => lf.claims, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'lostFoundId' })
   lostFound: LostFound;
 
@@ -39,6 +39,12 @@ export class LostFoundClaim {
 
   @Column({ type: 'varchar', length: 30, nullable: true })
   claimantPhone: string | null;
+
+  @Column({ type: 'varchar', length: 20, nullable: true })
+  flightNumber: string | null;
+
+  @Column({ type: 'varchar', length: 20, nullable: true })
+  seatNumber: string | null;
 
   @Column({ type: 'text' })
   ownershipProof: string;

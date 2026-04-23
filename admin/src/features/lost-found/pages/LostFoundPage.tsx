@@ -20,9 +20,10 @@ export function LostFoundPage() {
     handlePageChange,
     handlePageSizeChange,
     handleRowClick,
+    handleDelete,
   } = useGetLostFoundItems();
 
-  const columns = useLostFoundColumns();
+  const columns = useLostFoundColumns(handleDelete);
 
   return (
     <div className="space-y-6">

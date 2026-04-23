@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 import {
   Car,
   Bus,
@@ -13,227 +14,25 @@ import {
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import type { Lang } from "@/types/language";
-
-// ── Destination prices — edit here ───────────────────────────────────────────
-// Set to a string like "80,000" or leave as "—" for placeholder
-const PRICES = {
-  tonPheung:      { lak: "—", cny: "—" },
-  goldenTriangle: { lak: "—", cny: "—" },
-  huayXai:        { lak: "—", cny: "—" },
-} as const;
-
-// ── Trilingual content ────────────────────────────────────────────────────────
-const CONTENT = {
-  en: {
-    eyebrow: "BKIA — Services",
-    title: "Airport Taxi",
-    subtitle:
-      "Fixed-price taxi and van service connecting the airport to the city and key destinations nearby.",
-    features: [
-      "Licensed & safety-certified drivers",
-      "Door-to-door service",
-      "Advance reservation available",
-    ],
-    faresLabel: "Fixed-Price Fares",
-    faresTitle: "Destinations & Rates",
-    faresNote: "All fares are fixed by destination. Inquire at the service counter before departure.",
-    startingFrom: "Starting from",
-    destinations: [
-      {
-        key: "tonPheung",
-        name: "Ton Pheung City",
-        detail: "Within the city area",
-        lak: PRICES.tonPheung.lak,
-        cny: PRICES.tonPheung.cny,
-      },
-      {
-        key: "goldenTriangle",
-        name: "Golden Triangle SEZ",
-        detail: "Special Economic Zone",
-        lak: PRICES.goldenTriangle.lak,
-        cny: PRICES.goldenTriangle.cny,
-      },
-      {
-        key: "huayXai",
-        name: "Houay Xai",
-        detail: "Provincial capital",
-        lak: PRICES.huayXai.lak,
-        cny: PRICES.huayXai.cny,
-      },
-    ],
-    vehiclesLabel: "Vehicle Options",
-    vehiclesTitle: "Choose Your Ride",
-    vehicles: [
-      {
-        key: "taxi",
-        name: "Taxi — Sedan",
-        desc: "Ideal for 1–4 passengers with standard luggage.",
-        capacity: "1–4 passengers",
-        icon: "car" as const,
-      },
-      {
-        key: "van",
-        name: "Van",
-        desc: "For families or groups needing extra comfort and luggage space.",
-        capacity: "5+ passengers",
-        icon: "van" as const,
-      },
-    ],
-    paymentLabel: "Payment",
-    payments: [
-      { label: "Cash", detail: "Lao Kip (LAK) · Chinese Yuan (CNY)" },
-      { label: "Bank Transfer", detail: "Mobile banking — all Lao bank apps" },
-    ],
-    bookingLabel: "Book a Taxi",
-    bookingTitle: "Reserve in Advance",
-    bookingDesc:
-      "Call or message via WhatsApp to schedule a pick-up or drop-off at a specific time.",
-    counterLabel: "Service Counter",
-    counterLocation: "Exit 04 — Domestic Terminal",
-    phoneLabel: "Call Us",
-    phone: "+856 20 9201 4955",
-  },
-  lo: {
-    eyebrow: "BKIA — ການບໍລິການ",
-    title: "ແທັກຊີສະໜາມບິນ",
-    subtitle:
-      "ບໍລິການລົດແທັກຊີ ແລະ ລົດຕູ້ ລາຄາກຳນົດ ເຊື່ອມຕໍ່ສະໜາມບິນກັບຕົວເມືອງ ແລະ ຈຸດໝາຍໃກ້ຄຽງ.",
-    features: [
-      "ຄົນຂັບທີ່ໄດ້ຮັບໃບອະນຸຍາດ ແລະ ຜ່ານການຮັບຮອງ",
-      "ບໍລິການຮັບ-ສົ່ງ ເຖິງຈຸດໝາຍໂດຍກົງ",
-      "ສາມາດຈອງລ່ວງໜ້າໄດ້",
-    ],
-    faresLabel: "ລາຄາລີ່ມຕົ້ນ (ລາຄາກຳນົດ)",
-    faresTitle: "ຈຸດໝາຍປາຍທາງ ແລະ ອັດຕາຄ່າໂດຍສານ",
-    faresNote: "ລາຄາກຳນົດຕາມຈຸດໝາຍ. ກະລຸນາສອບຖາມລາຄາໂດຍກົງຢູ່ເຄົາເຕີ ກ່ອນເດີນທາງ.",
-    startingFrom: "ລາຄາລີ່ມຕົ້ນ",
-    destinations: [
-      {
-        key: "tonPheung",
-        name: "ພາຍໃນເມືອງຕົ້ນເຜິ້ງ",
-        detail: "ເຂດໃຈກາງເມືອງ",
-        lak: PRICES.tonPheung.lak,
-        cny: PRICES.tonPheung.cny,
-      },
-      {
-        key: "goldenTriangle",
-        name: "ເຂດເສດຖະກິດພິເສດສາມຫຼຽມຄຳ",
-        detail: "ເຂດເສດຖະກິດພິເສດ",
-        lak: PRICES.goldenTriangle.lak,
-        cny: PRICES.goldenTriangle.cny,
-      },
-      {
-        key: "huayXai",
-        name: "ໄປຫ້ວຍຊາຍ",
-        detail: "ສູນກາງແຂວງ",
-        lak: PRICES.huayXai.lak,
-        cny: PRICES.huayXai.cny,
-      },
-    ],
-    vehiclesLabel: "ປະເພດລົດ",
-    vehiclesTitle: "ເລືອກລົດທີ່ເໝາະສົມ",
-    vehicles: [
-      {
-        key: "taxi",
-        name: "ລົດເກັງ (Taxi)",
-        desc: "ເໝາະສຳລັບຜູ້ໂດຍສານ 1–4 ທ່ານ ພ້ອມກະເປົ໋າທົ່ວໄປ.",
-        capacity: "1–4 ທ່ານ",
-        icon: "car" as const,
-      },
-      {
-        key: "van",
-        name: "ລົດຕູ້ (Van)",
-        desc: "ສຳລັບຄອບຄົວ ຫຼື ກຸ່ມທີ່ຕ້ອງການຄວາມສະດວກ ແລະ ພື້ນທີ່ໃສ່ກະເປົ໋າ.",
-        capacity: "5+ ທ່ານ",
-        icon: "van" as const,
-      },
-    ],
-    paymentLabel: "ຊ່ອງທາງການຊຳລະ",
-    payments: [
-      { label: "ເງິນສົດ", detail: "ກີບລາວ (LAK) · ຢວນຈີນ (CNY)" },
-      { label: "ໂອນເງິນ", detail: "ແອັບທະນາຄານ — ທຸກທະນາຄານລາວ" },
-    ],
-    bookingLabel: "ຈອງລົດ",
-    bookingTitle: "ຈອງລ່ວງໜ້າ",
-    bookingDesc:
-      "ໂທ ຫຼື ສົ່ງຂໍ້ຄວາມທາງ WhatsApp ເພື່ອນັດໝາຍເວລາຮັບ-ສົ່ງ.",
-    counterLabel: "ຈຸດໃຫ້ບໍລິການ",
-    counterLocation: "ປະຕູທາງອອກ 04 — ອາຄານພາຍໃນ",
-    phoneLabel: "ໂທຫາພວກເຮົາ",
-    phone: "+856 20 9201 4955",
-  },
-  zh: {
-    eyebrow: "BKIA — 服务",
-    title: "机场出租车",
-    subtitle: "固定价格出租车与面包车服务，连接机场与市区及周边主要目的地。",
-    features: [
-      "持证上岗，安全认证司机",
-      "提供门到门直达服务",
-      "支持提前预约",
-    ],
-    faresLabel: "固定票价",
-    faresTitle: "目的地与票价",
-    faresNote: "票价按目的地固定。请出发前在服务台咨询。",
-    startingFrom: "起价",
-    destinations: [
-      {
-        key: "tonPheung",
-        name: "顿丰市区",
-        detail: "市中心区域",
-        lak: PRICES.tonPheung.lak,
-        cny: PRICES.tonPheung.cny,
-      },
-      {
-        key: "goldenTriangle",
-        name: "金三角经济特区",
-        detail: "特别经济区",
-        lak: PRICES.goldenTriangle.lak,
-        cny: PRICES.goldenTriangle.cny,
-      },
-      {
-        key: "huayXai",
-        name: "会晒",
-        detail: "省会城市",
-        lak: PRICES.huayXai.lak,
-        cny: PRICES.huayXai.cny,
-      },
-    ],
-    vehiclesLabel: "车型选择",
-    vehiclesTitle: "选择合适的车型",
-    vehicles: [
-      {
-        key: "taxi",
-        name: "出租车（轿车）",
-        desc: "适合 1–4 名乘客携带标准行李。",
-        capacity: "1–4 人",
-        icon: "car" as const,
-      },
-      {
-        key: "van",
-        name: "商务面包车",
-        desc: "适合家庭或团体，提供更宽敞的空间与行李位。",
-        capacity: "5 人以上",
-        icon: "van" as const,
-      },
-    ],
-    paymentLabel: "支付方式",
-    payments: [
-      { label: "现金", detail: "老挝基普 (LAK) · 人民币 (CNY)" },
-      { label: "银行转账", detail: "手机银行 — 支持所有老挝银行应用" },
-    ],
-    bookingLabel: "预约用车",
-    bookingTitle: "提前预约",
-    bookingDesc: "可通过电话或 WhatsApp 预约特定时间的接送服务。",
-    counterLabel: "服务台",
-    counterLocation: "04 号出口 — 国内航站楼",
-    phoneLabel: "致电我们",
-    phone: "+856 20 9201 4955",
-  },
-} as const;
+import { createTaxiI18n, TAXI_IMAGES } from "@/data/i18n/services/taxi";
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export function TaxiContent({ lang }: { lang: Lang }) {
-  const t = CONTENT[lang];
+  const { taxi: t, features, destinations, vehicles, payments } = createTaxiI18n(lang);
+
+  // ── Slideshow ───────────────────────────────────────────────────────────────
+  const [slide, setSlide] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  useEffect(() => {
+    if (TAXI_IMAGES.length <= 1) return;
+    timerRef.current = setInterval(
+      () => setSlide((s) => (s + 1) % TAXI_IMAGES.length),
+      4500,
+    );
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
 
   const [heroRef,  heroInView]  = useInView<HTMLDivElement>({ threshold: 0.1 });
   const [fareRef,  fareInView]  = useInView<HTMLDivElement>({ threshold: 0.05 });
@@ -286,7 +85,7 @@ export function TaxiContent({ lang }: { lang: Lang }) {
               className="tx-anim mt-8 space-y-2.5"
               style={heroInView ? { animation: "tx-fade-up 0.65s cubic-bezier(0.22,1,0.36,1) 260ms both" } : { opacity: 0 }}
             >
-              {t.features.map((f, i) => (
+              {features.map((f, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-primary-300" />
                   <span className="text-sm text-white/70">{f}</span>
@@ -295,7 +94,7 @@ export function TaxiContent({ lang }: { lang: Lang }) {
             </div>
           </div>
 
-          {/* Right: taxi counter photo */}
+          {/* Right: taxi slideshow */}
           <div
             className="tx-anim relative overflow-hidden rounded-2xl"
             style={heroInView ? { animation: "tx-fade-in 0.8s cubic-bezier(0.22,1,0.36,1) 100ms both" } : { opacity: 0 }}
@@ -303,20 +102,50 @@ export function TaxiContent({ lang }: { lang: Lang }) {
             <div className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm">
               <Car className="h-4 w-4 text-primary-300" />
             </div>
+
+            {/* Crossfade slides */}
             <div className="relative aspect-[4/3]">
-              <Image
-                src="/taxi-counter.jpeg"
-                alt={t.title}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-                priority
-              />
+              {TAXI_IMAGES.map((src, i) => (
+                <Image
+                  key={src}
+                  src={src}
+                  alt={t.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-opacity duration-1000 ease-in-out"
+                  style={{ opacity: i === slide ? 1 : 0 }}
+                  priority={i === 0}
+                />
+              ))}
             </div>
+
+            {/* Bottom strip: location + dots */}
             <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/60 to-transparent px-5 py-4">
-              <div className="flex items-center gap-2">
-                <MapPin className="h-3.5 w-3.5 text-primary-300" />
-                <p className="text-xs font-semibold text-white/75">{t.counterLocation}</p>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-3.5 w-3.5 text-primary-300" />
+                  <p className="text-xs font-semibold text-white/75">{t.counterLocation}</p>
+                </div>
+                {TAXI_IMAGES.length > 1 && (
+                  <div className="flex items-center gap-1.5">
+                    {TAXI_IMAGES.map((_, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => {
+                          setSlide(i);
+                          if (timerRef.current) clearInterval(timerRef.current);
+                          timerRef.current = setInterval(
+                            () => setSlide((s) => (s + 1) % TAXI_IMAGES.length),
+                            4500,
+                          );
+                        }}
+                        aria-label={`Slide ${i + 1}`}
+                        className={`h-0.5 rounded-full transition-all duration-300 ${i === slide ? "w-5 bg-white" : "w-1.5 bg-white/40"}`}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -350,7 +179,7 @@ export function TaxiContent({ lang }: { lang: Lang }) {
           </div>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-3">
-            {t.destinations.map((dest, i) => (
+            {destinations.map((dest, i) => (
               <div
                 key={dest.key}
                 className="tx-anim flex flex-col rounded-2xl border border-primary/15 bg-white p-6 transition-shadow hover:shadow-md"
@@ -406,7 +235,7 @@ export function TaxiContent({ lang }: { lang: Lang }) {
           </div>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {t.vehicles.map((v, i) => {
+            {vehicles.map((v, i) => {
               const VIcon = v.icon === "car" ? Car : Bus;
               const isCar = v.icon === "car";
               return (
@@ -456,7 +285,7 @@ export function TaxiContent({ lang }: { lang: Lang }) {
               {t.paymentLabel}
             </p>
             <div className="space-y-3">
-              {t.payments.map(({ label, detail }, i) => {
+              {payments.map(({ label, detail }, i) => {
                 const Icon = i === 0 ? Banknote : QrCode;
                 return (
                   <div

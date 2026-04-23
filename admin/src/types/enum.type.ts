@@ -70,12 +70,6 @@ export enum LostFoundCategory {
   OTHER = 'OTHER',
 }
 
-export enum LostFoundVisibility {
-  PENDING_REVIEW = 'PENDING_REVIEW',
-  VISIBLE = 'VISIBLE',
-  HIDDEN = 'HIDDEN',
-}
-
 export enum ClaimStatus {
   PENDING = 'PENDING',
   APPROVED = 'APPROVED',

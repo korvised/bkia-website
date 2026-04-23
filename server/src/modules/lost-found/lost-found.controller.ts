@@ -25,8 +25,6 @@ import {
   QueryLostFoundDto,
   QueryLostFoundAdminDto,
   UpdateDisplayDto,
-  UpdateVisibilityDto,
-  SetCoverDto,
   CreateClaimDto,
   ReviewClaimDto,
 } from './dtos';
@@ -46,15 +44,19 @@ const imageUpload = () =>
 export class LostFoundController {
   constructor(private readonly service: LostFoundService) {}
 
-  // ─── PUBLIC ────────────────────────────────────────────────
+  // ─── STAFF ─────────────────────────────────────────────────
 
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.CREATE)
   @Post()
   @imageUpload()
   create(
     @Body() dto: CreateLostFoundDto,
+    @Request() req: any,
     @UploadedFiles() files?: Express.Multer.File[],
   ) {
-    return this.service.create(dto, files ?? []);
+    return this.service.create(dto, files ?? [], req.user);
   }
 
   @Get()
@@ -62,22 +64,9 @@ export class LostFoundController {
     return this.service.findAll(query);
   }
 
-  @Get(':id')
-  findOne(
-    @Param('id', new ParseUUIDPipe()) id: string,
-    @Query('locale') locale?: string,
-  ) {
-    return this.service.findOne(id, locale);
-  }
-
-  @Post(':id/claims')
-  @imageUpload()
-  createClaim(
-    @Param('id', new ParseUUIDPipe()) id: string,
-    @Body() dto: CreateClaimDto,
-    @UploadedFiles() files?: Express.Multer.File[],
-  ) {
-    return this.service.createClaim(id, dto, files ?? []);
+  @Get('stats')
+  getStats() {
+    return this.service.getStats();
   }
 
   // ─── STAFF ─────────────────────────────────────────────────
@@ -98,6 +87,24 @@ export class LostFoundController {
     return this.service.findOneAdmin(id);
   }
 
+  @Get(':id')
+  findOne(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Query('locale') locale?: string,
+  ) {
+    return this.service.findOne(id, locale);
+  }
+
+  @Post(':id/claims')
+  @imageUpload()
+  createClaim(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body() dto: CreateClaimDto,
+    @UploadedFiles() files?: Express.Multer.File[],
+  ) {
+    return this.service.createClaim(id, dto, files ?? []);
+  }
+
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
   @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Permissions(LOST_FOUND.UPDATE)
@@ -107,29 +114,6 @@ export class LostFoundController {
     @Body() dto: UpdateDisplayDto,
   ) {
     return this.service.updateDisplay(id, dto);
-  }
-
-  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN, UserRole.STAFF)
-  @Permissions(LOST_FOUND.UPDATE)
-  @Patch(':id/visibility')
-  updateVisibility(
-    @Param('id', new ParseUUIDPipe()) id: string,
-    @Body() dto: UpdateVisibilityDto,
-    @Request() req: any,
-  ) {
-    return this.service.updateVisibility(id, dto, req.user);
-  }
-
-  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN, UserRole.STAFF)
-  @Permissions(LOST_FOUND.UPDATE)
-  @Patch(':id/cover')
-  setCover(
-    @Param('id', new ParseUUIDPipe()) id: string,
-    @Body() dto: SetCoverDto,
-  ) {
-    return this.service.setCover(id, dto);
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
@@ -173,5 +157,13 @@ export class LostFoundController {
     @Request() req: any,
   ) {
     return this.service.reviewClaim(claimId, dto, req.user);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.DELETE)
+  @Delete(':id')
+  remove(@Param('id', new ParseUUIDPipe()) id: string) {
+    return this.service.remove(id);
   }
 }

@@ -55,7 +55,7 @@ export function listHighlightNotices(limit: number = 5) {
 export async function getNoticeById(id: string): Promise<INotice | null> {
   try {
     return await fetchJSON<INotice>(`notices/${id}`);
-  } catch (error) {
+  } catch {
     return null;
   }
 }

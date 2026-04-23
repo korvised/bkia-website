@@ -38,7 +38,7 @@ export function VisionSection({ lang }: { lang: Lang }) {
 
         {/* T·E·A·M tiles + words */}
         <div className="mb-4 flex flex-wrap justify-center gap-3 sm:gap-4">
-          {TEAM_LETTERS.map(({ letter, wordKey, bg, light, text }, i) => (
+          {TEAM_LETTERS.map(({ letter, wordKey, bg, text }, i) => (
             <motion.div
               key={letter}
               initial={{ opacity: 0, scale: 0.6, y: 20 }}

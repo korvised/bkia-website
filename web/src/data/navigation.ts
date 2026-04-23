@@ -63,9 +63,18 @@ export const navigation: NavItem[] = [
       lo: "ຕາລາງຖ້ຽວບິນ ແລະ ຂໍ້ມູນປັດຈຸບັນ",
       zh: "航班时刻表和实时更新",
     },
-    href: "/flights/departures",
+    href: "/flights/schedules",
     hasDropdown: true,
     menuItems: [
+      {
+        label: { en: "Schedules", lo: "ຕາຕະລາງຖ້ຽວບິນ", zh: "航班时刻表" },
+        description: {
+          en: "View all flight schedules",
+          lo: "ເບິ່ງຕາຕະລາງຖ້ຽວບິນທັງໝົດ",
+          zh: "查看所有航班时刻表",
+        },
+        href: "/flights/schedules",
+      },
       {
         label: { en: "Departures", lo: "ຖ້ຽວບິນອອກ", zh: "出发航班" },
         description: {
@@ -83,15 +92,6 @@ export const navigation: NavItem[] = [
           zh: "查看到达航班状态",
         },
         href: "/flights/arrivals",
-      },
-      {
-        label: { en: "Schedules", lo: "ຕາຕະລາງຖ້ຽວບິນ", zh: "航班时刻表" },
-        description: {
-          en: "View all flight schedules",
-          lo: "ເບິ່ງຕາຕະລາງຖ້ຽວບິນທັງໝົດ",
-          zh: "查看所有航班时刻表",
-        },
-        href: "/flights/schedules",
       },
       {
         label: { en: "Airlines", lo: "ຂໍ້ມູນສາຍການບິນ", zh: "航空公司" },
@@ -211,19 +211,6 @@ export const navigation: NavItem[] = [
     menuItems: [
       {
         label: {
-          en: "Packing Services",
-          lo: "ບໍລິການຫຸ້ມຫໍ່ພັດສະດຸ",
-          zh: "包装服务",
-        },
-        description: {
-          en: "Standardized packing services for secure shipping",
-          lo: "ບໍລິການຫຸ້ມຫໍ່ພັດສະດຸ ທີ່ໄດ້ມາດຕະຖານ ແລະ ປອດໄພ",
-          zh: "符合标准的专业包装服务，确保运输安全",
-        },
-        href: "/services/packing",
-      },
-      {
-        label: {
           en: "Airport Taxi",
           lo: "ແທັກຊີສະໜາມບິນ",
           zh: "机场出租车",
@@ -234,6 +221,19 @@ export const navigation: NavItem[] = [
           zh: "出租车和面包车接送服务",
         },
         href: "/services/taxi",
+      },
+      {
+        label: {
+          en: "Packing Services",
+          lo: "ບໍລິການຫຸ້ມຫໍ່ພັດສະດຸ",
+          zh: "包装服务",
+        },
+        description: {
+          en: "Standardized packing services for secure shipping",
+          lo: "ບໍລິການຫຸ້ມຫໍ່ພັດສະດຸ ທີ່ໄດ້ມາດຕະຖານ ແລະ ປອດໄພ",
+          zh: "符合标准的专业包装服务，确保运输安全",
+        },
+        href: "/services/packing",
       },
       {
         label: { en: "Parking", lo: "ບ່ອນຈອດລົດ", zh: "停车场" },
