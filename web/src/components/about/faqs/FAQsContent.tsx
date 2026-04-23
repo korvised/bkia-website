@@ -52,7 +52,7 @@ function highlight(text: string, query: string): React.ReactNode {
   const parts = text.split(regex);
   return parts.map((part, i) =>
     regex.test(part) ? (
-      <mark key={i} className="bg-primary/20 text-primary-700 rounded-sm px-0.5 font-medium not-italic">
+      <mark key={i} className="rounded-sm bg-primary/20 px-0.5 font-medium not-italic text-primary-700">
         {part}
       </mark>
     ) : part
@@ -125,10 +125,9 @@ export function FAQsContent({ lang }: Props) {
     }, 50);
   }, []);
 
-  // Entrance animations
-  const [heroRef, heroIn]    = useInView({ threshold: 0.1 });
-  const [bodyRef, bodyIn]    = useInView({ threshold: 0.05 });
-  const [ctaRef, ctaIn]      = useInView({ threshold: 0.1 });
+  // Entrance animations — hero is always in viewport, body and CTA use InView
+  const [bodyRef, bodyIn] = useInView<HTMLElement>({ threshold: 0.05 });
+  const [ctaRef,  ctaIn]  = useInView<HTMLElement>({ threshold: 0.1  });
 
   return (
     <>
@@ -147,14 +146,14 @@ export function FAQsContent({ lang }: Props) {
         .fq-d2  { animation-delay: 0.2s; }
         .fq-d3  { animation-delay: 0.3s; }
         .fq-d4  { animation-delay: 0.4s; }
+        @media (prefers-reduced-motion: reduce) {
+          .fq-up, .fq-in { animation: none !important; opacity: 1 !important; }
+        }
       `}</style>
 
-      {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section
-        ref={heroRef as React.RefObject<HTMLElement>}
-        className="relative overflow-hidden bg-primary-800 px-4 py-16 md:py-24"
-      >
-        {/* decorative arcs */}
+      {/* ── Hero (always rendered — CSS animations fire on load) ──────── */}
+      <section className="relative overflow-hidden bg-primary-800 px-4 py-16 md:py-24">
+        {/* Decorative arcs */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full border border-white/5" />
           <div className="absolute -right-12 -top-12 h-56 w-56 rounded-full border border-white/5" />
@@ -162,41 +161,37 @@ export function FAQsContent({ lang }: Props) {
         </div>
 
         <div className="container relative text-center">
-          {heroIn && (
-            <>
-              <p className="fq-up fq-d1 mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white/80">
-                FAQ
-              </p>
-              <h1 className="fq-up fq-d2 mb-3 text-3xl font-bold text-white md:text-5xl">
-                {t("heroTitle", lang)}
-              </h1>
-              <p className="fq-up fq-d3 mx-auto mb-10 max-w-xl text-base text-white/70 md:text-lg">
-                {t("heroSubtitle", lang)}
-              </p>
+          <p className="fq-up fq-d1 mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white/80">
+            FAQ
+          </p>
+          <h1 className="fq-up fq-d2 mb-3 text-3xl font-bold text-white md:text-5xl">
+            {t("heroTitle", lang)}
+          </h1>
+          <p className="fq-up fq-d3 mx-auto mb-10 max-w-xl text-base text-white/70 md:text-lg">
+            {t("heroSubtitle", lang)}
+          </p>
 
-              {/* Search */}
-              <div className="fq-up fq-d4 mx-auto max-w-xl">
-                <div className="relative">
-                  <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/50" />
-                  <input
-                    type="text"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    placeholder={t("searchPlaceholder", lang)}
-                    className="w-full rounded-2xl border border-white/20 bg-white/10 py-4 pl-12 pr-12 text-white placeholder-white/40 outline-none backdrop-blur-sm transition focus:border-white/40 focus:bg-white/15 focus:ring-2 focus:ring-white/20"
-                  />
-                  {query && (
-                    <button
-                      onClick={() => setQuery("")}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 text-white/50 transition hover:text-white"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  )}
-                </div>
-              </div>
-            </>
-          )}
+          {/* Search */}
+          <div className="fq-up fq-d4 mx-auto max-w-xl">
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/50" />
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={t("searchPlaceholder", lang)}
+                className="w-full rounded-2xl border border-white/20 bg-white/10 py-4 pl-12 pr-12 text-white placeholder-white/40 outline-none backdrop-blur-sm transition focus:border-white/40 focus:bg-white/15 focus:ring-2 focus:ring-white/20"
+              />
+              {query && (
+                <button
+                  onClick={() => setQuery("")}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 text-white/50 transition hover:text-white"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -228,10 +223,7 @@ export function FAQsContent({ lang }: Props) {
       )}
 
       {/* ── FAQ body ──────────────────────────────────────────────────── */}
-      <section
-        ref={bodyRef as React.RefObject<HTMLElement>}
-        className="bg-white py-10 md:py-16"
-      >
+      <section ref={bodyRef} className="bg-white py-10 md:py-16">
         <div className="container max-w-3xl">
 
           {/* Search results header */}
@@ -240,7 +232,7 @@ export function FAQsContent({ lang }: Props) {
               <p className="text-sm text-gray-500">
                 <span className="font-semibold text-gray-800">{filtered.length}</span>{" "}
                 {t("searchResults", lang)}{" "}
-                <span className="font-semibold text-primary">"{query}"</span>
+                <span className="font-semibold text-primary">&ldquo;{query}&rdquo;</span>
               </p>
               <button
                 onClick={() => setQuery("")}
@@ -269,7 +261,7 @@ export function FAQsContent({ lang }: Props) {
               <div
                 key={id}
                 ref={(el) => { sectionRefs.current[id] = el; }}
-                className={`transition-all duration-700 ${bodyIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                className={`transition-all duration-700 ${bodyIn ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}
                 style={{ transitionDelay: `${gIdx * 80}ms` }}
               >
                 {/* Section header */}
@@ -287,7 +279,7 @@ export function FAQsContent({ lang }: Props) {
                     const isOpen = query ? true : expanded.has(faq.id);
                     return (
                       <div key={faq.id} className="group transition-colors hover:bg-gray-50/60">
-                        {/* Question row — clickable */}
+                        {/* Question row */}
                         <button
                           onClick={() => toggle(faq.id)}
                           className="flex w-full items-start gap-4 px-6 py-5 text-left"
@@ -305,7 +297,7 @@ export function FAQsContent({ lang }: Props) {
                           />
                         </button>
 
-                        {/* Answer — animated expand */}
+                        {/* Answer — smooth grid-row expand */}
                         <div
                           style={{
                             display: "grid",
@@ -346,11 +338,8 @@ export function FAQsContent({ lang }: Props) {
       </section>
 
       {/* ── Contact CTA ───────────────────────────────────────────────── */}
-      <section
-        ref={ctaRef as React.RefObject<HTMLElement>}
-        className="bg-primary-50 py-14 md:py-20"
-      >
-        <div className={`container max-w-2xl text-center transition-all duration-700 ${ctaIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+      <section ref={ctaRef} className="bg-primary-50 py-14 md:py-20">
+        <div className={`container max-w-2xl text-center transition-all duration-700 ${ctaIn ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}>
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/15">
             <Phone className="h-5 w-5 text-primary" />
           </div>
