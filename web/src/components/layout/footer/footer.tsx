@@ -22,7 +22,7 @@ const socialLinks = [
   },
   {
     name: "YouTube",
-    href: "https://www.youtube.com/@BokeoInternationalAirport",
+    href: "https://youtube.com/@bkia_official?si=v4GOzv-cY6_yzPCO",
     icon: <FaYoutube className="h-5 w-5" />,
   },
   {

@@ -2,9 +2,11 @@ import type { Lang } from "@/types/language";
 
 // ── Slideshow images ──────────────────────────────────────────────────────────
 export const TAXI_IMAGES = [
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/services/taxi/taxi-1.jpg",
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/services/taxi/taxi-2.jpg",
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/services/taxi/taxi-3.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/navbar/taxi.png",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/taxi/taxi-1.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/taxi/taxi-2.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/taxi/taxi-3.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/taxi/taxi-4.jpg",
 ] as const;
 
 // ── Destination prices (edit to update fares) ─────────────────────────────────

@@ -1,5 +1,13 @@
 import type { Lang } from "@/types/language";
 
+// ── Slideshow images ──────────────────────────────────────────────────────────
+export const PROFILE_IMAGES = [
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/profile/profile-1.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/profile/profile-2.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/profile/profile-3.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/profile/profile-4.jpg",
+] as const;
+
 export const profile = {
   // ─── Meta ──────────────────────────────────────────────────────────────────
   pageTitle: {

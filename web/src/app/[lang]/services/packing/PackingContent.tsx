@@ -23,8 +23,9 @@ import { createPackingI18n } from "@/data/i18n/services/packing";
 // ── Slideshow images ──────────────────────────────────────────────────────────
 // Edit this array to change/add images
 const PACKING_IMAGES = [
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/services/packing/packing-1.jpg",
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/services/packing/packing-2.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/packing/package-1.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/packing/package-2.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/packing/package-3.jpg",
 ] as const;
 
 // ── Prohibited item icon list (order matches per-lang arrays) ─────────────────

@@ -2,17 +2,15 @@ import type { Lang } from "@/types/language";
 
 // ── S3 asset paths ─────────────────────────────────────────────────────────────
 export const VIP_IMG = {
-  gold: "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/gold.jpg",
-  premium:
-    "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/premium.jpg",
-  silver:
-    "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/silver.jpg",
+  gold:    "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/gold-package.jpeg",
+  premium: "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/premium-package.jpeg",
+  silver:  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/silver-package.jpeg",
 } as const;
 
 export const VIP_ROOM_IMAGES = [
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/room.jpg",
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/room-2.jpg",
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/room-3.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/vip-1.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/vip-2.jpg",
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/vip-lounge/vip-3.jpg",
 ] as const;
 
 // ── Flat string translations (compatible with createTranslator) ────────────────

@@ -7,7 +7,6 @@ import {
   Banknote,
   QrCode,
   AlertTriangle,
-  Ticket,
   MapPin,
   Clock,
   ZoomIn,
@@ -139,7 +138,7 @@ export function ParkingContent({ lang }: { lang: Lang }) {
             </div>
             <div className="relative aspect-[4/3] transition-transform duration-500 group-hover:scale-[1.02]">
               <Image
-                src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/parking/Picture1.png"
+                src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/parking/parking.jpg"
                 alt={t.mapLabel}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -362,11 +361,6 @@ export function ParkingContent({ lang }: { lang: Lang }) {
               ))}
             </div>
 
-            {/* Lost ticket callout */}
-            <div className="mt-5 flex items-center gap-2.5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
-              <Ticket className="h-4 w-4 shrink-0 text-amber-600" />
-              <p className="text-sm font-semibold text-amber-700">{t.lostTicket}</p>
-            </div>
           </div>
 
         </div>
@@ -403,7 +397,7 @@ export function ParkingContent({ lang }: { lang: Lang }) {
             style={{ animation: "pk-modal-in 0.25s cubic-bezier(0.22,1,0.36,1) both", aspectRatio: "16/10" }}
           >
             <Image
-              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/parking/Picture1.png"
+              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/parking/parking.jpg"
               alt={t.mapLabel}
               fill
               sizes="(max-width: 896px) 100vw, 896px"

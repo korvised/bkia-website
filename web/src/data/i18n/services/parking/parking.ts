@@ -77,11 +77,6 @@ export const parking = {
     lo: "ຂໍ້ມູນສຳຄັນ",
     zh: "重要提示",
   },
-  lostTicket: {
-    en: "Lost parking ticket fee: 80,000 LAK",
-    lo: "ຄ່າທຳນຽມປີ້ຈອດລົດເສຍ: 80,000 ກີບ",
-    zh: "遗失停车票费用：80,000 基普",
-  },
   metaTitle: {
     en: "Airport Parking | Bokeo International Airport",
     lo: "ລານຈອດລົດ | ສະໜາມບິນສາກົນບໍ່ແກ້ວ",
@@ -205,15 +200,18 @@ export const PARKING_TIPS: Record<Lang, string[]> = {
     "Keep your parking ticket safe — you will need it to exit.",
     "Payment must be settled before leaving the parking area.",
     "Follow directional signs to your designated parking zone.",
+    "Overnight parking is not permitted. Violations are subject to fines.",
   ],
   lo: [
     "ເກັບປີ້ຈອດລົດໄວ້ໃຫ້ດີ — ທ່ານຈຳເປັນຕ້ອງໃຊ້ເມື່ອອອກ.",
     "ຕ້ອງຊຳລະເງິນກ່ອນອອກຈາກລານຈອດ.",
     "ປະຕິບັດຕາມປ້າຍທິດທາງໄປຫາເຂດຈອດທີ່ກຳນົດ.",
+    "ບໍ່ອະນຸຍາດໃຫ້ຈອດລົດຄ້າງຄືນ ຈະມີການປັບໄໝ.",
   ],
   zh: [
     "请妥善保管停车票 — 离场时需要出示。",
     "离开停车区前必须完成付款。",
     "请按照指示牌前往指定停车区。",
+    "禁止过夜停车，违者将被处以罚款。",
   ],
 };
