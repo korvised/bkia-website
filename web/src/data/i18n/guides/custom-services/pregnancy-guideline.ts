@@ -7,6 +7,11 @@ export const pregnancyGuideline = {
     lo: "ບໍລິການພິເສດທັງໝົດ",
     zh: "全部定制服务",
   },
+  categoryLabel: {
+    en: "Custom Services",
+    lo: "ບໍລິການພິເສດ",
+    zh: "定制服务",
+  },
   title: {
     en: "Guidelines for Pregnant Women and Infants",
     lo: "ຄຳແນະນຳສຳລັບແມ່ຍິງຖືພາ ແລະ ແອນ້ອຍ",

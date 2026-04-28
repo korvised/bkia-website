@@ -121,14 +121,10 @@ export function ParkingContent({ lang }: { lang: Lang }) {
           <button
             type="button"
             onClick={() => setMapOpen(true)}
-            className="pk-anim group relative cursor-zoom-in overflow-hidden rounded-2xl bg-white/5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="pk-anim group relative cursor-zoom-in overflow-hidden rounded-2xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             style={heroInView ? { animation: "pk-fade-in 0.8s cubic-bezier(0.22,1,0.36,1) 100ms both" } : { opacity: 0 }}
             aria-label={t.mapLabel}
           >
-            {/* Car badge */}
-            <div className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm">
-              <Car className="h-4 w-4 text-primary-300" />
-            </div>
             {/* Zoom hint — appears on hover */}
             <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
               <div className="flex items-center gap-2 rounded-full bg-black/55 px-4 py-2 backdrop-blur-sm">
@@ -138,16 +134,13 @@ export function ParkingContent({ lang }: { lang: Lang }) {
             </div>
             <div className="relative aspect-[4/3] transition-transform duration-500 group-hover:scale-[1.02]">
               <Image
-                src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/parking/parking.jpg"
+                src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/parking/parking-map.jpg"
                 alt={t.mapLabel}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain p-2"
+                className="object-cover"
                 priority
               />
-            </div>
-            <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/50 to-transparent px-5 py-4">
-              <p className="text-xs font-semibold text-white/75">{t.mapLabel}</p>
             </div>
           </button>
         </div>
@@ -397,7 +390,7 @@ export function ParkingContent({ lang }: { lang: Lang }) {
             style={{ animation: "pk-modal-in 0.25s cubic-bezier(0.22,1,0.36,1) both", aspectRatio: "16/10" }}
           >
             <Image
-              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/parking/parking.jpg"
+              src="https://bkia-website.s3.ap-southeast-7.amazonaws.com/parking/parking-map.jpg"
               alt={t.mapLabel}
               fill
               sizes="(max-width: 896px) 100vw, 896px"
