@@ -193,6 +193,17 @@ export const lostFound = {
   callUs: { en: "Call Us", lo: "ໂທຫາພວກເຮົາ", zh: "拨打电话" },
   emailUs: { en: "Email Us", lo: "ສົ່ງອີເມວຫາພວກເຮົາ", zh: "发送邮件" },
 
+  // ── Category labels ───────────────────────────────────────────────────────
+  categoryElectronics: { en: "Electronics",  lo: "ອຸປະກອນໄຟຟ້າ",    zh: "电子产品"  },
+  categoryBaggage:     { en: "Baggage",       lo: "ກະເປົ໋າ",          zh: "行李箱包"  },
+  categoryClothing:    { en: "Clothing",      lo: "ເຄື່ອງນຸ່ງ",      zh: "服装"      },
+  categoryDocuments:   { en: "Documents",     lo: "ເອກະສານ",          zh: "证件文件"  },
+  categoryJewelry:     { en: "Jewelry",       lo: "ເຄື່ອງປະດັບ",     zh: "珠宝首饰"  },
+  categoryKeys:        { en: "Keys",          lo: "ກະແຈ",             zh: "钥匙"      },
+  categoryCash:        { en: "Cash",          lo: "ເງິນສົດ",          zh: "现金"      },
+  categoryToys:        { en: "Toys",          lo: "ຂອງຫຼິ້ນ",         zh: "玩具"      },
+  categoryOther:       { en: "Other",         lo: "ອື່ນໆ",             zh: "其他"      },
+
   // ── Shared UI ─────────────────────────────────────────────────────────────
   submitting: {
     en: "Submitting...",

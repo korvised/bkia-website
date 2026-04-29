@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Not, Repository } from 'typeorm';
 import { LostFound, LostFoundClaim, User } from '@/database';
 import { FileService } from '@/common/file';
 import {
@@ -86,7 +86,6 @@ export class LostFoundService {
   // Public list — only VISIBLE, select necessary fields + display fields by locale
   async findAll(query: QueryLostFoundDto) {
     const {
-      type,
       category,
       search,
       locale = 'en',
@@ -98,7 +97,6 @@ export class LostFoundService {
       .createQueryBuilder('lf')
       .select([
         'lf.id',
-        'lf.type',
         'lf.status',
         'lf.category',
         'lf.displayNames',
@@ -115,14 +113,15 @@ export class LostFoundService {
       .skip((page - 1) * limit)
       .take(limit);
 
-    if (type) qb.andWhere('lf.type = :type', { type });
     if (category) qb.andWhere('lf.category = :category', { category });
     if (search?.trim()) {
       const s = `%${search.trim()}%`;
       qb.andWhere(
-        `(lf.itemName ILIKE :s OR EXISTS (
-          SELECT 1 FROM jsonb_each_text(COALESCE(lf."displayNames", '{}'::jsonb)) j(k,v) WHERE v ILIKE :s
-        ))`,
+        `(
+          EXISTS (SELECT 1 FROM jsonb_each_text(COALESCE(lf."displayNames",        '{}'::jsonb)) j(k,v) WHERE v ILIKE :s)
+          OR EXISTS (SELECT 1 FROM jsonb_each_text(COALESCE(lf."displayDescriptions", '{}'::jsonb)) j(k,v) WHERE v ILIKE :s)
+          OR EXISTS (SELECT 1 FROM jsonb_each_text(COALESCE(lf."displayLocations",    '{}'::jsonb)) j(k,v) WHERE v ILIKE :s)
+        )`,
         { s },
       );
     }
@@ -132,7 +131,6 @@ export class LostFoundService {
     // map display fields by locale
     const items = data.map((lf) => ({
       id: lf.id,
-      type: lf.type,
       status: lf.status,
       category: lf.category,
       itemName: getDisplay(lf.displayNames, locale, ''),
@@ -157,7 +155,6 @@ export class LostFoundService {
       relations: { coverImage: true, images: true },
       select: {
         id: true,
-        type: true,
         status: true,
         category: true,
         displayNames: true,
@@ -176,7 +173,6 @@ export class LostFoundService {
 
     return {
       id: lf.id,
-      type: lf.type,
       status: lf.status,
       category: lf.category,
       itemName: getDisplay(lf.displayNames, locale, ''),
@@ -195,7 +191,6 @@ export class LostFoundService {
 
   async findAllAdmin(query: QueryLostFoundAdminDto) {
     const {
-      type,
       category,
       status,
       search,
@@ -216,15 +211,16 @@ export class LostFoundService {
       .skip((page - 1) * limit)
       .take(limit);
 
-    if (type) qb.andWhere('lf.type = :type', { type });
     if (category) qb.andWhere('lf.category = :category', { category });
     if (status) qb.andWhere('lf.status = :status', { status });
     if (search?.trim()) {
       const s = `%${search.trim()}%`;
       qb.andWhere(
-        `(lf.itemName ILIKE :s OR EXISTS (
-          SELECT 1 FROM jsonb_each_text(COALESCE(lf."displayNames", '{}'::jsonb)) j(k,v) WHERE v ILIKE :s
-        ))`,
+        `(
+          EXISTS (SELECT 1 FROM jsonb_each_text(COALESCE(lf."displayNames",        '{}'::jsonb)) j(k,v) WHERE v ILIKE :s)
+          OR EXISTS (SELECT 1 FROM jsonb_each_text(COALESCE(lf."displayDescriptions", '{}'::jsonb)) j(k,v) WHERE v ILIKE :s)
+          OR EXISTS (SELECT 1 FROM jsonb_each_text(COALESCE(lf."displayLocations",    '{}'::jsonb)) j(k,v) WHERE v ILIKE :s)
+        )`,
         { s },
       );
     }
@@ -241,6 +237,7 @@ export class LostFoundService {
       where: { id },
       relations: {
         images: true,
+        coverImage: true,
         handledBy: true,
         createdBy: true,
       },
@@ -302,10 +299,13 @@ export class LostFoundService {
     const lf = await this.repo.findOne({ where: { id } });
     if (!lf) throw new NotFoundException('Item not found');
 
-    if (lf.type !== 'FOUND')
-      throw new BadRequestException('Can only claim FOUND items');
-    if (lf.status === LostFoundStatus.RETURNED)
-      throw new BadRequestException('Item already returned');
+    const closedStatuses = [
+      LostFoundStatus.RETURNED,
+      LostFoundStatus.DONATED,
+      LostFoundStatus.DISPOSED,
+    ];
+    if (closedStatuses.includes(lf.status))
+      throw new BadRequestException('Item is already closed and cannot be claimed');
 
     const claim = this.claimRepo.create({
       lostFound: lf,
@@ -354,6 +354,20 @@ export class LostFoundService {
       claim.lostFound.resolvedAt = new Date();
       claim.lostFound.handledBy = staff;
       await this.repo.save(claim.lostFound);
+    } else if (dto.status === ClaimStatus.REJECTED) {
+      // Revert item to OPEN if no OTHER pending or approved claims remain.
+      // Exclude the current claim (still PENDING in DB until the save below).
+      const activeCount = await this.claimRepo.count({
+        where: {
+          id: Not(claimId),
+          lostFound: { id: claim.lostFound.id },
+          status: In([ClaimStatus.PENDING, ClaimStatus.APPROVED]),
+        },
+      });
+      if (activeCount === 0) {
+        claim.lostFound.status = LostFoundStatus.OPEN;
+        await this.repo.save(claim.lostFound);
+      }
     }
 
     return this.claimRepo.save(claim);
@@ -370,16 +384,17 @@ export class LostFoundService {
   async remove(id: string) {
     const lf = await this.repo.findOne({
       where: { id },
-      relations: { images: true },
+      relations: { images: true, claims: { proofFiles: true } },
     });
     if (!lf) throw new NotFoundException('Item not found');
 
-    // Delete all uploaded image files from storage
-    if (lf.images?.length) {
-      await Promise.allSettled(
-        lf.images.map((f) => this.fileService.deleteFile(f.id)),
-      );
-    }
+    // Collect all files to delete from storage
+    const itemImages = lf.images ?? [];
+    const proofFiles = (lf.claims ?? []).flatMap((c) => c.proofFiles ?? []);
+
+    await Promise.allSettled(
+      [...itemImages, ...proofFiles].map((f) => this.fileService.deleteFile(f.id)),
+    );
 
     await this.repo.remove(lf);
     return { success: true };

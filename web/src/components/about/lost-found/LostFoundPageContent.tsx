@@ -55,6 +55,20 @@ const CATEGORY_ICONS: Record<LostFoundCategory, LucideIcon> = {
   [LostFoundCategory.OTHER]:       Package,
 };
 
+// ── Category i18n key map ──────────────────────────────────────────────────
+
+const CATEGORY_KEYS: Record<LostFoundCategory, LostFoundKey> = {
+  [LostFoundCategory.ELECTRONICS]: "categoryElectronics",
+  [LostFoundCategory.BAGGAGE]:     "categoryBaggage",
+  [LostFoundCategory.CLOTHING]:    "categoryClothing",
+  [LostFoundCategory.DOCUMENTS]:   "categoryDocuments",
+  [LostFoundCategory.JEWELRY]:     "categoryJewelry",
+  [LostFoundCategory.KEYS]:        "categoryKeys",
+  [LostFoundCategory.CASH]:        "categoryCash",
+  [LostFoundCategory.TOYS]:        "categoryToys",
+  [LostFoundCategory.OTHER]:       "categoryOther",
+};
+
 // ── Helpers ────────────────────────────────────────────────────────────────
 
 function t(key: LostFoundKey, lang: Lang): string {
@@ -341,9 +355,9 @@ export function LostFoundPageContent({ lang, stats }: Props) {
                       }`}
                     >
                       {/* Row */}
-                      <div className="flex items-center gap-3 px-5 py-4">
+                      <div className="flex items-start gap-3 px-5 py-4">
                         <div
-                          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${
+                          className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${
                             isSelected ? "bg-primary/15 text-primary" : "bg-gray-100 text-gray-500"
                           }`}
                         >
@@ -351,9 +365,14 @@ export function LostFoundPageContent({ lang, stats }: Props) {
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="truncate font-semibold text-gray-900">{item.itemName}</p>
-                          <div className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-gray-400">
+                          {item.description && (
+                            <p className="mt-0.5 line-clamp-2 text-xs text-gray-500 leading-relaxed">
+                              {item.description}
+                            </p>
+                          )}
+                          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-gray-400">
                             <span>
-                              {item.category.charAt(0) + item.category.slice(1).toLowerCase()}
+                              {t(CATEGORY_KEYS[item.category] ?? "categoryOther", lang)}
                             </span>
                             <span className="flex items-center gap-1">
                               <CalendarDays className="h-3 w-3" />
@@ -375,7 +394,7 @@ export function LostFoundPageContent({ lang, stats }: Props) {
                         </div>
                         <button
                           onClick={() => (isSelected ? handleCancel() : handleSelect(item))}
-                          className={`ml-2 flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-all ${
+                          className={`ml-2 mt-0.5 flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-all ${
                             isSelected
                               ? "bg-gray-200 text-gray-600 hover:bg-gray-300"
                               : "bg-primary text-white hover:bg-primary-600 hover:shadow-md hover:shadow-primary/20"
@@ -690,32 +709,42 @@ export function LostFoundPageContent({ lang, stats }: Props) {
       {/* ── Contact CTA ───────────────────────────────────────────────── */}
       <section ref={ctaRef} className="bg-primary-50 py-14 md:py-20">
         <div
-          className={`container max-w-2xl text-center transition-all duration-700 ${
+          className={`container max-w-3xl text-center transition-all duration-700 ${
             ctaIn ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
           }`}
         >
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/15">
-            <Phone className="h-5 w-5 text-primary" />
-          </div>
           <h2 className="mb-2 text-2xl font-bold text-gray-900 md:text-3xl">
             {t("stillNeedHelp", lang)}
           </h2>
-          <p className="mb-8 text-gray-500">{t("ctaSubtitle", lang)}</p>
-          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <p className="mb-10 text-gray-500">{t("ctaSubtitle", lang)}</p>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {/* Phone card */}
             <Link
               href="tel:+85684260179"
-              className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-primary-600 hover:shadow-lg hover:shadow-primary/20 sm:w-auto"
+              className="group flex items-center gap-4 rounded-2xl border border-primary/20 bg-white px-6 py-5 text-left transition-all hover:border-primary/40 hover:shadow-md hover:shadow-primary/10"
             >
-              <Phone className="h-4 w-4" />
-              {t("callUs", lang)}
-              <span className="opacity-80">· +856 84 260 179</span>
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                <Phone className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs font-medium text-gray-400">{t("callUs", lang)}</p>
+                <p className="truncate font-semibold text-gray-900">+856 84 260 179</p>
+              </div>
             </Link>
+
+            {/* Email card */}
             <Link
               href="mailto:info@bokeointernationalairport.com"
-              className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-primary/30 bg-white px-6 py-3.5 text-sm font-semibold text-primary transition-all hover:border-primary hover:shadow-md sm:w-auto"
+              className="group flex items-center gap-4 rounded-2xl border border-primary/20 bg-white px-6 py-5 text-left transition-all hover:border-primary/40 hover:shadow-md hover:shadow-primary/10"
             >
-              <Mail className="h-4 w-4" />
-              {t("emailUs", lang)}
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                <Mail className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs font-medium text-gray-400">{t("emailUs", lang)}</p>
+                <p className="truncate font-semibold text-gray-900">info@bokeointernationalairport.com</p>
+              </div>
             </Link>
           </div>
         </div>

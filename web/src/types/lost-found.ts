@@ -1,9 +1,8 @@
-import { LostFoundCategory, LostFoundStatus, LostFoundType } from "./enum";
+import { LostFoundCategory, LostFoundStatus } from "./enum";
 import { IFile } from "@/types/file";
 
 export interface ILostFoundItem {
   id: string;
-  type: LostFoundType;
   status: LostFoundStatus;
   category: LostFoundCategory;
   itemName: string;
@@ -18,7 +17,6 @@ export interface ILostFoundItem {
 }
 
 export interface QueryLostFound {
-  type?: string;
   category?: string;
   search?: string;
   page?: number;

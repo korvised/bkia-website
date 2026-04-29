@@ -240,10 +240,10 @@ export default function AirportCorporationPage() {
               <div className="text-xs text-white/80 sm:text-sm">Airlines</div>
             </div>
             <div className="rounded-lg border border-white/20 bg-white/5 p-3 backdrop-blur-sm sm:p-4">
-              <div className="mb-1 text-2xl font-bold text-[#5CBEC6] sm:text-3xl">
-                24/7
+              <div className="mb-1 text-lg font-bold text-[#5CBEC6] sm:text-xl">
+                06:00–22:00
               </div>
-              <div className="text-xs text-white/80 sm:text-sm">Operations</div>
+              <div className="text-xs text-white/80 sm:text-sm">ທຸກມື້ (GMT+7)</div>
             </div>
           </div>
         </div>

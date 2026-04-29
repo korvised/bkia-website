@@ -3,7 +3,6 @@ import type {
   ClaimStatus,
   LostFoundCategory,
   LostFoundStatus,
-  LostFoundType,
 } from "@/types";
 
 export interface IMultilingualText {
@@ -20,7 +19,6 @@ export interface ICreatedBy {
 
 export interface ILostFoundItem {
   id: string;
-  type: LostFoundType;
   category: LostFoundCategory;
   status: LostFoundStatus;
   displayNames: IMultilingualText;
@@ -63,7 +61,6 @@ export interface ILostFoundListResponse {
 }
 
 export interface ILostFoundFilter {
-  type?: LostFoundType | "";
   category?: LostFoundCategory | "";
   status?: LostFoundStatus | "";
   search?: string;
@@ -72,11 +69,10 @@ export interface ILostFoundFilter {
 }
 
 export interface ICreateLostFoundPayload {
-  type: LostFoundType;
   category: LostFoundCategory;
-  itemName: string;
-  description?: string;
-  location?: string;
+  displayNames?: IMultilingualText;
+  displayDescriptions?: IMultilingualText;
+  displayLocations?: IMultilingualText;
   incidentDate: string;
   flightNumber?: string;
   reporterName: string;
@@ -86,7 +82,6 @@ export interface ICreateLostFoundPayload {
 }
 
 export interface ICreateLostFoundForm {
-  type: LostFoundType | "";
   category: LostFoundCategory | "";
   itemName: string;
   description: string;

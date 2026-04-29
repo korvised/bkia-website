@@ -5,10 +5,7 @@ import { formatDate } from "@/lib";
 import { usePermissions } from "@/hooks";
 import { PermissionSlug } from "@/types/enum.type";
 import type { ILostFoundItem } from "@/features/lost-found/types";
-import {
-  LostFoundStatusBadge,
-  LostFoundTypeBadge,
-} from "@/features/lost-found/components";
+import { LostFoundStatusBadge } from "@/features/lost-found/components";
 
 export function useLostFoundColumns(onDelete: (item: ILostFoundItem) => void) {
   const { can } = usePermissions();
@@ -16,11 +13,6 @@ export function useLostFoundColumns(onDelete: (item: ILostFoundItem) => void) {
 
   return useMemo(
     (): Column<ILostFoundItem>[] => [
-      {
-        key: "type",
-        header: "Type",
-        render: (item) => <LostFoundTypeBadge type={item.type} />,
-      },
       {
         key: "displayNames",
         header: "Item",

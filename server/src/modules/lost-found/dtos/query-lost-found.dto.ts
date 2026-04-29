@@ -1,12 +1,8 @@
 import { Transform } from 'class-transformer';
 import { IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
-import { LostFoundCategory, LostFoundType } from '@/types/enum';
+import { LostFoundCategory } from '@/types/enum';
 
 export class QueryLostFoundDto {
-  @IsOptional()
-  @IsEnum(LostFoundType)
-  type?: LostFoundType;
-
   @IsOptional()
   @IsEnum(LostFoundCategory)
   category?: LostFoundCategory;

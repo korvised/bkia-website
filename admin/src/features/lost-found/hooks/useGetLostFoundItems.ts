@@ -5,7 +5,6 @@ import type { ILostFoundFilter, ILostFoundItem } from "@/features/lost-found/typ
 import { alertService } from "@/services/alert.service";
 
 const defaultFilters: ILostFoundFilter = {
-  type: "",
   category: "",
   status: "",
   search: "",

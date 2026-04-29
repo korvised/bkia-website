@@ -294,9 +294,9 @@ export const transferMain = {
     zh: "机场信息",
   },
   airportInfo247: {
-    en: "24/7 assistance available",
-    lo: "ມີການຊ່ວຍເຫຼືອ 24/7",
-    zh: "24/7提供协助",
+    en: "Assistance daily 06:00–22:00 (GMT+7)",
+    lo: "ຊ່ວຍເຫຼືອທຸກມື້ 06:00–22:00 (GMT+7)",
+    zh: "每天 06:00–22:00（GMT+7）提供协助",
   },
   multilingualStaff: {
     en: "Multilingual staff",

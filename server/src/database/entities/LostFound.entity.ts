@@ -14,27 +14,18 @@ import {
 import {
   LostFoundCategory,
   LostFoundStatus,
-  LostFoundType,
 } from '@/types/enum';
 import { File } from './File.entity';
 import { LostFoundClaim } from './LostFoundClaim.entity';
 import { User } from './User.entity';
 
 @Entity('lost_found')
-@Index(['type'])
 @Index(['status'])
 @Index(['category'])
 @Index(['incidentDate'])
 export class LostFound {
   @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  @Column({
-    type: 'enum',
-    enum: LostFoundType,
-    enumName: 'lost_found_type_enum',
-  })
-  type: LostFoundType;
 
   @Column({
     type: 'enum',
@@ -50,15 +41,6 @@ export class LostFound {
     enumName: 'lost_found_category_enum',
   })
   category: LostFoundCategory;
-
-  @Column({ type: 'varchar', length: 255 })
-  itemName: string;
-
-  @Column({ type: 'text', nullable: true })
-  description: string | null;
-
-  @Column({ type: 'varchar', length: 255, nullable: true })
-  location: string | null;
 
   @Column({ type: 'jsonb', default: {} })
   displayNames: Record<string, string>;
@@ -78,8 +60,8 @@ export class LostFound {
   @Column({ type: 'varchar', length: 255 })
   reporterName: string;
 
-  @Column({ type: 'varchar', length: 150 })
-  reporterEmail: string;
+  @Column({ type: 'varchar', length: 150, nullable: true })
+  reporterEmail: string | null;
 
   @Column({ type: 'varchar', length: 30, nullable: true })
   reporterPhone: string | null;

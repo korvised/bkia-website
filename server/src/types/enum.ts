@@ -61,10 +61,6 @@ export enum NewsCategory {
   COMMUNITY = 'COMMUNITY', // Community programs, CSR
 }
 
-export enum LostFoundType {
-  LOST = 'LOST', // passenger reporting lost item
-  FOUND = 'FOUND', // staff/passenger reporting found item
-}
 
 export enum LostFoundStatus {
   OPEN = 'OPEN', // active, not resolved

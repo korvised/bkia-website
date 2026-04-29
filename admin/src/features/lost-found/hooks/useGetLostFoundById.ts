@@ -10,7 +10,11 @@ export function useGetLostFoundById(id: string) {
     isError,
   } = useFetchLostFoundByIdQuery(id, { skip: !id });
 
-  const { data: claims, isLoading: isLoadingClaims } = useFetchClaimsQuery(id, { skip: !id });
+  const {
+    data: claims,
+    isLoading: isLoadingClaims,
+    isError: isClaimsError,
+  } = useFetchClaimsQuery(id, { skip: !id });
 
   const handleBack = () => navigate("/support/lost-found");
 
@@ -20,6 +24,7 @@ export function useGetLostFoundById(id: string) {
     isLoading,
     isLoadingClaims,
     isError,
+    isClaimsError,
     handleBack,
   };
 }

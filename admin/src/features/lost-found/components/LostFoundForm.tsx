@@ -13,13 +13,8 @@ import {
   Select,
   Textarea,
 } from "@/components/ui";
-import { LostFoundCategory, LostFoundType } from "@/types";
+import { LostFoundCategory } from "@/types";
 import type { ICreateLostFoundForm } from "@/features/lost-found/types";
-
-const TYPE_OPTIONS = [
-  { value: LostFoundType.LOST, label: "Lost — Passenger reporting lost item" },
-  { value: LostFoundType.FOUND, label: "Found — Staff/Passenger found item" },
-];
 
 const CATEGORY_OPTIONS = [
   { value: LostFoundCategory.ELECTRONICS, label: "Electronics" },
@@ -81,23 +76,14 @@ export function LostFoundForm({ formik }: Props) {
 
   return (
     <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
-      {/* Section 1: Report Type & Item */}
+      {/* Section 1: Item Information */}
       <div className="border-b border-gray-200 p-6">
         <SectionHeader
           icon={<LuPackageSearch className="h-4 w-4" />}
           title="Item Information"
-          description="Type, category, and details of the item"
+          description="Category and details of the item"
         />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Select
-            label="Report Type *"
-            placeholder="Select type"
-            value={values.type}
-            onChange={(value) => setFieldValue("type", value as LostFoundType)}
-            options={TYPE_OPTIONS}
-            error={getError("type")}
-          />
-
           <Select
             label="Category *"
             placeholder="Select category"

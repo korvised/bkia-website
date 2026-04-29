@@ -47,46 +47,72 @@ export const footer = {
     lo: "ການກວດຄວາມປອດໄພ",
     zh: "安检须知",
   },
-  facilities: {
-    en: "Airport Facilities",
-    lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
-    zh: "机场设施",
+  regional: {
+    en: "Regional Connection",
+    lo: "ການເຊື່ອມຕໍ່ພາກພື້ນ",
+    zh: "区域连接",
   },
 
-  servicesSupport: {
-    en: "Services & Support",
-    lo: "ບໍລິການ ແລະ ຊ່ວຍເຫຼືອ",
-    zh: "服务与支持",
+  services: {
+    en: "Services",
+    lo: "ການບໍລິການ",
+    zh: "服务",
+  },
+  taxiShuttle: {
+    en: "Taxi & Shuttle",
+    lo: "ແທັກຊີ ແລະ ລົດຮັບສົ່ງ",
+    zh: "出租车与接送",
   },
   parking: {
     en: "Parking",
     lo: "ບ່ອນຈອດລົດ",
     zh: "停车场",
   },
-  notices: {
-    en: "Notices",
-    lo: "ແຈ້ງການ",
-    zh: "机场公告",
+  facilities: {
+    en: "Airport Facilities",
+    lo: "ສິ່ງອຳນວຍຄວາມສະດວກ",
+    zh: "机场设施",
+  },
+  packingGuide: {
+    en: "Packing Guidelines",
+    lo: "ຄຳແນະນຳການຈັດກະເປົ໋າ",
+    zh: "行李打包指南",
+  },
+
+  aboutUs: {
+    en: "About",
+    lo: "ກ່ຽວກັບພວກເຮົາ",
+    zh: "关于我们",
+  },
+  airportProfile: {
+    en: "Airport Profile",
+    lo: "ຂໍ້ມູນສະໜາມບິນ",
+    zh: "机场简介",
+  },
+  contactUs: {
+    en: "Contact Us",
+    lo: "ຕິດຕໍ່ພວກເຮົາ",
+    zh: "联系我们",
   },
   faq: {
     en: "FAQs",
     lo: "ຄຳຖາມທີ່ພົບເລື້ອຍ",
     zh: "常见问题",
   },
+  lostFound: {
+    en: "Lost & Found",
+    lo: "ເຄື່ອງເສຍ ແລະ ເຄື່ອງຕົກຄ້າງ",
+    zh: "失物招领",
+  },
   feedback: {
     en: "Feedback",
     lo: "ຄຳຄິດເຫັນ",
     zh: "意见反馈",
   },
-  aboutUs: {
-    en: "About Airport",
-    lo: "ກ່ຽວກັບສະໜາມບິນ",
-    zh: "关于机场",
-  },
-  airportProfile: {
-    en: "Airport Profile",
-    lo: "ຂໍ້ມູນສະໜາມບິນ",
-    zh: "机场简介",
+  notices: {
+    en: "Notices",
+    lo: "ແຈ້ງການ",
+    zh: "机场公告",
   },
   newsroom: {
     en: "News",
@@ -97,16 +123,6 @@ export const footer = {
     en: "Careers",
     lo: "ຮ່ວມງານກັບພວກເຮົາ",
     zh: "招聘",
-  },
-  lostFound: {
-    en: "Lost & Found",
-    lo: "ເຄື່ອງເສຍ ແລະ ເຄື່ອງຕົກຄ້າງ",
-    zh: "失物招领",
-  },
-  contactUs: {
-    en: "Contact Us",
-    lo: "ຕິດຕໍ່ພວກເຮົາ",
-    zh: "联系我们",
   },
   address: {
     en: "Tônpheung District, Bokeo Province, Lao PDR",
@@ -119,9 +135,9 @@ export const footer = {
     zh: "info@bokeointernationalairport.com",
   },
   operatingHours: {
-    en: "24/7 Operations",
-    lo: "ເປີດບໍລິການ 24/7",
-    zh: "24小时运营",
+    en: "Daily 06:00–22:00 (GMT+7)",
+    lo: "ທຸກມື້ 06:00–22:00 (GMT+7)",
+    zh: "每天 06:00–22:00（GMT+7）",
   },
   followUs: {
     en: "Follow Us",

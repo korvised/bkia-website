@@ -2,11 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { useCreateLostFoundMutation } from "@/features/lost-found/api";
 import { alertService } from "@/services/alert.service";
-import { LostFoundCategory, LostFoundType } from "@/types";
+import { LostFoundCategory } from "@/types";
 import type { ICreateLostFoundForm } from "@/features/lost-found/types";
 
 const initialValues: ICreateLostFoundForm = {
-  type: "",
   category: "",
   itemName: "",
   description: "",
@@ -22,7 +21,6 @@ const initialValues: ICreateLostFoundForm = {
 function validate(values: ICreateLostFoundForm) {
   const errors: Partial<Record<keyof ICreateLostFoundForm, string>> = {};
 
-  if (!values.type) errors.type = "Type is required";
   if (!values.category) errors.category = "Category is required";
   if (!values.itemName) errors.itemName = "Item name is required";
   else if (values.itemName.length < 2) errors.itemName = "At least 2 characters";
@@ -48,11 +46,12 @@ export function useCreateLostFound() {
     validate,
     onSubmit: async (values) => {
       const formData = new FormData();
-      formData.append("type", values.type as LostFoundType);
       formData.append("category", values.category as LostFoundCategory);
-      formData.append("itemName", values.itemName);
-      if (values.description) formData.append("description", values.description);
-      if (values.location) formData.append("location", values.location);
+      formData.append("displayNames", JSON.stringify({ en: values.itemName }));
+      if (values.description)
+        formData.append("displayDescriptions", JSON.stringify({ en: values.description }));
+      if (values.location)
+        formData.append("displayLocations", JSON.stringify({ en: values.location }));
       formData.append("incidentDate", values.incidentDate);
       if (values.flightNumber) formData.append("flightNumber", values.flightNumber);
       formData.append("reporterName", values.reporterName);

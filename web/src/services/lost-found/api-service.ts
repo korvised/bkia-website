@@ -6,7 +6,6 @@ import { IPaginationMeta } from "@/types/pagination";
 export function listLostFound(query: QueryLostFound, lang: Lang) {
   const url = withQuery("lost-found", {
     locale: lang,
-    type: query.type,
     category: query.category,
     search: query.search,
     page: query.page,

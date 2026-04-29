@@ -162,6 +162,28 @@ export const feedback = {
     zh: "请求跟进时需要提供电话号码",
   },
 
+  // Contact CTA
+  ctaTitle: {
+    en: "Prefer to talk to someone?",
+    lo: "ຕ້ອງການປຶກສາກັບພະນັກງານໂດຍກົງບໍ?",
+    zh: "需要直接联系工作人员吗？",
+  },
+  ctaSubtitle: {
+    en: "Our airport staff are available to assist you in person.",
+    lo: "ພະນັກງານສະໜາມບິນຂອງພວກເຮົາມີຄວາມພ້ອມ ທີ່ຈະໃຫ້ການຊ່ວຍເຫຼືອທ່ານດ້ວຍຕົນເອງ.",
+    zh: "我们的机场工作人员随时可以为您提供面对面的协助。",
+  },
+  callUs: {
+    en: "Call Us",
+    lo: "ໂທຫາພວກເຮົາ",
+    zh: "拨打热线",
+  },
+  emailUs: {
+    en: "Email Us",
+    lo: "ສົ່ງອີເມວຫາພວກເຮົາ",
+    zh: "发送邮件",
+  },
+
   // ── Rating Descriptions ──────────────────────────────────────────────────
   star1: { en: "Poor", lo: "ປັບປຸງ", zh: "极差" },
   star2: { en: "Fair", lo: "ພໍໃຊ້", zh: "一般" },

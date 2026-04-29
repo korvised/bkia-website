@@ -22,7 +22,6 @@ import {
   FlightDirection,
   FlightStatus,
   LostFoundStatus,
-  LostFoundType,
   FeedbackStatus,
 } from "@/types/enum.type";
 import { cn } from "@/lib";
@@ -318,15 +317,8 @@ export const HomePage = () => {
             <div className="divide-y divide-gray-50">
               {recentLF.data.map((item) => (
                 <div key={item.id} className="flex items-center gap-3 px-5 py-3.5">
-                  <span
-                    className={cn(
-                      "shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold",
-                      item.type === LostFoundType.LOST
-                        ? "bg-red-50 text-red-700"
-                        : "bg-green-50 text-green-700",
-                    )}
-                  >
-                    {item.type}
+                  <span className="shrink-0 rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-bold text-primary capitalize">
+                    {item.category.toLowerCase()}
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium text-gray-800">

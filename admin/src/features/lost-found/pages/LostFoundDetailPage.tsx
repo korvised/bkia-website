@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { IconType } from "react-icons";
 import {
@@ -42,7 +42,7 @@ import {
 import { usePermissions } from "@/hooks";
 import { PermissionSlug } from "@/types/enum.type";
 import { useGetLostFoundById } from "../hooks";
-import { LostFoundStatusBadge, LostFoundTypeBadge } from "../components";
+import { LostFoundStatusBadge } from "../components";
 import type { IMultilingualText } from "../types";
 
 // ─── Config ────────────────────────────────────────────────────────────────────
@@ -207,7 +207,7 @@ export function LostFoundDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { can } = usePermissions();
-  const { item, claims, isLoading, isLoadingClaims, isError, handleBack } =
+  const { item, claims, isLoading, isLoadingClaims, isError, isClaimsError, handleBack } =
     useGetLostFoundById(id!);
 
   const [updateDisplay, { isLoading: isSavingDisplay }] = useUpdateDisplayMutation();
@@ -221,17 +221,16 @@ export function LostFoundDetailPage() {
   const [displayNames, setDisplayNames] = useState<IMultilingualText>({});
   const [displayDescriptions, setDisplayDescriptions] = useState<IMultilingualText>({});
   const [displayLocations, setDisplayLocations] = useState<IMultilingualText>({});
-  const [displayLoaded, setDisplayLoaded] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Populate display fields once item loads (render-time initialisation)
-  if (item && !displayLoaded) {
+  // Sync local editor state whenever the server data changes (initial load + after remote updates)
+  useEffect(() => {
+    if (!item) return;
     setDisplayNames(item.displayNames ?? {});
     setDisplayDescriptions(item.displayDescriptions ?? {});
     setDisplayLocations(item.displayLocations ?? {});
-    setDisplayLoaded(true);
-  }
+  }, [item]);
 
   // ── Handlers ─────────────────────────────────────────────────────────────────
 
@@ -390,7 +389,6 @@ export function LostFoundDetailPage() {
               </button>
               <div>
                 <div className="mb-2 flex flex-wrap items-center gap-2">
-                  <LostFoundTypeBadge type={item.type} />
                   <LostFoundStatusBadge status={item.status} />
                   <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium capitalize text-gray-600">
                     <LuTag className="h-3 w-3 shrink-0" />
@@ -669,7 +667,17 @@ export function LostFoundDetailPage() {
               </div>
             )}
 
-            {!isLoadingClaims && claims.length === 0 && (
+            {isClaimsError && (
+              <div className="flex flex-col items-center gap-2 rounded-xl border-2 border-dashed border-red-200 bg-red-50 py-10 text-center">
+                <LuInfo className="h-8 w-8 text-red-300" />
+                <p className="text-sm font-medium text-red-500">Failed to load claims</p>
+                <p className="text-xs text-red-400">
+                  Check your connection and refresh the page
+                </p>
+              </div>
+            )}
+
+            {!isLoadingClaims && !isClaimsError && claims.length === 0 && (
               <div className="flex flex-col items-center gap-2 rounded-xl border-2 border-dashed border-gray-200 py-10 text-center">
                 <LuShield className="h-8 w-8 text-gray-300" />
                 <p className="text-sm font-medium text-gray-400">No claims yet</p>

@@ -1,12 +1,7 @@
 import { LuSearch, LuRotateCcw } from "react-icons/lu";
 import { Input, Select } from "@/components/ui";
-import { LostFoundCategory, LostFoundStatus, LostFoundType } from "@/types";
+import { LostFoundCategory, LostFoundStatus } from "@/types";
 import type { ILostFoundFilter } from "@/features/lost-found/types";
-
-const TYPE_OPTIONS = [
-  { value: LostFoundType.LOST, label: "Lost" },
-  { value: LostFoundType.FOUND, label: "Found" },
-];
 
 const STATUS_OPTIONS = [
   { value: LostFoundStatus.OPEN, label: "Open" },
@@ -44,15 +39,6 @@ export function LostFoundFilters({ filters, onFilterChange, onReset }: Props) {
             value={filters.search ?? ""}
             onChange={(e) => onFilterChange("search", e.target.value)}
             leftIcon={<LuSearch className="h-4 w-4" />}
-          />
-        </div>
-
-        <div className="w-36 shrink-0">
-          <Select
-            placeholder="All Types"
-            value={filters.type ?? ""}
-            onChange={(value) => onFilterChange("type", value)}
-            options={TYPE_OPTIONS}
           />
         </div>
 

@@ -45,10 +45,6 @@ export enum FlightStatus {
   DIVERTED = 'DIVERTED'
 }
 
-export enum LostFoundType {
-  LOST = 'LOST',
-  FOUND = 'FOUND',
-}
 
 export enum LostFoundStatus {
   OPEN = 'OPEN',

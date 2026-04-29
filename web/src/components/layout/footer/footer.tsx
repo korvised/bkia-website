@@ -196,21 +196,29 @@ export default async function Footer({ lang }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/services/facilities`}
+                  href={`/${lang}/guides/regional`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {t.facilities}
+                  {t.regional}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Services & Support */}
+          {/* Services */}
           <div className="lg:col-span-2">
             <h3 className="mb-4 text-sm font-bold tracking-wide uppercase">
-              {t.servicesSupport}
+              {t.services}
             </h3>
             <ul className="space-y-2.5">
+              <li>
+                <Link
+                  href={`/${lang}/services/to-from-airport`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {t.taxiShuttle}
+                </Link>
+              </li>
               <li>
                 <Link
                   href={`/${lang}/services/parking`}
@@ -221,32 +229,24 @@ export default async function Footer({ lang }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/notices/airport`}
+                  href={`/${lang}/services/facilities`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {t.notices}
+                  {t.facilities}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/${lang}/about/faqs`}
+                  href={`/${lang}/services/packing`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {t.faq}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${lang}/about/feedback`}
-                  className="text-sm transition-colors hover:text-white/80"
-                >
-                  {t.feedback}
+                  {t.packingGuide}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* About Airport */}
+          {/* About */}
           <div className="lg:col-span-2">
             <h3 className="mb-4 text-sm font-bold tracking-wide uppercase">
               {t.aboutUs}
@@ -262,18 +262,18 @@ export default async function Footer({ lang }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/notices/news`}
+                  href={`/${lang}/about/contact`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {t.newsroom}
+                  {t.contactUs}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/${lang}/careers`}
+                  href={`/${lang}/about/faq`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
-                  {t.careers}
+                  {t.faq}
                 </Link>
               </li>
               <li>
@@ -282,6 +282,14 @@ export default async function Footer({ lang }: FooterProps) {
                   className="text-sm transition-colors hover:text-white/80"
                 >
                   {t.lostFound}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/about/feedback`}
+                  className="text-sm transition-colors hover:text-white/80"
+                >
+                  {t.feedback}
                 </Link>
               </li>
             </ul>

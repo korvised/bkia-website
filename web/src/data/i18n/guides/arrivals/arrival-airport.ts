@@ -193,9 +193,9 @@ export const arrivalAirport = {
     zh: "+856 84 260 179",
   },
   airportInfoHours: {
-    en: "Available during operating hours",
-    lo: "ເປີດໃນເວລາດຳເນີນການ",
-    zh: "运营时间内可用",
+    en: "Daily 06:00–22:00 (GMT+7)",
+    lo: "ທຸກມື້ 06:00–22:00 (GMT+7)",
+    zh: "每天 06:00–22:00（GMT+7）",
   },
 
   emergencyPoliceLabel: {
