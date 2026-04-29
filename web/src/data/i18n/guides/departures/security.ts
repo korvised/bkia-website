@@ -111,9 +111,9 @@ export const security = {
     zh: "例外情况：",
   },
   liquidBabyFormula: {
-    en: "Baby formula and milk (for traveling infants)",
-    lo: "ນົມຜົງເດັກນ້ອຍ, ນົມ (ນົມສໍາລັບເດັກນ້ອຍເດີນທາງ)",
-    zh: "婴儿配方奶粉、牛奶（供随行婴儿使用）",
+    en: "Baby formula and milk (sufficient for the duration of the flight)",
+    lo: "ນົມຜົງເດັກນ້ອຍ, ນົມ (ໃຫ້ພຽງພໍສຳລັບການເດີນທາງໃນຖ້ຽວບິນນັ້ນ)",
+    zh: "婴儿配方奶粉、牛奶（仅限该航班航程所需的分量）",
   },
   liquidMedication: {
     en: "Prescription medications (with prescription or medical certificate)",
@@ -124,7 +124,7 @@ export const security = {
   // Important Security Reminders Section
   remindersTitle: {
     en: "Important Security Reminders",
-    lo: "ຄໍາແນະນໍາ ແລະ ຂໍ້ເຕືອນຄວາມປອດໄພທີ່ສຳຄັນ",
+    lo: "ຄຳແນະນຳ ແລະ ຂໍ້ຫ້າມດ້ານການປ້ອງກັນຄວາມປອດໄພທີ່ສຳຄັນ",
     zh: "重要安全提示",
   },
   reminderCheckIn: {
@@ -170,9 +170,9 @@ export const security = {
 
   // After Security Section
   afterSecurityTitle: {
-    en: "After Security Clearance",
-    lo: "ຫຼັງຈາກຜ່ານຈຸດກວດຄົ້ນປ້ອງກັນຄວາມປອດໄພ",
-    zh: "通过安检后",
+    en: "After Passing Through Security Screening",
+    lo: "ຫຼັງຈາກຜ່ານຈຸດກວດຄົ້ນດ້ານການປ້ອງກັນຄວາມປອດໄພ",
+    zh: "通过安全检查哨后",
   },
   afterSecurityDesc: {
     en: "Once you clear the X-ray screening, you will enter the departure lounge where you can:",

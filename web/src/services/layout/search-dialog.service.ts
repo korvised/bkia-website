@@ -185,7 +185,7 @@ export const allSearchItems: SearchableItem[] = [
       ],
       lo: [
         "ແຈ້ງປີ້", "ແຈ້ງ", "ປີ້", "ບັດຂຶ້ນເຄື່ອງ", "ເຄົາເຕີ",
-        "ໄດ້ຮັບ", "ເວລາ", "ເປີດ", "ເຊັກອິນ", "ຖ້ຽວ",
+        "ໄດ້ຮັບ", "ເວລາ", "ເປີດ", "ແຈ້ງປີ້", "ຖ້ຽວ",
         "ຄ້ານ", "ກ້ານ", "ໜ້າ",
       ],
       zh: [
@@ -670,7 +670,7 @@ export const allSearchItems: SearchableItem[] = [
     "/services/packing",
     {
       en: ["packing", "packing service", "luggage", "bag", "pack", "wrap", "parcel", "secure shipping"],
-      lo: ["ຫຸ້ມ", "ຫໍ່", "ພັດສະດຸ", "ກະເປົ໋າ", "ຈັດ", "ເຄື່ອງ"],
+      lo: ["ຫຸ້ມ", "ຫໍ່", "ພັດສະດຸ", "ກະເປົາ", "ຈັດ", "ເຄື່ອງ"],
       zh: ["包装", "打包服务", "包装服务", "行李", "安全运输"],
     },
   ),

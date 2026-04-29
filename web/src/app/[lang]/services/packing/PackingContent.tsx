@@ -429,7 +429,7 @@ export function PackingContent({ lang }: { lang: Lang }) {
           >
             <AlertTriangle className="h-3.5 w-3.5 text-amber-500" />
             <Link
-              href={`/${lang}/guides/departures?tab=baggage`}
+              href={`/${lang}/guides/departures?tab=baggage#prohibited-items`}
               className="inline-flex items-center gap-1 text-xs font-semibold text-amber-600 underline-offset-2 hover:underline"
             >
               {t.readMoreLabel}

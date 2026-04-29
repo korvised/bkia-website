@@ -35,7 +35,7 @@ export const checkin = {
   // Arrival Times Section
   arrivalTimesTitle: {
     en: "Recommended Arrival Times",
-    lo: "ເວລາມາຮອດທີ່ແນະນຳ",
+    lo: "ແນະນຳເວລາທີ່ມາຮອດ",
     zh: "建议到达时间",
   },
   arrivalTimesDesc: {

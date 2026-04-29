@@ -55,7 +55,7 @@ export const faqs = {
   },
   catCheckin: {
     en: "Check-in & Baggage",
-    lo: "ການເຊັກອິນ ແລະ ກະເປົ໋າ",
+    lo: "ການແຈ້ງປີ້ ແລະ ກະເປົາ",
     zh: "值机与行李",
   },
   catSecurity: {
@@ -157,7 +157,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "Real-time departure and arrival status is updated continuously on our website. On the Departures board you can see estimated take-off times, gate assignments, and delay notices. On the Arrivals board you can see estimated landing times and baggage belt numbers. You can also call the airport information desk at +856 84 260 179 or ask staff at the terminal information counters.",
-      lo: "ສະຖານະການບິນຂາເຂົ້າ ແລະ ຂາອອກແບບ Real-time ແມ່ນມີການອັບເດດຢ່າງຕໍ່ເນື່ອງໃນເວັບໄຊຂອງພວກເຮົາ. ທ່ານສາມາດກວດເບິ່ງເວລາອອກເດີນທາງ, ປະຕູທາງອອກ (Gate) ແລະ ແຈ້ງການຊັກຊ້າໄດ້ທີ່ກະດານຂາອອກ. ສຳລັບຂາເຂົ້າ ທ່ານສາມາດເບິ່ງເວລາລົງຈອດ ແລະ ເລກສາຍພານຮັບກະເປົ໋າໄດ້. ນອກນັ້ນ ຍັງສາມາດໂທສອບຖາມໄດ້ທີ່ເບີ +856 84 260 179 ຫຼື ສອບຖາມພະນັກງານຢູ່ເຄົາເຕີປະຊາສຳພັນ.",
+      lo: "ສະຖານະການບິນຂາເຂົ້າ ແລະ ຂາອອກແບບ Real-time ແມ່ນມີການອັບເດດຢ່າງຕໍ່ເນື່ອງໃນເວັບໄຊຂອງພວກເຮົາ. ທ່ານສາມາດກວດເບິ່ງເວລາອອກເດີນທາງ, ປະຕູທາງອອກ (Gate) ແລະ ແຈ້ງການຊັກຊ້າໄດ້ທີ່ກະດານຂາອອກ. ສຳລັບຂາເຂົ້າ ທ່ານສາມາດເບິ່ງເວລາລົງຈອດ ແລະ ເລກສາຍພານຮັບກະເປົາໄດ້. ນອກນັ້ນ ຍັງສາມາດໂທສອບຖາມໄດ້ທີ່ເບີ +856 84 260 179 ຫຼື ສອບຖາມພະນັກງານຢູ່ເຄົາເຕີປະຊາສຳພັນ.",
       zh: "我们网站上的实时出发和到达状态持续更新。在“出发航班”列表上，您可以查看预计起飞时间、登机口安排和延误通知。在“到达航班”列表上，您可以查看预计降落时间和行李转盘编号。您也可以拨打 +856 84 260 179 联系机场信息台，或向候机楼信息柜台工作人员咨询。",
     },
     links: [
@@ -203,7 +203,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "We recommend arriving at least 2 hours before domestic flights and 3 hours before international flights. This allows time for parking or drop-off, check-in, baggage drop, security screening, and — for international departures — immigration. During peak travel periods (public holidays, major events) add an extra 30–45 minutes. See our full departure guide for a step-by-step walkthrough of the process.",
-      lo: "ພວກເຮົາແນະນຳໃຫ້ມາຮອດສະໜາມບິນຢ່າງໜ້ອຍ 2 ຊົ່ວໂມງ ສຳລັບທ່ຽວບິນພາຍໃນ ແລະ 3 ຊົ່ວໂມງ ສຳລັບທ່ຽວບິນສາກົນ ເພື່ອໃຫ້ມີເວລາພຽງພໍໃນການຈອດລົດ, ເຊັກອິນ, ຝາກກະເປົ໋າ, ກວດຄວາມປອດໄພ ແລະ ຂັ້ນຕອນກວດຄົນເຂົ້າເມືອງ (ສຳລັບຂາອອກສາກົນ). ໃນຊ່ວງເທດສະການທີ່ມີຄົນເດີນທາງຫຼາຍ ຄວນເພີ່ມເວລາອີກ 30–45 ນາທີ.",
+      lo: "ພວກເຮົາແນະນຳໃຫ້ມາຮອດສະໜາມບິນຢ່າງໜ້ອຍ 2 ຊົ່ວໂມງ ສຳລັບທ່ຽວບິນພາຍໃນ ແລະ 3 ຊົ່ວໂມງ ສຳລັບທ່ຽວບິນສາກົນ ເພື່ອໃຫ້ມີເວລາພຽງພໍໃນການຈອດລົດ, ແຈ້ງປີ້, ຝາກກະເປົາ, ກວດຄວາມປອດໄພ ແລະ ຂັ້ນຕອນກວດຄົນເຂົ້າເມືອງ (ສຳລັບຂາອອກສາກົນ). ໃນຊ່ວງເທດສະການທີ່ມີຄົນເດີນທາງຫຼາຍ ຄວນເພີ່ມເວລາອີກ 30–45 ນາທີ.",
       zh: "我们建议国内航班至少提前 2 小时、国际航班至少提前 3 小时到达，以便有充足时间进行值机、托运行李、通过安检，以及办理出境手续（国际出发）。节假日或重大活动期间，请额外预留 30-45 分钟。请参阅我们的“出发指南”了解详细步骤。",
     },
     links: [
@@ -220,12 +220,12 @@ export const faqData: FAQQA[] = [
     cat: "checkin",
     q: {
       en: "When does check-in open and close?",
-      lo: "ການເຊັກອິນ ເປີດ ແລະ ປິດເວລາໃດ?",
+      lo: "ການແຈ້ງປີ້ ເປີດ ແລະ ປິດເວລາໃດ?",
       zh: "值机柜台何时开放和关闭？",
     },
     a: {
       en: "Check-in typically opens 2 hours before departure. It closes 45 minutes before departure for domestic flights and 60 minutes before for international flights. Times may vary by airline, so please confirm with your carrier.",
-      lo: "ໂດຍທົ່ວໄປ ການເຊັກອິນຈະເປີດ 2 ຊົ່ວໂມງກ່ອນເວລາບິນ. ແລະ ຈະປິດກ່ອນເວລາບິນ 45 ນາທີ ສຳລັບທ່ຽວບິນພາຍໃນ ແລະ 60 ນາທີ ສຳລັບທ່ຽວບິນສາກົນ. ທັງນີ້ ເວລາອາດມີການປ່ຽນແປງຕາມແຕ່ລະສາຍການບິນ.",
+      lo: "ໂດຍທົ່ວໄປ ການແຈ້ງປີ້ຈະເປີດ 2 ຊົ່ວໂມງກ່ອນເວລາບິນ. ແລະ ຈະປິດກ່ອນເວລາບິນ 45 ນາທີ ສຳລັບທ່ຽວບິນພາຍໃນ ແລະ 60 ນາທີ ສຳລັບທ່ຽວບິນສາກົນ. ທັງນີ້ ເວລາອາດມີການປ່ຽນແປງຕາມແຕ່ລະສາຍການບິນ.",
       zh: "值机通常在起飞前 2 小时开放。国内航班通常在起飞前 45 分钟关闭，国际航班在起飞前 60 分钟关闭。具体时间因航空公司而异，请务必向您的航司确认。",
     },
   },
@@ -234,12 +234,12 @@ export const faqData: FAQQA[] = [
     cat: "checkin",
     q: {
       en: "What is the baggage allowance?",
-      lo: "ນ້ຳໜັກກະເປົ໋າທີ່ອະນຸຍາດແມ່ນເທົ່າໃດ?",
+      lo: "ນ້ຳໜັກກະເປົາທີ່ອະນຸຍາດແມ່ນເທົ່າໃດ?",
       zh: "免费行李额度是多少？",
     },
     a: {
       en: "Allowances vary by airline and cabin class. Economy class generally allows 20–23 kg for checked baggage and 7 kg for carry-on. Please check with your airline for your specific ticket's limits.",
-      lo: "ນ້ຳໜັກກະເປົ໋າທີ່ອະນຸຍາດແມ່ນຂຶ້ນກັບສາຍການບິນ ແລະ ຊັ້ນຂອງປີ້ບິນ. ໂດຍທົ່ວໄປ ຊັ້ນປະຢັດ (Economy) ຈະອະນຸຍາດໃຫ້ຝາກກະເປົ໋າໄດ້ 20–23 ກິໂລ ແລະ ຖືຂຶ້ນເຄື່ອງໄດ້ 7 ກິໂລ. ກະລຸນາກວດສອບເງື່ອນໄຂໃນປີ້ບິນຂອງທ່ານຄືນອີກຄັ້ງ.",
+      lo: "ນ້ຳໜັກກະເປົາທີ່ອະນຸຍາດແມ່ນຂຶ້ນກັບສາຍການບິນ ແລະ ຊັ້ນຂອງປີ້ບິນ. ໂດຍທົ່ວໄປ ຊັ້ນປະຢັດ (Economy) ຈະອະນຸຍາດໃຫ້ຝາກກະເປົາໄດ້ 20–23 ກິໂລ ແລະ ຖືຂຶ້ນເຄື່ອງໄດ້ 7 ກິໂລ. ກະລຸນາກວດສອບເງື່ອນໄຂໃນປີ້ບິນຂອງທ່ານຄືນອີກຄັ້ງ.",
       zh: "行李限额因航空公司和舱位等级而异。经济舱通常允许 20–23 公斤托运行李和 7 公斤手提行李。请根据您的机票详情向航空公司确认具体限额。",
     },
   },
@@ -264,7 +264,7 @@ export const faqData: FAQQA[] = [
       {
         label: {
           en: "Packing Guidelines",
-          lo: "ຄຳແນະນຳການຈັດກະເປົ໋າ",
+          lo: "ຄຳແນະນຳການຈັດກະເປົາ",
           zh: "行李打包指南",
         },
         href: "/services/packing",
@@ -276,12 +276,12 @@ export const faqData: FAQQA[] = [
     cat: "checkin",
     q: {
       en: "What should I do if my baggage is lost or damaged?",
-      lo: "ຂ້ອຍຄວນເຮັດແນວໃດ ຫາກກະເປົ໋າເສຍ ຫຼື ເສຍຫາຍ?",
+      lo: "ຂ້ອຍຄວນເຮັດແນວໃດ ຫາກກະເປົາເສຍ ຫຼື ເສຍຫາຍ?",
       zh: "如果我的行李丢失或损坏该怎么办？",
     },
     a: {
       en: "For lost baggage: do not leave the airport before reporting. Go directly to the Lost & Found desk in the arrivals hall with your boarding pass and baggage claim tag. Staff will file a Property Irregularity Report (PIR) and give you a reference number. Most delayed bags are located within 24–48 hours. For damaged baggage: report at the same desk before exiting the arrivals area — damage reported after leaving may not be accepted. You can also submit and track reports online through our Lost & Found service.",
-      lo: "ຫາກກະເປົ໋າເສຍ: ຢ່າຟ້າວອອກຈາກສະໜາມບິນ. ໃຫ້ໄປຕິດຕໍ່ທີ່ເຄົາເຕີ Lost & Found ໃນອາຄານຂາເຂົ້າທັນທີ ພ້ອມບັດຂຶ້ນເຄື່ອງ ແລະ ໃບໝາຍເລກກະເປົ໋າ. ພະນັກງານຈະເຮັດບົດບັນທຶກ (PIR) ແລະ ໃຫ້ເລກອ້າງອີງແກ່ທ່ານ. ສຳລັບກະເປົ໋າເສຍຫາຍ: ຕ້ອງແຈ້ງທີ່ເຄົາເຕີກ່ອນອອກຈາກສະໜາມບິນເທົ່ານັ້ນ, ຫາກແຈ້ງພາຍຫຼັງອອກໄປແລ້ວ ອາດຈະບໍ່ໄດ້ຮັບການພິຈາລະນາ.",
+      lo: "ຫາກກະເປົາເສຍ: ຢ່າຟ້າວອອກຈາກສະໜາມບິນ. ໃຫ້ໄປຕິດຕໍ່ທີ່ເຄົາເຕີ Lost & Found ໃນອາຄານຂາເຂົ້າທັນທີ ພ້ອມບັດຂຶ້ນເຄື່ອງ ແລະ ໃບໝາຍເລກກະເປົາ. ພະນັກງານຈະເຮັດບົດບັນທຶກ (PIR) ແລະ ໃຫ້ເລກອ້າງອີງແກ່ທ່ານ. ສຳລັບກະເປົາເສຍຫາຍ: ຕ້ອງແຈ້ງທີ່ເຄົາເຕີກ່ອນອອກຈາກສະໜາມບິນເທົ່ານັ້ນ, ຫາກແຈ້ງພາຍຫຼັງອອກໄປແລ້ວ ອາດຈະບໍ່ໄດ້ຮັບການພິຈາລະນາ.",
       zh: "行李丢失：请勿在报失前离开机场。请携带登机牌和行李牌前往到达大厅的失物招领台 (Lost & Found)，工作人员将填写财产异常报告 (PIR) 并提供参考编号。行李损坏：请在离开到达区域前向柜台申报，离开机场后的申报可能不被受理。您也可以通过我们的在线服务追踪进度。",
     },
     links: [
@@ -307,7 +307,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "To move through security quickly: (1) Remove laptops and tablets from your bag and place them separately in a tray. (2) Place all liquids, gels, and aerosols (max 100 ml each) in a clear resealable bag and take it out. (3) Remove belts, jackets, and bulky jewellery before the scanner. (4) Empty pockets of coins, keys, and phones. (5) Wear shoes that are easy to remove — officers may ask you to take them off. Passengers with medical devices (pacemakers, implants) should inform staff before screening. Full details are in our Security Guide.",
-      lo: "ເພື່ອຄວາມວ່ອງໄວໃນການກວດ: (1) ເອົາຄອມພິວເຕີ Laptop ແລະ Tablet ອອກຈາກກະເປົ໋າວາງໃສ່ຖາດຕ່າງຫາກ. (2) ເອົາຂອງເຫຼວທີ່ບັນຈຸໃນຖົງໃສອອກມາວາງໃຫ້ເຫັນແຈ້ງ. (3) ຖອດສາຍແອວ, ເສື້ອກັນໜາວ ແລະ ເຄື່ອງປະດັບໂລຫະອອກ. (4) ເອົາຫຼຽນ, ກຸນແຈ ແລະ ໂທລະສັບອອກຈາກຖົງເສື້ອ/ຖົງໂສ້ງ. (5) ຜູ້ທີ່ມີອຸປະກອນການແພດໃນຮ່າງກາຍ (ເຊັ່ນ: ເຄື່ອງຊ່ວຍຫົວໃຈ) ຄວນແຈ້ງພະນັກງານກ່ອນການກວດ.",
+      lo: "ເພື່ອຄວາມວ່ອງໄວໃນການກວດ: (1) ເອົາຄອມພິວເຕີ Laptop ແລະ Tablet ອອກຈາກກະເປົາວາງໃສ່ຖາດຕ່າງຫາກ. (2) ເອົາຂອງເຫຼວທີ່ບັນຈຸໃນຖົງໃສອອກມາວາງໃຫ້ເຫັນແຈ້ງ. (3) ຖອດສາຍແອວ, ເສື້ອກັນໜາວ ແລະ ເຄື່ອງປະດັບໂລຫະອອກ. (4) ເອົາຫຼຽນ, ກຸນແຈ ແລະ ໂທລະສັບອອກຈາກຖົງເສື້ອ/ຖົງໂສ້ງ. (5) ຜູ້ທີ່ມີອຸປະກອນການແພດໃນຮ່າງກາຍ (ເຊັ່ນ: ເຄື່ອງຊ່ວຍຫົວໃຈ) ຄວນແຈ້ງພະນັກງານກ່ອນການກວດ.",
       zh: "快速过检贴士：(1) 将电脑、平板取出单独放入托盘；(2) 将装有液体的透明袋取出；(3) 摘除皮带、外套及大件金属首饰；(4) 清空口袋内的硬币、钥匙和手机；(5) 穿戴医疗设备（如心脏起搏器）的旅客请在检查前告知安检员。详情请参阅《安检指南》。",
     },
     links: [
@@ -539,7 +539,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "Yes. Each airline at Bokeo Airport has its own ticketing counter inside the terminal, located near the check-in desks. Staff can assist with new bookings, date changes, and route adjustments — subject to availability and the airline's fare conditions. It is generally recommended to book or change tickets in advance online or through the airline's call centre, as same-day changes may incur fees and seat availability may be limited. Visit our Airlines page for each carrier's counter location and hotline.",
-      lo: "ໄດ້, ແຕ່ລະສາຍການບິນມີເຄົາເຕີຂາຍປີ້ຢູ່ໃກ້ກັບເຄົາເຕີເຊັກອິນ. ພະນັກງານສາມາດຊ່ວຍໃນການຈອງໃໝ່, ປ່ຽນວັນທາງ ຫຼື ປ່ຽນເສັ້ນທາງ ຕາມຄວາມວ່າງ ແລະ ເງື່ອນໄຂຂອງສາຍການບິນ. ໂດຍທົ່ວໄປ ຄວນຈອງ ຫຼື ປ່ຽນປີ້ລ່ວງໜ້າທາງອອນລາຍ ຫຼື ທາງໂທລະສັບ ເພາະອາດມີຄ່າດຳເນີນການ ແລະ ທີ່ນັ່ງຈຳກັດ.",
+      lo: "ໄດ້, ແຕ່ລະສາຍການບິນມີເຄົາເຕີຂາຍປີ້ຢູ່ໃກ້ກັບເຄົາເຕີແຈ້ງປີ້. ພະນັກງານສາມາດຊ່ວຍໃນການຈອງໃໝ່, ປ່ຽນວັນທາງ ຫຼື ປ່ຽນເສັ້ນທາງ ຕາມຄວາມວ່າງ ແລະ ເງື່ອນໄຂຂອງສາຍການບິນ. ໂດຍທົ່ວໄປ ຄວນຈອງ ຫຼື ປ່ຽນປີ້ລ່ວງໜ້າທາງອອນລາຍ ຫຼື ທາງໂທລະສັບ ເພາະອາດມີຄ່າດຳເນີນການ ແລະ ທີ່ນັ່ງຈຳກັດ.",
       zh: "可以。博胶机场每家航空公司均设有独立售票柜台，通常位于值机区附近。工作人员可协助办理新订单、改期及换程手续，但须视座位情况及票价条款而定。建议提前通过官网或热线预订或改签，以避免临场手续费及座位紧张的问题。各航司柜台位置及热线请查阅《航空公司》页面。",
     },
     links: [
@@ -584,19 +584,19 @@ export const faqData: FAQQA[] = [
     cat: "checkin",
     q: {
       en: "Is there a luggage wrapping service at the airport?",
-      lo: "ສະໜາມບິນມີບໍລິການຫຸ້ມຫໍ່ກະເປົ໋າບໍ່?",
+      lo: "ສະໜາມບິນມີບໍລິການຫຸ້ມຫໍ່ກະເປົາບໍ່?",
       zh: "机场是否提供行李裹膜服务？",
     },
     a: {
       en: "Yes. BKIA operates a professional luggage wrapping (stretch-film) service in the Domestic Terminal, located to the left of Departure Gate 04 or directly in front of the Domestic Arrivals entrance. Wrapping protects your bags against scratches, moisture, and tampering. Three sizes are available — small, medium, and large — to suit carry-on bags, standard checked luggage, and oversized items. Pricing starts at 15,000 LAK per item. See the Packing Service page for full rates, prohibited items, and operating hours.",
-      lo: "ມີ, BKIA ມີບໍລິການຫຸ້ມຫໍ່ກະເປົ໋າດ້ວຍຟິມ (Stretch Film) ຢູ່ອາຄານຜູ້ໂດຍສານພາຍໃນ ທາງດ້ານຊ້າຍຂອງປະຕູທາງອອກ 04 ຫຼື ທາງໜ້າຂາເຂົ້າພາຍໃນ. ການຫຸ້ມຫໍ່ຊ່ວຍປ້ອງກັນຮອຍຂີດຂ່ວນ, ຄວາມຊຸ່ມ ແລະ ການງັດແງະ. ມີ 3 ຂະໜາດ: ນ້ອຍ, ກາງ ແລະ ໃຫຍ່. ລາຄາເລີ່ມຕົ້ນ 15,000 ກີບ ຕໍ່ຊິ້ນ.",
+      lo: "ມີ, BKIA ມີບໍລິການຫຸ້ມຫໍ່ກະເປົາດ້ວຍຟິມ (Stretch Film) ຢູ່ອາຄານຜູ້ໂດຍສານພາຍໃນ ທາງດ້ານຊ້າຍຂອງປະຕູທາງອອກ 04 ຫຼື ທາງໜ້າຂາເຂົ້າພາຍໃນ. ການຫຸ້ມຫໍ່ຊ່ວຍປ້ອງກັນຮອຍຂີດຂ່ວນ, ຄວາມຊຸ່ມ ແລະ ການງັດແງະ. ມີ 3 ຂະໜາດ: ນ້ອຍ, ກາງ ແລະ ໃຫຍ່. ລາຄາເລີ່ມຕົ້ນ 15,000 ກີບ ຕໍ່ຊິ້ນ.",
       zh: "是的。BKIA 在国内航站楼提供专业行李裹膜服务，位于04号出发门左侧或国内到达入口正前方。裹膜可有效防止行李划伤、受潮和被擅自开包。提供小、中、大三种规格，分别适用于登机行李、标准托运箱及超大物品。价格从每件 15,000 基普起。完整收费标准及禁止物品清单请查阅《行李裹膜服务》页面。",
     },
     links: [
       {
         label: {
           en: "Packing Service",
-          lo: "ບໍລິການຫຸ້ມຫໍ່ກະເປົ໋າ",
+          lo: "ບໍລິການຫຸ້ມຫໍ່ກະເປົາ",
           zh: "行李裹膜服务",
         },
         href: "/services/packing",
@@ -608,7 +608,7 @@ export const faqData: FAQQA[] = [
     cat: "checkin",
     q: {
       en: "Can I bring food or fresh produce in my baggage?",
-      lo: "ຂ້ອຍສາມາດນຳອາຫານ ຫຼື ຜະລິດຕະຜົນທາງກະສິກຳໃສ່ໃນກະເປົ໋າໄດ້ບໍ່?",
+      lo: "ຂ້ອຍສາມາດນຳອາຫານ ຫຼື ຜະລິດຕະຜົນທາງກະສິກຳໃສ່ໃນກະເປົາໄດ້ບໍ່?",
       zh: "我可以在行李中携带食品或农产品吗？",
     },
     a: {
@@ -620,7 +620,7 @@ export const faqData: FAQQA[] = [
       {
         label: {
           en: "Packing & Prohibited Items",
-          lo: "ຂໍ້ຫ້າມການຈັດກະເປົ໋າ",
+          lo: "ຂໍ້ຫ້າມການຈັດກະເປົາ",
           zh: "行李打包与禁带物品",
         },
         href: "/services/packing",
@@ -632,12 +632,12 @@ export const faqData: FAQQA[] = [
     cat: "checkin",
     q: {
       en: "Is there a left-luggage or baggage storage facility at the airport?",
-      lo: "ສະໜາມບິນ ມີບໍລິການຝາກກະເປົ໋າຊົ່ວຄາວບໍ່?",
+      lo: "ສະໜາມບິນ ມີບໍລິການຝາກກະເປົາຊົ່ວຄາວບໍ່?",
       zh: "机场是否提供临时行李寄存服务？",
     },
     a: {
       en: "Short-term luggage storage is available at the airport. Please enquire at the information desk in the arrivals hall for current availability, rates, and operating hours. We recommend keeping your claim receipt safe and storing any valuables separately. Stored items will not be accessible outside operating hours.",
-      lo: "ພວກເຮົາມີບໍລິການຝາກກະເປົ໋າຊົ່ວຄາວ. ທ່ານສາມາດສອບຖາມລາຄາ ແລະ ເວລາໃຫ້ບໍລິການໄດ້ທີ່ເຄົາເຕີປະຊາສຳພັນ ໃນອາຄານຂາເຂົ້າ. ຂໍໃຫ້ຮັກສາໃບຮັບຮອງໄວ້ ແລະ ຈັດແຍກຂອງມີຄ່າໄວ້ຕ່າງຫາກ. ຫຼັງເວລາໃຫ້ບໍລິການ ຈະບໍ່ສາມາດເຂົ້າເອົາກະເປົ໋າໄດ້.",
+      lo: "ພວກເຮົາມີບໍລິການຝາກກະເປົາຊົ່ວຄາວ. ທ່ານສາມາດສອບຖາມລາຄາ ແລະ ເວລາໃຫ້ບໍລິການໄດ້ທີ່ເຄົາເຕີປະຊາສຳພັນ ໃນອາຄານຂາເຂົ້າ. ຂໍໃຫ້ຮັກສາໃບຮັບຮອງໄວ້ ແລະ ຈັດແຍກຂອງມີຄ່າໄວ້ຕ່າງຫາກ. ຫຼັງເວລາໃຫ້ບໍລິການ ຈະບໍ່ສາມາດເຂົ້າເອົາກະເປົາໄດ້.",
       zh: "机场提供短期行李临时寄存服务。具体费用和开放时间请前往到达大厅信息台咨询。请妥善保管取件凭证，贵重物品建议另行保管。营业时间结束后，寄存行李无法提取。",
     },
   },
@@ -681,7 +681,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "Generally, yes — prescription medication is permitted in both carry-on and checked baggage. To avoid delays during security or customs: (1) Keep medication in its original labelled packaging, (2) Carry a copy of your prescription or a doctor's letter, especially for controlled substances, (3) Liquid medication over 100 ml may be allowed as a medical exception — declare it separately at security and have your documentation ready. Some countries restrict the import of certain controlled substances, so always check your destination country's pharmaceutical regulations before travel.",
-      lo: "ໂດຍທົ່ວໄປ ຮອງຮັບ — ຢາທີ່ໄດ້ຮັບໃບສັ່ງແພດ ສາມາດນຳໄດ້ທັງໃນກະເປົ໋າຖືຂຶ້ນ ແລະ ກະເປົ໋າຝາກ. ເພື່ອໃຫ້ຜ່ານການກວດໂດຍວ່ອງໄວ: (1) ເກັບຢາໄວ້ໃນກ່ອງທີ່ຕິດລາຍຊື່ຕົວຢ່າງ, (2) ຖືໃບສັ່ງຢາ ຫຼື ໜັງສືຈາກແພດ (ໂດຍສະເພາະສຳລັບຢາຄຸ້ມຄອງ), (3) ຢາໃນຮູບແຫຼວທີ່ເກີນ 100ml ອາດຍົກເວັ້ນໄດ້ຫາກມີໃບຢັ້ງຢືນ. ກວດສອບຂໍ້ກຳນົດການນຳເຂົ້າຢາຂອງປະເທດປາຍທາງກ່ອນເດີນທາງ.",
+      lo: "ໂດຍທົ່ວໄປ ຮອງຮັບ — ຢາທີ່ໄດ້ຮັບໃບສັ່ງແພດ ສາມາດນຳໄດ້ທັງໃນກະເປົາຖືຂຶ້ນ ແລະ ກະເປົາຝາກ. ເພື່ອໃຫ້ຜ່ານການກວດໂດຍວ່ອງໄວ: (1) ເກັບຢາໄວ້ໃນກ່ອງທີ່ຕິດລາຍຊື່ຕົວຢ່າງ, (2) ຖືໃບສັ່ງຢາ ຫຼື ໜັງສືຈາກແພດ (ໂດຍສະເພາະສຳລັບຢາຄຸ້ມຄອງ), (3) ຢາໃນຮູບແຫຼວທີ່ເກີນ 100ml ອາດຍົກເວັ້ນໄດ້ຫາກມີໃບຢັ້ງຢືນ. ກວດສອບຂໍ້ກຳນົດການນຳເຂົ້າຢາຂອງປະເທດປາຍທາງກ່ອນເດີນທາງ.",
       zh: "通常允许——处方药可放在随身行李或托运行李中携带。建议：(1) 将药品保存在原始带标签的包装中；(2) 携带处方复印件或医生证明信（尤其是管制药品）；(3) 超过 100 毫升的液体药品如属医疗必需，可申请豁免，请在安检时单独申报并备好证明文件。部分国家对某些管制药品的进口有严格限制，出行前请核实目的地国家相关法规。",
     },
   },

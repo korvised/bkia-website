@@ -8,7 +8,6 @@ git config --global credential.helper store
 # Check disk space usage
 df -h
 
-
 # 1. Pull the new image from the registry
 docker compose pull web
 

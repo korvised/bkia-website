@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Newspaper } from "lucide-react";
 import { Lang } from "@/types/language";
 import { NewsFilters, NewsList } from "@/components/about";
+import { NoticesCrossNav } from "@/components/support/notice";
 import { listNews, toNewsQuery } from "@/services/news";
 import type { NewsPageProps, QueryNews } from "@/types/news";
 import { createNewsI18n } from "@/data/i18n/notices";
@@ -114,6 +115,9 @@ async function NewsPageContent({
           />
         </div>
       </section>
+
+      {/* Cross navigation to other sections */}
+      <NoticesCrossNav lang={lang} current="news" />
     </>
   );
 }

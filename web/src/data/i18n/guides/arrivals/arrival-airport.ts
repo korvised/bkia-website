@@ -23,7 +23,7 @@ export const arrivalAirport = {
   },
   importantDesc: {
     en: "Remain seated with your seatbelt fastened until the aircraft comes to a complete stop and the seatbelt sign turns off. Check that you have all your belongings before leaving.",
-    lo: "ກະລຸນານັ່ງຢູ່ບ່ອນ ແລະ ຮັດສາຍແອວໄວ້ຈົນກວ່າເຮືອບິນຈະຢຸດສະໜິດ ແລະ ປ້າຍສັນຍານດັບລົງ. ກວດເບິ່ງວ່າທ່ານມີສິ່ງຂອງຄົບຖ້ວນກ່ອນລົງ.",
+    lo: "ກະລຸນານັ່ງຢູ່ບ່ອນ ແລະ ຮັດສາຍແອວໄວ້ຈົນກວ່າເຮືອບິນຈະຢຸດສະໜິດ ແລະ ປ້າຍສັນຍານດັບລົງ. ກວດກາສີ່ງຂອງ ໃຫ້ຄົບຖ້ວນກ່ອນລົງເຮຶອບິນ",
     zh: "请保持就座并系好安全带，直到飞机完全停稳且安全带指示灯熄灭。离机前请检查随身物品是否齐全。",
   },
 
@@ -41,7 +41,7 @@ export const arrivalAirport = {
   },
   disembarkStep2: {
     en: "Collect all cabin baggage from overhead bins",
-    lo: "ເກັບກະເປົ໋າຖືຂຶ້ນເຮືອບິນທັງໝົດຈາກຊ່ອງເກັບເຄື່ອງດ້ານເທິງ",
+    lo: "ນຳເອົາກະເປົາຂອງທ່ານອອກຈາກຊ່ອງເກັບເຄື່ອງດ້ານເທິງ",
     zh: "从头顶行李舱取出所有随身行李",
   },
   disembarkStep3: {
@@ -96,9 +96,9 @@ export const arrivalAirport = {
     zh: "处理时间",
   },
   processingTimeDesc: {
-    en: "Allow 15–30 minutes for the complete arrival process during normal hours, longer during peak times when multiple flights arrive together. Be patient and follow staff directions.",
-    lo: "ໃຊ້ເວລາ 15–30 ນາທີ ສຳລັບຂະບວນການມາຮອດທັງໝົດໃນຊ່ວງເວລາປົກກະຕິ ແລະ ດົນກວ່ານັ້ນໃນຊ່ວງທີ່ມີຖ້ຽວບິນເຂົ້າພ້ອມກັນຫຼາຍ. ກະລຸນາອົດທົນ ແລະ ປະຕິບັດຕາມຄຳແນະນຳຂອງພະນັກງານ.",
-    zh: "正常时段完成整个到达流程需要15–30分钟，多个航班同时到达的高峰时段所需时间较长。请耐心等待并听从工作人员指引。",
+    en: "Allow 5-10 minutes for the complete arrival process during normal hours, longer during peak times when multiple flights arrive together. Be patient and follow staff directions.",
+    lo: "ໃຊ້ເວລາ 5-10 ນາທີ ສຳລັບຂະບວນການມາຮອດທັງໝົດໃນຊ່ວງເວລາປົກກະຕິ ແລະ ດົນກວ່ານັ້ນໃນຊ່ວງທີ່ມີຖ້ຽວບິນເຂົ້າພ້ອມກັນຫຼາຍ. ກະລຸນາອົດທົນ ແລະ ປະຕິບັດຕາມຄຳແນະນຳຂອງພະນັກງານ.",
+    zh: "正常时段完成整个到达流程需要5-10分钟，多个航班同时到达的高峰时段所需时间较长。请耐心等待并听从工作人员指引。",
   },
 
   // ── Facilities ────────────────────────────────────────────────────────────

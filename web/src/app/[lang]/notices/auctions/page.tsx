@@ -6,6 +6,7 @@ import { Lang } from "@/types/language";
 import { AuctionCategory, AuctionStatus, type AuctionPageProps } from "@/types/auction";
 import { createAuctionI18n } from "@/data/i18n/notices";
 import { AuctionList, AuctionListSkeleton } from "@/components/about/auction";
+import { NoticesCrossNav } from "@/components/support/notice";
 
 export async function generateMetadata({
   params,
@@ -142,6 +143,9 @@ export default async function AuctionsPage({
           </div>
         </div>
       </section>
+
+      {/* Cross navigation to other sections */}
+      <NoticesCrossNav lang={lang as Lang} current="auctions" />
     </>
   );
 }

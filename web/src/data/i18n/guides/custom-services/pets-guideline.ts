@@ -116,7 +116,7 @@ export const petsGuideline = {
   },
   carrier2: {
     en: "Carriers must be labeled with the owner's name, baggage tag, and an AVIH tag for staff identification.",
-    lo: "ກົງສັດຕ້ອງຕິດປ້າຍຊື່ຜູ້ໂດຍສານ, ປ້າຍກະເປົ໋າ ແລະ ປ້າຍ AVIH ເພື່ອແຈ້ງໃຫ້ພະນັກງານຊາບ.",
+    lo: "ກົງສັດຕ້ອງຕິດປ້າຍຊື່ຜູ້ໂດຍສານ, ປ້າຍກະເປົາ ແລະ ປ້າຍ AVIH ເພື່ອແຈ້ງໃຫ້ພະນັກງານຊາບ.",
     zh: "航空箱必须贴有旅客姓名标签、行李牌和 AVIH 标签，以便工作人员识别。",
   },
 

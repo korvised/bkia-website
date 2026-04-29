@@ -63,10 +63,10 @@ export function CareerDetail({ job, lang }: CareerDetailProps) {
               <span
                 className={`rounded-full px-3 py-1 text-xs font-semibold ${
                   deadlineStatus === "expired"
-                    ? "bg-red-50 text-red-600"
+                    ? "bg-red-100 text-red-700"
                     : deadlineStatus === "soon"
-                      ? "bg-amber-50 text-amber-600"
-                      : "bg-gray-50 text-gray-500"
+                      ? "bg-red-50 text-red-600"
+                      : "bg-red-50 text-red-500"
                 }`}
               >
                 {t.deadline}:{" "}

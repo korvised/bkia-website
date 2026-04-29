@@ -20,18 +20,26 @@ export const baggageClaim = {
     zh: "预计等待时间",
   },
 
-  firstBagsLabel: { en: "First bags", lo: "ກະເປົາຊຸດທຳອິດ", zh: "首件行李" },
+  firstBagsLabel: {
+    en: "First bags",
+    lo: "ກະເປົາຊຸດທຳອິດ",
+    zh: "首件行李",
+  },
   firstBagsValue: {
-    en: "15–25 min after landing",
-    lo: "15–25 ນາທີ ຫຼັງລົງຈອດ",
-    zh: "降落后 15–25 分钟",
+    en: "5–10 min after landing",
+    lo: "5–10 ນາທີ ຫຼັງລົງຈອດ",
+    zh: "降落后 5–10 分钟",
   },
 
-  mostBagsLabel: { en: "Most bags", lo: "ກະເປົາສ່ວນໃຫຍ່", zh: "大部分行李" },
+  mostBagsLabel: {
+    en: "Most bags",
+    lo: "ກະເປົາສ່ວນໃຫຍ່",
+    zh: "大部分行李",
+  },
   mostBagsValue: {
-    en: "Within 30–40 min",
-    lo: "ພາຍໃນ 30–40 ນາທີ",
-    zh: "30–40 分钟内",
+    en: "Within 10–15 min",
+    lo: "ພາຍໃນ 10–15 ນາທີ",
+    zh: "10–15 分钟内",
   },
 
   priorityBagsLabel: {
@@ -40,9 +48,9 @@ export const baggageClaim = {
     zh: "优先（商务舱）",
   },
   priorityBagsValue: {
-    en: "Usually first off",
-    lo: "ປົກກະຕິກະເປົາຈະລົງສາຍພານໃຫ້ໄດ້ຮັບກະເປົາກ່ອນ",
-    zh: "通常最先送达",
+    en: "Priority baggage handling for earlier arrival",
+    lo: "ຈະໄດ້ຮັບກະເປົາກ່ອນເປັນກຸ່ມທຳອິດ",
+    zh: "优先行李处理，率先送达",
   },
 
   // ── Collecting Luggage ───────────────────────────────────────────────────
@@ -156,19 +164,9 @@ export const baggageClaim = {
     zh: "出示行李票和登机牌",
   },
   missingStep4: {
-    en: "File a Property Irregularity Report (PIR)",
-    lo: "ຂຽນໃບລາຍງານ PIR (Property Irregularity Report)",
-    zh: "填写财产不正常报告（PIR）",
-  },
-  missingStep5: {
-    en: "Provide your local contact details",
-    lo: "ໃຫ້ຂໍ້ມູນຕິດຕໍ່ໃນທ້ອງຖິ່ນ",
-    zh: "提供本地联系信息",
-  },
-  missingStep6: {
-    en: "Keep your PIR reference number for follow-up",
-    lo: "ເກັບເລກ PIR ໄວ້ ເພື່ອຕິດຕາມຜົນ",
-    zh: "保存PIR编号以便跟进",
+    en: "Provide contact details to staff",
+    lo: "ໃຫ້ຂໍ້ມູນຕິດຕໍ່ລະອຽດຕໍ່ເຈົ້າໜ້າທີ່",
+    zh: "向工作人员提供详细联系方式",
   },
 
   damagedBaggageTitle: {
@@ -197,11 +195,6 @@ export const baggageClaim = {
     zh: "填写工作人员提供的损坏报告表",
   },
   damagedStep4: {
-    en: "Claims must be filed within 7 days of arrival",
-    lo: "ຕ້ອງຍື່ນຄຳຮ້ອງພາຍໃນ 7 ວັນ ຫຼັງຈາກມາຮອດ",
-    zh: "须在抵达后7天内提出索赔",
-  },
-  damagedStep5: {
     en: "Contact your airline directly for compensation",
     lo: "ຕິດຕໍ່ສາຍການບິນໂດຍກົງ ສຳລັບການຊົດເຊີຍ",
     zh: "直接联系航空公司申请赔偿",

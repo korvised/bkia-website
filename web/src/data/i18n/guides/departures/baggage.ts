@@ -55,7 +55,7 @@ export const baggage = {
   },
   cabinBaggageDesc: {
     en: "Cabin baggage is carried with you into the aircraft cabin. It must fit in the overhead compartment or under the seat in front of you.",
-    lo: "ກະເປົາຖືຂຶ້ນເຮືອແມ່ນນຳຕິດໂຕເຂົ້າໄປໃນຫ້ອງໂດຍສານ. ຕ້ອງໃສ່ໄດ້ໃນຊ່ອງເກັບຂອງດ້ານເທິງ ຫຼື ໃຕ້ບ່ອນນັ່ງຂ້າງໜ້າຂອງທ່ານ.",
+    lo: "ກະເປົາຖືຂຶ້ນເຮືອແມ່ນນຳຕິດໂຕເຂົ້າໄປໃນຫ້ອງໂດຍສານ. ເກັບໄວ້ບ່ອນໃສ່ເຄື່ອງທີ່ຢູ່ເທິງຫົວ ຫຼື ເກັບໄວ້ກ້ອງຕັ່ງນັ່ງທີ່ຢູ່ດ້ານໜ້າຂອງທ່ານ",
     zh: "随身行李随您进入客舱。必须能放入头顶行李舱或前排座位下方。",
   },
   cabinWeightVal: {
@@ -87,7 +87,7 @@ export const baggage = {
   },
   prohibitedDesc: {
     en: "The following items are not allowed in checked or cabin baggage:",
-    lo: "ສິ່ງຂອງຕໍ່ໄປນີ້ບໍ່ອະນຸຍາດໃຫ້ນຳໃສ່ກະເປົາໂຫຼດ ຫຼື ກະເປົາຖືຂຶ້ນເຮືອ:",
+    lo: "ສິ່ງຂອງຕໍ່ໄປນີ້ບໍ່ອະນຸຍາດໃຫ້ນຳໃສ່ກະເປົາໂຫຼດ ຫຼື ກະເປົາຖືຂື້ນເຮືອບິນ:",
     zh: "以下物品不允许放入托运或随身行李：",
   },
   prohibitedExplosives: {
@@ -129,7 +129,7 @@ export const baggage = {
   },
   cabinRestrictedSports: {
     en: "Sports equipment (bats, golf clubs)",
-    lo: "ອຸປະກອນກິລາ (ໄມ້ຕີ, ໄມ້ກອຟ)",
+    lo: "ອຸປະກອນກິລາ (ໄມ້ແບັດ, ໄມ້ກອຟ)",
     zh: "运动器材（球棒、高尔夫球杆）",
   },
 

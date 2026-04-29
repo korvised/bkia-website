@@ -105,7 +105,7 @@ export function FeatureLayout({
 
               <ChevronRight className="h-4 w-4 text-white/60" />
 
-              {/* Guides Dropdown */}
+              {/* Section Dropdown */}
               <BreadcrumbDropdown
                 trigger={(open: boolean) => (
                   <Fragment>
@@ -137,9 +137,9 @@ export function FeatureLayout({
                 ))}
               />
 
-              <ChevronRight className="h-4 w-4 text-white/60" />
+              <ChevronRight className="h-3.5 w-3.5 text-white/40" />
 
-              {/* Guides Section Dropdown */}
+              {/* Sub-section Dropdown */}
               <BreadcrumbDropdown
                 trigger={(open: boolean) => (
                   <>
@@ -179,38 +179,35 @@ export function FeatureLayout({
         </div>
       </div>
 
-      {/* Feature Menu */}
-      <div className="container mt-3 md:mt-4 lg:mt-5">
-        <nav className="horizontal-scroll flex items-center gap-x-5 overflow-x-auto border-b border-gray-200 sm:gap-x-8 md:gap-x-10">
-          {menuItems.map((item) => {
-            const isActive = pathname.includes(item.href);
-
-            return (
-              <Link
-                key={item.href}
-                href={buildUrl(`/${lang}${item.href}`)}
-                className={cn(
-                  "group relative flex-shrink-0 py-2 text-sm font-semibold transition-colors duration-200 md:py-4 md:text-base",
-                  "hover:text-[#00AAAC]",
-                  isActive ? "text-[#00AAAC]" : "text-gray-700",
-                )}
-              >
-                {/* Menu Item Text */}
-                <span className="relative z-10">{t(item.label)}</span>
-
-                {/* Active Bottom Border */}
-                {isActive && (
-                  <span className="absolute right-0 bottom-0 left-0 hidden h-0.5 bg-[#00AAAC] md:block" />
-                )}
-
-                {/* Hover Animation Border - Slides from left to right */}
-                {!isActive && (
-                  <span className="absolute bottom-0 left-0 hidden h-0.5 w-0 bg-[#00AAAC] transition-all duration-300 ease-out group-hover:w-full md:block" />
-                )}
-              </Link>
-            );
-          })}
-        </nav>
+      {/* Section Navigation */}
+      <div className="bg-white border-b border-[#d0eeef] shadow-[0_2px_12px_rgba(0,170,172,0.08)]">
+        <div className="container">
+          <nav
+            className="flex overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            aria-label="Section navigation"
+          >
+            {menuItems.map((item) => {
+              const isActive = pathname.includes(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={buildUrl(`/${lang}${item.href}`)}
+                  className={cn(
+                    "relative flex-shrink-0 px-6 py-4 text-base font-semibold whitespace-nowrap transition-colors duration-200 focus-visible:outline-none",
+                    isActive
+                      ? "text-[#00AAAC]"
+                      : "text-gray-600 hover:text-gray-900",
+                  )}
+                >
+                  {t(item.label)}
+                  {isActive && (
+                    <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#00AAAC]" />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
       </div>
 
       {/* Main Content */}

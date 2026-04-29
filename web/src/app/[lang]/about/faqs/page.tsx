@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
   const descriptions: Record<Lang, string> = {
     en: "Find answers to frequently asked questions about flights, check-in, baggage, security, and airport services at Bokeo International Airport.",
-    lo: "ຊອກຫາຄຳຕອບສຳລັບຄຳຖາມທີ່ຖືກຖາມເລື້ອຍໆກ່ຽວກັບທ່ຽວບິນ, ການເຊັກອິນ, ກະເປົ໋າ, ຄວາມປອດໄພ ແລະ ການບໍລິການສະໜາມບິນ.",
+    lo: "ຊອກຫາຄຳຕອບສຳລັບຄຳຖາມທີ່ຖືກຖາມເລື້ອຍໆກ່ຽວກັບທ່ຽວບິນ, ການແຈ້ງປີ້, ກະເປົາ, ຄວາມປອດໄພ ແລະ ການບໍລິການສະໜາມບິນ.",
     zh: "在博胶国际机场，查找有关航班、值机、行李、安检及机场服务的常见问题解答。",
   };
 

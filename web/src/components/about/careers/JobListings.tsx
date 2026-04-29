@@ -93,10 +93,10 @@ function JobRow({ job, lang }: { job: IJobPost; lang: Lang }) {
           <span
             className={`inline-flex items-center gap-1.5 text-xs font-medium ${
               deadlineStatus === "expired"
-                ? "text-red-500"
+                ? "text-red-600"
                 : deadlineStatus === "soon"
-                  ? "text-amber-500"
-                  : "text-gray-400"
+                  ? "text-red-500"
+                  : "text-red-400"
             }`}
           >
             <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75} aria-hidden="true">

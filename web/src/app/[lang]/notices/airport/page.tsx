@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Bell } from "lucide-react";
 import { Lang } from "@/types/language";
-import { NoticeFilters, NoticeList } from "@/components/support/notice";
+import { NoticeFilters, NoticeList, NoticesCrossNav } from "@/components/support/notice";
 import { listNotices, toNoticeQuery } from "@/services/notice";
 import type { NoticePageProps, QueryNotice } from "@/types/notice";
 import { createAirportNoticesI18n } from "@/data/i18n/notices/airport";
@@ -95,6 +95,9 @@ async function NoticesPageContent({
           />
         </div>
       </section>
+
+      {/* Cross navigation to other sections */}
+      <NoticesCrossNav lang={lang} current="airport" />
     </>
   );
 }

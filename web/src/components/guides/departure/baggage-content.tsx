@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, ShieldAlert } from "lucide-react";
 import { MdOutlineLuggage, MdOutlineDiamond } from "react-icons/md";
 import { BsBoxSeam } from "react-icons/bs";
 import { TbAlertTriangle } from "react-icons/tb";
@@ -117,7 +119,7 @@ export function BaggageContent({ lang }: BaggageContentProps) {
       <section className="bg-white py-12">
         <div className="container space-y-14">
           {/* Prohibited items */}
-          <div>
+          <div id="prohibited-items">
             <div className="mb-5 flex items-start gap-3 border-l-4 border-red-500 bg-red-50 px-4 py-3 rounded-r-lg">
               <div>
                 <p className="mb-1 text-xs font-bold uppercase tracking-widest text-red-600">
@@ -159,6 +161,18 @@ export function BaggageContent({ lang }: BaggageContentProps) {
                   </div>
                 ))}
               </div>
+              {/* Link to prohibited items table on security page */}
+              <Link
+                href={`/${lang}/guides/security#prohibited-table`}
+                className="group mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#00AAAC] transition-colors hover:text-[#008e90]"
+              >
+                {lang === "lo"
+                  ? "ເບິ່ງຕາຕະລາງສິ່ງເກືອດຫ້າມ"
+                  : lang === "zh"
+                  ? "查看禁止物品表格"
+                  : "View Prohibited Items Table"}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
             </div>
 
             <div>
@@ -195,12 +209,17 @@ export function BaggageContent({ lang }: BaggageContentProps) {
               {t.excessTitle}
             </p>
             <p className="mb-2 text-sm text-gray-600">{t.excessDesc}</p>
-            <p className="text-sm font-medium text-[#00AAAC]">
+            <Link
+              href={`/${lang}/flights/airlines`}
+              className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#00AAAC] transition-colors hover:text-[#008e90]"
+            >
               {t.excessContact}
-            </p>
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </div>
-          <div className="flex items-start gap-3 border-l-2 border-gray-300 pl-4">
-            <p className="text-xs leading-relaxed text-gray-500">
+          <div className="flex gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-4">
+            <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
+            <p className="text-sm leading-relaxed text-amber-800">
               {t.liabilityNote}
             </p>
           </div>

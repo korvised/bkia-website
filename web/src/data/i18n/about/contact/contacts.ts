@@ -101,7 +101,7 @@ export const contacts = {
   },
   specialLocation: {
     en: "Check-in Area, Terminal 1",
-    lo: "ບໍລິເວນເຊັກອິນ, ອາຄານ 1",
+    lo: "ບໍລິເວນເຄົາເຕີ້ແຈ້ງປີ້, ອາຄານ 1",
     zh: "1号航站楼值机区",
   },
   specialHours: {

@@ -258,7 +258,7 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
       </section>
 
       {/* Section 4: Prohibited Items Table */}
-      <section className="bg-white py-10 lg:py-12">
+      <section id="prohibited-table" className="bg-white py-10 lg:py-12">
         <div className="container">
           <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
             Restrictions

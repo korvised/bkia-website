@@ -198,8 +198,8 @@ export const TAXI_VEHICLE_CONTENT: Record<Lang, TaxiVehicleContent[]> = {
     { name: "Van",          desc: "For families or groups needing extra comfort and luggage space.", capacity: "5+ passengers" },
   ],
   lo: [
-    { name: "ລົດເກັງ (Taxi)", desc: "ເໝາະສຳລັບຜູ້ໂດຍສານ 1–4 ທ່ານ ພ້ອມກະເປົ໋າທົ່ວໄປ.", capacity: "1–4 ທ່ານ" },
-    { name: "ລົດຕູ້ (Van)",   desc: "ສຳລັບຄອບຄົວ ຫຼື ກຸ່ມທີ່ຕ້ອງການຄວາມສະດວກ ແລະ ພື້ນທີ່ໃສ່ກະເປົ໋າ.", capacity: "5+ ທ່ານ" },
+    { name: "ລົດເກັງ (Taxi)", desc: "ເໝາະສຳລັບຜູ້ໂດຍສານ 1–4 ທ່ານ ພ້ອມກະເປົາທົ່ວໄປ.", capacity: "1–4 ທ່ານ" },
+    { name: "ລົດຕູ້ (Van)",   desc: "ສຳລັບຄອບຄົວ ຫຼື ກຸ່ມທີ່ຕ້ອງການຄວາມສະດວກ ແລະ ພື້ນທີ່ໃສ່ກະເປົາ.", capacity: "5+ ທ່ານ" },
   ],
   zh: [
     { name: "出租车（轿车）", desc: "适合 1–4 名乘客携带标准行李。", capacity: "1–4 人" },

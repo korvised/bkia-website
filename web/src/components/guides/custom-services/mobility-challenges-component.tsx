@@ -10,7 +10,6 @@ import {
   CheckCircle,
   ClipboardList,
   Building2,
-  Phone,
   MapPin,
 } from "lucide-react";
 import { Lang } from "@/types/language";
@@ -362,28 +361,6 @@ export const MobilityChallengesComponent = ({ lang }: Props) => {
         </div>
       </section>
 
-      {/* ── 6. Contact CTA ───────────────────────────────────────────────────── */}
-      <section className="bg-[#00AAAC] py-12">
-        <div className="container flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
-          <div>
-            <p className="text-lg font-bold text-white">
-              Need special assistance?
-            </p>
-            <p className="mt-1 text-sm text-white/70">
-              Our team is available to help. Contact us before your journey.
-            </p>
-          </div>
-          <div className="flex items-center gap-3">
-            <Link
-              href={`/${lang}/about/contact`}
-              className="flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-[#00AAAC] transition-opacity hover:opacity-90"
-            >
-              <Phone className="h-4 w-4" />
-              Contact Airport
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 };

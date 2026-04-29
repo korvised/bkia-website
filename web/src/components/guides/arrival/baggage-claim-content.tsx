@@ -44,8 +44,6 @@ export function BaggageClaimContent({ lang }: BaggageClaimContentProps) {
     t.missingStep2,
     t.missingStep3,
     t.missingStep4,
-    t.missingStep5,
-    t.missingStep6,
   ];
 
   const damagedSteps = [
@@ -53,7 +51,6 @@ export function BaggageClaimContent({ lang }: BaggageClaimContentProps) {
     t.damagedStep2,
     t.damagedStep3,
     t.damagedStep4,
-    t.damagedStep5,
   ];
 
   return (

@@ -44,7 +44,7 @@ export function RelatedServices({ lang }: RelatedServicesProps) {
 
             const Icon = service.icon;
             const colorClasses = getColorClasses(service.color);
-            const href = `/${lang}/services/facilities/${service.id}`;
+            const href = `/${lang}/services/facilities`;
 
             return (
               <Link

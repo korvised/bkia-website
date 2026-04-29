@@ -304,13 +304,13 @@ export const facilitiesServices: FacilityService[] = [
   {
     id: "baggage-cart",
     category: "terminal",
-    name: { en: "Baggage Cart", lo: "ລໍ້ຍູ້ກສຳພາລະ", zh: "行李推车" },
+    name: { en: "Baggage Cart", lo: "ລໍ້ຍູ້ສຳພາລະ", zh: "行李推车" },
     icon: LuBaggageClaim,
     color: "cyan",
-    shortDescription: { en: "Free carts", lo: "ລໍ້ຍູ້ກຟຣີ", zh: "免费推车" },
+    shortDescription: { en: "Free carts", lo: "ລໍ້ຍູ້ຟຣີ", zh: "免费推车" },
     description: {
       en: "Complimentary baggage carts available 24/7 throughout the terminal.",
-      lo: "ບໍລິການລໍ້ຍູ້ກສຳພາລະຟຣີ 24 ຊົ່ວໂມງ.",
+      lo: "ບໍລິການລໍ້ຍູ້ສຳພາລະຟຣີ 24 ຊົ່ວໂມງ.",
       zh: "航站楼内提供24/7免费行李推车服务。",
     },
     location: [

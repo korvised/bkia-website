@@ -128,7 +128,7 @@ export const pregnancyGuideline = {
   },
   tip2: {
     en: "Carry medical documents and prescriptions in your hand luggage.",
-    lo: "ພົກພາເອກະສານທາງການແພດ ແລະ ຢາປະຈຳໂຕ ໄວ້ໃນກະເປົ໋າຖືຂຶ້ນເຄື່ອງ.",
+    lo: "ພົກພາເອກະສານທາງການແພດ ແລະ ຢາປະຈຳໂຕ ໄວ້ໃນກະເປົາຖືຂຶ້ນເຄື່ອງ.",
     zh: "将医疗文件和处方放在随身行李中。",
   },
   tip3: {

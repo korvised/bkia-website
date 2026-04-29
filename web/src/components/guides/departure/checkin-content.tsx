@@ -110,9 +110,12 @@ export function CheckinContent({ lang }: CheckinContentProps) {
       {/* ── Counter Hours ────────────────────────────────────── */}
       <section className="bg-white py-10">
         <div className="container">
-          <p className="mb-8 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
-            {t.counterHoursTitle}
-          </p>
+          <div className="mb-8 flex items-center gap-2">
+            <MdOutlineAccessTime className="h-5 w-5 shrink-0 text-[#00AAAC]" />
+            <h2 className="text-lg font-bold text-gray-900">
+              {t.counterHoursTitle}
+            </h2>
+          </div>
 
           <div className="grid gap-0 divide-y divide-gray-100 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
             <div className="pb-8 sm:pr-12">

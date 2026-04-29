@@ -46,7 +46,7 @@ export function RelatedServices({ lang }: RelatedServicesProps) {
             return (
               <Link
                 key={service.id}
-                href={`/${lang}/services/${service.id}`}
+                href={`/${lang}/services/facilities`}
                 className="group flex flex-col items-center gap-3 rounded-xl border border-gray-200 bg-white p-4 transition-colors hover:border-[#b2e8ea] hover:bg-[#f0fbfc]"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f7f8] transition-colors group-hover:bg-[#00AAAC]">
