@@ -10,23 +10,6 @@ interface ArrivalAirportContentProps {
 export function ArrivalAirportContent({ lang }: ArrivalAirportContentProps) {
   const { arrivalAirport: t } = createArrivalGuideI18n(lang);
 
-  const services = [
-    t.currencyExchange,
-    t.atmMachines,
-    t.freeWifi,
-    t.infoDesks,
-    t.restrooms,
-    t.waterStations,
-  ];
-
-  const assistance = [
-    t.wheelchairService,
-    t.porterServices,
-    t.medicalFirstAid,
-    t.lostFound,
-    t.airportPolice,
-  ];
-
   const firstSteps = [
     t.healthScreening,
     t.immigrationControl,
@@ -136,59 +119,11 @@ export function ArrivalAirportContent({ lang }: ArrivalAirportContentProps) {
         </div>
       </section>
 
-      {/* ── Section 3: Facilities + Emergency Contact ──────────── */}
+      {/* ── Section 3: Emergency Contact ───────────────────────── */}
       <section className="bg-gray-50 py-10">
-        <div className="container space-y-8">
-          {/* Facilities */}
-          <div>
-            <p className="mb-5 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
-              {t.facilitiesTitle}
-            </p>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {/* Available services */}
-              <div className="rounded-xl bg-white p-5">
-                <p className="mb-4 text-sm font-bold text-gray-800">
-                  {t.availableServices}
-                </p>
-                <div className="space-y-2">
-                  {services.map((item, i) => (
-                    <div
-                      key={i}
-                      className="flex items-start gap-2 text-sm text-gray-600"
-                    >
-                      <span className="mt-0.5 shrink-0 font-bold text-[#00AAAC]">
-                        ✓
-                      </span>
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Assistance available */}
-              <div className="rounded-xl bg-white p-5">
-                <p className="mb-4 text-sm font-bold text-gray-800">
-                  {t.assistanceAvailable}
-                </p>
-                <div className="space-y-2">
-                  {assistance.map((item, i) => (
-                    <div
-                      key={i}
-                      className="flex items-start gap-2 text-sm text-gray-600"
-                    >
-                      <span className="mt-0.5 shrink-0 font-bold text-[#00AAAC]">
-                        ✓
-                      </span>
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <div className="container">
           {/* Emergency numbers — pill cards row */}
-          <div className="border-t border-gray-200 pt-6">
+          <div>
             <p className="mb-4 text-xs font-bold uppercase tracking-widest text-red-500">
               {t.emergencyContact}
             </p>
@@ -245,3 +180,4 @@ export function ArrivalAirportContent({ lang }: ArrivalAirportContentProps) {
     </>
   );
 }
+

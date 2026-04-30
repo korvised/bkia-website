@@ -31,7 +31,7 @@ export const departureNav = {
   },
   immigration: {
     en: "Immigration",
-    lo: "ກວດຄົນເຂົ້າ-ອອກເມືອງ",
+    lo: "ກວດຄົນອອກເມືອງ",
     zh: "边检",
   },
   boarding: {

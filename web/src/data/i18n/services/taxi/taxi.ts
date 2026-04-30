@@ -11,9 +11,9 @@ export const TAXI_IMAGES = [
 
 // ── Destination prices (edit to update fares) ─────────────────────────────────
 export const TAXI_PRICES = {
-  tonPheung:      { lak: "200,000", cny: "65"  },
-  goldenTriangle: { lak: "250,000", cny: "85"  },
-  huayXai:        { lak: "750,000", cny: "250" },
+  tonPheung:      { lak: "300,000",   cny: "100" },
+  goldenTriangle: { lak: "300,000",   cny: "100" },
+  huayXai:        { lak: "1,050,000", cny: "350" },
 } as const;
 
 // ── Flat string translations ──────────────────────────────────────────────────
@@ -35,7 +35,7 @@ export const taxi = {
   },
   faresLabel: {
     en: "Fixed-Price Fares",
-    lo: "ລາຄາລີ່ມຕົ້ນ (ລາຄາກຳນົດ)",
+    lo: "ລາຄາເລີ່ມຕົ້ນ (ລາຄາກຳນົດ)",
     zh: "固定票价",
   },
   faresTitle: {

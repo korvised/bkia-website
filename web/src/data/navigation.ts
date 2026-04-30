@@ -162,7 +162,7 @@ export const navigation: NavItem[] = [
         label: { en: "Airport Security", lo: "ຄວາມປອດໄພ", zh: "安检须知" },
         description: {
           en: "Security guidelines and tips",
-          lo: "ຄຳແນະນຳດ້ານຄວາມປອດໄພ",
+          lo: "ຄຳແນະນຳດ້ານການປ້ອງກັນຄວາມປອດໄພ",
           zh: "安全检查指南",
         },
         href: "/guides/security",

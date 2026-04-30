@@ -9,20 +9,20 @@ export const careers = {
   },
   pageDescription: {
     en: "Join our team at Bokeo International Airport — Northern Laos' gateway to the world",
-    lo: "ຮ່ວມງານກັບທີມງານສະໜາມບິນສາກົນບໍ່ແກ້ວ — ປະຕູສູ່ໂລກຂອງພາກເໜືອລາວ",
+    lo: "ຮ່ວມງານກັບທີມງານສະໜາມບິນສາກົນບໍ່ແກ້ວ — ປະຕູສູ່ສາກົນໃນພາກເໜືອຂອງລາວ",
     zh: "加入博胶国际机场团队——老挝北部通往世界的门户",
   },
 
   // Hero
   heroTitle: {
     en: "Build Your Career Here",
-    lo: "ສ້າງອາຊີບຂອງທ່ານຢູ່ທີ່ນີ້",
+    lo: "ສ້າງອາຊີບຂອງທ່ານໄດ້ທີ່ນີ້",
     zh: "在这里开启您的职业生涯",
   },
   heroSubtitle: {
-    en: "Be part of the team connecting Bokeo to the world",
-    lo: "ເປັນສ່ວນໜຶ່ງຂອງທີມງານທີ່ເຊື່ອມຕໍ່ບໍ່ແກ້ວສູ່ໂລກ",
-    zh: "成为连接博胶与世界的团队一员",
+    en: "Be part of the BKIA team",
+    lo: "ມາເປັນສ່ວນໜຶ່ງຂອງທີມງານ BKIA",
+    zh: "成为 BKIA 团队的一员",
   },
 
   // Positions section
@@ -105,7 +105,7 @@ export const careers = {
   },
   docsTitle: {
     en: "Required Documents",
-    lo: "ເອກະສານປະກອບໃນການສະໝັກວຽກ",
+    lo: "ເອກະສານປະກອບການສະໝັກ",
     zh: "申请材料",
   },
   benefitsTitle: {
@@ -114,9 +114,9 @@ export const careers = {
     zh: "员工福利",
   },
   contactTitle: {
-    en: "Contact for Application",
-    lo: "ຂໍ້ມູນຕິດຕໍ່ການສະໝັກວຽກ",
-    zh: "应聘联系方式",
+    en: "Submit Your Application Via",
+    lo: "ຊ່ອງທາງການສົ່ງຂໍ້ມູນສະໝັກວຽກ",
+    zh: "申请材料投递至",
   },
 
   // Detail page
@@ -158,28 +158,35 @@ export const careers = {
     zh: "以使命为基础，\n以人才为驱动",
   },
   cultureBody: {
-    lo: "ທີ່ BKIA, ພວກເຮົາເຊື່ອວ່າສະໜາມບິນເປັນຫຼາຍກວ່າບ່ອນຂຶ້ນ-ລົງເຮືອບິນ. ແຕ່ແມ່ນບ່ອນທີ່ຄອບຄົວໄດ້ກັບມາພົບໜ້າກັນ, ເປັນຈຸດເລີ່ມຕົ້ນຂອງການຂະຫຍາຍຕົວທາງທຸລະກິດ ແລະ ເປັນດ່ານທຳອິດທີ່ຕ້ອນຮັບແຂກບ້ານ-ແຂກເມືອງ ດ້ວຍນ້ຳໃຈໄມຕີຈິດແບບລາວເຮົາ.",
-    en: "At BKIA, we believe an airport is more than infrastructure. It's where families reunite, businesses grow, and the warmth of Lao hospitality first touches the world.",
-    zh: "在博胶国际机场，我们相信机场不仅仅是基础设施。它是家庭重聚之地、商业成长之所，也是老挝热情好客第一次感动世界的地方。",
+    lo: "ທີ່ BKIA, ພວກເຮົາເປັນຫຼາຍກວ່າການເປັນສະໜາມບິນ, ພວກເຮົາຄືຈຸດເລີ່ມຕົ້ນຂອງທຸກການເດີນທາງທີ່ມີຄວາມໝາຍ. ບໍ່ວ່າຈະເປັນການເຕົ້າໂຮມຄອບຄົວ, ການຂະຫຍາຍຕົວຂອງທຸລະກິດ ຫຼື ການຕ້ອນຮັບດ້ວຍຮອຍຍິ້ມແບບລາວເຮົາ. ພວກເຮົາພ້ອມທີ່ຈະເປັນພະລັງຂັບເຄື່ອນ ແລະ ເບິ່ງແຍງທຸກທ່ານດ້ວຍຫົວໃຈ.",
+    en: "At BKIA, we are more than just an airport; we are the starting point of every meaningful journey. Whether it's reuniting families, expanding businesses, or welcoming guests with a Lao smile, we are ready to be the driving force that cares for you with all our heart.",
+    zh: "在 BKIA，我们不仅仅是一座机场，更是每一段意义非凡旅程的起点。无论是家庭团聚、业务拓展，还是那抹温暖的老挝式微笑，我们都致力于成为核心驱动力，全心全意为您保驾护航。",
   },
 
   // Benefits overline label
-  benefitsLabel: { en: "Benefits & Perks", lo: "ສະຫວັດດີການ", zh: "员工权益" },
-
+  benefitsLabel: {
+    en: "Policy",
+    lo: "ນະໂຍບາຍ",
+    zh: "政策",
+  },
   // Docs section overline
-  docsLabel: { en: "How to Apply", lo: "ວິທີການສະໝັກ", zh: "如何申请" },
+  docsLabel: { en: "How to Apply", lo: "ການສະໝັກວຽກ", zh: "如何申请" },
 
   // Contact section
-  contactLabel: { en: "Contact HR", lo: "ຕິດຕໍ່ HR", zh: "联系人力资源" },
+  contactLabel: {
+    en: "Contact HR",
+    lo: "ຕິດຕໍ່ ຝ່າຍບຸກຄະລາກອນ",
+    zh: "联系人力资源",
+  },
   formQrLabel: {
-    en: "Download Application Form",
-    lo: "ດາວໂຫຼດ ແບບຟອມສະໝັກ",
-    zh: "下载申请表格",
+    en: "Download Form",
+    lo: "ດາວໂຫຼດ ແບບຟອມ",
+    zh: "下载表格",
   },
   formQrSub: {
-    en: "Scan to download BKIA-HR-005",
-    lo: "ສະແກນເພື່ອດາວໂຫຼດ BKIA-HR-005",
-    zh: "扫码下载 BKIA-HR-005",
+    en: "Company Job Application Form",
+    lo: "ແບບຟອບສະໝັກວຽກຂອງບໍລິສັດ",
+    zh: "公司职位申请表",
   },
   contactCta: {
     en: "Ready to be part of our story? We'd love to hear from you.",
@@ -193,36 +200,33 @@ export type CareersKey = keyof typeof careers;
 // ── Static document list (trilingual) ────────────────────────────────────────
 export const careersDocsList: Record<Lang, string[]> = {
   en: [
-    "Complete the BKIA Company Application Form (BKIA-HR-005) in person",
+    "Company Job Application Form (Complete in person)",
     "Applicant CV",
-    "Copies of identity documents: National ID, household registration, and Passport",
+    "Copies of ID Card, Household Registration, or Passport",
     "Copy of driver's license",
     "Copies of educational documents: diploma, transcript, and foreign language proficiency certificate (Chinese or English required if applicable)",
-    "Copy of internship certificate",
     "Residence certificate (original, issued within 3 months)",
     "Criminal record certificate (original, issued within 3 months)",
     "Health examination certificate (original, issued within 3 months)",
     "Copy of previous employment certificate (if applicable)",
   ],
   lo: [
-    "ປະກອບແບບຟອມສະໝັກຂອງບໍລິສັດສະໜາມບິນສາກົນບໍ່ແກ້ວ ດ້ວຍຕົນເອງ (BKIA-HR-005)",
+    "ແບບຟອບສະໝັກວຽກຂອງບໍລິສັດ (ປະກອບດ້ວຍຕົວເອງ)",
     "CV ຂອງຜູ້ສະໝັກ",
-    "ສຳເນົາເອກະສານຢັ້ງຢືນໂຕຕົນ: ບັດປະຈຳໂຕ, ສຳມະໂນຄົວ ແລະ Passport",
+    "ສຳເນົາບັດປະຈຳຕົວ, ສຳມະໂນຄົວ ຫຼື Passport",
     "ສຳເນົາໃບຂັບຂີ່",
     "ສຳເນົາເອກະສານຢັ້ງຢືນການສຶກສາ: ໃບປະກາດ, ໃບຄະແນນ, ໃບເສັງທຽບລະດັບພາສາຕ່າງປະເທດ (ຖ້າໄດ້ພາສາຈີນ ຫຼື ອັງກິດຕ້ອງມີ)",
-    "ສຳເນົາໃບຢັ້ງຢືນການຝຶກງານ",
     "ໃບຢັ້ງຢືນທີ່ຢູ່ (ສະບັບແທ້ ບໍ່ເກີນ 3 ເດືອນ)",
     "ໃບແຈ້ງໂທດ (ສະບັບແທ້ ບໍ່ເກີນ 3 ເດືອນ)",
     "ໃບຢັ້ງຢືນກວດສຸຂະພາບ (ສະບັບແທ້ ບໍ່ເກີນ 3 ເດືອນ)",
     "ສຳເນົາໃບຢັ້ງຢືນການຜ່ານງານ (ຖ້າມີ)",
   ],
   zh: [
-    "亲自填写博胶国际机场公司申请表（BKIA-HR-005）",
+    "公司职位申请表（由本人填写）",
     "申请人简历",
-    "身份证明文件复印件：身份证、户口本及护照",
+    "身份证、户口本或护照复印件",
     "驾驶证复印件",
     "学历证明文件复印件：毕业证、成绩单及外语水平证书（如会中文或英文须提供）",
-    "实习证明复印件",
     "居住证明（原件，3个月内开具）",
     "无犯罪记录证明（原件，3个月内开具）",
     "体检证明（原件，3个月内开具）",
@@ -238,11 +242,11 @@ export const careersValuesData: Record<
   en: [
     {
       title: "Safety First",
-      body: "Every operation, every decision — the safety of our people and passengers comes before everything else.",
+      body: "In every operation and every decision — the safety of our passengers is our absolute priority.",
     },
     {
       title: "Serve with Heart",
-      body: "We bring genuine Lao warmth to every touchpoint, from the check-in counter to the control tower.",
+      body: "We provide a warm welcome at every stage of our service, from check-in until boarding.",
     },
     {
       title: "Grow Together",
@@ -252,11 +256,11 @@ export const careersValuesData: Record<
   lo: [
     {
       title: "ຄວາມປອດໄພມາກ່ອນ",
-      body: "ບໍ່ວ່າຈະແມ່ນການປະຕິບັດງານ ຫຼື ການຕັດສິນໃຈໃດໆ — ຄວາມປອດໄພຂອງບຸກຄະລາກອນ ແລະ ຜູ້ໂດຍສານ ແມ່ນບຸລິມະສິດສູງສຸດຂອງພວກເຮົາ.",
+      body: "ບໍ່ວ່າຈະແມ່ນການປະຕິບັດງານ ຫຼື ການຕັດສິນໃຈໃດໆ — ຄວາມປອດໄພຂອງຜູ້ໂດຍສານ ແມ່ນບຸລິມະສິດສູງສຸດຂອງພວກເຮົາ.",
     },
     {
       title: "ບໍລິການດ້ວຍໃຈ",
-      body: "ພວກເຮົາພ້ອມມອບການຕ້ອນຮັບທີ່ອົບອຸ່ນແບບລາວແທ້ ໃນທຸກໆຂັ້ນຕອນການບໍລິການ ນັບແຕ່ເຄົາເຕີແຈ້ງປີ້ ຈົນເຖິງຫໍບັງຄັບການບິນ.",
+      body: "ພວກເຮົາພ້ອມມອບການຕ້ອນຮັບທີ່ອົບອຸ່ນ ໃນທຸກໆຂັ້ນຕອນຂອງການບໍລິການ ນັບຕັ້ງແຕ່ຈຸດແຈ້ງປີ້ ຈົນເຖີງການຂື້ນເຮືອບິນ",
     },
     {
       title: "ເຕີບໂຕໄປພ້ອມກັນ",
@@ -266,15 +270,15 @@ export const careersValuesData: Record<
   zh: [
     {
       title: "安全第一",
-      body: "每一次运营，每一个决策——我们员工和旅客的安全永远排在首位。",
+      body: "在每一次运营与决策中，乘客的安全始终是我们最高优先级。",
     },
     {
       title: "用心服务",
-      body: "我们将真正的老挝热情融入每个服务环节，从值机柜台到指挥塔台。",
+      body: "从值机到登机的每一个服务环节，我们都为您提供最温馨的关怀。",
     },
     {
       title: "共同成长",
-      body: "我们投资于每位团队成员的未来，因为当我们的员工成长时，博胶国际机场也在成长。",
+      body: "我们投资于每位团队成员的未来，因为当我们的员工成长时，BKIA 也在成长。",
     },
   ],
 };
@@ -285,76 +289,64 @@ export const careersBenefitsShort: Record<Lang, string[]> = {
     "Free Housing",
     "Overtime Pay",
     "Meal Allowance",
-    "Travel Support",
-    "50% Home Travel",
-    "Team Activities",
+    "Free Relocation Travel",
+    "50% Home Visit Subsidy",
     "Accident Insurance",
     "Annual Health Check",
-    "Annual Leave",
-    "Personal & Sick Leave",
+    "Leave Policy",
   ],
   lo: [
     "ທີ່ພັກຟຣີ",
     "ເງິນລ່ວງເວລາ",
     "ເງິນອັດຕາກິນ",
-    "ຄ່າເດີນທາງ",
-    "ກັບບ້ານ 50%",
-    "ກິດຈະກຳພາຍໃນອົງກອນ",
-    "ປະກັນໄພ",
-    "ກວດສຸຂະພາບ",
-    "ລາປະຈຳປີ",
-    "ລາກິດ/ລາປ່ວຍ",
+    "ຟຣີຄ່າເດີນທາງ",
+    "ຊ່ວຍເຫຼືອຄ່າເດີນທາງກັບບ້ານ 50%",
+    "ປະກັນໄພອຸປະຕິເຫດ",
+    "ກວດສຸຂະພາບປະຈຳປີ",
+    "ນະໂຍບາຍການລາພັກ",
   ],
   zh: [
     "免费住宿",
     "加班费",
     "餐饮补贴",
-    "交通支持",
+    "免费来程交通",
     "50%回家补贴",
-    "团队活动",
-    "意外保险",
+    "意外伤害保险",
     "年度体检",
-    "年假",
-    "事/病/产假",
+    "休假政策",
   ],
 };
 
 // ── Static benefits list (trilingual) ────────────────────────────────────────
 export const careersBenefitsList: Record<Lang, string[]> = {
   en: [
-    "Fully furnished accommodation with water & electricity covered — for employees relocating from other provinces",
-    "Additional pay for hours worked beyond the standard schedule, calculated per company policy",
-    "Daily meal allowance covering 2 meals per working day",
-    "One-time free transport provided for new out-of-province hires travelling to start their role",
-    "50% home-travel subsidy available after 1 year of continuous service for out-of-province staff",
-    "Company-organized team events, annual outings, and cultural celebrations throughout the year",
+    "Company dormitory for out-of-province employees — water and electricity included at no cost",
+    "Additional compensation for hours worked beyond the standard schedule, calculated per company policy",
+    "Company provides a meal allowance covering 2 meals per working day",
+    "For new out-of-province hires, the company covers all travel costs for the initial journey to start their role",
+    "Out-of-province employees receive a 50% subsidy on home-visit travel costs — available from 1 year of service onwards",
     "24-hour accident insurance coverage for all employees",
-    "Comprehensive health screening and blood work provided free of charge every year",
-    "Paid annual leave entitlement in accordance with Lao labor law",
-    "Personal, sick, and maternity leave rights under national labor regulations",
+    "Comprehensive full-cycle health screening provided free of charge every year",
+    "Annual leave: 15 days/yr\nPersonal leave: 3 days/yr\nSick leave: 30 days/yr\nMaternity leave: 105 days/yr (female employees)",
   ],
   lo: [
-    "ທີ່ພັກພ້ອມຄ່ານ້ຳ-ຄ່າໄຟ ລວມໃຫ້ທັງໝົດ ສຳລັບພະນັກງານທີ່ຍ້າຍມາຈາກຕ່າງແຂວງ",
-    "ຄ່າຕອບແທນສຳລັບຊົ່ວໂມງທີ່ເຮັດວຽກເກີນເວລາ ຄິດໄລ່ຕາມລະບຽບຂອງບໍລິສັດ",
-    "ເງິນກິນເຂົ້າ 2 ຂາບຕໍ່ມື້ ໃນຕອນເຊົ້າ ແລະ ຕອນທ່ຽງ",
-    "ຄ່າເດີນທາງສຳລັບພະນັກງານໃໝ່ຕ່າງແຂວງ ຟຣີ 1 ຄັ້ງ ຕອນເລີ່ມວຽກ",
-    "ອຸດໜູນ 50% ຂອງຄ່າເດີນທາງກັບບ້ານ ສຳລັບຜູ້ທີ່ເຮັດວຽກຄົບ 1 ປີຂຶ້ນໄປ",
-    "ກິດຈະກຳສ້າງທີມ, ງານລ້ຽງ ແລະ ທ່ອງທ່ຽວພັກຜ່ອນ ທີ່ຈັດໂດຍບໍລິສັດທຸກປີ",
-    "ປະກັນໄພອຸບັດຕິເຫດ 24 ຊົ່ວໂມງ ຄຸ້ມຄອງພະນັກງານທຸກຄົນ",
-    "ກວດສຸຂະພາບລວມ, ກວດເລືອດ ແລະ ກວດໂລຫິດ ໃຫ້ຟຣີທຸກປີ",
-    "ວັນລາທີ່ໄດ້ຮັບເງິນເດືອນ ຕາມກົດໝາຍແຮງງານ ສປປ ລາວ",
-    "ລາກິດ, ລາປ່ວຍ ແລະ ລາເກີດລູກ ຕາມກົດໝາຍແຮງງານແຫ່ງຊາດ",
+    "ທາງບໍລິສັດມີຫໍພັກສຳລັບພະນັກງານຕ່າງແຂວງ, ຟຣີຄ່ານ້ຳ - ຄ່າໄຟ",
+    "ມີຄ່າຕອບແທນສຳລັບຊົ່ວໂມງທີ່ເຮັດວຽກເກີນເວລາ ຄິດໄລ່ຕາມລະບຽບຂອງບໍລິສັດ",
+    "ທາງບໍລິສັດມີເງິນກິນເຂົ້າ 2 ຄາບ/ມື້",
+    "ຄ່າເດີນທາງສຳລັບພະນັກງານຕ່າງແຂວງທີ່ມາເລີ່ມຕົ້ນໃໝ່ — ບໍລິສັດຮັບຜິດຊອບຄ່າເດີນທາງໃຫ້ທັງໝົດ",
+    "ທາງບໍລິສັດຊ່ວຍເຫຼືອ 50% ຂອງຄ່າເດີນທາງກັບຢ້ຽມຍາມບ້ານ — ສະເພາະພະນັກງານທີ່ມີອາຍຸການ 1 ປີຂຶ້ນໄປ",
+    "ປະກັນໄພອຸປະຕິເຫດ 24 ຊົ່ວໂມງ",
+    "ກວດສຸຂະພາບພະນັກງານຄົບວົງຈອນໃຫ້ທຸກປີ",
+    "ລາພັກປະຈຳປີ 15 ມື້\nລາກິດ 3 ມື້\nລາປ່ວຍ 30 ມື້\nລາເກີດລູກ 105 ມື້ (ສະເພາະພະນັກງານຍິງ)",
   ],
   zh: [
-    "为外省员工提供家具齐全的住所，水电费全额报销",
-    "按公司规定对超时工作小时数给予额外薪酬补偿",
-    "每工作日提供两餐餐饮补贴（早餐及午餐）",
-    "为新入职外省员工提供一次性免费来程交通费用",
-    "工龄满1年的外省员工享受50%回家交通费补贴",
-    "公司定期组织团建活动、年会及员工旅游",
+    "公司为外省员工提供宿舍住所，水电费全额免除",
+    "对超出标准工时的工作给予额外薪酬补偿，按公司规定计算",
+    "公司每工作日提供2餐餐饮补贴",
+    "新入职外省员工来司报到的全部交通费用由公司承担",
+    "外省员工可享受50%的回家探亲交通补贴 — 适用于工龄满1年以上的员工",
     "为全体员工提供全天候24小时意外伤害保险保障",
-    "每年免费为员工提供全面体检及血液检查",
-    "按老挝劳动法享有带薪年假",
-    "依照国家劳动法规享有事假、病假及产假权利",
+    "每年为员工提供全面体检",
+    "年假：15天/年\n事假：3天/年\n病假：30天/年\n产假：105天/年（仅限女性员工）",
   ],
 };

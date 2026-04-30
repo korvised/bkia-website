@@ -2,14 +2,14 @@ import type { Lang } from "@/types/language";
 
 export const borderInspection = {
   title: {
-    en: "Immigration / Border Control",
-    lo: "ດ່ານກວດຄົນເຂົ້າ-ອອກເມືອງ (ຂາເຂົ້າ)",
-    zh: "边检（入境）",
+    en: "Immigration Control (Arrivals)",
+    lo: "ກວດຄົນເຂົ້າເມືອງ",
+    zh: "入境边检",
   },
   intro: {
     en: "All international passengers must clear immigration at Bokeo International Airport. Present your passport and official digital QR code at the immigration counter. Lao citizens and foreign nationals use separate queues.",
-    lo: "ຜູ້ໂດຍສານສາກົນທັງໝົດ ຕ້ອງຜ່ານຂັ້ນຕອນກວດຄົນເຂົ້າ-ອອກ ທີ່ສະໝາມບິນສາກົນບໍ່ແກ້ວ. ຍື່ນໜັງສືຜ່ານແດນ ແລະ ລະຫັດ QR Code ດິຈິຕອລທີ່ເຄົາເຕີ. ພົນລະເມືອງລາວ ແລະ ຕ່າງຊາດ ໃຊ້ຄິວແຍກກັນ.",
-    zh: "所有国际旅客须在博胶国际机场通过边检。请向柜台出示护照及官方电子入境二维码。老挝公民与外国公民使用不同队列。",
+    lo: "ຜູ້ໂດຍສານສາກົນທັງໝົດ ຕ້ອງຜ່ານຂັ້ນຕອນກວດຄົນເຂົ້າ ທີ່ສະໜາມບິນສາກົນບໍ່ແກ້ວ. ຍື່ນໜັງສືຜ່ານແດນ ແລະ ລະຫັດ QR Code ດິຈິຕອລທີ່ເຄົາເຕີ. ພົນລະເມືອງລາວ ແລະ ຕ່າງຊາດ ໃຊ້ຄິວແຍກກັນ.",
+    zh: "所有国际旅客须在博胶国际机场通过入境边检。请向柜台出示护照及官方电子入境二维码。老挝公民与外国公民使用不同队列。",
   },
 
   // ── Wait Times ───────────────────────────────────────────────────────────

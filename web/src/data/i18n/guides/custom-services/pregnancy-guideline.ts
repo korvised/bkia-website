@@ -39,7 +39,7 @@ export const pregnancyGuideline = {
   },
   pregUpTo28Info: {
     en: "A medical certificate from a doctor is required.",
-    lo: "ຕ້ອງມີໃບຢັ້ງຢືນຈາກທາງໝໍ.",
+    lo: "ຕ້ອງມີໃບຢັ້ງຢືນຈາກທ່ານໝໍ.",
     zh: "须出具医生证明。",
   },
 
@@ -75,7 +75,7 @@ export const pregnancyGuideline = {
   },
   additionalReqList: {
     en: "• Confirmation of normal pregnancy with no complications\n• Must specify Expected Date of Delivery (EDD)\n• Medical certificate must include date, official stamp, and doctor's contact details.",
-    lo: "• ມີການຢັນຢືນການຖືພາວ່າເປັນການຖືພາຕາມປົກກະຕິ ບໍ່ມີພາວະແຊກຊ້ອນ\n• ຕ້ອງມີການກຳນົດເກີດ (EDD)\n• ໃບຮັບຮອງທາງການແພດປະກອບມີ: ວັນທີ, ກາຈ້ຳ ແລະ ລາຍລະອຽດການຕິດຕໍ່ທີ່ເໝາະສົມຈາກທ່ານໝໍ",
+    lo: "• ມີການຢືນຢັນການຖືພາວ່າເປັນການຖືພາຕາມປົກກະຕິ ບໍ່ມີພາວະແຊກຊ້ອນ\n• ຕ້ອງມີການກຳນົດເກີດ (EDD)\n• ໃບຮັບຮອງທາງການແພດປະກອບມີ: ວັນທີ, ກາຈ້ຳ ແລະ ລາຍລະອຽດການຕິດຕໍ່ທີ່ເໝາະສົມຈາກທ່ານໝໍ",
     zh: "• 确认怀孕正常且无并发症\n• 必须注明预产期 (EDD)\n• 医疗证明必须包含日期、官方公章及医生的详细联系方式。",
   },
 

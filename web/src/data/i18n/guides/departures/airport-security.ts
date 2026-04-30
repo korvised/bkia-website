@@ -363,7 +363,7 @@ export const airportSecurity = {
   },
   violationDesc: {
     en: "Any person who violates airport measures and regulations or commits any offense will be subject to Bokeo International Airport regulations, fines, or civil and criminal prosecution under Lao PDR law.",
-    lo: "ບຸກຄົນໃດທີ່ລະເມີດມາດຕະການ ແລະ ລະບຽບການຂອງສະໜາມບິນ ຫຼື ກະທຳຜິດຕໍ່ກົດໝາຍທຸກຮູບແບບ ຈະຖືກປະຕິບັດຕາມລະບຽບຂອງສະໜາມບິນສາກົນບໍ່ແກ້ວວາງອອກ ຫຼື ຖືກປັບໃໝ, ດຳເນີຄະດີຕາມກົດໝາຍແພ່ງ, ກົດໝາຍອາຍາຂອງ ສປປ ລາວ",
+    lo: "ບຸກຄົນໃດທີ່ລະເມີດມາດຕະການ ແລະ ລະບຽບການຂອງສະໜາມບິນ ຫຼື ກະທຳຜິດຕໍ່ກົດໝາຍທຸກຮູບແບບ ຈະຖືກປະຕິບັດຕາມລະບຽບຂອງສະໜາມບິນສາກົນບໍ່ແກ້ວວາງອອກ ຫຼື ຖືກປັບໃໝ, ດຳເນີນຄະດີຕາມກົດໝາຍແພ່ງ, ກົດໝາຍອາຍາຂອງ ສປປ ລາວ",
     zh: "任何违反机场措施和规定或犯有任何违法行为的人将受到波乔国际机场规定的处罚、罚款，或根据老挝人民民主共和国法律追究民事和刑事责任。",
   },
 

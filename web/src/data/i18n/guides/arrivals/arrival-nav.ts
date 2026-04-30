@@ -26,7 +26,7 @@ export const arrivalNav = {
   },
   borderInspection: {
     en: "Border Inspection",
-    lo: "ກວດຄົນເຂົ້າ-ອອກເມືອງ",
+    lo: "ກວດຄົນເຂົ້າເມືອງ",
     zh: "边检",
   },
   baggageClaim: {

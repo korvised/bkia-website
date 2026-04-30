@@ -2,9 +2,9 @@ import type { Lang } from "@/types/language";
 
 export const immigration = {
   title: {
-    en: "Immigration / Border Control (Departure)",
-    lo: "ດ່ານກວດຄົນເຂົ້າ-ອອກເມືອງ (ຂາອອກ)",
-    zh: "边检（离境）",
+    en: "Immigration Control (Departure)",
+    lo: "ກວດຄົນອອກເມືອງ",
+    zh: "出境边检",
   },
   intro: {
     en: "Before proceeding to the departure lounge, all passengers must clear immigration. Have your documents and LDIF QR Code ready before reaching the counter.",

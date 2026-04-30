@@ -47,7 +47,7 @@ export const leavingAirport = {
 
   safetyTipsTitle: {
     en: "Important Safety Tips",
-    lo: "ຄຳແນະນຳດ້ານຄວາມປອດໄພ",
+    lo: "ຄຳແນະນຳດ້ານການປ້ອງກັນຄວາມປອດໄພ",
     zh: "重要安全提示",
   },
   safetyTip1: {

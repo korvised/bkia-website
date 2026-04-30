@@ -1,7 +1,17 @@
 "use client";
 
-import Image from "next/image";
-import { asset } from "@/lib";
+import {
+  Building2,
+  Timer,
+  UtensilsCrossed,
+  PlaneTakeoff,
+  MapPinHouse,
+  ShieldCheck,
+  Stethoscope,
+  CalendarCheck,
+  Download,
+  type LucideIcon,
+} from "lucide-react";
 import {
   createCareersI18n,
   careersDocsList,
@@ -11,98 +21,42 @@ import {
 import { useInView } from "@/hooks/useInView";
 import type { Lang } from "@/types/language";
 
-const HR005_QR_PATH = "career/form/job+application+form_+QR.jpeg";
+const HR005_PDF_URL = "https://bkia-website.s3.ap-southeast-7.amazonaws.com/career/form/BKIA-HR-005.pdf";
 
 interface ApplicationInfoProps {
   lang: Lang;
 }
 
-// ── Benefit icons ─────────────────────────────────────────────────────────────
-const BenefitIcon = ({ name }: { name: string }) => {
-  const icons: Record<string, React.ReactNode> = {
-    home: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <path d="M3 10L12 3l9 7v10a1 1 0 01-1 1H4a1 1 0 01-1-1V10z" />
-        <path d="M9 21V12h6v9" />
-      </svg>
-    ),
-    clock: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <circle cx="12" cy="12" r="9" />
-        <polyline points="12 7 12 12 15 15" />
-        <path d="M5 3l1.5 1.5M19 3l-1.5 1.5" />
-      </svg>
-    ),
-    meal: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2" />
-        <path d="M7 2v20M21 15V2a5 5 0 00-5 5v6h3.5l-.5 11" />
-      </svg>
-    ),
-    plane: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.18 9.18a19.79 19.79 0 01-3.04-8.72A2 2 0 012.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.72a16 16 0 006.29 6.29l1.08-.45a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-      </svg>
-    ),
-    ticket: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <path d="M2 9a3 3 0 010 6v2a2 2 0 002 2h16a2 2 0 002-2v-2a3 3 0 000-6V7a2 2 0 00-2-2H4a2 2 0 00-2 2v2z" />
-        <line x1="13" y1="5" x2="13" y2="19" strokeDasharray="3 3" />
-      </svg>
-    ),
-    flag: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-        <line x1="4" y1="22" x2="4" y2="15" />
-      </svg>
-    ),
-    shield: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
-    ),
-    heart: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-      </svg>
-    ),
-    calendar: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-        <line x1="16" y1="2" x2="16" y2="6" />
-        <line x1="8" y1="2" x2="8" y2="6" />
-        <line x1="3" y1="10" x2="21" y2="10" />
-        <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" />
-      </svg>
-    ),
-    star: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <rect x="3" y="4" width="18" height="18" rx="2" />
-        <line x1="16" y1="2" x2="16" y2="6" />
-        <line x1="8" y1="2" x2="8" y2="6" />
-        <line x1="3" y1="10" x2="21" y2="10" />
-        <polyline points="9 15 11 17 15 13" />
-      </svg>
-    ),
-  };
-  return <>{icons[name] ?? icons.calendar}</>;
-};
-
-const BENEFIT_ICON_KEYS = [
-  "home",
-  "clock",
-  "meal",
-  "plane",
-  "ticket",
-  "flag",
-  "shield",
-  "heart",
-  "calendar",
-  "star",
-] as const;
+// ── Benefit icons (one per benefit, in order) ─────────────────────────────────
+const BENEFIT_ICONS: LucideIcon[] = [
+  Building2,       // ທີ່ພັກຟຣີ
+  Timer,           // ເງິນລ່ວງເວລາ
+  UtensilsCrossed, // ເງິນອັດຕາກິນ
+  PlaneTakeoff,    // ຟຣີຄ່າເດີນທາງ
+  MapPinHouse,     // ຊ່ວຍເຫຼືອຄ່າເດີນທາງກັບບ້ານ 50%
+  ShieldCheck,     // ປະກັນໄພອຸປະຕິເຫດ
+  Stethoscope,     // ກວດສຸຂະພາບປະຈຳປີ
+  CalendarCheck,   // ນະໂຍບາຍການລາພັກ
+];
 
 // ── Main export ───────────────────────────────────────────────────────────────
+async function downloadPdf() {
+  try {
+    const res = await fetch(HR005_PDF_URL);
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "BKIA-HR-005.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  } catch {
+    window.open(HR005_PDF_URL, "_blank");
+  }
+}
+
 export function ApplicationInfo({ lang }: ApplicationInfoProps) {
   const { careers: t } = createCareersI18n(lang);
   const benefitsShort = careersBenefitsShort[lang];
@@ -159,7 +113,7 @@ export function ApplicationInfo({ lang }: ApplicationInfoProps) {
               >
                 {/* Icon */}
                 <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#00AAAC]/10 text-[#00AAAC] transition-colors duration-200 group-hover:bg-[#00AAAC]/20">
-                  <BenefitIcon name={BENEFIT_ICON_KEYS[i]} />
+                  {(() => { const Icon = BENEFIT_ICONS[i]; return Icon ? <Icon className="h-5 w-5" strokeWidth={1.5} /> : null; })()}
                 </div>
 
                 {/* Text */}
@@ -167,9 +121,20 @@ export function ApplicationInfo({ lang }: ApplicationInfoProps) {
                   <p className="font-semibold leading-snug text-white">
                     {label}
                   </p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-white/50">
-                    {benefitsList[i]}
-                  </p>
+                  {benefitsList[i].includes("\n") ? (
+                    <ul className="mt-1.5 space-y-0.5">
+                      {benefitsList[i].split("\n").map((line, j) => (
+                        <li key={j} className="flex items-baseline gap-1.5 text-sm leading-relaxed text-white/50">
+                          <span className="shrink-0 text-[#00AAAC]/50">·</span>
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="mt-1.5 text-sm leading-relaxed text-white/50">
+                      {benefitsList[i]}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
@@ -231,11 +196,11 @@ export function ApplicationInfo({ lang }: ApplicationInfoProps) {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
                 {/* Email */}
                 <a
                   href="mailto:Hr@bokeointernationalairport.com"
-                  className="appinfo-animated group flex items-center gap-4 rounded-2xl border border-gray-100 bg-[#f8f9fc] px-6 py-4 transition-all hover:border-[#00AAAC]/30 hover:bg-[#f0fbfc]"
+                  className="appinfo-animated group flex items-center gap-4 rounded-2xl border border-gray-100 bg-[#f8f9fc] px-5 py-4 transition-all hover:border-[#00AAAC]/30 hover:bg-[#f0fbfc]"
                   style={contactInView ? { animation: "appinfo-fade-up 0.5s cubic-bezier(0.22,1,0.36,1) 120ms both" } : { opacity: 0 }}
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#00AAAC]/10 text-[#00AAAC]">
@@ -243,9 +208,9 @@ export function ApplicationInfo({ lang }: ApplicationInfoProps) {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Email</p>
-                    <p className="text-sm font-semibold text-[#0f1e3d] transition-colors group-hover:text-[#00AAAC]">
+                  <div className="min-w-0">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Email HR</p>
+                    <p className="truncate text-sm font-semibold text-[#0f1e3d] transition-colors group-hover:text-[#00AAAC]">
                       Hr@bokeointernationalairport.com
                     </p>
                   </div>
@@ -253,10 +218,10 @@ export function ApplicationInfo({ lang }: ApplicationInfoProps) {
 
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/85620517499999"
+                  href="https://wa.me/8562051749999"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="appinfo-animated group flex items-center gap-4 rounded-2xl border border-gray-100 bg-[#f8f9fc] px-6 py-4 transition-all hover:border-[#25D366]/30 hover:bg-[#f0fbf3]"
+                  className="appinfo-animated group flex items-center gap-4 rounded-2xl border border-gray-100 bg-[#f8f9fc] px-5 py-4 transition-all hover:border-[#25D366]/30 hover:bg-[#f0fbf3]"
                   style={contactInView ? { animation: "appinfo-fade-up 0.5s cubic-bezier(0.22,1,0.36,1) 200ms both" } : { opacity: 0 }}
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#25D366]/10 text-[#25D366]">
@@ -272,8 +237,11 @@ export function ApplicationInfo({ lang }: ApplicationInfoProps) {
                 </a>
 
                 {/* TikTok */}
-                <div
-                  className="appinfo-animated group flex items-center gap-4 rounded-2xl border border-gray-100 bg-[#f8f9fc] px-6 py-4 transition-all hover:border-[#0f0f0f]/20 hover:bg-[#0f0f0f]/[0.03]"
+                <a
+                  href="https://www.tiktok.com/@hr.bkia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="appinfo-animated group flex items-center gap-4 rounded-2xl border border-gray-100 bg-[#f8f9fc] px-5 py-4 transition-all hover:border-[#0f0f0f]/20 hover:bg-[#0f0f0f]/[0.03]"
                   style={contactInView ? { animation: "appinfo-fade-up 0.5s cubic-bezier(0.22,1,0.36,1) 280ms both" } : { opacity: 0 }}
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0f0f0f]/8 text-[#0f0f0f]">
@@ -283,26 +251,24 @@ export function ApplicationInfo({ lang }: ApplicationInfoProps) {
                   </div>
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">TikTok</p>
-                    <p className="text-sm font-semibold text-[#0f1e3d]">HRD of BKIA</p>
+                    <p className="text-sm font-semibold text-[#0f1e3d] transition-colors group-hover:text-[#0f0f0f]">@hr.bkia</p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
 
-            {/* ── Right: QR code ── */}
+            {/* ── Right: Download button ── */}
             <div
               className="appinfo-animated shrink-0 self-start lg:self-end"
               style={contactInView ? { animation: "appinfo-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 360ms both" } : { opacity: 0 }}
             >
-              <div className="inline-flex items-center gap-6 rounded-2xl border border-gray-100 bg-[#f8f9fc] px-6 py-5">
-                <div className="shrink-0 overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-black/5">
-                  <Image
-                    src={asset(HR005_QR_PATH)}
-                    alt="BKIA-HR-005 QR Code"
-                    width={104}
-                    height={104}
-                    className="block"
-                  />
+              <button
+                type="button"
+                onClick={downloadPdf}
+                className="group flex cursor-pointer items-center gap-4 rounded-2xl border border-[#00AAAC]/20 bg-[#f0fbfc] px-6 py-5 text-left transition-all hover:border-[#00AAAC]/40 hover:bg-[#e6f7f8] hover:shadow-md hover:shadow-[#00AAAC]/10"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#00AAAC]/15 text-[#00AAAC] transition-colors group-hover:bg-[#00AAAC] group-hover:text-white">
+                  <Download className="h-5 w-5" strokeWidth={2} />
                 </div>
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-widest text-[#00AAAC]">
@@ -311,9 +277,9 @@ export function ApplicationInfo({ lang }: ApplicationInfoProps) {
                   <p className="mt-0.5 text-sm font-semibold text-[#0f1e3d]">
                     {t.formQrLabel}
                   </p>
-                  <p className="mt-1 text-xs text-gray-400">{t.formQrSub}</p>
+                  <p className="mt-0.5 text-xs text-gray-400">{t.formQrSub}</p>
                 </div>
-              </div>
+              </button>
             </div>
 
           </div>
