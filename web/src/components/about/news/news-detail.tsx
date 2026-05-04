@@ -1,7 +1,7 @@
 ﻿import { ArrowLeft, Calendar, Eye, Tag, User } from "lucide-react";
 import { NewsGallery } from "./news-gallery";
+import { NewsCoverImage } from "./news-cover-image";
 import Link from "next/link";
-import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Lang } from "@/types/language";
@@ -42,15 +42,10 @@ export function NewsDetail({ lang, news }: NewsDetailProps) {
           </Link>
 
           {/* Cover image */}
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-gray-100 lg:aspect-[21/9]">
-            <Image
-              src={asset(news.coverImage.path)}
-              alt={news.title[lang]}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+          <NewsCoverImage
+            src={asset(news.coverImage.path)}
+            alt={news.title[lang]}
+          />
 
           {/* Meta chips */}
           <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-gray-600">

@@ -1,4 +1,4 @@
-﻿import { Newspaper, Eye, Calendar, ArrowRight } from "lucide-react";
+import { Newspaper, Eye, Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Lang } from "@/types/language";

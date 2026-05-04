@@ -8,7 +8,7 @@ export function NewsDetailSkeleton() {
           <div className="mb-6 h-5 w-28 animate-pulse rounded-full bg-[#00AAAC]/20" />
 
           {/* Cover image skeleton */}
-          <div className="aspect-video w-full animate-pulse rounded-2xl bg-gray-200 lg:aspect-[21/9]" />
+          <div className="aspect-video w-full animate-pulse rounded-2xl bg-gray-200" />
 
           {/* Meta chips skeleton */}
           <div className="mt-5 flex flex-wrap gap-3">
@@ -25,7 +25,7 @@ export function NewsDetailSkeleton() {
       {/* Content skeleton */}
       <section className="bg-white py-10">
         <div className="container">
-          <div className="mx-auto max-w-3xl space-y-6">
+          <div className="space-y-6">
             {/* Title */}
             <div className="space-y-2">
               <div className="h-9 w-3/4 animate-pulse rounded-lg bg-gray-200" />

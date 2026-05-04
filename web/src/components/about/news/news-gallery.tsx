@@ -25,15 +25,15 @@ function GridThumb({
   index: number;
   onClick: (i: number) => void;
   className?: string;
-  overlay?: string;      // e.g. "+5"
-  overlayLabel?: string; // e.g. "photos" / "ຮູບພາບ"
+  overlay?: string;
+  overlayLabel?: string;
 }) {
   return (
     <button
       type="button"
       onClick={() => onClick(index)}
       className={cn(
-        "group relative overflow-hidden rounded-xl bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00AAAC] focus-visible:ring-offset-2",
+        "group relative cursor-zoom-in overflow-hidden rounded-xl bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00AAAC] focus-visible:ring-offset-2",
         className,
       )}
       aria-label={overlay ? `View all photos` : `View image ${index + 1}`}
@@ -48,7 +48,6 @@ function GridThumb({
         )}
         sizes="(max-width: 640px) 50vw, 33vw"
       />
-      {/* Hover / overlay */}
       <div
         className={cn(
           "absolute inset-0 flex items-center justify-center transition-colors duration-200",
@@ -71,6 +70,7 @@ function GridThumb({
 // ── Main component ────────────────────────────────────────────────────────────
 export function NewsGallery({ images, title = "Photo Gallery", photosLabel = "photos" }: NewsGalleryProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const thumbsRef = useRef<HTMLDivElement>(null);
 
@@ -81,6 +81,11 @@ export function NewsGallery({ images, title = "Photo Gallery", photosLabel = "ph
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
   const goNext = useCallback(() => setLightboxIndex((i) => ((i ?? 0) + 1) % count), [count]);
   const goPrev = useCallback(() => setLightboxIndex((i) => ((i ?? 0) - 1 + count) % count), [count]);
+
+  // Reset image loaded state when slide changes
+  useEffect(() => {
+    if (lightboxIndex !== null) setImageLoaded(false);
+  }, [lightboxIndex]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -119,10 +124,10 @@ export function NewsGallery({ images, title = "Photo Gallery", photosLabel = "ph
   if (count === 0) return null;
 
   const currentImage = lightboxIndex !== null ? images[lightboxIndex] : null;
+  const progress = ((lightboxIndex ?? 0) + 1) / count;
 
   // ── Grid layout ─────────────────────────────────────────────────────────────
   const renderGrid = () => {
-    // 1 image — full width cinematic
     if (count === 1) {
       return (
         <GridThumb
@@ -134,7 +139,6 @@ export function NewsGallery({ images, title = "Photo Gallery", photosLabel = "ph
       );
     }
 
-    // 2 images — equal halves
     if (count === 2) {
       return (
         <div className="grid grid-cols-2 gap-2 sm:gap-3">
@@ -151,8 +155,7 @@ export function NewsGallery({ images, title = "Photo Gallery", photosLabel = "ph
       );
     }
 
-    // 3+ images — featured left + up to 2 thumbs right (with +N overlay)
-    const hiddenCount = Math.max(0, count - 3); // images beyond slot [2]
+    const hiddenCount = Math.max(0, count - 3);
 
     return (
       <div
@@ -163,21 +166,18 @@ export function NewsGallery({ images, title = "Photo Gallery", photosLabel = "ph
           height: "clamp(220px, 40vw, 420px)",
         }}
       >
-        {/* Featured — spans full height left side */}
         <GridThumb
           img={images[0]}
           index={0}
           onClick={open}
           className="row-span-2 h-full w-full"
         />
-        {/* Thumb 1 */}
         <GridThumb
           img={images[1]}
           index={1}
           onClick={open}
           className="h-full w-full"
         />
-        {/* Thumb 2 — shows +N overlay if more images exist */}
         {count >= 3 && (
           <GridThumb
             img={images[2]}
@@ -196,7 +196,6 @@ export function NewsGallery({ images, title = "Photo Gallery", photosLabel = "ph
     <>
       {/* ── Gallery section ── */}
       <div className="py-8">
-        {/* Header */}
         <div className="mb-4 flex items-center gap-2">
           <Images className="h-5 w-5 text-[#00AAAC]" />
           <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
@@ -211,96 +210,122 @@ export function NewsGallery({ images, title = "Photo Gallery", photosLabel = "ph
       {/* ── Lightbox ── */}
       {isOpen && currentImage && (
         <div
-          className="fixed inset-0 z-[9999] flex flex-col bg-black/95 backdrop-blur-sm"
+          className="fixed inset-0 z-[9999] flex flex-col bg-black/96"
           role="dialog"
           aria-modal="true"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
+          {/* Teal progress bar */}
+          <div className="absolute inset-x-0 top-0 h-[2px] bg-white/10">
+            <div
+              className="h-full bg-[#00AAAC] transition-all duration-300 ease-out"
+              style={{ width: `${progress * 100}%` }}
+            />
+          </div>
+
           {/* Top bar */}
-          <div className="flex shrink-0 items-center justify-between px-4 py-3 sm:px-6">
-            <span className="text-sm font-medium text-white/50">
-              <span className="text-white">{(lightboxIndex ?? 0) + 1}</span>
-              {" / "}
-              {count}
+          <div className="flex shrink-0 items-center justify-between px-5 pb-2 pt-5">
+            {/* Counter pill */}
+            <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold tabular-nums text-white/80 backdrop-blur-sm">
+              {(lightboxIndex ?? 0) + 1} / {count}
             </span>
+
+            {/* Close */}
             <button
               type="button"
               onClick={closeLightbox}
-              className="rounded-full bg-white/10 p-2 text-white/70 transition-colors hover:bg-white/20 hover:text-white"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 backdrop-blur-sm transition-all hover:bg-white/20 hover:text-white active:scale-95"
               aria-label="Close (Esc)"
             >
-              <X className="h-5 w-5" />
+              <X className="h-4 w-4" />
             </button>
           </div>
 
           {/* Main image */}
-          <div className="relative flex min-h-0 flex-1 items-center justify-center px-4 sm:px-20">
+          <div className="relative flex min-h-0 flex-1 items-center justify-center px-16 sm:px-24">
+            {/* Prev */}
             {count > 1 && (
               <button
                 type="button"
                 onClick={goPrev}
-                className="absolute left-2 z-10 rounded-full bg-white/10 p-2.5 text-white/70 transition-all hover:bg-white/20 hover:text-white sm:left-4"
+                className="absolute left-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white/80 backdrop-blur-sm transition-all hover:bg-white/20 hover:text-white active:scale-95 sm:left-5"
                 aria-label="Previous"
               >
-                <ChevronLeft className="h-6 w-6" />
+                <ChevronLeft className="h-5 w-5" />
               </button>
             )}
 
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              key={lightboxIndex}
-              src={asset(currentImage.path)}
-              alt={currentImage.originalName}
-              className="max-h-full max-w-full rounded-xl object-contain shadow-2xl"
-              draggable={false}
-              style={{ animation: "lb-fadein 0.18s ease" }}
-            />
+            {/* Image + loading spinner */}
+            <div className="relative flex h-full w-full items-center justify-center">
+              {!imageLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="h-9 w-9 animate-spin rounded-full border-[3px] border-white/15 border-t-[#00AAAC]" />
+                </div>
+              )}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                key={lightboxIndex}
+                src={asset(currentImage.path)}
+                alt={currentImage.originalName}
+                className={cn(
+                  "max-h-full max-w-full rounded-xl object-contain shadow-2xl transition-opacity duration-300",
+                  imageLoaded ? "opacity-100" : "opacity-0",
+                )}
+                draggable={false}
+                onLoad={() => setImageLoaded(true)}
+                style={{ animation: imageLoaded ? "lb-fadein 0.2s ease" : "none" }}
+              />
+            </div>
 
+            {/* Next */}
             {count > 1 && (
               <button
                 type="button"
                 onClick={goNext}
-                className="absolute right-2 z-10 rounded-full bg-white/10 p-2.5 text-white/70 transition-all hover:bg-white/20 hover:text-white sm:right-4"
+                className="absolute right-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white/80 backdrop-blur-sm transition-all hover:bg-white/20 hover:text-white active:scale-95 sm:right-5"
                 aria-label="Next"
               >
-                <ChevronRight className="h-6 w-6" />
+                <ChevronRight className="h-5 w-5" />
               </button>
             )}
           </div>
 
-          {/* Bottom: caption + thumbnail strip */}
-          <div className="shrink-0 px-4 pb-4 pt-2 sm:px-6">
-            <p className="mb-3 truncate text-center text-xs text-white/35">
-              {currentImage.originalName}
-            </p>
-
+          {/* Thumbnail strip
+              Inset shadow is the only indicator that survives overflow-x:auto
+              (overflow-x:auto forces overflow-y:hidden, clipping any outline/ring
+              that extends outside the element — inset shadow renders inside bounds) */}
+          <div className="shrink-0 px-5 pb-6 pt-4">
             {count > 1 && (
               <div
                 ref={thumbsRef}
                 className="flex justify-center gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               >
-                {images.map((img, i) => (
-                  <button
-                    key={img.id}
-                    type="button"
-                    onClick={() => setLightboxIndex(i)}
-                    className={cn(
-                      "relative h-12 w-12 shrink-0 overflow-hidden rounded-lg transition-all duration-200 sm:h-14 sm:w-14",
-                      i === lightboxIndex
-                        ? "opacity-100 ring-2 ring-[#00AAAC] ring-offset-2 ring-offset-black"
-                        : "opacity-40 hover:opacity-70",
-                    )}
-                    aria-label={`Image ${i + 1}`}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={asset(img.path)}
-                      alt=""
-                      className="h-full w-full object-cover"
-                    />
-                  </button>
-                ))}
+                {images.map((img, i) => {
+                  const isActive = i === lightboxIndex;
+                  return (
+                    <button
+                      key={img.id}
+                      type="button"
+                      onClick={() => setLightboxIndex(i)}
+                      className={cn(
+                        "relative h-14 w-14 shrink-0 cursor-pointer overflow-hidden rounded-lg transition-all duration-200",
+                        isActive
+                          ? "opacity-100 shadow-[inset_0_0_0_3px_#00AAAC]"
+                          : "opacity-35 hover:opacity-70",
+                      )}
+                      aria-label={`Image ${i + 1}`}
+                      aria-current={isActive ? "true" : undefined}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={asset(img.path)}
+                        alt=""
+                        className="h-full w-full object-cover"
+                      />
+                    </button>
+                  );
+                })}
               </div>
             )}
           </div>

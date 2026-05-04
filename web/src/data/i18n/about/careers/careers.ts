@@ -189,9 +189,9 @@ export const careers = {
     zh: "公司职位申请表",
   },
   contactCta: {
-    en: "Ready to be part of our story? We'd love to hear from you.",
-    lo: "ພ້ອມເປັນສ່ວນໜຶ່ງຂອງພວກເຮົາແລ້ວບໍ? ສົ່ງໃບສະໝັກຂອງທ່ານມາຫາເຮົາໄດ້ເລີຍ.",
-    zh: "准备好成为我们的一员了吗？期待您的加入。",
+    en: "Ready to join us? You can submit your application through the following channels:",
+    lo: "ພ້ອມເປັນສ່ວນໜຶ່ງຂອງພວກເຮົາແລ້ວບໍ່? ທ່ານສາມາດສົ່ງໃບສະໝັກໃຫ້ພວກເຮົາໄດ້ຜ່ານຊ່ອງທາງຕໍ່ໄປນີ້:",
+    zh: "准备好成为我们的一员了吗？您可以通过以下渠道提交申请：",
   },
 } as const;
 

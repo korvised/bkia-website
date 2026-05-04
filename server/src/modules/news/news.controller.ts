@@ -93,7 +93,7 @@ export class NewsController {
     FileFieldsInterceptor(
       [
         { name: 'coverImage', maxCount: 1 },
-        { name: 'images', maxCount: 10 },
+        { name: 'images', maxCount: 20 },
       ],
       {
         limits: { fileSize: FILE_SIZES.LARGE_IMAGE },
@@ -132,7 +132,7 @@ export class NewsController {
     FileFieldsInterceptor(
       [
         { name: 'coverImage', maxCount: 1 },
-        { name: 'images', maxCount: 10 },
+        { name: 'images', maxCount: 20 },
       ],
       {
         limits: { fileSize: FILE_SIZES.LARGE_IMAGE },

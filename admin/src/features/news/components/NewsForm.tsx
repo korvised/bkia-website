@@ -291,13 +291,13 @@ export function NewsForm({
 
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
           {/* Preview */}
-          <div className="relative h-44 w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-50 sm:w-72 shrink-0">
+          <div className="relative w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100 sm:w-72 shrink-0">
             {coverPreview ? (
               <>
                 <img
                   src={coverPreview}
                   alt="Cover preview"
-                  className="h-full w-full object-cover"
+                  className="h-auto w-full object-contain"
                 />
                 {form.coverImageFile && (
                   <button
