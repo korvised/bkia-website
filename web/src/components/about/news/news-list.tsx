@@ -85,9 +85,11 @@ export function NewsList({
               </h3>
 
               {/* Excerpt */}
-              <p className="mb-4 line-clamp-3 flex-1 text-sm text-gray-600">
-                {article.excerpt[lang]}
-              </p>
+              {article.excerpt?.[lang] && (
+                <p className="mb-4 line-clamp-3 flex-1 text-sm text-gray-600">
+                  {article.excerpt[lang]}
+                </p>
+              )}
 
               {/* Read More */}
               <div className="flex items-center gap-2 text-sm font-medium text-[#00AAAC] transition-all group-hover:gap-3">

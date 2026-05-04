@@ -13,15 +13,16 @@ export interface INews {
   coverImage: IFile;
   images?: IFile[];
   title: IMultilingualText;
-  excerpt: IMultilingualText;
+  excerpt?: IMultilingualText | null;
   content: IMultilingualText;
   category: NewsCategory;
   author?: string | null;
   publishDate: string;
   isFeatured: boolean;
+  featuredIndex?: number | null;
   isPublished: boolean;
   viewCount: number;
-  tags: IMultilingualText[];
+  tags: string[];
   metaDescription?: IMultilingualText | null;
   createdAt: string;
   updatedAt: string;
@@ -57,8 +58,9 @@ export interface INewsForm {
   author: string;
   publishDate: string;
   isFeatured: boolean;
+  featuredIndex: number | null;
   isPublished: boolean;
-  tags: IMultilingualText[];
+  tags: string[];
   metaDescription: IMultilingualText;
   coverImageFile: File | null;
   galleryFiles: File[];
@@ -68,14 +70,15 @@ export interface INewsForm {
 export interface INewsSubmitPayload {
   slug: string;
   title: IMultilingualText;
-  excerpt: IMultilingualText;
+  excerpt?: IMultilingualText | null;
   content: IMultilingualText;
   category: NewsCategory;
   author?: string | null;
   publishDate: string;
   isFeatured: boolean;
+  featuredIndex?: number | null;
   isPublished: boolean;
-  tags: IMultilingualText[];
+  tags: string[];
   metaDescription?: IMultilingualText | null;
   coverImageFile: File | null;
   galleryFiles: File[];

@@ -15,7 +15,6 @@ import { asset, cn } from "@/lib";
 import { NewsCategory } from "@/types";
 import type { IFile } from "@/types";
 import type {
-  IMultilingualText,
   INews,
   INewsForm,
   INewsSubmitPayload,
@@ -48,6 +47,7 @@ const emptyForm = (): INewsForm => ({
   author: "",
   publishDate: new Date().toISOString().split("T")[0],
   isFeatured: false,
+  featuredIndex: null,
   isPublished: false,
   tags: [],
   metaDescription: { en: "", lo: "", zh: "" },
@@ -93,8 +93,7 @@ export function NewsForm({
   const [form, setForm] = useState<INewsForm>(emptyForm);
   const [activeLang, setActiveLang] = useState<"en" | "lo" | "zh">("en");
   const [contentMode, setContentMode] = useState<"write" | "preview">("write");
-  const [tagDraft, setTagDraft] = useState<IMultilingualText>({ en: "", lo: "", zh: "" });
-  const [tagLang, setTagLang] = useState<"en" | "lo" | "zh">("en");
+  const [tagDraft, setTagDraft] = useState<string>("");
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   // Unified ordered gallery (existing + new files merged for drag-to-reorder)
@@ -111,7 +110,9 @@ export function NewsForm({
       setForm({
         slug: defaultValues.slug ?? "",
         title: defaultValues.title ?? { en: "", lo: "", zh: "" },
-        excerpt: defaultValues.excerpt ?? { en: "", lo: "", zh: "" },
+        excerpt: defaultValues.excerpt
+          ? { en: defaultValues.excerpt.en ?? "", lo: defaultValues.excerpt.lo ?? "", zh: defaultValues.excerpt.zh ?? "" }
+          : { en: "", lo: "", zh: "" },
         content: defaultValues.content ?? { en: "", lo: "", zh: "" },
         category: defaultValues.category ?? "",
         author: defaultValues.author ?? "",
@@ -119,6 +120,7 @@ export function NewsForm({
           ? defaultValues.publishDate.split("T")[0]
           : "",
         isFeatured: defaultValues.isFeatured ?? false,
+        featuredIndex: defaultValues.featuredIndex ?? null,
         isPublished: defaultValues.isPublished ?? false,
         tags: defaultValues.tags ?? [],
         metaDescription: defaultValues.metaDescription ?? { en: "", lo: "", zh: "" },
@@ -135,7 +137,8 @@ export function NewsForm({
       setGalleryOrder([]);
       setCoverPreview(null);
     }
-  }, [defaultValues]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [defaultValues?.id]);
 
   // ── Handlers ────────────────────────────────────────────────────────────
 
@@ -168,15 +171,15 @@ export function NewsForm({
 
   const removeCoverImage = () => {
     setForm((prev) => ({ ...prev, coverImageFile: null }));
-    setCoverPreview(defaultValues?.coverImage?.path ?? null);
+    setCoverPreview(defaultValues?.coverImage?.path ? asset(defaultValues.coverImage.path) : null);
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   const addTag = () => {
-    const hasValue = tagDraft.en?.trim() || tagDraft.lo?.trim() || tagDraft.zh?.trim();
-    if (!hasValue) return;
-    setForm((prev) => ({ ...prev, tags: [...prev.tags, { ...tagDraft }] }));
-    setTagDraft({ en: "", lo: "", zh: "" });
+    const trimmed = tagDraft.trim();
+    if (!trimmed) return;
+    setForm((prev) => ({ ...prev, tags: [...prev.tags, trimmed] }));
+    setTagDraft("");
   };
 
   const removeTag = (index: number) => {
@@ -245,6 +248,7 @@ export function NewsForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+    const hasExcerpt = Object.values(form.excerpt).some((v) => v?.trim());
     const hasMeta = Object.values(form.metaDescription).some((v) => v?.trim());
     // Derive ordered existing + new files from the unified drag list
     const existingImages = galleryOrder
@@ -256,12 +260,13 @@ export function NewsForm({
     await onSubmit({
       slug: form.slug.trim(),
       title: form.title,
-      excerpt: form.excerpt,
+      excerpt: hasExcerpt ? form.excerpt : null,
       content: form.content,
       category: form.category as NewsCategory,
       author: form.author.trim() || null,
       publishDate: form.publishDate,
       isFeatured: form.isFeatured,
+      featuredIndex: form.featuredIndex,
       isPublished: form.isPublished,
       tags: form.tags,
       metaDescription: hasMeta ? form.metaDescription : null,
@@ -678,17 +683,21 @@ export function NewsForm({
         {/* Toggles */}
         <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:gap-8">
           {/* isFeatured */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-start gap-3">
             <button
               type="button"
               role="switch"
               aria-checked={form.isFeatured}
               onClick={() =>
-                setForm((prev) => ({ ...prev, isFeatured: !prev.isFeatured }))
+                setForm((prev) => ({
+                  ...prev,
+                  isFeatured: !prev.isFeatured,
+                  featuredIndex: !prev.isFeatured ? prev.featuredIndex : null,
+                }))
               }
               className={cn(
-                "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
-                form.isFeatured ? "bg-amber-400" : "bg-gray-300",
+                "relative mt-0.5 inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                form.isFeatured ? "bg-primary" : "bg-gray-300",
               )}
             >
               <span
@@ -700,9 +709,30 @@ export function NewsForm({
             </button>
             <div>
               <span className="text-sm font-medium text-gray-700">Featured</span>
-              <p className="text-xs text-gray-400">
-                Show prominently on the news page
-              </p>
+              <p className="text-xs text-gray-400">Show prominently on the news page</p>
+              {form.isFeatured && (
+                <div className="mt-2">
+                  <label className="mb-1 block text-xs font-medium text-gray-500">
+                    Display order{" "}
+                    <span className="font-normal text-gray-400">(1 = first, blank = auto)</span>
+                  </label>
+                  <input
+                    type="number"
+                    min={1}
+                    step={1}
+                    placeholder="e.g. 1"
+                    value={form.featuredIndex ?? ""}
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      setForm((prev) => ({
+                        ...prev,
+                        featuredIndex: v === "" ? null : Math.max(1, parseInt(v, 10) || 1),
+                      }));
+                    }}
+                    className="w-24 rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-900 outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
+                  />
+                </div>
+              )}
             </div>
           </div>
 
@@ -749,73 +779,44 @@ export function NewsForm({
 
         {form.tags.length > 0 && (
           <div className="mb-4 flex flex-wrap gap-2">
-            {form.tags.map((tag, index) => {
-              const label = tag.en || tag.lo || tag.zh || "";
-              return (
-                <span
-                  key={index}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-sm text-primary"
+            {form.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-sm text-primary"
+              >
+                {tag}
+                <button
+                  type="button"
+                  onClick={() => removeTag(index)}
+                  className="rounded-full p-0.5 transition-colors hover:bg-primary/10"
                 >
-                  {label}
-                  <button
-                    type="button"
-                    onClick={() => removeTag(index)}
-                    className="rounded-full p-0.5 transition-colors hover:bg-primary/10"
-                  >
-                    <LuX className="h-3 w-3" />
-                  </button>
-                </span>
-              );
-            })}
+                  <LuX className="h-3 w-3" />
+                </button>
+              </span>
+            ))}
           </div>
         )}
 
-        <div className="rounded-lg border border-dashed border-gray-300 p-4">
-          <p className="mb-3 text-xs font-medium uppercase tracking-wide text-gray-500">
-            Add New Tag
-          </p>
-          <div className="mb-3 flex items-center gap-1">
-            {LANG_TABS.map((tab) => (
-              <button
-                key={tab.key}
-                type="button"
-                onClick={() => setTagLang(tab.key)}
-                className={cn(
-                  "rounded px-3 py-1 text-xs font-medium transition-colors",
-                  tagLang === tab.key
-                    ? "bg-primary/10 text-primary"
-                    : "text-gray-500 hover:bg-gray-100",
-                )}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="flex-1">
-              <Input
-                placeholder={`Tag in ${LANG_TABS.find((t) => t.key === tagLang)?.label}...`}
-                value={tagDraft[tagLang] ?? ""}
-                onChange={(e) =>
-                  setTagDraft((prev) => ({ ...prev, [tagLang]: e.target.value }))
-                }
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault();
-                    addTag();
-                  }
-                }}
-              />
-            </div>
-            <button
-              type="button"
-              onClick={addTag}
-              className="flex items-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600"
-            >
-              <LuPlus className="h-4 w-4" />
-              Add
-            </button>
-          </div>
+        <div className="flex gap-2">
+          <Input
+            placeholder="e.g. New Terminal"
+            value={tagDraft}
+            onChange={(e) => setTagDraft(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                addTag();
+              }
+            }}
+          />
+          <button
+            type="button"
+            onClick={addTag}
+            className="flex shrink-0 items-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600"
+          >
+            <LuPlus className="h-4 w-4" />
+            Add
+          </button>
         </div>
       </div>
 

@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { IsNull, LessThanOrEqual, Not, Repository } from 'typeorm';
 import { News } from '@/database';
 import { FileService } from '@/common/file';
 import { CreateNewsDto, QueryNewsDto, UpdateNewsDto } from './dtos';
@@ -77,13 +77,13 @@ export class NewsService {
             FROM jsonb_each_text(news.title) AS t(key, value)
             WHERE value ILIKE :s
           )
-          OR EXISTS (
-            SELECT 1 
+          OR (news.excerpt IS NOT NULL AND EXISTS (
+            SELECT 1
             FROM jsonb_each_text(news.excerpt) AS e(key, value)
             WHERE value ILIKE :s
-          )
+          ))
           OR EXISTS (
-            SELECT 1 
+            SELECT 1
             FROM jsonb_each_text(news.content) AS c(key, value)
             WHERE value ILIKE :s
           )
@@ -180,11 +180,11 @@ export class NewsService {
             FROM jsonb_each_text(news.title) AS t(key, value)
             WHERE value ILIKE :s
           )
-          OR EXISTS (
-            SELECT 1 
+          OR (news.excerpt IS NOT NULL AND EXISTS (
+            SELECT 1
             FROM jsonb_each_text(news.excerpt) AS e(key, value)
             WHERE value ILIKE :s
-          )
+          ))
         )`,
         { s },
       );
@@ -226,21 +226,39 @@ export class NewsService {
 
   /**
    * Get featured news for homepage.
+   * Date filter is applied in the DB query (not in JS after take).
+   * Sorted by: featuredIndex ASC (nulls last), then publishDate DESC.
    */
   async findFeatured(limit: number = 3) {
     const today = new Date().toISOString().split('T')[0];
 
-    const news = await this.newsRepo.find({
-      where: {
-        isPublished: true,
-        isFeatured: true,
-      },
-      relations: { coverImage: true, images: true },
-      order: { publishDate: 'DESC' },
-      take: limit,
-    });
+    // Items with a featuredIndex set (ordered by index), then the rest by publishDate
+    const [withIndex, withoutIndex] = await Promise.all([
+      this.newsRepo.find({
+        where: {
+          isPublished: true,
+          isFeatured: true,
+          publishDate: LessThanOrEqual(today),
+          featuredIndex: Not(IsNull()),
+        },
+        relations: { coverImage: true, images: true },
+        order: { featuredIndex: 'ASC' },
+        take: limit,
+      }),
+      this.newsRepo.find({
+        where: {
+          isPublished: true,
+          isFeatured: true,
+          publishDate: LessThanOrEqual(today),
+          featuredIndex: IsNull(),
+        },
+        relations: { coverImage: true, images: true },
+        order: { publishDate: 'DESC' },
+        take: limit,
+      }),
+    ]);
 
-    return news.filter((n) => n.publishDate <= today);
+    return [...withIndex, ...withoutIndex].slice(0, limit);
   }
 
   /**
@@ -276,12 +294,13 @@ export class NewsService {
     const news = this.newsRepo.create({
       slug: dto.slug,
       title: dto.title,
-      excerpt: dto.excerpt,
+      excerpt: dto.excerpt ?? null,
       content: dto.content,
       category: dto.category,
       author: dto.author ?? null,
       publishDate: dto.publishDate,
       isFeatured: dto.isFeatured ?? false,
+      featuredIndex: dto.featuredIndex ?? null,
       isPublished: dto.isPublished ?? false,
       tags: dto.tags ?? [],
       metaDescription: dto.metaDescription ?? null,
@@ -342,6 +361,7 @@ export class NewsService {
     if (dto.author !== undefined) news.author = dto.author ?? null;
     if (dto.publishDate !== undefined) news.publishDate = dto.publishDate;
     if (dto.isFeatured !== undefined) news.isFeatured = dto.isFeatured;
+    if (dto.featuredIndex !== undefined) news.featuredIndex = dto.featuredIndex ?? null;
     if (dto.isPublished !== undefined) news.isPublished = dto.isPublished;
     if (dto.tags !== undefined) news.tags = dto.tags ?? [];
     if (dto.metaDescription !== undefined)

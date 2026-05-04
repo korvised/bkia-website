@@ -18,15 +18,16 @@ export interface INews {
   coverImage: IFile;
   images?: IFile[];
   title: MultilingualText;
-  excerpt: MultilingualText;
+  excerpt?: MultilingualText | null;
   content: MultilingualText;
   category: NewsCategory;
   author?: string | null;
   publishDate: string;
   isFeatured: boolean;
+  featuredIndex?: number | null;
   isPublished: boolean;
   viewCount: number;
-  tags: MultilingualText[];
+  tags: string[];
   metaDescription?: MultilingualText | null;
   createdAt: string;
   updatedAt: string;

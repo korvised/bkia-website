@@ -10,15 +10,17 @@ function buildFormData(payload: INewsSubmitPayload): FormData {
   const fd = new FormData();
   fd.append("slug", payload.slug);
   fd.append("title", JSON.stringify(payload.title));
-  fd.append("excerpt", JSON.stringify(payload.excerpt));
+  if (payload.excerpt)
+    fd.append("excerpt", JSON.stringify(payload.excerpt));
   fd.append("content", JSON.stringify(payload.content));
   fd.append("category", payload.category);
   if (payload.author) fd.append("author", payload.author);
   fd.append("publishDate", payload.publishDate);
   fd.append("isFeatured", String(payload.isFeatured));
+  if (payload.featuredIndex != null)
+    fd.append("featuredIndex", String(payload.featuredIndex));
   fd.append("isPublished", String(payload.isPublished));
-  if (payload.tags && payload.tags.length > 0)
-    fd.append("tags", JSON.stringify(payload.tags));
+  fd.append("tags", JSON.stringify(payload.tags ?? []));
   if (payload.metaDescription)
     fd.append("metaDescription", JSON.stringify(payload.metaDescription));
   if (payload.coverImageFile)
@@ -54,7 +56,7 @@ export function NewsEditPage() {
   if (isFetching) {
     return (
       <div className="flex items-center justify-center py-20">
-        <span className="h-8 w-8 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
+        <span className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
       </div>
     );
   }

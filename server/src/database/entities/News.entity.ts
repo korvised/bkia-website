@@ -45,9 +45,9 @@ export class News {
   @Column({ type: 'jsonb' })
   title: Record<string, string>;
 
-  // Multilingual excerpt/summary: { en: "...", lo: "...", zh: "..." }
-  @Column({ type: 'jsonb' })
-  excerpt: Record<string, string>;
+  // Multilingual excerpt/summary: { en: "...", lo: "...", zh: "..." } — optional
+  @Column({ type: 'jsonb', nullable: true, default: null })
+  excerpt?: Record<string, string> | null;
 
   // Multilingual markdown content: { en: "...", lo: "...", zh: "..." }
   @Column({ type: 'jsonb' })
@@ -71,6 +71,10 @@ export class News {
   @Column({ type: 'boolean', default: false })
   isFeatured: boolean;
 
+  // Display order among featured news (lower = higher priority). Null = unset.
+  @Column({ type: 'int', nullable: true, default: null })
+  featuredIndex?: number | null;
+
   // Published status (draft vs published)
   @Column({ type: 'boolean', default: false })
   isPublished: boolean;
@@ -79,9 +83,9 @@ export class News {
   @Column({ type: 'int', default: 0 })
   viewCount: number;
 
-  // Multilingual tags array: [{ en: "...", lo: "...", zh: "..." }, ...]
+  // Tags array: ["tag1", "tag2", ...]
   @Column({ type: 'jsonb', default: [] })
-  tags: Record<string, string>[];
+  tags: string[];
 
   // SEO meta description
   @Column({ type: 'jsonb', nullable: true })

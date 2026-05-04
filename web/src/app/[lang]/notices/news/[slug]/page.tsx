@@ -24,7 +24,7 @@ export async function generateMetadata({
     return {
       title: news.title[lang as Lang],
       description:
-        news.metaDescription?.[lang as Lang] || news.excerpt[lang as Lang],
+        news.metaDescription?.[lang as Lang] || news.excerpt?.[lang as Lang],
     };
   } catch {
     return { title: "News Not Found | Bokeo International Airport" };

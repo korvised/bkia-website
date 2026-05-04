@@ -88,11 +88,13 @@ export function NewsDetail({ lang, news }: NewsDetailProps) {
             </h1>
 
             {/* Excerpt callout */}
-            <div className="mb-8 rounded-r-lg border-l-4 border-[#00AAAC] bg-[#f0fbfc] px-6 py-4">
-              <p className="text-lg leading-relaxed text-gray-700 italic">
-                {news.excerpt[lang]}
-              </p>
-            </div>
+            {news.excerpt?.[lang] && (
+              <div className="mb-8 rounded-r-lg border-l-4 border-[#00AAAC] bg-[#f0fbfc] px-6 py-4">
+                <p className="text-lg leading-relaxed text-gray-700 italic">
+                  {news.excerpt[lang]}
+                </p>
+              </div>
+            )}
 
             {/* Main Content (Markdown) */}
             <article className="news-content">
@@ -123,7 +125,7 @@ export function NewsDetail({ lang, news }: NewsDetailProps) {
                       key={index}
                       className="inline-flex items-center rounded-full px-3 py-1.5 text-sm text-gray-700 ring-1 ring-black/10"
                     >
-                      {tag[lang]}
+                      {tag}
                     </span>
                   ))}
                 </div>

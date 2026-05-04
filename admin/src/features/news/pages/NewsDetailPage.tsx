@@ -260,10 +260,10 @@ export function NewsDetailPage() {
     news.title.zh ||
     "—";
   const excerpt =
-    news.excerpt[activeLang] ||
-    news.excerpt.en ||
-    news.excerpt.lo ||
-    news.excerpt.zh ||
+    news.excerpt?.[activeLang] ||
+    news.excerpt?.en ||
+    news.excerpt?.lo ||
+    news.excerpt?.zh ||
     "";
   const content =
     news.content[activeLang] ||
@@ -465,19 +465,14 @@ export function NewsDetailPage() {
             <div className="mt-8 border-t border-gray-100 pt-6">
               <div className="flex flex-wrap items-center gap-2">
                 <LuTag className="h-4 w-4 text-gray-400" />
-                {news.tags.map((tag, i) => {
-                  const tagLabel =
-                    tag[activeLang] || tag.en || tag.lo || tag.zh;
-                  if (!tagLabel) return null;
-                  return (
-                    <span
-                      key={i}
-                      className="inline-flex rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600"
-                    >
-                      {tagLabel}
-                    </span>
-                  );
-                })}
+                {news.tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="inline-flex rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
           )}

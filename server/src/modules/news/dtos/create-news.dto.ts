@@ -1,16 +1,19 @@
 import { Transform } from 'class-transformer';
 import {
+  IsArray,
   IsBoolean,
   IsDateString,
   IsEnum,
+  IsInt,
   IsOptional,
   IsString,
   Length,
   Matches,
+  Min,
 } from 'class-validator';
 import { NewsCategory } from '@/types/enum';
 import { MultilingualTextDto } from '@/common/dtos';
-import { IsJsonArrayColumn, IsJsonColumn } from '@/common/decorators';
+import { IsJsonColumn } from '@/common/decorators';
 
 export class CreateNewsDto {
   @IsString()
@@ -25,8 +28,9 @@ export class CreateNewsDto {
   @IsJsonColumn(MultilingualTextDto)
   title!: Record<string, string>;
 
+  @IsOptional()
   @IsJsonColumn(MultilingualTextDto)
-  excerpt!: Record<string, string>;
+  excerpt?: Record<string, string> | null;
 
   @IsJsonColumn(MultilingualTextDto)
   content!: Record<string, string>;
@@ -66,9 +70,32 @@ export class CreateNewsDto {
   })
   isPublished?: boolean;
 
-  @IsJsonArrayColumn(MultilingualTextDto)
-  tags?: Record<string, string>[];
+  @IsOptional()
+  @Transform(({ value }) => {
+    if (typeof value === 'string') {
+      try {
+        return JSON.parse(value);
+      } catch {
+        return [];
+      }
+    }
+    return Array.isArray(value) ? value : [];
+  })
+  @IsArray()
+  @IsString({ each: true })
+  tags?: string[];
 
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Transform(({ value }) => {
+    if (value === null || value === undefined || value === '') return null;
+    const n = Number(value);
+    return isNaN(n) ? null : n;
+  })
+  featuredIndex?: number | null;
+
+  @IsOptional()
   @IsJsonColumn(MultilingualTextDto)
   metaDescription?: Record<string, string> | null;
 }
