@@ -77,15 +77,10 @@ export function NewsGallery({ images, title = "Photo Gallery", photosLabel = "ph
   const count = images.length;
   const isOpen = lightboxIndex !== null;
 
-  const open = (i: number) => setLightboxIndex(i);
+  const open = (i: number) => { setLightboxIndex(i); setImageLoaded(false); };
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
-  const goNext = useCallback(() => setLightboxIndex((i) => ((i ?? 0) + 1) % count), [count]);
-  const goPrev = useCallback(() => setLightboxIndex((i) => ((i ?? 0) - 1 + count) % count), [count]);
-
-  // Reset image loaded state when slide changes
-  useEffect(() => {
-    if (lightboxIndex !== null) setImageLoaded(false);
-  }, [lightboxIndex]);
+  const goNext = useCallback(() => { setImageLoaded(false); setLightboxIndex((i) => ((i ?? 0) + 1) % count); }, [count]);
+  const goPrev = useCallback(() => { setImageLoaded(false); setLightboxIndex((i) => ((i ?? 0) - 1 + count) % count); }, [count]);
 
   // Keyboard navigation
   useEffect(() => {

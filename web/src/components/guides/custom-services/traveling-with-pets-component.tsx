@@ -48,7 +48,6 @@ export const TravelingWithPetsComponent = ({ lang }: Props) => {
   useEffect(() => {
     startTimer();
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ── Scroll animations ───────────────────────────────────────────────────────

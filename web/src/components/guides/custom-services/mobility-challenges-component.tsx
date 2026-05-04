@@ -48,7 +48,6 @@ export const MobilityChallengesComponent = ({ lang }: Props) => {
   useEffect(() => {
     startTimer();
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [heroRef,   heroIn  ] = useInView<HTMLDivElement>({ threshold: 0.1 });
