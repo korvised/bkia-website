@@ -3,7 +3,6 @@
   MdOutlineCheckCircle,
   MdOutlineInfo,
   MdOutlineSecurity,
-  MdOutlineWarning,
 } from "react-icons/md";
 import {
   PiCigaretteFill,
@@ -19,6 +18,7 @@ import { IoBodyOutline } from "react-icons/io5";
 import { BiSolidBadgeCheck } from "react-icons/bi";
 import { Lang } from "@/types/language";
 import { createDepartureGuideI18n } from "@/data/i18n/guides";
+import { ProhibitionsSection } from "./prohibitions-section";
 
 interface AirportSecurityProps {
   lang: Lang;
@@ -103,14 +103,6 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
     { item: t.itemExplosives, carryOn: false, checked: false },
     { item: t.itemLiquidsOver100, carryOn: false, checked: true },
     { item: t.itemTools, carryOn: false, checked: true },
-  ];
-
-  const airportProhibitions = [
-    { title: t.prohibitRestrictedArea, description: t.prohibitRestrictedAreaDesc },
-    { title: t.prohibitDrugsWeapons, description: t.prohibitDrugsWeaponsDesc },
-    { title: t.prohibitDisturbance, description: t.prohibitDisturbanceDesc },
-    { title: t.prohibitParking, description: t.prohibitParkingDesc },
-    { title: t.prohibitOther, description: t.prohibitOtherDesc },
   ];
 
   return (
@@ -325,41 +317,7 @@ export function AirportSecurity({ lang }: AirportSecurityProps) {
       </section>
 
       {/* Section 5: Airport Prohibitions */}
-      <section className="bg-gray-50 py-10 lg:py-12">
-        <div className="container">
-          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-[#00AAAC]">
-            Prohibitions
-          </p>
-          <h3 className="mb-8 text-2xl font-bold text-gray-900">
-            {t.airportProhibitionsTitle}
-          </h3>
-
-          <div className="space-y-5">
-            {airportProhibitions.map((item, index) => (
-              <div key={index} className="flex gap-4">
-                <MdOutlineCancel className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
-                <div>
-                  <h4 className="font-bold text-gray-900">{item.title}</h4>
-                  <p className="mt-1 text-sm leading-relaxed text-gray-600">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Violation notice */}
-          <div className="mt-8 flex gap-3 border-l-4 border-red-500 bg-red-50 px-4 py-3 rounded-r-lg">
-            <MdOutlineWarning className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
-            <div>
-              <h4 className="font-bold text-gray-800">{t.violationTitle}</h4>
-              <p className="mt-1 text-sm leading-relaxed text-gray-600">
-                {t.violationDesc}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProhibitionsSection lang={lang} />
 
       {/* Section 6: Additional Information */}
       <section className="bg-white py-10 lg:py-12">

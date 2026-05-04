@@ -29,7 +29,7 @@ const HERO_IMAGES = [
 ] as const;
 
 const SERVICE_IMAGE =
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/pets-service.jpg";
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/custom-services/traveling-with-pets/cat-cage-1.jpg";
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export const TravelingWithPetsComponent = ({ lang }: Props) => {

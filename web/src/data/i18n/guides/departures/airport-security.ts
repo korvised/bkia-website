@@ -124,14 +124,14 @@ export const airportSecurity = {
     zh: "烟草和打火机",
   },
   tobaccoCheckpoint: {
-    en: "Strictly prohibited through security checkpoint",
-    lo: "ຫ້າມນຳຜ່ານຈຸດກວດຄົ້ນຕົວຢ່າງເດັດຂາດ",
-    zh: "严禁通过安检点携带",
+    en: "Strictly prohibited as carry-on baggage — tobacco and lighters may not be brought through the security checkpoint",
+    lo: "ຫ້າມນຳຢາສູບ ແລະ ກັບໄຟ ເປັນກະເປົາ carry-on ຢ່າງເດັດຂາດ — ຫ້າມຜ່ານຈຸດກວດຄົ້ນ",
+    zh: "严禁作为随身行李携带——烟草和打火机不得通过安检",
   },
   tobaccoChecked: {
-    en: "If bringing on flight, must be in checked baggage only and not exceed 200 cigarettes or 10 packs",
-    lo: "ຖ້າຈະນຳຂຶ້ນເຮືອບິນ, ໃຫ້ໃສ່ກະເປົາໂຫຼດກ້ອງທ້ອງເຮືອບິນເທົ່ານັ້ນ ແລະ ຕ້ອງບໍ່ເກີນ 200 ກອກ ຫຼື 10 ກັບ",
-    zh: "如需携带，只能放入托运行李，且不得超过200支香烟或10包",
+    en: "Also prohibited in checked baggage — tobacco and lighters are not permitted on the flight in any form",
+    lo: "ຫ້າມໃສ່ກະເປົາໂຫຼດເຊັ່ນກັນ — ຢາສູບ ແລະ ກັບໄຟ ບໍ່ສາມາດນຳຂຶ້ນເຮືອບິນໄດ້ທຸກຮູບແບບ",
+    zh: "托运行李中同样禁止携带——烟草和打火机不得以任何形式带上飞机",
   },
 
   // Screening Steps Section
@@ -353,6 +353,110 @@ export const airportSecurity = {
     en: "No smoking (including e-cigarettes), spitting, or littering in non-smoking areas. No pets in airport interior. No unauthorized advertising, selling, or distributing flyers",
     lo: "ຫ້າມສູບຢາ, ຢາສູບໄຟຟ້າ, ຖົ່ມນໍ້າລາຍ-ຂີ້ກະເທິ, ແລະ ຖິ້ມຂີ້ກອກຢາຊະຊາຍ ຢູ່ບໍລິເວນທີ່ຫ້າມສູບຢາ. ຫ້າມລ້ຽງສັດ ຫຼື ປ່ອຍສັດຊະຊາຍຢູ່ບໍລິເວນດ້ານໃນຂອງສະໜາມບິນຢ່າງເດັດຂາດ. ຫ້າມບຸກຄົນ ຫຼື ນິຕິບຸກຄົນ ເຂົ້າມາໂຄສະນາ, ຂາຍເຄື່ອງ, ຕັ້ງບຸດ, ແຈກໃບປິວ ໂດຍບໍ່ໄດ້ຮັບອະນຸຍາດ",
     zh: "禁止在非吸烟区吸烟（包括电子烟）、吐痰或乱扔垃圾。禁止在机场内部区域携带宠物。禁止未经授权的广告、销售或分发传单",
+  },
+
+  // NEW: Overnight parking (item 6) — with expandable fines table
+  prohibitOvernightParking: {
+    en: "Prohibited overnight vehicle parking",
+    lo: "ຫ້າມຈອດລົດຄ້າງຄືນ",
+    zh: "禁止车辆过夜停放",
+  },
+  prohibitOvernightParkingDesc: {
+    en: "Parking vehicles overnight at the airport without authorization is strictly prohibited. Violators will be fined according to vehicle type.",
+    lo: "ຫ້າມຈອດລົດຄ້າງຄືນ ຢູ່ໃນເຂດສະໜາມບິນ ໂດຍບໍ່ໄດ້ຮັບອະນຸຍາດຢ່າງເດັດຂາດ. ຜູ້ລະເມີດຈະຖືກປັບໃໝຕາມປະເພດພາຫະນະ.",
+    zh: "未经授权严禁车辆在机场过夜停放，违规者将按车辆类型处以罚款。",
+  },
+  prohibitFinesToggle: {
+    en: "View overnight parking fines",
+    lo: "ເບິ່ງຕາຕະລາງຄ່າປັບໃໝ",
+    zh: "查看过夜停车罚款",
+  },
+  prohibitFinesTitle: {
+    en: "Overnight Parking Fines",
+    lo: "ຄ່າປັບໃໝ ການຈອດລົດຄ້າງຄືນ",
+    zh: "过夜停车罚款标准",
+  },
+  prohibitFinesVehicleCol: {
+    en: "Vehicle Type",
+    lo: "ປະເພດພາຫະນະ",
+    zh: "车辆类型",
+  },
+  prohibitFinesAmountCol: {
+    en: "Fine / Night",
+    lo: "ຄ່າປັບ / ຄືນ",
+    zh: "罚款 / 晚",
+  },
+
+  // NEW: Construction near fence (item 7)
+  prohibitConstruction: {
+    en: "Prohibited construction near airport fence",
+    lo: "ຫ້າມປຸກສ້າງ/ກໍ່ສ້າງ ໃກ້ຮົ້ວສະໜາມບິນ",
+    zh: "禁止在机场围栏附近施工",
+  },
+  prohibitConstructionDesc: {
+    en: "No construction, building, or installation of any structure within 5 metres of the outer airport fence without authorization.",
+    lo: "ຫ້າມປຸກສ້າງ, ກໍ່ສ້າງ ຫຼື ຕ່ອງຕັ້ງ ສິ່ງໃດໆ ທີ່ຢູ່ຫ່າງຈາກຮົ້ວດ້ານນອກ ຂອງສະໜາມບິນ ໜ້ອຍກວ່າ 5 ແມດ ໂດຍບໍ່ໄດ້ຮັບອະນຸຍາດ.",
+    zh: "未经授权，机场外围栏5米范围内禁止进行任何施工、建设或安装活动。",
+  },
+
+  // NEW: Burning near runway (item 8)
+  prohibitBurning: {
+    en: "Prohibited burning/fires near runway",
+    lo: "ຫ້າມຈຸດໄຟ/ເຜົາ ໃກ້ທາງເຮືອບິນ",
+    zh: "禁止在跑道附近燃烧生火",
+  },
+  prohibitBurningDesc: {
+    en: "No fires, burning, or smoke-producing activities near the airport runway that could endanger aircraft safety.",
+    lo: "ຫ້າມຈຸດໄຟ, ເຜົາ ຫຼື ກໍ່ຄວັນ ໃດໆ ທີ່ອາດຈະສ້າງຄວາມອັນຕະລາຍ ຫຼື ລົບກວນ ການຂຶ້ນ-ລົງ ຂອງເຮືອບິນ ໃກ້ທາງເຮືອບິນ.",
+    zh: "禁止在机场跑道附近进行任何可能危及飞行安全的燃烧或产生烟雾的活动。",
+  },
+
+  // NEW: Unauthorized transport (item 9)
+  prohibitUnauthorizedTransport: {
+    en: "Prohibited unauthorized passenger transport",
+    lo: "ຫ້າມລົດໂດຍສານ ທີ່ບໍ່ໄດ້ຮັບອະນຸຍາດ",
+    zh: "禁止未经授权的客运服务",
+  },
+  prohibitUnauthorizedTransportDesc: {
+    en: "Passenger transport services operating within or around the airport without official authorization are strictly prohibited.",
+    lo: "ຫ້າມໃຫ້ບໍລິການຂົນສົ່ງຜູ້ໂດຍສານ ຢູ່ ໃນ ຫຼື ຮອບສະໜາມບິນ ໂດຍບໍ່ໄດ້ຮັບອະນຸຍາດ ຢ່າງເດັດຂາດ.",
+    zh: "严禁未经官方授权在机场内或周边提供旅客运输服务。",
+  },
+
+  // NEW: Illegal cash movement (item 10)
+  prohibitIllegalCash: {
+    en: "Prohibited illegal cash/valuables movement",
+    lo: "ຫ້າມເຄື່ອນຍ້າຍເງິນສົດ/ສິ່ງຂອງ ໂດຍຜິດກົດໝາຍ",
+    zh: "禁止非法转移现金/贵重物品",
+  },
+  prohibitIllegalCashDesc: {
+    en: "Movement or transportation of cash or valuables in violation of Lao PDR financial regulations is strictly prohibited.",
+    lo: "ຫ້າມການເຄື່ອນຍ້າຍ ຫຼື ຂົນຍ້າຍ ເງິນສົດ ຫຼື ສິ່ງຂອງທີ່ມີມູນຄ່າ ໂດຍຝ່າຝືນລະບຽບການເງິນ ຂອງ ສປປ ລາວ.",
+    zh: "严禁违反老挝人民民主共和国金融法规转移或携带现金及贵重物品。",
+  },
+
+  // NEW: Excess phones (item 11)
+  prohibitExcessPhones: {
+    en: "Prohibited to carry more than 3 phones on board",
+    lo: "ຫ້າມນຳໂທລະສັບ ເກີນ 3 ໜ່ວຍ ຂຶ້ນເຮືອບິນ",
+    zh: "禁止随身携带超过3部手机登机",
+  },
+  prohibitExcessPhonesDesc: {
+    en: "Passengers are strictly prohibited from carrying more than 3 mobile phones or similar communication devices as carry-on baggage.",
+    lo: "ຫ້າມຜູ້ໂດຍສານ ນຳໂທລະສັບ ຫຼື ອຸປະກອນສື່ສານທີ່ຄ້າຍຄືກັນ ເກີນ 3 ໜ່ວຍ ເປັນກະເປົາ carry-on ຢ່າງເດັດຂາດ.",
+    zh: "严禁旅客随身携带超过3部手机或类似通信设备作为手提行李。",
+  },
+
+  // NEW: Excess electronics (item 12)
+  prohibitExcessElectronics: {
+    en: "Prohibited to carry more than 2 computers/electronics on board",
+    lo: "ຫ້າມນຳຄອມພິວເຕີ/ອຸປະກອນ ເກີນ 2 ໜ່ວຍ ຂຶ້ນເຮືອບິນ",
+    zh: "禁止随身携带超过2台电脑/电子设备登机",
+  },
+  prohibitExcessElectronicsDesc: {
+    en: "Passengers are strictly prohibited from carrying more than 2 computers or electronic devices as carry-on baggage.",
+    lo: "ຫ້າມຜູ້ໂດຍສານ ນຳຄອມພິວເຕີ ຫຼື ອຸປະກອນເອເລັກໂຕຣນິກ ເກີນ 2 ໜ່ວຍ ເປັນກະເປົາ carry-on ຢ່າງເດັດຂາດ.",
+    zh: "严禁旅客随身携带超过2台电脑或电子设备作为手提行李。",
   },
 
   // Violation Warning
