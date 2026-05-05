@@ -406,9 +406,9 @@ export const airportSecurity = {
     zh: "禁止在跑道附近燃烧生火",
   },
   prohibitBurningDesc: {
-    en: "No fires, burning, or smoke-producing activities near the airport runway that could endanger aircraft safety.",
-    lo: "ຫ້າມຈຸດໄຟ, ເຜົາ ຫຼື ກໍ່ຄວັນ ໃດໆ ທີ່ອາດຈະສ້າງຄວາມອັນຕະລາຍ ຫຼື ລົບກວນ ການຂຶ້ນ-ລົງ ຂອງເຮືອບິນ ໃກ້ທາງເຮືອບິນ.",
-    zh: "禁止在机场跑道附近进行任何可能危及飞行安全的燃烧或产生烟雾的活动。",
+    en: "Strictly prohibited: Fires, burning, or smoke that may endanger or interfere with aircraft takeoff and landing.",
+    lo: "ຫ້າມຈູດໄຟ, ເຜົາ ຫຼື ກໍ່ຄວັນ ທີ່ອາດຈະສ້າງຄວາມອັນຕະລາຍ ຫຼື ລົບກວນ ການຂຶ້ນ-ລົງ ຂອງເຮືອບິນ.",
+    zh: "严禁生火、焚烧或排放烟雾，以免危害或干扰飞机的起降安全。",
   },
 
   // NEW: Unauthorized transport (item 9)
