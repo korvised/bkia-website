@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 import {
   AlertCircle,
   ChevronLeft,
@@ -17,38 +16,17 @@ import { Lang } from "@/types/language";
 import { createCustomServicesI18n } from "@/data/i18n/guides";
 import { useInView } from "@/hooks/useInView";
 
+// ── Image URLs ────────────────────────────────────────────────────────────────
+const SERVICE_IMAGE =
+  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/custom-services/traveling-with-pets/cat-cage-1.jpg";
+
 interface Props {
   lang: Lang;
 }
 
-// ── Image URLs ────────────────────────────────────────────────────────────────
-const HERO_IMAGES = [
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/pets-1.jpg",
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/pets-2.jpg",
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/pets-3.jpg",
-] as const;
-
-const SERVICE_IMAGE =
-  "https://bkia-website.s3.ap-southeast-7.amazonaws.com/guides/custom-services/traveling-with-pets/cat-cage-1.jpg";
-
 // ── Component ─────────────────────────────────────────────────────────────────
 export const TravelingWithPetsComponent = ({ lang }: Props) => {
   const { petsGuideline: t } = createCustomServicesI18n(lang);
-
-  // ── Hero slideshow ──────────────────────────────────────────────────────────
-  const [slide, setSlide] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const startTimer = () => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(
-      () => setSlide((s) => (s + 1) % HERO_IMAGES.length),
-      4500,
-    );
-  };
-  useEffect(() => {
-    startTimer();
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, []);
 
   // ── Scroll animations ───────────────────────────────────────────────────────
   const [heroRef, heroIn] = useInView<HTMLDivElement>({ threshold: 0.1  });
@@ -60,8 +38,8 @@ export const TravelingWithPetsComponent = ({ lang }: Props) => {
   const generalRules = [t.general1, t.general2, t.general3, t.general4];
   const avihRules    = [t.avih1, t.avih2, t.avih3];
   const documents    = [
-    { icon: FileText,  title: t.doc1Title, desc: t.doc1Desc, iconColor: "text-[#00AAAC]", iconBg: "bg-[#e6f7f8]" },
-    { icon: FileText,  title: t.doc2Title, desc: t.doc2Desc, iconColor: "text-emerald-600", iconBg: "bg-emerald-50" },
+    { icon: FileText, title: t.doc1Title, desc: t.doc1Desc, iconColor: "text-[#00AAAC]",    iconBg: "bg-[#e6f7f8]"   },
+    { icon: FileText, title: t.doc2Title, desc: t.doc2Desc, iconColor: "text-emerald-600", iconBg: "bg-emerald-50" },
   ];
   const carrierRules = [t.carrier1, t.carrier2];
   const tips         = [t.tip1, t.tip2];
@@ -86,85 +64,47 @@ export const TravelingWithPetsComponent = ({ lang }: Props) => {
       <section className="bg-[#003d3e]">
         <div
           ref={heroRef}
-          className="container grid items-center gap-10 py-12 lg:grid-cols-2 lg:gap-16 lg:py-18"
+          className="container py-12 lg:py-18"
         >
-          {/* Text column */}
-          <div>
-            <Link
-              href={`/${lang}/guides/custom-services`}
-              className="pets-anim group mb-8 inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-[#00AAAC]"
-              style={heroIn ? { animation: "pets-fade-up 0.5s cubic-bezier(0.22,1,0.36,1) 0ms both" } : { opacity: 0 }}
-            >
-              <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
-              {t.backButton}
-            </Link>
-
-            <p
-              className="pets-anim mb-3 text-[10px] font-extrabold uppercase tracking-[0.32em] text-[#00AAAC]"
-              style={heroIn ? { animation: "pets-fade-up 0.55s cubic-bezier(0.22,1,0.36,1) 60ms both" } : { opacity: 0 }}
-            >
-              {t.categoryLabel}
-            </p>
-
-            <h1
-              className="pets-anim text-3xl font-bold leading-[1.15] text-white sm:text-4xl lg:text-5xl"
-              style={heroIn ? { animation: "pets-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 120ms both" } : { opacity: 0 }}
-            >
-              {t.title}
-            </h1>
-
-            <p
-              className="pets-anim mt-4 max-w-md text-sm leading-relaxed text-white/55 sm:text-base"
-              style={heroIn ? { animation: "pets-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 180ms both" } : { opacity: 0 }}
-            >
-              {t.subtitle}
-            </p>
-
-            {/* Disclaimer */}
-            <div
-              className="pets-anim mt-6 flex gap-3 rounded-xl border border-amber-400/25 bg-amber-400/10 px-4 py-3.5"
-              style={heroIn ? { animation: "pets-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 240ms both" } : { opacity: 0 }}
-            >
-              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
-              <p className="text-xs leading-relaxed text-white/65 sm:text-sm">
-                {t.disclaimer}
-              </p>
-            </div>
-          </div>
-
-          {/* Hero slideshow */}
-          <div
-            className="pets-anim relative overflow-hidden rounded-2xl"
-            style={heroIn ? { animation: "pets-fade-in 0.8s cubic-bezier(0.22,1,0.36,1) 100ms both" } : { opacity: 0 }}
+          <Link
+            href={`/${lang}/guides/custom-services`}
+            className="pets-anim group mb-8 inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-[#00AAAC]"
+            style={heroIn ? { animation: "pets-fade-up 0.5s cubic-bezier(0.22,1,0.36,1) 0ms both" } : { opacity: 0 }}
           >
-            <div className="relative aspect-[4/3] w-full bg-[#00AAAC]/20">
-              {HERO_IMAGES.map((src, i) => (
-                <Image
-                  key={src}
-                  src={src}
-                  alt={`${t.title} ${i + 1}`}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-opacity duration-1000 ease-in-out"
-                  style={{ opacity: i === slide ? 1 : 0 }}
-                  priority={i === 0}
-                />
-              ))}
-              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#003d3e]/60 to-transparent" />
-              {/* Dot indicators */}
-              <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-1.5">
-                {HERO_IMAGES.map((_, i) => (
-                  <button
-                    key={i}
-                    aria-label={`Slide ${i + 1}`}
-                    onClick={() => { setSlide(i); startTimer(); }}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      i === slide ? "w-5 bg-white" : "w-1.5 bg-white/40"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
+            <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+            {t.backButton}
+          </Link>
+
+          <p
+            className="pets-anim mb-3 text-[10px] font-extrabold uppercase tracking-[0.32em] text-[#00AAAC]"
+            style={heroIn ? { animation: "pets-fade-up 0.55s cubic-bezier(0.22,1,0.36,1) 60ms both" } : { opacity: 0 }}
+          >
+            {t.categoryLabel}
+          </p>
+
+          <h1
+            className="pets-anim text-3xl font-bold leading-[1.15] text-white sm:text-4xl lg:text-5xl"
+            style={heroIn ? { animation: "pets-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 120ms both" } : { opacity: 0 }}
+          >
+            {t.title}
+          </h1>
+
+          <p
+            className="pets-anim mt-4 max-w-2xl text-sm leading-relaxed text-white/55 sm:text-base"
+            style={heroIn ? { animation: "pets-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 180ms both" } : { opacity: 0 }}
+          >
+            {t.subtitle}
+          </p>
+
+          {/* Disclaimer */}
+          <div
+            className="pets-anim mt-6 flex max-w-2xl gap-3 rounded-xl border border-amber-400/25 bg-amber-400/10 px-4 py-3.5"
+            style={heroIn ? { animation: "pets-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 240ms both" } : { opacity: 0 }}
+          >
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
+            <p className="text-xs leading-relaxed text-white/65 sm:text-sm">
+              {t.disclaimer}
+            </p>
           </div>
         </div>
       </section>
@@ -175,59 +115,57 @@ export const TravelingWithPetsComponent = ({ lang }: Props) => {
       <section className="bg-white py-14 sm:py-18">
         <div className="container">
           <div className="grid items-start gap-10 lg:grid-cols-[1fr_420px] lg:gap-16">
-
-            {/* Rules list */}
-            <div ref={ruleRef}>
-              <p
-                className="pets-anim mb-1 text-[10px] font-extrabold uppercase tracking-[0.32em] text-[#00AAAC]"
-                style={ruleIn ? { animation: "pets-fade-up 0.55s cubic-bezier(0.22,1,0.36,1) 0ms both" } : { opacity: 0 }}
-              >
-                Rules
-              </p>
-              <h2
-                className="pets-anim mb-8 text-2xl font-bold text-gray-900 sm:text-3xl"
-                style={ruleIn ? { animation: "pets-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 60ms both" } : { opacity: 0 }}
-              >
-                {t.generalTitle}
-              </h2>
-
-              <div className="space-y-4">
-                {generalRules.map((rule, i) => (
-                  <div
-                    key={i}
-                    className="pets-anim flex gap-4 rounded-2xl border border-[#00AAAC]/15 bg-gray-50/60 p-5 transition-shadow hover:shadow-sm"
-                    style={ruleIn ? { animation: `pets-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) ${120 + i * 80}ms both` } : { opacity: 0 }}
-                  >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#e6f7f8]">
-                      <PawPrint className="h-5 w-5 text-[#00AAAC]" />
-                    </div>
-                    <p className="self-center text-sm leading-relaxed text-gray-600">{rule}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Service image — sticky */}
-            <div
-              className="pets-anim sticky top-24 overflow-hidden rounded-2xl"
-              style={ruleIn ? { animation: "pets-fade-in 0.7s cubic-bezier(0.22,1,0.36,1) 200ms both" } : { opacity: 0 }}
+          <div ref={ruleRef}>
+            <p
+              className="pets-anim mb-1 text-[10px] font-extrabold uppercase tracking-[0.32em] text-[#00AAAC]"
+              style={ruleIn ? { animation: "pets-fade-up 0.55s cubic-bezier(0.22,1,0.36,1) 0ms both" } : { opacity: 0 }}
             >
-              <div className="relative aspect-[3/4] w-full bg-gray-100 lg:aspect-auto lg:h-[480px]">
-                <Image
-                  src={SERVICE_IMAGE}
-                  alt={t.generalTitle}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 420px"
-                  className="object-cover"
-                />
-                <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 bg-gradient-to-t from-black/70 to-transparent px-5 pb-5 pt-10">
-                  <MapPin className="h-3.5 w-3.5 shrink-0 text-[#00AAAC]" />
-                  <span className="text-xs font-medium text-white/80">
-                    Bokeo International Airport
-                  </span>
+              Rules
+            </p>
+            <h2
+              className="pets-anim mb-8 text-2xl font-bold text-gray-900 sm:text-3xl"
+              style={ruleIn ? { animation: "pets-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 60ms both" } : { opacity: 0 }}
+            >
+              {t.generalTitle}
+            </h2>
+
+            <div className="space-y-4">
+              {generalRules.map((rule, i) => (
+                <div
+                  key={i}
+                  className="pets-anim flex gap-4 rounded-2xl border border-[#00AAAC]/15 bg-gray-50/60 p-5 transition-shadow hover:shadow-sm"
+                  style={ruleIn ? { animation: `pets-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) ${120 + i * 80}ms both` } : { opacity: 0 }}
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#e6f7f8]">
+                    <PawPrint className="h-5 w-5 text-[#00AAAC]" />
+                  </div>
+                  <p className="self-center text-sm leading-relaxed text-gray-600">{rule}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Service image — sticky */}
+          <div
+            className="pets-anim sticky top-24 overflow-hidden rounded-2xl"
+            style={ruleIn ? { animation: "pets-fade-in 0.7s cubic-bezier(0.22,1,0.36,1) 200ms both" } : { opacity: 0 }}
+          >
+            <div className="relative aspect-[3/4] w-full bg-gray-100 lg:aspect-auto lg:h-[480px]">
+              <Image
+                src={SERVICE_IMAGE}
+                alt={t.generalTitle}
+                fill
+                sizes="(max-width: 1024px) 100vw, 420px"
+                className="object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 bg-gradient-to-t from-black/70 to-transparent px-5 pb-5 pt-10">
+                <MapPin className="h-3.5 w-3.5 shrink-0 text-[#00AAAC]" />
+                <span className="text-xs font-medium text-white/80">
+                  Bokeo International Airport
+                </span>
               </div>
             </div>
+          </div>
 
           </div>
         </div>

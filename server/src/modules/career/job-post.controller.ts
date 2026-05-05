@@ -91,7 +91,7 @@ export class JobPostController {
    * Create a new job post (optional cover image).
    */
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Permissions(CAREER.CREATE)
   @Post()
   @UseInterceptors(coverInterceptor)
@@ -107,7 +107,7 @@ export class JobPostController {
    * Update a job post (optional new cover image).
    */
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Permissions(CAREER.UPDATE)
   @Patch(':id')
   @UseInterceptors(coverInterceptor)
@@ -124,7 +124,7 @@ export class JobPostController {
    * Delete a job post.
    */
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Permissions(CAREER.DELETE)
   @Delete(':id')
   async delete(@Param('id', ParseUUIDPipe) id: string) {

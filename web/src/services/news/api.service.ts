@@ -1,4 +1,4 @@
-import { fetchJSON, withQuery } from "@/lib";
+import { ApiError, fetchJSON, withQuery } from "@/lib";
 import type {
   INewsResponse,
   QueryNews,
@@ -48,12 +48,15 @@ export function listFeaturedNews(limit: number = 3) {
 }
 
 /**
- * Get a single news by slug
+ * Get a single news article by slug.
+ * Returns null only on 404 — re-throws on 500 / network errors so
+ * the caller (server component) can propagate to the error.tsx boundary.
  */
 export async function getNewsBySlug(slug: string): Promise<INews | null> {
   try {
     return await fetchJSON<INews>(`news/slug/${slug}`);
-  } catch {
-    return null;
+  } catch (err) {
+    if (err instanceof ApiError && err.isNotFound) return null;
+    throw err;
   }
 }

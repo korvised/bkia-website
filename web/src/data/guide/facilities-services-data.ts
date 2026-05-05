@@ -4,12 +4,12 @@ import {
   HelpCircle,
   LucideIcon,
   Megaphone,
+  Store,
   Wifi,
 } from "lucide-react";
 import { MultilingualText } from "@/types/language";
 import { MdAtm, MdChildCare, MdMosque } from "react-icons/md";
 import { LuBaggageClaim } from "react-icons/lu";
-import { IoRestaurantOutline } from "react-icons/io5";
 import { GiPrayer } from "react-icons/gi";
 import { FaRestroom } from "react-icons/fa";
 
@@ -88,30 +88,36 @@ export const facilitiesServices: FacilityService[] = [
   {
     id: "drinking-water",
     category: "terminal",
-    name: { en: "Drinking Water", lo: "ຕູ້ກົດນໍ້າ", zh: "饮用水" },
+    name: {
+      en: "Hot & Warm Water",
+      lo: "ບໍລິການຕູ້ກົດນ້ຳຮ້ອນ-ອຸ່ນ",
+      zh: "冷热饮水服务",
+    },
     icon: Droplets,
     color: "blue",
     shortDescription: {
-      en: "Free purified water",
-      lo: "ບໍລິການນໍ້າດື່ມຟຣີ",
-      zh: "免费饮用水",
+      en: "Clean hot and warm water",
+      lo: "ມີນ້ຳຮ້ອນ ແລະ ນ້ຳອຸ່ນ ໃສສະອາດ",
+      zh: "提供纯净热水及温水",
     },
     description: {
-      en: "Complimentary purified drinking water stations located conveniently throughout the terminal.",
-      lo: "ຈຸດບໍລິການນໍ້າດື່ມບໍລິສຸດຟຣີ ຕິດຕັ້ງໄວ້ຕາມຈຸດຕ່າງໆທົ່ວອາຄານ.",
-      zh: "航站楼遍布免费纯净饮用水直饮点。",
+      en: "Available at Gate 03 and International Arrivals hall.",
+      lo: "ບໍລິການຢູ່ບໍລິເວນ Gate 03 ແລະ ໂຖງຂາເຂົ້າສາຍຕ່າງປະເທດ.",
+      zh: "位于 03 号登机口及国际到达大厅。",
     },
     location: [
       {
         area: {
-          en: "Throughout Terminal",
-          lo: "ທົ່ວອາຄານຜູ້ໂດຍສານ",
-          zh: "整个航站楼",
+          en: "Departure Gate 03",
+          lo: "ໂຖງລໍຖ້າປະຕູທາງອອກ Gate 03",
+          zh: "03 号登机口候机区",
         },
-        nearBy: {
-          en: "Near restroom areas",
-          lo: "ໃກ້ບໍລິເວນໜ້າຫ້ອງນໍ້າ",
-          zh: "靠近洗手间区域",
+      },
+      {
+        area: {
+          en: "International Arrivals",
+          lo: "ໂຖງຂາເຂົ້າສາຍຕ່າງປະເທດ",
+          zh: "国际到达大厅",
         },
       },
     ],
@@ -187,7 +193,11 @@ export const facilitiesServices: FacilityService[] = [
     },
     location: [
       {
-        area: { en: "Throughout Terminal", lo: "ທົ່ວອາຄານຜູ້ໂດຍສານ", zh: "整个航站楼" },
+        area: {
+          en: "Throughout Terminal",
+          lo: "ທົ່ວອາຄານຜູ້ໂດຍສານ",
+          zh: "整个航站楼",
+        },
       },
     ],
   },
@@ -209,7 +219,11 @@ export const facilitiesServices: FacilityService[] = [
     },
     location: [
       {
-        area: { en: "Near Gate 03", lo: "ທາງເຂົ້າປະຕູ 03", zh: "靠近3号登机口" },
+        area: {
+          en: "Next to Emergency Exit — Gate 03",
+          lo: "ຂ້າງທາງອອກສຸກເສີນປະຕູ 03",
+          zh: "Gate 03 紧急出口旁",
+        },
       },
     ],
   },
@@ -232,11 +246,17 @@ export const facilitiesServices: FacilityService[] = [
     location: [
       {
         area: {
-          en: "International Departure",
-          lo: "ຂາອອກສາຍຕ່າງປະເທດ",
-          zh: "国际出发",
+          en: "Departure Waiting Hall — Gate 03",
+          lo: "ໂຖງລໍຖ້າປະຕູທາງອອກ Gate 03",
+          zh: "Gate 03 候机大厅",
         },
-        floor: { en: "2nd Floor", lo: "ຊັ້ນ 2", zh: "2楼" },
+      },
+      {
+        area: {
+          en: "International Arrivals",
+          lo: "ໂຖງຂາເຂົ້າສາຍຕ່າງປະເທດ",
+          zh: "国际到达大厅",
+        },
       },
     ],
   },
@@ -256,6 +276,15 @@ export const facilitiesServices: FacilityService[] = [
       lo: "ຫ້ອງສະຫງົບສຳລັບຜູ້ໂດຍສານກາບໄຫວ້ພຣະ ແລະ ຂໍພອນກ່ອນການເດີນທາງ.",
       zh: "为旅客提供旅途前礼佛祈福的宁静空间。",
     },
+    location: [
+      {
+        area: {
+          en: "Departure Waiting Hall — Gate 02",
+          lo: "ໂຖງລໍຖ້າປະຕູທາງອອກ Gate 02",
+          zh: "Gate 02 候机大厅",
+        },
+      },
+    ],
   },
   {
     id: "muslim-prayer-room",
@@ -273,6 +302,15 @@ export const facilitiesServices: FacilityService[] = [
       lo: "ຫ້ອງສຳລັບຜູ້ໂດຍສານສາດສະໜາມຸດສະລິມ ນຳໃຊ້ໃນການໄຫວ້ສັກກາລະ.",
       zh: "专为穆斯林旅客提供的宗教礼拜场所。",
     },
+    location: [
+      {
+        area: {
+          en: "Departure Waiting Hall — Gate 02",
+          lo: "ໂຖງລໍຖ້າປະຕູທາງອອກ Gate 02",
+          zh: "Gate 02 候机大厅",
+        },
+      },
+    ],
   },
   {
     id: "dining-beverage",
@@ -282,7 +320,7 @@ export const facilitiesServices: FacilityService[] = [
       lo: "ຮ້ານຄ້າ",
       zh: "餐饮服务",
     },
-    icon: IoRestaurantOutline,
+    icon: Store,
     color: "lime",
     shortDescription: {
       en: "Food options",
@@ -291,13 +329,16 @@ export const facilitiesServices: FacilityService[] = [
     },
     description: {
       en: "Variety of cafes and restaurants serving local Lao and international cuisine.",
-      lo: "ຮ້ານອາຫານ ແລະ ກາເຟ ທີ່ບໍລິການອາຫານລາວ ແລະ ສາກົນ.",
+      lo: "ອາຫານວ່າງ, ເຄື່ອງດື່ມ, ກາເຟ, ຂະໜົມ ແລະ ອື່ນໆ",
       zh: "提供老挝本地美食和国际选择的各类餐厅。",
     },
     location: [
       {
-        area: { en: "Departure Waiting Hall", lo: "ຫ້ອງລໍຖ້າຂື້ນເຮືອບິນ", zh: "候机大厅" },
-        nearBy: { en: "Near Gate 03", lo: "ທາງເຂົ້າປະຕູ 03", zh: "靠近3号登机口" },
+        area: {
+          en: "Departure Waiting Hall — Gate 03",
+          lo: "ຫ້ອງລໍຖ້າຂື້ນເຮືອບີນປະຕູທາງ Gate 03",
+          zh: "候机大厅 Gate 03",
+        },
       },
     ],
   },
@@ -309,13 +350,24 @@ export const facilitiesServices: FacilityService[] = [
     color: "cyan",
     shortDescription: { en: "Free carts", lo: "ລໍ້ຍູ້ຟຣີ", zh: "免费推车" },
     description: {
-      en: "Complimentary baggage carts available 24/7 throughout the terminal.",
-      lo: "ບໍລິການລໍ້ຍູ້ສຳພາລະຟຣີ 24 ຊົ່ວໂມງ.",
-      zh: "航站楼内提供24/7免费行李推车服务。",
+      en: "Free baggage carts available at the terminal entrance and domestic arrivals.",
+      lo: "ບໍລິການລໍ້ຍູ້ສຳພາລະຟຣີ ຢູ່ດ້ານໜ້າທາງເຂົ້າອາຄານ ແລະ ຂາເຂົ້າສາຍພາຍໃນປະເທດ.",
+      zh: "航站楼入口处及国内到达厅提供免费行李推车服务。",
     },
     location: [
       {
-        area: { en: "Terminal Entrance", lo: "ຢູ່ໜ້າທາງເຂົ້າອາຄານ", zh: "航站楼入口" },
+        area: {
+          en: "Terminal Entrance",
+          lo: "ດ້ານໜ້າທາງເຂົ້າອາຄານ",
+          zh: "航站楼入口处",
+        },
+      },
+      {
+        area: {
+          en: "Domestic Arrivals",
+          lo: "ຂາເຂົ້າສາຍພາຍໃນປະເທດ",
+          zh: "国内到达厅",
+        },
       },
     ],
   },

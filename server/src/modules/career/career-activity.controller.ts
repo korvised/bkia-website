@@ -53,10 +53,10 @@ export class CareerActivityController {
 
   /**
    * POST /career/activities
-   * Upload a new activity photo (admin only).
+   * Upload a new activity photo.
    */
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Permissions(CAREER.CREATE)
   @Post()
   @UseInterceptors(
@@ -78,7 +78,7 @@ export class CareerActivityController {
    * Must be declared BEFORE :id route to avoid param collision.
    */
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Permissions(CAREER.UPDATE)
   @Patch('reorder')
   async reorder(
@@ -93,7 +93,7 @@ export class CareerActivityController {
    * Update caption, sortOrder, or isActive for an activity.
    */
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Permissions(CAREER.UPDATE)
   @Patch(':id')
   async update(
@@ -108,7 +108,7 @@ export class CareerActivityController {
    * Delete an activity photo.
    */
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Permissions(CAREER.DELETE)
   @Delete(':id')
   async delete(@Param('id', ParseUUIDPipe) id: string) {

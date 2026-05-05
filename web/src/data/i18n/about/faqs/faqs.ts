@@ -50,7 +50,7 @@ export const faqs = {
   },
   catFlights: {
     en: "Flights",
-    lo: "ທ່ຽວບິນ",
+    lo: "ຖ້ຽວບິນ",
     zh: "航班信息",
   },
   catCheckin: {
@@ -151,7 +151,7 @@ export const faqData: FAQQA[] = [
     cat: "flights",
     q: {
       en: "How can I check my flight status?",
-      lo: "ຂ້ອຍສາມາດກວດສອບສະຖານະທ່ຽວບິນໄດ້ແນວໃດ?",
+      lo: "ຂ້ອຍສາມາດກວດສອບສະຖານະຖ້ຽວບິນໄດ້ແນວໃດ?",
       zh: "如何查询我的航班状态？",
     },
     a: {
@@ -163,7 +163,7 @@ export const faqData: FAQQA[] = [
       {
         label: {
           en: "Departures Board",
-          lo: "ກະດານທ່ຽວບິນຂາອອກ",
+          lo: "ກະດານຖ້ຽວບິນຂາອອກ",
           zh: "出发航班列表",
         },
         href: "/flights/departures",
@@ -171,7 +171,7 @@ export const faqData: FAQQA[] = [
       {
         label: {
           en: "Arrivals Board",
-          lo: "ກະດານທ່ຽວບິນຂາເຂົ້າ",
+          lo: "ກະດານຖ້ຽວບິນຂາເຂົ້າ",
           zh: "到达航班列表",
         },
         href: "/flights/arrivals",
@@ -183,7 +183,7 @@ export const faqData: FAQQA[] = [
     cat: "flights",
     q: {
       en: "What should I do if my flight is delayed or cancelled?",
-      lo: "ຂ້ອຍຄວນເຮັດແນວໃດ ຫາກທ່ຽວບິນຊັກຊ້າ ຫຼື ຖືກຍົກເລີກ?",
+      lo: "ຂ້ອຍຄວນເຮັດແນວໃດ ຫາກຖ້ຽວບິນຊັກຊ້າ ຫຼື ຖືກຍົກເລີກ?",
       zh: "如果我的航班延误或取消，我该怎么办？",
     },
     a: {
@@ -202,7 +202,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "We recommend arriving at least 2 hours before domestic flights and 3 hours before international flights. This allows time for parking or drop-off, check-in, baggage drop, security screening, and — for international departures — immigration. During peak travel periods (public holidays, major events) add an extra 30–45 minutes. See our full departure guide for a step-by-step walkthrough of the process.",
-      lo: "ພວກເຮົາແນະນຳໃຫ້ມາຮອດສະໜາມບິນຢ່າງໜ້ອຍ 2 ຊົ່ວໂມງ ສຳລັບທ່ຽວບິນພາຍໃນ ແລະ 3 ຊົ່ວໂມງ ສຳລັບທ່ຽວບິນສາກົນ ເພື່ອໃຫ້ມີເວລາພຽງພໍໃນການຈອດລົດ, ແຈ້ງປີ້, ຝາກກະເປົາ, ກວດຄວາມປອດໄພ ແລະ ຂັ້ນຕອນກວດຄົນເຂົ້າເມືອງ (ສຳລັບຂາອອກສາກົນ). ໃນຊ່ວງເທດສະການທີ່ມີຄົນເດີນທາງຫຼາຍ ຄວນເພີ່ມເວລາອີກ 30–45 ນາທີ.",
+      lo: "ພວກເຮົາແນະນຳໃຫ້ມາຮອດສະໜາມບິນຢ່າງໜ້ອຍ 2 ຊົ່ວໂມງ ສຳລັບຖ້ຽວບິນພາຍໃນ ແລະ 3 ຊົ່ວໂມງ ສຳລັບຖ້ຽວບິນສາກົນ ເພື່ອໃຫ້ມີເວລາພຽງພໍໃນການຈອດລົດ, ແຈ້ງປີ້, ຝາກກະເປົາ, ກວດຄວາມປອດໄພ ແລະ ຂັ້ນຕອນກວດຄົນເຂົ້າເມືອງ (ສຳລັບຂາອອກສາກົນ). ໃນຊ່ວງເທດສະການທີ່ມີຄົນເດີນທາງຫຼາຍ ຄວນເພີ່ມເວລາອີກ 30–45 ນາທີ.",
       zh: "我们建议国内航班至少提前 2 小时、国际航班至少提前 3 小时到达，以便有充足时间进行值机、托运行李、通过安检，以及办理出境手续（国际出发）。节假日或重大活动期间，请额外预留 30-45 分钟。请参阅我们的“出发指南”了解详细步骤。",
     },
     links: [
@@ -224,7 +224,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "Check-in typically opens 2 hours before departure. It closes 30 minutes before departure for domestic flights and 45 minutes before for international flights. Times may vary by airline, so please confirm with your carrier.",
-      lo: "ໂດຍທົ່ວໄປ ການແຈ້ງປີ້ຈະເປີດ 2 ຊົ່ວໂມງກ່ອນເວລາບິນ. ແລະ ຈະປິດກ່ອນເວລາບິນ 30 ນາທີ ສຳລັບທ່ຽວບິນພາຍໃນ ແລະ 45 ນາທີ ສຳລັບທ່ຽວບິນສາກົນ. ທັງນີ້ ເວລາອາດມີການປ່ຽນແປງຕາມແຕ່ລະສາຍການບິນ.",
+      lo: "ໂດຍທົ່ວໄປ ການແຈ້ງປີ້ຈະເປີດ 2 ຊົ່ວໂມງກ່ອນເວລາບິນ. ແລະ ຈະປິດກ່ອນເວລາບິນ 30 ນາທີ ສຳລັບຖ້ຽວບິນພາຍໃນ ແລະ 45 ນາທີ ສຳລັບຖ້ຽວບິນສາກົນ. ທັງນີ້ ເວລາອາດມີການປ່ຽນແປງຕາມແຕ່ລະສາຍການບິນ.",
       zh: "值机通常在起飞前 2 小时开放。国内航班通常在起飞前 30 分钟关闭，国际航班在起飞前 45 分钟关闭。具体时间因航空公司而异，请务必向您的航司确认。",
     },
   },
@@ -498,7 +498,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "Yes. You can pre-book a taxi or shuttle van by calling the airport at +856 20 9201 4955. Provide your flight number and arrival time and a vehicle will be waiting for you at the arrivals exit. Walk-up taxis and vans are also available at the taxi stand outside arrivals without any booking — just approach the desk, choose your destination, and pay the fixed fare. See our Taxi page for vehicle options and all destination fares.",
-      lo: "ໄດ້, ທ່ານສາມາດຈອງລົດລ່ວງໜ້າໄດ້ໂດຍການໂທຫາເບີ +856 20 9201 4955. ພຽງແຕ່ແຈ້ງເລກທ່ຽວບິນ ແລະ ເວລາຮອດ, ລົດຈະໄປລໍຖ້າຮັບທ່ານຢູ່ທາງອອກ. ຫຼື ທ່ານສາມາດຍ່າງໄປຕິດຕໍ່ທີ່ເຄົາເຕີແທັກຊີຢູ່ທາງອອກໄດ້ທັນທີໂດຍບໍ່ຕ້ອງຈອງ.",
+      lo: "ໄດ້, ທ່ານສາມາດຈອງລົດລ່ວງໜ້າໄດ້ໂດຍການໂທຫາເບີ +856 20 9201 4955. ພຽງແຕ່ແຈ້ງເລກຖ້ຽວບິນ ແລະ ເວລາຮອດ, ລົດຈະໄປລໍຖ້າຮັບທ່ານຢູ່ທາງອອກ. ຫຼື ທ່ານສາມາດຍ່າງໄປຕິດຕໍ່ທີ່ເຄົາເຕີແທັກຊີຢູ່ທາງອອກໄດ້ທັນທີໂດຍບໍ່ຕ້ອງຈອງ.",
       zh: "可以。您可以拨打 +856 20 9201 4955 预约接机。告知航班号和到达时间，司机将在门口等候。您也可以直接前往出口处的出租车柜台，按公示价格直接付费乘车。",
     },
     links: [
@@ -562,14 +562,14 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "Bokeo International Airport operates international routes to destinations in Thailand (including Chiang Rai) and China (including Xishuangbanna / Jinghong). Schedules and available routes may change seasonally, so we recommend checking current timetables on our departures board or confirming directly with Lao Airlines or Lao Skyway. Domestic routes connect Bokeo with Vientiane (Wattay International Airport).",
-      lo: "ສະໜາມບິນສາກົນບໍ່ແກ້ວ ໃຫ້ບໍລິການເສັ້ນທາງສາກົນໄປຍັງ ປະເທດໄທ (ລວມທັງເຊັງລາຍ) ແລະ ສປ ຈີນ (ລວມທັງຊີຊວງກ / ຈິ່ງຮົງ). ຕາຕະລາງການບິນ ອາດມີການປ່ຽນແປງຕາມລະດູການ ດັ່ງນັ້ນ ຂໍແນະນຳໃຫ້ກວດສອບຕາຕະລາງ ຫຼື ຕິດຕໍ່ສາຍການບິນໂດຍກົງ. ສຳລັບເສັ້ນທາງພາຍໃນ ມີທ່ຽວບິນເຊື່ອມຕໍ່ ບໍ່ແກ້ວ — ວຽງຈັນ (ທ່ານຫ້ວຍ / Wattay).",
+      lo: "ສະໜາມບິນສາກົນບໍ່ແກ້ວ ໃຫ້ບໍລິການເສັ້ນທາງສາກົນໄປຍັງ ປະເທດໄທ (ລວມທັງເຊັງລາຍ) ແລະ ສປ ຈີນ (ລວມທັງຊີຊວງກ / ຈິ່ງຮົງ). ຕາຕະລາງການບິນ ອາດມີການປ່ຽນແປງຕາມລະດູການ ດັ່ງນັ້ນ ຂໍແນະນຳໃຫ້ກວດສອບຕາຕະລາງ ຫຼື ຕິດຕໍ່ສາຍການບິນໂດຍກົງ. ສຳລັບເສັ້ນທາງພາຍໃນ ມີຖ້ຽວບິນເຊື່ອມຕໍ່ ບໍ່ແກ້ວ — ວຽງຈັນ (ທ່ານຫ້ວຍ / Wattay).",
       zh: "博胶国际机场目前开通至泰国（含清莱）和中国（含西双版纳/景洪）的国际航线。航线及班期可能随季节调整，建议查看我们网站上的最新出发航班时刻表，或直接联系老挝航空或老挝天空航空确认。国内方面，博胶与万象（瓦岱国际机场）之间有直飞航班。",
     },
     links: [
       {
         label: {
           en: "Departures Board",
-          lo: "ກະດານທ່ຽວບິນຂາອອກ",
+          lo: "ກະດານຖ້ຽວບິນຂາອອກ",
           zh: "出发航班列表",
         },
         href: "/flights/departures",

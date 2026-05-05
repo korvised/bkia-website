@@ -21,7 +21,7 @@ import { tFooter } from "@/data/i18n/layout/footer";
 const MAIN_PHONE = "+856 84 260 179";
 const MAIN_EMAIL = "info@bokeointernationalairport.com";
 const TAXI_PHONE = "+856 20 92 014 955";
-const VIP_PHONE  = "+856 84 212 030";
+const VIP_PHONE  = "+856 20 92 014 955";
 
 function t(key: Parameters<typeof tContacts>[0], lang: Lang) {
   return tContacts(key, lang);

@@ -72,7 +72,7 @@ export const vipLounge = {
   },
   contactDesc: {
     en: "Contact our team to reserve your lounge experience or to enquire about availability.",
-    lo: "ຕິດຕໍ່ທີມງານຂອງພວກເຮົາເພື່ອຈອງປະສົບການຫ້ອງຮັບຮອງ ຫຼື ສອບຖາມຂໍ້ມູນເພີ່ມເຕີມ.",
+    lo: "ຕິດຕໍ່ທີມງານຂອງພວກເຮົາເພື່ອຈອງຫ້ອງຮັບຮອງ ຫຼື ສອບຖາມຂໍ້ມູນເພີ່ມເຕີມ.",
     zh: "请联系我们的团队预订休息室体验或咨询空余位。",
   },
   phoneLabel: {
@@ -81,9 +81,9 @@ export const vipLounge = {
     zh: "休息室预订热线",
   },
   phone: {
-    en: "+856 84 212 030",
-    lo: "+856 84 212 030",
-    zh: "+856 84 212 030",
+    en: "+856 20 92 014 955",
+    lo: "+856 20 92 014 955",
+    zh: "+856 20 92 014 955",
   },
   metaTitle: {
     en: "VIP Lounge | Bokeo International Airport",
@@ -117,7 +117,7 @@ export const VIP_AMENITIES: Record<Lang, VipAmenity[]> = {
     { label: "Free WiFi", desc: "High-speed wireless internet throughout" },
   ],
   lo: [
-    { label: "ທີ່ນັ່ງສ່ວນຕົວ", desc: "ທີ່ນັ່ງສະເພາະ ແຍກອອກຈາກອາຄານຜູ້ໂດຍສານຫຼັກ" },
+    { label: "ທີ່ນັ່ງສ່ວນຕົວ", desc: "ໂຊຟາທີ່ນຸ້ມສະບາຍ" },
     { label: "ຫ້ອງແອເຢັນ", desc: "ສະພາບແວດລ້ອມທີ່ຄວບຄຸມອຸນຫະພູມໃຫ້ເຢັນສະບາຍ" },
     { label: "ງຽບສະຫງົບ & ສ່ວນຕົວ", desc: "ບັນຍາກາດທີ່ຜ່ອນຄາຍ ເພື່ອການພັກຜ່ອນ ຫຼື ການເຮັດວຽກ" },
     { label: "ມີອາຫານວ່າງບໍລິການ", desc: "ມີອາຫານວ່າງເບົາໆ ໄວ້ຄອຍບໍລິການ" },

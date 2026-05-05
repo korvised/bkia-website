@@ -1,5 +1,47 @@
 import { config } from "@/config";
 
+/**
+ * Typed API error — thrown by fetchJSON / postForm whenever the server
+ * responds with a non-2xx status code.
+ *
+ * Usage in catch blocks:
+ *   if (err instanceof ApiError && err.isNotFound) return null;
+ *   throw err; // re-throw 500s → propagates to error.tsx boundary
+ */
+export class ApiError extends Error {
+  constructor(
+    public readonly status: number,
+    public readonly statusText: string,
+    /** Raw response body (may be JSON string from NestJS e.g. '{"statusCode":500,...}') */
+    public readonly body: string,
+  ) {
+    super(`${status} ${statusText}`);
+    this.name = "ApiError";
+  }
+
+  get isNotFound(): boolean {
+    return this.status === 404;
+  }
+
+  get isClientError(): boolean {
+    return this.status >= 400 && this.status < 500;
+  }
+
+  get isServerError(): boolean {
+    return this.status >= 500;
+  }
+
+  /** Try to parse the server's JSON body (NestJS error shape). */
+  get serverMessage(): string | undefined {
+    try {
+      const parsed = JSON.parse(this.body) as { message?: string };
+      return typeof parsed.message === "string" ? parsed.message : undefined;
+    } catch {
+      return undefined;
+    }
+  }
+}
+
 export function withQuery<T extends object>(base: string, params?: T) {
   if (!params) return base;
 
@@ -23,8 +65,8 @@ export async function fetchJSON<T>(
     headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
   });
   if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(`API ${res.status} ${res.statusText} – ${text}`);
+    const body = await res.text().catch(() => "");
+    throw new ApiError(res.status, res.statusText, body);
   }
   return res.json() as Promise<T>;
 }
@@ -54,7 +96,7 @@ export async function postForm<T>(
   });
   if (!res.ok) {
     const text = await res.text().catch(() => "");
-    throw new Error(`API ${res.status} ${res.statusText} – ${text}`);
+    throw new ApiError(res.status, res.statusText, text);
   }
   return res.json() as Promise<T>;
 }

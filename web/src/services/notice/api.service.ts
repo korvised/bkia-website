@@ -1,4 +1,4 @@
-import { fetchJSON, withQuery } from "@/lib";
+import { ApiError, fetchJSON, withQuery } from "@/lib";
 import type {
   INoticeResponse,
   QueryNotice,
@@ -50,12 +50,15 @@ export function listHighlightNotices(limit: number = 5) {
 }
 
 /**
- * Get a single notice by ID
+ * Get a single notice by ID.
+ * Returns null only on 404 — re-throws on 500 / network errors so
+ * the caller (server component) can propagate to the error.tsx boundary.
  */
 export async function getNoticeById(id: string): Promise<INotice | null> {
   try {
     return await fetchJSON<INotice>(`notices/${id}`);
-  } catch {
-    return null;
+  } catch (err) {
+    if (err instanceof ApiError && err.isNotFound) return null;
+    throw err;
   }
 }

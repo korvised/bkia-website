@@ -66,7 +66,7 @@ export const lostFound = {
   },
   claimSectionFlight: {
     en: "Your flight details",
-    lo: "ຂໍ້ມູນທ່ຽວບິນຂອງທ່ານ",
+    lo: "ຂໍ້ມູນຖ້ຽວບິນຂອງທ່ານ",
     zh: "航班详情",
   },
   claimSectionProof: {
@@ -91,12 +91,12 @@ export const lostFound = {
   },
   claimFlightNumber: {
     en: "Your flight number",
-    lo: "ເລກທ່ຽວບິນຂອງທ່ານ",
+    lo: "ເລກຖ້ຽວບິນຂອງທ່ານ",
     zh: "航班号",
   },
   claimFlightHint: {
     en: "e.g. QV 201 — the flight you were on when the item was lost",
-    lo: "ຕົວຢ່າງ: QV 201 — ທ່ຽວບິນທີ່ທ່ານເດີນທາງໃນຊ່ວງທີ່ເຄື່ອງເສຍ",
+    lo: "ຕົວຢ່າງ: QV 201 — ຖ້ຽວບິນທີ່ທ່ານເດີນທາງໃນຊ່ວງທີ່ເຄື່ອງເສຍ",
     zh: "例如：QV 201 — 丢失物品时乘坐的航班",
   },
   claimSeatNumber: {
@@ -106,7 +106,7 @@ export const lostFound = {
   },
   claimSeatHint: {
     en: "e.g. 14A — helps confirm you were on the flight",
-    lo: "ຕົວຢ່າງ: 14A — ຊ່ວຍຢືນຢັນວ່າທ່ານຢູ່ໃນທ່ຽວບິນແທ້",
+    lo: "ຕົວຢ່າງ: 14A — ຊ່ວຍຢືນຢັນວ່າທ່ານຢູ່ໃນຖ້ຽວບິນແທ້",
     zh: "例如：14A — 有助于确认您确实在该航班上",
   },
   proofPhotos: {
@@ -167,7 +167,7 @@ export const lostFound = {
   howStep2Title: { en: "Claim", lo: "ແຈ້ງຄວາມເປັນເຈົ້າຂອງ", zh: "2. 申领" },
   howStep2Desc: {
     en: "Click 'This is mine' and provide your ownership proof, flight details, and contact info.",
-    lo: "ກົດ 'ແມ່ນຂອງຂ້ອຍ' ແລ້ວໃຫ້ຂໍ້ມູນຢືນຢັນ, ລາຍລະອຽດທ່ຽວບິນ ແລະ ຂໍ້ມູນຕິດຕໍ່.",
+    lo: "ກົດ 'ແມ່ນຂອງຂ້ອຍ' ແລ້ວໃຫ້ຂໍ້ມູນຢືນຢັນ, ລາຍລະອຽດຖ້ຽວບິນ ແລະ ຂໍ້ມູນຕິດຕໍ່.",
     zh: "点击“这是我的”，提供所有权证明、航班信息和联系方式。",
   },
   howStep3Title: {
@@ -194,15 +194,19 @@ export const lostFound = {
   emailUs: { en: "Email Us", lo: "ສົ່ງອີເມວຫາພວກເຮົາ", zh: "发送邮件" },
 
   // ── Category labels ───────────────────────────────────────────────────────
-  categoryElectronics: { en: "Electronics",  lo: "ອຸປະກອນໄຟຟ້າ",    zh: "电子产品"  },
-  categoryBaggage:     { en: "Baggage",       lo: "ກະເປົ໋າ",          zh: "行李箱包"  },
-  categoryClothing:    { en: "Clothing",      lo: "ເຄື່ອງນຸ່ງ",      zh: "服装"      },
-  categoryDocuments:   { en: "Documents",     lo: "ເອກະສານ",          zh: "证件文件"  },
-  categoryJewelry:     { en: "Jewelry",       lo: "ເຄື່ອງປະດັບ",     zh: "珠宝首饰"  },
-  categoryKeys:        { en: "Keys",          lo: "ກະແຈ",             zh: "钥匙"      },
-  categoryCash:        { en: "Cash",          lo: "ເງິນສົດ",          zh: "现金"      },
-  categoryToys:        { en: "Toys",          lo: "ຂອງຫຼິ້ນ",         zh: "玩具"      },
-  categoryOther:       { en: "Other",         lo: "ອື່ນໆ",             zh: "其他"      },
+  categoryElectronics: {
+    en: "Electronics",
+    lo: "ອຸປະກອນໄຟຟ້າ",
+    zh: "电子产品",
+  },
+  categoryBaggage: { en: "Baggage", lo: "ກະເປົ໋າ", zh: "行李箱包" },
+  categoryClothing: { en: "Clothing", lo: "ເຄື່ອງນຸ່ງ", zh: "服装" },
+  categoryDocuments: { en: "Documents", lo: "ເອກະສານ", zh: "证件文件" },
+  categoryJewelry: { en: "Jewelry", lo: "ເຄື່ອງປະດັບ", zh: "珠宝首饰" },
+  categoryKeys: { en: "Keys", lo: "ກະແຈ", zh: "钥匙" },
+  categoryCash: { en: "Cash", lo: "ເງິນສົດ", zh: "现金" },
+  categoryToys: { en: "Toys", lo: "ຂອງຫຼິ້ນ", zh: "玩具" },
+  categoryOther: { en: "Other", lo: "ອື່ນໆ", zh: "其他" },
 
   // ── Shared UI ─────────────────────────────────────────────────────────────
   submitting: {
