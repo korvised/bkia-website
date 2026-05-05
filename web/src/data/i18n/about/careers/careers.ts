@@ -163,9 +163,9 @@ export const careers = {
     zh: "以使命为基础，\n以人才为驱动",
   },
   cultureBody: {
-    lo: "ທີ່ BKIA, ພວກເຮົາເປັນຫຼາຍກວ່າການເປັນສະໜາມບິນ, ພວກເຮົາຄືຈຸດເລີ່ມຕົ້ນຂອງທຸກການເດີນທາງທີ່ມີຄວາມໝາຍ. ບໍ່ວ່າຈະເປັນການເຕົ້າໂຮມຄອບຄົວ, ການຂະຫຍາຍຕົວຂອງທຸລະກິດ ຫຼື ການຕ້ອນຮັບດ້ວຍຮອຍຍິ້ມແບບລາວເຮົາ. ພວກເຮົາພ້ອມທີ່ຈະເປັນພະລັງຂັບເຄື່ອນ ແລະ ເບິ່ງແຍງທຸກທ່ານດ້ວຍຫົວໃຈ.",
-    en: "At BKIA, we are more than just an airport; we are the starting point of every meaningful journey. Whether it's reuniting families, expanding businesses, or welcoming guests with a Lao smile, we are ready to be the driving force that cares for you with all our heart.",
-    zh: "在 BKIA，我们不仅仅是一座机场，更是每一段意义非凡旅程的起点。无论是家庭团聚、业务拓展，还是那抹温暖的老挝式微笑，我们都致力于成为核心驱动力，全心全意为您保驾护航。",
+    lo: "ທີ່ BKIA, ພວກເຮົາເປັນຫຼາຍກວ່າການເປັນສະໜາມບິນ, ພວກເຮົາຄືຈຸດເລີ່ມຕົ້ນຂອງທຸກການເດີນທາງທີ່ມີຄວາມໝາຍ. ບໍ່ວ່າຈະເປັນການເຕົ້າໂຮມຄອບຄົວ, ການຂະຫຍາຍຕົວຂອງທຸລະກິດ ຫຼື ການຕ້ອນຮັບດ້ວຍຮອຍຍິ້ມແບບລາວເຮົາ ພວກເຮົາພ້ອມທີ່ຈະເປັນພະລັງຂັບເຄື່ອນ ແລະ ເບິ່ງແຍງທຸກທ່ານດ້ວຍຫົວໃຈ.",
+    en: "At BKIA, we are more than just an airport; we are the starting point of every meaningful journey Whether it's reuniting families, expanding businesses, or welcoming guests with a Lao smile, we are ready to be the driving force that cares for you with all our heart.",
+    zh: "在 BKIA，我们不仅仅是一座机场，更是每一段意义非凡旅程的起点 无论是家庭团聚、业务拓展，还是那抹温暖的老挝式微笑，我们都致力于成为核心驱动力，全心全意为您保驾护航。",
   },
 
   // Benefits overline label

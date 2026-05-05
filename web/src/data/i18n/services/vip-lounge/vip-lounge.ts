@@ -37,7 +37,7 @@ export const vipLounge = {
   },
   packagesLabel: {
     en: "Service Packages",
-    lo: "ແພັກເກດການບໍລິການ",
+    lo: "ແພັກແກັດການບໍລິການ",
     zh: "服务套餐",
   },
   packagesTitle: {
@@ -117,10 +117,10 @@ export const VIP_AMENITIES: Record<Lang, VipAmenity[]> = {
     { label: "Free WiFi", desc: "High-speed wireless internet throughout" },
   ],
   lo: [
-    { label: "ທີ່ນັ່ງສ່ວນຕົວ", desc: "ໂຊຟາທີ່ນຸ້ມສະບາຍ" },
+    { label: "ບ່ອນນັ່ງສ່ວນຕົວ", desc: "ໂຊຟາທີ່ນຸ້ມສະບາຍ" },
     { label: "ຫ້ອງແອເຢັນ", desc: "ສະພາບແວດລ້ອມທີ່ຄວບຄຸມອຸນຫະພູມໃຫ້ເຢັນສະບາຍ" },
     { label: "ງຽບສະຫງົບ & ສ່ວນຕົວ", desc: "ບັນຍາກາດທີ່ຜ່ອນຄາຍ ເພື່ອການພັກຜ່ອນ ຫຼື ການເຮັດວຽກ" },
-    { label: "ມີອາຫານວ່າງບໍລິການ", desc: "ມີອາຫານວ່າງເບົາໆ ໄວ້ຄອຍບໍລິການ" },
+    { label: "ມີອາຫານວ່າງບໍລິການ", desc: "ມີອາຫານວ່າງ ໄວ້ຄອຍບໍລິການ" },
     { label: "WiFi ຟຣີ", desc: "ອິນເຕີເນັດໄຮ້ສາຍຄວາມໄວສູງທົ່ວບໍລິເວນ" },
   ],
   zh: [
@@ -191,7 +191,7 @@ export const VIP_PACKAGE_CONTENT: Record<Lang, VipPackageContent[]> = {
       name: "Silver Package",
       features: [
         "ທີ່ນັ່ງໃນຫ້ອງຮັບຮອງ VIP",
-        "ອາຫານວ່າງເບົາໆ",
+        "ອາຫານວ່າງ",
         "WiFi ຟຣີ",
         "ຫ້ອງແອເຢັນ",
       ],

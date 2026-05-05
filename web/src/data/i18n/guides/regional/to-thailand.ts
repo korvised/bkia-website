@@ -84,7 +84,7 @@ export const toThailand = {
   },
   tip2: {
     en: "Passport needs 6+ months validity",
-    lo: "ໜັງສືຜ່ານແດນຕ້ອງມີອາຍຸ 6 ເດືອນຂຶ້ນໄປ",
+    lo: "ໜັງສືຜ່ານແດນ (Passport) ຕ້ອງມີອາຍຸ 6 ເດືອນຂຶ້ນໄປ",
     zh: "护照需6个月以上有效期",
   },
 } as const;

@@ -39,7 +39,7 @@ export const packing = {
   },
   lakUnit: { en: "LAK", lo: "ກີບ", zh: "基普" },
   thbUnit: { en: "THB", lo: "ບາດ", zh: "泰铢" },
-  cnyUnit: { en: "CNY", lo: "ຫຍວນ", zh: "元" },
+  cnyUnit: { en: "CNY", lo: "ຢວນ", zh: "元" },
   prohibitedLabel: {
     en: "Prohibited Items",
     lo: "ສິ່ງຂອງຕ້ອງຫ້າມ",
@@ -51,8 +51,8 @@ export const packing = {
     zh: "不可包装物品清单",
   },
   prohibitedNote: {
-    en: "The following items may not be wrapped or carried as checked baggage. Please check full airline and customs regulations before packing.",
-    lo: "ລາຍການຕໍ່ໄປນີ້ບໍ່ສາມາດຫຸ້ມຫໍ່ ຫຼື ຝາກເປັນກະເປົາໃຕ້ທ້ອງເຄື່ອງໄດ້. ກະລຸນາກວດສອບລະບຽບການຂອງສາຍການບິນ ແລະ ພາສີຢ່າງລະອຽດ.",
+    en: "The following items may not be wrapped or carried as checked baggage Please check full airline and customs regulations before packing.",
+    lo: "ລາຍການຕໍ່ໄປນີ້ບໍ່ສາມາດຫຸ້ມຫໍ່ ຫຼື ຝາກເປັນກະເປົາໃຕ້ທ້ອງເຄື່ອງໄດ້ ກະລຸນາກວດສອບລະບຽບການຂອງສາຍການບິນ ແລະ ພາສີຢ່າງລະອຽດ.",
     zh: "以下物品严禁包装或作为托运行李运输。请在打包前查阅航空公司及海关规定。",
   },
   readMoreLabel: {
@@ -76,9 +76,9 @@ export const packing = {
     zh: "国内航站楼",
   },
   locationDesc: {
-    en: "Left of Departure Gate 04 — or directly in front of the Domestic Arrivals entrance.",
-    lo: "ເບື້ອງຊ້າຍຂອງປະຕູທາງອອກ 04 — ຫຼື ຢູ່ທາງໜ້າປະຕູທາງເຂົ້າຂາເຂົ້າພາຍໃນປະເທດ.",
-    zh: "位于 04 号离港门左侧 —— 或国内到达入口正前方。",
+    en: "Left of Departure Gate 04 or directly in front of the Domestic Arrivals entrance.",
+    lo: "ເບື້ອງຊ້າຍຂອງປະຕູທາງອອກ 04 ຫຼື ຢູ່ທາງໜ້າປະຕູທາງເຂົ້າຂາເຂົ້າພາຍໃນປະເທດ.",
+    zh: "位于 04 号离港门左侧 或国内到达入口正前方。",
   },
   locationNote: {
     en: "Our staff are available during all operating hours.",
@@ -129,7 +129,7 @@ export const PACKING_BENEFITS: Record<Lang, PackingBenefit[]> = {
   ],
   lo: [
     {
-      label: "ປ້ອງກັນຮອຍຂີດຂ່ວນ ແລະ ການແຕກຫັກ",
+      label: "ປ້ອງກັນຮອຍຂີດ ແລະ ການແຕກຫັກ",
       desc: "ການຫຸ້ມຫໍ່ຫຼາຍຊັ້ນຊ່ວຍປ້ອງກັນການກະທົບ ແລະ ການສຽດສີລະຫວ່າງການຂົນສົ່ງ",
     },
     {
@@ -142,7 +142,7 @@ export const PACKING_BENEFITS: Record<Lang, PackingBenefit[]> = {
     },
     {
       label: "ກະເປົາ, ສິ່ງຂອງແຕກຫັກງ່າຍ ແລະ ເອກະສານ",
-      desc: "ເໝາະສຳລັບກະເປົາເດີນທາງ, ພັດສະດຸທີ່ແຕກຫັກງ່າຍ ແລະ ແຟ້ມເອກະສານ",
+      desc: "ເໝາະສຳລັບກະເປົາເດີນທາງ, ພັດສະດຸທີ່ແຕກຫັກງ່າຍ ແລະ ເອກະສານສຳຄັນ",
     },
   ],
   zh: [
@@ -215,11 +215,15 @@ export const PACKING_PROHIBITED: Record<Lang, PackingProhibited[]> = {
       label: "Strong-Smelling Food",
       desc: "Durian, mangosteen and other pungent foods are restricted",
     },
+    {
+      label: "All Illegal Items",
+      desc: "Items prohibited under civil aviation law",
+    },
   ],
   lo: [
     {
       label: "ວັດຖຸໄວໄຟ / ສານເຄມີ / ແກ໊ສ",
-      desc: "ໄຟແຊັກ, ສະເປຣ, ແກ໊ສອັດຄວາມດັນ, ສີ, ສານລະລາຍ",
+      desc: "ກັບໄຟ, ສະເປຣ, ແກ໊ສອັດຄວາມດັນ, ສີ, ສານລະລາຍ",
     },
     {
       label: "ອາວຸດ ແລະ ວັດຖຸລະເບີດ",
@@ -227,15 +231,19 @@ export const PACKING_PROHIBITED: Record<Lang, PackingProhibited[]> = {
     },
     {
       label: "ແບັດເຕີຣີ ແລະ ໂທລະສັບ",
-      desc: "ແບັດເຕີຣີລິທຽມສຳຮອງ ແລະ ພາວເວີແບັງ ຕ້ອງຖືຂຶ້ນຫ້ອງໂດຍສານເທົ່ານັ້ນ",
+      desc: "ແບັດເຕີຣີລິທຽມສຳຮອງ ແລະ ພາວເວີແບັງ ຕ້ອງຖືໄວ້ຕິດຕົວເທົ່ານັ້ນ",
     },
     {
       label: "ຂອງມີຄົມ ແລະ ແມ່ເຫຼັກແຮງສູງ",
-      desc: "ມີດ, ກັນໄກທີ່ມີຄວາມຍາວເກີນ 6 ຊມ, ແມ່ເຫຼັກອຸດສາຫະກຳ",
+      desc: "ມີດ, ມີດຕັດທີ່ມີຄວາມຍາວເກີນ 6 ຊມ, ແມ່ເຫຼັກອຸດສາຫະກຳ",
     },
     {
       label: "ອາຫານທີ່ມີກິ່ນແຮງ",
       desc: "ໝາກຖົ່ວລຽນ, ປາແດກ, ນ້ຳປູ, ປາແຫ້ງ, ດອກກຸຫຼາບ ແລະ ອື່ນໆ",
+    },
+    {
+      label: "ສິ່ງຜິດກົດໝາຍທຸກປະເພດ",
+      desc: "ສິງຜິດກົດໝາຍກົດໝາຍການບິນພົນລະເຮືອນ",
     },
   ],
   zh: [
@@ -252,6 +260,10 @@ export const PACKING_PROHIBITED: Record<Lang, PackingProhibited[]> = {
     {
       label: "有强烈气味的食物",
       desc: "榴莲、山竹及其他有强烈气味的食物受运输限制",
+    },
+    {
+      label: "所有违禁品",
+      desc: "违反民用航空法律的物品",
     },
   ],
 };

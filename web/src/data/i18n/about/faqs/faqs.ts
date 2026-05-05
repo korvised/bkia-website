@@ -296,7 +296,7 @@ export const faqData: FAQQA[] = [
   },
 
   // ── Security & Immigration ───────────────────────────────────────────────
-  /* {
+  {
     id: "s1",
     cat: "security",
     q: {
@@ -306,7 +306,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "To speed up the screening process: (1) Remove electronic devices such as laptops, tablets, and phones from your bag and place them in a tray. (2) Place liquid containers kept in a clear ziplock bag into the tray. (3) Remove belts, jackets, and metal items like watches, keys, coins, and phones from your pockets. (4) Passengers with medical devices in their bodies (e.g., pacemakers) should inform the staff before the screening starts.",
-      lo: "ເພື່ອຄວາມວ່ອງໄວໃນການກວດຄົ້ນ: (1) ເອົາອຸປະກອນເອເລັກໂຕຣນິກ ເຊັ່ນ: ຄອມພິວເຕີ Laptop, Tablet ແລະ ໂທລະສັບອອກຈາກກະເປົາວາງໃສ່ຖາດ. (2) ເອົາຂອງເຫຼວທີ່ບັນຈຸໃນຖົງພຣາສຕິກໃສ່ (Ziplock) ອອກມາວາງໃສ່ຖາດ. (3) ຖອດສາຍແອວ, ເສື້ອກັນໜາວ ແລະ ສິ່ງຂອງທີ່ເປັນໂລຫະເຊັ່ນ: ໂມງ, ກະແຈ, ຫຼຽນ ແລະ ໂທລະສັບອອກຈາກຖົງເສື້ອ/ຖົງໂສ້ງ. (4) ຜູ້ທີ່ມີອຸປະກອນການແພດໃນຮ່າງກາຍ (ເຊັ່ນ: ເຄື່ອງຊ່ວຍກະຕຸ້ນຫົວໃຈ) ຄວນແຈ້ງພະນັກງານກ່ອນການກວດຄົ້ນ.",
+      lo: "ເພື່ອຄວາມວ່ອງໄວໃນການກວດຄົ້ນ: (1) ເອົາອຸປະກອນເອເລັກໂຕຣນິກ ເຊັ່ນ: ຄອມພິວເຕີ Laptop, Tablet ແລະ ໂທລະສັບອອກຈາກກະເປົາວາງໃສ່ຖາດ. (2) ສຳລັບການນຳທາດແຫຼວ, ເຈວ ແລະ ອາຍ ຄວນກວດສອບພາຊະນະບັນຈຸຕ້ອງບໍ່ເກີນ 100ml ຕ້ອງເກັບລວມກັນໃສ່ໃນຖົງພາຣສຕິກໃສ ໂດຍປະລິມານລວມກັນຕ້ອງບໍ່ເກີນ 1 ລິດ  ກະລຸນາແຍກອອກຈາກກະເປົາເມື່ອຮອດຈຸດກວດຄົ້ນເພື່ອໃຫ້ພະນັກງານກວດກາ (Ziplock) ອອກມາວາງໃສ່ຖາດ. (3) ຖອດສາຍແອວ, ເສື້ອກັນໜາວ ແລະ ສິ່ງຂອງທີ່ເປັນໂລຫະເຊັ່ນ: ໂມງ, ກະແຈ, ຫຼຽນ ແລະ ໂທລະສັບອອກຈາກຖົງເສື້ອ/ຖົງໂສ້ງ. (4) ຜູ້ທີ່ມີອຸປະກອນການແພດໃນຮ່າງກາຍ (ເຊັ່ນ: ເຄື່ອງຊ່ວຍກະຕຸ້ນຫົວໃຈ) ຄວນແຈ້ງພະນັກງານກ່ອນການກວດຄົ້ນ.",
       zh: "为确保快速通过安检：(1) 请将笔记本电脑、平板电脑及手机等电子设备从包内取出并放入托盘；(2) 将装在透明密封袋（Ziplock）中的液体取出放入托盘；(3) 摘下皮带、外套，并清空口袋中的金属物品，如手表、钥匙、硬币及手机；(4) 体内装有医疗器械（如心脏起搏器）的旅客，请在安检前告知工作人员。",
     },
     links: [
@@ -315,7 +315,7 @@ export const faqData: FAQQA[] = [
         href: "/guides/security",
       },
     ],
-  },*/
+  },
   {
     id: "s2",
     cat: "security",
@@ -414,7 +414,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "Yes, we offer a VIP Lounge service located in a dedicated area separate from the main terminal. The lounge provides a premium experience featuring: (1) Private and exclusive seating, (2) A fully air-conditioned environment for maximum comfort, (3) A quiet and peaceful atmosphere perfect for rest or work, (4) Light snacks and refreshments, and (5) Complimentary high-speed Wi-Fi throughout the area.",
-      lo: "ມີ, ພວກເຮົາມີບໍລິການຫ້ອງຮັບຮອງ VIP ເຊິ່ງຕັ້ງຢູ່ເຂດສະເພາະແຍກອອກຈາກອາຄານຜູ້ໂດຍສານຫຼັກ ພາຍໃນຫ້ອງຮັບຮອງມີສິ່ງອຳນວຍຄວາມສະດວກຄົບຊຸດຄື: (1) ທີ່ນັ່ງສ່ວນຕົວທີ່ເປັນເອກະລັກ, (2) ຫ້ອງແອເຢັນສະບາຍ, (3) ບັນຍາກາດທີ່ງຽບສະຫງົບ ແລະ ເປັນສ່ວນຕົວ ເໝາະແກ່ການພັກຜ່ອນ ຫຼື ເຮັດວຽກ, (4) ມີອາຫານວ່າງໄວ້ຄອຍບໍລິການ, (5) ບໍລິການ WiFi ຟຣີ ຄວາມໄວສູງທົ່ວບໍລິເວນ.",
+      lo: "ມີ, ພວກເຮົາມີບໍລິການຫ້ອງຮັບຮອງ VIP ເຊິ່ງຕັ້ງຢູ່ເຂດສະເພາະແຍກອອກຈາກອາຄານຜູ້ໂດຍສານຫຼັກ ພາຍໃນຫ້ອງຮັບຮອງມີສິ່ງອຳນວຍຄວາມສະດວກຄົບຊຸດຄື: (1) ບ່ອນນັ່ງສ່ວນຕົວທີ່ເປັນເອກະລັກ, (2) ຫ້ອງແອເຢັນສະບາຍ, (3) ບັນຍາກາດທີ່ງຽບສະຫງົບ ແລະ ເປັນສ່ວນຕົວ ເໝາະແກ່ການພັກຜ່ອນ ຫຼື ເຮັດວຽກ, (4) ມີອາຫານວ່າງໄວ້ຄອຍບໍລິການ, (5) ບໍລິການ WiFi ຟຣີ ຄວາມໄວສູງທົ່ວບໍລິເວນ.",
       zh: "是的，我们提供位于独立区域的贵宾休息室（VIP Lounge）。该休息室与主候机楼分开，提供优质的候机体验：(1) 专属私密座椅；(2) 全空调覆盖的凉爽舒适环境；(3) 安静宁适的氛围，适合休息或办公；(4) 提供精美点心与小吃；(5) 全区覆盖免费高速无线网络 (Wi-Fi)。",
     },
     links: [
@@ -774,7 +774,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "The Golden Triangle Special Economic Zone (SEZ) is approximately 8–12 km from the airport, depending on the entrance you are heading to. Under normal road conditions, the journey takes 15–25 minutes by taxi. The fixed taxi fare is 300,000 LAK or 100 CNY. Enquire at the taxi counter (Exit 04, Domestic Terminal) for up-to-date journey information.",
-      lo: "ເຂດເສດຖະກິດພິເສດສາມຫຼ່ຽມຄຳ ຕັ້ງຢູ່ຫ່າງຈາກສະໜາມບິນປະມານ 8–12 ກິໂລ ຕາມຈຸດທາງເຂົ້າ, ໃຊ້ເວລາເດີນທາງປະມານ 10–15 ນາທີ ໂດຍລົດ. ລາຄາຄົງທີ່ຈາກສະໜາມບິນ ແມ່ນ 300,000 ກີບ ຫຼື 100 ຫຍວນ ສອບຖາມຢູ່ເຄົາເຕີລົດແທັກຊີ ປະຕູທາງອອກ 04.",
+      lo: "ເຂດເສດຖະກິດພິເສດສາມຫຼ່ຽມຄຳ ຕັ້ງຢູ່ຫ່າງຈາກສະໜາມບິນປະມານ 8–12 ກິໂລ ຕາມຈຸດທາງເຂົ້າ, ໃຊ້ເວລາເດີນທາງປະມານ 10–15 ນາທີ ໂດຍລົດ. ລາຄາຄົງທີ່ຈາກສະໜາມບິນ ແມ່ນ 300,000 ກີບ ຫຼື 100 ຢວນ ສອບຖາມຢູ່ເຄົາເຕີລົດແທັກຊີ ປະຕູທາງອອກ 04.",
       zh: "金三角特区距机场约 8-12 公里（视入口而定），正常道路情况下出租车约需 15-25 分钟。从机场至金三角特区的固定票价为 300,000 基普或 100 元人民币。详情可在 04 号出口（国内航站楼）出租车服务台咨询。",
     },
     links: [
@@ -798,7 +798,7 @@ export const faqData: FAQQA[] = [
     },
     a: {
       en: "Huay Xai is the provincial capital of Bokeo and the main crossing point between Laos and Thailand via the 4th Thai-Lao Friendship Bridge (connecting to Chiang Khong, Thailand). From the airport, take a fixed-price taxi directly to Huay Xai — the journey takes approximately 45–60 minutes and the fixed fare is 1,050,000 LAK or 350 CNY. At the bridge, tuk-tuks and songthaews are available for the short crossing into Chiang Khong. Slow boats down the Mekong to Luang Prabang also depart from the Huay Xai boat landing.",
-      lo: "ຫ້ວຍຊາຍ ແມ່ນສູນກາງແຂວງບໍ່ແກ້ວ ແລະ ມີດ່ານລາວ-ໄທ ຜ່ານຂົວມິດຕະພາບລາວ-ໄທ ແຫ່ງທີ່ 4 (ຊຽງຂອງ, ໄທ). ຈາກສະໜາມບິນ ທ່ານສາມາດໃຊ້ລົດແທັກຊີໃຊ້ເວລາປະມານ 45–60 ນາທີ ລາຄາ 1,050,000 ກີບ ຫຼື 350 ຫຍວນ. ທີ່ຂົວມິດຕະພາບ ມີບໍລິການລົດຂ້າມດ່ານ.",
+      lo: "ຫ້ວຍຊາຍ ແມ່ນສູນກາງແຂວງບໍ່ແກ້ວ ແລະ ມີດ່ານລາວ-ໄທ ຜ່ານຂົວມິດຕະພາບລາວ-ໄທ ແຫ່ງທີ່ 4 (ຊຽງຂອງ, ໄທ). ຈາກສະໜາມບິນ ທ່ານສາມາດໃຊ້ລົດແທັກຊີໃຊ້ເວລາປະມານ 45–60 ນາທີ ລາຄາ 1,050,000 ກີບ ຫຼື 350 ຢວນ. ທີ່ຂົວມິດຕະພາບ ມີບໍລິການລົດຂ້າມດ່ານ.",
       zh: "会晒是博胶省省会，也是经第 4 泰老友谊大桥连接泰国清孔的主要口岸。从机场乘出租车直达会晒约需 45-60 分钟，固定票价为 1,050,000 基普或 350 元人民币。到达大桥后，可乘三轮车或双条车跨桥前往泰国清孔。会晒码头亦有开往琅勃拉邦的湄公河慢船服务。",
     },
     links: [

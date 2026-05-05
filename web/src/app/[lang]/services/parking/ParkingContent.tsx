@@ -17,11 +17,19 @@ import { useInView } from "@/hooks/useInView";
 import type { Lang } from "@/types/language";
 import { createParkingI18n } from "@/data/i18n/services/parking";
 
-// ── Zone badge colours ────────────────────────────────────────────────────────
-const ZONE_ACCENT: Record<string, { bg: string; text: string }> = {
-  "1":   { bg: "bg-amber-100",    text: "text-amber-700" },
-  "2–3": { bg: "bg-primary-50",   text: "text-primary" },
-  "4":   { bg: "bg-primary-50",   text: "text-primary" },
+// ── Zone colour swatches (matches the parking map image) ──────────────────────
+// Each entry is an ordered list of [bg-class, label] pairs for the zone
+const ZONE_COLORS: Record<"domestic" | "international", string[][]> = {
+  domestic: [
+    ["bg-yellow-400", "bg-pink-500"],   // Zone 1  — Taxi + Bus
+    ["bg-blue-500",   "bg-sky-300"],    // Zone 2–3 — Car + Motorcycle
+    ["bg-green-500",  "bg-red-500"],    // Zone 4   — Staff + VIP
+  ],
+  international: [
+    ["bg-red-500",  "bg-green-500"],    // Zone 1  — VIP + Staff
+    ["bg-blue-500", "bg-sky-300"],      // Zone 2–3 — Car + Motorcycle
+    ["bg-blue-400"],                    // Zone 4   — Car
+  ],
 };
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -265,7 +273,24 @@ export function ParkingContent({ lang }: { lang: Lang }) {
             </h2>
           </div>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          {/* Colour legend */}
+          <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+            {[
+              { bg: "bg-red-500",    label: "VIP" },
+              { bg: "bg-green-500",  label: lang === "zh" ? "员工" : lang === "lo" ? "ພະນັກງານ" : "Staff" },
+              { bg: "bg-blue-500",   label: lang === "zh" ? "轿车" : lang === "lo" ? "ລົດໂດຍສານ" : "Car" },
+              { bg: "bg-yellow-400", label: lang === "zh" ? "出租车" : lang === "lo" ? "ແທັກຊີ" : "Taxi" },
+              { bg: "bg-pink-500",   label: lang === "zh" ? "大巴" : lang === "lo" ? "ລົດເມ" : "Bus" },
+              { bg: "bg-sky-300",    label: lang === "zh" ? "摩托车" : lang === "lo" ? "ລົດຈັກ" : "Motorcycle" },
+            ].map(({ bg, label }) => (
+              <span key={label} className="flex items-center gap-1.5 text-xs text-gray-600">
+                <span className={`h-3.5 w-3.5 rounded-sm ${bg}`} />
+                {label}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {(["domestic", "international"] as const).map((terminal, ti) => (
               <div
                 key={terminal}
@@ -281,13 +306,18 @@ export function ParkingContent({ lang }: { lang: Lang }) {
                   </p>
                 </div>
                 <div className="space-y-3">
-                  {zones[terminal].map(({ zone, desc }) => {
-                    const ac = ZONE_ACCENT[zone] ?? { bg: "bg-gray-100", text: "text-gray-600" };
+                  {zones[terminal].map(({ zone, desc }, zi) => {
+                    const swatches = ZONE_COLORS[terminal]?.[zi] ?? ["bg-gray-300"];
                     return (
-                      <div key={zone} className="flex items-start gap-3">
-                        <span className={`mt-0.5 shrink-0 rounded-md px-2 py-0.5 text-xs font-bold ${ac.bg} ${ac.text}`}>
-                          {zone}
-                        </span>
+                      <div key={zone} className="flex items-center gap-3">
+                        <div className="flex shrink-0 gap-1">
+                          {swatches.map((bg, si) => (
+                            <span
+                              key={si}
+                              className={`h-4 w-4 rounded-sm shadow-sm ${bg}`}
+                            />
+                          ))}
+                        </div>
                         <p className="text-sm text-gray-600">{desc}</p>
                       </div>
                     );

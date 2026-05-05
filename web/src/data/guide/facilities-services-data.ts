@@ -151,7 +151,7 @@ export const facilitiesServices: FacilityService[] = [
   {
     id: "information-service",
     category: "terminal",
-    name: { en: "Information Service", lo: "ໂຕະປະຊາສຳພັນ", zh: "信息服务" },
+    name: { en: "Information Service", lo: "ເຄົາເຕີ້ປະຊາສຳພັນ", zh: "信息服务" },
     icon: HelpCircle,
     color: "secondary",
     shortDescription: {
@@ -299,7 +299,7 @@ export const facilitiesServices: FacilityService[] = [
     },
     description: {
       en: "Dedicated facilities for Muslim passengers to perform religious worship.",
-      lo: "ຫ້ອງສຳລັບຜູ້ໂດຍສານສາດສະໜາມຸດສະລິມ ນຳໃຊ້ໃນການໄຫວ້ສັກກາລະ.",
+      lo: "ຫ້ອງສຳລັບຜູ້ໂດຍສານມຸດສະລິມສາດສະໜາອິດສະລາມ ນຳໃຊ້ໃນການໄຫວ້ສັກກາລະ.",
       zh: "专为穆斯林旅客提供的宗教礼拜场所。",
     },
     location: [
@@ -324,12 +324,12 @@ export const facilitiesServices: FacilityService[] = [
     color: "lime",
     shortDescription: {
       en: "Food options",
-      lo: "ເຄຶ່ອງດື່ມ ແລະ ຂະໜົມ",
+      lo: "ເຄຶ່ອງດື່ມ ແລະ ເຂົ້າໜົມ",
       zh: "餐饮选择",
     },
     description: {
       en: "Variety of cafes and restaurants serving local Lao and international cuisine.",
-      lo: "ອາຫານວ່າງ, ເຄື່ອງດື່ມ, ກາເຟ, ຂະໜົມ ແລະ ອື່ນໆ",
+      lo: "ອາຫານວ່າງ, ເຄື່ອງດື່ມ, ກາເຟ, ເຂົ້າໜົມ ແລະ ອື່ນໆ",
       zh: "提供老挝本地美食和国际选择的各类餐厅。",
     },
     location: [

@@ -14,6 +14,7 @@ import {
   Scissors,
   Apple,
   Bomb,
+  Ban,
   ChevronRight,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
@@ -29,7 +30,7 @@ const PACKING_IMAGES = [
 ] as const;
 
 // ── Prohibited item icon list (order matches per-lang arrays) ─────────────────
-const PROHIBITED_ICONS = [Flame, Bomb, Zap, Scissors, Apple] as const;
+const PROHIBITED_ICONS = [Flame, Bomb, Zap, Scissors, Apple, Ban] as const;
 
 // ── Pricing sizes ─────────────────────────────────────────────────────────────
 const SIZE_COLORS = [

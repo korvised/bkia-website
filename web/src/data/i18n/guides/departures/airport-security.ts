@@ -395,7 +395,7 @@ export const airportSecurity = {
   },
   prohibitConstructionDesc: {
     en: "No construction, building, or installation of any structure within 5 metres of the outer airport fence without authorization.",
-    lo: "ຫ້າມປຸກສ້າງ, ກໍ່ສ້າງ ຫຼື ຕ່ອງຕັ້ງ ສິ່ງໃດໆ ທີ່ຢູ່ຫ່າງຈາກຮົ້ວດ້ານນອກ ຂອງສະໜາມບິນ ໜ້ອຍກວ່າ 5 ແມດ ໂດຍບໍ່ໄດ້ຮັບອະນຸຍາດ.",
+    lo: "ຫ້າມປຸກສ້າງ, ກໍ່ສ້າງ ຫຼື ຕິດຕັ້ງ ສິ່ງໃດໆ ທີ່ຢູ່ຫ່າງຈາກຮົ້ວດ້ານນອກ ຂອງສະໜາມບິນ ໜ້ອຍກວ່າ 5 ແມດ ໂດຍບໍ່ໄດ້ຮັບອະນຸຍາດ.",
     zh: "未经授权，机场外围栏5米范围内禁止进行任何施工、建设或安装活动。",
   },
 

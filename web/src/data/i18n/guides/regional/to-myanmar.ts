@@ -8,7 +8,7 @@ export const toMyanmar = {
   },
   intro: {
     en: "Cross to Myanmar (Tachileik) via the Golden Triangle International Boat Pier.",
-    lo: "ຂ້າມໄປມຽນມາ (ທາຊີແລັກ) ຜ່ານທ່າເຮືອສາກົນສາມຫຼ່ຽມຄຳ.",
+    lo: "ຂ້າມໄປມຽນມາ (ທ່າຂີ້ເລັກ) ຜ່ານທ່າເຮືອສາກົນສາມຫຼ່ຽມຄຳ.",
     zh: "通过金三角国际码头前往缅甸（大其力）。",
   },
 
@@ -18,8 +18,8 @@ export const toMyanmar = {
     zh: "重要",
   },
   warning: {
-    en: "Regulations for foreign tourists change frequently. Check current status with authorities.",
-    lo: "ລະບຽບການສຳລັບນັກທ່ອງທ່ຽວປ່ຽນແປງເລື້ອຍໆ. ກະລຸນາກວດສອບສະຖານະປັດຈຸບັນ.",
+    en: "Regulations for foreign tourists change frequently Check current status with authorities.",
+    lo: "ລະບຽບການສຳລັບນັກທ່ອງທ່ຽວປ່ຽນແປງເລື້ອຍໆ ກະລຸນາກວດສອບສະຖານະປະຈຸບັນ.",
     zh: "外国游客过境规则经常变动。请向官方确认当前状态。",
   },
 
@@ -52,7 +52,7 @@ export const toMyanmar = {
   },
   crossing: {
     en: "International boat crossing to Tachileik/Wan Pong pier.",
-    lo: "ຂ້າມເຮືອສາກົນໄປທ່າເຮືອທາຊີແລັກ/ວັນປົ່ງ.",
+    lo: "ຂ້າມເຮືອສາກົນໄປທ່າເຮືອທາຂີ້ເລັກ/ວັນປົ່ງ.",
     zh: "乘船过境前往大其力/万崩码头。",
   },
 
@@ -85,12 +85,12 @@ export const toMyanmar = {
   },
   alt1: {
     en: "Mae Sai-Tachilek (via Thailand)",
-    lo: "ແມ່ສາຍ-ທາຊີແລັກ (ຜ່ານປະເທດໄທ)",
+    lo: "ແມ່ສາຍ-ທາຂີ້ເລັກ (ຜ່ານປະເທດໄທ)",
     zh: "美赛-大其力 (经由泰国)",
   },
   alt2: {
     en: "Fly to Yangon from Vientiane",
-    lo: "ບິນໄປຢ່າງກຸ້ງຈາກວຽງຈັນ",
+    lo: "ບິນຈາກວຽງຈັນໄປຢ່າງກຸ່ງ",
     zh: "从万象飞往仰光",
   },
 } as const;

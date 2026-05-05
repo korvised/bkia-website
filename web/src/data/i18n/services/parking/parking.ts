@@ -14,7 +14,7 @@ export const parking = {
   },
   subtitle: {
     en: "Convenient, well-organised parking for passengers, greeters, and visitors — with clear zones for every vehicle type.",
-    lo: "ລານຈອດລົດທີ່ສະດວກສະບາຍ ແລະ ມີລະບຽບ ສຳລັບຜູ້ໂດຍສານ, ຜູ້ມາຮັບ-ສົ່ງ ແລະ ຜູ້ມາຢ້ຽມຢາມ — ມີເຂດສຳລັບທຸກປະເພດຍານພາຫະນະ.",
+    lo: "ລານຈອດລົດທີ່ສະດວກສະບາຍ ແລະ ມີລະບຽບ ສຳລັບຜູ້ໂດຍສານ, ຜູ້ມາຮັບ-ສົ່ງ ແລະ ຜູ້ມາຢ້ຽມຢາມ ມີພື້ນທີ່ສຳລັບພາຫະນະທຸກປະເພດ.",
     zh: "为乘客、接送人员和访客提供便捷、井然有序的停车服务，各车辆类型均有专属停车区。",
   },
   mapLabel: {

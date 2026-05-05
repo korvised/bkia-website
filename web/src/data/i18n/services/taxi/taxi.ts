@@ -44,8 +44,8 @@ export const taxi = {
     zh: "目的地与票价",
   },
   faresNote: {
-    en: "All fares are fixed by destination. Inquire at the service counter before departure.",
-    lo: "ລາຄາກຳນົດຕາມຈຸດໝາຍ. ກະລຸນາສອບຖາມລາຄາໂດຍກົງຢູ່ເຄົາເຕີ ກ່ອນເດີນທາງ.",
+    en: "All fares are fixed by destination Inquire at the service counter before departure.",
+    lo: "ລາຄາກຳນົດຕາມຈຸດໝາຍ ກະລຸນາສອບຖາມລາຄາໂດຍກົງຢູ່ເຄົາເຕີ ກ່ອນເດີນທາງ.",
     zh: "票价按目的地固定。请出发前在服务台咨询。",
   },
   startingFrom: {
