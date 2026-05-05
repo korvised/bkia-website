@@ -51,7 +51,7 @@ export const sidebarItems: SidebarItem[] = [
     id: "flights",
     title: {
       en: "Flight\nInformation",
-      lo: "ຂໍ້ມູນ\nຖ່ຽວບິນ",
+      lo: "ຂໍ້ມູນ\nຖ້ຽວບິນ",
       zh: "航班信息",
     },
     icon: Plane,

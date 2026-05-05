@@ -229,7 +229,7 @@ export function LostFoundPageContent({ lang, stats }: Props) {
         <div className="container relative text-center">
           <p className="lf-up lf-d1 mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white/80">
             <PackageSearch className="h-3.5 w-3.5" />
-            {t("pageTitle", lang)}
+            Lost & Found
           </p>
           <h1 className="lf-up lf-d2 mb-3 text-3xl font-bold text-white md:text-5xl">
             {t("pageTitle", lang)}

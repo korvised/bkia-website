@@ -108,12 +108,12 @@ export const navigation: NavItem[] = [
         "https://bkia-website.s3.ap-southeast-7.amazonaws.com/navbar/flight-status.jpg",
       title: {
         en: "Real-time Flight Status",
-        lo: "ກວດສອບສະຖານະຖ່ຽວບິນ",
+        lo: "ກວດສອບສະຖານະຖ້ຽວບິນ",
         zh: "实时航班动态",
       },
       description: {
         en: "Check arrivals and departures instantly",
-        lo: "ຕິດຕາມຖ່ຽວບິນຂາເຂົ້າ ແລະ ຂາອອກ ໄດ້ທັນທີ",
+        lo: "ຕິດຕາມຖ້ຽວບິນຂາເຂົ້າ ແລະ ຂາອອກ ໄດ້ທັນທີ",
         zh: "即时查询起飞与到达航班",
       },
     },

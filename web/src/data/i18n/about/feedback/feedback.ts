@@ -169,9 +169,9 @@ export const feedback = {
     zh: "需要直接联系工作人员吗？",
   },
   ctaSubtitle: {
-    en: "Our airport staff are available to assist you in person.",
-    lo: "ພະນັກງານສະໜາມບິນຂອງພວກເຮົາມີຄວາມພ້ອມ ທີ່ຈະໃຫ້ການຊ່ວຍເຫຼືອທ່ານດ້ວຍຕົນເອງ.",
-    zh: "我们的机场工作人员随时可以为您提供面对面的协助。",
+    en: "Our airport staff are available to assist you in person",
+    lo: "ພະນັກງານສະໜາມບິນຂອງພວກເຮົາມີຄວາມພ້ອມ ທີ່ຈະໃຫ້ການຊ່ວຍເຫຼືອທ່ານ",
+    zh: "我们的机场工作人员随时可以为您提供面对面的协助",
   },
   callUs: {
     en: "Call Us",
