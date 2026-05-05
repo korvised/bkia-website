@@ -1,9 +1,10 @@
 ﻿"use client";
 
 import { TH, MM } from "country-flag-icons/react/1x1";
-import { Clock, FileText, MapPin, Car, Ship, AlertTriangle, Lightbulb } from "lucide-react";
+import { Clock, MapPin, Car, Ship, AlertTriangle, Lightbulb } from "lucide-react";
 import { Lang } from "@/types/language";
 import { createRegionalTransportI18n } from "@/data/i18n/guides/regional";
+import { TAXI_PRICES, TAXI_DEST_CONTENT } from "@/data/i18n/services/taxi";
 
 interface Props {
   lang: Lang;
@@ -53,9 +54,26 @@ export const RegionalComponent = ({ lang }: Props) => {
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
               <InfoRow icon={MapPin} label={tTH.distanceTitle} value={tTH.distance} />
-              <InfoRow icon={Car} label={tTH.transportTitle} value={tTH.taxi} />
+
+              {/* Taxi prices from taxi service page */}
+              <div className="flex items-start gap-3 border-b border-gray-100 py-3">
+                <Car className="mt-0.5 h-4 w-4 shrink-0 text-[#00AAAC]" />
+                <div className="flex-1">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">{tTH.transportTitle}</p>
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between gap-4 text-sm">
+                      <span className="text-gray-700">{TAXI_DEST_CONTENT[lang][1].name}</span>
+                      <span className="shrink-0 font-semibold text-[#00AAAC]">{TAXI_PRICES.goldenTriangle.lak} ກີບ / {TAXI_PRICES.goldenTriangle.cny} ¥</span>
+                    </div>
+                    <div className="flex items-center justify-between gap-4 text-sm">
+                      <span className="text-gray-700">{TAXI_DEST_CONTENT[lang][2].name}</span>
+                      <span className="shrink-0 font-semibold text-[#00AAAC]">{TAXI_PRICES.huayXai.lak} ກີບ / {TAXI_PRICES.huayXai.cny} ¥</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <InfoRow icon={Clock} label={tTH.hoursTitle} value={tTH.hours} />
-              <InfoRow icon={FileText} label={tTH.visaTitle} value={tTH.visa} />
             </div>
 
             <div>
@@ -119,10 +137,21 @@ export const RegionalComponent = ({ lang }: Props) => {
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
               <InfoRow icon={MapPin} label={tMM.distanceTitle} value={tMM.distance} />
-              <InfoRow icon={Car} label={tMM.transportTitle} value={tMM.transport} />
+
+              {/* Taxi prices from taxi service page */}
+              <div className="flex items-start gap-3 border-b border-gray-100 py-3">
+                <Car className="mt-0.5 h-4 w-4 shrink-0 text-[#00AAAC]" />
+                <div className="flex-1">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">{tMM.transportTitle}</p>
+                  <div className="flex items-center justify-between gap-4 text-sm">
+                    <span className="text-gray-700">{TAXI_DEST_CONTENT[lang][1].name}</span>
+                    <span className="shrink-0 font-semibold text-[#00AAAC]">{TAXI_PRICES.goldenTriangle.lak} ກີບ / {TAXI_PRICES.goldenTriangle.cny} ¥</span>
+                  </div>
+                </div>
+              </div>
+
               <InfoRow icon={Ship} label={tMM.crossingTitle} value={tMM.crossing} />
               <InfoRow icon={Clock} label={tMM.hoursTitle} value={tMM.hours} />
-              <InfoRow icon={FileText} label={tMM.visaTitle} value={tMM.visa} />
             </div>
 
             <div>
