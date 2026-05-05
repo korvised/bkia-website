@@ -124,14 +124,14 @@ export const airportSecurity = {
     zh: "烟草和打火机",
   },
   tobaccoCheckpoint: {
-    en: "Strictly prohibited as carry-on baggage — tobacco and lighters may not be brought through the security checkpoint",
-    lo: "ຫ້າມນຳຢາສູບ ແລະ ກັບໄຟ ເປັນກະເປົາ carry-on ຢ່າງເດັດຂາດ — ຫ້າມຜ່ານຈຸດກວດຄົ້ນ",
-    zh: "严禁作为随身行李携带——烟草和打火机不得通过安检",
+    en: "Tobacco may be brought on board, but e-cigarettes are not permitted",
+    lo: "ຢາສູບສາມາດເອົາຂື້ນເຮືອບິນໄດ້ ແຕ່ຢາສູບໄຟຟ້າບໍ່ສາມາດເອົາຂຶ້ນໄດ້",
+    zh: "烟草可以携带上机，但电子烟不被允许",
   },
   tobaccoChecked: {
-    en: "Also prohibited in checked baggage — tobacco and lighters are not permitted on the flight in any form",
-    lo: "ຫ້າມໃສ່ກະເປົາໂຫຼດເຊັ່ນກັນ — ຢາສູບ ແລະ ກັບໄຟ ບໍ່ສາມາດນຳຂຶ້ນເຮືອບິນໄດ້ທຸກຮູບແບບ",
-    zh: "托运行李中同样禁止携带——烟草和打火机不得以任何形式带上飞机",
+    en: "The same applies to lighters — not permitted on the flight",
+    lo: "ກັບໄຟບໍ່ສາມາດນຳຂຶ້ນເຮືອບິນໄດ້ ແລະ ຜ່ານຈຸດກວດຄົ້ນໄດ້",
+    zh: "打火机同样如此——不得携带上机",
   },
 
   // Screening Steps Section
@@ -442,9 +442,9 @@ export const airportSecurity = {
     zh: "禁止随身携带超过3部手机登机",
   },
   prohibitExcessPhonesDesc: {
-    en: "Passengers are strictly prohibited from carrying more than 3 mobile phones or similar communication devices as carry-on baggage.",
-    lo: "ຫ້າມຜູ້ໂດຍສານ ນຳໂທລະສັບ ຫຼື ອຸປະກອນສື່ສານທີ່ຄ້າຍຄືກັນ ເກີນ 3 ໜ່ວຍ ເປັນກະເປົາ carry-on ຢ່າງເດັດຂາດ.",
-    zh: "严禁旅客随身携带超过3部手机或类似通信设备作为手提行李。",
+    en: "Passengers are strictly prohibited from carrying more than 3 mobile phones or communication devices in carry-on baggage.",
+    lo: "ຫ້າມຜູ້ໂດຍສານ ນຳໂທລະສັບ ຫຼື ອຸປະກອນສື່ສານເກີນ 3 ໜ່ວຍ ເປັນກະເປົາ carry-on ຢ່າງເດັດຂາດ.",
+    zh: "严禁旅客随身携带超过 3 部手机或通讯设备作为手提行李。",
   },
 
   // NEW: Excess electronics (item 12)
