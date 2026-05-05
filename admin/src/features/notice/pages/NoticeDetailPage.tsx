@@ -266,18 +266,14 @@ export function NoticeDetailPage() {
           {notice.tags && notice.tags.length > 0 && (
             <div className="mt-5 flex flex-wrap items-center gap-2">
               <LuTag className="h-4 w-4 text-gray-400 shrink-0" />
-              {notice.tags.map((tag, i) => {
-                const tagLabel = tag[activeLang] || tag.en || tag.lo || tag.zh;
-                if (!tagLabel) return null;
-                return (
-                  <span
-                    key={i}
-                    className="inline-flex rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 hover:bg-gray-200 transition-colors"
-                  >
-                    {tagLabel}
-                  </span>
-                );
-              })}
+              {notice.tags.map((tag, i) => (
+                <span
+                  key={i}
+                  className="inline-flex rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 hover:bg-gray-200 transition-colors"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           )}
         </div>

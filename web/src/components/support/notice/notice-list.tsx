@@ -136,7 +136,7 @@ export function NoticeList({
                           config.tagBg,
                         )}
                       >
-                        {tag[lang]}
+                        {tag}
                       </span>
                     ))}
                     {notice.tags.length > 3 && (

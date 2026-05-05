@@ -22,6 +22,16 @@ export const parking = {
     lo: "ແຜນຜັງລານຈອດລົດ",
     zh: "停车场布局图",
   },
+  operationHours: {
+    en: "06:00 – 22:00",
+    lo: "06:00 – 22:00",
+    zh: "06:00 – 22:00",
+  },
+  operationDaily: {
+    en: "Daily (GMT+7)",
+    lo: "ທຸກມື້ (GMT+7)",
+    zh: "每天 (GMT+7)",
+  },
   ratesLabel: {
     en: "Parking Rates",
     lo: "ອັດຕາຄ່າຈອດລົດ",

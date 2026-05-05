@@ -22,9 +22,9 @@ export class Notice {
   @Column({ type: 'jsonb' })
   title: Record<string, string>;
 
-  // Multilingual description (plain text): { en: "...", lo: "...", zh: "..." }
-  @Column({ type: 'jsonb' })
-  description: Record<string, string>;
+  // Multilingual description (plain text, optional): { en: "...", lo: "...", zh: "..." }
+  @Column({ type: 'jsonb', nullable: true, default: null })
+  description?: Record<string, string> | null;
 
   // Multilingual markdown content: { en: "# Title\n...", lo: "# ຫົວຂໍ້\n...", zh: "# 标题\n..." }
   @Column({ type: 'jsonb' })
@@ -47,9 +47,9 @@ export class Notice {
   @Column({ type: 'date', nullable: true })
   expiryDate?: string | null;
 
-  // Multilingual tags array: [{ en: "...", lo: "...", zh: "..." }, ...]
+  // Plain string tags array: ["tag1", "tag2", ...]
   @Column({ type: 'jsonb', default: [] })
-  tags: Record<string, string>[];
+  tags: string[];
 
   @Column({ type: 'boolean', default: true })
   isActive: boolean;

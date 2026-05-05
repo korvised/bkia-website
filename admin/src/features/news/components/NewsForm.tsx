@@ -164,9 +164,14 @@ export function NewsForm({
   const handleCoverImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      setErrors((prev) => ({ ...prev, coverImage: `File "${file.name}" exceeds the 5 MB limit (${(file.size / 1024 / 1024).toFixed(1)} MB).` }));
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+    setErrors((prev) => { const { coverImage: _, ...rest } = prev; return rest; });
     setForm((prev) => ({ ...prev, coverImageFile: file }));
-    const url = URL.createObjectURL(file);
-    setCoverPreview(url);
+    setCoverPreview(URL.createObjectURL(file));
   };
 
   const removeCoverImage = () => {
@@ -192,8 +197,18 @@ export function NewsForm({
   const handleGalleryFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const picked = Array.from(e.target.files ?? []);
     if (!picked.length) return;
+    const oversized = picked.filter((f) => f.size > 10 * 1024 * 1024);
+    const valid = picked.filter((f) => f.size <= 10 * 1024 * 1024);
+    if (oversized.length > 0) {
+      setErrors((prev) => ({
+        ...prev,
+        gallery: `${oversized.length} file(s) exceed 10 MB and were skipped: ${oversized.map((f) => f.name).join(", ")}.`,
+      }));
+    } else {
+      setErrors((prev) => { const { gallery: _, ...rest } = prev; return rest; });
+    }
     const allowed = Math.max(0, 20 - galleryOrder.length);
-    const newEntries: GalleryEntry[] = picked.slice(0, allowed).map((file) => ({
+    const newEntries: GalleryEntry[] = valid.slice(0, allowed).map((file) => ({
       kind: "new",
       data: file,
       preview: URL.createObjectURL(file),
@@ -384,6 +399,10 @@ export function NewsForm({
             </>
           )}
         </div>
+
+        {errors.gallery && (
+          <p className="mb-3 text-xs text-red-500">{errors.gallery}</p>
+        )}
 
         {galleryOrder.length === 0 ? (
           <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-200 py-10 text-center">

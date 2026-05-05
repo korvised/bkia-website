@@ -11,7 +11,7 @@ export interface INotice {
   publishDate: string;
   effectiveDate?: string | null;
   expiryDate?: string | null;
-  tags: MultilingualText[];
+  tags: string[];
   isActive: boolean;
   createdAt: string;
   updatedAt: string;

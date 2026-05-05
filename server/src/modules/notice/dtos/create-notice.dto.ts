@@ -4,6 +4,7 @@ import {
   IsEnum,
   IsObject,
   IsOptional,
+  IsString,
   ValidateNested,
 } from 'class-validator';
 import { Type } from 'class-transformer';
@@ -16,10 +17,11 @@ export class CreateNoticeDto {
   @Type(() => MultilingualTextDto)
   title!: Record<string, string>;
 
+  @IsOptional()
   @IsObject()
   @ValidateNested()
   @Type(() => MultilingualTextDto)
-  description!: Record<string, string>;
+  description?: Record<string, string> | null;
 
   @IsObject()
   @ValidateNested()
@@ -41,10 +43,8 @@ export class CreateNoticeDto {
   expiryDate?: string | null;
 
   @IsOptional()
-  @IsObject({ each: true })
-  @ValidateNested({ each: true })
-  @Type(() => MultilingualTextDto)
-  tags?: Record<string, string>[];
+  @IsString({ each: true })
+  tags?: string[];
 
   @IsOptional()
   @IsBoolean()

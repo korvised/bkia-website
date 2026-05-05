@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 import { Input, Select } from "@/components/ui";
 import { cn } from "@/lib";
 import { ImportantPriority } from "@/types";
-import type { INotice, INoticeForm, ICreateNoticePayload, IMultilingualText } from "@/features/notice/types";
+import type { INotice, INoticeForm, ICreateNoticePayload } from "@/features/notice/types";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -53,12 +53,7 @@ export function NoticeForm({
   const [form, setForm] = useState<INoticeForm>(emptyForm);
   const [activeLang, setActiveLang] = useState<"en" | "lo" | "zh">("en");
   const [contentMode, setContentMode] = useState<"write" | "preview">("write");
-  const [tagDraft, setTagDraft] = useState<IMultilingualText>({
-    en: "",
-    lo: "",
-    zh: "",
-  });
-  const [tagLang, setTagLang] = useState<"en" | "lo" | "zh">("en");
+  const [tagDraft, setTagDraft] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Pre-populate when editing
@@ -100,14 +95,10 @@ export function NoticeForm({
   };
 
   const addTag = () => {
-    const hasValue =
-      tagDraft.en?.trim() || tagDraft.lo?.trim() || tagDraft.zh?.trim();
-    if (!hasValue) return;
-    setForm((prev) => ({
-      ...prev,
-      tags: [...prev.tags, { ...tagDraft }],
-    }));
-    setTagDraft({ en: "", lo: "", zh: "" });
+    const trimmed = tagDraft.trim();
+    if (!trimmed) return;
+    setForm((prev) => ({ ...prev, tags: [...prev.tags, trimmed] }));
+    setTagDraft("");
   };
 
   const removeTag = (index: number) => {
@@ -119,17 +110,11 @@ export function NoticeForm({
 
   const validate = (): boolean => {
     const errs: Record<string, string> = {};
-    const titleEn = form.title.en?.trim();
-    const titleLo = form.title.lo?.trim();
-    if (!titleEn && !titleLo) {
+    if (!form.title.en?.trim() && !form.title.lo?.trim()) {
       errs.title = "Title is required in at least one language (EN or ລາວ).";
     }
-    if (!form.priority) {
-      errs.priority = "Priority is required.";
-    }
-    if (!form.publishDate) {
-      errs.publishDate = "Publish date is required.";
-    }
+    if (!form.priority) errs.priority = "Priority is required.";
+    if (!form.publishDate) errs.publishDate = "Publish date is required.";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -137,9 +122,10 @@ export function NoticeForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+    const hasDescription = Object.values(form.description).some((v) => v?.trim());
     const payload: ICreateNoticePayload = {
       title: form.title,
-      description: form.description,
+      description: hasDescription ? form.description : undefined,
       content: form.content,
       priority: form.priority as ImportantPriority,
       publishDate: form.publishDate,
@@ -151,6 +137,7 @@ export function NoticeForm({
     await onSubmit(payload);
   };
 
+  const activeLangLabel = LANG_TABS.find((t) => t.key === activeLang)?.label;
   const langFont = activeLang === "en" ? "font-en" : activeLang === "lo" ? "font-lo" : "font-zh";
 
   // ── Render ──────────────────────────────────────────────────────────────────
@@ -169,7 +156,7 @@ export function NoticeForm({
               className={cn(
                 "rounded-t-md px-4 py-2 text-sm font-medium transition-colors",
                 activeLang === tab.key
-                  ? "border-b-2 border-blue-600 text-blue-600"
+                  ? "border-b-2 border-primary text-primary"
                   : "text-gray-500 hover:text-gray-700",
               )}
             >
@@ -183,12 +170,10 @@ export function NoticeForm({
           <div>
             <label className="mb-1.5 block text-sm font-medium text-gray-700">
               Title{" "}
-              <span className="text-gray-400 font-normal">
-                ({LANG_TABS.find((t) => t.key === activeLang)?.label})
-              </span>
+              <span className="font-normal text-gray-400">({activeLangLabel})</span>
             </label>
             <Input
-              placeholder={`Enter title in ${LANG_TABS.find((t) => t.key === activeLang)?.label}...`}
+              placeholder={`Enter title in ${activeLangLabel}...`}
               value={form.title[activeLang] ?? ""}
               onChange={(e) => setMultilingual("title", activeLang, e.target.value)}
             />
@@ -201,29 +186,24 @@ export function NoticeForm({
           <div>
             <label className="mb-1.5 block text-sm font-medium text-gray-700">
               Description{" "}
-              <span className="text-gray-400 font-normal">
-                ({LANG_TABS.find((t) => t.key === activeLang)?.label})
-              </span>
+              <span className="font-normal text-gray-400">({activeLangLabel}) — optional</span>
             </label>
             <textarea
-              placeholder={`Short description in ${LANG_TABS.find((t) => t.key === activeLang)?.label}...`}
+              placeholder={`Short description in ${activeLangLabel}...`}
               value={form.description[activeLang] ?? ""}
-              onChange={(e) =>
-                setMultilingual("description", activeLang, e.target.value)
-              }
+              onChange={(e) => setMultilingual("description", activeLang, e.target.value)}
               rows={3}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none"
+              className="w-full resize-none rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
             />
           </div>
 
           {/* Content */}
           <div>
-            {/* Content header: label + Write/Preview toggle */}
             <div className="mb-1.5 flex items-center justify-between">
               <label className="text-sm font-medium text-gray-700">
                 Content{" "}
-                <span className="text-gray-400 font-normal">
-                  ({LANG_TABS.find((t) => t.key === activeLang)?.label}) — Markdown supported
+                <span className="font-normal text-gray-400">
+                  ({activeLangLabel}) — Markdown supported
                 </span>
               </label>
               <div className="flex items-center rounded-lg border border-gray-200 bg-gray-50 p-0.5">
@@ -258,13 +238,11 @@ export function NoticeForm({
 
             {contentMode === "write" ? (
               <textarea
-                placeholder={`Full content (markdown) in ${LANG_TABS.find((t) => t.key === activeLang)?.label}...`}
+                placeholder={`Full content (markdown) in ${activeLangLabel}...`}
                 value={form.content[activeLang] ?? ""}
-                onChange={(e) =>
-                  setMultilingual("content", activeLang, e.target.value)
-                }
+                onChange={(e) => setMultilingual("content", activeLang, e.target.value)}
                 rows={12}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-y"
+                className="w-full resize-y rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
               />
             ) : (
               <div className="min-h-[200px] rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
@@ -287,7 +265,7 @@ export function NoticeForm({
 
       {/* ── Details ── */}
       <div className="rounded-xl border border-gray-200 bg-white p-6">
-        <h3 className="mb-4 text-sm font-semibold text-gray-700 uppercase tracking-wide">
+        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-700">
           Details
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -300,10 +278,7 @@ export function NoticeForm({
               placeholder="Select priority"
               value={form.priority}
               onChange={(value) =>
-                setForm((prev) => ({
-                  ...prev,
-                  priority: value as ImportantPriority,
-                }))
+                setForm((prev) => ({ ...prev, priority: value as ImportantPriority }))
               }
               options={PRIORITY_OPTIONS}
             />
@@ -323,7 +298,7 @@ export function NoticeForm({
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, publishDate: e.target.value }))
               }
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
             />
             {errors.publishDate && (
               <p className="mt-1 text-xs text-red-500">{errors.publishDate}</p>
@@ -334,7 +309,7 @@ export function NoticeForm({
           <div>
             <label className="mb-1.5 block text-sm font-medium text-gray-700">
               Effective Date{" "}
-              <span className="text-gray-400 font-normal">(optional)</span>
+              <span className="font-normal text-gray-400">(optional)</span>
             </label>
             <input
               type="date"
@@ -342,7 +317,7 @@ export function NoticeForm({
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, effectiveDate: e.target.value }))
               }
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
             />
           </div>
 
@@ -350,7 +325,7 @@ export function NoticeForm({
           <div>
             <label className="mb-1.5 block text-sm font-medium text-gray-700">
               Expiry Date{" "}
-              <span className="text-gray-400 font-normal">(optional)</span>
+              <span className="font-normal text-gray-400">(optional)</span>
             </label>
             <input
               type="date"
@@ -358,7 +333,7 @@ export function NoticeForm({
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, expiryDate: e.target.value }))
               }
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
             />
           </div>
         </div>
@@ -369,12 +344,10 @@ export function NoticeForm({
             type="button"
             role="switch"
             aria-checked={form.isActive}
-            onClick={() =>
-              setForm((prev) => ({ ...prev, isActive: !prev.isActive }))
-            }
+            onClick={() => setForm((prev) => ({ ...prev, isActive: !prev.isActive }))}
             className={cn(
-              "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-              form.isActive ? "bg-blue-600" : "bg-gray-300",
+              "relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+              form.isActive ? "bg-primary" : "bg-gray-300",
             )}
           >
             <span
@@ -384,103 +357,65 @@ export function NoticeForm({
               )}
             />
           </button>
-          <span className="text-sm font-medium text-gray-700">
-            {form.isActive ? "Active" : "Inactive"}
-          </span>
-          <span className="text-xs text-gray-400">
-            {form.isActive
-              ? "This notice will be visible on the public website."
-              : "This notice is hidden from the public website."}
-          </span>
+          <div>
+            <span className="text-sm font-medium text-gray-700">
+              {form.isActive ? "Active" : "Inactive"}
+            </span>
+            <p className="text-xs text-gray-400">
+              {form.isActive
+                ? "This notice will be visible on the public website."
+                : "This notice is hidden from the public website."}
+            </p>
+          </div>
         </div>
       </div>
 
       {/* ── Tags ── */}
       <div className="rounded-xl border border-gray-200 bg-white p-6">
-        <h3 className="mb-4 text-sm font-semibold text-gray-700 uppercase tracking-wide">
+        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-700">
           Tags
         </h3>
 
-        {/* Existing tags */}
         {form.tags.length > 0 && (
           <div className="mb-4 flex flex-wrap gap-2">
-            {form.tags.map((tag, index) => {
-              const label = tag.en || tag.lo || tag.zh || "";
-              return (
-                <span
-                  key={index}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-sm text-blue-700"
+            {form.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-sm text-primary"
+              >
+                {tag}
+                <button
+                  type="button"
+                  onClick={() => removeTag(index)}
+                  className="rounded-full p-0.5 transition-colors hover:bg-primary/10"
                 >
-                  {label}
-                  <button
-                    type="button"
-                    onClick={() => removeTag(index)}
-                    className="rounded-full p-0.5 hover:bg-blue-100 transition-colors"
-                  >
-                    <LuX className="h-3 w-3" />
-                  </button>
-                </span>
-              );
-            })}
+                  <LuX className="h-3 w-3" />
+                </button>
+              </span>
+            ))}
           </div>
         )}
 
-        {/* Add tag form */}
-        <div className="rounded-lg border border-dashed border-gray-300 p-4">
-          <p className="mb-3 text-xs font-medium text-gray-500 uppercase tracking-wide">
-            Add New Tag
-          </p>
-
-          {/* Tag language tabs */}
-          <div className="mb-3 flex items-center gap-1">
-            {LANG_TABS.map((tab) => (
-              <button
-                key={tab.key}
-                type="button"
-                onClick={() => setTagLang(tab.key)}
-                className={cn(
-                  "rounded px-3 py-1 text-xs font-medium transition-colors",
-                  tagLang === tab.key
-                    ? "bg-blue-100 text-blue-700"
-                    : "text-gray-500 hover:bg-gray-100",
-                )}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-2">
-            <div className="flex-1">
-              <Input
-                placeholder={`Tag in ${LANG_TABS.find((t) => t.key === tagLang)?.label}...`}
-                value={tagDraft[tagLang] ?? ""}
-                onChange={(e) =>
-                  setTagDraft((prev) => ({
-                    ...prev,
-                    [tagLang]: e.target.value,
-                  }))
-                }
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault();
-                    addTag();
-                  }
-                }}
-              />
-            </div>
-            <button
-              type="button"
-              onClick={addTag}
-              className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
-            >
-              <LuPlus className="h-4 w-4" />
-              Add
-            </button>
-          </div>
-          <p className="mt-2 text-xs text-gray-400">
-            You can enter the tag in multiple languages before clicking Add.
-          </p>
+        <div className="flex gap-2">
+          <Input
+            placeholder="e.g. Flight Update"
+            value={tagDraft}
+            onChange={(e) => setTagDraft(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                addTag();
+              }
+            }}
+          />
+          <button
+            type="button"
+            onClick={addTag}
+            className="flex shrink-0 items-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600"
+          >
+            <LuPlus className="h-4 w-4" />
+            Add
+          </button>
         </div>
       </div>
 
@@ -492,8 +427,8 @@ export function NoticeForm({
           className={cn(
             "flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-medium text-white transition-colors",
             isLoading
-              ? "bg-blue-400 cursor-not-allowed"
-              : "bg-blue-600 hover:bg-blue-700",
+              ? "cursor-not-allowed bg-primary/60"
+              : "bg-primary hover:bg-primary-600",
           )}
         >
           {isLoading ? (

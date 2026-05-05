@@ -15,7 +15,7 @@ export interface INotice {
   publishDate: string;
   effectiveDate?: string | null;
   expiryDate?: string | null;
-  tags: IMultilingualText[];
+  tags: string[];
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
@@ -47,18 +47,18 @@ export interface INoticeForm {
   publishDate: string;
   effectiveDate: string;
   expiryDate: string;
-  tags: IMultilingualText[];
+  tags: string[];
   isActive: boolean;
 }
 
 export interface ICreateNoticePayload {
   title: IMultilingualText;
-  description: IMultilingualText;
+  description?: IMultilingualText;
   content: IMultilingualText;
   priority: ImportantPriority;
   publishDate: string;
   effectiveDate?: string | null;
   expiryDate?: string | null;
-  tags?: IMultilingualText[];
+  tags?: string[];
   isActive?: boolean;
 }

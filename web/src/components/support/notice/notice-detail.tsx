@@ -136,7 +136,7 @@ export function NoticeDetail({ lang, notice }: NoticeDetailProps) {
                   key={index}
                   className="inline-flex items-center rounded-full bg-white/70 px-3 py-1 text-xs font-medium text-gray-700 ring-1 ring-black/10"
                 >
-                  {tag[lang]}
+                  {tag}
                 </span>
               ))}
             </div>

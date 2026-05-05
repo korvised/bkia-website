@@ -101,19 +101,24 @@ export function ParkingContent({ lang }: { lang: Lang }) {
               className="pk-anim mt-8 flex flex-wrap gap-3"
               style={heroInView ? { animation: "pk-fade-up 0.65s cubic-bezier(0.22,1,0.36,1) 260ms both" } : { opacity: 0 }}
             >
-              {[
-                { icon: Clock,  label: "24 / 7" },
-                { icon: MapPin, label: t.domestic },
-                { icon: MapPin, label: t.international },
-              ].map(({ icon: Icon, label }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-2 rounded-lg bg-white/8 px-3 py-2"
-                >
-                  <Icon className="h-3.5 w-3.5 text-primary-300" />
-                  <span className="text-xs font-semibold text-white/70">{label}</span>
-                </div>
-              ))}
+              {/* Hours pill */}
+            <div className="flex items-center gap-2 rounded-lg bg-white/8 px-3 py-2">
+              <Clock className="h-3.5 w-3.5 shrink-0 text-primary-300" />
+              <div>
+                <p className="text-xs font-bold text-white/80">{t.operationHours}</p>
+                <p className="text-[10px] text-white/45">{t.operationDaily}</p>
+              </div>
+            </div>
+            {/* Terminal pills */}
+            {([t.domestic, t.international] as const).map((label) => (
+              <div
+                key={label}
+                className="flex items-center gap-2 rounded-lg bg-white/8 px-3 py-2"
+              >
+                <MapPin className="h-3.5 w-3.5 text-primary-300" />
+                <span className="text-xs font-semibold text-white/70">{label}</span>
+              </div>
+            ))}
             </div>
           </div>
 
