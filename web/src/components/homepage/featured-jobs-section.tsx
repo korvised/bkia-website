@@ -10,37 +10,16 @@ interface FeaturedJobsSectionProps {
   jobs: IJobPost[];
 }
 
-// ── Deadline chip ────────────────────────────────────────────────────────────
+// ── Deadline helpers ─────────────────────────────────────────────────────────
 
-function DeadlineChip({
-  deadline,
-  closesLabel,
-}: {
-  deadline?: string | null;
-  closesLabel: string;
-}) {
-  if (!deadline) return null;
+type DeadlineState = "expired" | "soon" | "ok";
 
+function deadlineState(deadline: string): DeadlineState {
   const d = new Date(deadline);
   const now = new Date();
-  const expired = d < now;
+  if (d < now) return "expired";
   const daysLeft = Math.ceil((d.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-  const soon = !expired && daysLeft <= 7;
-
-  return (
-    <span
-      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold ${
-        expired
-          ? "bg-red-100 text-red-600"
-          : soon
-            ? "bg-amber-100 text-amber-700"
-            : "bg-emerald-50 text-emerald-700"
-      }`}
-    >
-      <Calendar className="h-3 w-3 shrink-0" />
-      {closesLabel} {deadline.split("T")[0]}
-    </span>
-  );
+  return daysLeft <= 7 ? "soon" : "ok";
 }
 
 // ── Section ──────────────────────────────────────────────────────────────────
@@ -116,18 +95,34 @@ export function FeaturedJobsSection({ lang, jobs }: FeaturedJobsSectionProps) {
 
               {/* ── Row 3: Dates + CTA ───────────────────────────── */}
               <div className="mt-4 flex items-end justify-between gap-3">
-                {/* Date & deadline */}
-                <div className="flex flex-col gap-1.5">
-                  <span className="flex items-center gap-1.5 text-[11px] text-gray-400">
-                    <Calendar className="h-3 w-3 shrink-0" />
-                    {fmtDate(new Date(job.publishDate), lang)}
+                {/* Date rows */}
+                <div className="flex flex-col gap-1">
+                  {/* Start date */}
+                  <span className="flex items-center gap-1.5 text-[11px]">
+                    <Calendar className="h-3 w-3 shrink-0 text-gray-400" />
+                    <span className="text-gray-400">{t.postedOn}</span>
+                    <span className="font-medium text-gray-500">
+                      {fmtDate(new Date(job.publishDate), lang)}
+                    </span>
                   </span>
-                  {job.deadline && (
-                    <DeadlineChip
-                      deadline={job.deadline}
-                      closesLabel={t.closesOn}
-                    />
-                  )}
+
+                  {/* Deadline */}
+                  {job.deadline && (() => {
+                    const state = deadlineState(job.deadline);
+                    const color =
+                      state === "expired" ? "text-red-600" :
+                      state === "soon"    ? "text-red-500" :
+                                           "text-red-400";
+                    return (
+                      <span className={`flex items-center gap-1.5 text-[11px] ${color}`}>
+                        <Calendar className="h-3 w-3 shrink-0" />
+                        <span>{t.closesOn}</span>
+                        <span className="font-medium">
+                          {fmtDate(new Date(job.deadline), lang)}
+                        </span>
+                      </span>
+                    );
+                  })()}
                 </div>
 
                 {/* CTA */}

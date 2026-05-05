@@ -137,6 +137,10 @@
 }
 
 /* Smooth scrolling behavior */
+html {
+    scroll-behavior: smooth;
+}
+
 .horizontal-scroll {
     scroll-behavior: smooth;
 }

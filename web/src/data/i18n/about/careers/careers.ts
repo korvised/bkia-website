@@ -125,6 +125,11 @@ export const careers = {
     lo: "ທຸກຕໍາແໜ່ງ",
     zh: "全部职位",
   },
+  applyNow: {
+    en: "Apply Now",
+    lo: "ສະໝັກທີ່ນີ້",
+    zh: "立即申请",
+  },
   applyTitle: {
     en: "Apply for this Position",
     lo: "ສະໝັກຕໍາແໜ່ງນີ້",

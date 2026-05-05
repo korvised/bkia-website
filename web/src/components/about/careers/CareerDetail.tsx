@@ -50,42 +50,64 @@ export function CareerDetail({ job, lang }: CareerDetailProps) {
       <div className="rounded-2xl border border-gray-100 bg-white">
         {/* Header */}
         <div className="border-l-4 border-[#00AAAC] px-6 py-6 sm:px-8 sm:py-7">
-          {/* Badges */}
-          <div className="mb-3 flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-[#00AAAC]/10 px-3 py-1 text-xs font-bold tracking-wide text-[#00AAAC]">
-              {job.position[lang]}
-            </span>
-            <span className="rounded-full bg-[#1a2c5b]/[0.08] px-3 py-1 text-xs font-semibold text-[#1a2c5b]">
-              {job.vacancyCount}&nbsp;
-              {job.vacancyCount === 1 ? t.vacancy : t.vacancies}
-            </span>
-            {job.deadline && (
-              <span
-                className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                  deadlineStatus === "expired"
-                    ? "bg-red-100 text-red-700"
-                    : deadlineStatus === "soon"
-                      ? "bg-red-50 text-red-600"
-                      : "bg-red-50 text-red-500"
-                }`}
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0 flex-1">
+              {/* Badges */}
+              <div className="mb-3 flex flex-wrap items-center gap-2">
+                <span className="rounded-full bg-[#00AAAC]/10 px-3 py-1 text-xs font-bold tracking-wide text-[#00AAAC]">
+                  {job.position[lang]}
+                </span>
+                <span className="rounded-full bg-[#1a2c5b]/[0.08] px-3 py-1 text-xs font-semibold text-[#1a2c5b]">
+                  {job.vacancyCount}&nbsp;
+                  {job.vacancyCount === 1 ? t.vacancy : t.vacancies}
+                </span>
+                {job.deadline && (
+                  <span
+                    className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                      deadlineStatus === "expired"
+                        ? "bg-red-100 text-red-700"
+                        : deadlineStatus === "soon"
+                          ? "bg-red-50 text-red-600"
+                          : "bg-red-50 text-red-500"
+                    }`}
+                  >
+                    {t.deadline}:{" "}
+                    {deadlineStatus === "expired"
+                      ? t.deadlineExpired
+                      : fmtDate(new Date(job.deadline!), lang)}
+                  </span>
+                )}
+              </div>
+
+              {/* Title */}
+              <h3 className="text-xl font-bold leading-snug text-[#0f1e3d] sm:text-2xl">
+                {job.title[lang]}
+              </h3>
+
+              {/* Posted */}
+              <p className="mt-1.5 text-xs text-gray-400">
+                {t.posted}&nbsp;{fmtDate(new Date(job.publishDate), lang)}
+              </p>
+            </div>
+
+            {/* Apply button — top right */}
+            <a
+              href="#apply-section"
+              className="group hidden shrink-0 items-center gap-2 rounded-xl bg-[#00AAAC] px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-[#00AAAC]/20 transition-all hover:bg-[#009a9c] hover:shadow-md hover:shadow-[#00AAAC]/25 focus:outline-none focus:ring-2 focus:ring-[#00AAAC] focus:ring-offset-2 sm:inline-flex"
+            >
+              <svg
+                className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                aria-hidden="true"
               >
-                {t.deadline}:{" "}
-                {deadlineStatus === "expired"
-                  ? t.deadlineExpired
-                  : fmtDate(new Date(job.deadline!), lang)}
-              </span>
-            )}
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg>
+              {t.applyNow}
+            </a>
           </div>
-
-          {/* Title */}
-          <h3 className="text-xl font-bold leading-snug text-[#0f1e3d] sm:text-2xl">
-            {job.title[lang]}
-          </h3>
-
-          {/* Posted */}
-          <p className="mt-1.5 text-xs text-gray-400">
-            {t.posted}&nbsp;{fmtDate(new Date(job.publishDate), lang)}
-          </p>
         </div>
 
         {/* Divider */}
@@ -101,6 +123,26 @@ export function CareerDetail({ job, lang }: CareerDetailProps) {
             </div>
           </div>
         )}
+
+        {/* Apply CTA — mobile fallback (full width at bottom) */}
+        <div className="border-t border-gray-50 px-6 py-5 sm:hidden sm:px-8 sm:py-6">
+          <a
+            href="#apply-section"
+            className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AAAC] px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-[#00AAAC]/20 transition-all hover:bg-[#009a9c] focus:outline-none focus:ring-2 focus:ring-[#00AAAC] focus:ring-offset-2"
+          >
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg>
+            {t.applyNow}
+          </a>
+        </div>
       </div>
     </div>
   );

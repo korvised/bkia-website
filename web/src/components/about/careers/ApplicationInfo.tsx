@@ -175,7 +175,7 @@ export function ApplicationInfo({ lang }: ApplicationInfoProps) {
       </section>
 
       {/* ── III. Contact ────────────────────────────────────────────────────── */}
-      <section className="border-t border-gray-100 bg-white py-14 sm:py-20">
+      <section id="apply-section" className="border-t border-gray-100 bg-white py-14 sm:py-20">
         <div ref={contactRef} className="container">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:gap-16">
 

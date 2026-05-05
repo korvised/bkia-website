@@ -1,4 +1,4 @@
-import { ApiError, fetchJSON } from "@/lib";
+import { ApiError, fetchJSON, withQuery } from "@/lib";
 import type { ICareerActivity, IJobPost } from "@/types/careers";
 
 /**
@@ -25,8 +25,9 @@ export async function getJobPostById(id: string): Promise<IJobPost | null> {
 /**
  * List featured published job posts for the home page
  */
-export function listFeaturedJobPosts(): Promise<IJobPost[]> {
-  return fetchJSON<IJobPost[]>("career/jobs/public/featured");
+export function listFeaturedJobPosts(limit: number = 3): Promise<IJobPost[]> {
+  const url = withQuery("career/jobs/public/featured", { limit: limit.toString() });
+  return fetchJSON<IJobPost[]>(url);
 }
 
 /**

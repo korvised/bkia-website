@@ -36,7 +36,7 @@ export default async function HomePage({ params }: HomePageProps) {
     listHighlightNotices(),
     listFeaturedNews(3),
     listPublicBanners(),
-    listFeaturedJobPosts().catch(() => []),
+    listFeaturedJobPosts(3).catch(() => []),
   ]);
 
   return (

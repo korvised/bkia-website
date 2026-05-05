@@ -86,6 +86,11 @@ export const homepage = {
     lo: "ຕໍາແໜ່ງ",
     zh: "名额",
   },
+  postedOn: {
+    en: "Posted",
+    lo: "ເປີດຮັບ",
+    zh: "发布",
+  },
   closesOn: {
     en: "Closes",
     lo: "ປິດຮັບ",
