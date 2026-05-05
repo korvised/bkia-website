@@ -174,11 +174,16 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
         ],
       },
       {
-        // ADMIN_ROLES only — no STAFF access, no permissions needed
         name: "Careers",
         path: "/content/careers",
         icon: LuBriefcase,
         allowRoles: CONTENT_ACCESS_ROLES.CAREERS_MANAGEMENT,
+        allowPermissions: [
+          PermissionSlug.CAREER_READ,
+          PermissionSlug.CAREER_CREATE,
+          PermissionSlug.CAREER_UPDATE,
+          PermissionSlug.CAREER_DELETE,
+        ],
       },
     ],
   },

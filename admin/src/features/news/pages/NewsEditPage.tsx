@@ -10,19 +10,17 @@ function buildFormData(payload: INewsSubmitPayload): FormData {
   const fd = new FormData();
   fd.append("slug", payload.slug);
   fd.append("title", JSON.stringify(payload.title));
-  if (payload.excerpt)
-    fd.append("excerpt", JSON.stringify(payload.excerpt));
+  fd.append("excerpt", JSON.stringify(payload.excerpt ?? null));
   fd.append("content", JSON.stringify(payload.content));
   fd.append("category", payload.category);
-  if (payload.author) fd.append("author", payload.author);
+  fd.append("author", payload.author ?? "");
   fd.append("publishDate", payload.publishDate);
   fd.append("isFeatured", String(payload.isFeatured));
   if (payload.featuredIndex != null)
     fd.append("featuredIndex", String(payload.featuredIndex));
   fd.append("isPublished", String(payload.isPublished));
   fd.append("tags", JSON.stringify(payload.tags ?? []));
-  if (payload.metaDescription)
-    fd.append("metaDescription", JSON.stringify(payload.metaDescription));
+  fd.append("metaDescription", JSON.stringify(payload.metaDescription ?? null));
   if (payload.coverImageFile)
     fd.append("coverImage", payload.coverImageFile);
   // Always send keepImageIds so server knows to rebuild gallery

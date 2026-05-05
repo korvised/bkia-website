@@ -125,13 +125,13 @@ export function NoticeForm({
     const hasDescription = Object.values(form.description).some((v) => v?.trim());
     const payload: ICreateNoticePayload = {
       title: form.title,
-      description: hasDescription ? form.description : undefined,
+      description: hasDescription ? form.description : null,
       content: form.content,
       priority: form.priority as ImportantPriority,
       publishDate: form.publishDate,
       effectiveDate: form.effectiveDate || null,
       expiryDate: form.expiryDate || null,
-      tags: form.tags.length > 0 ? form.tags : undefined,
+      tags: form.tags,
       isActive: form.isActive,
     };
     await onSubmit(payload);

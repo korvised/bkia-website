@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Lang } from "@/types/language";
 import { NewsDetail, NewsDetailSkeleton } from "@/components/about";
+import { NoticesCrossNav } from "@/components/support/notice";
 import { getNewsBySlug } from "@/services/news";
 
 interface NewsDetailPageProps {
@@ -41,8 +42,11 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
   const { lang, slug } = await params;
 
   return (
-    <Suspense fallback={<NewsDetailSkeleton />}>
-      <NewsDetailContent lang={lang as Lang} slug={slug} />
-    </Suspense>
+    <>
+      <Suspense fallback={<NewsDetailSkeleton />}>
+        <NewsDetailContent lang={lang as Lang} slug={slug} />
+      </Suspense>
+      <NoticesCrossNav lang={lang as Lang} current="news" />
+    </>
   );
 }

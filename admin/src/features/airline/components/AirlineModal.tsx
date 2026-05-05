@@ -35,12 +35,11 @@ function buildFormData(form: IAirlineForm): FormData {
   fd.append("code", form.code.toUpperCase().trim());
   fd.append("name", form.name.trim());
 
-  const hasNames = form.names.en || form.names.lo || form.names.zh;
-  if (hasNames) fd.append("names", JSON.stringify(form.names));
-
-  if (form.hotline.trim()) fd.append("hotline", form.hotline.trim());
-  if (form.phone.trim()) fd.append("phone", form.phone.trim());
-  if (form.website.trim()) fd.append("website", form.website.trim());
+  if (form.names.en || form.names.lo || form.names.zh)
+    fd.append("names", JSON.stringify(form.names));
+  fd.append("hotline", form.hotline.trim());
+  fd.append("phone", form.phone.trim());
+  fd.append("website", form.website.trim());
   fd.append("isActive", String(form.isActive));
 
   if (form.logoFile) fd.append("logo", form.logoFile);

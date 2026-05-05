@@ -5,6 +5,7 @@ import { Lang } from "@/types/language";
 import {
   NoticeDetail,
   NoticeDetailSkeleton,
+  NoticesCrossNav,
 } from "@/components/support/notice";
 import { getNoticeById } from "@/services/notice";
 
@@ -22,7 +23,7 @@ export async function generateMetadata({
 
     return {
       title: notice?.title[lang as Lang],
-      description: notice?.description[lang as Lang],
+      description: notice?.description?.[lang as Lang],
     };
   } catch {
     return {
@@ -47,8 +48,11 @@ export default async function NoticeDetailPage({
   const { lang, id } = await params;
 
   return (
-    <Suspense fallback={<NoticeDetailSkeleton />}>
-      <NoticeDetailContent lang={lang as Lang} id={id} />
-    </Suspense>
+    <>
+      <Suspense fallback={<NoticeDetailSkeleton />}>
+        <NoticeDetailContent lang={lang as Lang} id={id} />
+      </Suspense>
+      <NoticesCrossNav lang={lang as Lang} current="airport" />
+    </>
   );
 }

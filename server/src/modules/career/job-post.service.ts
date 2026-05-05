@@ -132,7 +132,12 @@ export class JobPostService {
     if (dto.publishDate !== undefined) post.publishDate = dto.publishDate;
     if (dto.deadline !== undefined) post.deadline = dto.deadline ?? null;
 
+    // Track old cover image ID — delete AFTER save (onDelete: SET NULL would
+    // null the FK if we deleted first, which is safe but inconsistent; saving
+    // first and then deleting is the cleaner approach across all services).
+    let oldCoverImageId: string | undefined;
     if (coverImageFile) {
+      oldCoverImageId = post.coverImage?.id;
       post.coverImage = await this.fileService.uploadFile(
         coverImageFile,
         'career/jobs',
@@ -140,14 +145,26 @@ export class JobPostService {
     }
 
     await this.jobPostRepo.save(post);
+
+    if (oldCoverImageId) {
+      await this.fileService.deleteFile(oldCoverImageId);
+    }
+
     return this.findOne(post.id);
   }
 
   /**
-   * Delete a job post by ID.
+   * Delete a job post by ID and clean up its cover image from DB and S3.
    */
-  async delete(id: string): Promise<JobPost> {
+  async delete(id: string): Promise<void> {
     const post = await this.findOne(id);
-    return this.jobPostRepo.remove(post);
+    const coverImageId = post.coverImage?.id;
+
+    // Remove entity first (coverImageId FK disappears with the row)
+    await this.jobPostRepo.remove(post);
+
+    if (coverImageId) {
+      await this.fileService.deleteFile(coverImageId);
+    }
   }
 }

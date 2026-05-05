@@ -118,10 +118,10 @@ export function NoticeDetailPage() {
   const title =
     notice.title[activeLang] || notice.title.en || notice.title.lo || notice.title.zh || "—";
   const description =
-    notice.description[activeLang] ||
-    notice.description.en ||
-    notice.description.lo ||
-    notice.description.zh ||
+    notice.description?.[activeLang] ||
+    notice.description?.en ||
+    notice.description?.lo ||
+    notice.description?.zh ||
     "";
   const content =
     notice.content[activeLang] ||

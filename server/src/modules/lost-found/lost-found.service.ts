@@ -384,19 +384,30 @@ export class LostFoundService {
   async remove(id: string) {
     const lf = await this.repo.findOne({
       where: { id },
-      relations: { images: true, claims: { proofFiles: true } },
+      relations: { coverImage: true, images: true, claims: { proofFiles: true } },
     });
     if (!lf) throw new NotFoundException('Item not found');
 
-    // Collect all files to delete from storage
+    // Collect all file IDs before removal
+    const coverImageId = lf.coverImage?.id;
     const itemImages = lf.images ?? [];
     const proofFiles = (lf.claims ?? []).flatMap((c) => c.proofFiles ?? []);
 
+    // Remove entity FIRST — clears coverFileId FK (onDelete: SET NULL handles it)
+    // and removes lost_found_images join table rows so File records can be deleted
+    // without FK constraint violations.
+    await this.repo.remove(lf);
+
+    // Now safe to delete all associated files from DB and S3
+    const fileIds = [
+      ...(coverImageId ? [coverImageId] : []),
+      ...itemImages.map((f) => f.id),
+      ...proofFiles.map((f) => f.id),
+    ];
     await Promise.allSettled(
-      [...itemImages, ...proofFiles].map((f) => this.fileService.deleteFile(f.id)),
+      fileIds.map((fileId) => this.fileService.deleteFile(fileId)),
     );
 
-    await this.repo.remove(lf);
     return { success: true };
   }
 }

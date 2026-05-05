@@ -131,12 +131,12 @@ export class AirlineService {
       airline.code = newCode;
     }
     if (dto.name !== undefined) airline.name = dto.name.trim();
-    if (dto.names) airline.names = dto.names;
+    if (dto.names !== undefined) airline.names = dto.names;
     if (dto.hotline !== undefined)
-      airline.hotline = dto.hotline?.trim() ?? null;
-    if (dto.phone !== undefined) airline.phone = dto.phone?.trim() ?? null;
+      airline.hotline = dto.hotline?.trim() || null;
+    if (dto.phone !== undefined) airline.phone = dto.phone?.trim() || null;
     if (dto.website !== undefined)
-      airline.website = dto.website?.trim() ?? null;
+      airline.website = dto.website?.trim() || null;
     if (dto.isActive !== undefined) airline.isActive = dto.isActive;
 
     // handle removeLogo flag

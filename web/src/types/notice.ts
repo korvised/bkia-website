@@ -5,7 +5,7 @@ import { IPaginationMeta } from "@/types/pagination";
 export interface INotice {
   id: string;
   title: MultilingualText;
-  description: MultilingualText;
+  description?: MultilingualText | null;
   content: MultilingualText;
   priority: ImportantPriority;
   publishDate: string;

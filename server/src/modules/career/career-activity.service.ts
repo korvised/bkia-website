@@ -97,10 +97,18 @@ export class CareerActivityService {
   }
 
   /**
-   * Delete an activity by ID.
+   * Delete an activity by ID and remove its image from DB and S3.
    */
-  async delete(id: string): Promise<CareerActivity> {
+  async delete(id: string): Promise<void> {
     const activity = await this.findOne(id);
-    return this.activityRepo.remove(activity);
+    const imageId = activity.image?.id;
+
+    // Remove entity first — image has onDelete: 'RESTRICT', so the File cannot
+    // be deleted while career_activities.imageId still references it.
+    await this.activityRepo.remove(activity);
+
+    if (imageId) {
+      await this.fileService.deleteFile(imageId);
+    }
   }
 }

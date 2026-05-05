@@ -99,9 +99,11 @@ export function NoticeDetail({ lang, notice }: NoticeDetailProps) {
           </h1>
 
           {/* Description */}
-          <p className="text-lg leading-relaxed text-gray-600">
-            {notice.description[lang]}
-          </p>
+          {notice.description?.[lang] && (
+            <p className="text-lg leading-relaxed text-gray-600">
+              {notice.description[lang]}
+            </p>
+          )}
 
           {/* Meta */}
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-black/10 pt-6 text-sm">
@@ -147,7 +149,7 @@ export function NoticeDetail({ lang, notice }: NoticeDetailProps) {
       {/* Content */}
       <section className="bg-white py-10">
         <div className="container max-w-4xl">
-          <article className="prose prose-gray prose-lg prose-headings:font-bold prose-headings:text-gray-900 prose-h1:text-3xl prose-h1:mt-8 prose-h1:mb-4 prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-a:text-[#00AAAC] prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-strong:font-semibold prose-ul:my-4 prose-ol:my-4 prose-li:text-gray-700 prose-li:my-2 prose-img:rounded-xl prose-img:my-8 prose-blockquote:border-l-4 prose-blockquote:border-[#00AAAC] prose-blockquote:bg-[#f0fbfc] prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:my-6 prose-code:text-[#00AAAC] prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:rounded-xl prose-pre:p-4 max-w-none">
+          <article className="news-content">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {notice.content[lang]}
             </ReactMarkdown>

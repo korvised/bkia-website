@@ -145,6 +145,11 @@ export enum PermissionSlug {
   FEEDBACK_CREATE = 'feedback:create',
   FEEDBACK_UPDATE = 'feedback:update',
   FEEDBACK_DELETE = 'feedback:delete',
+  // Career
+  CAREER_READ = 'career:read',
+  CAREER_CREATE = 'career:create',
+  CAREER_UPDATE = 'career:update',
+  CAREER_DELETE = 'career:delete',
 }
 
 export enum AuctionCategory {

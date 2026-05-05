@@ -345,8 +345,12 @@ export class NewsService {
       news.slug = dto.slug;
     }
 
-    // Update cover image if provided
+    // Track old cover image ID — must delete AFTER save because the entity
+    // has onDelete: 'RESTRICT', so the File cannot be deleted while news.coverImageId
+    // still points to it. Saving updates the FK first, making deletion safe.
+    let oldCoverImageId: string | undefined;
     if (coverImage) {
+      oldCoverImageId = news.coverImage?.id;
       const uploaded = await this.fileService.uploadFile(
         coverImage,
         `news/${news.slug}`,
@@ -358,7 +362,7 @@ export class NewsService {
     if (dto.excerpt !== undefined) news.excerpt = dto.excerpt;
     if (dto.content !== undefined) news.content = dto.content;
     if (dto.category !== undefined) news.category = dto.category;
-    if (dto.author !== undefined) news.author = dto.author ?? null;
+    if (dto.author !== undefined) news.author = dto.author?.trim() || null;
     if (dto.publishDate !== undefined) news.publishDate = dto.publishDate;
     if (dto.isFeatured !== undefined) news.isFeatured = dto.isFeatured;
     if (dto.featuredIndex !== undefined) news.featuredIndex = dto.featuredIndex ?? null;
@@ -367,14 +371,22 @@ export class NewsService {
     if (dto.metaDescription !== undefined)
       news.metaDescription = dto.metaDescription ?? null;
 
-    // Gallery update logic
+    // Gallery update — track removed images; delete them AFTER save so the
+    // join table rows are cleared first (prevents FK constraint violations).
+    let removedGalleryIds: string[] = [];
     if (dto.keepImageIds !== undefined) {
       // keepImageIds present → rebuild gallery: keep specified IDs + add new uploads
       const keepIds: string[] = JSON.parse(dto.keepImageIds);
       // Preserve the ORDER of keepIds (admin may have reordered the gallery)
       const keptImages = keepIds
-        .map((id) => (news.images ?? []).find((img) => img.id === id))
+        .map((imgId) => (news.images ?? []).find((img) => img.id === imgId))
         .filter((img): img is NonNullable<typeof img> => !!img);
+
+      // Collect IDs of images being dropped from the gallery
+      removedGalleryIds = (news.images ?? [])
+        .filter((img) => !keepIds.includes(img.id))
+        .map((img) => img.id);
+
       const newImages =
         imageFiles.length > 0
           ? await Promise.all(
@@ -394,15 +406,44 @@ export class NewsService {
       news.images = [...(news.images ?? []), ...newImages];
     }
 
+    // Save first — updates coverImageId FK and rebuilds news_images join table
     await this.newsRepo.save(news);
+
+    // Now safe to delete old files: FK refs have been updated/removed by the save
+    if (oldCoverImageId) {
+      await this.fileService.deleteFile(oldCoverImageId);
+    }
+    if (removedGalleryIds.length > 0) {
+      await Promise.allSettled(
+        removedGalleryIds.map((fileId) => this.fileService.deleteFile(fileId)),
+      );
+    }
+
     return this.findOne(news.id);
   }
 
   /**
-   * Delete a news article.
+   * Delete a news article and clean up all associated files from DB and S3.
    */
   async delete(id: string) {
-    const news = await this.findOne(id);
-    return await this.newsRepo.remove(news);
+    const news = await this.findOne(id); // findOne loads coverImage + images relations
+
+    // Collect file IDs before removal
+    const coverImageId = news.coverImage?.id;
+    const galleryImageIds = (news.images ?? []).map((img) => img.id);
+
+    // Remove entity first — clears the coverImageId FK (satisfying RESTRICT constraint)
+    // and removes all news_images join table rows (so files can then be deleted)
+    await this.newsRepo.remove(news);
+
+    // Now safe to delete files from DB and S3
+    if (coverImageId) {
+      await this.fileService.deleteFile(coverImageId);
+    }
+    if (galleryImageIds.length > 0) {
+      await Promise.allSettled(
+        galleryImageIds.map((fileId) => this.fileService.deleteFile(fileId)),
+      );
+    }
   }
 }

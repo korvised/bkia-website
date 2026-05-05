@@ -9,7 +9,7 @@ export interface IMultilingualText {
 export interface INotice {
   id: string;
   title: IMultilingualText;
-  description: IMultilingualText;
+  description?: IMultilingualText | null;
   content: IMultilingualText;
   priority: ImportantPriority;
   publishDate: string;
@@ -53,7 +53,7 @@ export interface INoticeForm {
 
 export interface ICreateNoticePayload {
   title: IMultilingualText;
-  description?: IMultilingualText;
+  description?: IMultilingualText | null;
   content: IMultilingualText;
   priority: ImportantPriority;
   publishDate: string;

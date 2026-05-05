@@ -130,11 +130,8 @@ export const useUpdateFlight = (id: string) => {
           remarks: values.remarks?.trim() || null,
           routeId: values.routeId,
           airlineId: values.airlineId,
-          // Only include check-in counters for departure flights
-          checkInCounterIds:
-            isDeparture && values.checkInCounterIds.length > 0
-              ? values.checkInCounterIds
-              : undefined,
+          // Always send check-in counters; empty array clears all assigned counters
+          checkInCounterIds: isDeparture ? values.checkInCounterIds : [],
         };
 
         await updateFlight({ id, body: payload }).unwrap();

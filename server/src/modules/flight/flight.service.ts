@@ -386,16 +386,20 @@ export class FlightService {
       flight.airline = airline;
     }
 
-    if (dto.checkInCounterIds) {
-      const counters = await this.counterService.findByCounterIds(
-        dto.checkInCounterIds,
-      );
-      if (counters.length !== dto.checkInCounterIds.length) {
-        throw new BadRequestException(
-          'One or more counterId values are invalid',
+    if (dto.checkInCounterIds !== undefined) {
+      if (dto.checkInCounterIds.length > 0) {
+        const counters = await this.counterService.findByCounterIds(
+          dto.checkInCounterIds,
         );
+        if (counters.length !== dto.checkInCounterIds.length) {
+          throw new BadRequestException(
+            'One or more counterId values are invalid',
+          );
+        }
+        flight.checkInCounters = counters;
+      } else {
+        flight.checkInCounters = [];
       }
-      flight.checkInCounters = counters;
     }
 
     return await this.flightRepo.save(flight);

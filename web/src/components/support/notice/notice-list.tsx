@@ -121,9 +121,11 @@ export function NoticeList({
                 </h3>
 
                 {/* Description */}
-                <p className="line-clamp-2 text-sm text-gray-500">
-                  {notice.description[lang]}
-                </p>
+                {notice.description?.[lang] && (
+                  <p className="line-clamp-2 text-sm text-gray-500">
+                    {notice.description[lang]}
+                  </p>
+                )}
 
                 {/* Tags */}
                 {notice.tags && notice.tags.length > 0 && (

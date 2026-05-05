@@ -38,6 +38,9 @@ export class CreateAirlineDto {
   phone?: string;
 
   @IsOptional()
+  @Transform(({ value }) =>
+    typeof value === 'string' && value.trim() === '' ? undefined : value,
+  )
   @IsUrl({ require_protocol: false })
   website?: string;
 

@@ -126,7 +126,7 @@ export const footer = {
   },
   address: {
     en: "Tônpheung District, Bokeo Province, Lao PDR",
-    lo: "ບ້ານໃຫຍ່ສີເມືອງງາມ, ເມື່ອງຕົ້ນເຜີ້ງ, ແຂວງບໍ່ແກ້ວ, ສປປ ລາວ",
+    lo: "ບ້ານໃຫຍ່ສີເມືອງງາມ, ເມືອງຕົ້ນເຜີ້ງ, ແຂວງບໍ່ແກ້ວ, ສປປ ລາວ",
     zh: "老挝博乔省会晒村",
   },
   email: {

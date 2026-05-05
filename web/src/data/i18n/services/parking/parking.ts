@@ -38,14 +38,14 @@ export const parking = {
     zh: "停车费率",
   },
   ratesTitle: {
-    en: "Hourly Rates",
-    lo: "ຄ່າບໍລິການຕໍ່ຊົ່ວໂມງ",
-    zh: "按小时计费",
+    en: "Service Rates",
+    lo: "ຄ່າບໍລິການ",
+    zh: "收费标准",
   },
   ratesNote: {
-    en: "All rates are charged per hour of parking.",
-    lo: "ຄ່າຈອດລົດທຸກອັດຕາ ຄິດໄລ່ຕາມຊົ່ວໂມງ.",
-    zh: "所有费率均按停车小时数计算。",
+    en: "All rates are calculated based on actual parking hours.",
+    lo: "ຄ່າຈອດລົດທຸກອັດຕາ ຄິດໄລ່ຕາມຊົ່ວໂມງຈອດຕົວຈິງ",
+    zh: "所有费率按实际停车小时数计算。",
   },
   perHour: {
     en: "/ hr",
