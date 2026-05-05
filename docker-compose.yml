@@ -56,6 +56,11 @@ services:
     restart: always
     env_file:
       - ./data/env/web/.env
+    environment:
+      # Server-side only: Next.js calls NestJS directly over Docker network.
+      # NEXT_PUBLIC_API_BASE_URL should be empty (or unset) in .env
+      # so browser calls use relative /api/* via Cloudflare → nginx.
+      - API_INTERNAL_URL=http://server:8080
     expose:
       - "3000"
     depends_on:

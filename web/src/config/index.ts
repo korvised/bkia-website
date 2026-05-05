@@ -1,5 +1,6 @@
 import {
   NEXT_PUBLIC_API_BASE_URL,
+  API_INTERNAL_URL,
   NEXT_PUBLIC_ASSET_BASE_URL,
   NEXT_PUBLIC_CDN_DOMAIN,
   NEXT_PUBLIC_S3_BUCKET,
@@ -16,6 +17,7 @@ export const config = {
   isProd: IS_PROD,
 
   apiBaseUrl: NEXT_PUBLIC_API_BASE_URL,
+  apiInternalUrl: API_INTERNAL_URL,
 
   // Image/CDN settings
   cdnDomain: NEXT_PUBLIC_CDN_DOMAIN,         // e.g. "cdn.example.com"
