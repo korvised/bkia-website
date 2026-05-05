@@ -1,7 +1,6 @@
-// Server-side internal URL — used by SSR / RSC to reach NestJS directly
-// over the Docker network without going through nginx or Cloudflare.
-// Injected via docker-compose environment: API_INTERNAL_URL=http://server:8080
-export const API_INTERNAL_URL = process.env.API_INTERNAL_URL ?? "";
+// Public API URL
+export const NEXT_PUBLIC_API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
 
 // === Asset / Image hosting ===
 export const NEXT_PUBLIC_CDN_DOMAIN = process.env.NEXT_PUBLIC_CDN_DOMAIN ?? "";

@@ -1,21 +1,4 @@
-
-/**
- * Returns the correct API origin depending on execution context:
- *
- * - Browser  → "" (empty)  — relative URL, same host.
- *   Cloudflare → nginx → /api/* → NestJS container.
- *
- * - Server (SSR / RSC) → API_INTERNAL_URL (e.g. "http://server:8080")
- *   Next.js container calls NestJS directly over the Docker bridge network.
- */
-function getApiOrigin(): string {
-  if (typeof window === "undefined") {
-    // Server-side: call NestJS directly over the Docker bridge network
-    return process.env.API_INTERNAL_URL ?? "";
-  }
-  // Browser: relative URL — nginx reverse proxy routes /api/* to NestJS
-  return "";
-}
+import { config } from "@/config";
 
 /**
  * Typed API error — thrown by fetchJSON / postForm whenever the server
@@ -76,7 +59,7 @@ export async function fetchJSON<T>(
   path: string,
   init?: RequestInit,
 ): Promise<T> {
-  const res = await fetch(`${getApiOrigin()}/api/${path}`, {
+  const res = await fetch(`${config.apiBaseUrl}/api/${path}`, {
     cache: "no-store",
     ...init,
     headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
@@ -106,7 +89,7 @@ export async function postForm<T>(
   body: FormData,
   method: "POST" | "PATCH" = "POST",
 ): Promise<T> {
-  const res = await fetch(`${getApiOrigin()}/api/${path}`, {
+  const res = await fetch(`${config.apiBaseUrl}/api/${path}`, {
     method,
     body,
     cache: "no-store",

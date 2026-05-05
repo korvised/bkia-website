@@ -1,20 +1,43 @@
 import { WelcomePopupConfig } from "@/types/welcome-popup";
-import { fetchJSON } from "@/lib/http";
+import { config } from "@/config";
+
+async function fetchJSON<T>(
+  input: RequestInfo,
+  init?: RequestInit,
+): Promise<T> {
+  const res = await fetch(input, {
+    // for live-ish boards: don't cache; adjust to `revalidate: 30` if you prefer
+    cache: "no-store",
+    ...init,
+    headers: {
+      "Content-Type": "application/json",
+      ...(init?.headers ?? {}),
+    },
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`API ${res.status} ${res.statusText} – ${text}`);
+  }
+  return res.json() as Promise<T>;
+}
 
 export const apiClient = {
   welcome: {
     // Get welcome popups configuration
     getWelcomePopup(): Promise<WelcomePopupConfig> {
-      return fetchJSON<WelcomePopupConfig>("welcome-popup", {
-        cache: "no-store",
-      });
+      return fetchJSON<WelcomePopupConfig>(
+        `${config.apiBaseUrl}/welcome-popup`,
+        {
+          cache: "no-store",
+        },
+      );
     },
 
     // Track popup impression (optional analytics)
     async trackImpression(popupId: string): Promise<void> {
       try {
         // keepalive lets this succeed even if the page is unloading
-        await fetch("/api/welcome-popup/track", {
+        await fetch(`${config.apiBaseUrl}/welcome-popup/track`, {
           method: "POST",
           keepalive: true,
           headers: { "Content-Type": "application/json" },
@@ -33,7 +56,7 @@ export const apiClient = {
     // Track popup click (optional analytics)
     async trackClick(popupId: string, link: string): Promise<void> {
       try {
-        await fetch("/api/welcome-popup/click", {
+        await fetch(`${config.apiBaseUrl}/welcome-popup/click`, {
           method: "POST",
           keepalive: true,
           headers: { "Content-Type": "application/json" },
