@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { asset, cn } from "@/lib";
+import { asset } from "@/lib";
 import { formatDate, formatTime } from "@/lib/utils";
 import { FlightStatusBadge } from "../components";
 import type { IFlight } from "../types";
