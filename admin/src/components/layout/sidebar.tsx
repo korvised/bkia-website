@@ -6,6 +6,7 @@ import {
   DisclosurePanel,
 } from "@headlessui/react";
 import { MdChevronRight, MdClose } from "react-icons/md";
+import { LuLayoutDashboard } from "react-icons/lu";
 import {
   getFilteredNavigationGroups,
   isGroupActive,
@@ -125,13 +126,56 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Navigation */}
       <nav className="flex-1 space-y-2 overflow-y-auto px-3 py-4">
+        {/* Dashboard — standalone link, always visible */}
+        {isCollapsed ? (
+          <Link
+            to="/home"
+            onClick={onMobileClose}
+            className={cn(
+              "flex items-center justify-center rounded-lg px-3 py-2",
+              "text-sm transition-all duration-200",
+              location.pathname === "/home"
+                ? "bg-primary-100 text-primary-700"
+                : "text-gray-600 hover:bg-gray-100 hover:text-gray-900",
+            )}
+            title="Dashboard"
+          >
+            <LuLayoutDashboard
+              className={cn(
+                "h-5 w-5 flex-shrink-0",
+                location.pathname === "/home" ? "text-primary-600" : "text-gray-500",
+              )}
+            />
+          </Link>
+        ) : (
+          <Link
+            to="/home"
+            onClick={onMobileClose}
+            className={cn(
+              "flex w-full items-center gap-3 rounded-lg px-3 py-2.5",
+              "text-sm font-medium transition-all duration-200",
+              location.pathname === "/home"
+                ? "bg-primary-50 text-primary-700"
+                : "text-gray-700 hover:bg-gray-100",
+            )}
+          >
+            <LuLayoutDashboard
+              className={cn(
+                "h-5 w-5 flex-shrink-0",
+                location.pathname === "/home" ? "text-primary-600" : "text-gray-500",
+              )}
+            />
+            <span className="truncate">Dashboard</span>
+          </Link>
+        )}
+
         {navigationGroups.map((group, groupIndex) => {
           const groupIsActive = isGroupActive(group.items, location.pathname);
 
           return (
             <Disclosure
               key={groupIndex}
-              defaultOpen={!isCollapsed || groupIsActive}
+              defaultOpen={groupIsActive}
             >
               {({ open }) => (
                 <div className="space-y-1">

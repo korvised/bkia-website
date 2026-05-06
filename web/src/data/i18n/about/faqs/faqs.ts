@@ -75,7 +75,7 @@ export const faqs = {
   },
   stillHaveQuestions: {
     en: "Still have questions?",
-    lo: "ຍັງມີຄຳຖາມເພີ່ມເຕີມບໍ?",
+    lo: "ຍັງມີຄຳຖາມເພີ່ມເຕີມບໍ່?",
     zh: "还有其他疑问？",
   },
   contactSubtitle: {
@@ -647,7 +647,7 @@ export const faqData: FAQQA[] = [
     cat: "security",
     q: {
       en: "Do I need a visa to enter Laos?",
-      lo: "ຂ້ອຍຕ້ອງຂໍວີຊາເຂົ້າ ສປປ ລາວ ບໍ?",
+      lo: "ຂ້ອຍຕ້ອງຂໍວີຊາເຂົ້າ ສປປ ລາວ ບໍ່?",
       zh: "入境老挝是否需要签证？",
     },
     a: {
@@ -691,13 +691,13 @@ export const faqData: FAQQA[] = [
     cat: "services",
     q: {
       en: "Are there prayer rooms at the airport?",
-      lo: "ສະໜາມບິນ ມີຫ້ອງຈະເລີນສາດສະໜາ / ໄຫວ້ພຣະ ບໍ?",
+      lo: "ສະໜາມບິນ ມີຫ້ອງໄຫວ້ພຣະ ຫຼື ຫ້ອງລະມາດ ບໍ່?",
       zh: "机场是否设有祈祷室？",
     },
     a: {
-      en: "Yes. The terminal has two prayer facilities: a Buddhist prayer room for passengers who wish to make offerings or meditate before their journey, and a dedicated Muslim prayer room (Musallah) for Islamic worship. Both are clean, quiet spaces open to all passengers during terminal operating hours. See our Facilities page for exact locations.",
-      lo: "ມີ, ອາຄານຜູ້ໂດຍສານມີ 2 ຫ້ອງ: ຫ້ອງກາບໄຫວ້ພຣະ (ສຳລັບສາດສະໜາພຸດ) ເຊິ່ງເປີດໃຫ້ຜູ້ໂດຍສານຂໍພອນກ່ອນການເດີນທາງ ແລະ ຫ້ອງລະມາດ (ສຳລັບສາດສະໜາອິດສະລາມ). ທັງສອງຫ້ອງ ສະອາດ, ສະຫງົບ ແລະ ເປີດຕະຫຼອດເວລາທຳການ.",
-      zh: "是的。候机楼内设有两处礼拜场所：一处供佛教旅客礼拜或冥想的祈祷室，以及一处专为穆斯林旅客礼拜使用的礼拜堂（Musallah）。两处均干净整洁、环境安静，在候机楼运营时间内对所有旅客开放。具体位置请参阅《机场设施》页面。",
+      en: "Yes. The terminal provides two dedicated spaces: a Buddhist prayer room and a Muslim prayer room (Musallah) Both are clean, quiet, and open during terminal operating hours.",
+      lo: "ມີ, ອາຄານຜູ້ໂດຍສານມີ 2 ຫ້ອງ: ຫ້ອງກາບໄຫວ້ພຣະ (ສຳລັບສາດສະໜາພຸດ) ແລະ ຫ້ອງລະມາດ (ສຳລັບສາດສະໜາອິດສະລາມ) ທັງສອງຫ້ອງ ສະອາດ, ສະຫງົບ ແລະ ເປີດຕະຫຼອດເວລາທຳການ.",
+      zh: "是的。候机楼内设有两处场所：佛教祈祷室及穆斯林礼拜堂 两处空间均整洁宁静，并在航站楼运营时间内开放。",
     },
     links: [
       {
@@ -715,7 +715,7 @@ export const faqData: FAQQA[] = [
     cat: "services",
     q: {
       en: "Are there baby-changing or nursing facilities for families?",
-      lo: "ສະໜາມບິນ ມີຫ້ອງລ້ຽງເດັກ ຫຼື ບ່ອນປ່ຽນຜ້າອ້ອມບໍ?",
+      lo: "ສະໜາມບິນ ມີຫ້ອງລ້ຽງເດັກ ຫຼື ບ່ອນປ່ຽນຜ້າອ້ອມບໍ່?",
       zh: "机场是否有婴儿护理或哺乳设施？",
     },
     a: {
@@ -739,7 +739,7 @@ export const faqData: FAQQA[] = [
     cat: "services",
     q: {
       en: "Is wheelchair or special assistance available at the airport?",
-      lo: "ສະໜາມບິນ ມີບໍລິການຊ່ວຍເຫຼືອ ສຳລັບຜູ້ໂດຍສານທີ່ຕ້ອງການຄວາມຊ່ວຍເຫຼືອພິເສດ ບໍ?",
+      lo: "ສະໜາມບິນ ມີບໍລິການຊ່ວຍເຫຼືອ ສຳລັບຜູ້ໂດຍສານທີ່ຕ້ອງການຄວາມຊ່ວຍເຫຼືອພິເສດ ບໍ່?",
       zh: "机场是否提供轮椅或特殊旅客协助服务？",
     },
     a: {

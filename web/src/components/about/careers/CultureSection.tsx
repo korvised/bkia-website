@@ -63,7 +63,7 @@ export function CultureSection({ lang }: CultureSectionProps) {
                 style={valuesInView ? { animation: `culture-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) ${i * 110}ms both` } : { opacity: 0 }}
               >
                 {/* Large decorative index */}
-                <span className="mt-0.5 w-9 shrink-0 text-right text-3xl font-black leading-none text-[#00AAAC]/18 sm:text-4xl">
+                <span className="mt-0.5 w-9 shrink-0 text-right text-3xl font-black leading-none text-[#00AAAC]/45 sm:text-4xl">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>

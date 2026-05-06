@@ -50,27 +50,28 @@ export const useFlightColumns = () => {
         ),
       },
       {
-        key: "operationDate",
-        header: "Date",
-        sortable: true,
-        render: (flight) => <span>{formatDate(flight.operationDate)}</span>,
-      },
-      {
         key: "scheduledDepTime",
         header: "Departure",
         sortable: true,
         render: (flight) => (
-          <div>
-            {flight.actualDepTime && (
-              <div>{formatTime(flight.actualDepTime)}</div>
-            )}
-            <div
-              className={cn(
-                flight.actualDepTime && "text-xs text-gray-400 line-through",
-              )}
-            >
-              {formatTime(flight.scheduledDepTime)}
+          <div className="leading-tight">
+            <div className="text-xs text-gray-400">
+              {formatDate(flight.operationDate)}
             </div>
+            {flight.actualDepTime ? (
+              <>
+                <div className="font-medium text-gray-900">
+                  {formatTime(flight.actualDepTime)}
+                </div>
+                <div className="text-xs text-gray-400 line-through">
+                  {formatTime(flight.scheduledDepTime)}
+                </div>
+              </>
+            ) : (
+              <div className="font-medium text-gray-900">
+                {formatTime(flight.scheduledDepTime)}
+              </div>
+            )}
           </div>
         ),
       },
@@ -79,17 +80,24 @@ export const useFlightColumns = () => {
         header: "Arrival",
         sortable: true,
         render: (flight) => (
-          <div>
-            {flight.actualArrTime && (
-              <div>{formatTime(flight.actualArrTime)}</div>
-            )}
-            <div
-              className={cn(
-                flight.actualArrTime && "text-xs text-gray-400 line-through",
-              )}
-            >
-              {formatTime(flight.scheduledArrTime)}
+          <div className="leading-tight">
+            <div className="text-xs text-gray-400">
+              {formatDate(flight.operationDate)}
             </div>
+            {flight.actualArrTime ? (
+              <>
+                <div className="font-medium text-gray-900">
+                  {formatTime(flight.actualArrTime)}
+                </div>
+                <div className="text-xs text-gray-400 line-through">
+                  {formatTime(flight.scheduledArrTime)}
+                </div>
+              </>
+            ) : (
+              <div className="font-medium text-gray-900">
+                {formatTime(flight.scheduledArrTime)}
+              </div>
+            )}
           </div>
         ),
       },
