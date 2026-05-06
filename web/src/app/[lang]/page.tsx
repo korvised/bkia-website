@@ -41,15 +41,15 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div className="w-full">
-      {/* Full-screen hero + search = 100svh */}
-      <section className="flex h-[100svh] flex-col md:h-screen">
+      {/* Hero + search — fixed viewport height on md+, auto on mobile */}
+      <section className="flex flex-col md:h-screen">
         {/* Hero slideshow — needs overflow-hidden to contain Swiper slides */}
         <div className="h-[62vh] shrink-0 overflow-hidden sm:h-[65vh]">
           <HeroSection banners={banners} notices={notices} className="h-full" />
         </div>
 
         {/* White panel: weather + search */}
-        <FlightSearch className="flex-1" />
+        <FlightSearch className="md:flex-1" />
       </section>
 
       <UsefulServicesSection lang={lang as Lang} />

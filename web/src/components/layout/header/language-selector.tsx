@@ -134,8 +134,10 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
       <button
         onClick={handleToggle}
         className={cn(
-          "flex items-center gap-x-1.5 rounded-lg border-0 px-2 py-1.5 transition-all duration-300 outline-none sm:px-2.5 sm:py-2",
+          "flex items-center rounded-lg border-0 transition-all duration-300 outline-none",
           "focus-visible:ring-primary-500 focus-visible:ring-2 focus-visible:ring-offset-2",
+          // Mobile: match search button sizing (p-2)
+          "p-2 sm:gap-x-1.5 sm:px-2.5 sm:py-2",
           isScrolled
             ? "text-gray-700 hover:bg-gray-100"
             : "text-white hover:bg-white/10",
@@ -144,12 +146,15 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         aria-haspopup="true"
         aria-label="Select language"
       >
-        <span className="overflow-hidden rounded-full border border-gray-100 shadow-sm">
-          <languageConfig.flag className="h-4 w-4 sm:h-5 sm:w-5" />
+        {/* Flag */}
+        <span className="overflow-hidden rounded-full border border-gray-100/60 shadow-sm">
+          <languageConfig.flag className="h-5 w-5" />
         </span>
+
+        {/* Native name + chevron */}
         <span
           className={cn(
-            "text-xs font-medium sm:text-sm",
+            "ml-1.5 text-xs font-medium sm:text-sm",
             languageConfig.code === "lo" && "font-lao",
           )}
         >
@@ -157,7 +162,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         </span>
         <ChevronDown
           className={cn(
-            "h-3.5 w-3.5 transition-transform duration-200 sm:h-4 sm:w-4",
+            "ml-0.5 h-3.5 w-3.5 transition-transform duration-200 sm:h-4 sm:w-4",
             isScrolled
               ? "text-gray-600 group-hover:text-gray-900"
               : "text-white/80 group-hover:text-white",

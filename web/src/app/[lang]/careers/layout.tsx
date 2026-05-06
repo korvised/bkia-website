@@ -20,10 +20,10 @@ export default async function CareersLayout({
 
   return (
     <>
-      {/* Hero + Culture pinned together to exactly one viewport height */}
-      <div className="flex h-[100dvh] flex-col">
-        {/* Activity gallery — grows to fill remaining space */}
-        <div className="min-h-0 flex-1">
+      {/* Hero + Culture — fixed viewport height on md+, auto on mobile */}
+      <div className="flex flex-col md:h-[100dvh]">
+        {/* Activity gallery — fixed height on mobile, grows to fill on md+ */}
+        <div className="h-[56vw] min-h-[240px] shrink-0 md:min-h-0 md:flex-1">
           <CareersHero
             activities={activities}
             lang={typedLang}
@@ -32,7 +32,7 @@ export default async function CareersLayout({
           />
         </div>
 
-        {/* Company culture — natural content height, anchored to bottom */}
+        {/* Company culture — natural content height */}
         <div className="shrink-0">
           <CultureSection lang={typedLang} />
         </div>

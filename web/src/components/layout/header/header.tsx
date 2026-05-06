@@ -86,20 +86,6 @@ export function Header() {
       >
         <div className="mx-auto max-w-[1920px]">
           <div className="flex items-center justify-between px-4 sm:px-6 xl:px-12">
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              className={cn(
-                "rounded-lg p-2 transition-all duration-200 sm:hidden",
-                isHeaderWhite
-                  ? "text-gray-700 hover:bg-gray-100"
-                  : "text-white hover:bg-white/10",
-              )}
-              aria-label="Toggle menu"
-            >
-              <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-            </button>
-
             {/* Logo */}
             <Link
               href={`/${lang}`}
@@ -199,7 +185,7 @@ export function Header() {
 
             {/* Right Actions */}
             <div className="flex items-center gap-2 sm:gap-3">
-              <LanguageSelector isScrolled={isHeaderWhite} isResponsive />
+              <LanguageSelector isScrolled={isHeaderWhite} />
 
               <button
                 className={cn(
@@ -245,7 +231,7 @@ export function Header() {
               <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 className={cn(
-                  "hidden rounded-lg p-2 transition-all duration-200 sm:block lg:hidden",
+                  "block rounded-lg p-2 transition-all duration-200 lg:hidden",
                   isHeaderWhite
                     ? "text-gray-700 hover:bg-gray-100"
                     : "text-white hover:bg-white/10",
