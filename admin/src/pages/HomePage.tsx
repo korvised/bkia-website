@@ -159,9 +159,9 @@ export const HomePage = () => {
   const isAdmin     = userRoles.includes(UserRole.ADMIN) || userRoles.includes(UserRole.SUPER_ADMIN);
 
   // ── Data fetches (skip when no permission) ──────────────────────────────
-  const { data: depData,    isLoading: depLoading,      isError: depError      } = useFetchFlightsQuery({ operationDate: today, direction: FlightDirection.DEPARTURE, limit: 1, page: 1 }, { skip: !canFlight });
-  const { data: arrData,    isLoading: arrLoading,      isError: arrError      } = useFetchFlightsQuery({ operationDate: today, direction: FlightDirection.ARRIVAL,   limit: 1, page: 1 }, { skip: !canFlight });
-  const { data: allFlights, isLoading: flightsLoading,  isError: flightsError  } = useFetchFlightsQuery({ operationDate: today, limit: 10, page: 1 },                                      { skip: !canFlight });
+  const { data: depData,    isLoading: depLoading,      isError: depError      } = useFetchFlightsQuery({ dateFrom: today, dateTo: today, direction: FlightDirection.DEPARTURE, limit: 1, page: 1 }, { skip: !canFlight });
+  const { data: arrData,    isLoading: arrLoading,      isError: arrError      } = useFetchFlightsQuery({ dateFrom: today, dateTo: today, direction: FlightDirection.ARRIVAL,   limit: 1, page: 1 }, { skip: !canFlight });
+  const { data: allFlights, isLoading: flightsLoading,  isError: flightsError  } = useFetchFlightsQuery({ dateFrom: today, dateTo: today, limit: 10, page: 1 },                                      { skip: !canFlight });
   const { data: lfCount,    isLoading: lfCountLoading,  isError: lfCountError  } = useFetchLostFoundItemsQuery({ status: LostFoundStatus.OPEN, limit: 1, page: 1 },                         { skip: !canLF });
   const { data: recentLF,   isLoading: recentLFLoading, isError: recentLFError } = useFetchLostFoundItemsQuery({ limit: 5, page: 1 },                                                       { skip: !canLF });
   const { data: fbCount,    isLoading: fbCountLoading,  isError: fbCountError  } = useFetchFeedbacksQuery({ status: FeedbackStatus.NEW, limit: 1, page: 1 },                                { skip: !canFeedback });
