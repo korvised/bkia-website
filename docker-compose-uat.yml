@@ -31,6 +31,8 @@ services:
     restart: always
     ports:
       - "8080"
+    volumes:
+      - ./data/uploads:/uploads
     env_file:
       - ./data/env/server/.env
     depends_on:
