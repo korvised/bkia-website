@@ -19,6 +19,7 @@ import { RoleModule } from '@/modules/role';
 import { RouteModule } from '@/modules/route';
 import { UserModule } from '@/modules/user';
 import { WeatherModule } from '@/modules/weather';
+import { BackupModule } from '@/modules/backup';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -31,6 +32,7 @@ import { AppService } from './app.service';
 
     // Main Module,
     AirlineModule,
+    BackupModule,
     AirportModule,
     AuctionModule,
     BannerModule,

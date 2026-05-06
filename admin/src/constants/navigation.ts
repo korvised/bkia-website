@@ -2,8 +2,11 @@ import type { IconType } from "react-icons";
 import {
   LuBell,
   LuBriefcase,
+  LuDatabase,
   LuGavel,
   LuHeadphones,
+  LuHardDriveDownload,
+  LuHardDriveUpload,
   LuImage,
   LuKey,
   LuMapPin,
@@ -21,6 +24,7 @@ import {
 } from "react-icons/lu";
 import {
   CONTENT_ACCESS_ROLES,
+  DATABASE_ACCESS_ROLES,
   FLIGHT_ACCESS_ROLES,
   SETTINGS_ACCESS_ROLES,
   SUPPORT_ACCESS_ROLES,
@@ -241,6 +245,26 @@ export const NAVIGATION_GROUPS: INavigationGroup[] = [
         path: "/settings/permissions",
         icon: LuKey,
         allowRoles: SETTINGS_ACCESS_ROLES.PERMISSION_MANAGEMENT,
+      },
+    ],
+  },
+  {
+    // SUPER_ADMIN only
+    groupName: "Database",
+    icon: LuDatabase,
+    allowRoles: DATABASE_ACCESS_ROLES.BACKUP_MANAGEMENT,
+    items: [
+      {
+        name: "Backup",
+        path: "/database/backup",
+        icon: LuHardDriveDownload,
+        allowRoles: DATABASE_ACCESS_ROLES.BACKUP_MANAGEMENT,
+      },
+      {
+        name: "Restore",
+        path: "/database/restore",
+        icon: LuHardDriveUpload,
+        allowRoles: DATABASE_ACCESS_ROLES.RESTORE_MANAGEMENT,
       },
     ],
   },

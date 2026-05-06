@@ -49,3 +49,11 @@ export const SETTINGS_ACCESS_ROLES = {
   USER_MANAGEMENT: ADMIN_ROLES,
   PERMISSION_MANAGEMENT: ADMIN_ROLES,
 };
+
+/**
+ * Database Access Control — Super Admin only
+ */
+export const DATABASE_ACCESS_ROLES = {
+  BACKUP_MANAGEMENT: [UserRole.SUPER_ADMIN],
+  RESTORE_MANAGEMENT: [UserRole.SUPER_ADMIN],
+};

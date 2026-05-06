@@ -58,8 +58,8 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
-# Timezone setup
-RUN apk add --no-cache tzdata
+# Timezone setup + PostgreSQL client tools (pg_dump / psql for backup & restore)
+RUN apk add --no-cache tzdata postgresql-client
 ENV TZ=Asia/Vientiane
 
 # Copy built app and production deps only

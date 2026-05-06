@@ -64,3 +64,6 @@ db/backups
 
 # Local file uploads (dev only — production uses S3)
 /uploads
+
+# Database backup dumps
+/backups

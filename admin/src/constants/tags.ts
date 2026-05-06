@@ -14,3 +14,4 @@ export const AUCTION_TAG = "auction" as const;
 export const FEEDBACK_TAG = "feedback" as const;
 export const CAREERS_TAG = "careers" as const;
 export const CAREER_ACTIVITIES_TAG = "career-activities" as const;
+export const BACKUP_TAG = "backup" as const;

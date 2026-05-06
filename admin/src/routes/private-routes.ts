@@ -1,5 +1,6 @@
 import { type IRoute } from "@/types";
 import { auctionRoutes } from "@/features/auction/routes.ts";
+import { backupRoutes } from "@/features/backup/routes.ts";
 import { bannerRoutes } from "@/features/banner/routes.ts";
 import { flightRoutes } from "@/features/flight/routes.ts";
 import { airlineRoutes } from "@/features/airline/routes.ts";
@@ -31,6 +32,7 @@ export const privateRoutes: IRoute[] = [
     ...careersRoutes,
     ...newsRoutes,
     ...auctionRoutes,
+    ...backupRoutes,
     ...bannerRoutes,
   ]),
 ];
