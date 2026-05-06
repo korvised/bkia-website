@@ -7,6 +7,7 @@ import {
   IsNumberString,
   IsString,
   MinLength,
+  ValidateIf,
   validateSync,
 } from 'class-validator';
 
@@ -120,26 +121,26 @@ class EnvironmentVariables {
   @IsString()
   SMTP_PASS: string;
 
-  /* AWS CONFIG */
-  @IsDefined()
+  /* AWS CONFIG — required only in production (local dev uses disk storage) */
+  @ValidateIf((o) => o.APP_ENV === Environment.production)
   @IsString()
   @MinLength(1)
-  AWS_ACCESS_KEY: string;
+  AWS_ACCESS_KEY?: string;
 
-  @IsDefined()
+  @ValidateIf((o) => o.APP_ENV === Environment.production)
   @IsString()
   @MinLength(1)
-  AWS_SECRET_KEY: string;
+  AWS_SECRET_KEY?: string;
 
-  @IsDefined()
+  @ValidateIf((o) => o.APP_ENV === Environment.production)
   @IsString()
   @MinLength(1)
-  AWS_REGION: string;
+  AWS_REGION?: string;
 
-  @IsDefined()
+  @ValidateIf((o) => o.APP_ENV === Environment.production)
   @IsString()
   @MinLength(1)
-  AWS_S3_BUCKET: string;
+  AWS_S3_BUCKET?: string;
 }
 
 export function validateConfig(configuration: Record<string, unknown>) {

@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto';
 import {
   BadRequestException,
   Injectable,
@@ -284,14 +285,30 @@ export class NewsService {
       throw new BadRequestException('Slug already exists');
     }
 
-    // Upload cover image
-    const uploaded = await this.fileService.uploadFile(
+    // Pre-generate the UUID so we can use it as the storage folder path
+    // before the entity is saved — this lets us upload cover + gallery to
+    // news/{id}/cover and news/{id}/gallery without a second DB round-trip.
+    const id = randomUUID();
+
+    // Upload cover image under news/{id}/cover
+    const uploadedCover = await this.fileService.uploadFile(
       coverImage,
-      `news/${dto.slug}`,
+      `news/${id}/cover`,
     );
 
-    // Create news entity
+    // Upload gallery images under news/{id}/gallery
+    const uploadedImages =
+      imageFiles.length > 0
+        ? await Promise.all(
+            imageFiles.map((f) =>
+              this.fileService.uploadFile(f, `news/${id}/gallery`),
+            ),
+          )
+        : [];
+
+    // Create and save the entity in one shot
     const news = this.newsRepo.create({
+      id,
       slug: dto.slug,
       title: dto.title,
       excerpt: dto.excerpt ?? null,
@@ -304,23 +321,12 @@ export class NewsService {
       isPublished: dto.isPublished ?? false,
       tags: dto.tags ?? [],
       metaDescription: dto.metaDescription ?? null,
-      coverImage: uploaded,
+      coverImage: uploadedCover,
+      images: uploadedImages,
     });
 
-    // Save to get ID for file upload path
-    const saved = await this.newsRepo.save(news);
-
-    // Upload gallery images if provided
-    if (imageFiles.length > 0) {
-      saved.images = await Promise.all(
-        imageFiles.map((f) =>
-          this.fileService.uploadFile(f, `news/${saved.id}/gallery`),
-        ),
-      );
-      await this.newsRepo.save(saved);
-    }
-
-    return this.findOne(saved.id);
+    await this.newsRepo.save(news);
+    return this.findOne(id);
   }
 
   /**
@@ -353,7 +359,7 @@ export class NewsService {
       oldCoverImageId = news.coverImage?.id;
       const uploaded = await this.fileService.uploadFile(
         coverImage,
-        `news/${news.slug}`,
+        `news/${news.id}/cover`,
       );
       news.coverImage = uploaded;
     }

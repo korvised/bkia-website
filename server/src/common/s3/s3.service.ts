@@ -16,15 +16,17 @@ import { ConfigService } from '@/common/config';
 import { FILE_SIZES, FILE_TYPE_GROUPS } from '@/constants';
 import { S3UploadOptions, S3UploadResult } from '@/types/file';
 import { formatFileSize, getFileCategory, validateFile } from '@/utils';
+import { StorageService } from '@/common/storage/storage.abstract';
 
 @Injectable()
-export class S3Service {
+export class S3Service extends StorageService {
   private readonly logger = new Logger(S3Service.name);
   private readonly s3Client: S3Client;
   private readonly bucketName: string;
   private readonly region: string;
 
   constructor(private configService: ConfigService) {
+    super();
     this.bucketName = this.configService.get('aws.bucket');
     this.region = this.configService.get('aws.region');
 

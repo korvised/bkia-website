@@ -87,7 +87,10 @@ export function FeedbackDetailPage() {
   const navigate = useNavigate();
   const { can } = usePermissions();
 
-  const { data: feedback, isLoading } = useFetchFeedbackByIdQuery(id!);
+  const [skipQuery, setSkipQuery] = useState(false);
+  const { data: feedback, isLoading } = useFetchFeedbackByIdQuery(id!, {
+    skip: skipQuery,
+  });
   const [updateStatus, { isLoading: isUpdating }] =
     useUpdateFeedbackStatusMutation();
   const [deleteFeedback, { isLoading: isDeleting }] =
@@ -136,11 +139,15 @@ export function FeedbackDetailPage() {
       "Are you sure you want to delete this feedback? This action cannot be undone.",
     );
     if (!result.isConfirmed) return;
+    // Skip the detail query before deleting — prevents a 404 refetch triggered
+    // by tag invalidation after the mutation resolves.
+    setSkipQuery(true);
     try {
       await deleteFeedback(id).unwrap();
       await alertService.success("Deleted", "Feedback has been deleted.");
       navigate("/support/feedback");
     } catch {
+      setSkipQuery(false); // Re-enable if delete fails so the page stays usable
       await alertService.error("Failed to delete feedback.");
     }
   };

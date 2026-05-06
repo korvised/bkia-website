@@ -15,6 +15,8 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
+import { imageFileFilter } from '@/common/filters';
+import { FILE_SIZES } from '@/constants';
 import { Permissions, Roles } from '@/common/decorators';
 import { JwtAuthGuard, PermissionsGuard, RolesGuard } from '@/common/guards';
 import { PERMISSIONS } from '@/constants';
@@ -34,7 +36,12 @@ export class FeedbackController {
    */
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  @UseInterceptors(FilesInterceptor('files', 5))
+  @UseInterceptors(
+    FilesInterceptor('files', 5, {
+      fileFilter: imageFileFilter,
+      limits: { fileSize: FILE_SIZES.LARGE_IMAGE },
+    }),
+  )
   async create(
     @Body() dto: CreateFeedbackDto,
     @UploadedFiles() files?: Express.Multer.File[],

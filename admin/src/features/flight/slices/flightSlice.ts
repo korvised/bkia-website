@@ -1,11 +1,25 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { IFlightFilter } from "@/features/flight/types";
 
+/** Returns today's date and today+7 as YYYY-MM-DD strings. */
+function getDefaultDateRange(): { dateFrom: string; dateTo: string } {
+  const now = new Date();
+  const dateFrom = now.toISOString().split("T")[0];
+  const future = new Date(now);
+  future.setDate(future.getDate() + 7);
+  const dateTo = future.toISOString().split("T")[0];
+  return { dateFrom, dateTo };
+}
+
+const { dateFrom: defaultDateFrom, dateTo: defaultDateTo } =
+  getDefaultDateRange();
+
 const initialFilters: IFlightFilter = {
   page: 1,
   limit: 10,
   search: "",
-  operationDate: "",
+  dateFrom: defaultDateFrom,
+  dateTo: defaultDateTo,
   direction: "",
   type: "",
   terminal: "",
@@ -38,7 +52,9 @@ const flightSlice = createSlice({
       };
     },
     resetFilters: (state) => {
-      state.filters = initialFilters;
+      // Recompute the date range so "Reset" always defaults to today → +7 days
+      const { dateFrom, dateTo } = getDefaultDateRange();
+      state.filters = { ...initialFilters, dateFrom, dateTo };
     },
     setPage: (state, action: PayloadAction<number>) => {
       state.filters.page = action.payload;

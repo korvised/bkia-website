@@ -12,8 +12,9 @@ import {
   LuHeadphones,
   LuSettings,
   LuActivity,
+  LuLock,
 } from "react-icons/lu";
-import { useGetAuth } from "@/hooks";
+import { useGetAuth, usePermissions } from "@/hooks";
 import { useFetchFlightsQuery } from "@/features/flight/api/flightApi";
 import { useFetchLostFoundItemsQuery } from "@/features/lost-found/api/lostFoundApi";
 import { useFetchFeedbacksQuery } from "@/features/feedback/api/feedbackApi";
@@ -23,6 +24,8 @@ import {
   FlightStatus,
   LostFoundStatus,
   FeedbackStatus,
+  PermissionSlug,
+  UserRole,
 } from "@/types/enum.type";
 import { cn } from "@/lib";
 
@@ -89,11 +92,13 @@ interface StatCardProps {
   label: string;
   value: number | undefined;
   isLoading: boolean;
+  isError: boolean;
+  hasPermission: boolean;
   href: string;
   accent: string;
 }
 
-function StatCard({ icon, label, value, isLoading, href, accent }: StatCardProps) {
+function StatCard({ icon, label, value, isLoading, isError, hasPermission, href, accent }: StatCardProps) {
   return (
     <Link
       to={href}
@@ -106,8 +111,15 @@ function StatCard({ icon, label, value, isLoading, href, accent }: StatCardProps
         <LuArrowRight className="h-4 w-4 text-gray-300 transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
       </div>
       <div>
-        {isLoading ? (
+        {!hasPermission ? (
+          <div className="flex items-center gap-1.5 text-gray-400">
+            <LuLock className="h-4 w-4" />
+            <p className="text-sm font-medium">No access</p>
+          </div>
+        ) : isLoading ? (
           <div className="h-8 w-16 animate-pulse rounded-md bg-gray-100" />
+        ) : isError ? (
+          <p className="text-sm font-medium text-red-400">Failed to load</p>
         ) : (
           <p className="text-3xl font-bold text-gray-900">{value ?? 0}</p>
         )}
@@ -133,19 +145,28 @@ function SkeletonRows({ count = 4 }: { count?: number }) {
 
 export const HomePage = () => {
   const { currentUser } = useGetAuth();
+  const { can } = usePermissions();
   const today = useMemo(() => todayISO(), []);
   const name  = currentUser?.user?.name ?? "there";
 
-  // ── Data fetches ────────────────────────────────────────────────────────
+  // ── Permission flags ────────────────────────────────────────────────────
+  const canFlight   = can(PermissionSlug.FLIGHT_READ);
+  const canLF       = can(PermissionSlug.LOST_FOUND_READ);
+  const canFeedback = can(PermissionSlug.FEEDBACK_READ);
+  const canNotice   = can(PermissionSlug.NOTICE_READ);
 
-  const { data: depData,    isLoading: depLoading    } = useFetchFlightsQuery({ operationDate: today, direction: FlightDirection.DEPARTURE, limit: 1, page: 1 });
-  const { data: arrData,    isLoading: arrLoading    } = useFetchFlightsQuery({ operationDate: today, direction: FlightDirection.ARRIVAL,   limit: 1, page: 1 });
-  const { data: allFlights, isLoading: flightsLoading } = useFetchFlightsQuery({ operationDate: today, limit: 10, page: 1 });
-  const { data: lfCount,    isLoading: lfCountLoading } = useFetchLostFoundItemsQuery({ status: LostFoundStatus.OPEN, limit: 1, page: 1 });
-  const { data: recentLF,   isLoading: recentLFLoading } = useFetchLostFoundItemsQuery({ limit: 5, page: 1 });
-  const { data: fbCount,    isLoading: fbCountLoading } = useFetchFeedbacksQuery({ status: FeedbackStatus.NEW, limit: 1, page: 1 });
-  const { data: recentFB,   isLoading: recentFBLoading } = useFetchFeedbacksQuery({ limit: 5, page: 1 });
-  const { data: noticeData, isLoading: noticeLoading  } = useFetchNoticesQuery({ isActive: "true", limit: 1, page: 1 });
+  const userRoles   = currentUser?.user?.roles?.map((r) => r.role) ?? [];
+  const isAdmin     = userRoles.includes(UserRole.ADMIN) || userRoles.includes(UserRole.SUPER_ADMIN);
+
+  // ── Data fetches (skip when no permission) ──────────────────────────────
+  const { data: depData,    isLoading: depLoading,      isError: depError      } = useFetchFlightsQuery({ operationDate: today, direction: FlightDirection.DEPARTURE, limit: 1, page: 1 }, { skip: !canFlight });
+  const { data: arrData,    isLoading: arrLoading,      isError: arrError      } = useFetchFlightsQuery({ operationDate: today, direction: FlightDirection.ARRIVAL,   limit: 1, page: 1 }, { skip: !canFlight });
+  const { data: allFlights, isLoading: flightsLoading,  isError: flightsError  } = useFetchFlightsQuery({ operationDate: today, limit: 10, page: 1 },                                      { skip: !canFlight });
+  const { data: lfCount,    isLoading: lfCountLoading,  isError: lfCountError  } = useFetchLostFoundItemsQuery({ status: LostFoundStatus.OPEN, limit: 1, page: 1 },                         { skip: !canLF });
+  const { data: recentLF,   isLoading: recentLFLoading, isError: recentLFError } = useFetchLostFoundItemsQuery({ limit: 5, page: 1 },                                                       { skip: !canLF });
+  const { data: fbCount,    isLoading: fbCountLoading,  isError: fbCountError  } = useFetchFeedbacksQuery({ status: FeedbackStatus.NEW, limit: 1, page: 1 },                                { skip: !canFeedback });
+  const { data: recentFB,   isLoading: recentFBLoading, isError: recentFBError } = useFetchFeedbacksQuery({ limit: 5, page: 1 },                                                            { skip: !canFeedback });
+  const { data: noticeData, isLoading: noticeLoading,   isError: noticeError   } = useFetchNoticesQuery({ isActive: "true", limit: 1, page: 1 },                                            { skip: !canNotice });
 
   return (
     <div className="space-y-6">
@@ -176,6 +197,8 @@ export const HomePage = () => {
           label="Today's Departures"
           value={depData?.meta.total}
           isLoading={depLoading}
+          isError={depError}
+          hasPermission={canFlight}
           href="/flights"
           accent="bg-primary/10"
         />
@@ -184,6 +207,8 @@ export const HomePage = () => {
           label="Today's Arrivals"
           value={arrData?.meta.total}
           isLoading={arrLoading}
+          isError={arrError}
+          hasPermission={canFlight}
           href="/flights"
           accent="bg-sky-50"
         />
@@ -192,6 +217,8 @@ export const HomePage = () => {
           label="Open Lost & Found"
           value={lfCount?.meta.total}
           isLoading={lfCountLoading}
+          isError={lfCountError}
+          hasPermission={canLF}
           href="/support/lost-found"
           accent="bg-amber-50"
         />
@@ -200,6 +227,8 @@ export const HomePage = () => {
           label="New Feedback"
           value={fbCount?.meta.total}
           isLoading={fbCountLoading}
+          isError={fbCountError}
+          hasPermission={canFeedback}
           href="/support/feedback"
           accent="bg-rose-50"
         />
@@ -208,6 +237,8 @@ export const HomePage = () => {
           label="Active Notices"
           value={noticeData?.meta.total}
           isLoading={noticeLoading}
+          isError={noticeError}
+          hasPermission={canNotice}
           href="/content/notices"
           accent="bg-violet-50"
         />
@@ -233,8 +264,15 @@ export const HomePage = () => {
           </Link>
         </div>
 
-        {flightsLoading ? (
+        {!canFlight ? (
+          <div className="flex items-center justify-center gap-2 py-12 text-sm text-gray-400">
+            <LuLock className="h-4 w-4" />
+            You don't have permission to view flight data
+          </div>
+        ) : flightsLoading ? (
           <SkeletonRows count={4} />
+        ) : flightsError ? (
+          <p className="py-12 text-center text-sm text-red-400">Failed to load flights</p>
         ) : !allFlights?.data.length ? (
           <p className="py-12 text-center text-sm text-gray-400">
             No flights scheduled for today
@@ -309,8 +347,15 @@ export const HomePage = () => {
             </Link>
           </div>
 
-          {recentLFLoading ? (
+          {!canLF ? (
+            <div className="flex items-center justify-center gap-2 py-10 text-sm text-gray-400">
+              <LuLock className="h-4 w-4" />
+              No access
+            </div>
+          ) : recentLFLoading ? (
             <SkeletonRows count={4} />
+          ) : recentLFError ? (
+            <p className="py-10 text-center text-sm text-red-400">Failed to load</p>
           ) : !recentLF?.data.length ? (
             <p className="py-10 text-center text-sm text-gray-400">No items yet</p>
           ) : (
@@ -357,8 +402,15 @@ export const HomePage = () => {
             </Link>
           </div>
 
-          {recentFBLoading ? (
+          {!canFeedback ? (
+            <div className="flex items-center justify-center gap-2 py-10 text-sm text-gray-400">
+              <LuLock className="h-4 w-4" />
+              No access
+            </div>
+          ) : recentFBLoading ? (
             <SkeletonRows count={4} />
+          ) : recentFBError ? (
+            <p className="py-10 text-center text-sm text-red-400">Failed to load</p>
           ) : !recentFB?.data.length ? (
             <p className="py-10 text-center text-sm text-gray-400">No feedback yet</p>
           ) : (
@@ -409,6 +461,7 @@ export const HomePage = () => {
               sub: "Manage flight schedules",
               href: "/flights",
               accent: "bg-primary/10 text-primary",
+              show: true,
             },
             {
               icon: LuNewspaper,
@@ -416,6 +469,7 @@ export const HomePage = () => {
               sub: "Publish announcements",
               href: "/content/news",
               accent: "bg-sky-50 text-sky-600",
+              show: true,
             },
             {
               icon: LuHeadphones,
@@ -423,6 +477,7 @@ export const HomePage = () => {
               sub: "Lost & Found · Feedback",
               href: "/support/lost-found",
               accent: "bg-amber-50 text-amber-600",
+              show: true,
             },
             {
               icon: LuSettings,
@@ -430,8 +485,9 @@ export const HomePage = () => {
               sub: "Users, roles & permissions",
               href: "/settings/users",
               accent: "bg-violet-50 text-violet-600",
+              show: isAdmin,
             },
-          ].map(({ icon: Icon, label, sub, href, accent }) => (
+          ].filter((item) => item.show).map(({ icon: Icon, label, sub, href, accent }) => (
             <Link
               key={href}
               to={href}

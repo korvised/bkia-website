@@ -103,21 +103,28 @@ export class BannerService {
   ) {
     const banner = await this.findOne(id);
 
+    // Track old image id so we can delete it after the save succeeds
+    let oldImageId: string | undefined;
     if (image) {
-      const oldImageId = banner.image.id;
+      oldImageId = banner.image.id;
       const uploaded = await this.fileService.uploadFile(image, 'banners');
       banner.image = uploaded;
-      await this.bannerRepo.save(banner);
-      await this.fileService.deleteFile(oldImageId);
-      return this.findOne(id);
     }
 
+    // Always apply DTO changes — even when a new image was provided
     if (dto.altText !== undefined) banner.altText = dto.altText;
     if (dto.title !== undefined) banner.title = dto.title ?? null;
     if (dto.order !== undefined) banner.order = dto.order;
     if (dto.isActive !== undefined) banner.isActive = dto.isActive;
 
-    return await this.bannerRepo.save(banner);
+    await this.bannerRepo.save(banner);
+
+    // Delete the old image only after the save succeeds
+    if (oldImageId) {
+      await this.fileService.deleteFile(oldImageId);
+    }
+
+    return this.findOne(id);
   }
 
   /**

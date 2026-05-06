@@ -10,7 +10,8 @@ export interface IFlightFilter {
   page?: number;
   limit?: number;
   search?: string;
-  operationDate?: string;
+  dateFrom?: string;
+  dateTo?: string;
   direction?: FlightDirection | "";
   type?: FlightType | "";
   terminal?: Terminal | "";

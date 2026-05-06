@@ -1,3 +1,4 @@
+import { join } from 'path';
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@/common/config';
 import { BadRequestException, ValidationPipe } from '@nestjs/common';
@@ -39,6 +40,14 @@ import { AppModule } from './app.module';
       },
     }),
   );
+
+  // Serve local uploads in non-production environments
+  const env = configService.get('app.env');
+  if (env !== 'production') {
+    const uploadsPath = join(process.cwd(), 'uploads');
+    app.useStaticAssets(uploadsPath, { prefix: '/uploads' });
+    console.log(`[Dev] Local uploads served at /uploads → ${uploadsPath}`);
+  }
 
   const PORT = configService.get('app.port') || 8080;
   await app.listen(PORT);

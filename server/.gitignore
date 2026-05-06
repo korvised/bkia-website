@@ -61,3 +61,6 @@ test.json
 *_test.json
 db/migrations
 db/backups
+
+# Local file uploads (dev only — production uses S3)
+/uploads

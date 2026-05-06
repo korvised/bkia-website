@@ -70,6 +70,8 @@ export class FlightService {
     const {
       search,
       operationDate,
+      dateFrom,
+      dateTo,
       type,
       terminal,
       gate,
@@ -135,8 +137,19 @@ export class FlightService {
       );
     }
 
-    // Filter by operationDate (exact match)
-    if (operationDate) {
+    // Date filtering — range takes priority; falls back to exact-match for
+    // public web board which still passes a single operationDate.
+    if (dateFrom && dateTo) {
+      qb.andWhere('f.operationDate BETWEEN :dateFrom AND :dateTo', {
+        dateFrom,
+        dateTo,
+      });
+    } else if (dateFrom) {
+      qb.andWhere('f.operationDate >= :dateFrom', { dateFrom });
+    } else if (dateTo) {
+      qb.andWhere('f.operationDate <= :dateTo', { dateTo });
+    } else if (operationDate) {
+      // Exact match — kept for backward compatibility with the public flight board
       qb.andWhere('f.operationDate = :operationDate', { operationDate });
     }
 

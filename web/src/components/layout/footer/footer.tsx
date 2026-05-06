@@ -213,7 +213,7 @@ export default async function Footer({ lang }: FooterProps) {
             <ul className="space-y-2.5">
               <li>
                 <Link
-                  href={`/${lang}/services/to-from-airport`}
+                  href={`/${lang}/services/taxi`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
                   {t.taxiShuttle}
@@ -270,7 +270,7 @@ export default async function Footer({ lang }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/about/faq`}
+                  href={`/${lang}/about/faqs`}
                   className="text-sm transition-colors hover:text-white/80"
                 >
                   {t.faq}

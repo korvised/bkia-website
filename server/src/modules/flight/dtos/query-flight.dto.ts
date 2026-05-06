@@ -20,13 +20,29 @@ export class QueryFlightDto extends PaginationDto {
   @IsString()
   search?: string;
 
-  /** Operation date (YYYY-MM-DD) */
+  /** Operation date — exact match (YYYY-MM-DD). Used by public web flight board. */
   @IsOptional()
   @IsDateString(
     {},
     { message: 'operationDate must be a valid ISO date (YYYY-MM-DD)' },
   )
   operationDate?: string;
+
+  /** Date range start (YYYY-MM-DD) — inclusive */
+  @IsOptional()
+  @IsDateString(
+    {},
+    { message: 'dateFrom must be a valid ISO date (YYYY-MM-DD)' },
+  )
+  dateFrom?: string;
+
+  /** Date range end (YYYY-MM-DD) — inclusive */
+  @IsOptional()
+  @IsDateString(
+    {},
+    { message: 'dateTo must be a valid ISO date (YYYY-MM-DD)' },
+  )
+  dateTo?: string;
 
   /** Flight direction relative to this airport */
   @IsOptional()
