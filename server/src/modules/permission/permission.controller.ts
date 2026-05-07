@@ -17,7 +17,7 @@ import { PermissionService } from './permission.service';
 import { CreatePermissionDto, QueryPermissionDto, UpdatePermissionDto } from './dtos';
 
 @UseGuards(JwtAuthGuard, RolesGuard)
-@Roles(UserRole.ADMIN)
+@Roles(UserRole.SUPER_ADMIN)
 @Controller('permissions')
 export class PermissionController {
   constructor(private readonly service: PermissionService) {}

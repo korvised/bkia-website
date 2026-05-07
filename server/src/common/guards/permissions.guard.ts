@@ -26,11 +26,13 @@ export class PermissionsGuard implements CanActivate {
 
     if (!user) throw new ForbiddenException('User not found');
 
-    // 2. Bypass check for SUPER_ADMIN
-    const isSuperAdmin = user.roles?.some(
-      (r) => r.role === UserRole.SUPER_ADMIN,
+    // 2. Bypass check for SUPER_ADMIN and ADMIN.
+    //    ADMIN users have broad access; fine-grained permissions only restrict STAFF.
+    //    This mirrors the frontend ProtectedRoute behaviour.
+    const isAdminOrAbove = user.roles?.some(
+      (r) => r.role === UserRole.SUPER_ADMIN || r.role === UserRole.ADMIN,
     );
-    if (isSuperAdmin) return true;
+    if (isAdminOrAbove) return true;
 
     // 3. Extract permission slugs from the user entity
     const userPermissionSlugs = user.permissions?.map((p) => p.slug) || [];

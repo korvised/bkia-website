@@ -41,13 +41,15 @@ export const SUPPORT_ACCESS_ROLES = {
 };
 
 /**
- * Settings Access Control — Admin & Super Admin only
+ * Settings Access Control
+ * - Role & Permission management: SUPER_ADMIN only
+ * - User management & general settings: ADMIN and above
  */
 export const SETTINGS_ACCESS_ROLES = {
   SYSTEM_SETTINGS: ADMIN_ROLES,
-  ROLE_MANAGEMENT: ADMIN_ROLES,
+  ROLE_MANAGEMENT: [UserRole.SUPER_ADMIN],
   USER_MANAGEMENT: ADMIN_ROLES,
-  PERMISSION_MANAGEMENT: ADMIN_ROLES,
+  PERMISSION_MANAGEMENT: [UserRole.SUPER_ADMIN],
 };
 
 /**
