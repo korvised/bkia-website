@@ -3,10 +3,11 @@ import { Permission, Role, User } from '@/database';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserService } from './user.service';
 import { UserController } from './user.controller';
+import { UserSeeder } from './user.seeder';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User, Role, Permission])],
-  providers: [UserService],
+  providers: [UserService, UserSeeder],
   controllers: [UserController],
   exports: [UserService],
 })

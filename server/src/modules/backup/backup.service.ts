@@ -74,6 +74,8 @@ export class BackupService {
     const cfg = this.getDbConfig();
 
     try {
+      // --clean --if-exists: dump includes DROP ... IF EXISTS before each CREATE,
+      // making restore idempotent even when the schema already exists.
       if (cfg.pgContainer) {
         // ── docker exec: capture stdout, write locally ────────────────────
         // pg_dump writes to stdout (no -f flag) → captured by execAsync →
@@ -81,14 +83,14 @@ export class BackupService {
         // encoding: 'buffer' keeps stdout as a Buffer so binary content
         // (bytea columns, non-UTF-8 encoding headers) is never mangled.
         const { stdout } = await execAsync(
-          `docker exec -e PGPASSWORD="${cfg.pass}" ${cfg.pgContainer} pg_dump -h localhost -U "${cfg.user}" -d "${cfg.name}"`,
+          `docker exec -e PGPASSWORD="${cfg.pass}" ${cfg.pgContainer} pg_dump --clean --if-exists -h localhost -U "${cfg.user}" -d "${cfg.name}"`,
           { maxBuffer: MAX_DUMP_BUFFER, timeout: 5 * 60 * 1000, encoding: 'buffer' },
         );
         fs.writeFileSync(filePath, stdout);
       } else {
         // ── direct pg_dump: write to file ─────────────────────────────────
         await execAsync(
-          `"${cfg.pgDump}" -h "${cfg.host}" -p ${cfg.port} -U "${cfg.user}" -d "${cfg.name}" -f "${filePath}"`,
+          `"${cfg.pgDump}" --clean --if-exists -h "${cfg.host}" -p ${cfg.port} -U "${cfg.user}" -d "${cfg.name}" -f "${filePath}"`,
           { env: { ...process.env, PGPASSWORD: cfg.pass }, timeout: 5 * 60 * 1000 },
         );
       }
@@ -142,19 +144,36 @@ export class BackupService {
   private async runPsql(sqlFile: string): Promise<void> {
     const cfg = this.getDbConfig();
 
+    // Reset SQL: wipe the public schema so types/tables from the running app
+    // don't conflict with the dump (handles both old dumps without --clean
+    // and new ones that already include DROP IF EXISTS statements).
+    const RESET_SQL = [
+      'DROP SCHEMA public CASCADE',
+      'CREATE SCHEMA public',
+      'GRANT ALL ON SCHEMA public TO PUBLIC',
+      `GRANT ALL ON SCHEMA public TO "${cfg.user}"`,
+    ].join('; ');
+
     try {
       let stderr: string;
 
       if (cfg.pgContainer) {
-        // ── docker exec: copy local file → container, run psql, cleanup ───
+        // ── docker exec: reset schema, copy file → container, run psql ────
         const tmpInContainer = `/tmp/restore_${Date.now()}.sql`;
 
-        // Forward-slash path for docker cp destination (works on all platforms)
+        // 1. Reset public schema before loading dump
+        await execAsync(
+          `docker exec -e PGPASSWORD="${cfg.pass}" ${cfg.pgContainer} psql -h localhost -U "${cfg.user}" -d "${cfg.name}" -c "${RESET_SQL}"`,
+          { timeout: 30 * 1000 },
+        );
+
+        // 2. Copy dump file into container
         await execAsync(
           `docker cp "${sqlFile}" ${cfg.pgContainer}:${tmpInContainer}`,
           { timeout: 60 * 1000 },
         );
 
+        // 3. Restore
         ({ stderr } = await execAsync(
           `docker exec -e PGPASSWORD="${cfg.pass}" ${cfg.pgContainer} psql -h localhost -U "${cfg.user}" -d "${cfg.name}" -f "${tmpInContainer}"`,
           { timeout: 10 * 60 * 1000 },
@@ -163,9 +182,16 @@ export class BackupService {
         execAsync(`docker exec ${cfg.pgContainer} rm -f "${tmpInContainer}"`).catch(() => null);
       } else {
         // ── direct psql ───────────────────────────────────────────────────
+        const psqlBase = `"${cfg.psql}" -h "${cfg.host}" -p ${cfg.port} -U "${cfg.user}" -d "${cfg.name}"`;
+        const env = { ...process.env, PGPASSWORD: cfg.pass };
+
+        // 1. Reset public schema
+        await execAsync(`${psqlBase} -c "${RESET_SQL}"`, { env, timeout: 30 * 1000 });
+
+        // 2. Restore
         ({ stderr } = await execAsync(
-          `"${cfg.psql}" -h "${cfg.host}" -p ${cfg.port} -U "${cfg.user}" -d "${cfg.name}" -f "${sqlFile}"`,
-          { env: { ...process.env, PGPASSWORD: cfg.pass }, timeout: 10 * 60 * 1000 },
+          `${psqlBase} -f "${sqlFile}"`,
+          { env, timeout: 10 * 60 * 1000 },
         ));
       }
 

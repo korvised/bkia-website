@@ -58,19 +58,23 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
-# Timezone setup + PostgreSQL client tools (pg_dump / psql for backup & restore)
-RUN apk add --no-cache tzdata postgresql-client
+# - tzdata        → correct timezone
+# - postgresql-client → pg_dump / psql for backup & restore (connects to the
+#                       postgres container over the Docker network)
+# - su-exec       → lightweight privilege-drop used in entrypoint.sh
+RUN apk add --no-cache tzdata postgresql-client su-exec
 ENV TZ=Asia/Vientiane
 
 # Copy built app and production deps only
 COPY --chown=node:node --from=build /app/dist ./dist
 COPY --chown=node:node --from=build /app/node_modules ./node_modules
 
-# Run as non-root
-USER node
+# Entrypoint: runs as root to fix bind-mount directory ownership,
+# then drops to the node user via su-exec before starting the app.
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-# Expose NestJS port
+# NOTE: intentionally no USER node here — entrypoint.sh handles the privilege drop.
 EXPOSE 8080
-
-# Start the app
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["node", "dist/main.js"]
