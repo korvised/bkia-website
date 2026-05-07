@@ -47,9 +47,10 @@ export const SUPPORT_ACCESS_ROLES = {
  */
 export const SETTINGS_ACCESS_ROLES = {
   SYSTEM_SETTINGS: ADMIN_ROLES,
-  ROLE_MANAGEMENT: [UserRole.SUPER_ADMIN],
+  /** ADMIN can view roles/permissions for user-management purposes; writes stay SUPER_ADMIN-only */
+  ROLE_MANAGEMENT: ADMIN_ROLES,
   USER_MANAGEMENT: ADMIN_ROLES,
-  PERMISSION_MANAGEMENT: [UserRole.SUPER_ADMIN],
+  PERMISSION_MANAGEMENT: ADMIN_ROLES,
 };
 
 /**

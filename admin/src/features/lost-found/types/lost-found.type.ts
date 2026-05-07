@@ -81,11 +81,17 @@ export interface ICreateLostFoundPayload {
   images?: File[];
 }
 
+export interface IMultilingualFormField {
+  en: string;
+  lo: string;
+  zh: string;
+}
+
 export interface ICreateLostFoundForm {
   category: LostFoundCategory | "";
-  itemName: string;
-  description: string;
-  location: string;
+  displayNames: IMultilingualFormField;
+  displayDescriptions: IMultilingualFormField;
+  displayLocations: IMultilingualFormField;
   incidentDate: string;
   flightNumber: string;
   reporterName: string;

@@ -25,6 +25,81 @@ const dynamicPattern = assetRemotePattern();
 const nextConfig: NextConfig = {
   output: "standalone",
   devIndicators: false,
+
+  async redirects() {
+    return [
+      // ── Transport → Services ───────────────────────────────────────────
+      // Specific exceptions BEFORE the wildcard
+      {
+        source: "/:lang/transports/to-from-airport",
+        destination: "/:lang/services/taxi",
+        permanent: true,
+      },
+      {
+        source: "/:lang/transports/regional",
+        destination: "/:lang/guides/regional",
+        permanent: true,
+      },
+      {
+        source: "/:lang/transports/contacts",
+        destination: "/:lang/about/contact",
+        permanent: true,
+      },
+      // Wildcard: catches /transports/parking and anything else
+      {
+        source: "/:lang/transports/:path*",
+        destination: "/:lang/services/:path*",
+        permanent: true,
+      },
+
+      // ── Support → split to About / Notices ────────────────────────────
+      // Specific exceptions BEFORE the wildcard
+      {
+        source: "/:lang/support/complaint",
+        destination: "/:lang/about/faqs",
+        permanent: true,
+      },
+      {
+        source: "/:lang/support/faq",
+        destination: "/:lang/about/faqs",
+        permanent: true,
+      },
+      {
+        source: "/:lang/support/lost-found",
+        destination: "/:lang/about/lost-found",
+        permanent: true,
+      },
+      {
+        source: "/:lang/support/lost-found/:path*",
+        destination: "/:lang/about/lost-found",
+        permanent: true,
+      },
+      {
+        source: "/:lang/support/feedback",
+        destination: "/:lang/about/feedback",
+        permanent: true,
+      },
+      {
+        source: "/:lang/support/notices",
+        destination: "/:lang/notices/airport",
+        permanent: true,
+      },
+      // Wildcard: any other /support/* → /notices/*
+      {
+        source: "/:lang/support/:path*",
+        destination: "/:lang/notices/:path*",
+        permanent: true,
+      },
+
+      // ── Guides facilities → Services ──────────────────────────────────
+      {
+        source: "/:lang/guides/facilities",
+        destination: "/:lang/services/facilities",
+        permanent: true,
+      },
+    ];
+  },
+
   images: {
     remotePatterns: [
       // S3 bucket (production)
