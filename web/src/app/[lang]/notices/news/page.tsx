@@ -5,7 +5,8 @@ import { Lang } from "@/types/language";
 import { NewsFilters, NewsList } from "@/components/about";
 import { NoticesCrossNav } from "@/components/support/notice";
 import { listNews, toNewsQuery } from "@/services/news";
-import type { NewsPageProps, QueryNews } from "@/types/news";
+import type { NewsPageProps, QueryNews, INews } from "@/types/news";
+import type { IPaginationMeta } from "@/types/pagination";
 import { createNewsI18n } from "@/data/i18n/notices";
 
 export async function generateMetadata({
@@ -59,6 +60,19 @@ function NewsListSkeleton() {
   );
 }
 
+function NewsFiltersSkeleton() {
+  return (
+    <div className="space-y-5">
+      <div className="h-11 w-full max-w-2xl animate-pulse rounded-full bg-gray-200" />
+      <div className="flex flex-wrap gap-2">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className="h-9 w-28 animate-pulse rounded-full bg-gray-200" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 async function NewsPageContent({
   lang,
   query,
@@ -68,8 +82,24 @@ async function NewsPageContent({
   query: QueryNews;
   searchParams: Record<string, string | undefined>;
 }) {
-  const { data, meta } = await listNews(query);
   const t = createNewsI18n(lang).news;
+
+  // Gracefully handle API failures — show an empty state rather than crashing
+  let data: INews[] = [];
+  let meta: IPaginationMeta = {
+    total: 0,
+    page: 1,
+    limit: query.limit ?? 9,
+    pages: 0,
+  };
+
+  try {
+    const result = await listNews(query);
+    data = result.data;
+    meta = result.meta;
+  } catch {
+    // API unavailable — fall through to empty state below
+  }
 
   const eyebrow: Record<Lang, string> = {
     en: "Announcements",
@@ -101,11 +131,14 @@ async function NewsPageContent({
       </section>
       <section className="bg-gray-50 py-10">
         <div className="container space-y-6">
-          <NewsFilters
-            lang={lang}
-            query={query.search}
-            selectedCategory={query.category}
-          />
+          {/* NewsFilters uses useSearchParams() — wrap in its own Suspense */}
+          <Suspense fallback={<NewsFiltersSkeleton />}>
+            <NewsFilters
+              lang={lang}
+              query={query.search}
+              selectedCategory={query.category}
+            />
+          </Suspense>
           <NewsList
             lang={lang}
             news={data}

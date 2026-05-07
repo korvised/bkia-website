@@ -4,7 +4,8 @@ import { Bell } from "lucide-react";
 import { Lang } from "@/types/language";
 import { NoticeFilters, NoticeList, NoticesCrossNav } from "@/components/support/notice";
 import { listNotices, toNoticeQuery } from "@/services/notice";
-import type { NoticePageProps, QueryNotice } from "@/types/notice";
+import type { NoticePageProps, QueryNotice, INotice } from "@/types/notice";
+import type { IPaginationMeta } from "@/types/pagination";
 import { createAirportNoticesI18n } from "@/data/i18n/notices/airport";
 
 export async function generateMetadata({
@@ -44,6 +45,19 @@ function NoticeListSkeleton() {
   );
 }
 
+function NoticeFiltersSkeleton() {
+  return (
+    <div className="space-y-5">
+      <div className="h-12 w-full max-w-lg animate-pulse rounded-full bg-gray-200" />
+      <div className="flex gap-2">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="h-9 w-28 animate-pulse rounded-full bg-gray-200" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 async function NoticesPageContent({
   lang,
   query,
@@ -53,8 +67,24 @@ async function NoticesPageContent({
   query: QueryNotice;
   searchParams: Record<string, string | undefined>;
 }) {
-  const { data, meta } = await listNotices(query);
   const t = createAirportNoticesI18n(lang).notices;
+
+  // Gracefully handle API failures — show an empty state rather than crashing
+  let data: INotice[] = [];
+  let meta: IPaginationMeta = {
+    total: 0,
+    page: 1,
+    limit: query.limit ?? 5,
+    pages: 0,
+  };
+
+  try {
+    const result = await listNotices(query);
+    data = result.data;
+    meta = result.meta;
+  } catch {
+    // API unavailable — fall through to empty state below
+  }
 
   return (
     <>
@@ -81,11 +111,15 @@ async function NoticesPageContent({
       {/* Filters + List */}
       <section className="bg-white py-10">
         <div className="container space-y-8">
-          <NoticeFilters
-            lang={lang}
-            query={query.search}
-            selectedPriority={query.priority}
-          />
+          {/* NoticeFilters uses useSearchParams() — wrap in its own Suspense
+              so Next.js 15 can SSR the rest of the page without blocking */}
+          <Suspense fallback={<NoticeFiltersSkeleton />}>
+            <NoticeFilters
+              lang={lang}
+              query={query.search}
+              selectedPriority={query.priority}
+            />
+          </Suspense>
           <NoticeList
             lang={lang}
             notices={data}
