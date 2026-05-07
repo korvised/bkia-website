@@ -389,9 +389,9 @@ export const faqData: FAQQA[] = [
       zh: "机场内有餐厅和商店吗？",
     },
     a: {
-      en: "The terminal provides shops selling a variety of drinks and snacks for your convenience. Please note that there are currently no full-service restaurants or duty-free shops available inside the airport.",
-      lo: "ພວກເຮົາສຸມໃສ່ການບໍລິການທີ່ສະດວກສະບາຍ ໂດຍມີຮ້ານຄ້າຂາຍເຄື່ອງດື່ມ ແລະ ອາຫານຫວ່າງ ໄວ້ຄອຍບໍລິການທ່ານພາຍໃນອາຄານຜູ້ໂດຍສານ ຢ່າງໃດກໍຕາມ, ປັດຈຸບັນແມ່ນຍັງບໍ່ມີຮ້ານອາຫານ ແລະ ຮ້ານຄ້າປອດພາສີ (Duty Free) ເປີດໃຫ້ບໍລິການ.",
-      zh: "航站楼内设有商店，为您提供各种饮料和小吃。请注意，目前机场内暂无餐厅或免税店（Duty Free）。",
+      en: "We focus on providing convenient service with shops offering drinks and snacks inside the terminal. Please note that there are currently no full-service restaurants or duty-free shops available.",
+      lo: "ພວກເຮົາສຸມໃສ່ການບໍລິການທີ່ສະດວກສະບາຍ ໂດຍມີຮ້ານຄ້າຂາຍເຄື່ອງດື່ມ ແລະ ອາຫານຫວ່າງ ໄວ້ຄອຍບໍລິການທ່ານພາຍໃນອາຄານຜູ້ໂດຍສານ, ປັດຈຸບັນແມ່ນຍັງບໍ່ມີຮ້ານອາຫານ ແລະ ຮ້ານຄ້າປອດພາສີ (Duty Free) ເປີດໃຫ້ບໍລິການ.",
+      zh: "我们致力于提供便捷的服务，航站楼内设有商店供应各类饮料和小吃。请注意，目前暂无餐厅或免税店（Duty Free）投入运营。",
     },
     links: [
       {
@@ -413,9 +413,9 @@ export const faqData: FAQQA[] = [
       zh: "机场是否有贵宾休息室 (VIP Lounge)？",
     },
     a: {
-      en: "Yes, we offer a VIP Lounge service located in a dedicated area separate from the main terminal. The lounge provides a premium experience featuring: (1) Private and exclusive seating, (2) A fully air-conditioned environment for maximum comfort, (3) A quiet and peaceful atmosphere perfect for rest or work, (4) Light snacks and refreshments, and (5) Complimentary high-speed Wi-Fi throughout the area.",
-      lo: "ມີ, ພວກເຮົາມີບໍລິການຫ້ອງຮັບຮອງ VIP ເຊິ່ງຕັ້ງຢູ່ເຂດສະເພາະແຍກອອກຈາກອາຄານຜູ້ໂດຍສານຫຼັກ ພາຍໃນຫ້ອງຮັບຮອງມີສິ່ງອຳນວຍຄວາມສະດວກຄົບຊຸດຄື: (1) ບ່ອນນັ່ງສ່ວນຕົວທີ່ເປັນເອກະລັກ, (2) ຫ້ອງແອເຢັນສະບາຍ, (3) ບັນຍາກາດທີ່ງຽບສະຫງົບ ແລະ ເປັນສ່ວນຕົວ ເໝາະແກ່ການພັກຜ່ອນ ຫຼື ເຮັດວຽກ, (4) ມີອາຫານວ່າງໄວ້ຄອຍບໍລິການ, (5) ບໍລິການ WiFi ຟຣີ ຄວາມໄວສູງທົ່ວບໍລິເວນ.",
-      zh: "是的，我们提供位于独立区域的贵宾休息室（VIP Lounge）。该休息室与主候机楼分开，提供优质的候机体验：(1) 专属私密座椅；(2) 全空调覆盖的凉爽舒适环境；(3) 安静宁适的氛围，适合休息或办公；(4) 提供精美点心与小吃；(5) 全区覆盖免费高速无线网络 (Wi-Fi)。",
+      en: "Yes, we offer a dedicated lounge service located at Gate 03. The lounge provides a full range of premium facilities: (1) Exclusive private seating, (2) A cool and comfortable air-conditioned environment, (3) A quiet, private atmosphere perfect for rest or work, (4) Light snacks and refreshments, and (5) Complimentary high-speed Wi-Fi throughout the area.",
+      lo: "ມີ, ພວກເຮົາມີບໍລິການຫ້ອງຮັບຮອງສະເພາະຢູ່ບໍລິເວນໂຖງລໍຖ້າ Gate 03 ພາຍໃນຫ້ອງຮັບຮອງມີສິ່ງອຳນວຍຄວາມສະດວກຄົບຊຸດຄື: (1) ບ່ອນນັ່ງສ່ວນຕົວທີ່ເປັນເອກະລັກ, (2) ຫ້ອງແອເຢັນສະບາຍ, (3) ບັນຍາກາດທີ່ງຽບສະຫງົບ ແລະ ເປັນສ່ວນຕົວ ເໝາະແກ່ການພັກຜ່ອນ ຫຼື ເຮັດວຽກ, (4) ມີອາຫານວ່າງໄວ້ຄອຍບໍລິການ, (5) ບໍລິການ WiFi ຟຣີ ຄວາມໄວສູງທົ່ວບໍລິເວນ.",
+      zh: "是的，我们在 03 号登机口候机区设有专属休息室。室内提供全套高级设施：(1) 独特的私人座椅；(2) 凉爽舒适的空调环境；(3) 安静私密的氛围，非常适合休息或办公；(4) 提供精美点心与小吃服务；(5) 全区覆盖免费高速无线网络 (Wi-Fi)。",
     },
     links: [
       {
@@ -773,9 +773,9 @@ export const faqData: FAQQA[] = [
       zh: "从机场到金三角特区需要多长时间？",
     },
     a: {
-      en: "The Golden Triangle Special Economic Zone (SEZ) is approximately 8–12 km from the airport, depending on the entrance you are heading to. Under normal road conditions, the journey takes 15–25 minutes by taxi. The fixed taxi fare is 300,000 LAK or 100 CNY. Enquire at the taxi counter (Exit 04, Domestic Terminal) for up-to-date journey information.",
-      lo: "ເຂດເສດຖະກິດພິເສດສາມຫຼ່ຽມຄຳ ຕັ້ງຢູ່ຫ່າງຈາກສະໜາມບິນປະມານ 8–12 ກິໂລ ຕາມຈຸດທາງເຂົ້າ, ໃຊ້ເວລາເດີນທາງປະມານ 10–15 ນາທີ ໂດຍລົດ. ລາຄາຄົງທີ່ຈາກສະໜາມບິນ ແມ່ນ 300,000 ກີບ ຫຼື 100 ຢວນ ສອບຖາມຢູ່ເຄົາເຕີລົດແທັກຊີ ປະຕູທາງອອກ 04.",
-      zh: "金三角特区距机场约 8-12 公里（视入口而定），正常道路情况下出租车约需 15-25 分钟。从机场至金三角特区的固定票价为 300,000 基普或 100 元人民币。详情可在 04 号出口（国内航站楼）出租车服务台咨询。",
+      en: "The Golden Triangle Special Economic Zone (SEZ) is approximately 5–8 km from the airport, depending on the entrance. The journey takes about 10–15 minutes by vehicle. The fixed taxi fare is 300,000 LAK or 100 CNY. Please enquire at the taxi counter near Exit 04.",
+      lo: "ເຂດເສດຖະກິດພິເສດສາມຫຼ່ຽມຄຳ ຕັ້ງຢູ່ຫ່າງຈາກສະໜາມບິນປະມານ 5–8 ກິໂລ ຕາມຈຸດທາງເຂົ້າ, ໃຊ້ເວລາເດີນທາງປະມານ 10–15 ນາທີ ໂດຍລົດ. ລາຄາຄົງທີ່ຈາກສະໜາມບິນ ແມ່ນ 300,000 ກີບ ຫຼື 100 ຢວນ ສອບຖາມຢູ່ເຄົາເຕີລົດແທັກຊີ ປະຕູທາງອອກ 04.",
+      zh: "金三角特区距离机场约 5–8 公里（视入口而定），车程约 10–15 分钟。从机场出发的固定车费为 300,000 基普或 100 元人民币。详情请咨询 04 号出口的出租车柜台。",
     },
     links: [
       {
