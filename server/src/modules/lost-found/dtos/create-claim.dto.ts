@@ -1,26 +1,28 @@
-import { IsEmail, IsOptional, IsString, Length } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
 
 export class CreateClaimDto {
   @IsString()
   @Length(2, 255)
   claimantName: string;
 
+  @IsOptional()
   @IsEmail()
-  claimantEmail: string;
+  @IsNotEmpty()
+  claimantEmail?: string;
 
   @IsOptional()
   @IsString()
-  @Length(0, 30)
+  @Length(1, 30)
   claimantPhone?: string;
 
   @IsOptional()
   @IsString()
-  @Length(0, 20)
+  @Length(1, 20)
   flightNumber?: string;
 
   @IsOptional()
   @IsString()
-  @Length(0, 20)
+  @Length(1, 20)
   seatNumber?: string;
 
   @IsString()

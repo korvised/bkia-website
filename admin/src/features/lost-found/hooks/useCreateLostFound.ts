@@ -14,9 +14,6 @@ const initialValues: ICreateLostFoundForm = {
   displayLocations: { ...EMPTY_MULTILINGUAL },
   incidentDate: "",
   flightNumber: "",
-  reporterName: "",
-  reporterEmail: "",
-  reporterPhone: "",
   images: [],
 };
 
@@ -33,21 +30,6 @@ function validate(values: ICreateLostFoundForm) {
   }
 
   if (!values.incidentDate) errors.incidentDate = "Incident date is required";
-
-  if (!values.reporterName) {
-    errors.reporterName = "Reporter name is required";
-  } else if (values.reporterName.length < 2) {
-    errors.reporterName = "At least 2 characters";
-  }
-
-  if (values.reporterEmail && !/\S+@\S+\.\S+/.test(values.reporterEmail))
-    errors.reporterEmail = "Invalid email format";
-
-  if (!values.reporterPhone) {
-    errors.reporterPhone = "Phone number is required";
-  } else if (values.reporterPhone.length < 2) {
-    errors.reporterPhone = "At least 2 characters";
-  }
 
   return errors;
 }
@@ -90,9 +72,6 @@ export function useCreateLostFound() {
 
       formData.append("incidentDate", values.incidentDate);
       if (values.flightNumber) formData.append("flightNumber", values.flightNumber);
-      formData.append("reporterName", values.reporterName);
-      if (values.reporterEmail) formData.append("reporterEmail", values.reporterEmail);
-      formData.append("reporterPhone", values.reporterPhone);
       values.images.forEach((file) => formData.append("images", file));
 
       try {

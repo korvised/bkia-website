@@ -6,7 +6,6 @@ import {
   LuLanguages,
   LuMapPin,
   LuPackageSearch,
-  LuUser,
   LuUpload,
   LuX,
 } from "react-icons/lu";
@@ -245,46 +244,7 @@ export function LostFoundForm({ formik }: Props) {
         </div>
       </div>
 
-      {/* Section 3: Reporter Info */}
-      <div className="border-b border-gray-200 p-6">
-        <SectionHeader
-          icon={<LuUser className="h-4 w-4" />}
-          title="Reporter Information"
-          description="Contact details of the person reporting"
-        />
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          <Input
-            label="Full Name *"
-            name="reporterName"
-            placeholder="John Doe"
-            value={values.reporterName}
-            onChange={formik.handleChange}
-            onBlur={handleBlur}
-            error={getError("reporterName")}
-          />
-          <Input
-            label="Email"
-            name="reporterEmail"
-            type="email"
-            placeholder="john@example.com"
-            value={values.reporterEmail}
-            onChange={formik.handleChange}
-            onBlur={handleBlur}
-            error={getError("reporterEmail")}
-          />
-          <Input
-            label="Phone *"
-            name="reporterPhone"
-            placeholder="+856 20..."
-            value={values.reporterPhone}
-            onChange={formik.handleChange}
-            onBlur={handleBlur}
-            error={getError("reporterPhone")}
-          />
-        </div>
-      </div>
-
-      {/* Section 4: Images */}
+      {/* Section 3: Photos */}
       <div className="p-6">
         <SectionHeader
           icon={<LuUpload className="h-4 w-4" />}

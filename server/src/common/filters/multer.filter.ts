@@ -46,3 +46,12 @@ export const documentFileFilter = makeFileFilter({
   maxSize: FILE_SIZES.LARGE_DOCUMENT,
   category: 'document',
 });
+
+/**
+ * Claim proof files: images + PDF (boarding passes, receipts, photos).
+ * Uses CLAIM_PROOF limit (20 MB).
+ */
+export const claimFileFilter = makeFileFilter({
+  allowedTypes: FILE_TYPE_GROUPS.ALL_ALLOWED,
+  maxSize: FILE_SIZES.CLAIM_PROOF,
+});

@@ -7,24 +7,32 @@ export function useGetLostFoundById(id: string) {
   const {
     data: item,
     isLoading,
+    isFetching,
     isError,
+    refetch,
   } = useFetchLostFoundByIdQuery(id, { skip: !id });
 
   const {
     data: claims,
     isLoading: isLoadingClaims,
+    isFetching: isClaimsFetching,
     isError: isClaimsError,
+    refetch: refetchClaims,
   } = useFetchClaimsQuery(id, { skip: !id });
 
   const handleBack = () => navigate("/support/lost-found");
+  const handleRefetch = () => { refetch(); refetchClaims(); };
 
   return {
     item,
     claims: claims ?? [],
     isLoading,
+    isFetching,
     isLoadingClaims,
+    isClaimsFetching,
     isError,
     isClaimsError,
     handleBack,
+    handleRefetch,
   };
 }

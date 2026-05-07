@@ -5,6 +5,8 @@ import Link from "next/link";
 import {
   Search,
   X,
+  Plus,
+  ZoomIn,
   Package,
   PackageSearch,
   PackageCheck,
@@ -17,11 +19,11 @@ import {
   KeyRound,
   Banknote,
   Gamepad2,
-  PlaneTakeoff,
   MapPin,
   CalendarDays,
   ChevronRight,
   CheckCircle2,
+  Clock,
   Phone,
   Mail,
   Loader2,
@@ -30,7 +32,7 @@ import {
 import { useInView } from "@/hooks/useInView";
 import type { Lang } from "@/types/language";
 import type { ILostFoundItem } from "@/types/lost-found";
-import { LostFoundCategory } from "@/types/enum";
+import { LostFoundCategory, LostFoundStatus } from "@/types/enum";
 import { lostFound, type LostFoundKey } from "@/data/i18n/about/lost-found";
 import { listLostFound, submitClaim } from "@/services/lost-found";
 
@@ -166,8 +168,8 @@ export function LostFoundPageContent({ lang, stats }: Props) {
       setSubmitError("");
       try {
         const fd = new FormData();
-        fd.append("claimantName",  form.claimantName);
-        fd.append("claimantPhone", form.claimantPhone);
+        fd.append("claimantName",   form.claimantName);
+        if (form.claimantPhone) fd.append("claimantPhone", form.claimantPhone);
         if (form.claimantEmail) fd.append("claimantEmail", form.claimantEmail);
         if (form.flightNumber)  fd.append("flightNumber",  form.flightNumber);
         if (form.seatNumber)    fd.append("seatNumber",    form.seatNumber);
@@ -183,6 +185,9 @@ export function LostFoundPageContent({ lang, stats }: Props) {
     },
     [selectedItem, form, lang],
   );
+
+  // Whether the user has typed anything — used to collapse the stats section
+  const isSearching = query.trim().length > 0;
 
   // InView refs for below-fold sections only (hero is always visible)
   const [statsRef, statsIn] = useInView<HTMLElement>({ threshold: 0.05 });
@@ -268,45 +273,93 @@ export function LostFoundPageContent({ lang, stats }: Props) {
       </section>
 
       {/* ── Stats ────────────────────────────────────────────────────── */}
-      <section
-        ref={statsRef}
-        className="border-b border-gray-100 bg-white py-10 md:py-14"
-      >
-        <div className="container">
-          <p
-            className={`mb-6 text-center text-xs font-semibold uppercase tracking-widest text-gray-400 transition-all duration-500 ${
-              statsIn ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            {t("statsTitle", lang)}
-          </p>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {(
-              [
-                { icon: Package,       key: "statTotal"    as LostFoundKey, value: stats.total,    color: "text-gray-700",    bg: "bg-gray-100"    },
-                { icon: PackageSearch, key: "statOpen"     as LostFoundKey, value: stats.open,     color: "text-primary",     bg: "bg-primary/10"  },
-                { icon: ScanSearch,    key: "statMatched"  as LostFoundKey, value: stats.matched,  color: "text-amber-600",   bg: "bg-amber-50"    },
-                { icon: PackageCheck,  key: "statReturned" as LostFoundKey, value: stats.returned, color: "text-emerald-600", bg: "bg-emerald-50"  },
-              ] as const
-            ).map(({ icon: Icon, key, value, color, bg }, i) => (
-              <div
-                key={key}
-                className={`flex flex-col items-center gap-2 rounded-2xl border border-gray-100 bg-white p-5 text-center shadow-sm transition-all duration-700 md:p-6 ${
-                  statsIn ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-                }`}
-                style={{ transitionDelay: `${i * 70}ms` }}
-              >
-                <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${bg}`}>
-                  <Icon className={`h-5 w-5 ${color}`} />
+      <section ref={statsRef} className="bg-white">
+
+        {/* Full cards — shown when NOT searching */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateRows: isSearching ? "0fr" : "1fr",
+            transition: "grid-template-rows 0.45s cubic-bezier(0.22,1,0.36,1)",
+          }}
+        >
+          <div className="overflow-hidden">
+            <div className="border-b border-gray-100 py-10 md:py-14">
+              <div className="container">
+                <p
+                  className={`mb-6 text-center text-xs font-semibold uppercase tracking-widest text-gray-400 transition-all duration-500 ${
+                    statsIn ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {t("statsTitle", lang)}
+                </p>
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                  {(
+                    [
+                      { icon: Package,       key: "statTotal"    as LostFoundKey, value: stats.total,    color: "text-gray-700",    bg: "bg-gray-100"    },
+                      { icon: PackageSearch, key: "statOpen"     as LostFoundKey, value: stats.open,     color: "text-primary",     bg: "bg-primary/10"  },
+                      { icon: ScanSearch,    key: "statMatched"  as LostFoundKey, value: stats.matched,  color: "text-amber-600",   bg: "bg-amber-50"    },
+                      { icon: PackageCheck,  key: "statReturned" as LostFoundKey, value: stats.returned, color: "text-emerald-600", bg: "bg-emerald-50"  },
+                    ] as const
+                  ).map(({ icon: Icon, key, value, color, bg }, i) => (
+                    <div
+                      key={key}
+                      className={`flex flex-col items-center gap-2 rounded-2xl border border-gray-100 bg-white p-5 text-center shadow-sm transition-all duration-700 md:p-6 ${
+                        statsIn ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                      }`}
+                      style={{ transitionDelay: `${i * 70}ms` }}
+                    >
+                      <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${bg}`}>
+                        <Icon className={`h-5 w-5 ${color}`} />
+                      </div>
+                      <span className="text-3xl font-bold text-gray-900">{value}</span>
+                      <span className="text-xs font-medium uppercase tracking-wide text-gray-400">
+                        {t(key, lang)}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-                <span className="text-3xl font-bold text-gray-900">{value}</span>
-                <span className="text-xs font-medium uppercase tracking-wide text-gray-400">
-                  {t(key, lang)}
-                </span>
               </div>
-            ))}
+            </div>
           </div>
         </div>
+
+        {/* Compact chip strip — shown when searching */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateRows: isSearching ? "1fr" : "0fr",
+            transition: "grid-template-rows 0.45s cubic-bezier(0.22,1,0.36,1)",
+          }}
+        >
+          <div className="overflow-hidden">
+            <div className="border-b border-gray-100">
+              <div className="container flex flex-wrap items-center gap-x-1 gap-y-1.5 py-2.5">
+                <span className="mr-1 text-[11px] font-medium text-gray-400">
+                  {t("statsTitle", lang)}:
+                </span>
+                {(
+                  [
+                    { icon: Package,       key: "statTotal"    as LostFoundKey, value: stats.total,    chipColor: "bg-gray-100 text-gray-600"         },
+                    { icon: PackageSearch, key: "statOpen"     as LostFoundKey, value: stats.open,     chipColor: "bg-primary/10 text-primary"         },
+                    { icon: ScanSearch,    key: "statMatched"  as LostFoundKey, value: stats.matched,  chipColor: "bg-amber-50 text-amber-600"         },
+                    { icon: PackageCheck,  key: "statReturned" as LostFoundKey, value: stats.returned, chipColor: "bg-emerald-50 text-emerald-600"     },
+                  ] as const
+                ).map(({ icon: Icon, key, value, chipColor }) => (
+                  <span
+                    key={key}
+                    className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold ${chipColor}`}
+                  >
+                    <Icon className="h-3 w-3" />
+                    <span>{value}</span>
+                    <span className="font-normal opacity-75">{t(key, lang)}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       {/* ── Search results + Claim form ───────────────────────────────── */}
@@ -347,6 +400,7 @@ export function LostFoundPageContent({ lang, stats }: Props) {
                 {results.map((item) => {
                   const Icon = CATEGORY_ICONS[item.category] ?? Package;
                   const isSelected = selectedItem?.id === item.id;
+                  const isMatched = item.status === LostFoundStatus.MATCHED;
                   return (
                     <div
                       key={item.id}
@@ -364,9 +418,18 @@ export function LostFoundPageContent({ lang, stats }: Props) {
                           <Icon className="h-[18px] w-[18px]" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="truncate font-semibold text-gray-900">{item.itemName}</p>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <p className="truncate font-semibold text-gray-900">{item.itemName}</p>
+                            {/* Status badge — only for MATCHED; OPEN needs no badge */}
+                            {isMatched && (
+                              <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-semibold text-amber-600 ring-1 ring-amber-200">
+                                <Clock className="h-2.5 w-2.5" />
+                                {t("statusMatched", lang)}
+                              </span>
+                            )}
+                          </div>
                           {item.description && (
-                            <p className="mt-0.5 line-clamp-2 text-xs text-gray-500 leading-relaxed">
+                            <p className="mt-0.5 line-clamp-2 text-xs leading-relaxed text-gray-500">
                               {item.description}
                             </p>
                           )}
@@ -378,12 +441,6 @@ export function LostFoundPageContent({ lang, stats }: Props) {
                               <CalendarDays className="h-3 w-3" />
                               {formatDate(item.incidentDate, lang)}
                             </span>
-                            {item.flightNumber && (
-                              <span className="flex items-center gap-1">
-                                <PlaneTakeoff className="h-3 w-3" />
-                                {item.flightNumber}
-                              </span>
-                            )}
                             {item.location && (
                               <span className="flex items-center gap-1 truncate">
                                 <MapPin className="h-3 w-3 shrink-0" />
@@ -397,7 +454,9 @@ export function LostFoundPageContent({ lang, stats }: Props) {
                           className={`ml-2 mt-0.5 flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-all ${
                             isSelected
                               ? "bg-gray-200 text-gray-600 hover:bg-gray-300"
-                              : "bg-primary text-white hover:bg-primary-600 hover:shadow-md hover:shadow-primary/20"
+                              : isMatched
+                                ? "border border-amber-200 bg-amber-50 text-amber-700 hover:bg-amber-100"
+                                : "bg-primary text-white hover:bg-primary-600 hover:shadow-md hover:shadow-primary/20"
                           }`}
                         >
                           {isSelected ? (
@@ -453,6 +512,16 @@ export function LostFoundPageContent({ lang, stats }: Props) {
                                   </span>
                                 </div>
 
+                                {/* MATCHED status notice */}
+                                {isMatched && (
+                                  <div className="flex items-start gap-2.5 rounded-xl bg-amber-50 px-4 py-3 ring-1 ring-amber-200">
+                                    <Clock className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
+                                    <p className="text-xs leading-relaxed text-amber-700">
+                                      {t("statusMatchedHint", lang)}
+                                    </p>
+                                  </div>
+                                )}
+
                                 {/* Section 1 — Describe */}
                                 <ClaimSection title={t("claimSectionDescribe", lang)} number={1}>
                                   <label className="block">
@@ -469,8 +538,31 @@ export function LostFoundPageContent({ lang, stats }: Props) {
                                       }
                                       placeholder={t("ownershipProofHint", lang)}
                                       rows={3}
-                                      className="mt-1 w-full resize-none rounded-xl border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                                      className={`mt-1 w-full resize-none rounded-xl border bg-white px-3.5 py-2.5 text-sm text-gray-900 outline-none transition focus:ring-2 focus:ring-primary/20 ${
+                                        form.ownershipProof.length > 0 && form.ownershipProof.length < 10
+                                          ? "border-red-300 focus:border-red-400"
+                                          : "border-gray-200 focus:border-primary"
+                                      }`}
                                     />
+                                    {/* Character counter + min-length hint */}
+                                    <div className="mt-1 flex items-center justify-between">
+                                      <span className={`text-[11px] ${
+                                        form.ownershipProof.length > 0 && form.ownershipProof.length < 10
+                                          ? "text-red-500"
+                                          : "text-gray-400"
+                                      }`}>
+                                        {form.ownershipProof.length < 10
+                                          ? t("ownershipProofMinLength", lang)
+                                          : " "}
+                                      </span>
+                                      <span className={`tabular-nums text-[11px] ${
+                                        form.ownershipProof.length >= 1900
+                                          ? "text-red-500"
+                                          : "text-gray-400"
+                                      }`}>
+                                        {form.ownershipProof.length} / 2000
+                                      </span>
+                                    </div>
                                   </label>
                                 </ClaimSection>
 
@@ -510,57 +602,52 @@ export function LostFoundPageContent({ lang, stats }: Props) {
 
                                 {/* Section 3 — Proof files */}
                                 <ClaimSection title={t("claimSectionProof", lang)} number={3}>
-                                  <label className="block">
+                                  <div>
                                     <span className="label-text">{t("proofPhotos", lang)}</span>
-                                    <div className="mt-1 rounded-xl border border-dashed border-gray-200 bg-white px-4 py-4 text-center transition hover:border-primary/40">
-                                      <input
-                                        type="file"
-                                        accept="image/*,.pdf"
-                                        multiple
-                                        className="sr-only"
-                                        id={`${formId}-files-${item.id}`}
-                                        onChange={(e) => {
-                                          const picked = Array.from(e.target.files ?? []);
-                                          setForm((f) => ({
-                                            ...f,
-                                            files: [...f.files, ...picked].slice(0, 5),
-                                          }));
-                                        }}
-                                      />
-                                      <label
-                                        htmlFor={`${formId}-files-${item.id}`}
-                                        className="cursor-pointer text-xs font-medium text-primary hover:underline"
-                                      >
-                                        {form.files.length === 0
-                                          ? t("proofPhotosHint", lang)
-                                          : `${form.files.length} file(s) selected`}
-                                      </label>
-                                    </div>
-                                    {form.files.length > 0 && (
-                                      <ul className="mt-1.5 space-y-0.5">
-                                        {form.files.map((f, fi) => (
-                                          <li
-                                            key={fi}
-                                            className="flex items-center justify-between rounded-lg bg-white px-3 py-1.5 text-xs"
-                                          >
-                                            <span className="truncate text-gray-600">{f.name}</span>
-                                            <button
-                                              type="button"
-                                              onClick={() =>
-                                                setForm((prev) => ({
-                                                  ...prev,
-                                                  files: prev.files.filter((_, j) => j !== fi),
-                                                }))
-                                              }
-                                              className="ml-2 shrink-0 text-gray-400 hover:text-red-500"
-                                            >
-                                              <X className="h-3.5 w-3.5" />
-                                            </button>
-                                          </li>
-                                        ))}
-                                      </ul>
+                                    {form.files.length === 0 ? (
+                                      /* Empty upload zone */
+                                      <div className="mt-1 rounded-xl border border-dashed border-gray-200 bg-white px-4 py-5 text-center transition hover:border-primary/40">
+                                        <input
+                                          type="file"
+                                          accept="image/*,.pdf"
+                                          multiple
+                                          className="sr-only"
+                                          id={`${formId}-files-${item.id}`}
+                                          onChange={(e) => {
+                                            const picked = Array.from(e.target.files ?? []);
+                                            if (picked.length)
+                                              setForm((f) => ({ ...f, files: picked.slice(0, 5) }));
+                                            e.target.value = "";
+                                          }}
+                                        />
+                                        <label
+                                          htmlFor={`${formId}-files-${item.id}`}
+                                          className="cursor-pointer text-xs font-medium text-primary hover:underline"
+                                        >
+                                          {t("proofPhotosHint", lang)}
+                                        </label>
+                                      </div>
+                                    ) : (
+                                      /* File preview grid */
+                                      <div className="mt-1.5">
+                                        <FilePreviewGrid
+                                          files={form.files}
+                                          onRemove={(i) =>
+                                            setForm((prev) => ({
+                                              ...prev,
+                                              files: prev.files.filter((_, j) => j !== i),
+                                            }))
+                                          }
+                                          onAddFiles={(picked) =>
+                                            setForm((f) => ({
+                                              ...f,
+                                              files: [...f.files, ...picked].slice(0, 5),
+                                            }))
+                                          }
+                                        />
+                                      </div>
                                     )}
-                                  </label>
+                                  </div>
                                 </ClaimSection>
 
                                 {/* Section 4 — Contact */}
@@ -596,13 +683,17 @@ export function LostFoundPageContent({ lang, stats }: Props) {
                                       />
                                     </label>
                                     <label className="block sm:col-span-2">
-                                      <span className="label-text">{t("claimantEmail", lang)}</span>
+                                      <span className="label-text">
+                                        {t("claimantEmail", lang)}
+                                        <span className="ml-1 text-[10px] text-gray-400">(optional)</span>
+                                      </span>
                                       <input
                                         type="email"
                                         value={form.claimantEmail}
                                         onChange={(e) =>
                                           setForm((f) => ({ ...f, claimantEmail: e.target.value }))
                                         }
+                                        placeholder="example@email.com"
                                         className="mt-1 w-full rounded-xl border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
                                       />
                                     </label>
@@ -786,4 +877,144 @@ function ClaimSection({
 
 function Required() {
   return <span className="text-red-500"> *</span>;
+}
+
+// ── File preview grid with image lightbox ──────────────────────────────────
+
+function FilePreviewGrid({
+  files,
+  onRemove,
+  onAddFiles,
+  maxFiles = 5,
+}: {
+  files: File[];
+  onRemove: (index: number) => void;
+  onAddFiles: (picked: File[]) => void;
+  maxFiles?: number;
+}) {
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const addInputRef = useRef<HTMLInputElement>(null);
+
+  // Cache object URLs so we don't recreate them on every render
+  const urlCacheRef = useRef<Map<File, string>>(new Map());
+
+  const getObjectUrl = useCallback((file: File): string => {
+    if (!urlCacheRef.current.has(file)) {
+      urlCacheRef.current.set(file, URL.createObjectURL(file));
+    }
+    return urlCacheRef.current.get(file)!;
+  }, []);
+
+  // Revoke all cached URLs on unmount
+  useEffect(() => {
+    const cache = urlCacheRef.current;
+    return () => { cache.forEach((url) => URL.revokeObjectURL(url)); cache.clear(); };
+  }, []);
+
+  return (
+    <>
+      {/* Full-screen image preview overlay */}
+      {previewUrl && (
+        <div
+          className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/88 p-6 backdrop-blur-sm"
+          onClick={() => setPreviewUrl(null)}
+        >
+          <img
+            src={previewUrl}
+            alt="Preview"
+            className="max-h-full max-w-full rounded-2xl object-contain shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            type="button"
+            onClick={() => setPreviewUrl(null)}
+            className="absolute right-4 top-4 rounded-full bg-white/20 p-2.5 text-white backdrop-blur-sm transition hover:bg-white/35"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/40 px-3 py-1 text-[11px] text-white/60 backdrop-blur-sm">
+            Click anywhere to close
+          </p>
+        </div>
+      )}
+
+      {/* Hidden input for "add more" */}
+      <input
+        ref={addInputRef}
+        type="file"
+        accept="image/*,.pdf"
+        multiple
+        className="sr-only"
+        onChange={(e) => {
+          const picked = Array.from(e.target.files ?? []);
+          if (picked.length) onAddFiles(picked);
+          e.target.value = "";
+        }}
+      />
+
+      <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+        {files.map((file, i) => {
+          const isImage = file.type.startsWith("image/");
+          const url = isImage ? getObjectUrl(file) : null;
+          return (
+            <div key={i} className="group relative">
+              {isImage ? (
+                /* Image thumbnail — click to preview */
+                <button
+                  type="button"
+                  onClick={() => setPreviewUrl(url)}
+                  className="relative block w-full overflow-hidden rounded-xl border border-gray-100 bg-gray-100 shadow-sm transition hover:ring-2 hover:ring-primary hover:ring-offset-1"
+                  title={file.name}
+                >
+                  <img
+                    src={url!}
+                    alt={file.name}
+                    className="aspect-square w-full object-cover"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/28">
+                    <ZoomIn className="h-5 w-5 text-white opacity-0 drop-shadow transition-opacity group-hover:opacity-100" />
+                  </div>
+                </button>
+              ) : (
+                /* PDF card */
+                <div className="flex aspect-square flex-col items-center justify-center gap-1.5 rounded-xl border border-red-100 bg-red-50 p-2 shadow-sm">
+                  <FileText className="h-7 w-7 text-red-400" />
+                  <span className="line-clamp-2 text-center text-[9px] font-medium leading-tight text-red-500">
+                    {file.name}
+                  </span>
+                </div>
+              )}
+
+              {/* Remove button — appears on hover */}
+              <button
+                type="button"
+                onClick={() => onRemove(i)}
+                className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white opacity-0 shadow-sm transition-opacity group-hover:opacity-100"
+                title="Remove"
+              >
+                <X className="h-2.5 w-2.5" />
+              </button>
+            </div>
+          );
+        })}
+
+        {/* "Add more" tile */}
+        {files.length < maxFiles && (
+          <button
+            type="button"
+            onClick={() => addInputRef.current?.click()}
+            className="flex aspect-square flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-dashed border-gray-200 text-gray-400 transition-colors hover:border-primary/60 hover:bg-primary/5 hover:text-primary"
+          >
+            <Plus className="h-5 w-5" />
+            <span className="text-[10px] font-medium">Add</span>
+          </button>
+        )}
+      </div>
+
+      {/* File count hint */}
+      <p className="mt-1.5 text-[11px] text-gray-400">
+        {files.length} / {maxFiles} files
+      </p>
+    </>
+  );
 }

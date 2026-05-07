@@ -1,6 +1,7 @@
 import { apiSlice } from "@/redux";
 import { LOST_FOUND_TAG } from "@/constants";
 import { cleanParams } from "@/lib";
+import { LostFoundStatus } from "@/types";
 import type {
   ILostFoundItem,
   ILostFoundListResponse,
@@ -73,7 +74,10 @@ const lostFoundApi = apiSlice.injectEndpoints({
         url: `/lost-found/${id}/images/${fileId}`,
         method: "DELETE",
       }),
-      invalidatesTags: (_result, _error, { id }) => [{ type: LOST_FOUND_TAG, id }],
+      invalidatesTags: (_result, _error, { id }) => [
+        { type: LOST_FOUND_TAG, id },
+        { type: LOST_FOUND_TAG, id: "LIST" },
+      ],
     }),
 
     fetchClaims: builder.query<ILostFoundClaim[], string>({
@@ -97,6 +101,19 @@ const lostFoundApi = apiSlice.injectEndpoints({
       ],
     }),
 
+    updateStatus: builder.mutation<ILostFoundItem, { id: string; status: LostFoundStatus }>({
+      query: ({ id, status }) => ({
+        url: `/lost-found/${id}/status`,
+        method: "PATCH",
+        data: { status },
+      }),
+      invalidatesTags: (_result, _error, { id }) => [
+        { type: LOST_FOUND_TAG, id },
+        { type: LOST_FOUND_TAG, id: "LIST" },
+        { type: LOST_FOUND_TAG, id: `claims-${id}` },
+      ],
+    }),
+
     deleteLostFound: builder.mutation<{ success: boolean }, string>({
       query: (id) => ({
         url: `/lost-found/${id}`,
@@ -115,6 +132,7 @@ export const {
   useFetchLostFoundByIdQuery,
   useCreateLostFoundMutation,
   useUpdateDisplayMutation,
+  useUpdateStatusMutation,
   useUploadImagesMutation,
   useRemoveImageMutation,
   useFetchClaimsQuery,

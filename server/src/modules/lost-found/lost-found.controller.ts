@@ -14,7 +14,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
-import { imageFileFilter } from '@/common/filters';
+import { claimFileFilter, imageFileFilter } from '@/common/filters';
 import { FILE_SIZES } from '@/constants/file';
 import { JwtAuthGuard, PermissionsGuard, RolesGuard } from '@/common/guards';
 import { Permissions, Roles } from '@/common/decorators';
@@ -25,6 +25,7 @@ import {
   QueryLostFoundDto,
   QueryLostFoundAdminDto,
   UpdateDisplayDto,
+  UpdateStatusDto,
   CreateClaimDto,
   ReviewClaimDto,
 } from './dtos';
@@ -37,6 +38,15 @@ const imageUpload = () =>
     FilesInterceptor('images', 10, {
       limits: { fileSize: FILE_SIZES.MEDIUM_IMAGE },
       fileFilter: imageFileFilter,
+    }),
+  );
+
+// Claim proof files: images + PDFs, up to 20 MB each, up to 5 files
+const claimUpload = () =>
+  UseInterceptors(
+    FilesInterceptor('images', 5, {
+      limits: { fileSize: FILE_SIZES.CLAIM_PROOF },
+      fileFilter: claimFileFilter,
     }),
   );
 
@@ -96,13 +106,24 @@ export class LostFoundController {
   }
 
   @Post(':id/claims')
-  @imageUpload()
+  @claimUpload()
   createClaim(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() dto: CreateClaimDto,
     @UploadedFiles() files?: Express.Multer.File[],
   ) {
     return this.service.createClaim(id, dto, files ?? []);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.UPDATE)
+  @Patch(':id/status')
+  updateStatus(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body() dto: UpdateStatusDto,
+  ) {
+    return this.service.updateStatus(id, dto);
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)

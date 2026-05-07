@@ -1,6 +1,5 @@
 import {
   IsDateString,
-  IsEmail,
   IsEnum,
   IsOptional,
   IsString,
@@ -33,16 +32,4 @@ export class CreateLostFoundDto {
   @IsString()
   @Length(2, 20)
   flightNumber?: string;
-
-  @IsString()
-  @Length(2, 255)
-  reporterName: string;
-
-  @IsOptional()
-  @IsEmail()
-  reporterEmail?: string;
-
-  @IsString()
-  @Length(2, 30)
-  reporterPhone: string;
 }

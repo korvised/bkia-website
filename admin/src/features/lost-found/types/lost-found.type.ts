@@ -15,10 +15,12 @@ export interface ICreatedBy {
   id: string;
   name: string;
   email: string;
+  phoneNumber?: string | null;
 }
 
 export interface ILostFoundItem {
   id: string;
+  referenceCode?: string;
   category: LostFoundCategory;
   status: LostFoundStatus;
   displayNames: IMultilingualText;
@@ -75,9 +77,6 @@ export interface ICreateLostFoundPayload {
   displayLocations?: IMultilingualText;
   incidentDate: string;
   flightNumber?: string;
-  reporterName: string;
-  reporterEmail?: string;
-  reporterPhone: string;
   images?: File[];
 }
 
@@ -94,9 +93,6 @@ export interface ICreateLostFoundForm {
   displayLocations: IMultilingualFormField;
   incidentDate: string;
   flightNumber: string;
-  reporterName: string;
-  reporterEmail: string;
-  reporterPhone: string;
   images: File[];
 }
 

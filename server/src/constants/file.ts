@@ -48,6 +48,7 @@ export const FILE_SIZES = {
   SMALL_IMAGE: 2 * 1024 * 1024, // 2MB
   MEDIUM_IMAGE: 5 * 1024 * 1024, // 5MB
   LARGE_IMAGE: 10 * 1024 * 1024, // 10MB
+  CLAIM_PROOF: 20 * 1024 * 1024, // 20MB — lost & found claim proof files (images + PDFs)
   DOCUMENT: 25 * 1024 * 1024, // 25MB
   LARGE_DOCUMENT: 50 * 1024 * 1024, // 50MB
   ARCHIVE: 100 * 1024 * 1024, // 100MB

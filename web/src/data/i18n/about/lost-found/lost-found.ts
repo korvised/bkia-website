@@ -57,6 +57,19 @@ export const lostFound = {
   cancelClaim: { en: "Cancel", lo: "ຍົກເລີກ", zh: "取消" },
   backToList: { en: "Back", lo: "ກັບຄືນ", zh: "返回" },
 
+  // ── Item status badges ────────────────────────────────────────────────────
+  statusOpen: { en: "Available", lo: "ສາມາດຮ້ອງຂໍໄດ້", zh: "可认领" },
+  statusMatched: {
+    en: "Under Review",
+    lo: "ກຳລັງກວດສອບ",
+    zh: "审核中",
+  },
+  statusMatchedHint: {
+    en: "A claim is already under review for this item. You can still submit yours.",
+    lo: "ມີຄຳຮ້ອງຂໍສຳລັບສິ່ງຂອງນີ້ຢູ່ລະຫວ່າງການກວດສອບ. ທ່ານຍັງສາມາດສົ່ງຄຳຮ້ອງຂອງທ່ານໄດ້.",
+    zh: "此物品已有一份申领正在审核中，您仍可提交您的申领。",
+  },
+
   // ── Claim form ────────────────────────────────────────────────────────────
   claimItemLabel: { en: "Claiming", lo: "ແຈ້ງຮັບເຄື່ອງຄືນ", zh: "申领物品" },
   claimSectionDescribe: {
@@ -88,6 +101,11 @@ export const lostFound = {
     en: "e.g. contents inside, distinguishing marks, receipts, etc.",
     lo: "ຕົວຢ່າງ: ສິ່ງຂອງທີ່ຢູ່ທາງໃນ, ຈຸດຕຳໜິພິເສດ, ໃບບິນຊື້ເຄື່ອງ ແລະ ອື່ນໆ.",
     zh: "例如：内部装有的物品、特殊标记、购买收据等",
+  },
+  ownershipProofMinLength: {
+    en: "At least 10 characters required",
+    lo: "ຕ້ອງການຢ່າງໜ້ອຍ 10 ຕົວອັກສອນ",
+    zh: "至少需要10个字符",
   },
   claimFlightNumber: {
     en: "Your flight number",

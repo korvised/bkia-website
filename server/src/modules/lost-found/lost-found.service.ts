@@ -18,6 +18,7 @@ import {
   QueryLostFoundDto,
   ReviewClaimDto,
   UpdateDisplayDto,
+  UpdateStatusDto,
 } from './dtos';
 
 function getDisplay(
@@ -51,7 +52,8 @@ export class LostFoundService {
 
     const record = this.repo.create({
       ...dto,
-      incidentDate: new Date(dto.incidentDate),
+      // Force noon UTC so timezone offsets never shift the calendar date
+      incidentDate: new Date(`${dto.incidentDate}T12:00:00.000Z`),
       referenceCode,
       images: [],
       createdBy: user,
@@ -73,14 +75,14 @@ export class LostFoundService {
   }
 
   // Public stats — aggregated counts (no PII)
+  // "total" = open + matched (items currently in care, not all-time records)
   async getStats() {
-    const [total, open, matched, returned] = await Promise.all([
-      this.repo.count(),
+    const [open, matched, returned] = await Promise.all([
       this.repo.count({ where: { status: LostFoundStatus.OPEN } }),
       this.repo.count({ where: { status: LostFoundStatus.MATCHED } }),
       this.repo.count({ where: { status: LostFoundStatus.RETURNED } }),
     ]);
-    return { total, open, matched, returned };
+    return { total: open + matched, open, matched, returned };
   }
 
   // Public list — only VISIBLE, select necessary fields + display fields by locale
@@ -92,6 +94,13 @@ export class LostFoundService {
       page = 1,
       limit = 20,
     } = query;
+
+    // Closed statuses — never exposed on the public list
+    const hiddenStatuses = [
+      LostFoundStatus.RETURNED,
+      LostFoundStatus.DONATED,
+      LostFoundStatus.DISPOSED,
+    ];
 
     const qb = this.repo
       .createQueryBuilder('lf')
@@ -109,6 +118,7 @@ export class LostFoundService {
         'cover.path',
       ])
       .leftJoin('lf.coverImage', 'cover')
+      .where('lf.status NOT IN (:...hiddenStatuses)', { hiddenStatuses })
       .orderBy('lf.createdAt', 'DESC')
       .skip((page - 1) * limit)
       .take(limit);
@@ -246,6 +256,30 @@ export class LostFoundService {
     return lf;
   }
 
+  async updateStatus(id: string, dto: UpdateStatusDto) {
+    const lf = await this.repo.findOne({ where: { id } });
+    if (!lf) throw new NotFoundException('Item not found');
+
+    lf.status = dto.status;
+
+    // auto-stamp resolvedAt when staff manually marks as returned/donated/disposed
+    if (
+      [LostFoundStatus.RETURNED, LostFoundStatus.DONATED, LostFoundStatus.DISPOSED].includes(
+        dto.status,
+      ) &&
+      !lf.resolvedAt
+    ) {
+      lf.resolvedAt = new Date();
+    }
+
+    // clear resolvedAt if reverting to an active status
+    if ([LostFoundStatus.OPEN, LostFoundStatus.MATCHED].includes(dto.status)) {
+      lf.resolvedAt = null;
+    }
+
+    return this.repo.save(lf);
+  }
+
   async updateDisplay(id: string, dto: UpdateDisplayDto) {
     const lf = await this.findOneAdmin(id);
     if (dto.displayNames) lf.displayNames = dto.displayNames;
@@ -310,7 +344,7 @@ export class LostFoundService {
     const claim = this.claimRepo.create({
       lostFound: lf,
       claimantName: dto.claimantName,
-      claimantEmail: dto.claimantEmail,
+      claimantEmail: dto.claimantEmail ?? null,
       claimantPhone: dto.claimantPhone ?? null,
       flightNumber: dto.flightNumber ?? null,
       seatNumber: dto.seatNumber ?? null,
@@ -356,7 +390,7 @@ export class LostFoundService {
       await this.repo.save(claim.lostFound);
     } else if (dto.status === ClaimStatus.REJECTED) {
       // Revert item to OPEN if no OTHER pending or approved claims remain.
-      // Exclude the current claim (still PENDING in DB until the save below).
+      // Exclude the current claim (still its old status in DB until the save below).
       const activeCount = await this.claimRepo.count({
         where: {
           id: Not(claimId),
@@ -368,6 +402,20 @@ export class LostFoundService {
         claim.lostFound.status = LostFoundStatus.OPEN;
         await this.repo.save(claim.lostFound);
       }
+    } else if (dto.status === ClaimStatus.PENDING) {
+      // ── Undo: reverting an APPROVED or REJECTED claim back to PENDING ──
+      // Clear the resolved timestamp if present (item is no longer resolved).
+      if (claim.lostFound.resolvedAt) {
+        claim.lostFound.resolvedAt = null;
+      }
+      // If the item was set to OPEN when the claim was rejected (no other active
+      // claims at the time), restore it to MATCHED — there is now a pending claim.
+      if (claim.lostFound.status === LostFoundStatus.OPEN) {
+        claim.lostFound.status = LostFoundStatus.MATCHED;
+      }
+      // Also clear reviewedAt so the claim reads as genuinely un-reviewed.
+      claim.reviewedAt = null;
+      await this.repo.save(claim.lostFound);
     }
 
     return this.claimRepo.save(claim);

@@ -57,15 +57,6 @@ export class LostFound {
   @Column({ type: 'varchar', length: 20, nullable: true })
   flightNumber: string | null;
 
-  @Column({ type: 'varchar', length: 255 })
-  reporterName: string;
-
-  @Column({ type: 'varchar', length: 150, nullable: true })
-  reporterEmail: string | null;
-
-  @Column({ type: 'varchar', length: 30, nullable: true })
-  reporterPhone: string | null;
-
   @Column({ type: 'varchar', length: 30, unique: true })
   referenceCode: string;
 

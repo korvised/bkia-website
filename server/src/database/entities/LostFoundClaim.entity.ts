@@ -34,8 +34,8 @@ export class LostFoundClaim {
   @Column({ type: 'varchar', length: 255 })
   claimantName: string;
 
-  @Column({ type: 'varchar', length: 150 })
-  claimantEmail: string;
+  @Column({ type: 'varchar', length: 150, nullable: true })
+  claimantEmail: string | null;
 
   @Column({ type: 'varchar', length: 30, nullable: true })
   claimantPhone: string | null;
