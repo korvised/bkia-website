@@ -32,6 +32,9 @@
     "vite-tsconfig-paths": "^5.1.4",
     "yup": "^1.7.1"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.0",

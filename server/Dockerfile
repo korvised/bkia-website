@@ -4,7 +4,7 @@
 FROM node:22-alpine AS dev
 
 # Enable pnpm via corepack (recommended for Node 22)
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@10.20.0 --activate
 
 # Create app folder
 WORKDIR /app
@@ -27,7 +27,7 @@ USER node
 #
 FROM node:22-alpine AS build
 
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@10.20.0 --activate
 
 WORKDIR /app
 
@@ -54,7 +54,7 @@ USER node
 #
 FROM node:22-alpine AS prod
 
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@10.20.0 --activate
 
 WORKDIR /app
 
