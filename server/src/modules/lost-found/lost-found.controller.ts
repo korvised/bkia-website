@@ -27,7 +27,10 @@ import {
   UpdateDisplayDto,
   UpdateStatusDto,
   CreateClaimDto,
+  CreateStandaloneClaimDto,
   ReviewClaimDto,
+  QueryClaimsDto,
+  LinkClaimDto,
 } from './dtos';
 import { PERMISSIONS } from '@/constants';
 
@@ -77,6 +80,71 @@ export class LostFoundController {
   @Get('stats')
   getStats() {
     return this.service.getStats();
+  }
+
+  // ─── CLAIMS (static routes BEFORE parameterized :id) ──────
+
+  @Post('claims')
+  @claimUpload()
+  createStandaloneClaim(
+    @Body() dto: CreateStandaloneClaimDto,
+    @UploadedFiles() files?: Express.Multer.File[],
+  ) {
+    return this.service.createStandaloneClaim(dto, files ?? []);
+  }
+
+  @Get('claims/track/:referenceCode')
+  trackClaim(@Param('referenceCode') referenceCode: string) {
+    return this.service.trackClaim(referenceCode);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.READ)
+  @Get('claims/all')
+  findAllClaims(@Query() query: QueryClaimsDto) {
+    return this.service.findAllClaims(query);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.READ)
+  @Get('claims/:claimId')
+  findOneClaim(@Param('claimId', new ParseUUIDPipe()) claimId: string) {
+    return this.service.findOneClaim(claimId);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.UPDATE)
+  @Patch('claims/:claimId/review')
+  reviewClaim(
+    @Param('claimId', new ParseUUIDPipe()) claimId: string,
+    @Body() dto: ReviewClaimDto,
+    @Request() req: any,
+  ) {
+    return this.service.reviewClaim(claimId, dto, req.user);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.UPDATE)
+  @Patch('claims/:claimId/link')
+  linkClaim(
+    @Param('claimId', new ParseUUIDPipe()) claimId: string,
+    @Body() dto: LinkClaimDto,
+  ) {
+    return this.service.linkClaim(claimId, dto);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(LOST_FOUND.UPDATE)
+  @Patch('claims/:claimId/unlink')
+  unlinkClaim(
+    @Param('claimId', new ParseUUIDPipe()) claimId: string,
+  ) {
+    return this.service.unlinkClaim(claimId);
   }
 
   // ─── STAFF ─────────────────────────────────────────────────
@@ -166,18 +234,6 @@ export class LostFoundController {
   @Get(':id/claims')
   findClaims(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.service.findClaims(id);
-  }
-
-  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN, UserRole.STAFF)
-  @Permissions(LOST_FOUND.UPDATE)
-  @Patch('claims/:claimId/review')
-  reviewClaim(
-    @Param('claimId', new ParseUUIDPipe()) claimId: string,
-    @Body() dto: ReviewClaimDto,
-    @Request() req: any,
-  ) {
-    return this.service.reviewClaim(claimId, dto, req.user);
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)

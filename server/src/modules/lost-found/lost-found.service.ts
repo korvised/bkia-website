@@ -14,6 +14,9 @@ import {
 import {
   CreateClaimDto,
   CreateLostFoundDto,
+  CreateStandaloneClaimDto,
+  LinkClaimDto,
+  QueryClaimsDto,
   QueryLostFoundAdminDto,
   QueryLostFoundDto,
   ReviewClaimDto,
@@ -33,6 +36,10 @@ function generateReferenceCode(): string {
   const d = new Date().toISOString().slice(0, 10).replace(/-/g, '');
   const rand = Math.random().toString(36).slice(2, 7).toUpperCase();
   return `LF-${d}-${rand}`;
+}
+
+function generateClaimReferenceCode(): string {
+  return Math.random().toString(36).slice(2, 7).toUpperCase();
 }
 
 @Injectable()
@@ -341,8 +348,10 @@ export class LostFoundService {
     if (closedStatuses.includes(lf.status))
       throw new BadRequestException('Item is already closed and cannot be claimed');
 
+    const referenceCode = generateClaimReferenceCode();
     const claim = this.claimRepo.create({
       lostFound: lf,
+      referenceCode,
       claimantName: dto.claimantName,
       claimantEmail: dto.claimantEmail ?? null,
       claimantPhone: dto.claimantPhone ?? null,
@@ -364,11 +373,7 @@ export class LostFoundService {
       await this.claimRepo.save(saved);
     }
 
-    // set parent to MATCHED
-    lf.status = LostFoundStatus.MATCHED;
-    await this.repo.save(lf);
-
-    return { claimId: saved.id, message: 'Claim submitted successfully' };
+    return { claimId: saved.id, referenceCode, message: 'Claim submitted successfully' };
   }
 
   async reviewClaim(claimId: string, dto: ReviewClaimDto, staff: User) {
@@ -383,39 +388,53 @@ export class LostFoundService {
     claim.reviewedBy = staff;
     claim.reviewedAt = new Date();
 
-    if (dto.status === ClaimStatus.COMPLETED) {
-      claim.lostFound.status = LostFoundStatus.RETURNED;
-      claim.lostFound.resolvedAt = new Date();
-      claim.lostFound.handledBy = staff;
-      await this.repo.save(claim.lostFound);
-    } else if (dto.status === ClaimStatus.REJECTED) {
-      // Revert item to OPEN if no OTHER pending or approved claims remain.
-      // Exclude the current claim (still its old status in DB until the save below).
-      const activeCount = await this.claimRepo.count({
-        where: {
-          id: Not(claimId),
-          lostFound: { id: claim.lostFound.id },
-          status: In([ClaimStatus.PENDING, ClaimStatus.APPROVED]),
-        },
-      });
-      if (activeCount === 0) {
-        claim.lostFound.status = LostFoundStatus.OPEN;
+    // Only update the linked item's status when a linked item exists
+    if (claim.lostFound) {
+      if (dto.status === ClaimStatus.APPROVED) {
+        // Approve → set item to MATCHED
+        if (claim.lostFound.status === LostFoundStatus.OPEN) {
+          claim.lostFound.status = LostFoundStatus.MATCHED;
+          await this.repo.save(claim.lostFound);
+        }
+      } else if (dto.status === ClaimStatus.COMPLETED) {
+        claim.lostFound.status = LostFoundStatus.RETURNED;
+        claim.lostFound.resolvedAt = new Date();
+        claim.lostFound.handledBy = staff;
+        await this.repo.save(claim.lostFound);
+      } else if (dto.status === ClaimStatus.REJECTED) {
+        // Reject → revert to OPEN if no other approved claims remain
+        const approvedCount = await this.claimRepo.count({
+          where: {
+            id: Not(claimId),
+            lostFound: { id: claim.lostFound.id },
+            status: ClaimStatus.APPROVED,
+          },
+        });
+        if (approvedCount === 0 && claim.lostFound.status === LostFoundStatus.MATCHED) {
+          claim.lostFound.status = LostFoundStatus.OPEN;
+          await this.repo.save(claim.lostFound);
+        }
+      } else if (dto.status === ClaimStatus.PENDING) {
+        // Undo → clear resolvedAt, revert MATCHED → OPEN if no other approved claims
+        if (claim.lostFound.resolvedAt) {
+          claim.lostFound.resolvedAt = null;
+        }
+        const approvedCount = await this.claimRepo.count({
+          where: {
+            id: Not(claimId),
+            lostFound: { id: claim.lostFound.id },
+            status: ClaimStatus.APPROVED,
+          },
+        });
+        if (approvedCount === 0 && claim.lostFound.status === LostFoundStatus.MATCHED) {
+          claim.lostFound.status = LostFoundStatus.OPEN;
+        }
+        claim.reviewedAt = null;
         await this.repo.save(claim.lostFound);
       }
     } else if (dto.status === ClaimStatus.PENDING) {
-      // ── Undo: reverting an APPROVED or REJECTED claim back to PENDING ──
-      // Clear the resolved timestamp if present (item is no longer resolved).
-      if (claim.lostFound.resolvedAt) {
-        claim.lostFound.resolvedAt = null;
-      }
-      // If the item was set to OPEN when the claim was rejected (no other active
-      // claims at the time), restore it to MATCHED — there is now a pending claim.
-      if (claim.lostFound.status === LostFoundStatus.OPEN) {
-        claim.lostFound.status = LostFoundStatus.MATCHED;
-      }
-      // Also clear reviewedAt so the claim reads as genuinely un-reviewed.
+      // Standalone claim: still clear reviewedAt on undo
       claim.reviewedAt = null;
-      await this.repo.save(claim.lostFound);
     }
 
     return this.claimRepo.save(claim);
@@ -427,6 +446,218 @@ export class LostFoundService {
       relations: { proofFiles: true, reviewedBy: true },
       order: { createdAt: 'DESC' },
     });
+  }
+
+  // ─── STANDALONE CLAIMS ─────────────────────────────────────
+
+  async createStandaloneClaim(
+    dto: CreateStandaloneClaimDto,
+    files: Express.Multer.File[],
+  ) {
+    const referenceCode = generateClaimReferenceCode();
+
+    const claim = this.claimRepo.create({
+      lostFound: null,
+      referenceCode,
+      category: dto.category,
+      itemDescription: dto.itemDescription,
+      lostLocation: dto.lostLocation ?? null,
+      lostDate: dto.lostDate ? new Date(`${dto.lostDate}T12:00:00.000Z`) : null,
+      claimantName: dto.claimantName,
+      claimantEmail: dto.claimantEmail ?? null,
+      claimantPhone: dto.claimantPhone ?? null,
+      flightNumber: dto.flightNumber ?? null,
+      seatNumber: dto.seatNumber ?? null,
+      ownershipProof: dto.ownershipProof,
+      proofFiles: [],
+    });
+
+    const saved = await this.claimRepo.save(claim);
+
+    if (files?.length) {
+      const uploaded = await Promise.all(
+        files.map((f) =>
+          this.fileService.uploadFile(f, `lost-found/claims/${saved.id}`),
+        ),
+      );
+      saved.proofFiles = uploaded;
+      await this.claimRepo.save(saved);
+    }
+
+    return { claimId: saved.id, referenceCode, message: 'Report submitted successfully' };
+  }
+
+  async findAllClaims(query: QueryClaimsDto) {
+    const {
+      status,
+      category,
+      linked,
+      search,
+      page = 1,
+      limit = 20,
+    } = query;
+
+    const qb = this.claimRepo
+      .createQueryBuilder('c')
+      .leftJoinAndSelect('c.lostFound', 'lf')
+      .leftJoinAndSelect('c.proofFiles', 'pf')
+      .leftJoinAndSelect('c.reviewedBy', 'reviewer')
+      .orderBy('c.createdAt', 'DESC')
+      .skip((page - 1) * limit)
+      .take(limit);
+
+    if (status) qb.andWhere('c.status = :status', { status });
+    if (category) qb.andWhere('c.category = :category', { category });
+
+    if (linked === 'true') {
+      qb.andWhere('c."lostFoundId" IS NOT NULL');
+    } else if (linked === 'false') {
+      qb.andWhere('c."lostFoundId" IS NULL');
+    }
+
+    if (search?.trim()) {
+      const s = `%${search.trim()}%`;
+      qb.andWhere(
+        `(c."claimantName" ILIKE :s OR c."itemDescription" ILIKE :s OR c."referenceCode" ILIKE :s)`,
+        { s },
+      );
+    }
+
+    const [data, total] = await qb.getManyAndCount();
+    return {
+      data,
+      meta: { total, page, limit, pages: Math.ceil(total / limit) },
+    };
+  }
+
+  async findOneClaim(claimId: string) {
+    const claim = await this.claimRepo.findOne({
+      where: { id: claimId },
+      relations: { lostFound: true, proofFiles: true, reviewedBy: true },
+    });
+    if (!claim) throw new NotFoundException('Claim not found');
+    return claim;
+  }
+
+  // ─── PUBLIC CLAIM TRACKING ─────────────────────────────────
+
+  async trackClaim(referenceCode: string) {
+    const claim = await this.claimRepo.findOne({
+      where: { referenceCode: referenceCode.toUpperCase().trim() },
+      relations: { lostFound: true },
+      select: {
+        id: true,
+        referenceCode: true,
+        status: true,
+        category: true,
+        itemDescription: true,
+        lostLocation: true,
+        lostDate: true,
+        claimantName: true,
+        staffNote: true,
+        reviewedAt: true,
+        createdAt: true,
+        updatedAt: true,
+        lostFound: {
+          id: true,
+          referenceCode: true,
+          status: true,
+          category: true,
+          displayNames: true,
+        },
+      },
+    });
+
+    if (!claim) throw new NotFoundException('Claim not found');
+
+    // Return a safe public subset — no PII beyond the claimant's own name
+    return {
+      referenceCode: claim.referenceCode,
+      status: claim.status,
+      category: claim.category ?? claim.lostFound?.category ?? null,
+      itemDescription: claim.itemDescription ?? null,
+      lostLocation: claim.lostLocation ?? null,
+      lostDate: claim.lostDate,
+      claimantName: claim.claimantName,
+      staffNote: claim.staffNote,
+      reviewedAt: claim.reviewedAt,
+      createdAt: claim.createdAt,
+      updatedAt: claim.updatedAt,
+      linkedItem: claim.lostFound
+        ? {
+            referenceCode: claim.lostFound.referenceCode,
+            status: claim.lostFound.status,
+            category: claim.lostFound.category,
+            displayNames: claim.lostFound.displayNames,
+          }
+        : null,
+    };
+  }
+
+  async linkClaim(claimId: string, dto: LinkClaimDto) {
+    const claim = await this.claimRepo.findOne({
+      where: { id: claimId },
+      relations: { lostFound: true },
+    });
+    if (!claim) throw new NotFoundException('Claim not found');
+    if (claim.lostFound) {
+      throw new BadRequestException('Claim is already linked to an item');
+    }
+
+    const item = await this.repo.findOne({ where: { id: dto.lostFoundId } });
+    if (!item) throw new NotFoundException('Lost & Found item not found');
+
+    const closedStatuses = [
+      LostFoundStatus.RETURNED,
+      LostFoundStatus.DONATED,
+      LostFoundStatus.DISPOSED,
+    ];
+    if (closedStatuses.includes(item.status)) {
+      throw new BadRequestException('Item is closed and cannot accept claims');
+    }
+
+    claim.lostFound = item;
+    await this.claimRepo.save(claim);
+
+    // If the claim is already approved, update item to MATCHED
+    if (
+      claim.status === ClaimStatus.APPROVED &&
+      item.status === LostFoundStatus.OPEN
+    ) {
+      item.status = LostFoundStatus.MATCHED;
+      await this.repo.save(item);
+    }
+
+    return this.findOneClaim(claimId);
+  }
+
+  async unlinkClaim(claimId: string) {
+    const claim = await this.claimRepo.findOne({
+      where: { id: claimId },
+      relations: { lostFound: true },
+    });
+    if (!claim) throw new NotFoundException('Claim not found');
+    if (!claim.lostFound) {
+      throw new BadRequestException('Claim is not linked to any item');
+    }
+
+    const oldItem = claim.lostFound;
+    claim.lostFound = null;
+    await this.claimRepo.save(claim);
+
+    // Revert item to OPEN if no other active claims remain
+    const activeCount = await this.claimRepo.count({
+      where: {
+        lostFound: { id: oldItem.id },
+        status: In([ClaimStatus.PENDING, ClaimStatus.APPROVED]),
+      },
+    });
+    if (activeCount === 0 && oldItem.status === LostFoundStatus.MATCHED) {
+      oldItem.status = LostFoundStatus.OPEN;
+      await this.repo.save(oldItem);
+    }
+
+    return this.findOneClaim(claimId);
   }
 
   async remove(id: string) {

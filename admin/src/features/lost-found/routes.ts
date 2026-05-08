@@ -5,6 +5,7 @@ import {
   LostFoundPage,
   LostFoundCreatePage,
   LostFoundDetailPage,
+  ClaimDetailPage,
 } from "@/features/lost-found/pages";
 
 const LOST_FOUND_PERMISSIONS = [
@@ -30,6 +31,12 @@ export const lostFoundRoutes: IRoute[] = [
   {
     path: "/support/lost-found/:id",
     element: LostFoundDetailPage,
+    allowRoles: SUPPORT_ACCESS_ROLES.LOST_FOUND_MANAGEMENT,
+    allowPermissions: LOST_FOUND_PERMISSIONS,
+  },
+  {
+    path: "/support/claims/:id",
+    element: ClaimDetailPage,
     allowRoles: SUPPORT_ACCESS_ROLES.LOST_FOUND_MANAGEMENT,
     allowPermissions: LOST_FOUND_PERMISSIONS,
   },

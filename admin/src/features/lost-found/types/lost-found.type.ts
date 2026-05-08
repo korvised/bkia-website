@@ -36,9 +36,26 @@ export interface ILostFoundItem {
   updatedAt: string;
 }
 
+export interface ILostFoundItemSummary {
+  id: string;
+  referenceCode: string;
+  displayNames: IMultilingualText;
+  category: LostFoundCategory;
+  status: LostFoundStatus;
+}
+
 export interface ILostFoundClaim {
   id: string;
+  referenceCode: string;
   status: ClaimStatus;
+  // Standalone claim context (when not linked to an item)
+  category?: LostFoundCategory | null;
+  itemDescription?: string | null;
+  lostLocation?: string | null;
+  lostDate?: string | null;
+  // Linked item (null for standalone claims)
+  lostFound?: ILostFoundItemSummary | null;
+  // Claimant info
   claimantName: string;
   claimantEmail: string;
   claimantPhone?: string | null;
@@ -47,9 +64,19 @@ export interface ILostFoundClaim {
   ownershipProof: string;
   proofFiles: IFile[];
   staffNote?: string | null;
+  reviewedBy?: ICreatedBy | null;
   reviewedAt?: string | null;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface IClaimFilters {
+  status?: ClaimStatus | "";
+  category?: LostFoundCategory | "";
+  linked?: "true" | "false" | "";
+  search?: string;
+  page?: number;
+  limit?: number;
 }
 
 export interface ILostFoundListResponse {

@@ -7,6 +7,7 @@ import {
   Delete,
   Param,
   Query,
+  Req,
   ParseUUIDPipe,
   UseInterceptors,
   UploadedFile,
@@ -58,32 +59,6 @@ export class AirlineController {
   @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
   @Roles(UserRole.ADMIN, UserRole.STAFF)
   @Permissions(AIRLINE.UPDATE)
-  @Patch(':id')
-  @UseInterceptors(
-    FileInterceptor('logo', {
-      limits: { fileSize: FILE_SIZES.MEDIUM_IMAGE },
-      fileFilter: imageFileFilter,
-    }),
-  )
-  update(
-    @Param('id', new ParseUUIDPipe()) id: string,
-    @Body() dto: UpdateAirlineDto,
-    @UploadedFile() logo?: Express.Multer.File,
-  ) {
-    return this.service.update(id, dto, logo);
-  }
-
-  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN, UserRole.STAFF)
-  @Permissions(AIRLINE.DELETE)
-  @Delete(':id')
-  remove(@Param('id', new ParseUUIDPipe()) id: string) {
-    return this.service.remove(id);
-  }
-
-  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
-  @Roles(UserRole.ADMIN, UserRole.STAFF)
-  @Permissions(AIRLINE.UPDATE)
   @Patch(':id/activate')
   activate(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.service.setActive(id, true);
@@ -95,5 +70,37 @@ export class AirlineController {
   @Patch(':id/deactivate')
   deactivate(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.service.setActive(id, false);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(AIRLINE.UPDATE)
+  @Patch(':id')
+  @UseInterceptors(
+    FileInterceptor('logo', {
+      limits: { fileSize: FILE_SIZES.MEDIUM_IMAGE },
+      fileFilter: imageFileFilter,
+    }),
+  )
+  update(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body() dto: UpdateAirlineDto,
+    @UploadedFile() logo: Express.Multer.File | undefined,
+    @Req() req: any,
+  ) {
+    // FormData sends booleans as strings. enableImplicitConversion converts
+    // "false" → true (Boolean("false") is truthy). Fix from the raw body.
+    if (req.body?.isActive !== undefined) {
+      dto.isActive = req.body.isActive === 'true' || req.body.isActive === true;
+    }
+    return this.service.update(id, dto, logo);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard, PermissionsGuard)
+  @Roles(UserRole.ADMIN, UserRole.STAFF)
+  @Permissions(AIRLINE.DELETE)
+  @Delete(':id')
+  remove(@Param('id', new ParseUUIDPipe()) id: string) {
+    return this.service.remove(id);
   }
 }

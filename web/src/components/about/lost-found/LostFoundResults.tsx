@@ -28,6 +28,7 @@ interface LostFoundResultsProps {
   debouncedQ: string;
   searching: boolean;
   onClearSearch: () => void;
+  onReportClick?: () => void;
 }
 
 export function LostFoundResults({
@@ -36,6 +37,7 @@ export function LostFoundResults({
   debouncedQ,
   searching,
   onClearSearch,
+  onReportClick,
 }: LostFoundResultsProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const claimRef = useRef<HTMLDivElement>(null);
@@ -197,14 +199,23 @@ export function LostFoundResults({
         <div className="mt-6 flex items-center justify-between rounded-2xl border border-dashed border-gray-200 bg-white px-5 py-4">
           <div>
             <p className="font-semibold text-gray-800">{t("cantFindItem", lang)}</p>
-            <p className="mt-0.5 text-sm text-gray-400">{t("cantFindDesc", lang)}</p>
+            <p className="mt-0.5 text-sm text-gray-400">{t("reportSubtitle", lang)}</p>
           </div>
-          <Link
-            href={`/${lang}/about/contact`}
-            className="ml-4 shrink-0 rounded-xl border border-primary/30 px-4 py-2 text-xs font-semibold text-primary transition hover:border-primary hover:bg-primary/5"
-          >
-            {t("contactStaff", lang)}
-          </Link>
+          {onReportClick ? (
+            <button
+              onClick={onReportClick}
+              className="ml-4 shrink-0 rounded-xl border border-primary/30 px-4 py-2 text-xs font-semibold text-primary transition hover:border-primary hover:bg-primary/5"
+            >
+              {t("reportButton", lang)}
+            </button>
+          ) : (
+            <Link
+              href={`/${lang}/about/contact`}
+              className="ml-4 shrink-0 rounded-xl border border-primary/30 px-4 py-2 text-xs font-semibold text-primary transition hover:border-primary hover:bg-primary/5"
+            >
+              {t("contactStaff", lang)}
+            </Link>
+          )}
         </div>
       </div>
     </section>

@@ -1,12 +1,14 @@
 import { type Action, combineReducers, configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "@/features/auth/slices";
 import { flightReducer } from "@/features/flight/slices";
+import { lostFoundReducer } from "@/features/lost-found/slices";
 import { apiSlice } from "./api-slice";
 import { errorHandler } from "./error-handler";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   flight: flightReducer,
+  lostFound: lostFoundReducer,
   [apiSlice.reducerPath]: apiSlice.reducer,
 });
 

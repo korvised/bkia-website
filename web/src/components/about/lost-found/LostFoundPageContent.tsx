@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Lang } from "@/types/language";
 import type { ILostFoundItem } from "@/types/lost-found";
 import { listLostFound } from "@/services/lost-found";
@@ -8,7 +8,8 @@ import { LostFoundHero } from "./LostFoundHero";
 import { LostFoundStats } from "./LostFoundStats";
 import { LostFoundResults } from "./LostFoundResults";
 import { LostFoundHowItWorks } from "./LostFoundHowItWorks";
-import { LostFoundContactCta } from "./LostFoundContactCta";
+import { LostFoundReportForm } from "./LostFoundReportForm";
+import { LostFoundTrackClaim } from "./LostFoundTrackClaim";
 
 interface Props {
   lang: Lang;
@@ -16,8 +17,9 @@ interface Props {
 }
 
 export function LostFoundPageContent({ lang, stats }: Props) {
-  const [query,      setQuery]      = useState("");
+  const [query, setQuery] = useState("");
   const [debouncedQ, setDebouncedQ] = useState("");
+  const [showReport, setShowReport] = useState(false);
 
   // Pair results with the query that produced them so `searching` can be
   // derived — avoids synchronous setState calls inside the effect body.
@@ -30,6 +32,8 @@ export function LostFoundPageContent({ lang, stats }: Props) {
   const searching = debouncedQ.trim() !== "" && forQuery !== debouncedQ;
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const reportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   // 300 ms debounce
   useEffect(() => {
@@ -44,15 +48,39 @@ export function LostFoundPageContent({ lang, stats }: Props) {
     if (!debouncedQ.trim()) return;
     let cancelled = false;
     listLostFound({ search: debouncedQ, limit: 12 }, lang)
-      .then(({ data }) => { if (!cancelled) setFetchState({ results: data, forQuery: debouncedQ }); })
-      .catch(()       => { if (!cancelled) setFetchState({ results: [],    forQuery: debouncedQ }); });
-    return () => { cancelled = true; };
+      .then(({ data }) => {
+        if (!cancelled) setFetchState({ results: data, forQuery: debouncedQ });
+      })
+      .catch(() => {
+        if (!cancelled) setFetchState({ results: [], forQuery: debouncedQ });
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [debouncedQ, lang]);
 
   const handleClearSearch = () => {
     setQuery("");
     setFetchState({ results: [], forQuery: "" });
     inputRef.current?.focus();
+  };
+
+  const handleOpenReport = () => {
+    setShowReport(true);
+    setTimeout(() => {
+      reportRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+  };
+
+  const handleCloseReport = () => setShowReport(false);
+
+  const handleScrollToTrack = () => {
+    trackRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Focus the tracking input after scroll
+    setTimeout(() => {
+      const input = trackRef.current?.querySelector<HTMLInputElement>("input[type='text']");
+      input?.focus();
+    }, 500);
   };
 
   const isSearching = query.trim().length > 0;
@@ -91,13 +119,11 @@ export function LostFoundPageContent({ lang, stats }: Props) {
         inputRef={inputRef}
         onChange={setQuery}
         onClear={handleClearSearch}
+        onReportClick={handleOpenReport}
+        onTrackClick={handleScrollToTrack}
       />
 
-      <LostFoundStats
-        lang={lang}
-        stats={stats}
-        isSearching={isSearching}
-      />
+      <LostFoundStats lang={lang} stats={stats} isSearching={isSearching} />
 
       {debouncedQ && (
         <LostFoundResults
@@ -106,12 +132,38 @@ export function LostFoundPageContent({ lang, stats }: Props) {
           debouncedQ={debouncedQ}
           searching={searching}
           onClearSearch={handleClearSearch}
+          onReportClick={handleOpenReport}
         />
       )}
 
-      <LostFoundHowItWorks lang={lang} />
+      {/* Report form — smooth expand */}
+      <div
+        ref={reportRef}
+        style={{
+          display: "grid",
+          gridTemplateRows: showReport ? "1fr" : "0fr",
+          transition: "grid-template-rows 0.4s cubic-bezier(0.22,1,0.36,1)",
+        }}
+      >
+        <div className="overflow-hidden">
+          {showReport && (
+            <section className="bg-gray-50 py-10 md:py-14">
+              <div className="mx-auto w-full max-w-5xl px-4">
+                <LostFoundReportForm
+                  lang={lang}
+                  onCancel={handleCloseReport}
+                />
+              </div>
+            </section>
+          )}
+        </div>
+      </div>
 
-      <LostFoundContactCta lang={lang} />
+      <div ref={trackRef}>
+        <LostFoundTrackClaim lang={lang} />
+      </div>
+
+      <LostFoundHowItWorks lang={lang} />
     </>
   );
 }

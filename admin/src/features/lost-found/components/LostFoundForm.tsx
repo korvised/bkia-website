@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { getIn } from "formik";
 import type { FormikProps } from "formik";
 import {
@@ -6,8 +6,10 @@ import {
   LuLanguages,
   LuMapPin,
   LuPackageSearch,
+  LuPlus,
+  LuTrash2,
   LuUpload,
-  LuX,
+  LuZoomIn,
 } from "react-icons/lu";
 import {
   DatePicker,
@@ -15,6 +17,8 @@ import {
   Select,
   Textarea,
 } from "@/components/ui";
+import { ImageLightbox } from "@/components/file";
+import type { IFilePreview } from "@/components/file/ImageLightbox";
 import { LostFoundCategory } from "@/types";
 import type { ICreateLostFoundForm } from "@/features/lost-found/types";
 
@@ -65,8 +69,25 @@ function SectionHeader({
 export function LostFoundForm({ formik }: Props) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [activeLang, setActiveLang] = useState<"en" | "lo" | "zh">("en");
+  const [lightbox, setLightbox] = useState<{ index: number } | null>(null);
 
   const { values, errors, touched, handleBlur, setFieldValue, setFieldTouched } = formik;
+
+  // Generate object URLs for local file previews & clean up on unmount/change
+  const imagePreviews = useMemo<IFilePreview[]>(
+    () =>
+      values.images.map((file) => ({
+        url: URL.createObjectURL(file),
+        name: file.name,
+      })),
+    [values.images],
+  );
+
+  useEffect(() => {
+    return () => {
+      imagePreviews.forEach((p) => URL.revokeObjectURL(p.url));
+    };
+  }, [imagePreviews]);
 
   /** Access a nested field error via dot path (e.g. "displayNames.en") */
   const getNestedError = (path: string) => {
@@ -248,50 +269,102 @@ export function LostFoundForm({ formik }: Props) {
       <div className="p-6">
         <SectionHeader
           icon={<LuUpload className="h-4 w-4" />}
-          title="Photos"
+          title={`Photos (${values.images.length}/10)`}
           description="Upload up to 10 photos of the item"
         />
 
-        <div className="space-y-3">
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          multiple
+          className="hidden"
+          onChange={handleFileChange}
+        />
+
+        {values.images.length === 0 ? (
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            disabled={values.images.length >= 10}
-            className="flex items-center gap-2 rounded-lg border border-dashed border-gray-300 px-4 py-3 text-sm text-gray-600 transition-colors hover:border-gray-400 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+            className="group flex w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-200 py-10 text-gray-400 transition-colors hover:border-primary hover:text-primary"
           >
-            <LuUpload className="h-4 w-4" />
-            {values.images.length >= 10 ? "Maximum 10 images reached" : "Upload Images"}
+            <div className="rounded-xl border-2 border-dashed border-current p-3">
+              <LuPlus className="h-5 w-5" />
+            </div>
+            <span className="text-sm font-medium">Upload item images</span>
+            <span className="text-xs text-gray-300 group-hover:text-primary/60">JPG, PNG, WEBP</span>
           </button>
-
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            multiple
-            className="hidden"
-            onChange={handleFileChange}
-          />
-
-          {values.images.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {values.images.map((file, index) => (
-                <div
-                  key={index}
-                  className="relative flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm"
-                >
-                  <span className="max-w-[160px] truncate text-gray-700">{file.name}</span>
+        ) : (
+          <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              {imagePreviews.map((preview, idx) => (
+                <div key={idx} className="group relative overflow-hidden rounded-xl border border-gray-100 bg-gray-50">
+                  {/* Preview image */}
                   <button
                     type="button"
-                    onClick={() => removeImage(index)}
-                    className="ml-1 rounded p-0.5 text-gray-400 hover:text-red-500"
+                    className="block w-full"
+                    onClick={() => setLightbox({ index: idx })}
                   >
-                    <LuX className="h-3.5 w-3.5" />
+                    <img
+                      src={preview.url}
+                      alt={preview.name}
+                      className="aspect-[4/3] w-full object-cover transition-transform duration-200 group-hover:scale-105"
+                    />
                   </button>
+
+                  {/* Hover overlay with actions */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+                  <div className="absolute left-2 top-2 flex gap-1.5 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    <button
+                      type="button"
+                      onClick={() => setLightbox({ index: idx })}
+                      className="pointer-events-auto flex items-center gap-1 rounded-lg bg-white/90 px-2 py-1 text-[11px] font-medium text-gray-700 shadow-sm backdrop-blur-sm transition-colors hover:bg-white"
+                    >
+                      <LuZoomIn className="h-3 w-3" />
+                      Preview
+                    </button>
+                  </div>
+                  <div className="absolute right-2 top-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    <button
+                      type="button"
+                      onClick={() => removeImage(idx)}
+                      className="pointer-events-auto rounded-lg bg-white/90 p-1.5 text-red-500 shadow-sm backdrop-blur-sm transition-colors hover:bg-red-50 hover:text-red-600"
+                      title="Remove image"
+                    >
+                      <LuTrash2 className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+
+                  {/* Filename bar */}
+                  <div className="flex items-center gap-1.5 border-t border-gray-100 bg-white px-2.5 py-2">
+                    <span className="truncate text-[11px] text-gray-500">{preview.name}</span>
+                  </div>
                 </div>
               ))}
+
+              {/* Add more button */}
+              {values.images.length < 10 && (
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="group flex aspect-[4/3] flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-dashed border-gray-200 text-gray-400 transition-colors hover:border-primary hover:text-primary"
+                >
+                  <LuPlus className="h-5 w-5" />
+                  <span className="text-xs font-medium">Add more</span>
+                </button>
+              )}
             </div>
-          )}
-        </div>
+          </div>
+        )}
+
+        {/* Lightbox */}
+        {lightbox && imagePreviews.length > 0 && (
+          <ImageLightbox
+            images={imagePreviews}
+            initialIndex={lightbox.index}
+            onClose={() => setLightbox(null)}
+          />
+        )}
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  Index,
   JoinColumn,
   JoinTable,
   ManyToMany,
@@ -9,19 +10,23 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ClaimStatus } from '@/types/enum';
+import { ClaimStatus, LostFoundCategory } from '@/types/enum';
 import { File } from './File.entity';
 import { LostFound } from './LostFound.entity';
 import { User } from './User.entity';
 
 @Entity('lost_found_claim')
+@Index(['referenceCode'], { unique: true })
 export class LostFoundClaim {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => LostFound, (lf) => lf.claims, { onDelete: 'CASCADE' })
+  @ManyToOne(() => LostFound, (lf) => lf.claims, {
+    nullable: true,
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'lostFoundId' })
-  lostFound: LostFound;
+  lostFound: LostFound | null;
 
   @Column({
     type: 'enum',
@@ -31,6 +36,28 @@ export class LostFoundClaim {
   })
   status: ClaimStatus;
 
+  @Column({ type: 'varchar', length: 30, unique: true })
+  referenceCode: string;
+
+  // ── Standalone claim context (populated when no linked item) ───
+  @Column({
+    type: 'enum',
+    enum: LostFoundCategory,
+    enumName: 'lost_found_category_enum',
+    nullable: true,
+  })
+  category: LostFoundCategory | null;
+
+  @Column({ type: 'text', nullable: true })
+  itemDescription: string | null;
+
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  lostLocation: string | null;
+
+  @Column({ type: 'timestamptz', nullable: true })
+  lostDate: Date | null;
+
+  // ── Claimant info ─────────────────────────────────────────────
   @Column({ type: 'varchar', length: 255 })
   claimantName: string;
 

@@ -67,6 +67,7 @@ const airlineApi = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `/airlines/${id}/activate`,
         method: "PATCH",
+        data: {},
       }),
       invalidatesTags: (_result, _error, id) => [
         { type: AIRLINE_TAG, id },
@@ -78,6 +79,7 @@ const airlineApi = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `/airlines/${id}/deactivate`,
         method: "PATCH",
+        data: {},
       }),
       invalidatesTags: (_result, _error, id) => [
         { type: AIRLINE_TAG, id },

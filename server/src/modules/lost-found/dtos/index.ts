@@ -4,4 +4,7 @@ export { QueryLostFoundAdminDto } from './query-lost-found-admin.dto';
 export { UpdateDisplayDto } from './update-display.dto';
 export { UpdateStatusDto } from './update-status.dto';
 export { CreateClaimDto } from './create-claim.dto';
+export { CreateStandaloneClaimDto } from './create-standalone-claim.dto';
 export { ReviewClaimDto } from './review-claim.dto';
+export { QueryClaimsDto } from './query-claims.dto';
+export { LinkClaimDto } from './link-claim.dto';

@@ -1,7 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
+import Image from "next/image";
 import { X, ZoomIn, Plus, FileText } from "lucide-react";
+import { ImageLightbox } from "@/components/common";
+import type { LightboxImage } from "@/components/common";
 
 interface FilePreviewGridProps {
   files: File[];
@@ -16,7 +19,7 @@ export function FilePreviewGrid({
   onAddFiles,
   maxFiles = 5,
 }: FilePreviewGridProps) {
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [previewIndex, setPreviewIndex] = useState<number | null>(null);
   const addInputRef = useRef<HTMLInputElement>(null);
 
   // `urlMap` drives rendering; `urlMapRef` mirrors it so the unmount cleanup
@@ -60,33 +63,37 @@ export function FilePreviewGrid({
     };
   }, []);
 
+  // Build lightbox images from blob URLs
+  const lightboxImages = useMemo<LightboxImage[]>(() => {
+    const imgs: LightboxImage[] = [];
+    for (const file of files) {
+      if (file.type.startsWith("image/")) {
+        const url = urlMap.get(file);
+        if (url) imgs.push({ src: url, alt: file.name });
+      }
+    }
+    return imgs;
+  }, [files, urlMap]);
+
+  // Find the image-only index for a given file
+  const getImageIndex = (file: File): number => {
+    let idx = 0;
+    for (const f of files) {
+      if (f === file) return idx;
+      if (f.type.startsWith("image/")) idx++;
+    }
+    return 0;
+  };
+
   return (
     <>
-      {/* Full-screen image preview overlay */}
-      {previewUrl && (
-        <div
-          className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/88 p-6 backdrop-blur-sm"
-          onClick={() => setPreviewUrl(null)}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={previewUrl}
-            alt="Preview"
-            className="max-h-full max-w-full rounded-2xl object-contain shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          />
-          <button
-            type="button"
-            onClick={() => setPreviewUrl(null)}
-            className="absolute right-4 top-4 rounded-full bg-white/20 p-2.5 text-white backdrop-blur-sm transition hover:bg-white/35"
-          >
-            <X className="h-5 w-5" />
-          </button>
-          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/40 px-3 py-1 text-[11px] text-white/60 backdrop-blur-sm">
-            Click anywhere to close
-          </p>
-        </div>
-      )}
+      {/* Full-screen lightbox (shared component) */}
+      <ImageLightbox
+        images={lightboxImages}
+        index={previewIndex}
+        onClose={() => setPreviewIndex(null)}
+        onIndexChange={setPreviewIndex}
+      />
 
       {/* Hidden input for "add more" */}
       <input
@@ -111,16 +118,22 @@ export function FilePreviewGrid({
               {isImage ? (
                 <button
                   type="button"
-                  onClick={() => setPreviewUrl(url)}
-                  className="relative block w-full overflow-hidden rounded-xl border border-gray-100 bg-gray-100 shadow-sm transition hover:ring-2 hover:ring-primary hover:ring-offset-1"
+                  onClick={() => url && setPreviewIndex(getImageIndex(file))}
+                  className="hover:ring-primary relative block w-full overflow-hidden rounded-xl border border-gray-100 bg-gray-100 shadow-sm transition hover:ring-2 hover:ring-offset-1"
                   title={file.name}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={url ?? ""}
-                    alt={file.name}
-                    className="aspect-square w-full object-cover"
-                  />
+                  {url ? (
+                    <Image
+                      src={url}
+                      alt={file.name}
+                      width={200}
+                      height={200}
+                      unoptimized
+                      className="aspect-square w-full object-cover"
+                    />
+                  ) : (
+                    <div className="aspect-square w-full animate-pulse bg-gray-200" />
+                  )}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/28">
                     <ZoomIn className="h-5 w-5 text-white opacity-0 drop-shadow transition-opacity group-hover:opacity-100" />
                   </div>
@@ -128,7 +141,7 @@ export function FilePreviewGrid({
               ) : (
                 <div className="flex aspect-square flex-col items-center justify-center gap-1.5 rounded-xl border border-red-100 bg-red-50 p-2 shadow-sm">
                   <FileText className="h-7 w-7 text-red-400" />
-                  <span className="line-clamp-2 text-center text-[9px] font-medium leading-tight text-red-500">
+                  <span className="line-clamp-2 text-center text-[9px] leading-tight font-medium text-red-500">
                     {file.name}
                   </span>
                 </div>
@@ -138,7 +151,7 @@ export function FilePreviewGrid({
               <button
                 type="button"
                 onClick={() => onRemove(i)}
-                className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white opacity-0 shadow-sm transition-opacity group-hover:opacity-100"
+                className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white opacity-0 shadow-sm transition-opacity group-hover:opacity-100"
                 title="Remove"
               >
                 <X className="h-2.5 w-2.5" />
@@ -152,7 +165,7 @@ export function FilePreviewGrid({
           <button
             type="button"
             onClick={() => addInputRef.current?.click()}
-            className="flex aspect-square flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-dashed border-gray-200 text-gray-400 transition-colors hover:border-primary/60 hover:bg-primary/5 hover:text-primary"
+            className="hover:border-primary/60 hover:bg-primary/5 hover:text-primary flex aspect-square flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-dashed border-gray-200 text-gray-400 transition-colors"
           >
             <Plus className="h-5 w-5" />
             <span className="text-[10px] font-medium">Add</span>

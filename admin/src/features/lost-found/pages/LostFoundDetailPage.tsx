@@ -458,13 +458,17 @@ export function LostFoundDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { can } = usePermissions();
+
+  // Must be declared before useGetLostFoundById so the skip flag is ready on first render
+  const [deleted, setDeleted] = useState(false);
+
   const {
     item, claims,
     isLoading, isFetching,
     isLoadingClaims, isClaimsFetching,
     isError, isClaimsError,
     handleBack, handleRefetch,
-  } = useGetLostFoundById(id!);
+  } = useGetLostFoundById(id!, deleted);
 
   const [updateDisplay, { isLoading: isSavingDisplay }] = useUpdateDisplayMutation();
   const [updateStatus, { isLoading: isUpdatingStatus }] = useUpdateStatusMutation();
@@ -472,7 +476,6 @@ export function LostFoundDetailPage() {
   const [removeImage, { isLoading: isRemoving }] = useRemoveImageMutation();
   const [reviewClaim, { isLoading: isReviewing }] = useReviewClaimMutation();
   const [deleteLostFound, { isLoading: isDeleting }] = useDeleteLostFoundMutation();
-
   const [activeTab, setActiveTab] = useState<ActiveTab>("overview");
   const [lightbox, setLightbox] = useState<{ images: IFile[]; index: number } | null>(null);
   const [selectedLang, setSelectedLang] = useState<keyof IMultilingualText>("en");
@@ -544,9 +547,13 @@ export function LostFoundDetailPage() {
     );
     if (!r.isConfirmed) return;
     try {
+      setDeleted(true);          // skip queries BEFORE delete triggers invalidation
       await deleteLostFound(id).unwrap();
       navigate("/support/lost-found");
-    } catch { await alertService.error("Failed to delete."); }
+    } catch {
+      setDeleted(false);         // restore if delete failed
+      await alertService.error("Failed to delete.");
+    }
   };
 
   // ── Breadcrumb shared base ─────────────────────────────────────────────────
@@ -1009,18 +1016,50 @@ export function LostFoundDetailPage() {
                     <span className="text-xs text-gray-300 group-hover:text-primary/60">JPG, PNG, WEBP</span>
                   </button>
                 ) : (
-                  <div className="grid grid-cols-4 gap-3 sm:grid-cols-6 md:grid-cols-8">
-                    {item.images.map((img) => (
-                      <div key={img.id} className="group relative overflow-hidden rounded-xl">
-                        <button type="button" className="block w-full"
-                          onClick={() => setLightbox({ images: item.images, index: item.images.findIndex((i) => i.id === img.id) })}>
-                          <img src={asset(img.path)} alt={img.originalName} className="aspect-square w-full object-cover transition-transform group-hover:scale-105" />
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                    {item.images.map((img, idx) => (
+                      <div key={img.id} className="group relative overflow-hidden rounded-xl border border-gray-100 bg-gray-50">
+                        {/* Preview image */}
+                        <button
+                          type="button"
+                          className="block w-full"
+                          onClick={() => setLightbox({ images: item.images, index: idx })}
+                        >
+                          <img
+                            src={asset(img.path)}
+                            alt={img.originalName}
+                            className="aspect-[4/3] w-full object-cover transition-transform duration-200 group-hover:scale-105"
+                          />
                         </button>
-                        <div className="absolute inset-0 flex items-end justify-end bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100">
-                          <button type="button" onClick={() => handleRemoveImage(img.id)} disabled={isRemoving}
-                            className="m-1.5 rounded-lg bg-white/95 p-1.5 text-red-600 hover:bg-white" title="Remove">
+
+                        {/* Hover overlay with actions */}
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+                        <div className="absolute left-2 top-2 flex gap-1.5 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                          <button
+                            type="button"
+                            onClick={() => setLightbox({ images: item.images, index: idx })}
+                            className="pointer-events-auto flex items-center gap-1 rounded-lg bg-white/90 px-2 py-1 text-[11px] font-medium text-gray-700 shadow-sm backdrop-blur-sm transition-colors hover:bg-white"
+                          >
+                            <LuZoomIn className="h-3 w-3" />
+                            Preview
+                          </button>
+                        </div>
+                        <div className="absolute right-2 top-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveImage(img.id)}
+                            disabled={isRemoving}
+                            className="pointer-events-auto rounded-lg bg-white/90 p-1.5 text-red-500 shadow-sm backdrop-blur-sm transition-colors hover:bg-red-50 hover:text-red-600 disabled:opacity-50"
+                            title="Remove image"
+                          >
                             <LuTrash2 className="h-3.5 w-3.5" />
                           </button>
+                        </div>
+
+                        {/* Filename bar */}
+                        <div className="flex items-center gap-1.5 border-t border-gray-100 bg-white px-2.5 py-2">
+                          <LuFileText className="h-3 w-3 shrink-0 text-gray-300" />
+                          <span className="truncate text-[11px] text-gray-500">{img.originalName}</span>
                         </div>
                       </div>
                     ))}

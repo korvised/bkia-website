@@ -1,11 +1,13 @@
 import { apiSlice } from "@/redux";
-import { LOST_FOUND_TAG } from "@/constants";
+import { CLAIM_TAG, LOST_FOUND_TAG } from "@/constants";
 import { cleanParams } from "@/lib";
 import { LostFoundStatus } from "@/types";
+import type { IPagination } from "@/types";
 import type {
   ILostFoundItem,
   ILostFoundListResponse,
   ILostFoundFilter,
+  IClaimFilters,
   IUpdateDisplayPayload,
   IReviewClaimPayload,
   ILostFoundClaim,
@@ -94,7 +96,9 @@ const lostFoundApi = apiSlice.injectEndpoints({
         method: "PATCH",
         data: body,
       }),
-      invalidatesTags: (_result, _error, { itemId }) => [
+      invalidatesTags: (_result, _error, { claimId, itemId }) => [
+        { type: CLAIM_TAG, id: claimId },
+        { type: CLAIM_TAG, id: "LIST" },
         { type: LOST_FOUND_TAG, id: itemId },
         { type: LOST_FOUND_TAG, id: `claims-${itemId}` },
         { type: LOST_FOUND_TAG, id: "LIST" },
@@ -124,6 +128,57 @@ const lostFoundApi = apiSlice.injectEndpoints({
         { type: LOST_FOUND_TAG, id: "LIST" },
       ],
     }),
+
+    // ── Claims (standalone) ─────────────────────────────────────
+
+    fetchAllClaims: builder.query<IPagination<ILostFoundClaim>, IClaimFilters>({
+      query: (params) => ({
+        url: "/lost-found/claims/all",
+        method: "GET",
+        params: cleanParams(params),
+      }),
+      providesTags: (result) =>
+        result?.data?.length
+          ? [
+              ...result.data.map((c) => ({ type: CLAIM_TAG, id: c.id })),
+              { type: CLAIM_TAG, id: "LIST" },
+            ]
+          : [{ type: CLAIM_TAG, id: "LIST" }],
+    }),
+
+    fetchOneClaim: builder.query<ILostFoundClaim, string>({
+      query: (id) => ({
+        url: `/lost-found/claims/${id}`,
+        method: "GET",
+      }),
+      providesTags: (_result, _error, id) => [{ type: CLAIM_TAG, id }],
+    }),
+
+    linkClaim: builder.mutation<ILostFoundClaim, { claimId: string; lostFoundId: string }>({
+      query: ({ claimId, lostFoundId }) => ({
+        url: `/lost-found/claims/${claimId}/link`,
+        method: "PATCH",
+        data: { lostFoundId },
+      }),
+      invalidatesTags: (_result, _error, { claimId }) => [
+        { type: CLAIM_TAG, id: claimId },
+        { type: CLAIM_TAG, id: "LIST" },
+        { type: LOST_FOUND_TAG, id: "LIST" },
+      ],
+    }),
+
+    unlinkClaim: builder.mutation<ILostFoundClaim, { claimId: string }>({
+      query: ({ claimId }) => ({
+        url: `/lost-found/claims/${claimId}/unlink`,
+        method: "PATCH",
+        data: {},
+      }),
+      invalidatesTags: (_result, _error, { claimId }) => [
+        { type: CLAIM_TAG, id: claimId },
+        { type: CLAIM_TAG, id: "LIST" },
+        { type: LOST_FOUND_TAG, id: "LIST" },
+      ],
+    }),
   }),
 });
 
@@ -138,4 +193,8 @@ export const {
   useFetchClaimsQuery,
   useReviewClaimMutation,
   useDeleteLostFoundMutation,
+  useFetchAllClaimsQuery,
+  useFetchOneClaimQuery,
+  useLinkClaimMutation,
+  useUnlinkClaimMutation,
 } = lostFoundApi;

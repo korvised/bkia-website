@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, X, Loader2, PackageSearch } from "lucide-react";
+import { Search, X, Loader2, PackageSearch, FileWarning, ClipboardList } from "lucide-react";
 import type { Lang } from "@/types/language";
 import { t } from "./lost-found.constants";
 
@@ -11,6 +11,8 @@ interface LostFoundHeroProps {
   inputRef: React.RefObject<HTMLInputElement | null>;
   onChange: (q: string) => void;
   onClear: () => void;
+  onReportClick?: () => void;
+  onTrackClick?: () => void;
 }
 
 export function LostFoundHero({
@@ -20,6 +22,8 @@ export function LostFoundHero({
   inputRef,
   onChange,
   onClear,
+  onReportClick,
+  onTrackClick,
 }: LostFoundHeroProps) {
   return (
     <section className="relative overflow-hidden bg-primary-800 px-4 py-16 md:py-24">
@@ -67,6 +71,30 @@ export function LostFoundHero({
               </button>
             )}
           </div>
+
+          {/* Action buttons */}
+          {(onReportClick || onTrackClick) && (
+            <div className="lf-up lf-d5 mt-4 flex flex-wrap items-center justify-center gap-3">
+              {onReportClick && (
+                <button
+                  onClick={onReportClick}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white/90 backdrop-blur-sm transition hover:border-white/30 hover:bg-white/15"
+                >
+                  <FileWarning className="h-4 w-4" />
+                  {t("reportButton", lang)}
+                </button>
+              )}
+              {onTrackClick && (
+                <button
+                  onClick={onTrackClick}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white/90 backdrop-blur-sm transition hover:border-white/30 hover:bg-white/15"
+                >
+                  <ClipboardList className="h-4 w-4" />
+                  {t("trackTitle", lang)}
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>

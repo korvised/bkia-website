@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useFetchLostFoundByIdQuery, useFetchClaimsQuery } from "@/features/lost-found/api";
 
-export function useGetLostFoundById(id: string) {
+export function useGetLostFoundById(id: string, deleted = false) {
   const navigate = useNavigate();
 
   const {
@@ -10,7 +10,7 @@ export function useGetLostFoundById(id: string) {
     isFetching,
     isError,
     refetch,
-  } = useFetchLostFoundByIdQuery(id, { skip: !id });
+  } = useFetchLostFoundByIdQuery(id, { skip: !id || deleted });
 
   const {
     data: claims,
@@ -18,7 +18,7 @@ export function useGetLostFoundById(id: string) {
     isFetching: isClaimsFetching,
     isError: isClaimsError,
     refetch: refetchClaims,
-  } = useFetchClaimsQuery(id, { skip: !id });
+  } = useFetchClaimsQuery(id, { skip: !id || deleted });
 
   const handleBack = () => navigate("/support/lost-found");
   const handleRefetch = () => { refetch(); refetchClaims(); };
