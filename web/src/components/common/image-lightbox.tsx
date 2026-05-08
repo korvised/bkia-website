@@ -116,10 +116,12 @@ export function ImageLightbox({
     setTouchStart(null);
   };
 
-  /* ── Reset loaded state when index changes ──────────────────────────────── */
-  useEffect(() => {
+  /* ── Reset loaded state when index changes (from parent) ────────────────── */
+  const [prevIndex, setPrevIndex] = useState(index);
+  if (prevIndex !== index) {
+    setPrevIndex(index);
     setImageLoaded(false);
-  }, [index]);
+  }
 
   /* ── Render ─────────────────────────────────────────────────────────────── */
   if (!isOpen) return null;

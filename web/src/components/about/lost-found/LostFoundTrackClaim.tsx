@@ -23,7 +23,7 @@ import {
 import type { Lang } from "@/types/language";
 import { ClaimStatus, LostFoundCategory } from "@/types/enum";
 import { trackClaim, type TrackedClaim } from "@/services/lost-found";
-import { t, CATEGORY_KEYS, formatDate } from "./lost-found.constants";
+import { t, CATEGORY_KEYS, formatDate, type LostFoundKey } from "./lost-found.constants";
 
 interface LostFoundTrackClaimProps {
   lang: Lang;
@@ -39,7 +39,7 @@ interface TimelineStep {
   date?: string | null;
 }
 
-function buildTimeline(claim: TrackedClaim, lang: Lang): TimelineStep[] {
+function buildTimeline(claim: TrackedClaim, _lang: Lang): TimelineStep[] {
   const s = claim.status as ClaimStatus;
 
   // Submitted — always done
@@ -203,8 +203,8 @@ export function LostFoundTrackClaim({ lang }: LostFoundTrackClaimProps) {
     try {
       const data = await trackClaim(trimmed);
       setResult(data);
-    } catch (err: any) {
-      if (err?.status === 404) {
+    } catch (err: unknown) {
+      if (err && typeof err === "object" && "status" in err && (err as { status: number }).status === 404) {
         setError("not_found");
       } else {
         setError("generic");
@@ -341,7 +341,7 @@ export function LostFoundTrackClaim({ lang }: LostFoundTrackClaimProps) {
                       {/* Content */}
                       <div className={`pb-7 ${isLast ? "pb-0" : ""}`}>
                         <p className={`text-sm leading-tight ${styles.text}`}>
-                          {t(step.labelKey as any, lang)}
+                          {t(step.labelKey as LostFoundKey, lang)}
                         </p>
                         {step.date && (
                           <p className={`mt-0.5 text-xs ${styles.date}`}>
