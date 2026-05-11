@@ -15,7 +15,7 @@ export function toQuery(
 ): QueryFlight {
   return {
     direction: direction ?? filters.destination,
-    date: filters.date ?? currentDateISO,
+    date: filters.date ?? currentDateISO(),
     destination: filters.destination,
     airline: filters.airline,
     search: filters.q,

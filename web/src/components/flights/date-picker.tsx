@@ -12,7 +12,6 @@ import { Lang } from "@/types/language";
 import "react-day-picker/style.css";
 import "@/styles/custom-react-day-picker.css";
 
-const today = new Date();
 const ESTIMATED_POPUP_HEIGHT = 380;
 
 interface DatePickerProps {
@@ -106,10 +105,13 @@ export function DatePicker({ value, onChange, lang }: DatePickerProps) {
               month={month}
               onMonthChange={setMonth}
               onSelect={handleSelect}
-              disabled={{
-                before: subDays(today, 6),
-                after: addDays(today, 14),
-              }}
+              disabled={(() => {
+                const today = new Date();
+                return {
+                  before: subDays(today, 6),
+                  after: addDays(today, 14),
+                };
+              })()}
             />
           </div>
         </Fragment>
